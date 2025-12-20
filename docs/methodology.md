@@ -31,16 +31,16 @@ This analysis estimates the lifetime QALY impact of regular nut consumption usin
 
 We use the following evidence sources, in order of strength:
 
-1. **Meta-analyses of mortality outcomes** - Aune 2016, Grosso 2015
-2. **Large cohort studies** - Bao 2013 (NEJM), Guasch-Ferré 2017
-3. **Randomized controlled trials** - PREDIMED, WAHA
+1. **Meta-analyses of mortality outcomes** - {cite}`aune2016nut`, {cite}`grosso2015nut`
+2. **Large cohort studies** - {cite}`bao2013association`, {cite}`guasch2017nut`
+3. **Randomized controlled trials** - PREDIMED {cite}`ros2008mediterranean`, WAHA {cite}`rajaram2021walnuts`
 4. **Nutrient composition data** - USDA FoodData Central
 
 ## Key Parameters
 
 ### Base Mortality Effect
 
-From Aune et al. 2016 meta-analysis (n=819,448):
+From the {cite}`aune2016nut` meta-analysis (n=819,448):
 - **Relative Risk**: 0.78 (95% CI: 0.72-0.84)
 - **Interpretation**: 22% reduced all-cause mortality per 28g/day
 
@@ -56,10 +56,10 @@ Each nut receives an adjustment factor based on:
 | Walnut | 1.15 | 0.08 | Strong | PREDIMED, WAHA RCTs, unique omega-3 profile |
 | Pistachio | 1.08 | 0.10 | Strong | Best lipid improvements in RCTs |
 | Almond | 1.00 | 0.06 | Strong | Reference nut, robust RCT base |
-| Pecan | 1.00 | 0.12 | Moderate | Hart 2025, Guarneiri 2021 RCTs show significant LDL reductions |
-| Macadamia | 1.02 | 0.12 | Moderate | FDA health claim, Neale 2023 and Griel 2008 RCTs |
-| Peanut | 0.95 | 0.07 | Strong | Bao 2013 cohort (n=118,962), slight aflatoxin discount |
-| Cashew | 0.95 | 0.12 | Limited | Mixed RCT results (Mah 2017, Meneguelli 2024), CIs cross zero |
+| Pecan | 1.00 | 0.12 | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` RCTs show significant LDL reductions |
+| Macadamia | 1.02 | 0.12 | Moderate | FDA health claim, {cite}`neale2023macadamia` and {cite}`griel2008macadamia` RCTs |
+| Peanut | 0.95 | 0.07 | Strong | {cite}`bao2013association` cohort (n=118,962), slight aflatoxin discount |
+| Cashew | 0.95 | 0.12 | Limited | Mixed RCT results ({cite}`mah2017cashew`), CIs cross zero |
 
 ### Bayesian Principle
 
@@ -87,7 +87,7 @@ For each of 10,000 iterations:
 
 ### Why We Apply an Additional Adjustment
 
-Meta-analyses like Aune 2016 already adjust for measured confounders (age, sex, BMI, smoking, etc.). However, residual confounding from unmeasured factors likely remains:
+Meta-analyses like {cite}`aune2016nut` already adjust for measured confounders (age, sex, BMI, smoking, etc.). However, residual confounding from unmeasured factors likely remains:
 
 - **Healthy user bias**: Nut consumers tend to be more health-conscious overall
 - **Socioeconomic status**: Nuts are more expensive than other snacks
@@ -103,7 +103,7 @@ We apply a Beta(8, 2) confounding adjustment (mean = 0.80, or 20% discount), rep
 
 ### E-Value Analysis
 
-Per Mathur & VanderWeele (2018), the E-value for HR=0.78 is approximately 1.8. This means an unmeasured confounder would need to be associated with both nut consumption AND mortality by a factor of 1.8 to fully explain the observed association. For context, this exceeds the typical association strength of moderate confounders like education or income with mortality. Given that known strong confounders (smoking HR~2-3, obesity HR~1.5-2) have already been adjusted in the source studies, this level of residual confounding from unmeasured factors seems unlikely.
+Per {cite}`mathur2020sensitivity`, the E-value for HR=0.78 is approximately 1.8. This means an unmeasured confounder would need to be associated with both nut consumption AND mortality by a factor of 1.8 to fully explain the observed association. For context, this exceeds the typical association strength of moderate confounders like education or income with mortality. Given that known strong confounders (smoking HR~2-3, obesity HR~1.5-2) have already been adjusted in the source studies, this level of residual confounding from unmeasured factors seems unlikely.
 
 ## External Validation
 
@@ -129,15 +129,15 @@ At typical US retail prices (2025), all nuts are highly cost-effective:
 
 | Nut | Annual Cost | Cost per QALY |
 |-----|-------------|---------------|
-| Peanuts | ~$100 | ~$40 |
-| Almonds | ~$250 | ~$100 |
-| Walnuts | ~$375 | ~$150 |
-| Cashews | ~$300 | ~$120 |
-| Pecans | ~$400 | ~$160 |
-| Macadamias | ~$650 | ~$260 |
-| Pistachios | ~$350 | ~$140 |
+| Peanuts | ~\$100 | ~\$40 |
+| Almonds | ~\$250 | ~\$100 |
+| Walnuts | ~\$375 | ~\$150 |
+| Cashews | ~\$300 | ~\$120 |
+| Pecans | ~\$400 | ~\$160 |
+| Macadamias | ~\$650 | ~\$260 |
+| Pistachios | ~\$350 | ~\$140 |
 
-All values fall well below standard cost-effectiveness thresholds ($50,000/QALY in US, £20-30k/QALY in UK). Even the most expensive nuts (macadamias) remain highly cost-effective at ~$260/QALY.
+All values fall well below standard cost-effectiveness thresholds (\$50,000/QALY in US, £20-30k/QALY in UK). Even the most expensive nuts (macadamias) remain highly cost-effective at ~\$260/QALY.
 
 ## Limitations
 
