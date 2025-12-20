@@ -54,13 +54,13 @@ Walnuts contain 10x more ALA omega-3 than other tree nuts. Macadamias uniquely c
 
 I constructed a hierarchical evidence base drawing on four categories of sources, in order of priority:
 
-1. **Meta-analyses of mortality outcomes**: {cite}`aune2016nut` and {cite}`grosso2015nut` provided pooled estimates for all-cause mortality.
+1. **Meta-analyses of mortality outcomes**: {cite}`aune2016nut` and {cite}`grosso2015nut` provide pooled estimates for all-cause mortality.
 
-2. **Large prospective cohort studies**: {cite}`bao2013association` and {cite}`guasch2017nut` provided nut-specific associations.
+2. **Large prospective cohort studies**: {cite}`bao2013association` and {cite}`guasch2017nut` provide nut-specific associations.
 
-3. **Randomized controlled trials**: PREDIMED {cite:p}`ros2008mediterranean`, WAHA {cite:p}`rajaram2021walnuts`, and nut-specific lipid trials {cite:p}`delgobbo2015effects,hart2025pecan,guarneiri2021pecan,mah2017cashew` informed nut-specific adjustment factors.
+3. **Randomized controlled trials**: {cite}`ros2008mediterranean` (PREDIMED), {cite}`rajaram2021walnuts` (WAHA), {cite}`delgobbo2015effects`, {cite}`hart2025pecan`, {cite}`guarneiri2021pecan`, and {cite}`mah2017cashew` inform nut-specific adjustment factors.
 
-4. **Nutrient composition data**: {cite}`usda2024fooddata` provided standardized nutrient profiles.
+4. **Nutrient composition data**: {cite}`usda2024fooddata` provides standardized nutrient profiles.
 
 ### Statistical Model
 
@@ -85,9 +85,9 @@ I employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each it
 
 The source meta-analyses adjusted for measured confounders (age, sex, BMI, smoking, alcohol, physical activity). I calibrated the confounding prior using three lines of evidence:
 
-**LDL pathway calibration**: Nuts reduce LDL cholesterol by 0.18 mmol/L {cite:p}`delgobbo2015effects` (61 RCTs). Using established LDL-CVD relationships, this predicts a 4.4% reduction in CVD mortality, compared to 25% observed in cohort studies. This implies ~17% of the observed CVD effect is explained by the LDL pathway.
+**LDL pathway calibration**: {cite}`delgobbo2015effects` find that nuts reduce LDL cholesterol by 0.18 mmol/L (61 RCTs). Using established LDL-CVD relationships, this predicts a 4.4% reduction in CVD mortality, compared to 25% observed in cohort studies. This implies ~17% of the observed CVD effect operates through the LDL pathway.
 
-**UK Biobank evidence**: Sibling-comparison studies of vegetable consumption and CVD mortality attribute ~80% of observed associations to confounding {cite:p}`mathur2020sensitivity`.
+**UK Biobank evidence**: {cite}`mathur2020sensitivity` attribute ~80% of associations between vegetable consumption and CVD mortality in sibling-comparison studies to confounding.
 
 **Golestan cohort**: In Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persisted (HR 0.71 for ≥3 servings/week).
 
