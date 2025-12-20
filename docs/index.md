@@ -6,7 +6,7 @@ PolicyEngine | max@policyengine.org
 
 ## Abstract
 
-Nut consumption is consistently associated with reduced mortality in observational studies, but translating these findings into actionable health guidance requires quantifying benefits in meaningful units. We present a Bayesian Monte Carlo framework for estimating quality-adjusted life years (QALYs) gained from daily consumption of seven common nut types. Drawing on meta-analytic evidence from 819,448 participants {cite}`aune2016nut` and nut-specific randomized controlled trials, we estimate that consuming 28g/day of any nut yields approximately 2.5 QALYs (95% credible interval: 1.0-4.5) over a lifetime for a 40-year-old adult in the general population. Critically, the difference between the highest-ranked nut (walnuts, 2.9 QALYs) and lowest-ranked (cashews, 2.2 QALYs) is modest compared to the benefit of consuming any nut versus none. After applying a conservative 20% discount for residual confounding, we find that all nut types remain highly cost-effective at $40-260 per QALY gained. These findings support public health messaging that emphasizes consistent nut consumption over optimal nut selection.
+Nut consumption is consistently associated with reduced mortality in observational studies, but translating these findings into actionable health guidance requires quantifying benefits in meaningful units. We present a Bayesian Monte Carlo framework for estimating quality-adjusted life years (QALYs) gained from daily consumption of seven common nut types. Drawing on meta-analytic evidence from 819,448 participants {cite}`aune2016nut` and nut-specific randomized controlled trials, we estimate that consuming 28g/day of any nut yields approximately 2.5 QALYs (95% credible interval: 1.0-4.5) over a lifetime for a 40-year-old adult in the general population. Critically, the difference between the highest-ranked nut (walnuts, 2.9 QALYs) and lowest-ranked (cashews, 2.2 QALYs) is modest compared to the benefit of consuming any nut versus none. After applying a conservative 20% discount for residual confounding, we find that all nut types remain highly cost-effective at \$40-260 per QALY gained. These findings support public health messaging that emphasizes consistent nut consumption over optimal nut selection.
 
 ## Introduction
 
@@ -86,7 +86,7 @@ The spread between the highest (walnuts) and lowest (cashews) ranked nuts was 0.
 
 ### Cost-Effectiveness
 
-At typical US retail prices (2025), estimated cost per QALY gained ranged from $40 (peanuts) to $260 (macadamias). All values fall well below standard cost-effectiveness thresholds of $50,000-100,000 per QALY in the United States and £20,000-30,000 in the United Kingdom.
+At typical US retail prices (2025), estimated cost per QALY gained ranged from \$40 (peanuts) to \$260 (macadamias). All values fall well below standard cost-effectiveness thresholds of \$50,000-100,000 per QALY in the United States and £20,000-30,000 in the United Kingdom.
 
 ### Uncertainty Quantification
 
@@ -100,7 +100,7 @@ First, regular nut consumption appears to confer substantial health benefits. An
 
 Second, the choice of nut type matters far less than the choice to consume nuts at all. While walnuts showed a modest advantage—consistent with their unique omega-3 (ALA) content and strong RCT evidence from PREDIMED and WAHA trials—the difference between "best" and "worst" nut types (0.7 QALYs) was less than 30% of the category effect. This finding supports pragmatic messaging: "Eat whichever nut you will actually eat consistently."
 
-Third, even after conservative adjustment for residual confounding, nut consumption remains highly cost-effective. At $40-260 per QALY, nuts represent exceptional value compared to pharmaceutical interventions or medical procedures that often exceed $50,000 per QALY.
+Third, even after conservative adjustment for residual confounding, nut consumption remains highly cost-effective. At \$40-260 per QALY, nuts represent exceptional value compared to pharmaceutical interventions or medical procedures that often exceed \$50,000 per QALY.
 
 ### Limitations
 
