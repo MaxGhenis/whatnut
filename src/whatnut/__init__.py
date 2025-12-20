@@ -10,6 +10,7 @@ from whatnut.simulation import (
     CategoryEffect,
     DEFAULT_PARAMS,
 )
+from whatnut.precomputed import get_results, RESULTS, PrecomputedResults
 
 __version__ = "0.1.0"
 
@@ -33,4 +34,8 @@ __all__ = [
     "NutResult",
     "CategoryEffect",
     "DEFAULT_PARAMS",
+    # Precomputed
+    "get_results",
+    "RESULTS",
+    "PrecomputedResults",
 ]

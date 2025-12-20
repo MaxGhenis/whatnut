@@ -2,7 +2,7 @@
 
 **Max Ghenis**
 
-PolicyEngine | max@policyengine.org
+max@maxghenis.com
 
 ## Abstract
 

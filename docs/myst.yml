@@ -4,9 +4,7 @@ project:
   description: "Bayesian QALY analysis of nut consumption"
   authors:
     - name: Max Ghenis
-      email: max@policyengine.org
-      affiliations:
-        - PolicyEngine
+      email: max@maxghenis.com
   github: https://github.com/MaxGhenis/whatnut
   license: MIT
   keywords:
