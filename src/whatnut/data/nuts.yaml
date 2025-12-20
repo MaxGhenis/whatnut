@@ -1,0 +1,164 @@
+# Nut profiles: nutrients, pathway adjustments, costs, and evidence
+# Sources: USDA FoodData Central (2024), cited literature
+
+walnut:
+  nutrients:
+    omega3_ala_g: 2.5      # Highest of all nuts
+    omega7_g: 0.0
+    vitamin_e_mg: 0.7
+    fiber_g: 1.9
+    protein_g: 4.3
+  pathway_adjustments:
+    cvd:
+      mean: 1.25           # Strong omega-3 effect
+      sd: 0.08
+      rationale: "Highest ALA omega-3 (2.5g/28g); PREDIMED, WAHA RCTs"
+    cancer:
+      mean: 1.05
+      sd: 0.10
+      rationale: "Moderate antioxidant content"
+    other:
+      mean: 1.10
+      sd: 0.10
+      rationale: "Anti-inflammatory effects"
+  cost_per_kg_usd: 9.65    # USDA ERS 2024
+  evidence: strong
+
+almond:
+  nutrients:
+    omega3_ala_g: 0.0
+    omega7_g: 0.0
+    vitamin_e_mg: 7.3      # Highest of all nuts
+    fiber_g: 3.5
+    protein_g: 6.0
+  pathway_adjustments:
+    cvd:
+      mean: 1.00           # Reference nut
+      sd: 0.06
+      rationale: "Reference category; robust RCT base"
+    cancer:
+      mean: 1.05
+      sd: 0.08
+      rationale: "Vitamin E antioxidant effect"
+    other:
+      mean: 1.00
+      sd: 0.06
+      rationale: "Reference"
+  cost_per_kg_usd: 8.86
+  evidence: strong
+
+pistachio:
+  nutrients:
+    omega3_ala_g: 0.07
+    omega7_g: 0.0
+    vitamin_e_mg: 0.8
+    fiber_g: 2.9
+    protein_g: 5.7
+    lutein_mcg: 342        # Unique: eye health
+  pathway_adjustments:
+    cvd:
+      mean: 1.12
+      sd: 0.08
+      rationale: "Best lipid improvements in Del Gobbo meta-analysis"
+    cancer:
+      mean: 1.02
+      sd: 0.10
+      rationale: "Lutein, some antioxidants"
+    other:
+      mean: 1.05
+      sd: 0.10
+      rationale: "Fiber, glycemic effects"
+  cost_per_kg_usd: 11.25
+  evidence: moderate
+
+pecan:
+  nutrients:
+    omega3_ala_g: 0.28
+    omega7_g: 0.0
+    vitamin_e_mg: 0.4
+    fiber_g: 2.7
+    protein_g: 2.6
+  pathway_adjustments:
+    cvd:
+      mean: 1.08
+      sd: 0.10
+      rationale: "Some omega-3; Hart 2025, Guarneiri 2021 RCTs"
+    cancer:
+      mean: 0.98
+      sd: 0.12
+      rationale: "Limited evidence"
+    other:
+      mean: 1.00
+      sd: 0.12
+      rationale: "Limited evidence"
+  cost_per_kg_usd: 12.86
+  evidence: moderate
+
+macadamia:
+  nutrients:
+    omega3_ala_g: 0.06
+    omega7_g: 4.7           # Unique: omega-7 (palmitoleic acid)
+    vitamin_e_mg: 0.2
+    fiber_g: 2.4
+    protein_g: 2.2
+  pathway_adjustments:
+    cvd:
+      mean: 1.08
+      sd: 0.10
+      rationale: "Omega-7; FDA qualified health claim"
+    cancer:
+      mean: 0.95
+      sd: 0.15
+      rationale: "Limited evidence, lower antioxidants"
+    other:
+      mean: 1.05
+      sd: 0.12
+      rationale: "Insulin sensitivity from omega-7"
+  cost_per_kg_usd: 22.50
+  evidence: moderate
+
+peanut:
+  nutrients:
+    omega3_ala_g: 0.0
+    omega7_g: 0.0
+    vitamin_e_mg: 2.4
+    fiber_g: 2.4
+    protein_g: 7.3          # Highest protein (legume)
+  pathway_adjustments:
+    cvd:
+      mean: 0.98
+      sd: 0.06
+      rationale: "Large cohort data (n=118,962); slight discount vs tree nuts"
+    cancer:
+      mean: 0.90
+      sd: 0.08
+      rationale: "Aflatoxin concern"
+    other:
+      mean: 0.98
+      sd: 0.08
+      rationale: "Legume, different nutrient profile"
+  cost_per_kg_usd: 3.61
+  evidence: strong
+
+cashew:
+  nutrients:
+    omega3_ala_g: 0.02
+    omega7_g: 0.0
+    vitamin_e_mg: 0.3
+    fiber_g: 0.9            # Lowest fiber
+    protein_g: 5.2
+  pathway_adjustments:
+    cvd:
+      mean: 0.95
+      sd: 0.10
+      rationale: "Mixed RCT results (Mah 2017), CIs cross zero"
+    cancer:
+      mean: 0.95
+      sd: 0.12
+      rationale: "Limited evidence"
+    other:
+      mean: 0.95
+      sd: 0.12
+      rationale: "Limited evidence"
+  cost_per_kg_usd: 10.00
+  evidence: limited

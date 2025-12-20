@@ -222,3 +222,106 @@ class TestComparisonWithSingleRRModel:
 
         # With calibrated confounding, ICER should be in $30k-$100k range
         assert 30000 < pathway_result.cost_per_qaly < 100000
+
+
+class TestPathwaySpecificNutAdjustments:
+    """Tests for pathway-specific nut adjustments."""
+
+    def test_walnut_benefits_more_than_uniform(self):
+        """Walnut with pathway-specific (CVD=1.25) should benefit more than uniform (1.15).
+
+        Walnut's CVD adjustment (1.25) is higher than uniform (1.15), and CVD
+        contributes 59% of benefit. So pathway-specific should give higher QALYs.
+        Expected: ~5-15% increase.
+        """
+        from whatnut.lifecycle_pathways import NUT_PATHWAY_ADJUSTMENTS
+
+        model = PathwayLifecycleCEA(seed=42)
+
+        # Uniform adjustment (old model)
+        uniform_result = model.run(PathwayParams(
+            nut_adj_cvd=1.15,
+            nut_adj_cancer=1.15,
+            nut_adj_other=1.15,
+        ))
+
+        # Pathway-specific (new model)
+        walnut = NUT_PATHWAY_ADJUSTMENTS['walnut']
+        pathway_result = model.run(PathwayParams(
+            nut_adj_cvd=walnut['cvd'][0],
+            nut_adj_cancer=walnut['cancer'][0],
+            nut_adj_other=walnut['other'][0],
+        ))
+
+        # Pathway-specific should give higher QALYs (stronger CVD effect)
+        assert pathway_result.qalys_gained > uniform_result.qalys_gained
+        # But not dramatically higher (within 20%)
+        assert pathway_result.qalys_gained < uniform_result.qalys_gained * 1.20
+
+    def test_peanut_cancer_penalty_reduces_benefit(self):
+        """Peanut's cancer penalty (0.90) should reduce overall benefit.
+
+        With pathway-specific, peanut has CVD=0.98, Cancer=0.90, Other=0.98.
+        Cancer contributes 17% of benefit. The cancer penalty should be
+        partially offset by the higher CVD adjustment (0.98 vs 0.95 uniform).
+        Expected: within ±10% of uniform.
+        """
+        from whatnut.lifecycle_pathways import NUT_PATHWAY_ADJUSTMENTS
+
+        model = PathwayLifecycleCEA(seed=42)
+
+        # Uniform adjustment
+        uniform_result = model.run(PathwayParams(
+            nut_adj_cvd=0.95,
+            nut_adj_cancer=0.95,
+            nut_adj_other=0.95,
+        ))
+
+        # Pathway-specific
+        peanut = NUT_PATHWAY_ADJUSTMENTS['peanut']
+        pathway_result = model.run(PathwayParams(
+            nut_adj_cvd=peanut['cvd'][0],
+            nut_adj_cancer=peanut['cancer'][0],
+            nut_adj_other=peanut['other'][0],
+        ))
+
+        # Results should be similar (within 10%)
+        ratio = pathway_result.qalys_gained / uniform_result.qalys_gained
+        assert 0.90 < ratio < 1.10
+
+    def test_walnut_vs_peanut_gap_increases_with_pathway_specific(self):
+        """Gap between walnut and peanut should increase with pathway-specific.
+
+        Walnut's CVD advantage (1.25 vs 0.98) is larger than the uniform
+        difference (1.15 vs 0.95). So the gap should widen.
+        """
+        from whatnut.lifecycle_pathways import NUT_PATHWAY_ADJUSTMENTS
+
+        model = PathwayLifecycleCEA(seed=42)
+
+        # Uniform model gap
+        walnut_uniform = model.run(PathwayParams(
+            nut_adj_cvd=1.15, nut_adj_cancer=1.15, nut_adj_other=1.15,
+        ))
+        peanut_uniform = model.run(PathwayParams(
+            nut_adj_cvd=0.95, nut_adj_cancer=0.95, nut_adj_other=0.95,
+        ))
+        uniform_gap = walnut_uniform.qalys_gained - peanut_uniform.qalys_gained
+
+        # Pathway-specific model gap
+        walnut = NUT_PATHWAY_ADJUSTMENTS['walnut']
+        peanut = NUT_PATHWAY_ADJUSTMENTS['peanut']
+        walnut_pathway = model.run(PathwayParams(
+            nut_adj_cvd=walnut['cvd'][0],
+            nut_adj_cancer=walnut['cancer'][0],
+            nut_adj_other=walnut['other'][0],
+        ))
+        peanut_pathway = model.run(PathwayParams(
+            nut_adj_cvd=peanut['cvd'][0],
+            nut_adj_cancer=peanut['cancer'][0],
+            nut_adj_other=peanut['other'][0],
+        ))
+        pathway_gap = walnut_pathway.qalys_gained - peanut_pathway.qalys_gained
+
+        # Pathway-specific gap should be larger
+        assert pathway_gap > uniform_gap

@@ -18,6 +18,36 @@ Quality-adjusted life years (QALYs) provide a standardized metric combining life
 
 This paper develops a Bayesian Monte Carlo framework for estimating QALY gains from nut consumption, addressing: (1) expected benefit magnitude; (2) nut type comparisons; (3) sensitivity to confounding assumptions.
 
+### Nut Nutrient Profiles
+
+Different nuts have distinct nutrient profiles that suggest pathway-specific mechanisms ({cite}`usda2024fooddata`):
+
+| Nut | Key Nutrients (per 28g) | Primary Mechanism |
+|-----|------------------------|-------------------|
+| Walnut | 2.5g ALA omega-3 | CVD (anti-inflammatory, lipids) |
+| Almond | 7.3mg vitamin E, 3.5g fiber | Antioxidant, glycemic control |
+| Pistachio | 3g fiber, 6g protein, lutein | Lipids, satiety |
+| Pecan | 0.5g ALA omega-3, 2.7g fiber | CVD (weaker than walnut) |
+| Macadamia | Omega-7 (palmitoleic acid) | Lipids, insulin sensitivity |
+| Peanut | 7g protein, 2.4g fiber | Satiety, glycemic control |
+| Cashew | 5g protein, low fiber | Mixed (limited evidence) |
+
+Walnuts contain 10x more ALA omega-3 than other tree nuts. Macadamias uniquely contain omega-7 fatty acids. Almonds have the highest vitamin E content. These differences suggest that nut-specific effects may vary by mortality pathway.
+
+**Table 1: Pathway-Specific Nut Adjustment Factors**
+
+| Nut | CVD | Cancer | Other | Evidence | Rationale |
+|-----|-----|--------|-------|----------|-----------|
+| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | Highest omega-3; PREDIMED, WAHA RCTs |
+| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference; vitamin E antioxidant |
+| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Best lipid improvements in Del Gobbo |
+| Pecan | 1.08 (0.10) | 0.98 (0.12) | 1.00 (0.12) | Moderate | Some omega-3; Hart 2025, Guarneiri 2021 |
+| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Omega-7; FDA qualified health claim |
+| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | Aflatoxin concern; large cohort data |
+| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | Mixed RCT results; CIs cross zero |
+
+*Note: Values are mean (SD) adjustment factors. Values >1.0 indicate stronger effects than almonds (reference). Adjustments are applied as exponents on cause-specific RRs.*
+
 ## Methods
 
 ### Evidence Sources
@@ -41,7 +71,7 @@ I employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each it
    - Cancer: RR ~ LogNormal(log(0.87), 0.04)
    - Other: RR ~ LogNormal(log(0.90), 0.03)
 
-2. Applied a nut-specific adjustment factor (exponent on all RRs): walnuts (1.15, SD 0.08), pistachios (1.08, 0.10), almonds (1.00, 0.06), pecans (1.00, 0.12), macadamias (1.02, 0.12), peanuts (0.95, 0.07), cashews (0.95, 0.12). Values >1.0 indicate stronger effects.
+2. Applied pathway-specific nut adjustment factors (exponents on cause-specific RRs) based on nutrient profiles and RCT evidence. Each nut type has separate adjustments for CVD, cancer, and other mortality pathways. For example, walnuts have a strong CVD adjustment (1.25, SD 0.08) reflecting their high omega-3 content, while peanuts have a cancer penalty (0.90, SD 0.08) reflecting aflatoxin concerns. See Table 1 for complete adjustment factors. Values >1.0 indicate stronger effects than the reference nut (almonds).
 
 3. Applied confounding adjustment sampled from Beta(1.5, 4.5) with mean 0.25.
 
@@ -130,7 +160,6 @@ ICERs range from \$25,000/QALY (peanuts) to \$160,000/QALY (macadamias), spannin
 2. Source studies predominantly from US and Europe.
 3. Fixed 28g/day dose modeled; dose-response may be non-linear.
 4. Perfect adherence assumed.
-5. Nut-specific adjustments apply uniformly to all pathways. In reality, different nuts may have pathway-specific effects (e.g., walnut omega-3s primarily affect CVD; macadamia omega-7s have different mechanisms than almond vitamin E).
 
 ## Conclusion
 

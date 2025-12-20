@@ -13,8 +13,10 @@ This allows for different temporal profiles since:
 """
 
 from dataclasses import dataclass
+from pathlib import Path
 import numpy as np
 from typing import Optional
+import yaml
 
 from whatnut.lifecycle import (
     get_mortality_curve,
@@ -50,6 +52,55 @@ CAUSE_SPECIFIC_RR = {
     },
 }
 
+
+# Load nut data from YAML
+def _load_nut_data():
+    """Load nut profiles from YAML file."""
+    data_path = Path(__file__).parent / 'data' / 'nuts.yaml'
+    with open(data_path) as f:
+        return yaml.safe_load(f)
+
+
+def get_nut_pathway_adjustments(nut_type: str) -> dict:
+    """Get pathway-specific adjustment factors for a nut type.
+
+    Args:
+        nut_type: One of 'walnut', 'almond', 'pistachio', 'pecan',
+                  'macadamia', 'peanut', 'cashew'
+
+    Returns:
+        Dict with 'cvd', 'cancer', 'other' keys, each containing
+        (mean, sd) tuples for the adjustment factor.
+    """
+    data = _load_nut_data()
+    if nut_type not in data:
+        raise ValueError(f"Unknown nut type: {nut_type}. "
+                        f"Valid types: {list(data.keys())}")
+
+    adj = data[nut_type]['pathway_adjustments']
+    return {
+        'cvd': (adj['cvd']['mean'], adj['cvd']['sd']),
+        'cancer': (adj['cancer']['mean'], adj['cancer']['sd']),
+        'other': (adj['other']['mean'], adj['other']['sd']),
+    }
+
+
+def get_nut_cost(nut_type: str) -> float:
+    """Get annual cost for 28g/day of a nut type."""
+    data = _load_nut_data()
+    if nut_type not in data:
+        raise ValueError(f"Unknown nut type: {nut_type}")
+    cost_per_kg = data[nut_type]['cost_per_kg_usd']
+    # 28g/day * 365 days = 10.22 kg/year
+    return cost_per_kg * 10.22
+
+
+# Legacy constant for backward compatibility
+NUT_PATHWAY_ADJUSTMENTS = {
+    nut: get_nut_pathway_adjustments(nut)
+    for nut in ['walnut', 'almond', 'pistachio', 'pecan',
+                'macadamia', 'peanut', 'cashew']
+}
 
 # Cause-of-death fractions by age
 # Source: CDC WONDER, 2021 US mortality data (approximate)
@@ -132,9 +183,15 @@ class PathwayParams:
     # Cost
     annual_cost: float = 250.0
 
-    # Nut-specific adjustment (multiplicative on log-RR, applies to all pathways)
-    nut_adjustment: float = 1.0
-    nut_adjustment_sd: float = 0.1
+    # Pathway-specific nut adjustments (exponents on cause-specific RRs)
+    # If None, uses uniform adjustment; if specified, overrides uniform
+    nut_type: Optional[str] = None  # e.g., 'walnut', 'almond', etc.
+    nut_adj_cvd: float = 1.0
+    nut_adj_cancer: float = 1.0
+    nut_adj_other: float = 1.0
+    nut_adj_cvd_sd: float = 0.1
+    nut_adj_cancer_sd: float = 0.1
+    nut_adj_other_sd: float = 0.1
 
 
 @dataclass
@@ -190,10 +247,10 @@ class PathwayLifecycleCEA:
         mortality_baseline = get_mortality_curve(params.start_age, params.max_age)
         quality_weights = get_quality_curve(params.start_age, params.max_age)
 
-        # Apply nut adjustment to all RRs
-        rr_cvd = params.rr_cvd ** params.nut_adjustment
-        rr_cancer = params.rr_cancer ** params.nut_adjustment
-        rr_other = params.rr_other ** params.nut_adjustment
+        # Apply pathway-specific nut adjustments
+        rr_cvd = params.rr_cvd ** params.nut_adj_cvd
+        rr_cancer = params.rr_cancer ** params.nut_adj_cancer
+        rr_other = params.rr_other ** params.nut_adj_other
 
         # Apply confounding adjustment
         rr_cvd = 1 - (1 - rr_cvd) * params.confounding_adjustment
@@ -308,8 +365,10 @@ class PathwayLifecycleCEA:
             # Sample confounding from calibrated prior
             sampled_conf = self.rng.beta(params.confounding_alpha, params.confounding_beta)
 
-            # Sample nut adjustment
-            sampled_adj = self.rng.normal(params.nut_adjustment, params.nut_adjustment_sd)
+            # Sample pathway-specific nut adjustments
+            sampled_adj_cvd = self.rng.normal(params.nut_adj_cvd, params.nut_adj_cvd_sd)
+            sampled_adj_cancer = self.rng.normal(params.nut_adj_cancer, params.nut_adj_cancer_sd)
+            sampled_adj_other = self.rng.normal(params.nut_adj_other, params.nut_adj_other_sd)
 
             sim_params = PathwayParams(
                 start_age=params.start_age,
@@ -320,7 +379,9 @@ class PathwayLifecycleCEA:
                 rr_other=rr_other,
                 confounding_adjustment=sampled_conf,
                 annual_cost=params.annual_cost,
-                nut_adjustment=sampled_adj,
+                nut_adj_cvd=sampled_adj_cvd,
+                nut_adj_cancer=sampled_adj_cancer,
+                nut_adj_other=sampled_adj_other,
             )
 
             result = self.run(sim_params)
