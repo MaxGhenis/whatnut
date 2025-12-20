@@ -89,10 +89,15 @@ For a 40-year-old beginning daily nut consumption:
 
 Per {cite}`mathur2020sensitivity`, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
 
+For a protective exposure with hazard ratio $HR$, we first convert to relative risk $RR = 1/HR$, then calculate:
+
+$$E\text{-value} = RR + \sqrt{RR \times (RR - 1)}$$
+
 For HR = 0.78:
-- **E-value ≈ 1.8**
-- Interpretation: An unmeasured confounder would need RR ≥ 1.8 with both nut consumption AND mortality to explain the observed effect
-- Given that major confounders (smoking, obesity, SES) are already adjusted, this level of residual confounding seems unlikely but not impossible
+- $RR = 1/0.78 = 1.28$
+- $E\text{-value} = 1.28 + \sqrt{1.28 \times 0.28} = 1.28 + 0.60 \approx 1.8$
+
+**Interpretation**: An unmeasured confounder would need RR ≥ 1.8 with both nut consumption AND mortality to fully explain the observed effect. Given that major confounders (smoking, obesity, SES) are already adjusted, this level of residual confounding seems unlikely but not impossible.
 
 ## Pathway-Specific Mortality Effects
 
