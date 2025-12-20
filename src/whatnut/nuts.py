@@ -205,14 +205,14 @@ NUTS: list[Nut] = [
             magnesium_mg=121,
         ),
         adjustment_factor=AdjustmentFactor(
-            mean=0.98,
-            sd=0.18,  # Very high uncertainty
-            rationale="Minimal nut-specific evidence. Estimate relies on category prior.",
-            sources=[],
+            mean=1.00,
+            sd=0.12,
+            rationale="Two RCTs show significant LDL reductions (~7-14 mg/dL). High MUFA content.",
+            sources=["hart2025_pecan", "guarneiri2021_pecan"],
         ),
-        evidence_sources=["usda_fdc"],
-        evidence_strength="limited",
-        notes="Very limited nut-specific research. Prior-dominated estimate.",
+        evidence_sources=["hart2025_pecan", "guarneiri2021_pecan", "usda_fdc"],
+        evidence_strength="moderate",
+        notes="Recent RCTs (2021, 2025) show significant lipid improvements. Second highest MUFA after macadamia.",
     ),
     Nut(
         id="cashew",
@@ -231,14 +231,14 @@ NUTS: list[Nut] = [
             magnesium_mg=292,  # Highest magnesium
         ),
         adjustment_factor=AdjustmentFactor(
-            mean=0.92,
-            sd=0.14,
-            rationale="Lowest fiber, highest carbs. Very limited RCT data.",
-            sources=[],
+            mean=0.95,
+            sd=0.12,
+            rationale="Mixed RCT results: Mah 2017 showed non-significant 4.8% LDL reduction. Highest magnesium offsets low fiber.",
+            sources=["mah2017_cashew", "meneguelli2024_cashew"],
         ),
-        evidence_sources=["usda_fdc"],
+        evidence_sources=["mah2017_cashew", "meneguelli2024_cashew", "usda_fdc"],
         evidence_strength="limited",
-        notes="Lower fiber and higher carbs than other nuts. Limited nut-specific evidence.",
+        notes="RCT evidence inconclusive - CIs cross zero. Highest magnesium but lowest fiber among nuts.",
     ),
 ]
 

@@ -186,6 +186,66 @@ SOURCES: list[Source] = [
         study_type="review",
         key_finding="Omega-7 shows promise in animal models but human RCT evidence remains limited",
     ),
+    # Pecan studies
+    Source(
+        id="hart2025_pecan",
+        citation="Hart TL, Kris-Etherton PM, Petersen KS. Consuming pecans as a snack improves lipids/lipoproteins and diet quality compared with usual diet in adults at increased risk of cardiometabolic diseases: a randomized controlled trial. Am J Clin Nutr. 2025.",
+        url="https://pubmed.ncbi.nlm.nih.gov/39880306/",
+        doi="10.1016/j.ajcnut.2025.01.024",
+        study_type="rct",
+        key_finding="57g/day pecans for 12 weeks reduced LDL by 7.2 mg/dL",
+        effect_size=EffectSize(
+            metric="mean_difference",
+            point_estimate=-7.2,  # mg/dL LDL reduction
+            ci_lower=-12.3,
+            ci_upper=-2.1,
+        ),
+        sample_size=138,
+        population="Adults with metabolic syndrome risk factors",
+    ),
+    Source(
+        id="guarneiri2021_pecan",
+        citation="Guarneiri LL, Paton CM, Cooper JA. Pecan-Enriched Diets Alter Cholesterol Profiles and Triglycerides in Adults at Risk for Cardiovascular Disease in a Randomized, Controlled Trial. J Nutr. 2021;151(10):3091-3101.",
+        url="https://pubmed.ncbi.nlm.nih.gov/34383903/",
+        doi="10.1093/jn/nxab248",
+        study_type="rct",
+        key_finding="68g/day pecans reduced LDL from 143 to 129 mg/dL over 8 weeks",
+        effect_size=EffectSize(
+            metric="mean_difference",
+            point_estimate=-14.0,  # mg/dL LDL reduction in ADD group
+            ci_lower=-22.0,  # Estimated from SD
+            ci_upper=-6.0,
+        ),
+        sample_size=56,
+        population="Adults at CVD risk (BMI ≥28 or hypercholesterolemia)",
+    ),
+    # Cashew studies
+    Source(
+        id="mah2017_cashew",
+        citation="Mah E, Schulz JA, Kaden VN, et al. Cashew consumption reduces total and LDL cholesterol: a randomized, crossover, controlled-feeding trial. Am J Clin Nutr. 2017;105(5):1070-1078.",
+        url="https://pubmed.ncbi.nlm.nih.gov/28356271/",
+        doi="10.3945/ajcn.116.150037",
+        study_type="rct",
+        key_finding="28-64g/day cashews reduced LDL by 4.8% (non-significant CI crossing zero)",
+        effect_size=EffectSize(
+            metric="percent_change",
+            point_estimate=-4.8,  # Percent LDL reduction
+            ci_lower=-12.6,
+            ci_upper=3.1,
+        ),
+        sample_size=51,
+        population="Healthy adults aged 21-73 years",
+    ),
+    Source(
+        id="meneguelli2024_cashew",
+        citation="Meneguelli TS, Kravchychyn ACP, et al. Cashew nut and cashew nut oil reduce cardiovascular risk factors in adults on weight-loss treatment: a randomized controlled three-arm trial. Front Nutr. 2024;11:1407028.",
+        url="https://pubmed.ncbi.nlm.nih.gov/38988854/",
+        doi="10.3389/fnut.2024.1407028",
+        study_type="rct",
+        key_finding="Whole cashew nuts showed no significant LDL reduction; only cashew oil reduced LDL (-11.5 mg/dL)",
+        sample_size=68,
+        population="Adults with overweight/obesity on weight-loss treatment",
+    ),
 ]
 
 
