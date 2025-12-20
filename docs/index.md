@@ -6,7 +6,7 @@ max@maxghenis.com
 
 ## Abstract
 
-Nut consumption is associated with reduced mortality in observational studies. I present a Bayesian Monte Carlo framework combining pathway-specific mortality effects with evidence-optimized confounding priors. Drawing on meta-analytic evidence from {cite}`aune2016nut` and calibrating against randomized controlled trial (RCT) evidence on intermediate outcomes (low-density lipoprotein [LDL] cholesterol), cross-country comparisons (Golestan cohort), and sibling studies (UK Biobank), I estimate that consuming 28g/day of nuts adds 4 months to life expectancy (95% CI: 1-10 months), equivalent to 0.08 discounted QALYs (95% CI: 0.01-0.21), for a 40-year-old. This is lower than unadjusted observational associations (22% mortality reduction), reflecting that ~25% (95% CI: 2-63%) of observed effects may be causal. 59% of the benefit operates through cardiovascular disease (CVD) prevention. Incremental cost-effectiveness ratios (ICERs) range from \$25,000/QALY (peanuts) to \$160,000/QALY (macadamias); standard thresholds are \$50,000-100,000/QALY.
+Nut consumption is associated with reduced mortality in observational studies. I present a Bayesian Monte Carlo framework combining pathway-specific mortality effects with evidence-optimized confounding priors. Drawing on meta-analytic evidence from {cite}`aune2016nut` and calibrating against randomized controlled trial (RCT) evidence on intermediate outcomes (low-density lipoprotein [LDL] cholesterol), cross-country comparisons (Golestan cohort), and sibling studies (UK Biobank), I estimate that consuming 28g/day of nuts adds 5 months to life expectancy (95% CI: 1-12 months), equivalent to 0.08 discounted QALYs (95% CI: 0.01-0.24), for a 40-year-old. This is lower than unadjusted observational associations (22% mortality reduction), reflecting that ~25% (95% CI: 2-63%) of observed effects may be causal. 59% of the benefit operates through cardiovascular disease (CVD) prevention. Incremental cost-effectiveness ratios (ICERs) range from \$10,000/QALY (peanuts) to \$57,000/QALY (macadamias); standard thresholds are \$50,000-100,000/QALY.
 
 ## Introduction
 
@@ -20,7 +20,7 @@ This paper develops a Bayesian Monte Carlo framework for estimating QALY gains f
 
 ### Nut Nutrient Profiles
 
-Different nuts have distinct nutrient profiles that suggest pathway-specific mechanisms ({cite}`usda2024fooddata`):
+Different nuts have distinct nutrient profiles that suggest pathway-specific mechanisms {cite:p}`usda2024fooddata`:
 
 | Nut | Key Nutrients (per 28g) | Primary Mechanism |
 |-----|------------------------|-------------------|
@@ -58,7 +58,7 @@ I constructed a hierarchical evidence base drawing on four categories of sources
 
 2. **Large prospective cohort studies**: {cite}`bao2013association` and {cite}`guasch2017nut` provided nut-specific associations.
 
-3. **Randomized controlled trials**: PREDIMED {cite}`ros2008mediterranean`, WAHA {cite}`rajaram2021walnuts`, and nut-specific lipid trials ({cite}`delgobbo2015effects`; {cite}`hart2025pecan`; {cite}`guarneiri2021pecan`; {cite}`mah2017cashew`) informed nut-specific adjustment factors.
+3. **Randomized controlled trials**: PREDIMED {cite:p}`ros2008mediterranean`, WAHA {cite:p}`rajaram2021walnuts`, and nut-specific lipid trials {cite:p}`delgobbo2015effects,hart2025pecan,guarneiri2021pecan,mah2017cashew` informed nut-specific adjustment factors.
 
 4. **Nutrient composition data**: {cite}`usda2024fooddata` provided standardized nutrient profiles.
 
@@ -85,9 +85,9 @@ I employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each it
 
 The source meta-analyses adjusted for measured confounders (age, sex, BMI, smoking, alcohol, physical activity). I calibrated the confounding prior using three lines of evidence:
 
-**LDL pathway calibration**: Nuts reduce LDL cholesterol by 0.18 mmol/L ({cite}`delgobbo2015effects`, 61 RCTs). Using established LDL-CVD relationships, this predicts a 4.4% reduction in CVD mortality, compared to 25% observed in cohort studies. This implies ~17% of the observed CVD effect is explained by the LDL pathway.
+**LDL pathway calibration**: Nuts reduce LDL cholesterol by 0.18 mmol/L {cite:p}`delgobbo2015effects` (61 RCTs). Using established LDL-CVD relationships, this predicts a 4.4% reduction in CVD mortality, compared to 25% observed in cohort studies. This implies ~17% of the observed CVD effect is explained by the LDL pathway.
 
-**UK Biobank evidence**: Sibling-comparison studies of vegetable consumption and CVD mortality found ~80% of observed associations attributable to confounding ({cite}`mathur2020sensitivity`).
+**UK Biobank evidence**: Sibling-comparison studies of vegetable consumption and CVD mortality found ~80% of observed associations attributable to confounding {cite:p}`mathur2020sensitivity`.
 
 **Golestan cohort**: In Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persisted (HR 0.71 for ≥3 servings/week).
 
@@ -103,7 +103,7 @@ Primary analyses assumed a 40-year-old from the US or Europe with 40 years remai
 
 ### Primary Finding
 
-Median life expectancy gain from 28g/day of any nut: 4 months (95% CI: 1-10 months), equivalent to 0.3 undiscounted QALYs. P(effect > 0) = 85%.
+Median life expectancy gain from 28g/day of any nut: 5 months (95% CI: 1-12 months), equivalent to 0.27 undiscounted QALYs. P(effect > 0) = 85%.
 
 ### Pathway Contributions
 
@@ -129,18 +129,19 @@ The spread between highest (walnuts) and lowest (cashews) ranked nuts is 15-20% 
 
 ### Cost-Effectiveness
 
-Lifecycle model with CDC life tables, age-specific quality weights, and 3% annual discounting. Discounted QALY gains: 0.08 (95% CI: 0.01-0.21).
+Lifecycle model with CDC life tables, age-specific quality weights, and 3% annual discounting. Discounted QALY gains: 0.08 (95% CI: 0.01-0.24). Costs from USDA Economic Research Service {cite:p}`usda2024fooddata`.
 
 | Nut | Annual Cost | Discounted QALYs | Cost per QALY |
 |-----|-------------|-----------------|---------------|
-| Peanut | \$101 | 0.08 | \$25,000 |
-| Almond | \$248 | 0.09 | \$60,000 |
-| Walnut | \$270 | 0.10 | \$55,000 |
-| Pistachio | \$315 | 0.09 | \$72,000 |
-| Pecan | \$360 | 0.08 | \$90,000 |
-| Macadamia | \$630 | 0.08 | \$160,000 |
+| Peanut | \$37 | 0.09 | \$10,000 |
+| Almond | \$91 | 0.09 | \$23,000 |
+| Walnut | \$99 | 0.10 | \$22,000 |
+| Pistachio | \$115 | 0.10 | \$28,000 |
+| Pecan | \$131 | 0.09 | \$33,000 |
+| Cashew | \$102 | 0.09 | \$28,000 |
+| Macadamia | \$230 | 0.09 | \$57,000 |
 
-Standard cost-effectiveness thresholds: \$50,000-100,000/QALY (ICER), £20,000-30,000/QALY (NICE).
+Standard cost-effectiveness thresholds: \$50,000-100,000/QALY (ICER), £20,000-30,000/QALY (NICE). All nuts fall below standard thresholds.
 
 ### Uncertainty Quantification
 
@@ -148,11 +149,11 @@ Nuts with limited RCT evidence (cashews, pecans, macadamias) received wider cred
 
 ## Discussion
 
-The calibrated estimate of 4 months life expectancy gain (0.3 undiscounted QALYs) is approximately one-eighth of unadjusted observational estimates, reflecting the Beta(1.5, 4.5) confounding prior with mean 0.25.
+The calibrated estimate of 5 months life expectancy gain (0.27 undiscounted QALYs) is approximately one-eighth of unadjusted observational estimates, reflecting the Beta(1.5, 4.5) confounding prior with mean 0.25.
 
 The difference between nut types (15-20% of the category effect) is smaller than the difference between any nut consumption and none.
 
-ICERs range from \$25,000/QALY (peanuts) to \$160,000/QALY (macadamias), spanning standard cost-effectiveness thresholds.
+ICERs range from \$10,000/QALY (peanuts) to \$57,000/QALY (macadamias). All nuts fall below standard cost-effectiveness thresholds (\$50,000-100,000/QALY).
 
 ### Limitations
 
@@ -163,7 +164,7 @@ ICERs range from \$25,000/QALY (peanuts) to \$160,000/QALY (macadamias), spannin
 
 ## Conclusion
 
-Daily nut consumption (28g) is estimated to add 4 months to life expectancy (95% CI: 1-10 months) for a 40-year-old, based on a confounding prior Beta(1.5, 4.5) with mean 0.25 calibrated to LDL pathway effects, UK Biobank sibling comparisons, and the Golestan cohort. 59% of the estimated benefit operates through CVD prevention. ICERs: peanuts \$25,000/QALY, almonds \$60,000/QALY, macadamias \$160,000/QALY.
+Daily nut consumption (28g) is estimated to add 5 months to life expectancy (95% CI: 1-12 months) for a 40-year-old, based on a confounding prior Beta(1.5, 4.5) with mean 0.25 calibrated to LDL pathway effects, UK Biobank sibling comparisons, and the Golestan cohort. 59% of the estimated benefit operates through CVD prevention. ICERs: peanuts \$10,000/QALY, walnuts \$22,000/QALY, macadamias \$57,000/QALY. All nuts fall below standard cost-effectiveness thresholds.
 
 ## Data and Code Availability
 

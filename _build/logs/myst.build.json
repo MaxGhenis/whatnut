@@ -1,8 +1,6 @@
 {
   "input": {
-    "files": [
-      "docs/"
-    ],
+    "files": [],
     "opts": {
       "execute": false,
       "pdf": false,
@@ -14,8 +12,8 @@
       "meca": false,
       "cff": false,
       "site": false,
-      "html": false,
-      "all": true,
+      "html": true,
+      "all": false,
       "doiBib": false,
       "watch": false,
       "force": false,
