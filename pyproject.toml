@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "whatnut"
+version = "0.1.0"
+description = "Bayesian QALY analysis of nut consumption"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Max Ghenis", email = "max@maxghenis.com" }
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "seaborn>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1",
+    "mypy>=1.0",
+]
+docs = [
+    "jupyter-book>=2.0",
+    "jupyterlab>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/MaxGhenis/whatnut-py"
+Documentation = "https://maxghenis.github.io/whatnut-py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/whatnut"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=whatnut --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
