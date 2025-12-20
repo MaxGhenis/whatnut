@@ -6,7 +6,7 @@ max@maxghenis.com
 
 ## Abstract
 
-Nut consumption is associated with reduced mortality in observational studies. We present a Bayesian Monte Carlo framework combining pathway-specific mortality effects with evidence-optimized confounding priors. Drawing on meta-analytic evidence from {cite}`aune2016nut` and calibrating against RCT evidence on intermediate outcomes (LDL cholesterol), cross-country comparisons (Golestan cohort), and sibling studies (UK Biobank), we estimate that consuming 28g/day of nuts adds 4 months to life expectancy (95% credible interval: 1-10 months) for a 40-year-old. This is lower than unadjusted observational associations (22% mortality reduction), reflecting that ~25% (95% CI: 2-63%) of observed effects may be causal after accounting for healthy-user bias. 59% of the estimated causal benefit operates through cardiovascular disease prevention. At ~\$60,000 per discounted QALY, nut consumption is near standard cost-effectiveness thresholds (\$50,000-100,000/QALY), with peanuts at \$25,000/QALY and macadamias at \$160,000/QALY.
+Nut consumption is associated with reduced mortality in observational studies. We present a Bayesian Monte Carlo framework combining pathway-specific mortality effects with evidence-optimized confounding priors. Drawing on meta-analytic evidence from {cite}`aune2016nut` and calibrating against RCT evidence on intermediate outcomes (LDL cholesterol), cross-country comparisons (Golestan cohort), and sibling studies (UK Biobank), we estimate that consuming 28g/day of nuts adds 4 months to life expectancy (95% CI: 1-10 months), equivalent to 0.08 discounted QALYs (95% CI: 0.01-0.21), for a 40-year-old. This is lower than unadjusted observational associations (22% mortality reduction), reflecting that ~25% (95% CI: 2-63%) of observed effects may be causal. 59% of the benefit operates through CVD prevention. ICERs range from \$25,000/QALY (peanuts) to \$160,000/QALY (macadamias); standard thresholds are \$50,000-100,000/QALY.
 
 ## Introduction
 
@@ -36,19 +36,22 @@ All sources with primary research findings included DOIs for verification.
 
 ### Statistical Model
 
-We employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each iteration, we:
+We employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each iteration:
 
-1. Sampled a base hazard ratio from a log-normal distribution centered on the Aune et al. meta-analytic estimate: HR ~ LogNormal(log(0.78), 0.08).
+1. Sampled cause-specific relative risks from log-normal distributions:
+   - CVD: RR ~ LogNormal(log(0.75), 0.03)
+   - Cancer: RR ~ LogNormal(log(0.87), 0.04)
+   - Other: RR ~ LogNormal(log(0.90), 0.03)
 
-2. Applied a nut-specific adjustment factor. Each nut received an adjustment factor (mean, SD) based on available nut-specific evidence: walnuts (1.15, 0.08), pistachios (1.08, 0.10), almonds (1.00, 0.06), pecans (1.00, 0.12), macadamias (1.02, 0.12), peanuts (0.95, 0.07), and cashews (0.95, 0.12). Adjustment factors greater than 1.0 indicate stronger protective effects; higher standard deviations reflect greater uncertainty due to limited evidence.
+2. Applied a nut-specific adjustment factor (exponent on all RRs): walnuts (1.15, SD 0.08), pistachios (1.08, 0.10), almonds (1.00, 0.06), pecans (1.00, 0.12), macadamias (1.02, 0.12), peanuts (0.95, 0.07), cashews (0.95, 0.12). Values >1.0 indicate stronger effects.
 
-3. Converted hazard ratios to years of life gained using a proportional hazards approximation calibrated to published life-table analyses.
+3. Applied confounding adjustment sampled from Beta(1.5, 4.5) with mean 0.25.
 
-4. Applied a quality weight sampled from Beta(17, 3) with mean 0.85, reflecting age-adjusted health-related quality of life.
+4. Computed age-weighted mortality reduction using CDC life tables and age-varying cause fractions (CVD fraction increases from 20% at age 40 to 40% at age 80).
 
-5. Applied a confounding adjustment sampled from Beta(1.5, 4.5) with mean 0.25, derived by minimizing squared error to independent calibration targets (LDL pathway, UK Biobank sibling comparisons, Golestan cohort).
+5. Applied quality weight sampled from Beta(17, 3) with mean 0.85.
 
-The final QALY estimate for each iteration combined mortality-related life years gained and quality-of-life improvements over remaining life expectancy.
+6. Computed discounted QALYs at 3% annual rate.
 
 ### Confounding Calibration
 
