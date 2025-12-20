@@ -21,6 +21,8 @@ Results may differ for:
 - Very elderly (80+): shorter time horizon reduces total QALYs
 - Non-Western populations: limited generalizability data
 
+With the scope defined, we now turn to the evidence base and analytical methodology.
+
 ## Overview
 
 This analysis estimates the lifetime QALY impact of regular nut consumption using a Bayesian Monte Carlo framework.
@@ -101,7 +103,7 @@ We apply a Beta(8, 2) confounding adjustment (mean = 0.80, or 20% discount), rep
 
 ### E-Value Analysis
 
-Per Mathur & VanderWeele (2018), the E-value for HR=0.78 is approximately 1.8. This means an unmeasured confounder would need to be associated with both nut consumption AND mortality by a factor of 1.8 to fully explain the observed association. Given that known confounders (smoking, BMI) have already been adjusted, this level of residual confounding seems unlikely.
+Per Mathur & VanderWeele (2018), the E-value for HR=0.78 is approximately 1.8. This means an unmeasured confounder would need to be associated with both nut consumption AND mortality by a factor of 1.8 to fully explain the observed association. For context, this exceeds the typical association strength of moderate confounders like education or income with mortality. Given that known strong confounders (smoking HR~2-3, obesity HR~1.5-2) have already been adjusted in the source studies, this level of residual confounding from unmeasured factors seems unlikely.
 
 ## External Validation
 
@@ -112,12 +114,30 @@ Our estimates align with published QALY calculations:
 | This analysis | 28g/day nuts | 2.5 (1.0-4.5) |
 | Mediterranean diet CEA | Full diet pattern | 2.0-3.0 |
 | NICE threshold | Reference | 1 QALY = ~£20-30k |
-| WHO CHOICE | Dietary interventions | 1-5 QALYs typical |
+| WHO-CHOICE | Dietary interventions | 1-5 QALYs typical |
+
+*Note: WHO-CHOICE refers to the WHO's CHOosing Interventions that are Cost-Effective program.*
 
 The magnitude of our estimate is plausible given:
 - 22% mortality reduction is substantial but not unprecedented for dietary factors
 - Similar effect sizes seen for Mediterranean diet, exercise interventions
 - Conservative confounding adjustment reduces estimate from raw observational data
+
+### Cost-Effectiveness
+
+At typical US retail prices (2025), all nuts are highly cost-effective:
+
+| Nut | Annual Cost | Cost per QALY |
+|-----|-------------|---------------|
+| Peanuts | ~$100 | ~$40 |
+| Almonds | ~$250 | ~$100 |
+| Walnuts | ~$375 | ~$150 |
+| Cashews | ~$300 | ~$120 |
+| Pecans | ~$400 | ~$160 |
+| Macadamias | ~$650 | ~$260 |
+| Pistachios | ~$350 | ~$140 |
+
+All values fall well below standard cost-effectiveness thresholds ($50,000/QALY in US, £20-30k/QALY in UK). Even the most expensive nuts (macadamias) remain highly cost-effective at ~$260/QALY.
 
 ## Limitations
 
