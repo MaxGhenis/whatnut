@@ -1,0 +1,19 @@
+version: 1
+project:
+  title: "What Nut?"
+  description: "Bayesian QALY analysis of nut consumption"
+  authors:
+    - name: Max Ghenis
+      email: max@maxghenis.com
+  github: https://github.com/MaxGhenis/whatnut
+  license: MIT
+  toc:
+    - file: index.md
+    - file: methodology.md
+    - title: Analysis
+      children:
+        - file: notebooks/evidence.ipynb
+        - file: notebooks/simulation.ipynb
+        - file: notebooks/results.ipynb
+site:
+  template: book-theme
