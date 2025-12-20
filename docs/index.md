@@ -32,8 +32,6 @@ We constructed a hierarchical evidence base drawing on four categories of source
 
 4. **Nutrient composition data**: USDA FoodData Central provided standardized nutrient profiles.
 
-All sources with primary research findings included DOIs for verification.
-
 ### Statistical Model
 
 We employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each iteration:
