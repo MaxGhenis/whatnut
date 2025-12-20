@@ -1,12 +1,27 @@
 version: 1
 project:
-  title: "What Nut?"
+  title: "What Nut? A Bayesian Analysis of Quality-Adjusted Life Years from Nut Consumption"
   description: "Bayesian QALY analysis of nut consumption"
   authors:
     - name: Max Ghenis
-      email: max@maxghenis.com
+      email: max@policyengine.org
+      affiliations:
+        - PolicyEngine
   github: https://github.com/MaxGhenis/whatnut
   license: MIT
+  keywords:
+    - nutrition
+    - QALY
+    - Bayesian
+    - Monte Carlo
+    - health economics
+    - nuts
+  exports:
+    - format: pdf
+      template: plain_latex
+      output: exports/whatnut.pdf
+  bibliography:
+    - references.bib
   toc:
     - file: index.md
     - file: methodology.md
@@ -15,5 +30,17 @@ project:
         - file: notebooks/evidence.ipynb
         - file: notebooks/simulation.ipynb
         - file: notebooks/results.ipynb
+
 site:
   template: book-theme
+  title: What Nut?
+  options:
+    logo_text: Max Ghenis
+    logo_url: https://github.com/maxghenis
+
+myst:
+  enable_extensions:
+    - colon_fence
+    - deflist
+    - dollarmath
+    - linkify
