@@ -1,7 +1,5 @@
 # Technical Appendix
 
-This appendix provides detailed technical specifications for the methods described in the main paper.
-
 ## Target Population
 
 This analysis applies to:
@@ -10,10 +8,10 @@ This analysis applies to:
 - **Geography**: Estimates derived primarily from US and European cohorts
 - **Exclusions**: Those with nut allergies (~1-2% of population)
 
-Results may differ for:
-- Secondary prevention (existing CVD): likely larger absolute benefit
-- Very elderly (80+): shorter time horizon reduces total QALYs
-- Non-Western populations: limited generalizability data
+Not modeled:
+- Secondary prevention (existing CVD)
+- Very elderly (80+)
+- Non-Western populations
 
 ## Simulation Algorithm
 
@@ -43,7 +41,7 @@ For each of 10,000 Monte Carlo iterations:
 | Peanut | 0.95 | 0.07 | Strong | {cite}`bao2013association` cohort (n=118,962), slight aflatoxin discount |
 | Cashew | 0.95 | 0.12 | Limited | Mixed RCT results ({cite}`mah2017cashew`), CIs cross zero |
 
-**Bayesian principle**: Sparse evidence widens confidence intervals but does not lower point estimates. Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values.
+Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values.
 
 ## Confounding Prior Derivation
 
@@ -97,7 +95,7 @@ For HR = 0.78:
 - $RR = 1/0.78 = 1.28$
 - $E\text{-value} = 1.28 + \sqrt{1.28 \times 0.28} = 1.28 + 0.60 \approx 1.8$
 
-**Interpretation**: An unmeasured confounder would need RR ≥ 1.8 with both nut consumption AND mortality to fully explain the observed effect. Given that major confounders (smoking, obesity, SES) are already adjusted, this level of residual confounding seems unlikely but not impossible.
+An unmeasured confounder would need RR ≥ 1.8 with both nut consumption and mortality to fully explain the observed effect.
 
 ## Pathway-Specific Mortality Effects
 
@@ -121,7 +119,7 @@ Cause-of-death proportions vary by age (CDC WONDER 2021):
 | 70 | 35% | 30% | 35% |
 | 80 | 40% | 20% | 40% |
 
-Older ages have higher CVD fractions, which amplifies the nut benefit (since CVD has the strongest RR = 0.75).
+CVD fraction increases with age; CVD has the lowest RR (0.75).
 
 ## Limitations
 
