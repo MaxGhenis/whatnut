@@ -1,11 +1,62 @@
 """Monte Carlo simulation for QALY estimation.
 
-Methodology:
+## Methodology
+
 1. Sample base hazard ratio from meta-analysis (log-normal)
 2. Apply nut-specific adjustment factors (normal)
-3. Convert HR to years of life gained
+3. Convert HR to years of life gained (YLG)
 4. Apply quality-of-life weight (beta)
 5. Apply confounding adjustment (beta)
+
+## Key Formulas
+
+### Hazard Ratio Adjustment
+For nut-specific effects, we use power adjustment on log-HR scale:
+    HR_adj = HR_base^adjustment_factor
+
+This is equivalent to multiplicative adjustment on the log-hazard scale:
+    log(HR_adj) = adjustment_factor * log(HR_base)
+
+When adjustment_factor > 1: stronger protective effect (lower HR)
+When adjustment_factor < 1: weaker protective effect (higher HR)
+
+### Years of Life Gained (YLG)
+YLG is calibrated from Aune 2016 meta-analysis, which found:
+- 28g/day nut consumption → HR 0.78 (22% mortality reduction)
+- This translates to ~2.5-3.5 additional life years for a 40-year-old
+
+We use a simplified proportional hazards model:
+    YLG = base_ylg * (1 - HR_adj) / (1 - HR_base)
+
+Where base_ylg ~ Normal(3.2, 0.8) is calibrated to match published estimates
+for the reference HR of 0.78.
+
+### Confounding Adjustment
+Meta-analyses already adjust for measured confounders. We apply an additional
+adjustment factor (default Beta(8,2), mean=0.80) to account for:
+- Healthy user bias (nut consumers tend to be healthier overall)
+- Residual unmeasured confounding
+
+This is a SEPARATE adjustment from what studies already applied - it represents
+our prior belief about how much of the observed effect is truly causal.
+E-value analysis (Mathur & VanderWeele, 2018) suggests confounding would need
+to be substantial to fully explain the observed associations.
+
+### Quality-Adjusted Life Years (QALYs)
+Final QALY calculation:
+    QALY = (YLG * quality_weight + LE * qol_effect) * confounding_adj
+
+Where:
+- YLG = mortality-related life years gained
+- quality_weight ~ Beta(17, 3), mean=0.85 for years gained
+- LE = remaining life expectancy
+- qol_effect ~ Normal(0.02, 0.01) = small quality improvement during life
+- confounding_adj ~ Beta(8, 2), mean=0.80
+
+## References
+- Aune et al. (2016) BMC Medicine. doi:10.1186/s12916-016-0730-3
+- Bao et al. (2013) NEJM. doi:10.1056/NEJMoa1307352
+- Mathur & VanderWeele (2018) Annals of Internal Medicine
 """
 
 from dataclasses import dataclass, field
