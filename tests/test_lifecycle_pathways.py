@@ -149,7 +149,7 @@ class TestPathwayLifecycleCEA:
         model = PathwayLifecycleCEA(seed=42)
         result = model.run(PathwayParams(start_age=40, discount_rate=0.03))
 
-        # With 33% causal (calibrated), discounted QALYs ~0.05-0.20
+        # With 25% causal (evidence-optimized), discounted QALYs ~0.04-0.15
         assert 0.01 < result.qalys_gained_discounted < 0.5
 
     def test_reasonable_longevity_range(self):
@@ -157,7 +157,7 @@ class TestPathwayLifecycleCEA:
         model = PathwayLifecycleCEA(seed=42)
         result = model.run(PathwayParams(start_age=40, discount_rate=0.0))
 
-        # With 33% causal (calibrated), undiscounted life years ~0.3-0.8
+        # With 25% causal (evidence-optimized), undiscounted life years ~0.25-0.6
         assert 0.1 < result.life_years_gained < 1.5
 
 
@@ -202,7 +202,7 @@ class TestComparisonWithSingleRRModel:
 
         The pathway model uses:
         1. Pathway-specific RRs (weighted average higher than uniform 0.78)
-        2. Calibrated confounding prior (33% causal vs 80% in single-RR)
+        2. Evidence-optimized confounding prior (25% causal vs 80% in single-RR)
         """
         from whatnut.lifecycle import LifecycleCEA, LifecycleParams
 

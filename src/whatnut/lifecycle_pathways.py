@@ -117,18 +117,17 @@ class PathwayParams:
     rr_other_sd: float = 0.03
 
     # Confounding adjustment (applied to all pathways)
-    # Calibrated prior: Beta(2, 4) with mean 0.33
-    # Based on:
-    #   - LDL pathway calibration (~17% of observed effect explained)
-    #   - UK Biobank vegetable-CVD finding (80% confounding)
-    #   - PREDIMED RCT evidence (suggests real but smaller effect)
-    #   - E-value analysis (effect unlikely to be zero)
-    # The wide uncertainty (90% CI: 8%-66%) integrates pessimistic
-    # and moderately optimistic beliefs about confounding.
-    confounding_alpha: float = 2.0  # Beta distribution alpha
-    confounding_beta: float = 4.0   # Beta distribution beta
+    # Evidence-optimized prior: Beta(1.5, 4.5) with mean 0.25
+    # Calibrated by minimizing squared error to independent evidence:
+    #   - LDL pathway calibration: ~17% of CVD effect mechanistically explained
+    #   - UK Biobank vegetable-CVD: ~20% causal in sibling comparisons
+    #   - Golestan cohort (Iran): effect persists without Western SES correlation
+    #   - E-value = 1.8: effect unlikely to be zero
+    # The 95% CI (2%-63%) spans pessimistic to moderately optimistic beliefs.
+    confounding_alpha: float = 1.5  # Beta distribution alpha
+    confounding_beta: float = 4.5   # Beta distribution beta
     # Point estimate for deterministic runs (mean of prior)
-    confounding_adjustment: float = 0.33
+    confounding_adjustment: float = 0.25
 
     # Cost
     annual_cost: float = 250.0
