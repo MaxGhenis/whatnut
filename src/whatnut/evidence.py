@@ -152,6 +152,40 @@ SOURCES: list[Source] = [
         key_finding="FDA permits qualified health claim for macadamia nuts and CHD risk",
         database="FDA",
     ),
+    Source(
+        id="mac_rct_2023",
+        citation="Neale EP, et al. Macadamia nut effects on cardiometabolic risk factors: a randomised trial. J Nutr Sci. 2023;12:e51.",
+        url="https://pmc.ncbi.nlm.nih.gov/articles/PMC10173088/",
+        doi="10.1017/jns.2023.37",
+        study_type="rct",
+        key_finding="8-week macadamia consumption (15% energy): non-significant LDL reduction of 2.1%",
+        effect_size=EffectSize(
+            metric="mean_difference",
+            point_estimate=-4.3,  # mg/dL LDL reduction
+            ci_lower=-14.8,
+            ci_upper=6.1,
+        ),
+        sample_size=35,
+        population="Adults with abdominal obesity",
+    ),
+    Source(
+        id="griel2008",
+        citation="Griel AE, et al. A macadamia nut-rich diet reduces total and LDL-cholesterol in mildly hypercholesterolemic men and women. J Nutr. 2008;138(4):761-767.",
+        url="https://pubmed.ncbi.nlm.nih.gov/18356332/",
+        doi="10.1093/jn/138.4.761",
+        study_type="rct",
+        key_finding="Macadamia-rich diet reduced LDL-C by 5.3% vs control",
+        sample_size=25,
+        population="Mildly hypercholesterolemic adults",
+    ),
+    Source(
+        id="palmitoleic_review",
+        citation="Souza CO, et al. Palmitoleic acid in health and disease. In: Advances in Food and Nutrition Research. 2022;100:67-101.",
+        url="https://www.sciencedirect.com/science/article/abs/pii/B9780128239148000070",
+        doi="10.1016/bs.afnr.2022.04.002",
+        study_type="review",
+        key_finding="Omega-7 shows promise in animal models but human RCT evidence remains limited",
+    ),
 ]
 
 

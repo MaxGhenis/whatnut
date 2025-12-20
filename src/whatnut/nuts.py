@@ -154,13 +154,13 @@ NUTS: list[Nut] = [
         ),
         adjustment_factor=AdjustmentFactor(
             mean=1.02,
-            sd=0.15,  # High uncertainty due to limited evidence
-            rationale="Limited direct evidence. FDA qualified health claim. Unique omega-7 adds optionality.",
-            sources=["fda_macadamia"],
+            sd=0.12,  # Moderate uncertainty - small RCTs exist but no mortality outcomes
+            rationale="Two small RCTs show lipid benefits. FDA qualified health claim. Unique omega-7 adds optionality.",
+            sources=["fda_macadamia", "mac_rct_2023", "griel2008"],
         ),
-        evidence_sources=["fda_macadamia", "usda_fdc"],
-        evidence_strength="limited",
-        notes="Best omega-6:3 ratio (~6:1). Highest MUFA. Omega-7 may have unique benefits but evidence sparse.",
+        evidence_sources=["fda_macadamia", "mac_rct_2023", "griel2008", "palmitoleic_review"],
+        evidence_strength="moderate",
+        notes="Best omega-6:3 ratio (~6:1). Highest MUFA. Two small RCTs show ~5% LDL reduction. Omega-7 mechanism promising but human evidence sparse.",
     ),
     Nut(
         id="peanut",
