@@ -6,7 +6,7 @@ max@maxghenis.com
 
 ## Abstract
 
-Nut consumption is consistently associated with reduced mortality in observational studies, but translating these findings into actionable health guidance requires quantifying benefits in meaningful units. We present a Bayesian Monte Carlo framework for estimating quality-adjusted life years (QALYs) gained from daily consumption of seven common nut types. Drawing on meta-analytic evidence from {cite}`aune2016nut`, comprising 819,448 participants, and nut-specific randomized controlled trials, we estimate that consuming 28g/day of any nut yields approximately 2.5 QALYs (95% credible interval: 1.0-4.5) over a lifetime for a 40-year-old adult in the general population. Critically, the difference between the highest-ranked nut (walnuts, 2.9 QALYs) and lowest-ranked (cashews, 2.2 QALYs) is modest compared to the benefit of consuming any nut versus none. After applying a conservative 20% discount for residual confounding, we find that all nut types remain highly cost-effective at \$40-260 per QALY gained. These findings support public health messaging that emphasizes consistent nut consumption over optimal nut selection.
+Nut consumption is consistently associated with reduced mortality in observational studies, but translating these findings into actionable health guidance requires quantifying benefits in meaningful units and accounting for residual confounding. We present a Bayesian Monte Carlo framework combining pathway-specific mortality effects with calibrated confounding priors. Drawing on meta-analytic evidence from {cite}`aune2016nut` and calibrating against RCT evidence on intermediate outcomes (LDL cholesterol), we estimate that consuming 28g/day of nuts may add approximately 5 months to life expectancy (95% credible interval: 1-13 months) for a 40-year-old. This estimate is substantially lower than naive observational associations suggest, reflecting that only ~33% (95% CI: 8-66%) of observed effects may be causal after accounting for healthy-user bias. Approximately 59% of the causal benefit operates through cardiovascular disease prevention. At ~\$53,000 per discounted QALY, nut consumption is near standard cost-effectiveness thresholds, though uncertainty is substantial. These findings support modest public health messaging about nut consumption while highlighting the importance of rigorous confounding adjustment in nutritional epidemiology.
 
 ## Introduction
 
@@ -46,15 +46,19 @@ We employed a Bayesian Monte Carlo simulation with 10,000 iterations. For each i
 
 4. Applied a quality weight sampled from Beta(17, 3) with mean 0.85, reflecting age-adjusted health-related quality of life.
 
-5. Applied a confounding adjustment sampled from Beta(8, 2) with mean 0.80, representing our prior belief that approximately 80% of the observed association is causal after accounting for residual healthy-user bias.
+5. Applied a confounding adjustment sampled from a calibrated prior Beta(2, 4) with mean 0.33, representing our evidence-informed belief that approximately one-third of the observed association is causal after accounting for healthy-user bias, unmeasured confounding, and comparison against RCT evidence on intermediate outcomes.
 
 The final QALY estimate for each iteration combined mortality-related life years gained and quality-of-life improvements over remaining life expectancy.
 
-### Confounding Sensitivity Analysis
+### Confounding Calibration
 
-Although the source meta-analyses adjusted for measured confounders (age, sex, BMI, smoking, alcohol, physical activity), residual confounding from unmeasured factors likely remains. We addressed this through two approaches:
+Although the source meta-analyses adjusted for measured confounders (age, sex, BMI, smoking, alcohol, physical activity), residual confounding from unmeasured factors likely remains substantial. We calibrated our confounding prior using multiple lines of evidence:
 
-First, we applied an explicit confounding discount. The Beta(8, 2) prior implies a mean 20% reduction from observed effects, with 95% of values falling between 50% and 98% of observed effects.
+**LDL pathway calibration**: Nuts reduce LDL cholesterol by approximately 0.18 mmol/L based on the Del Gobbo et al. meta-analysis of 61 RCTs. Using established LDL-CVD relationships, this predicts only a 4.4% reduction in CVD mortality—far smaller than the 25% reduction observed in cohort studies. This suggests only ~17% of the observed CVD effect may be explained by the LDL pathway.
+
+**UK Biobank evidence**: Landmark sibling-comparison studies of vegetable consumption and CVD mortality found that approximately 80% of observed associations were attributable to confounding rather than causal effects.
+
+**Integrated prior**: We synthesized these findings into a Beta(2, 4) prior with mean 0.33 (95% CI: 0.08-0.66). This reflects our belief that roughly one-third of observed mortality associations are causal, with substantial uncertainty in both directions.
 
 Second, we calculated the E-value {cite}`mathur2020sensitivity` for the primary estimate. For HR=0.78, the E-value is approximately 1.8, meaning an unmeasured confounder would need associations of at least 1.8 with both nut consumption and mortality to fully explain the observed effect. This exceeds typical effect sizes for moderate socioeconomic confounders such as education or income.
 
@@ -66,27 +70,48 @@ Primary analyses assumed a 40-year-old adult from the general population of the 
 
 ### Primary Finding
 
-Across all nut types, the median QALY gain from daily consumption of 28g was 2.5 (95% credible interval: 1.0-4.5). The probability of any positive effect exceeded 95% for all nut types.
+After applying our calibrated confounding prior, the median life expectancy gain from daily consumption of 28g of any nut was approximately 5 months (95% credible interval: 1-13 months). This translates to approximately 0.4 undiscounted QALYs when quality-adjusted. The probability of any positive causal effect exceeded 90% across Monte Carlo simulations.
+
+### Pathway Contributions
+
+The pathway-specific analysis revealed that the majority of mortality benefit operates through cardiovascular disease prevention:
+
+| Pathway | Contribution | Cause-Specific RR | Source |
+|---------|-------------|-------------------|--------|
+| CVD mortality | 59% | 0.75 | Aune 2016 |
+| Cancer mortality | 17% | 0.87 | Aune 2016 |
+| Other causes | 24% | 0.90 | Assumed |
+
+This CVD-dominant pattern is consistent with the mechanistic evidence linking nuts to improved lipid profiles, reduced inflammation, and better endothelial function.
 
 ### Nut-Specific Estimates
 
-Estimated QALY gains by nut type, ranked by median:
+While all nuts provide benefit, relative rankings remain consistent with prior analyses. The spread between highest (walnuts) and lowest (cashews) ranked nuts is approximately 15-20% of the category effect—meaning the choice to eat any nut matters far more than which nut.
 
-| Nut | Median QALYs | 95% CI | Evidence Strength |
-|-----|--------------|--------|-------------------|
-| Walnut | 2.9 | 1.2-5.1 | Strong |
-| Pistachio | 2.7 | 1.0-4.8 | Moderate |
-| Macadamia | 2.6 | 0.9-4.9 | Moderate |
-| Almond | 2.5 | 1.1-4.4 | Strong |
-| Pecan | 2.5 | 0.8-4.8 | Moderate |
-| Peanut | 2.4 | 1.0-4.2 | Strong |
-| Cashew | 2.2 | 0.7-4.4 | Limited |
-
-The spread between the highest (walnuts) and lowest (cashews) ranked nuts was 0.7 QALYs, substantially smaller than the benefit of any nut versus none (2.5 QALYs).
+| Nut | Evidence Strength | Rationale |
+|-----|-------------------|-----------|
+| Walnut | Strong | PREDIMED, WAHA RCTs; unique omega-3 (ALA) profile |
+| Pistachio | Moderate | Best lipid improvements in Del Gobbo meta-analysis |
+| Almond | Strong | Reference category; robust RCT base |
+| Pecan | Moderate | Recent RCTs show significant LDL reductions |
+| Macadamia | Moderate | FDA health claim; omega-7 content |
+| Peanut | Strong | Large cohort data (n=118,962) |
+| Cashew | Limited | Mixed RCT results; CIs cross zero |
 
 ### Cost-Effectiveness
 
-At typical US retail prices (2025), estimated cost per QALY gained ranged from \$40 (peanuts) to \$260 (macadamias). All values fall well below standard cost-effectiveness thresholds of \$50,000-100,000 per QALY in the United States and £20,000-30,000 in the United Kingdom.
+We estimated cost-effectiveness using a lifecycle model integrating CDC life tables, age-specific quality weights, and 3% annual discounting—the standard methodology used by NICE, ICER, and WHO-CHOICE. For a 40-year-old beginning daily nut consumption, discounted QALY gains were approximately 0.11 QALYs (95% CI: 0.02-0.28). At typical US retail prices, estimated incremental cost-effectiveness ratios (ICERs) ranged from approximately \$21,000 per QALY (peanuts) to \$130,000 per QALY (macadamias).
+
+| Nut | Annual Cost | Discounted QALYs | Cost per QALY |
+|-----|-------------|-----------------|---------------|
+| Peanut | \$101 | 0.11 | \$21,000 |
+| Almond | \$248 | 0.12 | \$53,000 |
+| Walnut | \$270 | 0.13 | \$48,000 |
+| Pistachio | \$315 | 0.12 | \$62,000 |
+| Pecan | \$360 | 0.11 | \$76,000 |
+| Macadamia | \$630 | 0.11 | \$130,000 |
+
+With calibrated confounding, peanuts remain cost-effective at \$21,000/QALY (well below the \$50,000-100,000 threshold), while most tree nuts fall near or slightly above standard thresholds. This represents a more conservative assessment than naive observational estimates would suggest.
 
 ### Uncertainty Quantification
 
@@ -96,11 +121,11 @@ Following Bayesian principles, nuts with limited RCT evidence (cashews, pecans, 
 
 Our analysis yields three principal findings with implications for clinical practice and public health messaging.
 
-First, regular nut consumption appears to confer substantial health benefits. An expected gain of 2.5 QALYs is comparable to other well-established preventive interventions. For context, comprehensive Mediterranean diet interventions have been estimated to yield 2-3 QALYs, and smoking cessation yields 3-5 QALYs depending on age of cessation.
+First, after rigorous confounding calibration, regular nut consumption appears to confer modest but meaningful health benefits. An expected gain of approximately 5 months of life expectancy (0.4 undiscounted QALYs) is substantially smaller than naive observational estimates would suggest. This reflects our evidence-based prior that only about one-third of observed mortality associations are causal. For context, this calibrated estimate is roughly one-sixth of what uncritical observational analysis would suggest, highlighting the critical importance of confounding adjustment in nutritional epidemiology.
 
-Second, the choice of nut type matters far less than the choice to consume nuts at all. While walnuts showed a modest advantage—consistent with their unique omega-3 (ALA) content and strong RCT evidence from PREDIMED and WAHA trials—the difference between "best" and "worst" nut types (0.7 QALYs) was less than 30% of the category effect. This finding supports pragmatic messaging: "Eat whichever nut you will actually eat consistently."
+Second, the choice of nut type matters far less than the choice to consume nuts at all. While walnuts showed a modest advantage—consistent with their unique omega-3 (ALA) content and strong RCT evidence from PREDIMED and WAHA trials—the difference between "best" and "worst" nut types represents only 15-20% of the category effect. This finding supports pragmatic messaging: "Eat whichever nut you will actually eat consistently."
 
-Third, even after conservative adjustment for residual confounding, nut consumption remains highly cost-effective. At \$40-260 per QALY, nuts represent exceptional value compared to pharmaceutical interventions or medical procedures that often exceed \$50,000 per QALY.
+Third, cost-effectiveness depends heavily on nut type after calibrated confounding adjustment. Peanuts remain clearly cost-effective at approximately \$21,000 per discounted QALY, well below standard thresholds. However, most tree nuts now fall near or above the \$50,000-100,000 threshold typically used in the United States. This represents a more nuanced conclusion than previous analyses: nut consumption may be cost-effective, but the margin depends on nut choice and individual circumstances.
 
 ### Limitations
 
@@ -114,13 +139,13 @@ Fourth, we assumed perfect adherence. Real-world intermittent consumption would 
 
 ### Implications for Practice
 
-For clinical encounters, these findings suggest that specific nut recommendations are less important than encouraging any regular nut consumption. For patients concerned about cost, peanuts offer comparable benefits at one-sixth the price of premium options. For those with specific taste preferences, reassurance that their preferred nut provides meaningful benefit may improve adherence.
+For clinical encounters, these findings suggest that specific nut recommendations are less important than encouraging any regular nut consumption. For patients concerned about cost, peanuts offer clearly cost-effective health benefits at approximately \$100 per year with an ICER of \$21,000/QALY. Tree nuts (\$250-630 per year) fall near cost-effectiveness thresholds, making them reasonable but not compelling purely on health-economic grounds.
 
-For public health communication, the key message is simple: a handful of any nuts, daily, may add years to your life. The details of which nut matter less than consistency.
+For public health communication, the key message remains: a handful of any nuts, daily, may add months to your life. However, this message should be accompanied by appropriate epistemic humility—our calibrated estimates suggest the benefit is real but modest, and much of what observational studies report may reflect healthy-user bias rather than causal effects.
 
 ## Conclusion
 
-Bayesian Monte Carlo analysis of meta-analytic and trial evidence suggests that daily nut consumption yields approximately 2.5 quality-adjusted life years for adults in the general population. Differences between nut types are modest compared to the overall category effect. These findings support public health guidance emphasizing consistent nut consumption over optimal nut selection.
+Bayesian Monte Carlo analysis combining pathway-specific mortality effects with calibrated confounding priors suggests that daily nut consumption may add approximately 5 months to life expectancy (95% CI: 1-13 months) for a 40-year-old. This estimate is substantially lower than naive observational associations would suggest, reflecting our evidence-based prior that only about one-third of observed effects are causal. Approximately 59% of the benefit operates through cardiovascular disease prevention. Differences between nut types are modest compared to the overall category effect. These findings support cautiously optimistic public health guidance about nut consumption while highlighting the importance of rigorous confounding adjustment in nutritional epidemiology.
 
 ## Data and Code Availability
 

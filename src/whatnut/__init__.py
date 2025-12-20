@@ -10,7 +10,32 @@ from whatnut.simulation import (
     CategoryEffect,
     DEFAULT_PARAMS,
 )
-from whatnut.precomputed import get_results, RESULTS, PrecomputedResults
+from whatnut.precomputed import (
+    get_results,
+    get_lifecycle_results,
+    RESULTS,
+    LIFECYCLE_RESULTS,
+    PrecomputedResults,
+    PrecomputedLifecycleResults,
+    PrecomputedLifecycleResult,
+)
+from whatnut.lifecycle import (
+    LifecycleCEA,
+    LifecycleParams,
+    LifecycleResult,
+    NutCostData,
+    NUT_COSTS,
+    get_nut_cost,
+    run_nut_cea,
+    get_mortality_curve,
+    get_quality_curve,
+)
+from whatnut.lifecycle_pathways import (
+    PathwayLifecycleCEA,
+    PathwayParams,
+    PathwayResult,
+    CAUSE_SPECIFIC_RR,
+)
 
 __version__ = "0.1.0"
 
@@ -36,6 +61,25 @@ __all__ = [
     "DEFAULT_PARAMS",
     # Precomputed
     "get_results",
+    "get_lifecycle_results",
     "RESULTS",
+    "LIFECYCLE_RESULTS",
     "PrecomputedResults",
+    "PrecomputedLifecycleResults",
+    "PrecomputedLifecycleResult",
+    # Lifecycle CEA
+    "LifecycleCEA",
+    "LifecycleParams",
+    "LifecycleResult",
+    "NutCostData",
+    "NUT_COSTS",
+    "get_nut_cost",
+    "run_nut_cea",
+    "get_mortality_curve",
+    "get_quality_curve",
+    # Pathway-specific lifecycle
+    "PathwayLifecycleCEA",
+    "PathwayParams",
+    "PathwayResult",
+    "CAUSE_SPECIFIC_RR",
 ]

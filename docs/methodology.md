@@ -125,19 +125,39 @@ The magnitude of our estimate is plausible given:
 
 ### Cost-Effectiveness
 
-At typical US retail prices (2025), all nuts are highly cost-effective:
+We estimate cost-effectiveness using a lifecycle model with:
+- **Life tables**: CDC National Vital Statistics (2021) for age-specific mortality
+- **Quality weights**: Age-varying HRQoL from Sullivan et al. (2006)
+- **Discounting**: 3% annual rate (standard for NICE, ICER, WHO-CHOICE)
+- **Cost data**: USDA ERS retail prices (2024)
 
-| Nut | Annual Cost | Cost per QALY |
-|-----|-------------|---------------|
-| Peanuts | ~\$100 | ~\$40 |
-| Almonds | ~\$250 | ~\$100 |
-| Walnuts | ~\$375 | ~\$150 |
-| Cashews | ~\$300 | ~\$120 |
-| Pecans | ~\$400 | ~\$160 |
-| Macadamias | ~\$650 | ~\$260 |
-| Pistachios | ~\$350 | ~\$140 |
+For a 40-year-old beginning daily nut consumption, the discounted QALY gain is approximately 0.4 QALYs (95% CI: 0.15-0.75). This differs from the undiscounted estimate (2.5 QALYs) due to time preference—health gains in the distant future are valued less than immediate gains.
 
-All values fall well below standard cost-effectiveness thresholds (\$50,000/QALY in US, £20-30k/QALY in UK). Even the most expensive nuts (macadamias) remain highly cost-effective at ~\$260/QALY.
+| Nut | Annual Cost | Discounted QALYs | Cost per QALY |
+|-----|-------------|-----------------|---------------|
+| Peanuts | \$101 | 0.41 | \$6,000 |
+| Almonds | \$248 | 0.42 | \$14,000 |
+| Walnuts | \$270 | 0.48 | \$13,000 |
+| Pistachios | \$315 | 0.46 | \$16,000 |
+| Pecans | \$360 | 0.42 | \$20,000 |
+| Macadamias | \$630 | 0.43 | \$35,000 |
+
+All values fall well below standard cost-effectiveness thresholds (\$50,000-100,000/QALY in US, £20-30k/QALY in UK). Peanuts offer the best value at ~\$6,000 per QALY; even macadamias remain cost-effective at ~\$35,000 per QALY.
+
+### Sensitivity Analysis: Discount Rate
+
+The base case uses 3% annual discounting, standard for cost-effectiveness analysis. However, the philosophical case for discounting health is weaker than for costs—money has opportunity cost (can be invested), but a QALY cannot "grow" over time. Age-varying quality weights already capture declining health value with age.
+
+We present results under alternative discount rates:
+
+| Discount Rate | Rationale | QALYs (any nut) | Cost/QALY Range |
+|---------------|-----------|-----------------|-----------------|
+| 0% | Undiscounted (individual perspective) | 1.29 | \$3,400–21,000 |
+| 1.5% | NICE long-term benefits | 0.72 | \$4,400–27,000 |
+| 3% | Base case (ICER, WHO-CHOICE) | 0.42 | \$5,700–35,000 |
+| 3.5% | NICE standard | 0.36 | \$6,200–39,000 |
+
+All scenarios yield cost-effectiveness well below standard thresholds (\$50,000–100,000/QALY). The choice of discount rate affects magnitude but not the conclusion that nut consumption is cost-effective.
 
 ## Limitations
 

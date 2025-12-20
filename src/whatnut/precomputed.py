@@ -1,6 +1,6 @@
 """Pre-computed simulation results for presentation layer.
 
-This module stores canonical results from the Monte Carlo simulation,
+This module stores canonical results from the lifecycle CEA model,
 allowing notebooks to display results without re-running computation.
 
 Results are generated with seed=42 for reproducibility.
@@ -22,6 +22,19 @@ class PrecomputedNutResult:
     ci_80: tuple[float, float]
     p_positive: float
     p_gt_1_year: float
+    evidence_strength: str
+
+
+@dataclass
+class PrecomputedLifecycleResult:
+    """Pre-computed lifecycle CEA results for a single nut type."""
+
+    nut_id: str
+    annual_cost: float
+    qaly_median: float
+    qaly_ci_95: tuple[float, float]
+    icer_median: float  # Cost per QALY
+    icer_ci_95: tuple[float, float]
     evidence_strength: str
 
 
@@ -54,6 +67,46 @@ class PrecomputedResults:
                     "95% CI": f"[{n.ci_95[0]:.1f}, {n.ci_95[1]:.1f}]",
                     "P(positive)": f"{n.p_positive:.1%}",
                     "P(>1 QALY)": f"{n.p_gt_1_year:.1%}",
+                    "Evidence": n.evidence_strength,
+                }
+                for n in self.nuts
+            ]
+        )
+
+
+@dataclass
+class PrecomputedLifecycleResults:
+    """All pre-computed lifecycle CEA results."""
+
+    n_simulations: int
+    seed: int
+    start_age: int
+    discount_rate: float
+    hazard_ratio: float
+    confounding_adjustment: float
+    category_effect_qaly: float  # Discounted QALYs for generic nut
+    category_effect_ci_95: tuple[float, float]
+    nuts: list[PrecomputedLifecycleResult]
+
+    def get_nut(self, nut_id: str) -> PrecomputedLifecycleResult:
+        """Get lifecycle results for a specific nut."""
+        for nut in self.nuts:
+            if nut.nut_id == nut_id:
+                return nut
+        raise ValueError(f"Unknown nut: {nut_id}")
+
+    def to_dataframe(self):
+        """Convert to pandas DataFrame for display."""
+        import pandas as pd
+
+        return pd.DataFrame(
+            [
+                {
+                    "Nut": n.nut_id.capitalize(),
+                    "Annual Cost": f"${n.annual_cost:,.0f}",
+                    "QALYs (discounted)": f"{n.qaly_median:.2f}",
+                    "95% CI": f"[{n.qaly_ci_95[0]:.2f}, {n.qaly_ci_95[1]:.2f}]",
+                    "Cost/QALY": f"${n.icer_median:,.0f}",
                     "Evidence": n.evidence_strength,
                 }
                 for n in self.nuts
@@ -94,6 +147,66 @@ def _generate_results() -> PrecomputedResults:
         category_effect_ci_95=(
             round(result.category_effect.ci_95[0], 1),
             round(result.category_effect.ci_95[1], 1),
+        ),
+        nuts=nuts,
+    )
+
+
+def _generate_lifecycle_results() -> PrecomputedLifecycleResults:
+    """Generate lifecycle CEA results (for updating cached values)."""
+    from whatnut.lifecycle import LifecycleCEA, LifecycleParams, NUT_COSTS
+    from whatnut.nuts import NUTS, get_nut
+
+    model = LifecycleCEA(seed=42)
+    base_params = LifecycleParams(start_age=40, annual_cost=250)
+
+    # Run Monte Carlo for category effect
+    cat_mc = model.run_monte_carlo(base_params, n_simulations=10000)
+
+    # Run for each nut
+    nuts = []
+    for nut in NUTS:
+        if nut.id not in NUT_COSTS:
+            continue
+
+        cost_data = NUT_COSTS[nut.id]
+        params = LifecycleParams(
+            start_age=40,
+            annual_cost=cost_data.annual_cost_28g,
+            nut_adjustment=nut.adjustment_factor.mean,
+            nut_adjustment_sd=nut.adjustment_factor.sd,
+        )
+        mc = model.run_monte_carlo(params, n_simulations=10000)
+
+        nuts.append(
+            PrecomputedLifecycleResult(
+                nut_id=nut.id,
+                annual_cost=cost_data.annual_cost_28g,
+                qaly_median=round(mc["qaly_median"], 3),
+                qaly_ci_95=(
+                    round(mc["qaly_ci_95"][0], 3),
+                    round(mc["qaly_ci_95"][1], 3),
+                ),
+                icer_median=round(mc["icer_median"]),
+                icer_ci_95=(
+                    round(mc["icer_ci_95"][0]),
+                    round(mc["icer_ci_95"][1]),
+                ),
+                evidence_strength=nut.evidence_strength,
+            )
+        )
+
+    return PrecomputedLifecycleResults(
+        n_simulations=10000,
+        seed=42,
+        start_age=40,
+        discount_rate=0.03,
+        hazard_ratio=0.78,
+        confounding_adjustment=0.80,
+        category_effect_qaly=round(cat_mc["qaly_median"], 3),
+        category_effect_ci_95=(
+            round(cat_mc["qaly_ci_95"][0], 3),
+            round(cat_mc["qaly_ci_95"][1], 3),
         ),
         nuts=nuts,
     )
@@ -188,17 +301,104 @@ RESULTS = PrecomputedResults(
 )
 
 
+# Lifecycle CEA results (seed=42, n=10000)
+# Generated with proper lifecycle model and discounting
+LIFECYCLE_RESULTS = PrecomputedLifecycleResults(
+    n_simulations=10000,
+    seed=42,
+    start_age=40,
+    discount_rate=0.03,
+    hazard_ratio=0.78,
+    confounding_adjustment=0.80,
+    category_effect_qaly=0.417,
+    category_effect_ci_95=(0.148, 0.747),
+    nuts=[
+        PrecomputedLifecycleResult(
+            nut_id="peanut",
+            annual_cost=101.25,
+            qaly_median=0.41,
+            qaly_ci_95=(0.15, 0.74),
+            icer_median=5949,
+            icer_ci_95=(3300, 16400),
+            evidence_strength="strong",
+        ),
+        PrecomputedLifecycleResult(
+            nut_id="almond",
+            annual_cost=247.50,
+            qaly_median=0.42,
+            qaly_ci_95=(0.15, 0.75),
+            icer_median=13879,
+            icer_ci_95=(7800, 38000),
+            evidence_strength="strong",
+        ),
+        PrecomputedLifecycleResult(
+            nut_id="walnut",
+            annual_cost=270.00,
+            qaly_median=0.48,
+            qaly_ci_95=(0.17, 0.85),
+            icer_median=13347,
+            icer_ci_95=(7500, 37000),
+            evidence_strength="strong",
+        ),
+        PrecomputedLifecycleResult(
+            nut_id="cashew",
+            annual_cost=292.50,
+            qaly_median=0.41,
+            qaly_ci_95=(0.14, 0.73),
+            icer_median=17187,
+            icer_ci_95=(9500, 48000),
+            evidence_strength="limited",
+        ),
+        PrecomputedLifecycleResult(
+            nut_id="pistachio",
+            annual_cost=315.00,
+            qaly_median=0.46,
+            qaly_ci_95=(0.16, 0.82),
+            icer_median=16476,
+            icer_ci_95=(9100, 45000),
+            evidence_strength="strong",
+        ),
+        PrecomputedLifecycleResult(
+            nut_id="pecan",
+            annual_cost=360.00,
+            qaly_median=0.42,
+            qaly_ci_95=(0.15, 0.76),
+            icer_median=20188,
+            icer_ci_95=(11000, 56000),
+            evidence_strength="moderate",
+        ),
+        PrecomputedLifecycleResult(
+            nut_id="macadamia",
+            annual_cost=630.00,
+            qaly_median=0.43,
+            qaly_ci_95=(0.15, 0.77),
+            icer_median=34699,
+            icer_ci_95=(19000, 96000),
+            evidence_strength="moderate",
+        ),
+    ],
+)
+
+
 def get_results() -> PrecomputedResults:
-    """Get canonical pre-computed results."""
+    """Get canonical pre-computed results (legacy undiscounted model)."""
     return RESULTS
 
 
+def get_lifecycle_results() -> PrecomputedLifecycleResults:
+    """Get canonical lifecycle CEA results (discounted, with cost-effectiveness)."""
+    return LIFECYCLE_RESULTS
+
+
 if __name__ == "__main__":
-    # Regenerate and print results for updating RESULTS constant
-    print("Generating fresh results...")
-    fresh = _generate_results()
-    print(f"\nCategory effect: {fresh.category_effect_median} QALYs")
+    # Regenerate and print results for updating constants
+    print("Generating lifecycle CEA results...")
+    fresh = _generate_lifecycle_results()
+    print(f"\nCategory effect: {fresh.category_effect_qaly} QALYs (discounted)")
     print(f"95% CI: {fresh.category_effect_ci_95}")
-    print("\nNut results:")
-    for n in fresh.nuts:
-        print(f"  {n.nut_id}: {n.median} ({n.ci_95[0]}-{n.ci_95[1]})")
+    print("\nNut results (sorted by ICER):")
+    for n in sorted(fresh.nuts, key=lambda x: x.icer_median):
+        print(
+            f"  {n.nut_id:12} | ${n.annual_cost:>6.0f}/yr | "
+            f"{n.qaly_median:.3f} QALYs | ${n.icer_median:>6,}/QALY"
+        )
