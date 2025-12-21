@@ -46,7 +46,7 @@ For each of 500 posterior samples:
 
 ## Nut-Specific Adjustment Priors
 
-These adjustment factors are **priors** used in the hierarchical model (step 3 above: $\theta_{adjusted} = \theta_{true} \cdot a_{nut,pathway}$). They capture effects from non-modeled bioactives (polyphenols, phytochemicals, specific fatty acid ratios) not explained by the 10 nutrients in Table 2.
+These adjustment factors are **priors** used in the hierarchical model (step 3 above: $\theta_{adjusted} = \theta_{true} + \log(a_{nut,pathway})$). They capture effects from non-modeled bioactives (polyphenols, phytochemicals, specific fatty acid ratios) not explained by the 10 nutrients in Table 2.
 
 Values are derived from nut-specific RCT evidence that shows effects beyond what nutrient composition predicts. For example, walnuts in PREDIMED showed CVD benefits exceeding their ALA content predictions, yielding an adjustment of 1.25 (25% stronger effect). Almonds serve as the reference nut (adjustment = 1.00) with the most robust RCT evidence base.
 

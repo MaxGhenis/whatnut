@@ -83,7 +83,7 @@ myst build --html  # or --pdf
 
 ### Data Sources
 All data are from public sources:
-- Nutrient data: [USDA FoodData Central](https://fdc.nal.usda.gov/) (2024) - see `data/nuts.yaml` for FDC IDs
+- Nutrient data: [USDA FoodData Central](https://fdc.nal.usda.gov/) (2024) - see `src/whatnut/data/nuts.yaml` for FDC IDs
 - Mortality data: [CDC NVSS Life Tables](https://www.cdc.gov/nchs/products/life_tables.htm) (2021)
 - Meta-analysis estimates: Published literature (see `docs/references.bib`)
 
