@@ -38,6 +38,35 @@ for nut_result in result.results:
 
 Full methodology and interactive analysis available in the JupyterBook documentation.
 
+## Reproducibility
+
+**Requirements**: Python ≥3.10
+
+### Validate Paper Values
+All paper values are stored in `src/whatnut/paper_results.py`. To verify consistency:
+```bash
+python src/whatnut/paper_results.py
+```
+
+### Regenerate from MCMC
+To regenerate results from scratch (requires PyMC, ~10 minutes):
+```bash
+pip install whatnut[bayesian]
+python src/whatnut/bayesian_model.py
+```
+
+### Build the Paper
+```bash
+cd docs/
+myst build --html  # or --pdf
+```
+
+### Data Sources
+All data are from public sources:
+- Nutrient data: USDA FoodData Central
+- Mortality data: CDC life tables
+- Meta-analysis estimates: Published literature (see references in paper)
+
 ## License
 
 MIT

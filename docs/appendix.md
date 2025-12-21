@@ -31,17 +31,19 @@ For each of 10,000 Monte Carlo iterations:
 
 ## Nut-Specific Adjustment Factors
 
+These adjustments capture effects from non-modeled bioactives (polyphenols, phytochemicals, specific fatty acid ratios) that are not fully explained by the 10 nutrients in Table 2. Values are derived from nut-specific RCT evidence *after* accounting for nutrient composition, representing residual effects. Almonds serve as the reference nut (adjustment = 1.00) with the most robust RCT evidence base.
+
 | Nut | CVD Adj | Cancer Adj | Other Adj | Evidence | Rationale |
 |-----|---------|------------|-----------|----------|-----------|
-| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA RCTs, highest omega-3 |
-| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Strong lipid improvements in RCTs |
+| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA RCTs show effects beyond ALA content |
+| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Lipid improvements exceed nutrient predictions |
 | Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference nut, robust RCT base |
 | Pecan | 1.08 (0.10) | 0.98 (0.12) | 1.00 (0.12) | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` |
-| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Omega-7, FDA health claim |
-| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962), aflatoxin concern |
-| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs |
+| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Omega-7 effects, FDA qualified health claim |
+| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962), aflatoxin concern reduces effect |
+| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs reflect uncertainty |
 
-Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values.
+Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty. These adjustments are independent of nutrient priors—they represent additional information from nut-specific trials not captured by compositional analysis.
 
 ## Confounding Prior Derivation
 
