@@ -26,7 +26,9 @@ The analysis uses a hierarchical Bayesian model with non-centered parameterizati
 **Model:**
 1. Compute nutrient-predicted effect: $\theta_{nutrients} = \sum_{n} \beta_n \cdot \text{composition}_{nut,n}$
 2. Add hierarchical deviation (non-centered): $\theta_{true} = \theta_{nutrients} + \tau \cdot z$
-3. Apply nut-specific adjustment prior: $\theta_{adjusted} = \theta_{true} \cdot a_{nut,pathway}$
+3. Apply nut-specific adjustment prior: $\theta_{adjusted} = \theta_{true} + \log(a_{nut,pathway})$
+   - Where $a$ is the RR-scale multiplier from the table below (e.g., walnut CVD $a = 1.25$)
+   - Equivalently: $RR_{adjusted} = RR_{true} \times a$
 4. Apply confounding: $\theta_{causal} = c \cdot \theta_{adjusted}$
 5. Convert to RR: $RR_{pathway} = \exp(\theta_{causal})$
 

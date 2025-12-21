@@ -30,6 +30,16 @@ for nut_result in result.results:
     print(f"{nut_result.nut_id}: {nut_result.median:.2f} QALYs (95% CI: {nut_result.ci_95})")
 ```
 
+### Quick Start: Use Paper Results
+```python
+from whatnut.paper_results import r
+
+# Get exact values from the paper
+print(f"Walnuts: {r.walnut.qaly} QALYs")
+print(f"Peanuts: {r.peanut.icer}")
+print(f"QALY range: {r.qaly_range}")
+```
+
 ## Key Finding
 
 > **Eating any nut daily yields 0.11-0.20 discounted QALYs** (equivalent to ~5-6 months of healthy life). Walnuts rank highest (0.20 QALYs), peanuts are most cost-effective ($5,700/QALY). The difference between nuts is small—eat whichever you'll consume consistently.
@@ -44,8 +54,8 @@ Full methodology and interactive analysis available in the JupyterBook documenta
 
 ### Run Tests
 ```bash
-pip install whatnut[dev]
-pytest tests/ -v
+pip install -e ".[dev]"
+python -m pytest tests/ -v
 ```
 
 ### Validate Paper Values
@@ -73,9 +83,9 @@ myst build --html  # or --pdf
 
 ### Data Sources
 All data are from public sources:
-- Nutrient data: USDA FoodData Central (2024)
-- Mortality data: CDC life tables (2021)
-- Meta-analysis estimates: Published literature (see references in paper)
+- Nutrient data: [USDA FoodData Central](https://fdc.nal.usda.gov/) (2024) - see `data/nuts.yaml` for FDC IDs
+- Mortality data: [CDC NVSS Life Tables](https://www.cdc.gov/nchs/products/life_tables.htm) (2021)
+- Meta-analysis estimates: Published literature (see `docs/references.bib`)
 
 ## License
 
