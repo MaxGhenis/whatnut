@@ -139,13 +139,13 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **LDL pathway calibration**: {cite}`delgobbo2015effects` find that nuts reduce LDL cholesterol by 4.8 mg/dL (0.12 mmol/L) per serving (61 controlled trials). Using established LDL-CVD relationships, this predicts a ~3% reduction in CVD mortality, compared to 25% observed in cohort studies. This implies ~12% of the observed CVD effect operates through the LDL pathway.
 
-**Sibling comparison evidence**: Within-family studies that control for shared genetic and environmental confounding typically find attenuated associations between dietary factors and mortality, suggesting substantial confounding in observational studies.
+**Sibling comparison evidence**: Within-family studies that control for shared genetic and environmental confounding typically find attenuated associations between dietary factors and mortality {cite:p}`frisell2012sibling`, suggesting substantial confounding in observational studies.
 
 **Golestan cohort**: {cite}`hashemian2017nut` find that in Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persists (hazard ratio [HR] 0.71 for ≥3 servings/week).
 
 I calibrated the Beta prior by assigning weights to each evidence source: LDL pathway (weight 0.4, target 12% causal), sibling studies (weight 0.4, target 20% causal), and Golestan cohort (weight 0.2, target 40% causal given persistent associations). Rather than setting the prior mean to a simple weighted average of targets, I calibrated Beta parameters to match the full distribution of evidence—capturing both the central tendency and the wide uncertainty across sources. This yields Beta(1.5, 4.5), a right-skewed distribution with mean 0.25 and 95% CI: 2-63%, reflecting that most evidence points to low causal fractions while allowing for the possibility of larger effects suggested by the Golestan cohort.
 
-For HR=0.78, the E-value is 1.8 {cite:p}`vanderweele2017sensitivity`: an unmeasured confounder would need RR ≥ 1.8 with both nut consumption and mortality to fully explain the observed association.
+Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value as 1.8 for HR=0.78: an unmeasured confounder would need RR ≥ 1.8 with both nut consumption and mortality to fully explain the observed association.
 
 ### Target Population
 
