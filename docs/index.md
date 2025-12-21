@@ -6,7 +6,7 @@ max@maxghenis.com
 
 ## Abstract
 
-Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, other mortality, and quality of life), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that consuming 28g/day of walnuts yields 0.20 quality-adjusted life years (QALYs; 95% credible interval [CI]: 0.02-0.55), with other nuts ranging from 0.11 QALYs (pecans) to 0.20 QALYs (almonds). Approximately 75% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of 0.83-0.90 for CVD versus 0.97-0.99 for cancer. Incremental cost-effectiveness ratios (ICERs) range from \$5,700/QALY (peanuts) to \$45,000/QALY (macadamias).
+Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, other mortality, and quality of life), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that consuming 28g/day of walnuts yields 0.20 quality-adjusted life years (QALYs; 95% credible interval [CI]: 0.02-0.55), with other nuts ranging from 0.11 QALYs (pecans) to 0.20 QALYs (almonds). Approximately 75% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of 0.83-0.90 for CVD versus 0.97-0.99 for cancer. Incremental cost-effectiveness ratios (ICERs) range from \$5,700/QALY (peanuts) to \$45,000/QALY (macadamias). These findings apply to individuals without nut allergies (2-4% of adults).
 
 ## Introduction
 
@@ -36,11 +36,17 @@ Third, health policy requires standardized metrics for resource allocation. Qual
 
 ### Contribution
 
-This paper develops a Bayesian Monte Carlo framework for estimating QALY gains from nut consumption, addressing: (1) expected benefit magnitude in standardized units; (2) nut type comparisons based on compositional differences; (3) explicit treatment of confounding uncertainty calibrated to multiple evidence sources.
+This paper develops a Bayesian Monte Carlo framework for estimating QALY gains from nut consumption, addressing: (1) expected benefit magnitude in standardized units; (2) nut type comparisons based on compositional differences; (3) explicit treatment of confounding uncertainty calibrated to multiple evidence sources. Throughout this paper, "nuts" refers to tree nuts plus peanuts (a legume), following epidemiological convention.
+
+## Methods
+
+### Evidence Sources
+
+I constructed a hierarchical evidence base drawing on four categories of sources, in order of priority. Meta-analyses of mortality outcomes from {cite:t}`aune2016nut` and {cite:t}`grosso2015nut` provide pooled estimates for all-cause mortality. Large prospective cohort studies, including {cite:t}`bao2013association` and {cite:t}`guasch2017nut`, provide nut-specific associations. Randomized controlled trials—{cite:t}`ros2008mediterranean` (PREDIMED), {cite:t}`rajaram2021walnuts` (WAHA), {cite:t}`delgobbo2015effects`, {cite:t}`hart2025pecan`, {cite:t}`guarneiri2021pecan`, and {cite:t}`mah2017cashew`—inform nut-specific adjustment factors. Nutrient composition data from {cite:t}`usda2024fooddata` provides standardized nutrient profiles.
 
 ### Nut Nutrient Profiles
 
-Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024fooddata`. All contain 12-22g fat per 28g serving, but differ in fatty acid profiles (monounsaturated vs. polyunsaturated), micronutrient content, and caloric density (157-204 kcal per serving). Throughout this paper, "nuts" refers to tree nuts plus peanuts (a legume), following epidemiological convention.
+Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024fooddata`. All contain 12-22g fat per 28g serving, but differ in fatty acid profiles (monounsaturated vs. polyunsaturated), micronutrient content, and caloric density (157-204 kcal per serving).
 
 **Table 1: Nut Nutrient Profiles.** Macronutrients and key micronutrients per 28g serving. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid); MUFA = monounsaturated fatty acids; PUFA = polyunsaturated fatty acids. Values from USDA FoodData Central SR Legacy database, accessed December 2024.
 
@@ -54,27 +60,7 @@ Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024foodda
 | Peanut | [172430](https://fdc.nal.usda.gov/fdc-app.html#/food-details/172430/nutrients) | 161 | 14.0 | 6.9 | 4.4 | 0.0 | 2.4 | 7.3 | Highest protein |
 | Cashew | [170162](https://fdc.nal.usda.gov/fdc-app.html#/food-details/170162/nutrients) | 157 | 12.4 | 6.7 | 2.2 | 0.0 | 0.9 | 5.2 | Lowest fat/fiber |
 
-**Walnuts** have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total fat as polyunsaturated fatty acids. ALA is a precursor to EPA and DHA {cite:p}`ros2008mediterranean`.
-
-**Almonds** have the highest vitamin E content (7.3mg/28g, 49% DV) and highest fiber content among tree nuts (3.5g/28g).
-
-**Macadamias** are the only common nut with substantial omega-7 fatty acids (palmitoleic acid, 4.7g/28g). They also have the highest caloric density (204 kcal) and saturated fat content (3.4g).
-
-**Peanuts** (technically legumes) have the highest protein content (7.3g/28g) and lowest cost. Aflatoxin contamination occurs in some regions, particularly sub-Saharan Africa and Southeast Asia {cite:p}`williams2004aflatoxin`.
-
-## Methods
-
-### Evidence Sources
-
-I constructed a hierarchical evidence base drawing on four categories of sources, in order of priority:
-
-1. **Meta-analyses of mortality outcomes**: {cite}`aune2016nut` and {cite}`grosso2015nut` provide pooled estimates for all-cause mortality.
-
-2. **Large prospective cohort studies**: {cite}`bao2013association` and {cite}`guasch2017nut` provide nut-specific associations.
-
-3. **Randomized controlled trials**: {cite}`ros2008mediterranean` (PREDIMED), {cite}`rajaram2021walnuts` (WAHA), {cite}`delgobbo2015effects`, {cite}`hart2025pecan`, {cite}`guarneiri2021pecan`, and {cite}`mah2017cashew` inform nut-specific adjustment factors.
-
-4. **Nutrient composition data**: {cite}`usda2024fooddata` provides standardized nutrient profiles.
+Walnuts have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total fat as polyunsaturated fatty acids. ALA is a precursor to EPA and DHA {cite:p}`ros2008mediterranean`. Almonds have the highest vitamin E content (7.3mg/28g, 49% DV) and highest fiber content among tree nuts (3.5g/28g). Macadamias are the only common nut with substantial omega-7 fatty acids (palmitoleic acid, 4.7g/28g); they also have the highest caloric density (204 kcal) and saturated fat content (3.4g). Peanuts (technically legumes) have the highest protein content (7.3g/28g) and lowest cost; aflatoxin contamination occurs in some regions, particularly sub-Saharan Africa and Southeast Asia {cite:p}`williams2004aflatoxin`.
 
 ### Statistical Model
 
@@ -82,13 +68,7 @@ I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte C
 
 #### Pathway-Specific Effects
 
-The model estimates separate relative risks for four pathways:
-- **CVD mortality**: Strongest effects (RR 0.83-0.90), informed by ALA omega-3, fiber, and magnesium priors
-- **Cancer mortality**: Modest effects (RR 0.97-0.99), informed by fiber and vitamin E priors
-- **Other mortality**: Moderate effects (RR 0.94-0.97), composite of remaining causes
-- **Quality of life**: Morbidity effects (RR 0.94-0.97), affecting health utility weights
-
-This decomposition allows different nutrients to contribute differentially to each pathway. For example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
+The model estimates separate relative risks for four pathways. CVD mortality shows the largest effects (RR 0.83-0.90), informed by ALA omega-3, fiber, and magnesium priors. Cancer mortality shows smaller effects (RR 0.97-0.99, corresponding to 1-3% reductions), informed by fiber and vitamin E priors. Other mortality shows intermediate effects (RR 0.94-0.97), representing a composite of remaining causes. Quality of life captures morbidity effects (RR 0.94-0.97), affecting health utility weights rather than mortality. This decomposition allows different nutrients to contribute differentially to each pathway—for example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
 
 #### Nutrient-Derived Priors
 
@@ -111,15 +91,7 @@ Rather than specifying nut-specific effects directly, I derived expected effects
 
 #### Hierarchical Structure
 
-Nut-specific effects are modeled as deviations from nutrient-predicted effects using non-centered parameterization:
-
-```
-z_pathway ~ Normal(0, 1)  # Standardized deviations
-τ_pathway ~ HalfNormal(0.03)  # Shrinkage prior
-true_effect = expected_from_nutrients + τ_pathway × z_pathway
-```
-
-This parameterization ensures efficient MCMC sampling and shrinks nut-specific deviations toward nutrient-predicted effects when evidence is limited.
+I model nut-specific effects as deviations from nutrient-predicted effects using non-centered parameterization. Let $z_{\text{pathway}} \sim \mathcal{N}(0, 1)$ represent standardized deviations and $\tau_{\text{pathway}} \sim \text{HalfNormal}(0.03)$ represent the shrinkage prior. The true effect for each nut-pathway combination is then $\theta_{\text{true}} = \theta_{\text{nutrients}} + \tau_{\text{pathway}} \cdot z_{\text{pathway}}$. This parameterization ensures efficient MCMC sampling and shrinks nut-specific deviations toward nutrient-predicted effects when evidence is limited.
 
 #### Confounding Adjustment
 
@@ -127,11 +99,11 @@ The model includes a causal fraction parameter with Beta(1.5, 4.5) prior (mean 0
 
 #### Lifecycle Integration
 
-Posterior samples of pathway-specific relative risks are propagated through a lifecycle model with:
-- CDC life tables for age-specific mortality
-- Age-varying cause fractions (CVD increases from 20% at age 40 to 40% at age 80)
-- Quality weights from EQ-5D population norms (mean 0.85) {cite:p}`sullivan2005catalogue`
-- 3% annual discounting
+I propagate posterior samples of pathway-specific relative risks through a lifecycle model using CDC life tables for age-specific mortality, age-varying cause fractions (CVD increases from 20% at age 40 to 40% at age 80), quality weights from EQ-5D population norms (mean 0.85) {cite:p}`sullivan2005catalogue`, and 3% annual discounting.
+
+#### Posterior Predictive Validation
+
+As a consistency check, I verified that the model's implied all-cause mortality hazard ratio matches the source meta-analysis. Weighting pathway-specific RRs by cause-specific mortality fractions yields an implied all-cause HR of 0.79 (95% CI: 0.71-0.86), consistent with {cite:t}`aune2016nut`'s estimate of 0.78 (95% CI: 0.72-0.84). This confirms the pathway decomposition preserves the overall effect magnitude.
 
 ### Confounding Calibration
 
@@ -153,13 +125,7 @@ I modeled a 40-year-old from the United States or Europe with 40 years remaining
 
 ### Cost-Effectiveness Analysis
 
-I calculated incremental cost-effectiveness ratios (ICERs) as:
-
-```
-ICER = (Annual cost × Years of consumption) / QALY gain
-```
-
-Annual costs use 2024 US retail prices from USDA Economic Research Service: peanuts (\$37/year for 28g/day), almonds (\$95/year), walnuts (\$97/year), cashews (\$103/year), pistachios (\$114/year), pecans (\$126/year), and macadamias (\$229/year) {cite:p}`usda2024prices`. I discounted costs at 3% annually, matching the QALY discount rate.
+I calculated incremental cost-effectiveness ratios (ICERs) as $\text{ICER} = \frac{\text{Annual cost} \times \text{Years of consumption}}{\text{QALY gain}}$. Annual costs use 2024 US retail prices from USDA Economic Research Service: peanuts (\$37/year for 28g/day), almonds (\$95/year), walnuts (\$97/year), cashews (\$103/year), pistachios (\$114/year), pecans (\$126/year), and macadamias (\$229/year) {cite:p}`usda2024prices`. I discounted costs at 3% annually, matching the QALY discount rate.
 
 ## Results
 
@@ -167,19 +133,19 @@ Annual costs use 2024 US retail prices from USDA Economic Research Service: pean
 
 The hierarchical Bayesian model estimates QALY gains ranging from 0.11 (pecans) to 0.20 (walnuts) for a 40-year-old consuming 28g/day over their remaining lifespan.
 
-**Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling (4,000 draws, 4 chains, 0% divergences). QALYs and costs discounted at 3% annually. Life years (LY) are undiscounted. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
+**Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling (4,000 draws, 4 chains, 0% divergences). QALYs and costs discounted at 3% annually. Life years (LY) are undiscounted. P(>0) = posterior probability that QALY gain exceeds zero. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
 
-| Nut | Mean QALY | 95% CI | LY Gained | ICER | ICER 95% CI |
-|-----|-----------|--------|-----------|------|-------------|
-| Walnut | 0.20 | [0.02, 0.55] | 0.45 | \$13,400 | [\$4,900, \$135,000] |
-| Almond | 0.20 | [0.01, 0.56] | 0.44 | \$13,000 | [\$4,600, \$258,000] |
-| Peanut | 0.17 | [-0.07, 0.60] | 0.38 | \$5,700 | [\$1,700, dominated] |
-| Cashew | 0.17 | [-0.03, 0.54] | 0.37 | \$16,800 | [\$5,300, dominated] |
-| Pistachio | 0.16 | [-0.08, 0.55] | 0.36 | \$19,700 | [\$5,800, dominated] |
-| Macadamia | 0.14 | [-0.02, 0.43] | 0.31 | \$44,800 | [\$14,700, dominated] |
-| Pecan | 0.11 | [-0.01, 0.36] | 0.25 | \$31,400 | [\$9,600, dominated] |
+| Nut | Mean QALY | 95% CI | P(>0) | LY Gained | ICER | ICER 95% CI |
+|-----|-----------|--------|-------|-----------|------|-------------|
+| Walnut | 0.20 | [0.02, 0.55] | 98% | 0.45 | \$13,400 | [\$4,900, \$135,000] |
+| Almond | 0.20 | [0.01, 0.56] | 97% | 0.44 | \$13,000 | [\$4,600, \$258,000] |
+| Peanut | 0.17 | [-0.07, 0.60] | 93% | 0.38 | \$5,700 | [\$1,700, dominated] |
+| Cashew | 0.17 | [-0.03, 0.54] | 95% | 0.37 | \$16,800 | [\$5,300, dominated] |
+| Pistachio | 0.16 | [-0.08, 0.55] | 91% | 0.36 | \$19,700 | [\$5,800, dominated] |
+| Macadamia | 0.14 | [-0.02, 0.43] | 96% | 0.31 | \$44,800 | [\$14,700, dominated] |
+| Pecan | 0.11 | [-0.01, 0.36] | 92% | 0.25 | \$31,400 | [\$9,600, dominated] |
 
-Note: "Dominated" indicates ICER undefined when lower CI bound for QALYs is ≤0. Probability of benefit > 0 exceeds 90% for all nuts.
+Note: "Dominated" indicates ICER undefined when lower CI bound for QALYs is ≤0.
 
 ### Pathway-Specific Relative Risks
 
@@ -260,15 +226,11 @@ I examined robustness to key parameter assumptions:
 
 ### Limitations
 
-1. Estimates rely on observational data; residual confounding may remain despite calibration.
-2. Source studies predominantly from US and Europe.
-3. Fixed 28g/day dose modeled; dose-response may be non-linear ({cite}`aune2016nut` find benefits plateau above ~20g/day).
-4. Perfect adherence assumed; dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`.
-5. Substitution effects not modeled (what foods nuts replace affects net benefit).
+Several limitations warrant consideration. Estimates rely on observational data, and residual confounding may remain despite calibration. Source studies come predominantly from the US and Europe, limiting generalizability to other populations. I modeled a fixed 28g/day dose, though dose-response may be non-linear—{cite:t}`aune2016nut` find benefits plateau above ~20g/day. The model assumes perfect adherence, whereas dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`. Finally, substitution effects remain unmodeled; the net benefit depends on what foods nuts replace in the diet.
 
 ## Conclusion
 
-Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). All nuts fall below NICE's new £25,000/QALY (\$33,500) threshold and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. **Caution**: Individuals with nut allergies (2-4% prevalence {cite:p}`gupta2021prevalence`) should not consume nuts.
+Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). All nuts fall below NICE's new £25,000/QALY (\$33,500) threshold and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. These findings do not apply to individuals with nut allergies (2-4% of adults {cite:p}`gupta2021prevalence`).
 
 ## Data and Code Availability
 
