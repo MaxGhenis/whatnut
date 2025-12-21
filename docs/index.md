@@ -78,7 +78,11 @@ I constructed a hierarchical evidence base drawing on four categories of sources
 
 ### Statistical Model
 
-I employed a Bayesian Monte Carlo simulation with 10,000 iterations using the `lifecycle_pathways` module (random seed 42 for reproducibility). For each iteration:
+I employed two complementary approaches: a **forward Monte Carlo simulation** for the primary analysis and a **hierarchical Bayesian model** for sensitivity analysis.
+
+#### Primary Analysis: Forward Monte Carlo
+
+The primary analysis uses forward Monte Carlo simulation with 10,000 iterations (random seed 42). For each iteration:
 
 1. Sampled cause-specific relative risks from log-normal distributions (based on {cite}`aune2016nut` mortality estimates for high vs. low nut consumption):
    - CVD mortality: RR ~ LogNormal(log(0.75), 0.03)
@@ -106,6 +110,23 @@ I employed a Bayesian Monte Carlo simulation with 10,000 iterations using the `l
 5. Applied quality weight sampled from Beta(17, 3) with mean 0.85, based on age-adjusted EQ-5D population norms for US adults {cite:p}`sullivan2005catalogue`.
 
 6. Computed discounted QALYs at 3% annual rate.
+
+#### Sensitivity Analysis: Hierarchical Bayesian Model
+
+As a sensitivity analysis, I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte Carlo (MCMC) sampling. This approach differs from the primary analysis in three ways:
+
+1. **Nutrient-derived priors**: Rather than specifying nut-specific adjustment factors directly, I derived expected effects from nutrient composition using priors from independent meta-analyses:
+   - ALA omega-3: log-RR -0.12 per g/day (95% CI: -0.20, -0.04) from {cite}`naghshi2021ala`
+   - Fiber: log-RR -0.0135 per g/day from {cite}`threapleton2013fiber`
+   - Omega-6: log-RR -0.004 per g/day from {cite}`farvid2014omega6`
+   - Omega-7: log-RR -0.02 per g/day (weak prior, limited evidence)
+   - Saturated fat: log-RR +0.02 per g/day (harmful)
+
+2. **Hierarchical shrinkage**: Nut-specific effects are modeled as deviations from nutrient-predicted effects, with a hierarchical prior (τ ~ HalfNormal(0.05)) that shrinks estimates toward the group mean.
+
+3. **RCT likelihood**: Where available, observed LDL reductions from RCTs inform the posterior via the established LDL-CVD relationship (RR 0.78 per 1 mmol/L from CTT Collaboration).
+
+The Bayesian model produces substantially lower QALY estimates (mean 0.02-0.06 vs 0.08-0.10 in primary analysis), reflecting greater skepticism about non-LDL pathways. Key differences include macadamia ranking higher (omega-7 effect) and cashews near zero (nutrient profile predicts harm from saturated fat).
 
 ### Confounding Calibration
 
