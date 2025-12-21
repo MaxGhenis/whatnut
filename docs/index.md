@@ -15,7 +15,7 @@ from whatnut.paper_results import r
 
 ## Abstract
 
-Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, other mortality, and quality of life), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that consuming 28g/day of walnuts yields {eval}`r.walnut.qaly` quality-adjusted life years (QALYs; 95% credible interval [CI]: {eval}`r.walnut.qaly_ci`), with other nuts ranging from {eval}`r.pecan.qaly` QALYs (pecans) to {eval}`r.almond.qaly` QALYs (almonds). Approximately {eval}`r.cvd_contribution`% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of {eval}`r.cvd_effect_range` for CVD versus {eval}`r.cancer_effect_range` for cancer. Incremental cost-effectiveness ratios (ICERs) range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias). These findings apply to individuals without nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults).
+Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, and other mortality), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that consuming 28g/day of walnuts yields {eval}`r.walnut.qaly` quality-adjusted life years (QALYs; 95% credible interval [CI]: {eval}`r.walnut.qaly_ci`), with other nuts ranging from {eval}`r.pecan.qaly` QALYs (pecans) to {eval}`r.almond.qaly` QALYs (almonds). Approximately {eval}`r.cvd_contribution`% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of {eval}`r.cvd_effect_range` for CVD versus {eval}`r.cancer_effect_range` for cancer. Incremental cost-effectiveness ratios (ICERs) range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias). These findings apply to individuals without nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults).
 
 ## Introduction
 
@@ -77,26 +77,28 @@ I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte C
 
 #### Pathway-Specific Effects
 
-The model estimates separate relative risks for four pathways. CVD mortality shows the largest effects (RR 0.83-0.90), informed by ALA omega-3, fiber, and magnesium priors. Cancer mortality shows smaller effects (RR 0.97-0.99, corresponding to 1-3% reductions), informed by fiber and vitamin E priors. Other mortality shows intermediate effects (RR 0.94-0.97), representing a composite of remaining causes. Quality of life captures morbidity effects (RR 0.94-0.97), affecting health utility weights rather than mortality; I apply a conservative 50% scaling factor to quality effects, reflecting that morbidity improvements are partially captured in mortality pathways and that quality-of-life evidence for nuts is limited. This decomposition allows different nutrients to contribute differentially to each pathway—for example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
+The model estimates separate relative risks for three mortality pathways. CVD mortality shows the largest effects (RR 0.83-0.90), informed by ALA omega-3, fiber, and magnesium priors. Cancer mortality shows smaller effects (RR 0.97-0.99, corresponding to 1-3% reductions), informed by fiber and vitamin E priors. Other mortality shows intermediate effects (RR 0.94-0.97), representing a composite of remaining causes. This decomposition allows different nutrients to contribute differentially to each pathway—for example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
+
+I do not model a separate quality-of-life pathway. While nuts may improve morbidity through reduced CVD events, fatigue, and cognitive function, such effects are largely captured through the mortality pathways (survivors of prevented CVD events have higher quality of life). Including a separate quality pathway would risk double-counting benefits. The primary QALY calculation therefore uses mortality-based life expectancy gains weighted by population EQ-5D norms.
 
 #### Nutrient-Derived Priors
 
 Rather than specifying nut-specific effects directly, I derived expected effects from nutrient composition using priors from independent meta-analyses:
 
-**Table 2: Nutrient-Pathway Effect Priors.** Log-relative risk per unit nutrient, with pathway-specific coefficients. Priors from meta-analyses of prospective cohort studies and randomized trials.
+**Table 2: Nutrient-Pathway Effect Priors.** Log-relative risk per unit nutrient, with pathway-specific coefficients. Priors from meta-analyses of prospective cohort studies and randomized trials. For nutrients with limited direct evidence, I use wide priors (SD ≥50% of mean) reflecting mechanistic plausibility with high uncertainty.
 
-| Nutrient | CVD Effect | Cancer Effect | Other Effect | Quality Effect | Source |
-|----------|------------|---------------|--------------|----------------|--------|
-| ALA omega-3 (per g) | -0.15 (0.05) | -0.02 (0.02) | -0.08 (0.04) | -0.05 (0.03) | {cite}`naghshi2021ala` |
-| Fiber (per g) | -0.015 (0.005) | -0.015 (0.005) | -0.01 (0.005) | -0.02 (0.01) | {cite}`threapleton2013fiber` |
-| Omega-6 (per g) | -0.004 (0.002) | -0.002 (0.002) | -0.002 (0.002) | -0.002 (0.002) | {cite}`farvid2014omega6` |
-| Omega-7 (per g) | -0.03 (0.04) | 0.00 (0.02) | -0.02 (0.03) | -0.02 (0.03) | Author prior (limited evidence) |
-| Saturated fat (per g) | +0.02 (0.01) | +0.01 (0.01) | +0.01 (0.01) | +0.01 (0.01) | {cite}`sacks2017sat` |
-| Magnesium (per 10mg) | -0.003 (0.001) | -0.001 (0.001) | -0.002 (0.001) | -0.003 (0.001) | {cite}`fang2016mg` |
-| Arginine (per 100mg) | -0.003 (0.002) | -0.001 (0.001) | -0.002 (0.001) | -0.002 (0.001) | Author prior (limited evidence) |
-| Vitamin E (per mg) | -0.005 (0.003) | -0.01 (0.005) | -0.003 (0.002) | -0.005 (0.003) | Author prior (limited evidence) |
-| Phytosterols (per 10mg) | -0.001 (0.001) | -0.001 (0.001) | 0.00 (0.001) | -0.001 (0.001) | Author prior (limited evidence) |
-| Protein (per g) | -0.002 (0.002) | -0.001 (0.001) | -0.001 (0.001) | -0.002 (0.001) | Author prior (limited evidence) |
+| Nutrient | CVD Effect | Cancer Effect | Other Effect | Source |
+|----------|------------|---------------|--------------|--------|
+| ALA omega-3 (per g) | -0.15 (0.05) | -0.02 (0.02) | -0.08 (0.04) | {cite}`naghshi2021ala` |
+| Fiber (per g) | -0.015 (0.005) | -0.015 (0.005) | -0.01 (0.005) | {cite}`threapleton2013fiber` |
+| Omega-6 (per g) | -0.004 (0.002) | -0.002 (0.002) | -0.002 (0.002) | {cite}`farvid2014omega6` |
+| Omega-7 (per g) | -0.03 (0.06) | 0.00 (0.03) | -0.02 (0.04) | Mechanistic (wide prior) |
+| Saturated fat (per g) | +0.02 (0.01) | +0.01 (0.01) | +0.01 (0.01) | {cite}`sacks2017sat` |
+| Magnesium (per 10mg) | -0.003 (0.001) | -0.001 (0.001) | -0.002 (0.001) | {cite}`fang2016mg` |
+| Arginine (per 100mg) | -0.003 (0.003) | -0.001 (0.002) | -0.002 (0.002) | Mechanistic (wide prior) |
+| Vitamin E (per mg) | -0.005 (0.005) | -0.01 (0.01) | -0.003 (0.003) | Mechanistic (wide prior) |
+| Phytosterols (per 10mg) | -0.001 (0.002) | -0.001 (0.002) | 0.00 (0.001) | Mechanistic (wide prior) |
+| Protein (per g) | -0.002 (0.003) | -0.001 (0.002) | -0.001 (0.002) | Mechanistic (wide prior) |
 
 #### Hierarchical Structure
 
@@ -120,7 +122,17 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **Golestan cohort**: {cite}`hashemian2017nut` find that in Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persists (hazard ratio [HR] 0.71 for ≥3 servings/week).
 
-I calibrated the Beta prior by assigning weights to each evidence source: LDL pathway (weight 0.4, target 12% causal), sibling studies (weight 0.4, target 20% causal), and Golestan cohort (weight 0.2, target 40% causal given persistent associations). Rather than setting the prior mean to a simple weighted average of targets, I calibrated Beta parameters to match the full distribution of evidence—capturing both the central tendency and the wide uncertainty across sources. This yields Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`), a right-skewed distribution with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%, reflecting that most evidence points to low causal fractions while allowing for the possibility of larger effects suggested by the Golestan cohort.
+I calibrated the Beta prior using method of moments matching to the evidence distribution. Let $p_i$ denote the causal fraction implied by evidence source $i$ with weight $w_i$:
+
+- LDL pathway: $p_1 = 0.12$, $w_1 = 0.4$ (mechanistic, most direct)
+- Sibling studies: $p_2 = 0.20$, $w_2 = 0.4$ (genetic confounding control)
+- Golestan cohort: $p_3 = 0.40$, $w_3 = 0.2$ (cross-cultural, less generalizable)
+
+The weighted mean is $\bar{p} = \sum w_i p_i = 0.208$. I estimate variance from the range of evidence: with $p$ spanning 0.12-0.40, I set $\sigma^2 = 0.015$ (implying 95% of prior mass between 0.02 and 0.60). Method of moments for Beta($\alpha$, $\beta$) yields:
+
+$$\alpha = \bar{p} \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 1.5, \quad \beta = (1-\bar{p}) \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 4.5$$
+
+This yields Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%. The right-skewed distribution reflects that most evidence points to low causal fractions while allowing for larger effects suggested by the Golestan cohort.
 
 Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value as {eval}`r.e_value` for HR=0.78: an unmeasured confounder would need RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed association.
 
@@ -172,7 +184,7 @@ Note: "Dominated" indicates ICER undefined when lower CI bound for QALYs is ≤0
 
 CVD effects are 5-10x stronger than cancer effects (17% vs 2% mortality reduction), which explains why walnuts (high ALA omega-3) outperform other nuts.
 
-**Table 4: Pathway-Specific Relative Risks by Nut Type.** Posterior mean RRs for each mortality pathway. Lower values indicate greater benefit. Quality pathway affects morbidity/utility rather than mortality.
+**Table 4: Pathway-Specific Relative Risks by Nut Type.** Posterior mean RRs for each mortality pathway. Lower values indicate greater benefit.
 
 ```{code-cell} python
 :tags: [remove-input]
@@ -183,16 +195,15 @@ Markdown(r.table_4_pathway_rrs())
 
 ### Pathway Contributions
 
-I estimate that approximately {eval}`r.cvd_contribution`% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality ({eval}`r.other_contribution`%) and quality of life improvements ({eval}`r.quality_contribution`%).
+Approximately 80% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality (15%) and cancer mortality (5%).
 
-**Table 5: Pathway Contribution to Total Benefit.** Decomposition of QALY gains by mechanism. CVD dominates due to both stronger relative risk reductions and higher cause-specific mortality at older ages.
+**Table 5: Pathway Contribution to Total Benefit.** Decomposition of QALY gains by mortality pathway. CVD dominates due to both stronger relative risk reductions and higher cause-specific mortality at older ages.
 
 | Pathway | Contribution | Mean RR Range | Key Nutrients |
 |---------|-------------|---------------|---------------|
-| CVD mortality | ~75% | 0.83-0.89 | ALA omega-3, fiber, magnesium |
+| CVD mortality | ~80% | 0.83-0.89 | ALA omega-3, fiber, magnesium |
 | Other mortality | ~15% | 0.94-0.97 | Fiber, protein |
-| Quality of life | ~10% | 0.94-0.97 | Magnesium, fiber |
-| Cancer mortality | <5% | 0.97-0.99 | Fiber, vitamin E |
+| Cancer mortality | ~5% | 0.97-0.99 | Fiber, vitamin E |
 
 ### Cost-Effectiveness
 

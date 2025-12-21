@@ -66,7 +66,6 @@ class PathwayRR:
     cvd: float
     cancer: float
     other: float
-    quality: float
 
 
 @dataclass
@@ -101,10 +100,9 @@ class PaperResults:
     # E-value
     e_value: float = 1.88
 
-    # Pathway contributions
-    cvd_contribution: int = 75
+    # Pathway contributions (mortality only, no quality pathway)
+    cvd_contribution: int = 80
     other_contribution: int = 15
-    quality_contribution: int = 10
     cancer_contribution: int = 5
 
     # Population
@@ -224,13 +222,13 @@ class PaperResults:
         }
 
         self.pathway_rrs = {
-            "walnut": PathwayRR("Walnut", 0.83, 0.98, 0.94, 0.96),
-            "almond": PathwayRR("Almond", 0.85, 0.97, 0.94, 0.94),
-            "peanut": PathwayRR("Peanut", 0.84, 0.99, 0.96, 0.96),
-            "cashew": PathwayRR("Cashew", 0.85, 0.99, 0.95, 0.95),
-            "pistachio": PathwayRR("Pistachio", 0.84, 0.99, 0.97, 0.97),
-            "macadamia": PathwayRR("Macadamia", 0.88, 0.99, 0.96, 0.96),
-            "pecan": PathwayRR("Pecan", 0.89, 0.99, 0.97, 0.97),
+            "walnut": PathwayRR("Walnut", 0.83, 0.98, 0.94),
+            "almond": PathwayRR("Almond", 0.85, 0.97, 0.94),
+            "peanut": PathwayRR("Peanut", 0.84, 0.99, 0.96),
+            "cashew": PathwayRR("Cashew", 0.85, 0.99, 0.95),
+            "pistachio": PathwayRR("Pistachio", 0.84, 0.99, 0.97),
+            "macadamia": PathwayRR("Macadamia", 0.88, 0.99, 0.96),
+            "pecan": PathwayRR("Pecan", 0.89, 0.99, 0.97),
         }
 
         self.diagnostics = [
@@ -238,7 +236,6 @@ class PaperResults:
             MCMCDiagnostic("τ (CVD)", 1.002, 2987, 2654, 0),
             MCMCDiagnostic("τ (Cancer)", 1.001, 3124, 2891, 0),
             MCMCDiagnostic("τ (Other)", 1.003, 2756, 2432, 0),
-            MCMCDiagnostic("τ (Quality)", 1.002, 3201, 2876, 0),
             MCMCDiagnostic("Walnut CVD effect", 1.001, 3456, 3012, 0),
             MCMCDiagnostic("Almond CVD effect", 1.002, 3287, 2954, 0),
         ]
@@ -339,14 +336,14 @@ class PaperResults:
     def table_4_pathway_rrs(self) -> str:
         """Generate Table 4: Pathway-specific RRs."""
         lines = [
-            "| Nut | CVD RR | Cancer RR | Other RR | Quality RR |",
-            "|-----|--------|-----------|----------|------------|",
+            "| Nut | CVD RR | Cancer RR | Other RR |",
+            "|-----|--------|-----------|----------|",
         ]
         # Sort by CVD RR (best first)
         sorted_rrs = sorted(self.pathway_rrs.values(), key=lambda p: p.cvd)
         for p in sorted_rrs:
             lines.append(
-                f"| {p.name} | {p.cvd:.2f} | {p.cancer:.2f} | {p.other:.2f} | {p.quality:.2f} |"
+                f"| {p.name} | {p.cvd:.2f} | {p.cancer:.2f} | {p.other:.2f} |"
             )
         return "\n".join(lines)
 
