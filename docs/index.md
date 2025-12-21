@@ -128,7 +128,7 @@ I calibrated the Beta prior using method of moments matching to the evidence dis
 - Sibling studies: $p_2 = 0.20$, $w_2 = 0.30$ (genetic confounding control)
 - Golestan cohort: $p_3 = 0.40$, $w_3 = 0.40$ (cross-cultural, shows effect persists)
 
-The weighted mean is $\bar{p} = \sum w_i p_i = 0.256 \approx 0.25$. I estimate variance from the range of evidence: with $p$ spanning 0.12-0.40, I set $\sigma^2 = 0.027$ (implying a wide prior with 95% mass between 0.02 and 0.63). Method of moments for Beta($\alpha$, $\beta$) yields:
+The weighted mean is $\bar{p} = \sum w_i p_i = 0.256 \approx 0.25$. The weighted sample variance is $\sigma^2_{sample} = \sum w_i (p_i - \bar{p})^2 = 0.015$. However, this underestimates uncertainty because it only captures variance across three evidence sources, not the full epistemic uncertainty about confounding mechanisms. I inflate to $\sigma^2 = 0.027$ (~1.8× larger) to obtain a wider prior with 95% mass between 0.02 and 0.63. Method of moments for Beta($\alpha$, $\beta$) yields:
 
 $$\alpha = \bar{p} \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 1.5, \quad \beta = (1-\bar{p}) \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 4.5$$
 

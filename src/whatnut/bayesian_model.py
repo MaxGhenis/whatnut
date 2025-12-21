@@ -336,8 +336,9 @@ def get_mcmc_diagnostics(trace):
 
     Returns dict with R-hat and ESS for key parameters.
     """
+    # Note: tau_quality retained in model but not used in published results
     summary = az.summary(trace, var_names=['causal_fraction', 'tau_cvd', 'tau_cancer',
-                                            'tau_other', 'tau_quality'])
+                                            'tau_other'])
 
     diagnostics = {
         'divergences': int(trace.sample_stats['diverging'].values.sum()),
@@ -463,15 +464,12 @@ def run_full_lifecycle_mc(trace, nuts, pathways, n_samples=500, seed=42):
 
             result = model.run(params)
 
-            # Apply quality adjustment
-            # Quality pathway captures morbidity effects (fatigue, mood, etc.)
-            # that improve quality weights but don't affect mortality.
-            # The 0.5 scaling reflects that quality improvements are partial:
-            # - Quality RR 0.95 → multiplier 1.025 (2.5% QALY boost)
-            # - This is conservative; full utility gains would require
-            #   integrating quality RR into the lifecycle quality weights
-            quality_adj = rr_quality[i, j]
-            quality_multiplier = 1 + (1 - quality_adj) * 0.5
+            # Quality pathway is NOT modeled in published results.
+            # The quality pathway structure is retained in the model for future
+            # extensions, but we set the multiplier to 1.0 (no effect) to avoid
+            # double-counting benefits already captured through mortality pathways.
+            # See paper: "I do not model a separate quality-of-life pathway."
+            quality_multiplier = 1.0  # Disabled - quality effects captured via mortality
 
             adjusted_qaly = result.qalys_gained_discounted * quality_multiplier
 

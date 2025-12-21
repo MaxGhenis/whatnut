@@ -32,7 +32,7 @@ for nut_result in result.results:
 
 ## Key Finding
 
-> **Eating any nut daily: ~2.5 QALYs.** The difference between "best" (walnuts) and "worst" (cashews) is only ~0.7 QALYs. Eat whichever nut you'll actually eat consistently.
+> **Eating any nut daily yields 0.11-0.20 discounted QALYs** (equivalent to ~5-6 months of healthy life). Walnuts rank highest (0.20 QALYs), peanuts are most cost-effective ($5,700/QALY). The difference between nuts is small—eat whichever you'll consume consistently.
 
 ## Documentation
 
