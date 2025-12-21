@@ -13,25 +13,42 @@ Not modeled:
 - Very elderly (80+)
 - Non-Western populations
 
-## Simulation Algorithm
+## Bayesian MCMC Algorithm
 
-For each of 10,000 Monte Carlo iterations:
+The analysis uses a hierarchical Bayesian model with non-centered parameterization, implemented in PyMC. The model structure:
 
-1. Sample base hazard ratio: $HR \sim \text{LogNormal}(\log(0.78), 0.08)$
-2. Sample nut-specific adjustment: $a \sim \text{Normal}(\mu_{nut}, \sigma_{nut})$
-3. Compute adjusted HR: $HR_{adj} = HR^a$
-4. Sample cause-specific relative risks:
-   - CVD: $RR_{cvd} \sim \text{LogNormal}(\log(0.75), 0.03)$
-   - Cancer: $RR_{cancer} \sim \text{LogNormal}(\log(0.87), 0.04)$
-   - Other: $RR_{other} \sim \text{LogNormal}(\log(0.90), 0.03)$
-5. Compute age-weighted mortality reduction using CDC life tables
-6. Sample quality weight: $q \sim \text{Beta}(17, 3)$, mean = 0.85
-7. Sample confounding adjustment: $c \sim \text{Beta}(1.5, 4.5)$, mean = 0.25
-8. Compute life years gained and QALYs
+**Priors:**
+- Nutrient effects: $\beta_{nutrient,pathway} \sim \text{Normal}(\mu_{meta}, \sigma_{meta})$ from Table 2
+- Hierarchical shrinkage: $\tau_{pathway} \sim \text{HalfNormal}(0.03)$
+- Standardized deviations: $z_{nut,pathway} \sim \text{Normal}(0, 1)$
+- Confounding fraction: $c \sim \text{Beta}(1.5, 4.5)$
 
-## Nut-Specific Adjustment Factors
+**Model:**
+1. Compute nutrient-predicted effect: $\theta_{nutrients} = \sum_{n} \beta_n \cdot \text{composition}_{nut,n}$
+2. Add hierarchical deviation (non-centered): $\theta_{true} = \theta_{nutrients} + \tau \cdot z$
+3. Apply nut-specific adjustment prior: $\theta_{adjusted} = \theta_{true} \cdot a_{nut,pathway}$
+4. Apply confounding: $\theta_{causal} = c \cdot \theta_{adjusted}$
+5. Convert to RR: $RR_{pathway} = \exp(\theta_{causal})$
 
-These adjustments capture effects from non-modeled bioactives (polyphenols, phytochemicals, specific fatty acid ratios) that are not fully explained by the 10 nutrients in Table 2. Values are derived from nut-specific RCT evidence *after* accounting for nutrient composition, representing residual effects. Almonds serve as the reference nut (adjustment = 1.00) with the most robust RCT evidence base.
+**MCMC Sampling:**
+- 4 chains, 1000 warmup + 1000 draws each = 4000 posterior samples
+- NUTS sampler with target_accept=0.95, max_treedepth=12
+- Seed=42 for reproducibility
+
+**Lifecycle Integration:**
+For each of 500 posterior samples:
+1. Extract pathway-specific RRs and confounding fraction
+2. Compute age-weighted mortality reduction using CDC life tables
+3. Sample quality weight: $q \sim \text{Beta}(17, 3)$, mean = 0.85
+4. Compute discounted QALYs (3% annual rate)
+
+## Nut-Specific Adjustment Priors
+
+These adjustment factors are **priors** used in the hierarchical model (step 3 above: $\theta_{adjusted} = \theta_{true} \cdot a_{nut,pathway}$). They capture effects from non-modeled bioactives (polyphenols, phytochemicals, specific fatty acid ratios) not explained by the 10 nutrients in Table 2.
+
+Values are derived from nut-specific RCT evidence that shows effects beyond what nutrient composition predicts. For example, walnuts in PREDIMED showed CVD benefits exceeding their ALA content predictions, yielding an adjustment of 1.25 (25% stronger effect). Almonds serve as the reference nut (adjustment = 1.00) with the most robust RCT evidence base.
+
+These priors are **independent** of nutrient priors—they represent additional information not captured by compositional analysis, avoiding double-counting.
 
 | Nut | CVD Adj | Cancer Adj | Other Adj | Evidence | Rationale |
 |-----|---------|------------|-----------|----------|-----------|

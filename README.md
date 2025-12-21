@@ -42,6 +42,12 @@ Full methodology and interactive analysis available in the JupyterBook documenta
 
 **Requirements**: Python ≥3.10
 
+### Run Tests
+```bash
+pip install whatnut[dev]
+pytest tests/ -v
+```
+
 ### Validate Paper Values
 All paper values are stored in `src/whatnut/paper_results.py`. To verify consistency:
 ```bash
@@ -49,11 +55,15 @@ python src/whatnut/paper_results.py
 ```
 
 ### Regenerate from MCMC
-To regenerate results from scratch (requires PyMC, ~10 minutes):
+To regenerate results from scratch:
 ```bash
 pip install whatnut[bayesian]
 python src/whatnut/bayesian_model.py
 ```
+
+**Hardware requirements**: ~8GB RAM, 4+ CPU cores
+**Runtime**: ~10 minutes (4 chains × 2000 samples on Apple M1)
+**Note**: MCMC results may vary slightly across hardware due to floating-point differences. For exact reproduction, use precomputed values in `paper_results.py`.
 
 ### Build the Paper
 ```bash
@@ -63,8 +73,8 @@ myst build --html  # or --pdf
 
 ### Data Sources
 All data are from public sources:
-- Nutrient data: USDA FoodData Central
-- Mortality data: CDC life tables
+- Nutrient data: USDA FoodData Central (2024)
+- Mortality data: CDC life tables (2021)
 - Meta-analysis estimates: Published literature (see references in paper)
 
 ## License
