@@ -31,15 +31,15 @@ For each of 10,000 Monte Carlo iterations:
 
 ## Nut-Specific Adjustment Factors
 
-| Nut | Adjustment | SD | Evidence | Rationale |
-|-----|-----------|-----|----------|-----------|
-| Walnut | 1.15 | 0.08 | Strong | PREDIMED, WAHA RCTs, unique omega-3 profile |
-| Pistachio | 1.08 | 0.10 | Moderate | Best lipid improvements in RCTs |
-| Almond | 1.00 | 0.06 | Strong | Reference nut, robust RCT base |
-| Pecan | 1.00 | 0.12 | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` RCTs show significant LDL reductions |
-| Macadamia | 1.02 | 0.12 | Moderate | FDA health claim, RCT evidence |
-| Peanut | 0.95 | 0.07 | Strong | {cite}`bao2013association` cohort (n=118,962), slight aflatoxin discount |
-| Cashew | 0.95 | 0.12 | Limited | Mixed RCT results ({cite}`mah2017cashew`), CIs cross zero |
+| Nut | CVD Adj | Cancer Adj | Other Adj | Evidence | Rationale |
+|-----|---------|------------|-----------|----------|-----------|
+| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA RCTs, highest omega-3 |
+| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Strong lipid improvements in RCTs |
+| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference nut, robust RCT base |
+| Pecan | 1.08 (0.10) | 0.98 (0.12) | 1.00 (0.12) | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` |
+| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Omega-7, FDA health claim |
+| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962), aflatoxin concern |
+| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs |
 
 Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values.
 
@@ -47,13 +47,13 @@ Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values.
 
 The evidence-optimized prior Beta(1.5, 4.5) was derived by minimizing squared error to calibration targets:
 
-| Source | Implied Causal % | Weight |
-|--------|------------------|--------|
-| LDL pathway calibration | ~17% | 1.0 |
-| UK Biobank sibling comparisons | ~20% | 1.0 |
-| Golestan cohort (Iran) | >25% | 0.5 |
+| Source | Target Causal % | Weight |
+|--------|-----------------|--------|
+| LDL pathway calibration | 12% | 0.4 |
+| Sibling comparisons | 20% | 0.4 |
+| Golestan cohort (Iran) | 40% | 0.2 |
 
-**Optimization**: We minimized $\sum_i w_i \cdot (\mu_{prior} - \mu_i)^2 / (\sigma_{prior}^2 + \sigma_i^2)$ subject to concentration $\alpha + \beta \geq 5$.
+**Optimization**: Rather than setting the prior mean to a simple weighted average of targets, we calibrated Beta parameters to match the full distribution of evidence—capturing both the central tendency and the wide uncertainty across sources.
 
 **Result**: Beta(1.5, 4.5) with mean 0.25 (95% CI: 2-63%).
 
@@ -68,11 +68,10 @@ The evidence-optimized prior Beta(1.5, 4.5) was derived by minimizing squared er
 ### Lifecycle Model
 
 For a 40-year-old beginning daily nut consumption:
-- **Undiscounted life years gained**: ~0.33 years (4 months)
-- **Undiscounted QALYs**: ~0.28 (life years × quality weight)
-- **Discounted QALYs**: ~0.08 (3% annual discounting over 40+ years)
-- **Discounted lifetime cost**: ~$4,200 (almonds at $248/year)
-- **ICER**: ~$60,000/QALY
+- **Undiscounted life years gained**: ~0.43 years (5 months)
+- **Undiscounted QALYs**: ~0.27 (life years × age-weighted quality)
+- **Discounted QALYs**: ~0.08-0.10 (3% annual discounting over 40+ years)
+- **ICERs**: $10,000/QALY (peanuts) to $57,000/QALY (macadamias)
 
 ### Sensitivity to Discount Rate
 
@@ -85,7 +84,7 @@ For a 40-year-old beginning daily nut consumption:
 
 ## E-Value Analysis
 
-Per {cite}`mathur2020sensitivity`, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
+Per {cite}`vanderweele2017sensitivity`, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
 
 For a protective exposure with hazard ratio $HR$, we first convert to relative risk $RR = 1/HR$, then calculate:
 

@@ -22,14 +22,7 @@ project:
     - references.bib
   toc:
     - file: index.md
-    - title: Appendix
-      children:
-        - file: appendix.md
-    - title: Analysis
-      children:
-        - file: notebooks/evidence.ipynb
-        - file: notebooks/simulation.ipynb
-        - file: notebooks/results.ipynb
+    - file: appendix.md
 
 site:
   template: book-theme
