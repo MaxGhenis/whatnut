@@ -10,19 +10,39 @@ Observational studies find nut consumption associated with reduced mortality. I 
 
 ## Introduction
 
-Observational studies find negative associations between nut consumption and all-cause mortality. In a meta-analysis of 15 prospective cohort studies (n=819,448), {cite}`aune2016nut` find that consuming 28 grams of nuts daily is associated with a 22% reduction in all-cause mortality (relative risk [RR] 0.78, 95% confidence interval [CI]: 0.72-0.84). {cite}`bao2013association` (n=118,962) and {cite}`grosso2015nut` (n=354,933) report similar associations.
+### The Nut-Mortality Association
 
-Three challenges complicate translation of these findings: (1) most studies examine "nuts" as a single category, obscuring differences between nut types; (2) observational studies cannot distinguish causal effects from confounding; (3) relative risk reductions do not directly map to absolute benefits.
+The relationship between nut consumption and mortality has been studied for over three decades. {cite}`fraser1992possible` first reported reduced coronary heart disease risk among nut consumers in the Adventist Health Study. Subsequent prospective cohorts replicated this finding: the Iowa Women's Health Study {cite:p}`ellsworth2001frequent`, the Physicians' Health Study {cite:p}`albert2002nut`, and the Nurses' Health Study {cite:p}`hu2003nut` each reported 30-50% reductions in cardiovascular disease (CVD) risk among regular nut consumers.
 
-Quality-adjusted life years (QALYs) provide a standardized metric combining life expectancy and health-related quality of life. The UK National Institute for Health and Care Excellence (NICE), US Institute for Clinical and Economic Review (ICER), and WHO-CHOICE (World Health Organization CHOosing Interventions that are Cost-Effective) use QALYs in cost-effectiveness analyses.
+The evidence base expanded substantially with three large-scale analyses. {cite}`bao2013association` analyzed 118,962 participants from the Nurses' Health Study and Health Professionals Follow-up Study, finding that consuming nuts ≥7 times per week was associated with 20% lower all-cause mortality (hazard ratio [HR] 0.80, 95% CI: 0.73-0.86). {cite}`grosso2015nut` conducted a meta-analysis of 354,933 participants across 18 cohorts, estimating a 19% mortality reduction (RR 0.81, 95% CI: 0.77-0.85) for highest versus lowest consumption. {cite}`aune2016nut` synthesized 819,448 participants across 15 cohorts, finding that 28g/day of nut consumption was associated with 22% lower all-cause mortality (RR 0.78, 95% CI: 0.72-0.84).
 
-This paper develops a Bayesian Monte Carlo framework for estimating QALY gains from nut consumption, addressing: (1) expected benefit magnitude; (2) nut type comparisons; (3) sensitivity to confounding assumptions.
+### Cause-Specific Effects
+
+The mortality benefit appears concentrated in cardiovascular causes. {cite}`aune2016nut` find stronger associations for CVD mortality (RR 0.71, 95% CI: 0.63-0.80) than cancer mortality (RR 0.87, 95% CI: 0.80-0.93). This pattern aligns with mechanistic studies showing that nuts improve intermediate CVD risk factors: {cite}`delgobbo2015effects` meta-analyzed 61 controlled feeding trials (n=2,582) and found that nut consumption reduces low-density lipoprotein (LDL) cholesterol by 4.8 mg/dL (0.12 mmol/L), with additional improvements in apolipoprotein B and triglycerides.
+
+### The Confounding Problem
+
+A central challenge in nutritional epidemiology is distinguishing causal effects from confounding. Nut consumers differ systematically from non-consumers: they are more likely to exercise, less likely to smoke, have higher education and income, and consume more fruits and vegetables {cite:p}`jenab2004associated`. While cohort studies adjust for these measured confounders, unmeasured confounding may persist.
+
+Three lines of evidence inform the causal fraction of observed associations. First, the Golestan cohort {cite:p}`hashemian2017nut` studied 50,045 adults in northeastern Iran, where nut consumption does not correlate with Western healthy lifestyle patterns. The mortality association persisted (HR 0.71 for ≥3 servings/week), suggesting causal effects independent of healthy-user confounding. Second, sibling-comparison designs that control for shared genetic and environmental factors typically find attenuated—though non-zero—dietary associations. Third, calibrating observed effects against the magnitude predicted from RCT-demonstrated improvements in intermediate outcomes (e.g., LDL cholesterol) suggests that only a fraction of observed associations can be mechanistically explained.
+
+### Gaps in Existing Literature
+
+Three limitations motivate this analysis. First, most studies examine "any nuts" as a single category, obscuring compositional differences. Walnuts contain 2.5g of alpha-linolenic acid (ALA) omega-3 per 28g serving; almonds contain none. Macadamias contain 4.7g of palmitoleic acid (omega-7); other nuts contain negligible amounts. These differences may translate to differential health effects.
+
+Second, relative risk reductions do not directly map to absolute benefits. A 22% mortality reduction sounds substantial, but absolute life expectancy gains depend on baseline mortality risk, age distribution of benefits, and cause-specific mortality patterns.
+
+Third, health policy requires standardized metrics for resource allocation. Quality-adjusted life years (QALYs) combine life expectancy and health-related quality of life into a single metric. The UK National Institute for Health and Care Excellence (NICE), US Institute for Clinical and Economic Review (ICER), and WHO-CHOICE (World Health Organization CHOosing Interventions that are Cost-Effective) use QALYs in cost-effectiveness analyses. No existing study quantifies QALY gains from nut consumption.
+
+### Contribution
+
+This paper develops a Bayesian Monte Carlo framework for estimating QALY gains from nut consumption, addressing: (1) expected benefit magnitude in standardized units; (2) nut type comparisons based on compositional differences; (3) explicit treatment of confounding uncertainty calibrated to multiple evidence sources.
 
 ### Nut Nutrient Profiles
 
 Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024fooddata`. All contain 12-22g fat per 28g serving, but differ in fatty acid profiles (monounsaturated vs. polyunsaturated), micronutrient content, and caloric density (157-204 kcal per serving).
 
-**Table 2: Nut Nutrient Profiles.** Macronutrients and key micronutrients per 28g serving. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid); MUFA = monounsaturated fatty acids; PUFA = polyunsaturated fatty acids. Values from USDA FoodData Central SR Legacy database, accessed December 2024.
+**Table 1: Nut Nutrient Profiles.** Macronutrients and key micronutrients per 28g serving. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid); MUFA = monounsaturated fatty acids; PUFA = polyunsaturated fatty acids. Values from USDA FoodData Central SR Legacy database, accessed December 2024.
 
 | Nut | FDC ID | kcal | Fat (g) | MUFA | PUFA | ALA (g) | Fiber (g) | Protein (g) | Notable |
 |-----|--------|------|---------|------|------|---------|-----------|-------------|---------|
@@ -34,27 +54,13 @@ Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024foodda
 | Peanut | [172430](https://fdc.nal.usda.gov/fdc-app.html#/food-details/172430/nutrients) | 161 | 14.0 | 6.9 | 4.4 | 0.0 | 2.4 | 7.3 | Highest protein |
 | Cashew | [170162](https://fdc.nal.usda.gov/fdc-app.html#/food-details/170162/nutrients) | 157 | 12.4 | 6.7 | 2.2 | 0.0 | 0.9 | 5.2 | Lowest fat/fiber |
 
-**Walnuts** are unique among nuts for their high ALA omega-3 content (2.5g/28g), comprising 73% of total fat as polyunsaturated fatty acids. ALA is a precursor to EPA and DHA, with established anti-inflammatory and cardioprotective effects {cite:p}`ros2008mediterranean`.
+**Walnuts** have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total fat as polyunsaturated fatty acids. ALA is a precursor to EPA and DHA {cite:p}`ros2008mediterranean`.
 
-**Almonds** provide the highest vitamin E content (7.3mg/28g, 49% DV), a lipid-soluble antioxidant. They also have the highest fiber content among tree nuts, contributing to glycemic control.
+**Almonds** have the highest vitamin E content (7.3mg/28g, 49% DV) and highest fiber content among tree nuts (3.5g/28g).
 
-**Macadamias** uniquely contain omega-7 fatty acids (palmitoleic acid, 4.7g/28g), which may improve insulin sensitivity. However, they have the highest caloric density (204 kcal) and saturated fat content (3.4g).
+**Macadamias** are the only common nut with substantial omega-7 fatty acids (palmitoleic acid, 4.7g/28g). They also have the highest caloric density (204 kcal) and saturated fat content (3.4g).
 
-**Peanuts** (technically legumes) have the highest protein content (7.3g/28g) and lowest cost, but carry aflatoxin contamination risk that may affect cancer outcomes.
-
-These compositional differences suggest that nut-specific effects may vary by mortality pathway, motivating the pathway-specific modeling approach in this paper.
-
-**Table 1: Pathway-Specific Nut Adjustment Factors.** Adjustment factors applied as exponents to cause-specific relative risks (RRs) for each mortality pathway. Factors derived from RCT evidence on intermediate outcomes (LDL cholesterol, lipid profiles) and nutrient composition. Values >1.0 indicate stronger protective effects than almonds (reference category); values <1.0 indicate weaker effects. Standard deviations (in parentheses) reflect evidence quality: wider SDs for nuts with limited RCT evidence. CVD adjustments primarily reflect omega-3 content and lipid trial results; cancer adjustments reflect antioxidant content and aflatoxin concerns; other-cause adjustments reflect general anti-inflammatory properties.
-
-| Nut | CVD | Cancer | Other | Evidence | Rationale |
-|-----|-----|--------|-------|----------|-----------|
-| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | Highest omega-3 (2.5g ALA/28g); PREDIMED, WAHA RCTs show CVD benefit |
-| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference category; highest vitamin E (7.3mg/28g) |
-| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Strong lipid improvements; high fiber and lutein content |
-| Pecan | 1.08 (0.10) | 0.98 (0.12) | 1.00 (0.12) | Moderate | Moderate omega-3 (0.3g/28g); {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` |
-| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Unique omega-7 content; FDA qualified health claim |
-| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | Aflatoxin contamination risk reduces cancer benefit; large cohort data |
-| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew` shows modest LDL reduction vs control with wider uncertainty than walnut/almond trials |
+**Peanuts** (technically legumes) have the highest protein content (7.3g/28g) and lowest cost. Aflatoxin contamination is a concern in some regions.
 
 ## Methods
 
@@ -79,7 +85,19 @@ I employed a Bayesian Monte Carlo simulation with 10,000 iterations using the `l
    - Cancer mortality: RR ~ LogNormal(log(0.87), 0.04)
    - Other mortality: RR ~ LogNormal(log(0.90), 0.03)
 
-2. Applied pathway-specific nut adjustment factors (exponents on cause-specific RRs) based on nutrient profiles and RCT evidence. Each nut type has separate adjustments for CVD, cancer, and other mortality pathways. For example, walnuts have a strong CVD adjustment (1.25, SD 0.08) reflecting their high omega-3 content, while peanuts have a cancer penalty (0.90, SD 0.08) reflecting aflatoxin concerns. See Table 1 for complete adjustment factors. Values >1.0 indicate stronger effects than the reference nut (almonds).
+2. Applied pathway-specific nut adjustment factors (exponents on cause-specific RRs) based on nutrient profiles and RCT evidence. Each nut type has separate adjustments for CVD, cancer, and other mortality pathways. For example, walnuts have a strong CVD adjustment (1.25, SD 0.08) reflecting their high omega-3 content, while peanuts have a cancer penalty (0.90, SD 0.08) reflecting aflatoxin concerns. See Table 2 for complete adjustment factors. Values >1.0 indicate stronger effects than the reference nut (almonds).
+
+**Table 2: Pathway-Specific Adjustment Factors by Nut Type.** Adjustment factors are exponents applied to cause-specific relative risks. Values >1.0 indicate stronger effects than the reference nut (almonds); values <1.0 indicate weaker effects. Standard deviations (SD) reflect uncertainty; nuts with limited RCT evidence receive wider SDs. CVD = cardiovascular disease.
+
+| Nut | CVD Adj (SD) | Cancer Adj (SD) | Other Adj (SD) | Evidence | Rationale |
+|-----|--------------|-----------------|----------------|----------|-----------|
+| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA RCTs; highest omega-3 |
+| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Strong lipid improvements in RCTs |
+| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference nut; robust RCT base |
+| Pecan | 1.08 (0.10) | 0.98 (0.12) | 1.00 (0.12) | Moderate | Hart 2025, Guarneiri 2021 RCTs |
+| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Omega-7; FDA health claim |
+| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | Bao 2013 (n=118,962); aflatoxin concern |
+| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | Mah 2017 (CIs cross zero) |
 
 3. Applied confounding adjustment sampled from Beta(1.5, 4.5) with mean 0.25.
 
