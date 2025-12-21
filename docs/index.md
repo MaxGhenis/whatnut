@@ -20,21 +20,29 @@ This paper develops a Bayesian Monte Carlo framework for estimating QALY gains f
 
 ### Nut Nutrient Profiles
 
-Different nuts have distinct nutrient profiles that suggest pathway-specific mechanisms {cite:p}`usda2024fooddata`:
+Nuts are nutrient-dense foods with distinct compositional profiles that suggest pathway-specific health mechanisms {cite:p}`usda2024fooddata`. All nuts are high in unsaturated fats (12-22g per 28g serving), but differ substantially in fatty acid composition, micronutrient content, and caloric density (157-204 kcal per serving).
 
-**Table 2: Nut Nutrient Profiles.** Key nutrients per 28g serving and primary mechanistic pathways. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid). Nutrient values from USDA FoodData Central with FDC IDs provided in the data repository.
+**Table 2: Nut Nutrient Profiles.** Macronutrients and key micronutrients per 28g serving. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid); MUFA = monounsaturated fatty acids; PUFA = polyunsaturated fatty acids. Values from USDA FoodData Central.
 
-| Nut | Key Nutrients (per 28g) | Primary Mechanism |
-|-----|------------------------|-------------------|
-| Walnut | 2.5g ALA omega-3 | CVD (anti-inflammatory, lipids) |
-| Almond | 7.3mg vitamin E, 3.5g fiber | Antioxidant, glycemic control |
-| Pistachio | 3g fiber, 6g protein, lutein | Lipids, satiety |
-| Pecan | 0.3g ALA omega-3, 2.7g fiber | CVD (weaker than walnut) |
-| Macadamia | Omega-7 (palmitoleic acid) | Lipids, insulin sensitivity |
-| Peanut | 7g protein, 2.4g fiber | Satiety, glycemic control |
-| Cashew | 5g protein, low fiber | Mixed (limited evidence) |
+| Nut | kcal | Fat (g) | MUFA | PUFA | ALA (g) | Fiber (g) | Protein (g) | Notable |
+|-----|------|---------|------|------|---------|-----------|-------------|---------|
+| Walnut | 185 | 18.5 | 2.5 | 13.4 | 2.5 | 1.9 | 4.3 | Highest omega-3 |
+| Almond | 164 | 14.2 | 9.0 | 3.5 | 0.0 | 3.5 | 6.0 | Highest vitamin E (7.3mg) |
+| Pistachio | 159 | 12.8 | 6.8 | 3.8 | 0.1 | 2.9 | 5.7 | Lutein (342μg) |
+| Pecan | 196 | 20.4 | 11.6 | 6.1 | 0.3 | 2.7 | 2.6 | High MUFA |
+| Macadamia | 204 | 21.5 | 16.7 | 0.4 | 0.1 | 2.4 | 2.2 | Omega-7 (4.7g) |
+| Peanut | 161 | 14.0 | 6.9 | 4.4 | 0.0 | 2.4 | 7.3 | Highest protein |
+| Cashew | 157 | 12.4 | 6.7 | 2.2 | 0.0 | 0.9 | 5.2 | Lowest fat/fiber |
 
-Walnuts contain 10x more ALA omega-3 than other tree nuts. Macadamias uniquely contain omega-7 fatty acids. Almonds have the highest vitamin E content. These differences suggest that nut-specific effects may vary by mortality pathway.
+**Walnuts** are unique among nuts for their high ALA omega-3 content (2.5g/28g), comprising 73% of total fat as polyunsaturated fatty acids. ALA is a precursor to EPA and DHA, with established anti-inflammatory and cardioprotective effects {cite:p}`ros2008mediterranean`.
+
+**Almonds** provide the highest vitamin E content (7.3mg/28g, 49% DV), a lipid-soluble antioxidant. They also have the highest fiber content among tree nuts, contributing to glycemic control.
+
+**Macadamias** uniquely contain omega-7 fatty acids (palmitoleic acid, 4.7g/28g), which may improve insulin sensitivity. However, they have the highest caloric density (204 kcal) and saturated fat content (3.4g).
+
+**Peanuts** (technically legumes) have the highest protein content (7.3g/28g) and lowest cost, but carry aflatoxin contamination risk that may affect cancer outcomes.
+
+These compositional differences suggest that nut-specific effects may vary by mortality pathway, motivating the pathway-specific modeling approach in this paper.
 
 **Table 1: Pathway-Specific Nut Adjustment Factors.** Adjustment factors applied as exponents to cause-specific relative risks (RRs) for each mortality pathway. Factors derived from RCT evidence on intermediate outcomes (LDL cholesterol, lipid profiles) and nutrient composition. Values >1.0 indicate stronger protective effects than almonds (reference category); values <1.0 indicate weaker effects. Standard deviations (in parentheses) reflect evidence quality: wider SDs for nuts with limited RCT evidence. CVD adjustments primarily reflect omega-3 content and lipid trial results; cancer adjustments reflect antioxidant content and aflatoxin concerns; other-cause adjustments reflect general anti-inflammatory properties.
 

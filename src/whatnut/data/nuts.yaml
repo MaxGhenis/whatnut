@@ -5,7 +5,12 @@
 walnut:
   fdc_id: 170187  # Nuts, walnuts, english
   nutrients:
-    omega3_ala_g: 2.5      # Highest of all nuts
+    calories_kcal: 185
+    total_fat_g: 18.5
+    saturated_fat_g: 1.7
+    monounsaturated_fat_g: 2.5
+    polyunsaturated_fat_g: 13.4    # Highest PUFA
+    omega3_ala_g: 2.5              # Highest of all nuts
     omega7_g: 0.0
     vitamin_e_mg: 0.7
     fiber_g: 1.9
@@ -29,9 +34,14 @@ walnut:
 almond:
   fdc_id: 170567  # Nuts, almonds
   nutrients:
+    calories_kcal: 164
+    total_fat_g: 14.2
+    saturated_fat_g: 1.1
+    monounsaturated_fat_g: 9.0     # High MUFA
+    polyunsaturated_fat_g: 3.5
     omega3_ala_g: 0.0
     omega7_g: 0.0
-    vitamin_e_mg: 7.3      # Highest of all nuts
+    vitamin_e_mg: 7.3              # Highest of all nuts
     fiber_g: 3.5
     protein_g: 6.0
   pathway_adjustments:
@@ -53,12 +63,17 @@ almond:
 pistachio:
   fdc_id: 170184  # Nuts, pistachio nuts, raw
   nutrients:
+    calories_kcal: 159
+    total_fat_g: 12.8
+    saturated_fat_g: 1.6
+    monounsaturated_fat_g: 6.8
+    polyunsaturated_fat_g: 3.8
     omega3_ala_g: 0.07
     omega7_g: 0.0
     vitamin_e_mg: 0.8
     fiber_g: 2.9
     protein_g: 5.7
-    lutein_mcg: 342        # Unique: eye health
+    lutein_mcg: 342                # Unique: eye health
   pathway_adjustments:
     cvd:
       mean: 1.12
@@ -78,6 +93,11 @@ pistachio:
 pecan:
   fdc_id: 170182  # Nuts, pecans
   nutrients:
+    calories_kcal: 196
+    total_fat_g: 20.4
+    saturated_fat_g: 1.8
+    monounsaturated_fat_g: 11.6
+    polyunsaturated_fat_g: 6.1
     omega3_ala_g: 0.28
     omega7_g: 0.0
     vitamin_e_mg: 0.4
@@ -102,8 +122,13 @@ pecan:
 macadamia:
   fdc_id: 170178  # Nuts, macadamia nuts, raw
   nutrients:
+    calories_kcal: 204             # Highest calorie density
+    total_fat_g: 21.5              # Highest fat
+    saturated_fat_g: 3.4           # Highest saturated fat
+    monounsaturated_fat_g: 16.7    # Highest MUFA
+    polyunsaturated_fat_g: 0.4
     omega3_ala_g: 0.06
-    omega7_g: 4.7           # Unique: omega-7 (palmitoleic acid)
+    omega7_g: 4.7                  # Unique: omega-7 (palmitoleic acid)
     vitamin_e_mg: 0.2
     fiber_g: 2.4
     protein_g: 2.2
@@ -126,11 +151,16 @@ macadamia:
 peanut:
   fdc_id: 172430  # Peanuts, all types, raw
   nutrients:
+    calories_kcal: 161
+    total_fat_g: 14.0
+    saturated_fat_g: 1.9
+    monounsaturated_fat_g: 6.9
+    polyunsaturated_fat_g: 4.4
     omega3_ala_g: 0.0
     omega7_g: 0.0
     vitamin_e_mg: 2.4
     fiber_g: 2.4
-    protein_g: 7.3          # Highest protein (legume)
+    protein_g: 7.3                 # Highest protein (legume)
   pathway_adjustments:
     cvd:
       mean: 0.98
@@ -150,10 +180,15 @@ peanut:
 cashew:
   fdc_id: 170162  # Nuts, cashew nuts, raw
   nutrients:
+    calories_kcal: 157             # Lowest calorie density
+    total_fat_g: 12.4              # Lowest fat
+    saturated_fat_g: 2.2
+    monounsaturated_fat_g: 6.7
+    polyunsaturated_fat_g: 2.2
     omega3_ala_g: 0.02
     omega7_g: 0.0
     vitamin_e_mg: 0.3
-    fiber_g: 0.9            # Lowest fiber
+    fiber_g: 0.9                   # Lowest fiber
     protein_g: 5.2
   pathway_adjustments:
     cvd:
