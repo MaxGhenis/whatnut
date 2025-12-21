@@ -212,7 +212,7 @@ Approximately 75% of the QALY benefit operates through CVD prevention, with the 
 
 ### Cost-Effectiveness
 
-All nuts fall below cost-effectiveness thresholds used by major health technology assessment bodies. NICE considers interventions below £20,000/QALY clearly cost-effective; those between £20,000-30,000/QALY require additional justification {cite:p}`nice2024threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks, reporting what fraction of simulations fall below each {cite:p}`icer2024reference`. All nuts in this analysis fall below NICE's lower threshold and ICER's lowest benchmark. Peanuts achieve the lowest ICER due to low cost (\$37/year) combined with the third-highest QALY estimate.
+NICE considers interventions below £20,000/QALY (\$25,000) clearly cost-effective; those between £20,000-30,000/QALY (\$25,000-38,000) require additional justification {cite:p}`nice2024threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks {cite:p}`icer2024reference`. Five nuts (peanut, almond, walnut, cashew, pistachio) fall below NICE's lower threshold and ICER's \$50,000 benchmark. Pecan (\$31,400) falls in NICE's intermediate range, while macadamia (\$44,800) approaches but remains below ICER's \$50,000 benchmark. Peanuts achieve the lowest ICER due to low cost (\$37/year) combined with the third-highest QALY estimate.
 
 **Table 6: Evidence Quality by Nut Type.** I classified evidence quality based on sample size and study design: "Strong" = multiple RCTs or large cohorts (n>100,000); "Moderate" = single RCT or smaller cohorts; "Limited" = RCTs with confidence intervals crossing null.
 
@@ -244,7 +244,7 @@ These estimates are lower than unadjusted observational associations (22% mortal
 
 ### Cost-Effectiveness
 
-ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias)—all below NICE's £20,000/QALY threshold for clear cost-effectiveness and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost.
+ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). Five nuts fall below NICE's £20,000/QALY (\$25,000) threshold for clear cost-effectiveness; pecan and macadamia fall in NICE's intermediate range but remain below ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost.
 
 ### Sensitivity Analyses
 
@@ -268,7 +268,7 @@ I examined robustness to key parameter assumptions:
 
 ## Conclusion
 
-Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias)—all below NICE's £20,000/QALY threshold for clear cost-effectiveness and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. **Caution**: Individuals with nut allergies (1-2% prevalence {cite:p}`sicherer2010epidemiology`) should not consume nuts.
+Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). Five nuts fall below NICE's £20,000/QALY (\$25,000) threshold for clear cost-effectiveness; pecan and macadamia fall in NICE's intermediate range but remain below ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. **Caution**: Individuals with nut allergies (1-2% prevalence {cite:p}`sicherer2010epidemiology`) should not consume nuts.
 
 ## Data and Code Availability
 
