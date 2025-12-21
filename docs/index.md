@@ -4,9 +4,18 @@
 
 max@maxghenis.com
 
+```{code-cell} python
+:tags: [remove-cell]
+
+# Setup: Import paper results (single source of truth)
+import sys
+sys.path.insert(0, '../src')
+from whatnut.paper_results import r
+```
+
 ## Abstract
 
-Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, other mortality, and quality of life), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that consuming 28g/day of walnuts yields 0.20 quality-adjusted life years (QALYs; 95% credible interval [CI]: 0.02-0.55), with other nuts ranging from 0.11 QALYs (pecans) to 0.20 QALYs (almonds). Approximately 75% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of 0.83-0.90 for CVD versus 0.97-0.99 for cancer. Incremental cost-effectiveness ratios (ICERs) range from \$5,700/QALY (peanuts) to \$45,000/QALY (macadamias). These findings apply to individuals without nut allergies (2-4% of adults).
+Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, other mortality, and quality of life), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that consuming 28g/day of walnuts yields {eval}`r.walnut.qaly` quality-adjusted life years (QALYs; 95% credible interval [CI]: {eval}`r.walnut.qaly_ci`), with other nuts ranging from {eval}`r.pecan.qaly` QALYs (pecans) to {eval}`r.almond.qaly` QALYs (almonds). Approximately {eval}`r.cvd_contribution`% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of {eval}`r.cvd_effect_range` for CVD versus {eval}`r.cancer_effect_range` for cancer. Incremental cost-effectiveness ratios (ICERs) range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias). These findings apply to individuals without nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults).
 
 ## Introduction
 
@@ -95,7 +104,7 @@ I model nut-specific effects as deviations from nutrient-predicted effects using
 
 #### Confounding Adjustment
 
-The model includes a causal fraction parameter with Beta(1.5, 4.5) prior (mean 0.25, 95% CI: 0.02-0.63), calibrated to three evidence sources (see Confounding Calibration section below).
+The model includes a causal fraction parameter with Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) prior (mean {eval}`r.confounding_mean`, 95% CI: {eval}`r.confounding_ci_lower`-{eval}`r.confounding_ci_upper`), calibrated to three evidence sources (see Confounding Calibration section below).
 
 #### Lifecycle Integration
 
@@ -111,13 +120,13 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **Golestan cohort**: {cite}`hashemian2017nut` find that in Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persists (hazard ratio [HR] 0.71 for ≥3 servings/week).
 
-I calibrated the Beta prior by assigning weights to each evidence source: LDL pathway (weight 0.4, target 12% causal), sibling studies (weight 0.4, target 20% causal), and Golestan cohort (weight 0.2, target 40% causal given persistent associations). Rather than setting the prior mean to a simple weighted average of targets, I calibrated Beta parameters to match the full distribution of evidence—capturing both the central tendency and the wide uncertainty across sources. This yields Beta(1.5, 4.5), a right-skewed distribution with mean 0.25 and 95% CI: 2-63%, reflecting that most evidence points to low causal fractions while allowing for the possibility of larger effects suggested by the Golestan cohort.
+I calibrated the Beta prior by assigning weights to each evidence source: LDL pathway (weight 0.4, target 12% causal), sibling studies (weight 0.4, target 20% causal), and Golestan cohort (weight 0.2, target 40% causal given persistent associations). Rather than setting the prior mean to a simple weighted average of targets, I calibrated Beta parameters to match the full distribution of evidence—capturing both the central tendency and the wide uncertainty across sources. This yields Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`), a right-skewed distribution with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%, reflecting that most evidence points to low causal fractions while allowing for the possibility of larger effects suggested by the Golestan cohort.
 
-Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value as 1.88 for HR=0.78: an unmeasured confounder would need RR ≥ 1.88 with both nut consumption and mortality to fully explain the observed association.
+Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value as {eval}`r.e_value` for HR=0.78: an unmeasured confounder would need RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed association.
 
 ### Target Population
 
-I modeled a 40-year-old from the United States or Europe with 40 years remaining life expectancy. I excluded individuals with nut allergies (2-4% prevalence, with peanut allergy alone affecting ~3% of US adults {cite:p}`gupta2021prevalence`).
+I modeled a {eval}`r.target_age`-year-old from the United States or Europe with {eval}`r.life_expectancy` years remaining life expectancy. I excluded individuals with nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% prevalence, with peanut allergy alone affecting ~3% of US adults {cite:p}`gupta2021prevalence`).
 
 ### Cost-Effectiveness Analysis
 
@@ -131,17 +140,14 @@ MCMC sampling achieved convergence across all parameters. Table 3a reports diagn
 
 **Table 3a: MCMC Convergence Diagnostics.** R-hat values near 1.0 indicate convergence across chains; ESS (effective sample size) > 400 indicates sufficient independent samples. All parameters meet standard thresholds.
 
-| Parameter | R-hat | ESS (bulk) | ESS (tail) | Divergences |
-|-----------|-------|------------|------------|-------------|
-| Causal fraction | 1.001 | 3,842 | 3,156 | 0 |
-| τ (CVD) | 1.002 | 2,987 | 2,654 | 0 |
-| τ (Cancer) | 1.001 | 3,124 | 2,891 | 0 |
-| τ (Other) | 1.003 | 2,756 | 2,432 | 0 |
-| τ (Quality) | 1.002 | 3,201 | 2,876 | 0 |
-| Walnut CVD effect | 1.001 | 3,456 | 3,012 | 0 |
-| Almond CVD effect | 1.002 | 3,287 | 2,954 | 0 |
+```{code-cell} python
+:tags: [remove-input]
 
-Note: 4,000 posterior samples from 4 chains (1,000 draws each after 1,000 warmup). Zero divergences across all samples.
+from IPython.display import Markdown
+Markdown(r.table_3_diagnostics())
+```
+
+Note: {eval}`r.n_samples` posterior samples from {eval}`r.n_chains` chains ({eval}`r.n_draws` draws each after {eval}`r.n_warmup` warmup). Zero divergences across all samples.
 
 ### Posterior Predictive Validation
 
@@ -149,19 +155,16 @@ As a consistency check, I verified that the model's implied all-cause mortality 
 
 ### Primary Finding
 
-The hierarchical Bayesian model estimates QALY gains ranging from 0.11 (pecans) to 0.20 (walnuts) for a 40-year-old consuming 28g/day over their remaining lifespan.
+The hierarchical Bayesian model estimates QALY gains ranging from {eval}`r.pecan.qaly` (pecans) to {eval}`r.walnut.qaly` (walnuts) for a {eval}`r.target_age`-year-old consuming 28g/day over their remaining lifespan.
 
-**Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling (4,000 draws, 4 chains, 0% divergences). QALYs and costs discounted at 3% annually. Life years (LY) are undiscounted. P(>0) = posterior probability that QALY gain exceeds zero. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
+**Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling ({eval}`r.n_samples` draws, {eval}`r.n_chains` chains, 0% divergences). QALYs and costs discounted at {eval}`int(r.discount_rate * 100)`% annually. Life years (LY) are undiscounted. P(>0) = posterior probability that QALY gain exceeds zero. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
 
-| Nut | Mean QALY | 95% CI | P(>0) | LY Gained | ICER | ICER 95% CI |
-|-----|-----------|--------|-------|-----------|------|-------------|
-| Walnut | 0.20 | [0.02, 0.55] | 98% | 0.45 | \$13,400 | [\$4,900, \$135,000] |
-| Almond | 0.20 | [0.01, 0.56] | 97% | 0.44 | \$13,000 | [\$4,600, \$258,000] |
-| Peanut | 0.17 | [-0.07, 0.60] | 93% | 0.38 | \$5,700 | [\$1,700, dominated] |
-| Cashew | 0.17 | [-0.03, 0.54] | 95% | 0.37 | \$16,800 | [\$5,300, dominated] |
-| Pistachio | 0.16 | [-0.08, 0.55] | 91% | 0.36 | \$19,700 | [\$5,800, dominated] |
-| Macadamia | 0.14 | [-0.02, 0.43] | 96% | 0.31 | \$44,800 | [\$14,700, dominated] |
-| Pecan | 0.11 | [-0.01, 0.36] | 92% | 0.25 | \$31,400 | [\$9,600, dominated] |
+```{code-cell} python
+:tags: [remove-input]
+
+from IPython.display import Markdown
+Markdown(r.table_3_qalys())
+```
 
 Note: "Dominated" indicates ICER undefined when lower CI bound for QALYs is ≤0.
 
@@ -171,19 +174,16 @@ CVD effects are 5-10x stronger than cancer effects (17% vs 2% mortality reductio
 
 **Table 4: Pathway-Specific Relative Risks by Nut Type.** Posterior mean RRs for each mortality pathway. Lower values indicate greater benefit. Quality pathway affects morbidity/utility rather than mortality.
 
-| Nut | CVD RR | Cancer RR | Other RR | Quality RR |
-|-----|--------|-----------|----------|------------|
-| Walnut | 0.83 | 0.98 | 0.94 | 0.96 |
-| Almond | 0.85 | 0.97 | 0.94 | 0.94 |
-| Peanut | 0.84 | 0.99 | 0.96 | 0.96 |
-| Cashew | 0.85 | 0.99 | 0.95 | 0.95 |
-| Pistachio | 0.84 | 0.99 | 0.97 | 0.97 |
-| Macadamia | 0.88 | 0.99 | 0.96 | 0.96 |
-| Pecan | 0.89 | 0.99 | 0.97 | 0.97 |
+```{code-cell} python
+:tags: [remove-input]
+
+from IPython.display import Markdown
+Markdown(r.table_4_pathway_rrs())
+```
 
 ### Pathway Contributions
 
-I estimate that approximately 75% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality (15%) and quality of life improvements (10%).
+I estimate that approximately {eval}`r.cvd_contribution`% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality ({eval}`r.other_contribution`%) and quality of life improvements ({eval}`r.quality_contribution`%).
 
 **Table 5: Pathway Contribution to Total Benefit.** Decomposition of QALY gains by mechanism. CVD dominates due to both stronger relative risk reductions and higher cause-specific mortality at older ages.
 
@@ -218,17 +218,17 @@ Credible interval width reflects both nutrient prior uncertainty and hierarchica
 
 ### Key Findings
 
-The hierarchical Bayesian model estimates 0.11-0.20 discounted QALYs from daily nut consumption, with walnut and almond sharing the top position and pecan ranking lowest. This spread (~45% of the category effect) is larger than previous analyses suggested, reflecting the mechanistic importance of nutrient composition.
+The hierarchical Bayesian model estimates {eval}`r.qaly_range` discounted QALYs from daily nut consumption, with walnut and almond sharing the top position and pecan ranking lowest. This spread (~45% of the category effect) is larger than previous analyses suggested, reflecting the mechanistic importance of nutrient composition.
 
-The dominance of CVD pathway (~75% of benefit) explains the walnut advantage: its 2.5g ALA omega-3 content drives a CVD RR of 0.83 compared to 0.88-0.89 for nuts with negligible ALA. This mechanistic link provides stronger causal support than overall mortality associations.
+The dominance of CVD pathway (~{eval}`r.cvd_contribution`% of benefit) explains the walnut advantage: its 2.5g ALA omega-3 content drives a CVD RR of 0.83 compared to 0.88-0.89 for nuts with negligible ALA. This mechanistic link provides stronger causal support than overall mortality associations.
 
 ### Comparison to Prior Estimates
 
-These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta(1.5, 4.5) confounding prior with mean 0.25 mediates between these extremes.
+These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior with mean {eval}`r.confounding_mean` mediates between these extremes.
 
 ### Cost-Effectiveness
 
-ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). All nuts fall below NICE's new £25,000/QALY (\$33,500) threshold and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost.
+ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias). All nuts fall below NICE's new £{eval}`f'{r.nice_lower_gbp:,}'`/QALY (\${eval}`f'{r.nice_lower_usd:,}'`) threshold and ICER's \${eval}`f'{r.icer_threshold:,}'`/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost.
 
 ### Sensitivity Analyses
 
@@ -248,7 +248,7 @@ Several limitations warrant consideration. Estimates rely on observational data,
 
 ## Conclusion
 
-Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). All nuts fall below NICE's new £25,000/QALY (\$33,500) threshold and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. These findings do not apply to individuals with nut allergies (2-4% of adults {cite:p}`gupta2021prevalence`).
+Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields {eval}`r.qaly_range` discounted QALYs for a {eval}`r.target_age`-year-old, with walnuts and almonds ranking highest. Approximately {eval}`r.cvd_contribution`% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias). All nuts fall below NICE's new £{eval}`f'{r.nice_lower_gbp:,}'`/QALY (\${eval}`f'{r.nice_lower_usd:,}'`) threshold and ICER's \${eval}`f'{r.icer_threshold:,}'`/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. These findings do not apply to individuals with nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults {cite:p}`gupta2021prevalence`).
 
 ## Data and Code Availability
 

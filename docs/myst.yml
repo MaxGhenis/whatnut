@@ -37,3 +37,10 @@ myst:
     - deflist
     - dollarmath
     - linkify
+
+execute:
+  execute_notebooks: force  # Execute all notebooks/code cells
+
+kernelspec:
+  name: python3
+  display_name: Python 3

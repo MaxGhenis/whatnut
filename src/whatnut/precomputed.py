@@ -1,10 +1,21 @@
 """Pre-computed simulation results for presentation layer.
 
+DEPRECATED: This module is deprecated. Use paper_results.py instead.
+paper_results.py is the single source of truth for all paper values
+and is directly imported by the paper via MyST executable code cells.
+
 This module stores canonical results from the lifecycle CEA model,
 allowing notebooks to display results without re-running computation.
 
 Results are generated with seed=42 for reproducibility.
 """
+
+import warnings
+warnings.warn(
+    "precomputed.py is deprecated. Use paper_results.py instead.",
+    DeprecationWarning,
+    stacklevel=2
+)
 
 from dataclasses import dataclass
 import numpy as np

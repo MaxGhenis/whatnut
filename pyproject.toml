@@ -45,6 +45,7 @@ dev = [
 docs = [
     "jupyter-book>=2.0",
     "jupyterlab>=4.0",
+    "myst-nb>=1.0",
 ]
 all = [
     "whatnut[bayesian,dev,docs]",
