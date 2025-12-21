@@ -149,7 +149,7 @@ For HR=0.78, the E-value is 1.8 {cite:p}`vanderweele2017sensitivity`: an unmeasu
 
 ### Target Population
 
-I modeled a 40-year-old from the United States or Europe with 40 years remaining life expectancy. I excluded individuals with nut allergies (1-2% prevalence {cite:p}`sicherer2010epidemiology`).
+I modeled a 40-year-old from the United States or Europe with 40 years remaining life expectancy. I excluded individuals with nut allergies (2-4% prevalence, with peanut allergy alone affecting ~3% of US adults {cite:p}`gupta2021prevalence`).
 
 ### Cost-Effectiveness Analysis
 
@@ -167,23 +167,23 @@ Annual costs use 2024 US retail prices from USDA Economic Research Service: pean
 
 The hierarchical Bayesian model estimates QALY gains ranging from 0.11 (pecans) to 0.20 (walnuts) for a 40-year-old consuming 28g/day over their remaining lifespan.
 
-**Table 3: QALY Estimates by Nut Type.** Posterior estimates from MCMC sampling (4,000 draws, 4 chains, 0% divergences). QALYs are discounted at 3% annually. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
+**Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling (4,000 draws, 4 chains, 0% divergences). QALYs and costs discounted at 3% annually. Life years (LY) are undiscounted. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
 
-| Nut | Mean QALY | Median | 95% CI | ICER |
-|-----|-----------|--------|--------|------|
-| Walnut | 0.20 | 0.18 | [0.02, 0.55] | \$13,400 |
-| Almond | 0.20 | 0.16 | [0.01, 0.56] | \$13,000 |
-| Peanut | 0.17 | 0.14 | [-0.07, 0.60] | \$5,700 |
-| Cashew | 0.17 | 0.14 | [-0.03, 0.54] | \$16,800 |
-| Pistachio | 0.16 | 0.12 | [-0.08, 0.55] | \$19,700 |
-| Macadamia | 0.14 | 0.11 | [-0.02, 0.43] | \$44,800 |
-| Pecan | 0.11 | 0.09 | [-0.01, 0.36] | \$31,400 |
+| Nut | Mean QALY | 95% CI | LY Gained | ICER | ICER 95% CI |
+|-----|-----------|--------|-----------|------|-------------|
+| Walnut | 0.20 | [0.02, 0.55] | 0.45 | \$13,400 | [\$4,900, \$135,000] |
+| Almond | 0.20 | [0.01, 0.56] | 0.44 | \$13,000 | [\$4,600, \$258,000] |
+| Peanut | 0.17 | [-0.07, 0.60] | 0.38 | \$5,700 | [\$1,700, dominated] |
+| Cashew | 0.17 | [-0.03, 0.54] | 0.37 | \$16,800 | [\$5,300, dominated] |
+| Pistachio | 0.16 | [-0.08, 0.55] | 0.36 | \$19,700 | [\$5,800, dominated] |
+| Macadamia | 0.14 | [-0.02, 0.43] | 0.31 | \$44,800 | [\$14,700, dominated] |
+| Pecan | 0.11 | [-0.01, 0.36] | 0.25 | \$31,400 | [\$9,600, dominated] |
 
-Note: Negative lower bounds on CIs reflect uncertainty in confounding adjustment; the probability of benefit > 0 exceeds 90% for all nuts.
+Note: "Dominated" indicates ICER undefined when lower CI bound for QALYs is ≤0. Probability of benefit > 0 exceeds 90% for all nuts.
 
 ### Pathway-Specific Relative Risks
 
-The model reveals substantial pathway heterogeneity. CVD effects are 5-10x stronger than cancer effects, explaining why walnuts (high ALA omega-3) outperform other nuts.
+I find substantial pathway heterogeneity: CVD effects are 5-10x stronger than cancer effects, explaining why walnuts (high ALA omega-3) outperform other nuts.
 
 **Table 4: Pathway-Specific Relative Risks by Nut Type.** Posterior mean RRs for each mortality pathway. Lower values indicate greater benefit. Quality pathway affects morbidity/utility rather than mortality.
 
@@ -199,7 +199,7 @@ The model reveals substantial pathway heterogeneity. CVD effects are 5-10x stron
 
 ### Pathway Contributions
 
-Approximately 75% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality (15%) and quality of life improvements (10%).
+I estimate that approximately 75% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality (15%) and quality of life improvements (10%).
 
 **Table 5: Pathway Contribution to Total Benefit.** Decomposition of QALY gains by mechanism. CVD dominates due to both stronger relative risk reductions and higher cause-specific mortality at older ages.
 
@@ -212,7 +212,7 @@ Approximately 75% of the QALY benefit operates through CVD prevention, with the 
 
 ### Cost-Effectiveness
 
-NICE considers interventions below £20,000/QALY (\$27,000 at December 2025 exchange rates {cite:p}`tradingeconomics2025gbpusd`) clearly cost-effective; those between £20,000-30,000/QALY (\$27,000-40,000) require additional justification {cite:p}`nice2024threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks {cite:p}`icer2024reference`. Five nuts (peanut, almond, walnut, cashew, pistachio) fall below NICE's lower threshold. Pecan (\$31,400) falls in NICE's intermediate range. Macadamia (\$44,800) exceeds NICE's upper threshold but remains below ICER's \$50,000 benchmark. Peanuts achieve the lowest ICER due to low cost (\$37/year) combined with the third-highest QALY estimate.
+As of December 2025, NICE raised its thresholds to £25,000-35,000/QALY (\$33,500-47,000 at current exchange rates {cite:p}`tradingeconomics2025gbpusd`), with interventions below £25,000 considered clearly cost-effective {cite:p}`nice2025threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks {cite:p}`icer2024reference`. All seven nuts fall below NICE's new £25,000 threshold and ICER's \$50,000 benchmark. Peanuts achieve the lowest ICER due to low cost (\$37/year) combined with the third-highest QALY estimate.
 
 **Table 6: Evidence Quality by Nut Type.** I classified evidence quality based on sample size and study design: "Strong" = multiple RCTs or large cohorts (n>100,000); "Moderate" = single RCT or smaller cohorts; "Limited" = RCTs with confidence intervals crossing null.
 
@@ -244,7 +244,7 @@ These estimates are lower than unadjusted observational associations (22% mortal
 
 ### Cost-Effectiveness
 
-ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). Five nuts fall below NICE's £20,000/QALY (\$27,000) threshold for clear cost-effectiveness; pecan falls in NICE's intermediate range; macadamia exceeds NICE's upper threshold but remains below ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost.
+ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). All nuts fall below NICE's new £25,000/QALY (\$33,500) threshold and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost.
 
 ### Sensitivity Analyses
 
@@ -263,12 +263,12 @@ I examined robustness to key parameter assumptions:
 1. Estimates rely on observational data; residual confounding may remain despite calibration.
 2. Source studies predominantly from US and Europe.
 3. Fixed 28g/day dose modeled; dose-response may be non-linear ({cite}`aune2016nut` find benefits plateau above ~20g/day).
-4. Perfect adherence assumed; I estimate real-world adherence at 50-70% based on dietary intervention studies.
+4. Perfect adherence assumed; dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`.
 5. Substitution effects not modeled (what foods nuts replace affects net benefit).
 
 ## Conclusion
 
-Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). Five nuts fall below NICE's £20,000/QALY (\$27,000) threshold for clear cost-effectiveness; pecan falls in NICE's intermediate range; macadamia exceeds NICE's upper threshold but remains below ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. **Caution**: Individuals with nut allergies (1-2% prevalence {cite:p}`sicherer2010epidemiology`) should not consume nuts.
+Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields 0.11-0.20 discounted QALYs for a 40-year-old, with walnuts and almonds ranking highest. Approximately 75% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from \$5,700/QALY (peanuts) to \$44,800/QALY (macadamias). All nuts fall below NICE's new £25,000/QALY (\$33,500) threshold and ICER's \$50,000/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. **Caution**: Individuals with nut allergies (2-4% prevalence {cite:p}`gupta2021prevalence`) should not consume nuts.
 
 ## Data and Code Availability
 
