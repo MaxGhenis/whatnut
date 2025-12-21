@@ -1,7 +1,9 @@
 # Nut profiles: nutrients, pathway adjustments, costs, and evidence
 # Sources: USDA FoodData Central (2024), cited literature
+# All nutrient values per 28g (1 oz) serving
 
 walnut:
+  fdc_id: 170187  # Nuts, walnuts, english
   nutrients:
     omega3_ala_g: 2.5      # Highest of all nuts
     omega7_g: 0.0
@@ -25,6 +27,7 @@ walnut:
   evidence: strong
 
 almond:
+  fdc_id: 170567  # Nuts, almonds
   nutrients:
     omega3_ala_g: 0.0
     omega7_g: 0.0
@@ -48,6 +51,7 @@ almond:
   evidence: strong
 
 pistachio:
+  fdc_id: 170184  # Nuts, pistachio nuts, raw
   nutrients:
     omega3_ala_g: 0.07
     omega7_g: 0.0
@@ -72,6 +76,7 @@ pistachio:
   evidence: moderate
 
 pecan:
+  fdc_id: 170182  # Nuts, pecans
   nutrients:
     omega3_ala_g: 0.28
     omega7_g: 0.0
@@ -95,6 +100,7 @@ pecan:
   evidence: moderate
 
 macadamia:
+  fdc_id: 170178  # Nuts, macadamia nuts, raw
   nutrients:
     omega3_ala_g: 0.06
     omega7_g: 4.7           # Unique: omega-7 (palmitoleic acid)
@@ -118,6 +124,7 @@ macadamia:
   evidence: moderate
 
 peanut:
+  fdc_id: 172430  # Peanuts, all types, raw
   nutrients:
     omega3_ala_g: 0.0
     omega7_g: 0.0
@@ -141,6 +148,7 @@ peanut:
   evidence: strong
 
 cashew:
+  fdc_id: 170162  # Nuts, cashew nuts, raw
   nutrients:
     omega3_ala_g: 0.02
     omega7_g: 0.0
