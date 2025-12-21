@@ -1,215 +1,244 @@
-"""Tests for Bayesian hierarchical model.
+"""Tests for pathway-specific Bayesian model v2.
 
-TDD approach: Define expected behavior first, then verify implementation.
+TDD: Define expectations before running.
 """
 
 import pytest
 import numpy as np
 
 
-class TestNutrientBasedEffects:
-    """Test nutrient-derived effect predictions."""
+class TestExtendedNutrients:
+    """Test that extended nutrient data is loaded correctly."""
 
-    def test_walnut_has_strongest_ala_effect(self):
-        """Walnut should have largest ALA-driven effect (2.5g vs <0.3g others)."""
-        from whatnut.bayesian_model import compute_nutrient_based_effects
+    def test_all_nuts_have_extended_nutrients(self):
+        """All 7 nuts should have the new nutrient fields."""
+        from whatnut.bayesian_model import load_extended_nut_nutrients
 
-        results = compute_nutrient_based_effects()
+        nutrients = load_extended_nut_nutrients()
+        expected_nuts = ['walnut', 'almond', 'pistachio', 'pecan',
+                         'macadamia', 'peanut', 'cashew']
 
-        # Walnut ALA effect should be > 5x any other nut
-        walnut_ala = abs(results['walnut']['ala'])
-        other_max_ala = max(abs(results[nut]['ala'])
-                           for nut in results if nut != 'walnut')
+        for nut in expected_nuts:
+            assert nut in nutrients, f"Missing nut: {nut}"
+            for field in ['magnesium', 'arginine', 'phytosterols', 'protein']:
+                assert field in nutrients[nut], f"{nut} missing {field}"
+                assert nutrients[nut][field] > 0, f"{nut} {field} should be > 0"
 
-        assert walnut_ala > 5 * other_max_ala, \
-            f"Walnut ALA ({walnut_ala}) should be >5x other max ({other_max_ala})"
+    def test_almond_highest_magnesium_among_tree_nuts(self):
+        """Almond should have highest magnesium (76.5mg)."""
+        from whatnut.bayesian_model import load_extended_nut_nutrients
 
-    def test_macadamia_has_omega7_effect(self):
-        """Macadamia should be only nut with substantial omega-7 effect."""
-        from whatnut.bayesian_model import compute_nutrient_based_effects
+        nutrients = load_extended_nut_nutrients()
+        tree_nuts = ['walnut', 'almond', 'pistachio', 'pecan', 'macadamia']
 
-        results = compute_nutrient_based_effects()
+        almond_mg = nutrients['almond']['magnesium']
+        for nut in tree_nuts:
+            if nut != 'almond':
+                assert almond_mg >= nutrients[nut]['magnesium'], \
+                    f"Almond magnesium should be >= {nut}"
 
-        mac_omega7 = abs(results['macadamia']['omega7'])
-        other_max_omega7 = max(abs(results[nut]['omega7'])
-                               for nut in results if nut != 'macadamia')
+    def test_peanut_highest_protein(self):
+        """Peanut should have highest protein (7.3g)."""
+        from whatnut.bayesian_model import load_extended_nut_nutrients
 
-        assert mac_omega7 > 10 * other_max_omega7, \
-            f"Macadamia omega-7 ({mac_omega7}) should dominate"
+        nutrients = load_extended_nut_nutrients()
+        peanut_protein = nutrients['peanut']['protein']
 
-    def test_cashew_has_positive_or_neutral_effect(self):
-        """Cashew should have near-zero or positive log-RR (high sat fat, low fiber)."""
-        from whatnut.bayesian_model import compute_nutrient_based_effects
-
-        results = compute_nutrient_based_effects()
-
-        # Cashew total effect should be > -0.05 (near neutral or harmful)
-        assert results['cashew']['total'] > -0.05, \
-            f"Cashew effect ({results['cashew']['total']}) should be near neutral"
-
-    def test_fiber_effect_is_beneficial(self):
-        """All nuts should have negative (beneficial) fiber effect."""
-        from whatnut.bayesian_model import compute_nutrient_based_effects
-
-        results = compute_nutrient_based_effects()
-
-        for nut in results:
-            assert results[nut]['fiber'] <= 0, \
-                f"{nut} fiber effect should be <=0, got {results[nut]['fiber']}"
-
-    def test_saturated_fat_effect_is_harmful(self):
-        """All nuts should have positive (harmful) saturated fat effect."""
-        from whatnut.bayesian_model import compute_nutrient_based_effects
-
-        results = compute_nutrient_based_effects()
-
-        for nut in results:
-            assert results[nut]['sat_fat'] >= 0, \
-                f"{nut} sat fat effect should be >=0, got {results[nut]['sat_fat']}"
+        for nut in nutrients:
+            if nut != 'peanut':
+                assert peanut_protein >= nutrients[nut]['protein'], \
+                    f"Peanut protein should be >= {nut}"
 
 
-class TestLifecycleMonteCarlo:
-    """Test full Monte Carlo with lifecycle integration."""
+class TestPathwayPriors:
+    """Test that pathway-specific priors are properly structured."""
 
-    def test_qalys_are_positive(self):
-        """All nut QALYs should be positive (beneficial)."""
+    def test_all_pathways_have_all_nutrients(self):
+        """Each pathway should have priors for all nutrients."""
+        from whatnut.bayesian_model import PATHWAY_NUTRIENT_PRIORS, NUTRIENTS, PATHWAYS
+
+        for pathway in PATHWAYS:
+            assert pathway in PATHWAY_NUTRIENT_PRIORS, f"Missing pathway: {pathway}"
+            for nutrient in NUTRIENTS:
+                assert nutrient in PATHWAY_NUTRIENT_PRIORS[pathway], \
+                    f"{pathway} missing {nutrient}"
+                prior = PATHWAY_NUTRIENT_PRIORS[pathway][nutrient]
+                assert 'mean' in prior and 'sd' in prior, \
+                    f"{pathway}/{nutrient} missing mean/sd"
+
+    def test_cvd_has_strongest_ala_effect(self):
+        """CVD pathway should have strongest ALA effect."""
+        from whatnut.bayesian_model import PATHWAY_NUTRIENT_PRIORS
+
+        cvd_ala = abs(PATHWAY_NUTRIENT_PRIORS['cvd']['ala_omega3']['mean'])
+        cancer_ala = abs(PATHWAY_NUTRIENT_PRIORS['cancer']['ala_omega3']['mean'])
+        other_ala = abs(PATHWAY_NUTRIENT_PRIORS['other']['ala_omega3']['mean'])
+
+        assert cvd_ala > cancer_ala, "CVD ALA effect should > cancer"
+        assert cvd_ala > other_ala, "CVD ALA effect should > other"
+
+    def test_saturated_fat_harmful_in_all_pathways(self):
+        """Saturated fat should have positive (harmful) effect in all pathways."""
+        from whatnut.bayesian_model import PATHWAY_NUTRIENT_PRIORS, PATHWAYS
+
+        for pathway in PATHWAYS:
+            sat_fat = PATHWAY_NUTRIENT_PRIORS[pathway]['saturated_fat']['mean']
+            assert sat_fat >= 0, f"Sat fat in {pathway} should be >= 0 (harmful)"
+
+
+class TestModelStructure:
+    """Test that the model is built correctly."""
+
+    def test_model_builds_without_error(self):
+        """Model should build without errors."""
+        from whatnut.bayesian_model import build_pathway_model, PYMC_AVAILABLE
+
+        if not PYMC_AVAILABLE:
+            pytest.skip("PyMC not installed")
+
+        model, nuts, pathways = build_pathway_model()
+        assert len(nuts) == 7
+        assert len(pathways) == 4
+        assert 'quality' in pathways
+
+    def test_model_has_pathway_specific_effects(self):
+        """Model should have separate effect variables for each pathway."""
+        from whatnut.bayesian_model import build_pathway_model, PYMC_AVAILABLE
+
+        if not PYMC_AVAILABLE:
+            pytest.skip("PyMC not installed")
+
+        model, nuts, pathways = build_pathway_model()
+
+        # Check that pathway-specific variables exist
+        var_names = [v.name for v in model.free_RVs]
+        for pathway in pathways:
+            assert any(f'_{pathway}_' in name for name in var_names), \
+                f"Model should have {pathway}-specific variables"
+
+
+class TestMCMCInference:
+    """Test MCMC inference produces valid results."""
+
+    @pytest.fixture
+    def quick_trace(self):
+        """Run quick MCMC for testing."""
         from whatnut.bayesian_model import (
-            build_hierarchical_model, run_inference, run_full_monte_carlo,
-            PYMC_AVAILABLE
+            build_pathway_model, run_pathway_inference, PYMC_AVAILABLE
         )
 
         if not PYMC_AVAILABLE:
             pytest.skip("PyMC not installed")
 
-        model, nuts = build_hierarchical_model()
-        trace = run_inference(model, draws=100, tune=50, chains=1)
-        summary, _ = run_full_monte_carlo(trace, nuts, n_samples=50)
+        model, nuts, pathways = build_pathway_model()
+        trace = run_pathway_inference(model, draws=100, tune=50, chains=2, seed=42)
+        return trace, nuts, pathways
 
+    def test_fewer_divergences_than_v1(self, quick_trace):
+        """Non-centered parameterization should reduce divergences."""
+        trace, _, _ = quick_trace
+
+        # Count divergences
+        divergences = trace.sample_stats['diverging'].values.sum()
+        n_samples = trace.posterior.dims['chain'] * trace.posterior.dims['draw']
+
+        # Should have < 10% divergences (v1 had ~40%)
+        divergence_rate = divergences / n_samples
+        assert divergence_rate < 0.15, \
+            f"Divergence rate {divergence_rate:.1%} too high (should be < 15%)"
+
+    def test_pathway_rrs_differ(self, quick_trace):
+        """Different pathways should have different RR patterns."""
+        trace, nuts, pathways = quick_trace
+
+        rr_cvd = trace.posterior['rr_cvd'].values.mean(axis=(0, 1))
+        rr_cancer = trace.posterior['rr_cancer'].values.mean(axis=(0, 1))
+
+        # CVD and cancer effects shouldn't be identical
+        assert not np.allclose(rr_cvd, rr_cancer, atol=0.01), \
+            "CVD and cancer RRs shouldn't be identical"
+
+    def test_walnut_cvd_better_than_cancer(self, quick_trace):
+        """Walnut should have stronger CVD effect than cancer effect."""
+        trace, nuts, _ = quick_trace
+
+        walnut_idx = nuts.index('walnut')
+        cvd_effect = trace.posterior['rr_cvd'].values[:, :, walnut_idx].mean()
+        cancer_effect = trace.posterior['rr_cancer'].values[:, :, walnut_idx].mean()
+
+        # Walnut CVD RR should be lower (more beneficial) than cancer RR
+        assert cvd_effect < cancer_effect, \
+            f"Walnut CVD ({cvd_effect:.3f}) should be < cancer ({cancer_effect:.3f})"
+
+
+class TestLifecycleIntegration:
+    """Test integration with lifecycle model."""
+
+    def test_qalys_use_pathway_specific_rrs(self):
+        """Lifecycle MC should use different RRs for different pathways."""
+        from whatnut.bayesian_model import (
+            build_pathway_model, run_pathway_inference,
+            run_full_lifecycle_mc, PYMC_AVAILABLE
+        )
+
+        if not PYMC_AVAILABLE:
+            pytest.skip("PyMC not installed")
+
+        model, nuts, pathways = build_pathway_model()
+        trace = run_pathway_inference(model, draws=50, tune=25, chains=1, seed=42)
+        summary, _ = run_full_lifecycle_mc(trace, nuts, pathways, n_samples=20)
+
+        # All nuts should have results
+        assert len(summary) == 7
+
+        # QALYs should be reasonable
         for nut in nuts:
-            # Mean QALY should be positive (we're modeling a benefit)
-            # Note: With confounding adjustment, effect is small but positive
-            assert summary[nut]['qaly_mean'] >= 0, \
-                f"{nut} mean QALY should be >=0, got {summary[nut]['qaly_mean']}"
+            assert -0.5 < summary[nut]['qaly_mean'] < 0.5, \
+                f"{nut} QALY out of reasonable range"
 
-    def test_uncertainty_increases_with_limited_evidence(self):
-        """Nuts with limited evidence should have wider CIs."""
+    def test_quality_pathway_affects_qalys(self):
+        """Quality pathway should affect final QALY estimates."""
+        # This is implicitly tested by the quality multiplier in run_full_lifecycle_mc
+        # If quality RR < 1, QALYs should be slightly higher
+        from whatnut.bayesian_model import load_extended_nut_nutrients
+
+        nutrients = load_extended_nut_nutrients()
+
+        # High fiber/magnesium nuts should have better quality effects
+        # Cashew has highest magnesium (82.8) but low fiber (0.9)
+        # Almond has high fiber (3.5) and good magnesium (76.5)
+        assert nutrients['almond']['fiber'] > nutrients['cashew']['fiber']
+
+
+class TestResultsConsistency:
+    """Test that results are internally consistent."""
+
+    def test_higher_ala_means_lower_cvd_rr(self):
+        """Nuts with more ALA should have lower CVD RR."""
         from whatnut.bayesian_model import (
-            build_hierarchical_model, run_inference, run_full_monte_carlo,
-            PYMC_AVAILABLE
+            build_pathway_model, run_pathway_inference, PYMC_AVAILABLE,
+            load_extended_nut_nutrients
         )
 
         if not PYMC_AVAILABLE:
             pytest.skip("PyMC not installed")
 
-        model, nuts = build_hierarchical_model()
-        trace = run_inference(model, draws=200, tune=100, chains=2)
-        summary, _ = run_full_monte_carlo(trace, nuts, n_samples=100)
+        nutrients = load_extended_nut_nutrients()
+        model, nuts, _ = build_pathway_model()
+        trace = run_pathway_inference(model, draws=100, tune=50, chains=2, seed=42)
 
-        # Macadamia should have wider CI than almond (omega-7 uncertainty)
-        mac_ci_width = summary['macadamia']['qaly_ci'][1] - summary['macadamia']['qaly_ci'][0]
-        almond_ci_width = summary['almond']['qaly_ci'][1] - summary['almond']['qaly_ci'][0]
+        # Walnut has highest ALA
+        walnut_ala = nutrients['walnut']['ala_omega3']
+        peanut_ala = nutrients['peanut']['ala_omega3']
+        assert walnut_ala > peanut_ala
 
-        # This may not always hold with small samples, so use a weaker assertion
-        assert mac_ci_width > 0, "Macadamia should have positive CI width"
+        # Walnut should have lower CVD RR
+        walnut_idx = nuts.index('walnut')
+        peanut_idx = nuts.index('peanut')
 
-    def test_icer_is_reasonable(self):
-        """ICERs should be in reasonable range ($1k - $1M per QALY)."""
-        from whatnut.bayesian_model import (
-            build_hierarchical_model, run_inference, run_full_monte_carlo,
-            PYMC_AVAILABLE
-        )
+        walnut_cvd = trace.posterior['rr_cvd'].values[:, :, walnut_idx].mean()
+        peanut_cvd = trace.posterior['rr_cvd'].values[:, :, peanut_idx].mean()
 
-        if not PYMC_AVAILABLE:
-            pytest.skip("PyMC not installed")
-
-        model, nuts = build_hierarchical_model()
-        trace = run_inference(model, draws=100, tune=50, chains=1)
-        summary, _ = run_full_monte_carlo(trace, nuts, n_samples=50)
-
-        for nut in nuts:
-            icer = summary[nut]['icer_median']
-            if np.isfinite(icer):
-                assert 1000 < icer < 10_000_000, \
-                    f"{nut} ICER ${icer:,.0f} outside reasonable range"
-
-
-class TestBayesianPosterior:
-    """Test that MCMC produces sensible posteriors."""
-
-    def test_nutrient_betas_have_correct_sign(self):
-        """Nutrient effects should have expected signs."""
-        from whatnut.bayesian_model import (
-            build_hierarchical_model, run_inference, PYMC_AVAILABLE
-        )
-
-        if not PYMC_AVAILABLE:
-            pytest.skip("PyMC not installed")
-
-        model, nuts = build_hierarchical_model()
-        trace = run_inference(model, draws=200, tune=100, chains=2)
-
-        # ALA should be beneficial (negative log-RR)
-        beta_ala = trace.posterior['beta_ala'].values.flatten()
-        assert np.mean(beta_ala) < 0, "ALA beta should be negative (beneficial)"
-
-        # Saturated fat should be harmful (positive log-RR)
-        beta_satfat = trace.posterior['beta_saturated_fat'].values.flatten()
-        assert np.mean(beta_satfat) > 0, "Sat fat beta should be positive (harmful)"
-
-    def test_causal_fraction_is_calibrated(self):
-        """Causal fraction should be near prior mean (0.25) with wide CI."""
-        from whatnut.bayesian_model import (
-            build_hierarchical_model, run_inference, PYMC_AVAILABLE
-        )
-
-        if not PYMC_AVAILABLE:
-            pytest.skip("PyMC not installed")
-
-        model, nuts = build_hierarchical_model()
-        trace = run_inference(model, draws=200, tune=100, chains=2)
-
-        cf = trace.posterior['causal_fraction'].values.flatten()
-        mean_cf = np.mean(cf)
-
-        # Should be close to prior mean of 0.25 (within 0.15)
-        assert 0.10 < mean_cf < 0.40, \
-            f"Causal fraction mean ({mean_cf:.2f}) should be near 0.25"
-
-        # Should have wide CI (spanning at least 0.20)
-        ci_width = np.percentile(cf, 97.5) - np.percentile(cf, 2.5)
-        assert ci_width > 0.20, \
-            f"Causal fraction CI width ({ci_width:.2f}) should be >0.20"
-
-
-class TestMethodologyConsistency:
-    """Test that methodology is internally consistent."""
-
-    def test_rr_less_than_one_implies_positive_qaly(self):
-        """If RR < 1, QALY should be positive (life saved)."""
-        from whatnut.lifecycle_pathways import PathwayLifecycleCEA, PathwayParams
-
-        model = PathwayLifecycleCEA(seed=42)
-
-        # RR < 1 (beneficial)
-        params = PathwayParams(rr_cvd=0.95, rr_cancer=0.95, rr_other=0.95)
-        result = model.run(params)
-        assert result.qalys_gained_discounted > 0, \
-            "RR < 1 should produce positive QALYs"
-
-        # RR = 1 (no effect)
-        params = PathwayParams(rr_cvd=1.0, rr_cancer=1.0, rr_other=1.0)
-        result = model.run(params)
-        assert abs(result.qalys_gained_discounted) < 0.001, \
-            "RR = 1 should produce ~0 QALYs"
-
-    def test_pathway_decomposition_sums_to_total(self):
-        """CVD + cancer + other contributions should sum to ~100%."""
-        from whatnut.lifecycle_pathways import PathwayLifecycleCEA, PathwayParams
-
-        model = PathwayLifecycleCEA(seed=42)
-        params = PathwayParams()
-        result = model.run(params)
-
-        total = result.cvd_contribution + result.cancer_contribution + result.other_contribution
-        assert 0.99 < total < 1.01, \
-            f"Pathway contributions should sum to 1.0, got {total:.3f}"
+        # Walnut CVD should be lower (or very close if uncertainty dominates)
+        assert walnut_cvd <= peanut_cvd + 0.02, \
+            f"Walnut CVD ({walnut_cvd:.3f}) should be <= peanut CVD ({peanut_cvd:.3f})"

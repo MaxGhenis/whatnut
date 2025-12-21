@@ -1,24 +1,33 @@
-"""Hierarchical Bayesian model for nut-mortality effects.
+"""Hierarchical Bayesian model v2: Pathway-specific effects.
 
-This model uses nutrient-level priors from meta-analyses to inform
-nut-specific effects, with RCT evidence updating the posteriors.
+Key improvements over v1:
+1. Pathway-specific nutrient effects (CVD, cancer, other)
+2. More nutrients (magnesium, arginine, phytosterols, protein)
+3. Non-centered parameterization (fixes divergences)
+4. Quality/morbidity effects (not just mortality)
 
-Key difference from lifecycle_pathways.py:
-- Old: Sample independently from fixed distributions (Monte Carlo)
-- New: Sample from joint posterior via MCMC (Bayesian inference)
+Model structure:
+    For each pathway p ∈ {CVD, cancer, other}:
+        β_nutrient[p] ~ Normal(μ_nutrient[p], σ_nutrient[p])  # pathway-specific
 
-Priors derived from:
-- ALA (omega-3): Pan 2012, Naghshi 2021 meta-analyses
-- Omega-6: Farvid 2014, Marklund 2019 meta-analyses
-- Omega-7: Limited evidence, weak prior
-- Vitamin E: Miller 2005 meta-analysis
+    For each nut n:
+        expected_effect[n, p] = Σ(β_nutrient[p] × nutrient[n])
+
+        # Non-centered parameterization for hierarchical shrinkage
+        z[n, p] ~ Normal(0, 1)
+        true_effect[n, p] = expected_effect[n, p] + τ[p] × z[n, p]
+
+    Quality adjustment:
+        quality_effect[n] = f(fiber, magnesium, protein)  # morbidity pathway
+
+    Total QALY effect combines mortality and quality pathways.
 """
 
 import numpy as np
 from pathlib import Path
 import yaml
+from dataclasses import dataclass
 
-# PyMC is optional - only needed for MCMC inference
 try:
     import pymc as pm
     import arviz as az
@@ -30,125 +39,174 @@ except ImportError:
 
 
 # =============================================================================
-# CALIBRATION CONSTANTS FROM META-ANALYSES
+# PATHWAY-SPECIFIC NUTRIENT PRIORS
 # =============================================================================
 
-# CTT Collaboration (Lancet 2010, 2012) - LDL → CVD relationship
-# 170,000 participants in 26 statin RCTs
-CTT_CALIBRATION = {
-    'rr_per_mmol_vascular': 0.78,     # Major vascular events
-    'rr_per_mmol_mortality': 0.90,    # All-cause mortality
-    'rr_per_mmol_chd_death': 0.80,    # CHD death specifically
-    'mmol_per_mgdl': 1 / 38.67,       # Conversion factor
-    'source': 'CTT Collaboration, Lancet 2010'
+# Priors are specified as (mean, sd) for log-RR per unit
+# Organized by pathway for clarity
+
+PATHWAY_NUTRIENT_PRIORS = {
+    'cvd': {
+        # Strong effects on CVD
+        'ala_omega3': {'mean': -0.15, 'sd': 0.05, 'unit': 'g',
+                       'source': 'Naghshi 2021: strong CVD effect'},
+        'omega6': {'mean': -0.005, 'sd': 0.003, 'unit': 'g',
+                   'source': 'Farvid 2014: CHD benefit'},
+        'omega7': {'mean': -0.03, 'sd': 0.04, 'unit': 'g',
+                   'source': 'Palmitoleic acid, insulin sensitivity'},
+        'fiber': {'mean': -0.015, 'sd': 0.005, 'unit': 'g',
+                  'source': 'Threapleton 2013: RR 0.91/7g for CVD'},
+        'saturated_fat': {'mean': 0.025, 'sd': 0.01, 'unit': 'g',
+                          'source': 'Sacks 2017: LDL/CHD pathway'},
+        'magnesium': {'mean': -0.003, 'sd': 0.001, 'unit': 'mg',
+                      'source': 'Fang 2016: RR 0.90 per 100mg for CHD'},
+        'arginine': {'mean': -0.02, 'sd': 0.02, 'unit': 'g',
+                     'source': 'Vasodilation, limited RCT evidence'},
+        'vitamin_e': {'mean': -0.005, 'sd': 0.008, 'unit': 'mg',
+                      'source': 'Food-based, not supplement'},
+        'phytosterols': {'mean': -0.01, 'sd': 0.01, 'unit': 'mg',
+                         'source': 'LDL lowering mechanism'},
+        'protein': {'mean': 0.0, 'sd': 0.005, 'unit': 'g',
+                    'source': 'Neutral for CVD'},
+    },
+    'cancer': {
+        # Different profile for cancer
+        'ala_omega3': {'mean': -0.02, 'sd': 0.03, 'unit': 'g',
+                       'source': 'Naghshi 2021: weaker for cancer'},
+        'omega6': {'mean': 0.002, 'sd': 0.005, 'unit': 'g',
+                   'source': 'Mixed evidence, possible inflammation'},
+        'omega7': {'mean': 0.0, 'sd': 0.02, 'unit': 'g',
+                   'source': 'No known cancer mechanism'},
+        'fiber': {'mean': -0.01, 'sd': 0.004, 'unit': 'g',
+                  'source': 'Colorectal cancer protection'},
+        'saturated_fat': {'mean': 0.005, 'sd': 0.008, 'unit': 'g',
+                          'source': 'Weak cancer association'},
+        'magnesium': {'mean': -0.001, 'sd': 0.002, 'unit': 'mg',
+                      'source': 'Limited cancer evidence'},
+        'arginine': {'mean': 0.0, 'sd': 0.01, 'unit': 'g',
+                     'source': 'Neutral'},
+        'vitamin_e': {'mean': -0.008, 'sd': 0.01, 'unit': 'mg',
+                      'source': 'Antioxidant, mixed evidence'},
+        'phytosterols': {'mean': 0.0, 'sd': 0.005, 'unit': 'mg',
+                         'source': 'No cancer mechanism'},
+        'protein': {'mean': 0.0, 'sd': 0.003, 'unit': 'g',
+                    'source': 'Neutral'},
+    },
+    'other': {
+        # Respiratory, diabetes, other causes
+        'ala_omega3': {'mean': -0.05, 'sd': 0.04, 'unit': 'g',
+                       'source': 'Anti-inflammatory'},
+        'omega6': {'mean': -0.002, 'sd': 0.003, 'unit': 'g',
+                   'source': 'Weak effect'},
+        'omega7': {'mean': -0.02, 'sd': 0.03, 'unit': 'g',
+                   'source': 'Insulin sensitivity → diabetes'},
+        'fiber': {'mean': -0.012, 'sd': 0.005, 'unit': 'g',
+                  'source': 'Glycemic control'},
+        'saturated_fat': {'mean': 0.01, 'sd': 0.01, 'unit': 'g',
+                          'source': 'Metabolic effects'},
+        'magnesium': {'mean': -0.002, 'sd': 0.001, 'unit': 'mg',
+                      'source': 'Diabetes prevention'},
+        'arginine': {'mean': -0.01, 'sd': 0.02, 'unit': 'g',
+                     'source': 'Immune function'},
+        'vitamin_e': {'mean': -0.003, 'sd': 0.005, 'unit': 'mg',
+                      'source': 'Antioxidant'},
+        'phytosterols': {'mean': 0.0, 'sd': 0.003, 'unit': 'mg',
+                         'source': 'No mechanism'},
+        'protein': {'mean': -0.005, 'sd': 0.005, 'unit': 'g',
+                    'source': 'Muscle maintenance in elderly'},
+    },
+    'quality': {
+        # Effects on quality of life (morbidity, not mortality)
+        'ala_omega3': {'mean': -0.02, 'sd': 0.02, 'unit': 'g',
+                       'source': 'Anti-inflammatory, mood'},
+        'omega6': {'mean': 0.0, 'sd': 0.002, 'unit': 'g',
+                   'source': 'Neutral'},
+        'omega7': {'mean': -0.01, 'sd': 0.02, 'unit': 'g',
+                   'source': 'Skin health, metabolism'},
+        'fiber': {'mean': -0.008, 'sd': 0.004, 'unit': 'g',
+                  'source': 'Gut health, satiety'},
+        'saturated_fat': {'mean': 0.005, 'sd': 0.005, 'unit': 'g',
+                          'source': 'Slight negative'},
+        'magnesium': {'mean': -0.002, 'sd': 0.001, 'unit': 'mg',
+                      'source': 'Muscle/nerve function'},
+        'arginine': {'mean': -0.01, 'sd': 0.01, 'unit': 'g',
+                     'source': 'Exercise performance'},
+        'vitamin_e': {'mean': -0.002, 'sd': 0.003, 'unit': 'mg',
+                      'source': 'Skin, immune'},
+        'phytosterols': {'mean': 0.0, 'sd': 0.002, 'unit': 'mg',
+                         'source': 'No quality mechanism'},
+        'protein': {'mean': -0.008, 'sd': 0.005, 'unit': 'g',
+                    'source': 'Satiety, muscle maintenance'},
+    },
 }
 
-# Del Gobbo 2015 - Nut → LDL relationship (61 controlled trials)
-NUT_LDL_EFFECT = {
-    'ldl_reduction_mgdl': 4.8,  # Per serving (28g)
-    'ldl_se': 1.5,
-    'source': 'Del Gobbo 2015 AJCN'
-}
+NUTRIENTS = ['ala_omega3', 'omega6', 'omega7', 'fiber', 'saturated_fat',
+             'magnesium', 'arginine', 'vitamin_e', 'phytosterols', 'protein']
 
-# Derived: Expected CVD effect from LDL pathway alone
-# 4.8 mg/dL = 0.124 mmol/L → RR = 0.78^0.124 = 0.97 → 3% reduction
-LDL_PATHWAY_CVD_EFFECT = 0.03  # Only ~3% CVD reduction mechanistically explained
-
-# Nutrient priors from meta-analyses (effect per unit, log-RR scale)
-# These are the key innovation: mechanistic priors from independent literature
-
-NUTRIENT_PRIORS = {
-    # ALA omega-3: ~5% mortality reduction per g/day
-    # Source: Naghshi 2021 BMJ (RR 0.90, 95% CI 0.83-0.97 for high vs low)
-    # High intake median 1.59g vs low 0.73g → 0.86g difference
-    # 10% reduction / 0.86g ≈ 12% per gram
-    'ala_omega3': {
-        'mean': -0.12,  # log-RR per gram (strong effect)
-        'sd': 0.04,
-        'source': 'Naghshi 2021 BMJ: RR 0.90 for high vs low ALA'
-    },
-
-    # Omega-6 (linoleic acid): benefit, not harm
-    # Source: 2025 global meta-analysis of 150 cohorts
-    # Farvid 2014: 5% CHD reduction per 5% energy from LA
-    # ~13g LA per 5% energy (2000 kcal diet) → ~0.4% per gram
-    'omega6': {
-        'mean': -0.004,  # log-RR per gram (weak benefit)
-        'sd': 0.003,
-        'source': '2025 global meta (150 cohorts), Farvid 2014'
-    },
-
-    # Omega-7 (palmitoleic acid): limited evidence, weak prior
-    # No meta-analysis; animal studies show ~45% plaque reduction
-    # Human observational: OR 0.47 for hypertension (top vs bottom quartile)
-    'omega7': {
-        'mean': -0.02,  # log-RR per gram
-        'sd': 0.04,     # wide - limited human RCT evidence
-        'source': 'Mechanistic + observational only'
-    },
-
-    # Vitamin E: null to slight benefit from food sources
-    # Source: Dietary (not supplement) vitamin E associated with CVD benefit
-    # ~10% reduction per 10mg in some studies
-    'vitamin_e': {
-        'mean': -0.01,  # log-RR per mg
-        'sd': 0.008,
-        'source': 'Dietary vitamin E studies (not supplements)'
-    },
-
-    # Fiber: consistent CVD benefit
-    # Source: Threapleton 2013 BMJ
-    # RR 0.91 per 7g/day → log(0.91)/7 = -0.0135 per gram
-    'fiber': {
-        'mean': -0.0135,  # log-RR per gram
-        'sd': 0.004,
-        'source': 'Threapleton 2013 BMJ: RR 0.91 per 7g/day'
-    },
-
-    # Saturated fat: modest harm
-    # Source: Sacks 2017 AHA - replacing SFA with PUFA reduces CHD
-    # ~25% reduction when replacing 5% energy SFA with PUFA
-    # 5% energy ≈ 11g SFA → ~2% harm per gram
-    'saturated_fat': {
-        'mean': 0.02,   # log-RR per gram (harmful)
-        'sd': 0.01,
-        'source': 'Sacks 2017 AHA advisory'
-    },
-}
+PATHWAYS = ['cvd', 'cancer', 'other', 'quality']
 
 
-# RCT evidence for nut-specific effects (used as likelihood)
-# Format: (observed effect size, standard error)
-RCT_EVIDENCE = {
-    'walnut': {
-        'ldl_reduction_mgdl': (4.3, 1.5),  # WAHA trial
-        'source': 'Rajaram 2021 WAHA'
-    },
-    'almond': {
-        'ldl_reduction_mgdl': (5.3, 1.2),  # Multiple RCTs pooled
-        'source': 'Musa-Veloso 2016 meta'
-    },
-    'pistachio': {
-        'ldl_reduction_mgdl': (6.1, 2.0),  # Del Gobbo 2015
-        'source': 'Del Gobbo 2015'
-    },
-    'peanut': {
-        'ldl_reduction_mgdl': (3.8, 1.8),  # Bao cohort implied
-        'source': 'Bao 2013 cohort'
-    },
-    'cashew': {
-        'ldl_reduction_mgdl': (3.9, 3.5),  # Mah 2017 (wide CI!)
-        'source': 'Mah 2017'
-    },
-    # Pecan, macadamia: limited RCT data → rely more on priors
-}
+# =============================================================================
+# NUTRIENT DATA
+# =============================================================================
 
+def load_extended_nut_nutrients() -> dict:
+    """Load nutrient data including new nutrients.
 
-def load_nut_nutrients() -> dict:
-    """Load nutrient data from YAML."""
+    Adds: magnesium, arginine, phytosterols, protein
+    Source: USDA FoodData Central
+    """
+    # Base nutrients from YAML
     data_path = Path(__file__).parent / 'data' / 'nuts.yaml'
     with open(data_path) as f:
         data = yaml.safe_load(f)
+
+    # Extended nutrient data per 28g serving
+    # Source: USDA FoodData Central (FDC IDs in nuts.yaml)
+    extended = {
+        'walnut': {
+            'magnesium': 44.2,      # mg
+            'arginine': 0.64,       # g
+            'phytosterols': 20,     # mg (approximate)
+            'protein': 4.3,         # g (from YAML)
+        },
+        'almond': {
+            'magnesium': 76.5,      # Highest magnesium
+            'arginine': 0.74,
+            'phytosterols': 35,     # Highest phytosterols
+            'protein': 6.0,
+        },
+        'pistachio': {
+            'magnesium': 33.6,
+            'arginine': 0.60,
+            'phytosterols': 61,
+            'protein': 5.7,
+        },
+        'pecan': {
+            'magnesium': 33.9,
+            'arginine': 0.34,
+            'phytosterols': 29,
+            'protein': 2.6,
+        },
+        'macadamia': {
+            'magnesium': 36.4,
+            'arginine': 0.43,
+            'phytosterols': 33,
+            'protein': 2.2,
+        },
+        'peanut': {
+            'magnesium': 47.6,
+            'arginine': 0.93,       # Highest arginine
+            'phytosterols': 62,
+            'protein': 7.3,         # Highest protein
+        },
+        'cashew': {
+            'magnesium': 82.8,      # Very high magnesium
+            'arginine': 0.62,
+            'phytosterols': 45,
+            'protein': 5.2,
+        },
+    }
 
     nutrients = {}
     for nut, info in data.items():
@@ -157,132 +215,109 @@ def load_nut_nutrients() -> dict:
             'ala_omega3': n.get('omega3_ala_g', 0),
             'omega6': n.get('polyunsaturated_fat_g', 0) - n.get('omega3_ala_g', 0),
             'omega7': n.get('omega7_g', 0),
-            'vitamin_e': n.get('vitamin_e_mg', 0),
             'fiber': n.get('fiber_g', 0),
             'saturated_fat': n.get('saturated_fat_g', 0),
+            'vitamin_e': n.get('vitamin_e_mg', 0),
+            'magnesium': extended.get(nut, {}).get('magnesium', 40),
+            'arginine': extended.get(nut, {}).get('arginine', 0.5),
+            'phytosterols': extended.get(nut, {}).get('phytosterols', 30),
+            'protein': extended.get(nut, {}).get('protein', 5),
         }
     return nutrients
 
 
-def build_hierarchical_model(nuts: list[str] = None):
-    """Build PyMC hierarchical model for nut effects.
+# =============================================================================
+# BAYESIAN MODEL
+# =============================================================================
 
-    Requires PyMC to be installed: pip install pymc arviz
+def build_pathway_model(nuts: list[str] = None):
+    """Build hierarchical Bayesian model with pathway-specific effects.
 
-    Model structure:
-    1. Nutrient-level effects (beta_ala, beta_omega6, etc.)
-       - Priors from meta-analyses
-
-    2. Nut-specific expected effects (derived from composition)
-       - expected_effect[nut] = sum(beta_nutrient * nutrient_amount[nut])
-
-    3. Nut-specific true effects (allow deviation from expected)
-       - true_effect[nut] ~ Normal(expected_effect[nut], tau)
-       - tau captures nut-specific factors not in nutrients
-
-    4. RCT likelihood (where available)
-       - observed_ldl[nut] ~ Normal(true_effect[nut] * ldl_conversion, rct_se)
-
-    5. Confounding adjustment (shared across nuts)
-       - causal_fraction ~ Beta(1.5, 4.5)
+    Uses non-centered parameterization to avoid divergences.
     """
     if not PYMC_AVAILABLE:
-        raise ImportError("PyMC is required for MCMC inference. "
-                         "Install with: pip install pymc arviz")
+        raise ImportError("PyMC required: pip install pymc arviz")
 
     if nuts is None:
         nuts = ['walnut', 'almond', 'pistachio', 'pecan',
                 'macadamia', 'peanut', 'cashew']
 
-    nutrients = load_nut_nutrients()
+    nutrients_data = load_extended_nut_nutrients()
     n_nuts = len(nuts)
+    n_pathways = len(PATHWAYS)
+    n_nutrients = len(NUTRIENTS)
+
+    # Build nutrient matrix: (nuts × nutrients)
+    X = np.zeros((n_nuts, n_nutrients))
+    for i, nut in enumerate(nuts):
+        for j, nutrient in enumerate(NUTRIENTS):
+            X[i, j] = nutrients_data[nut].get(nutrient, 0)
 
     with pm.Model() as model:
-        # --- Nutrient-level priors ---
-        beta_ala = pm.Normal('beta_ala',
-                            mu=NUTRIENT_PRIORS['ala_omega3']['mean'],
-                            sigma=NUTRIENT_PRIORS['ala_omega3']['sd'])
+        # --- Pathway-specific nutrient effects ---
+        # Shape: (pathways × nutrients)
+        beta = {}
+        for p, pathway in enumerate(PATHWAYS):
+            pathway_betas = []
+            for nutrient in NUTRIENTS:
+                prior = PATHWAY_NUTRIENT_PRIORS[pathway][nutrient]
+                beta_pn = pm.Normal(
+                    f'beta_{pathway}_{nutrient}',
+                    mu=prior['mean'],
+                    sigma=prior['sd']
+                )
+                pathway_betas.append(beta_pn)
+            beta[pathway] = pm.math.stack(pathway_betas)
 
-        beta_omega6 = pm.Normal('beta_omega6',
-                               mu=NUTRIENT_PRIORS['omega6']['mean'],
-                               sigma=NUTRIENT_PRIORS['omega6']['sd'])
+        # --- Expected effects from nutrients ---
+        # Shape: (nuts × pathways)
+        expected = {}
+        for pathway in PATHWAYS:
+            # Matrix multiply: (nuts × nutrients) @ (nutrients,) → (nuts,)
+            expected[pathway] = pm.math.dot(X, beta[pathway])
 
-        beta_omega7 = pm.Normal('beta_omega7',
-                               mu=NUTRIENT_PRIORS['omega7']['mean'],
-                               sigma=NUTRIENT_PRIORS['omega7']['sd'])
+        # --- Hierarchical shrinkage (non-centered) ---
+        # Each pathway has its own shrinkage parameter
+        tau = {}
+        z = {}
+        true_effect = {}
 
-        beta_vite = pm.Normal('beta_vitamin_e',
-                             mu=NUTRIENT_PRIORS['vitamin_e']['mean'],
-                             sigma=NUTRIENT_PRIORS['vitamin_e']['sd'])
+        for pathway in PATHWAYS:
+            tau[pathway] = pm.HalfNormal(f'tau_{pathway}', sigma=0.03)
 
-        beta_fiber = pm.Normal('beta_fiber',
-                              mu=NUTRIENT_PRIORS['fiber']['mean'],
-                              sigma=NUTRIENT_PRIORS['fiber']['sd'])
+            # Non-centered: z ~ N(0,1), then transform
+            z[pathway] = pm.Normal(f'z_{pathway}', mu=0, sigma=1, shape=n_nuts)
 
-        beta_satfat = pm.Normal('beta_saturated_fat',
-                               mu=NUTRIENT_PRIORS['saturated_fat']['mean'],
-                               sigma=NUTRIENT_PRIORS['saturated_fat']['sd'])
-
-        # --- Compute expected effects from composition ---
-        expected_effects = []
-        for nut in nuts:
-            n = nutrients[nut]
-            expected = (
-                beta_ala * n['ala_omega3'] +
-                beta_omega6 * n['omega6'] +
-                beta_omega7 * n['omega7'] +
-                beta_vite * n['vitamin_e'] +
-                beta_fiber * n['fiber'] +
-                beta_satfat * n['saturated_fat']
+            # True effect = expected + tau * z
+            true_effect[pathway] = pm.Deterministic(
+                f'effect_{pathway}',
+                expected[pathway] + tau[pathway] * z[pathway]
             )
-            expected_effects.append(expected)
-
-        expected_effects = pm.math.stack(expected_effects)
-
-        # --- Hierarchical shrinkage ---
-        # Allow nut-specific deviations from nutrient-predicted effects
-        tau = pm.HalfNormal('tau', sigma=0.05)  # Shrinkage toward expected
-
-        true_effects = pm.Normal('true_effect',
-                                mu=expected_effects,
-                                sigma=tau,
-                                shape=n_nuts)
-
-        # --- RCT likelihood (LDL as proxy for CVD effect) ---
-        # Convert log-RR to expected LDL reduction
-        # Rough: 1% CVD reduction ≈ 1 mg/dL LDL reduction (from CTT)
-        ldl_conversion = 100  # log-RR of -0.01 → ~1 mg/dL LDL reduction
-
-        for i, nut in enumerate(nuts):
-            if nut in RCT_EVIDENCE:
-                obs_ldl, obs_se = RCT_EVIDENCE[nut]['ldl_reduction_mgdl']
-                expected_ldl = -true_effects[i] * ldl_conversion
-                pm.Normal(f'ldl_obs_{nut}',
-                         mu=expected_ldl,
-                         sigma=obs_se,
-                         observed=obs_ldl)
 
         # --- Confounding adjustment ---
-        causal_fraction = pm.Beta('causal_fraction', alpha=1.5, beta=4.5)
+        causal_frac = pm.Beta('causal_fraction', alpha=1.5, beta=4.5)
 
-        # --- Final causal effects ---
-        causal_effects = pm.Deterministic(
-            'causal_effect',
-            true_effects * causal_fraction
-        )
+        # --- Causal effects by pathway ---
+        causal_effect = {}
+        for pathway in PATHWAYS:
+            causal_effect[pathway] = pm.Deterministic(
+                f'causal_{pathway}',
+                true_effect[pathway] * causal_frac
+            )
 
-        # --- Convert to relative risk ---
-        # RR = exp(log_rr) where log_rr is causal_effect
-        relative_risks = pm.Deterministic(
-            'relative_risk',
-            pm.math.exp(causal_effects)
-        )
+        # --- Convert to relative risks ---
+        rr = {}
+        for pathway in PATHWAYS:
+            rr[pathway] = pm.Deterministic(
+                f'rr_{pathway}',
+                pm.math.exp(causal_effect[pathway])
+            )
 
-    return model, nuts
+    return model, nuts, PATHWAYS
 
 
-def run_inference(model, draws=2000, tune=1000, chains=4, seed=42):
-    """Run MCMC inference using NUTS sampler."""
+def run_pathway_inference(model, draws=2000, tune=1000, chains=4, seed=42):
+    """Run MCMC with settings optimized for this model."""
     with model:
         trace = pm.sample(
             draws=draws,
@@ -290,246 +325,189 @@ def run_inference(model, draws=2000, tune=1000, chains=4, seed=42):
             chains=chains,
             random_seed=seed,
             return_inferencedata=True,
-            target_accept=0.9,
+            target_accept=0.95,  # Higher for complex model
+            max_treedepth=12,
         )
     return trace
 
 
-def summarize_results(trace, nuts):
-    """Summarize posterior estimates for each nut."""
-    summary = az.summary(trace, var_names=['relative_risk', 'causal_fraction'])
+def get_mcmc_diagnostics(trace):
+    """Extract MCMC convergence diagnostics.
 
-    print("=== Hierarchical Bayesian Model Results ===\n")
+    Returns dict with R-hat and ESS for key parameters.
+    """
+    summary = az.summary(trace, var_names=['causal_fraction', 'tau_cvd', 'tau_cancer',
+                                            'tau_other', 'tau_quality'])
 
-    print("Nutrient effects (log-RR per unit):")
-    nutrient_summary = az.summary(trace, var_names=[
-        'beta_ala', 'beta_omega6', 'beta_omega7',
-        'beta_vitamin_e', 'beta_fiber', 'beta_saturated_fat'
-    ])
-    print(nutrient_summary[['mean', 'sd', 'hdi_3%', 'hdi_97%']])
+    diagnostics = {
+        'divergences': int(trace.sample_stats['diverging'].values.sum()),
+        'n_samples': int(trace.posterior.dims['chain'] * trace.posterior.dims['draw']),
+        'n_chains': int(trace.posterior.dims['chain']),
+        'rhat_max': float(summary['r_hat'].max()),
+        'ess_bulk_min': float(summary['ess_bulk'].min()),
+        'ess_tail_min': float(summary['ess_tail'].min()),
+    }
+    diagnostics['divergence_rate'] = diagnostics['divergences'] / diagnostics['n_samples']
+    return diagnostics
 
-    print("\nCausal fraction:")
+
+def summarize_pathway_results(trace, nuts, pathways):
+    """Summarize posterior for pathway-specific model."""
+    print("=" * 80)
+    print("PATHWAY-SPECIFIC BAYESIAN MODEL RESULTS")
+    print("=" * 80)
+
+    # MCMC Diagnostics
+    diag = get_mcmc_diagnostics(trace)
+    print("\n--- MCMC Diagnostics ---")
+    print(f"Chains: {diag['n_chains']}, Samples per chain: {diag['n_samples'] // diag['n_chains']}")
+    print(f"Divergences: {diag['divergences']}/{diag['n_samples']} ({diag['divergence_rate']:.1%})")
+    print(f"R-hat (max): {diag['rhat_max']:.4f} {'✓' if diag['rhat_max'] < 1.01 else '⚠️ > 1.01'}")
+    print(f"ESS bulk (min): {diag['ess_bulk_min']:.0f} {'✓' if diag['ess_bulk_min'] > 400 else '⚠️ < 400'}")
+    print(f"ESS tail (min): {diag['ess_tail_min']:.0f} {'✓' if diag['ess_tail_min'] > 400 else '⚠️ < 400'}")
+
+    # Causal fraction
     cf = trace.posterior['causal_fraction'].values.flatten()
-    print(f"  Mean: {np.mean(cf):.2%}")
-    print(f"  95% CI: [{np.percentile(cf, 2.5):.2%}, {np.percentile(cf, 97.5):.2%}]")
+    print(f"\nCausal fraction: {np.mean(cf):.1%} "
+          f"[{np.percentile(cf, 2.5):.1%}, {np.percentile(cf, 97.5):.1%}]")
 
-    print("\nNut-specific relative risks (causal, mortality):")
-    rr = trace.posterior['relative_risk'].values
-    for i, nut in enumerate(nuts):
-        rr_nut = rr[:, :, i].flatten()
-        print(f"  {nut:12s}: {np.mean(rr_nut):.3f} "
-              f"[{np.percentile(rr_nut, 2.5):.3f}, {np.percentile(rr_nut, 97.5):.3f}]")
+    # Relative risks by pathway
+    print("\n" + "-" * 80)
+    print("Relative Risks by Pathway (causal, after confounding adjustment)")
+    print("-" * 80)
 
-    return summary
+    for pathway in pathways:
+        print(f"\n{pathway.upper()} pathway:")
+        rr = trace.posterior[f'rr_{pathway}'].values
+        for i, nut in enumerate(nuts):
+            rr_nut = rr[:, :, i].flatten()
+            print(f"  {nut:12s}: {np.mean(rr_nut):.4f} "
+                  f"[{np.percentile(rr_nut, 2.5):.4f}, "
+                  f"{np.percentile(rr_nut, 97.5):.4f}]")
+
+    # Key nutrient effects
+    print("\n" + "-" * 80)
+    print("Key Nutrient Effects (posterior means)")
+    print("-" * 80)
+
+    key_nutrients = ['ala_omega3', 'fiber', 'omega7', 'magnesium', 'saturated_fat']
+    print(f"\n{'Nutrient':15s} {'CVD':>10s} {'Cancer':>10s} {'Other':>10s} {'Quality':>10s}")
+    print("-" * 55)
+
+    for nutrient in key_nutrients:
+        row = f"{nutrient:15s}"
+        for pathway in pathways:
+            beta_name = f'beta_{pathway}_{nutrient}'
+            if beta_name in trace.posterior:
+                val = trace.posterior[beta_name].values.flatten().mean()
+                row += f" {val:10.4f}"
+            else:
+                row += f" {'N/A':>10s}"
+        print(row)
+
+    return trace
 
 
-def run_full_monte_carlo(trace, nuts, n_samples=1000):
-    """Run full lifecycle Monte Carlo using MCMC posterior samples.
+def run_full_lifecycle_mc(trace, nuts, pathways, n_samples=500, seed=42):
+    """Run lifecycle Monte Carlo with pathway-specific effects.
 
-    This connects the Bayesian posterior to the lifecycle CEA model
-    to produce QALY distributions.
+    Args:
+        trace: ArviZ InferenceData from MCMC
+        nuts: List of nut names
+        pathways: List of pathway names
+        n_samples: Number of posterior samples to use
+        seed: Random seed for reproducibility
     """
     from whatnut.lifecycle_pathways import PathwayLifecycleCEA, PathwayParams, get_nut_cost
 
+    rng = np.random.default_rng(seed)
+
     # Extract posterior samples
-    rr_samples = trace.posterior['relative_risk'].values  # shape: (chains, draws, nuts)
-    n_chains, n_draws, n_nuts = rr_samples.shape
+    rr_cvd = trace.posterior['rr_cvd'].values.reshape(-1, len(nuts))
+    rr_cancer = trace.posterior['rr_cancer'].values.reshape(-1, len(nuts))
+    rr_other = trace.posterior['rr_other'].values.reshape(-1, len(nuts))
+    rr_quality = trace.posterior['rr_quality'].values.reshape(-1, len(nuts))
 
-    # Flatten chains
-    rr_flat = rr_samples.reshape(-1, n_nuts)  # shape: (chains*draws, nuts)
+    # Subsample with fixed seed
+    n_total = len(rr_cvd)
+    if n_total > n_samples:
+        idx = rng.choice(n_total, n_samples, replace=False)
+        rr_cvd = rr_cvd[idx]
+        rr_cancer = rr_cancer[idx]
+        rr_other = rr_other[idx]
+        rr_quality = rr_quality[idx]
 
-    # Subsample if needed
-    if len(rr_flat) > n_samples:
-        indices = np.random.choice(len(rr_flat), n_samples, replace=False)
-        rr_flat = rr_flat[indices]
-
-    print(f"=== Full Lifecycle Monte Carlo ({len(rr_flat)} samples) ===\n")
+    print(f"\n{'=' * 80}")
+    print(f"LIFECYCLE MONTE CARLO ({len(rr_cvd)} samples)")
+    print("=" * 80)
 
     results = {nut: {'qalys': [], 'icers': [], 'life_years': []} for nut in nuts}
-
     model = PathwayLifecycleCEA(seed=42)
 
-    for i, rr_sample in enumerate(rr_flat):
+    for i in range(len(rr_cvd)):
         for j, nut in enumerate(nuts):
-            # Convert RR to pathway-specific effects
-            # The MCMC gives us overall causal RR, need to map to pathways
-            # For now, apply uniformly to all pathways
-            rr = rr_sample[j]
-
-            # Convert RR to adjustment factor relative to base HR
-            # If base CVD RR is 0.75 and we want overall RR of 0.988,
-            # we need to find what adjustment makes it work
-            # Simplified: just use the RR directly as the mortality effect
-
+            # Use pathway-specific RRs
             params = PathwayParams(
                 start_age=40,
                 max_age=110,
                 discount_rate=0.03,
-                # Apply the sampled RR as a uniform effect
-                rr_cvd=rr,
-                rr_cancer=rr,  # Simplified - should be pathway-specific
-                rr_other=rr,
-                confounding_adjustment=1.0,  # Already applied in MCMC
+                rr_cvd=rr_cvd[i, j],
+                rr_cancer=rr_cancer[i, j],
+                rr_other=rr_other[i, j],
+                confounding_adjustment=1.0,  # Already in RRs
                 annual_cost=get_nut_cost(nut),
-                # No additional nut adjustments - already in RR
                 nut_adj_cvd=1.0,
                 nut_adj_cancer=1.0,
                 nut_adj_other=1.0,
             )
 
             result = model.run(params)
-            results[nut]['qalys'].append(result.qalys_gained_discounted)
+
+            # Apply quality adjustment
+            # Quality pathway captures morbidity effects (fatigue, mood, etc.)
+            # that improve quality weights but don't affect mortality.
+            # The 0.5 scaling reflects that quality improvements are partial:
+            # - Quality RR 0.95 → multiplier 1.025 (2.5% QALY boost)
+            # - This is conservative; full utility gains would require
+            #   integrating quality RR into the lifecycle quality weights
+            quality_adj = rr_quality[i, j]
+            quality_multiplier = 1 + (1 - quality_adj) * 0.5
+
+            adjusted_qaly = result.qalys_gained_discounted * quality_multiplier
+
+            results[nut]['qalys'].append(adjusted_qaly)
             results[nut]['icers'].append(result.cost_per_qaly)
             results[nut]['life_years'].append(result.life_years_gained)
 
-    # Summarize results
-    print("Nut-specific QALY estimates (discounted at 3%):\n")
-    print(f"{'Nut':12s} {'Mean QALY':>12s} {'Median':>10s} {'95% CI':>20s} {'ICER':>15s}")
-    print("-" * 75)
+    # Summary
+    print(f"\n{'Nut':12s} {'Mean QALY':>10s} {'Median':>10s} {'95% CI':>22s} {'ICER':>12s}")
+    print("-" * 70)
 
     summary = {}
     for nut in nuts:
-        qalys = np.array(results[nut]['qalys'])
-        icers = np.array(results[nut]['icers'])
-        icers_finite = icers[np.isfinite(icers)]
+        q = np.array(results[nut]['qalys'])
+        icer = np.array(results[nut]['icers'])
+        icer_finite = icer[np.isfinite(icer)]
 
         summary[nut] = {
-            'qaly_mean': np.mean(qalys),
-            'qaly_median': np.median(qalys),
-            'qaly_ci': (np.percentile(qalys, 2.5), np.percentile(qalys, 97.5)),
-            'icer_median': np.median(icers_finite) if len(icers_finite) > 0 else float('inf'),
-            'life_years_mean': np.mean(results[nut]['life_years']),
+            'qaly_mean': np.mean(q),
+            'qaly_median': np.median(q),
+            'qaly_ci': (np.percentile(q, 2.5), np.percentile(q, 97.5)),
+            'icer_median': np.median(icer_finite) if len(icer_finite) > 0 else np.inf,
         }
-
         s = summary[nut]
-        ci_str = f"[{s['qaly_ci'][0]:.3f}, {s['qaly_ci'][1]:.3f}]"
-        print(f"{nut:12s} {s['qaly_mean']:12.4f} {s['qaly_median']:10.4f} {ci_str:>20s} ${s['icer_median']:>13,.0f}")
-
-    print("\n" + "=" * 75)
-    print("Comparison with current model (from paper):\n")
-    print(f"{'Nut':12s} {'Bayesian QALY':>15s} {'Current QALY':>15s} {'Difference':>15s}")
-    print("-" * 60)
-
-    current_qalys = {
-        'walnut': 0.10, 'almond': 0.09, 'pistachio': 0.10,
-        'pecan': 0.09, 'macadamia': 0.09, 'peanut': 0.09, 'cashew': 0.09
-    }
-
-    for nut in nuts:
-        bayesian = summary[nut]['qaly_mean']
-        current = current_qalys.get(nut, 0.09)
-        diff = bayesian - current
-        pct = (diff / current) * 100 if current > 0 else 0
-        print(f"{nut:12s} {bayesian:15.4f} {current:15.2f} {diff:+15.4f} ({pct:+.0f}%)")
+        ci = f"[{s['qaly_ci'][0]:.4f}, {s['qaly_ci'][1]:.4f}]"
+        print(f"{nut:12s} {s['qaly_mean']:10.4f} {s['qaly_median']:10.4f} {ci:>22s} ${s['icer_median']:>10,.0f}")
 
     return summary, results
 
 
-def compute_nutrient_based_effects():
-    """Compute expected effects from nutrient composition alone.
-
-    This shows what the model would predict WITHOUT any nut-specific
-    RCT evidence - purely from nutrient meta-analyses.
-    """
-    nutrients = load_nut_nutrients()
-
-    print("=== Nutrient-Based Effect Predictions ===")
-    print("(Before incorporating nut-specific RCT evidence)\n")
-
-    print("Nutrient content per 28g serving:")
-    print("-" * 80)
-    header = f"{'Nut':12s} {'ALA(g)':>8s} {'ω6(g)':>8s} {'ω7(g)':>8s} {'VitE(mg)':>10s} {'Fiber(g)':>10s} {'SatFat(g)':>10s}"
-    print(header)
-    print("-" * 80)
-
-    for nut in nutrients:
-        n = nutrients[nut]
-        print(f"{nut:12s} {n['ala_omega3']:8.2f} {n['omega6']:8.2f} {n['omega7']:8.2f} "
-              f"{n['vitamin_e']:10.1f} {n['fiber']:10.1f} {n['saturated_fat']:10.1f}")
-
-    print("\n" + "=" * 80)
-    print("Expected log-RR from each nutrient pathway:")
-    print("-" * 80)
-
-    results = {}
-    for nut in nutrients:
-        n = nutrients[nut]
-        effects = {
-            'ala': NUTRIENT_PRIORS['ala_omega3']['mean'] * n['ala_omega3'],
-            'omega6': NUTRIENT_PRIORS['omega6']['mean'] * n['omega6'],
-            'omega7': NUTRIENT_PRIORS['omega7']['mean'] * n['omega7'],
-            'vit_e': NUTRIENT_PRIORS['vitamin_e']['mean'] * n['vitamin_e'],
-            'fiber': NUTRIENT_PRIORS['fiber']['mean'] * n['fiber'],
-            'sat_fat': NUTRIENT_PRIORS['saturated_fat']['mean'] * n['saturated_fat'],
-        }
-        effects['total'] = sum(effects.values())
-        effects['rr'] = np.exp(effects['total'])
-        results[nut] = effects
-
-    header = f"{'Nut':12s} {'ALA':>8s} {'ω6':>8s} {'ω7':>8s} {'VitE':>8s} {'Fiber':>8s} {'SatFat':>8s} {'Total':>8s} {'RR':>8s}"
-    print(header)
-    print("-" * 80)
-
-    for nut, e in results.items():
-        print(f"{nut:12s} {e['ala']:8.3f} {e['omega6']:8.3f} {e['omega7']:8.3f} "
-              f"{e['vit_e']:8.3f} {e['fiber']:8.3f} {e['sat_fat']:8.3f} "
-              f"{e['total']:8.3f} {e['rr']:8.3f}")
-
-    print("\n" + "=" * 80)
-    print("Comparison: Nutrient-predicted vs Current model vs LDL-calibrated")
-    print("-" * 80)
-    print(f"{'Nut':12s} {'Nutrient RR':>12s} {'Current RR':>12s} {'LDL-only RR':>12s}")
-    print("-" * 80)
-
-    # Current model uses fixed adjustment factors
-    current_adjustments = {
-        'walnut': 0.78 ** 1.25,
-        'almond': 0.78 ** 1.00,
-        'pistachio': 0.78 ** 1.12,
-        'pecan': 0.78 ** 1.08,
-        'macadamia': 0.78 ** 1.08,
-        'peanut': 0.78 ** 0.98,
-        'cashew': 0.78 ** 0.95,
-    }
-
-    # LDL-calibrated: only count the mechanistically-explained portion
-    ldl_only_rr = 1 - LDL_PATHWAY_CVD_EFFECT  # ~0.97
-
-    for nut in results:
-        nutrient_rr = results[nut]['rr']
-        current_rr = current_adjustments.get(nut, 0.78)
-        print(f"{nut:12s} {nutrient_rr:12.3f} {current_rr:12.3f} {ldl_only_rr:12.3f}")
-
-    print("\n" + "=" * 80)
-    print("KEY INSIGHT:")
-    print("-" * 80)
-    print("The nutrient-based model predicts LARGER effects for walnuts due to ALA,")
-    print("but SMALLER effects for most other nuts compared to the current model.")
-    print(f"\nWalnuts: {results['walnut']['ala']:.3f} log-RR from ALA alone")
-    print(f"         = {np.exp(results['walnut']['ala']):.3f} RR")
-    print(f"\nThis is {abs(results['walnut']['ala'] / results['walnut']['total']) * 100:.0f}% of walnut's total predicted effect")
-    print("\nThe omega-7 effect (macadamias) is uncertain due to limited evidence.")
-
-    return results
-
-
 if __name__ == '__main__':
-    # First show nutrient-based predictions
-    compute_nutrient_based_effects()
+    print("Building pathway-specific Bayesian model...")
+    model, nuts, pathways = build_pathway_model()
 
-    print("\n\n")
-    print("=" * 80)
-    print("RUNNING HIERARCHICAL BAYESIAN MODEL")
-    print("=" * 80)
+    print("Running MCMC (this may take several minutes)...")
+    trace = run_pathway_inference(model, draws=1500, tune=1000, chains=4)
 
-    try:
-        print("\nBuilding hierarchical model...")
-        model, nuts = build_hierarchical_model()
-
-        print("Running MCMC inference (this may take a few minutes)...")
-        trace = run_inference(model, draws=1000, tune=500, chains=2)
-
-        summarize_results(trace, nuts)
-    except ImportError as e:
-        print(f"\nPyMC not installed. Install with: pip install pymc arviz")
-        print(f"Error: {e}")
+    summarize_pathway_results(trace, nuts, pathways)
+    run_full_lifecycle_mc(trace, nuts, pathways, n_samples=500)
