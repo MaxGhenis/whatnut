@@ -77,7 +77,7 @@ I employed a Bayesian Monte Carlo simulation with 10,000 iterations using the `l
 
 4. Computed age-weighted mortality reduction using CDC life tables and age-varying cause fractions (CVD fraction increases from 20% at age 40 to 40% at age 80).
 
-5. Applied quality weight sampled from Beta(17, 3) with mean 0.85.
+5. Applied quality weight sampled from Beta(17, 3) with mean 0.85, based on age-adjusted EQ-5D population norms for US adults {cite:p}`sullivan2005catalogue`.
 
 6. Computed discounted QALYs at 3% annual rate.
 
@@ -91,7 +91,7 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **Golestan cohort**: {cite}`hashemian2017nut` find that in Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persists (hazard ratio [HR] 0.71 for ≥3 servings/week).
 
-I calibrated the Beta prior by assigning weights to each evidence source: LDL pathway (weight 0.4, target 12% causal), sibling studies (weight 0.4, target 20% causal), and Golestan cohort (weight 0.2, target 40% causal given persistent associations). Minimizing weighted squared error to these targets yields Beta(1.5, 4.5) with mean 0.25 (95% CI: 2-63%).
+I calibrated the Beta prior by assigning weights to each evidence source: LDL pathway (weight 0.4, target 12% causal), sibling studies (weight 0.4, target 20% causal), and Golestan cohort (weight 0.2, target 40% causal given persistent associations). Rather than setting the prior mean to a simple weighted average of targets, I calibrated Beta parameters to match the full distribution of evidence—capturing both the central tendency and the wide uncertainty across sources. This yields Beta(1.5, 4.5), a right-skewed distribution with mean 0.25 and 95% CI: 2-63%, reflecting that most evidence points to low causal fractions while allowing for the possibility of larger effects suggested by the Golestan cohort.
 
 For HR=0.78, the E-value is 1.8 {cite:p}`vanderweele2017sensitivity`: an unmeasured confounder would need RR ≥ 1.8 with both nut consumption and mortality to fully explain the observed association.
 
@@ -103,7 +103,7 @@ Primary analyses assumed a 40-year-old from the US or Europe with 40 years remai
 
 ### Primary Finding
 
-Median life expectancy gain from 28g/day of any nut: 5 months (95% CI: 1-12 months). This translates to 0.27 undiscounted QALYs, or **0.08 discounted QALYs** (95% CI: 0.01-0.24) at the standard 3% annual discount rate used in health economic evaluations. P(effect > 0) = 85%. Unless otherwise noted, QALY estimates in this paper refer to discounted values.
+Median life expectancy gain from 28g/day of any nut: 5 months (95% CI: 1-12 months). This translates to 0.27 undiscounted QALYs, or **0.08 discounted QALYs** (95% CI: 0.01-0.24) at the standard 3% annual discount rate used in health economic evaluations. I report both values because undiscounted QALYs (0.27) are more intuitive for clinical interpretation—representing actual expected health gains—while discounted QALYs (0.08) are standard for cost-effectiveness analysis, reflecting that future health benefits are valued less than immediate ones. P(effect > 0) = 85%. Unless otherwise noted, QALY estimates in this paper refer to discounted values.
 
 ### Pathway Contributions
 
