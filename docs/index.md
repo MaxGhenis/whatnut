@@ -1,3 +1,9 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 # What Nut? A Bayesian Analysis of Quality-Adjusted Life Years from Nut Consumption
 
 **Max Ghenis**
@@ -8,8 +14,6 @@ max@maxghenis.com
 :tags: [remove-cell]
 
 # Setup: Import paper results (single source of truth)
-import sys
-sys.path.insert(0, '../src')
 from whatnut.paper_results import r
 ```
 
