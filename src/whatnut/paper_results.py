@@ -67,6 +67,21 @@ class NutResult:
             return f"[${self.icer_ci_lower:,.0f}, dominated]"
         return f"[${self.icer_ci_lower:,.0f}, ${self.icer_ci_upper:,.0f}]"
 
+    @property
+    def life_years_fmt(self) -> str:
+        """Format life years for inline use."""
+        return f"{self.life_years:.2f}"
+
+    @property
+    def months(self) -> float:
+        """Life years in months."""
+        return self.life_years * 12
+
+    @property
+    def months_fmt(self) -> str:
+        """Format months for inline use."""
+        return f"{self.months:.1f}"
+
 
 @dataclass
 class PathwayRR:
@@ -123,6 +138,12 @@ class PaperResults:
 
     # Discount rate
     discount_rate: float = 0.03
+
+    # Baseline undiscounted metrics (for 40-year-old, remaining lifespan)
+    # Calculated from CDC life tables and EQ-5D quality weights
+    baseline_life_years: float = 35.32  # Undiscounted remaining life expectancy
+    baseline_qalys: float = 28.49  # Undiscounted QALYs (life years × age-varying quality)
+    average_quality_weight: float = 0.807  # Average EQ-5D weight over remaining lifespan
 
     # NICE thresholds (Dec 2025)
     nice_lower_gbp: int = 25000
@@ -313,6 +334,18 @@ class PaperResults:
         """Cancer RR range."""
         vals = [p.cancer for p in self.pathway_rrs.values()]
         return f"{min(vals):.2f}-{max(vals):.2f}"
+
+    @property
+    def life_years_range(self) -> str:
+        """Undiscounted life years range across all nuts."""
+        vals = [n.life_years for n in self.nuts.values()]
+        return f"{min(vals):.2f}-{max(vals):.2f}"
+
+    @property
+    def months_range(self) -> str:
+        """Months range across all nuts."""
+        vals = [n.life_years * 12 for n in self.nuts.values()]
+        return f"{min(vals):.1f}-{max(vals):.1f}"
 
     # Table generators (return markdown strings)
     def table_3_diagnostics(self) -> str:

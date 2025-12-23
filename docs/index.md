@@ -19,7 +19,7 @@ from whatnut.paper_results import r
 
 ## Abstract
 
-Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, and other mortality), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that for a {eval}`r.target_age`-year-old consuming 28g/day over their remaining lifespan, walnuts yield {eval}`r.walnut.qaly` discounted quality-adjusted life years (QALYs; 95% CI: {eval}`r.walnut.qaly_ci`), equivalent to 3-5 months of undiscounted life expectancy. Other nuts range from {eval}`r.pecan.qaly` QALYs (pecans) to {eval}`r.almond.qaly` QALYs (almonds). Approximately {eval}`r.cvd_contribution`% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of {eval}`r.cvd_effect_range` for CVD versus {eval}`r.cancer_effect_range` for cancer. Incremental cost-effectiveness ratios (ICERs) range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias).
+Observational studies find nut consumption associated with reduced mortality. I present a hierarchical Bayesian framework with pathway-specific effects (cardiovascular, cancer, and other mortality), nutrient-derived priors from independent meta-analyses, and evidence-calibrated confounding adjustment. Using Markov Chain Monte Carlo (MCMC) with non-centered parameterization (0% divergences), I estimate that for a {eval}`r.target_age`-year-old with {eval}`f"{r.baseline_qalys:.0f}"` baseline remaining quality-adjusted life years (QALYs), consuming 28g/day of walnuts over their remaining lifespan yields {eval}`r.walnut.life_years_fmt` additional life years ({eval}`r.walnut.months_fmt` months). Other nuts range from {eval}`r.pecan.life_years_fmt` life years (pecans) to {eval}`r.almond.life_years_fmt` life years (almonds). Approximately {eval}`r.cvd_contribution`% of benefit operates through cardiovascular disease (CVD) prevention, with pathway-specific relative risks of {eval}`r.cvd_effect_range` for CVD versus {eval}`r.cancer_effect_range` for cancer. Incremental cost-effectiveness ratios (ICERs), calculated using standard 3% discounted QALYs, range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias).
 
 ## Introduction
 
@@ -53,12 +53,9 @@ This paper develops a Bayesian Monte Carlo framework for estimating QALY gains f
 
 ### A Note on Discounting and Metrics
 
-This paper reports two complementary metrics:
+This paper reports **undiscounted life years** ({eval}`r.life_years_range` years, or {eval}`r.months_range` months) as the primary metric—representing the actual expected increase in lifespan from daily nut consumption. This is more intuitive for individual decision-making ("how much longer will I live?").
 
-- **Discounted QALYs** (0.11-0.20): The primary metric for cost-effectiveness analysis. Uses 3% annual discounting, which values benefits occurring 30 years in the future at only 41% of immediate benefits. This is the standard approach used by NICE, ICER, and WHO-CHOICE.
-- **Undiscounted life years** (0.25-0.45 years, or 3-5 months): More intuitive for individual decision-making. Represents the actual expected increase in quality-adjusted lifespan without time preference adjustment.
-
-For readers asking "how much longer will I live?", the undiscounted values are more relevant. For policy analysis and comparison to other health interventions, use discounted QALYs.
+For cost-effectiveness ratios (ICERs), I use **discounted QALYs** ({eval}`r.qaly_range`) following standard health economics practice. Discounting at 3% annually values benefits occurring 30 years in the future at only 41% of immediate benefits, consistent with NICE, ICER, and WHO-CHOICE guidelines. The discounted values are used only for ICER calculations to enable comparison with other health interventions.
 
 ## Methods
 
