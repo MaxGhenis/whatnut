@@ -141,6 +141,61 @@ Cause-of-death proportions vary by age (CDC WONDER 2021):
 
 CVD fraction increases with age; CVD has the lowest RR (0.75).
 
+## Alternative Approach: Direct Monte Carlo Simulation
+
+The main analysis uses a hierarchical Bayesian model with nutrient-derived priors and MCMC sampling. This section presents the simpler Monte Carlo approach used in earlier versions of this analysis, which serves as a validation check.
+
+### Monte Carlo Model (10,000 iterations)
+
+**Step 1: Sample cause-specific relative risks from meta-analysis**
+
+For each iteration, sample from log-normal distributions based on {cite:t}`aune2016nut`:
+- CVD mortality: RR ~ LogNormal(log(0.75), 0.03)
+- Cancer mortality: RR ~ LogNormal(log(0.87), 0.04)
+- Other mortality: RR ~ LogNormal(log(0.90), 0.03)
+
+**Step 2: Apply nut-specific pathway adjustments**
+
+Nut-specific adjustments are exponents on cause-specific RRs, reflecting RCT evidence beyond meta-analysis averages:
+
+| Nut | CVD Adj (SD) | Cancer Adj (SD) | Other Adj (SD) |
+|-----|--------------|-----------------|----------------|
+| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) |
+| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) |
+| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) |
+
+**Step 3: Apply confounding adjustment**
+
+Sample causal fraction from Beta(1.5, 4.5) with mean 0.25 and apply to log-RR.
+
+**Step 4: Compute lifecycle QALYs**
+
+Using CDC life tables, age-varying cause fractions, quality weights from Beta(17, 3), and 3% discounting.
+
+### Comparison of Approaches
+
+| Approach | Mean QALY | 95% CI | Computation |
+|----------|-----------|--------|-------------|
+| Monte Carlo (direct RR) | 0.08 | [0.01, 0.24] | 10,000 iterations, ~1 second |
+| MCMC (nutrient-derived) | 0.11-0.20 | [0.01, 0.56] | 4,000 samples, ~10 minutes |
+
+### Why Results Are Similar
+
+Both approaches yield comparable estimates because:
+1. Both use the same confounding calibration (Beta(1.5, 4.5))
+2. Both use the same pathway decomposition (CVD/cancer/other)
+3. The nutrient-derived priors in MCMC are calibrated to match meta-analysis estimates
+
+### Why Use the MCMC Approach?
+
+The hierarchical Bayesian model provides:
+- **Mechanistic interpretability**: Effects attributed to specific nutrients (ALA, fiber, magnesium)
+- **Principled shrinkage**: Poorly-evidenced nuts shrink toward nutrient-predicted effects
+- **Transparent priors**: Each prior is traceable to independent meta-analyses
+- **Convergence diagnostics**: R-hat, ESS, divergences confirm valid inference
+
+The Monte Carlo approach is appropriate for quick estimates or validation. The MCMC model is preferred for publication and comparative analysis.
+
 ## Limitations
 
 1. **Confounding**: Our 25% causal estimate is uncertain (95% CI: 2-63%). True value could be higher or lower.

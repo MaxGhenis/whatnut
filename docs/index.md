@@ -98,11 +98,13 @@ Rather than specifying nut-specific effects directly, I derived expected effects
 | Omega-6 (per g) | -0.004 (0.002) | -0.002 (0.002) | -0.002 (0.002) | {cite}`farvid2014omega6` |
 | Omega-7 (per g) | -0.03 (0.06) | 0.00 (0.03) | -0.02 (0.04) | Mechanistic (wide prior) |
 | Saturated fat (per g) | +0.02 (0.01) | +0.01 (0.01) | +0.01 (0.01) | {cite}`sacks2017sat` |
-| Magnesium (per 10mg) | -0.003 (0.001) | -0.001 (0.001) | -0.002 (0.001) | {cite}`fang2016mg` |
+| Magnesium (per 10mg)† | -0.003 (0.001) | -0.001 (0.001) | -0.002 (0.001) | {cite}`fang2016mg` |
 | Arginine (per 100mg) | -0.003 (0.003) | -0.001 (0.002) | -0.002 (0.002) | Mechanistic (wide prior) |
 | Vitamin E (per mg) | -0.005 (0.005) | -0.01 (0.01) | -0.003 (0.003) | Mechanistic (wide prior) |
 | Phytosterols (per 10mg) | -0.001 (0.002) | -0.001 (0.002) | 0.00 (0.001) | Mechanistic (wide prior) |
 | Protein (per g) | -0.002 (0.003) | -0.001 (0.002) | -0.001 (0.002) | Mechanistic (wide prior) |
+
+†Magnesium and phytosterols use larger units (per 10mg, per 10mg) because nuts provide 30-80mg and 20-100mg per serving, respectively. Effect sizes are correspondingly smaller per unit.
 
 #### Hierarchical Structure
 
@@ -128,19 +130,21 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **Golestan cohort**: {cite}`hashemian2017nut` find that in Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persists (hazard ratio [HR] 0.71 for ≥3 servings/week).
 
-I calibrated the Beta prior using method of moments matching to the evidence distribution. Let $p_i$ denote the causal fraction implied by evidence source $i$ with weight $w_i$:
+I calibrated the Beta prior using method of moments matching to the evidence distribution. Let $p_i$ denote the causal fraction implied by evidence source $i$ with weight $w_i$. I assigned weights based on study design strength and relevance to the nut-mortality question:
 
-- LDL pathway: $p_1 = 0.12$, $w_1 = 0.30$ (mechanistic, most direct)
-- Sibling studies: $p_2 = 0.20$, $w_2 = 0.30$ (genetic confounding control)
-- Golestan cohort: $p_3 = 0.40$, $w_3 = 0.40$ (cross-cultural, shows effect persists)
+- LDL pathway: $p_1 = 0.12$, $w_1 = 0.30$ (mechanistic, but captures only one of multiple pathways)
+- Sibling studies: $p_2 = 0.20$, $w_2 = 0.30$ (controls genetic confounding, but may have residual lifestyle differences)
+- Golestan cohort: $p_3 = 0.40$, $w_3 = 0.40$ (eliminates Western healthy-user bias, most directly relevant)
 
-The weighted mean is $\bar{p} = \sum w_i p_i = 0.256 \approx 0.25$. The weighted sample variance is $\sigma^2_{sample} = \sum w_i (p_i - \bar{p})^2 = 0.015$. However, this underestimates uncertainty because it only captures variance across three evidence sources, not the full epistemic uncertainty about confounding mechanisms. I inflate to $\sigma^2 = 0.027$ (~1.8× larger) to obtain a wider prior with 95% mass between 0.02 and 0.63. Method of moments for Beta($\alpha$, $\beta$) yields:
+The Golestan cohort receives higher weight because it directly addresses the healthy-user confounding concern specific to nut consumption, while the other sources provide more general evidence about dietary confounding. Sensitivity analysis with equal weights ($w_i = 1/3$) shifts the prior mean from 0.25 to 0.24 with minimal impact on posterior estimates.
+
+The weighted mean is $\bar{p} = \sum w_i p_i = 0.256 \approx 0.25$. The weighted sample variance is $\sigma^2_{sample} = \sum w_i (p_i - \bar{p})^2 = 0.015$. However, this underestimates uncertainty because it only captures variance across three evidence sources, not the full epistemic uncertainty about confounding mechanisms. I apply a variance inflation factor of 1.8×, yielding $\sigma^2 = 0.027$, based on the principle that with only $n=3$ observations, the sampling variance underestimates the true population variance by approximately $n/(n-1) = 1.5$×, plus an additional margin for unknown unknowns. This produces a prior with 95% mass between 0.02 and 0.63, appropriately wide given the fundamental uncertainty about causal inference from observational data. Method of moments for Beta($\alpha$, $\beta$) yields:
 
 $$\alpha = \bar{p} \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 1.5, \quad \beta = (1-\bar{p}) \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 4.5$$
 
 This yields Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%. The right-skewed distribution reflects that most evidence points to low causal fractions while allowing for larger effects suggested by the Golestan cohort.
 
-Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value as {eval}`r.e_value` for HR=0.78: an unmeasured confounder would need RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed association.
+Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value for protective associations as $E = 1/\text{RR} + \sqrt{1/\text{RR} \times (1/\text{RR} - 1)}$. For HR=0.78: $E = 1.28 + \sqrt{1.28 \times 0.28} = {eval}`r.e_value`$. An unmeasured confounder would need RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed association. For comparison, smoking-lung cancer associations have E-values exceeding 10.
 
 ### Target Population
 
@@ -173,7 +177,7 @@ As a consistency check, I verified that the model's implied all-cause mortality 
 
 ### Primary Finding
 
-The hierarchical Bayesian model estimates QALY gains ranging from {eval}`r.pecan.qaly` (pecans) to {eval}`r.walnut.qaly` (walnuts) for a {eval}`r.target_age`-year-old consuming 28g/day over their remaining lifespan.
+The hierarchical Bayesian model estimates QALY gains ranging from {eval}`r.pecan.qaly` (pecans) to {eval}`r.walnut.qaly` (walnuts) for a {eval}`r.target_age`-year-old consuming 28g/day over their remaining lifespan. In undiscounted terms, this translates to approximately 3-5 additional months of quality-adjusted life (0.25-0.45 life years). The discounted values ({eval}`r.qaly_range` QALYs) are lower due to time preference: benefits accruing 30-40 years in the future are weighted less than immediate benefits. Both metrics are reported in Table 3; undiscounted life years may be more intuitive for individual decision-making, while discounted QALYs are standard for cost-effectiveness analysis.
 
 **Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling ({eval}`r.n_samples` draws, {eval}`r.n_chains` chains, 0% divergences). QALYs and costs discounted at {eval}`int(r.discount_rate * 100)`% annually. Life years (LY) are undiscounted. P(>0) = posterior probability that QALY gain exceeds zero. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
 
@@ -255,13 +259,23 @@ I examined robustness to key parameter assumptions:
 
 **Hierarchical shrinkage (τ)**: The baseline model uses τ ~ HalfNormal(0.03), which constrains nut-specific deviations from nutrient-predicted effects to ~±6% on the log-RR scale (95% prior interval). With τ ~ HalfNormal(0.10) (weaker shrinkage), credible intervals widen by ~15% but point estimates and rankings remain stable. This suggests results are driven primarily by nutrient composition rather than nut-specific residual effects.
 
-**Adherence**: At 50% real-world adherence (vs 100% assumed), effective QALYs halve and ICERs double. All nuts except macadamia remain below \$50,000/QALY threshold.
+**Adherence**: The base case assumes 100% adherence over the remaining lifespan. Dietary intervention trials typically achieve 50-70% long-term adherence {cite:p}`appel2006adherence`. At 70% adherence, effective QALYs decrease proportionally (e.g., walnut from 0.20 to 0.14 QALYs) and ICERs increase by 43%. At 50% adherence, effective QALYs halve and ICERs double. All nuts except macadamia remain below \$50,000/QALY even at 50% adherence. For individual decision-making, readers should scale estimates by their expected adherence.
 
 **Age at initiation**: For a 60-year-old (vs 40), discounted QALYs decrease ~40% due to shorter remaining lifespan, partially offset by stronger CVD benefit at older ages.
 
+### Substitution Effects
+
+The model treats nut consumption as additive to baseline diet, but in practice nuts replace other foods. The net health impact depends on what is displaced:
+
+- **Replacing refined carbohydrates** (chips, crackers): Large benefit. Nuts provide fiber, unsaturated fats, and micronutrients absent from processed snacks. This substitution likely underlies the strong cohort associations, as snack replacement is the most common use case.
+- **Replacing other healthy fats** (olive oil, fatty fish): Smaller or negligible benefit. These foods share similar fatty acid profiles and cardioprotective effects.
+- **Replacing red meat**: Moderate benefit from reduced saturated fat and heme iron, partially offset by lower protein bioavailability.
+
+{cite:t}`li2015substitution` modeled isocaloric substitution in the Nurses' Health Study and found that replacing one serving of red meat with nuts reduced all-cause mortality by 19%, while replacing fish showed no significant change. These substitution patterns suggest the QALY estimates in this paper are most applicable when nuts replace less healthy alternatives—the realistic scenario for most consumers adding nuts to their diet.
+
 ### Limitations
 
-Several limitations warrant consideration. Estimates rely on observational data, and residual confounding may remain despite calibration. Source studies come predominantly from the US and Europe, limiting generalizability to other populations. I modeled a fixed 28g/day dose, though dose-response may be non-linear—{cite:t}`aune2016nut` find benefits plateau above ~20g/day. The model assumes perfect adherence, whereas dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`. Finally, substitution effects remain unmodeled; the net benefit depends on what foods nuts replace in the diet.
+Several limitations warrant consideration. Estimates rely on observational data, and residual confounding may remain despite calibration. Source studies come predominantly from the US and Europe, limiting generalizability to other populations. I modeled a fixed 28g/day dose, though dose-response may be non-linear—{cite:t}`aune2016nut` find benefits plateau above ~20g/day. The model assumes perfect adherence, whereas dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`.
 
 ## Conclusion
 
@@ -269,7 +283,15 @@ Using a hierarchical Bayesian model with pathway-specific nutrient effects and M
 
 ## Data and Code Availability
 
-Code: https://github.com/MaxGhenis/whatnut
+**Code**: https://github.com/MaxGhenis/whatnut (MIT License)
+
+**Data Sources**:
+- Nutrient composition: USDA FoodData Central SR Legacy database (https://fdc.nal.usda.gov/). FDC IDs for each nut are provided in Table 1.
+- Mortality rates: CDC National Vital Statistics System, United States Life Tables 2021 (https://www.cdc.gov/nchs/nvss/life-expectancy.htm)
+- Nut prices: USDA Economic Research Service, Food Prices and Spending (https://www.ers.usda.gov/data-products/food-prices/)
+- Quality-of-life weights: Sullivan & Ghushchyan (2006) EQ-5D US population norms
+
+**Reproducibility**: All paper values are computed from `src/whatnut/paper_results.py`. Run `python -m whatnut.paper_results` to verify. MCMC results can be regenerated with `whatnut[bayesian]` dependencies (seed=42).
 
 ```{bibliography}
 ```
