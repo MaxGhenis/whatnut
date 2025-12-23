@@ -84,6 +84,8 @@ Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024foodda
 
 Walnuts have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total fat as polyunsaturated fatty acids. ALA is a precursor to EPA and DHA {cite:p}`ros2008mediterranean`. Almonds have the highest vitamin E content (7.3mg/28g, 49% DV) and highest fiber content among tree nuts (3.5g/28g). Macadamias are the only common nut with substantial omega-7 fatty acids (palmitoleic acid, 4.7g/28g); they also have the highest caloric density (204 kcal) and saturated fat content (3.4g). Peanuts (technically legumes) have the highest protein content (7.3g/28g) and lowest cost; aflatoxin contamination occurs in some regions, particularly sub-Saharan Africa and Southeast Asia {cite:p}`williams2004aflatoxin`.
 
+**Note on Brazil nuts**: Brazil nuts are excluded from this analysis due to selenium toxicity concerns. A single 28g serving contains approximately 544μg selenium, exceeding the 400μg/day upper tolerable intake limit established by the Institute of Medicine. Chronic daily consumption at standard serving sizes risks selenosis (hair loss, nail brittleness, neurological effects). Consumers interested in Brazil nuts should limit intake to 1-2 nuts per day.
+
 ### Statistical Model
 
 I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte Carlo (MCMC) sampling. The model uses non-centered parameterization to ensure efficient sampling, with convergence diagnostics reported in the Results section.
