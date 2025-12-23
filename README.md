@@ -20,6 +20,17 @@ pip install whatnut
 
 ## Usage
 
+### Quick Start: Use Paper Results (Recommended)
+```python
+from whatnut.paper_results import r
+
+# Get exact values from the paper (discounted QALYs)
+print(f"Walnuts: {r.walnut.qaly} QALYs")  # Output: 0.20
+print(f"Peanuts: {r.peanut.icer}")        # Output: $5,700/QALY
+print(f"QALY range: {r.qaly_range}")      # Output: 0.11-0.20
+```
+
+### Monte Carlo Simulation (Advanced)
 ```python
 from whatnut import MonteCarloSimulation, DEFAULT_PARAMS
 
@@ -27,18 +38,13 @@ sim = MonteCarloSimulation(seed=42)
 result = sim.run(DEFAULT_PARAMS)
 
 for nut_result in result.results:
-    print(f"{nut_result.nut_id}: {nut_result.median:.2f} QALYs (95% CI: {nut_result.ci_95})")
+    print(f"{nut_result.nut_id}: {nut_result.median:.2f} life years")
 ```
 
-### Quick Start: Use Paper Results
-```python
-from whatnut.paper_results import r
-
-# Get exact values from the paper
-print(f"Walnuts: {r.walnut.qaly} QALYs")
-print(f"Peanuts: {r.peanut.icer}")
-print(f"QALY range: {r.qaly_range}")
-```
+**Note on metrics**:
+- `paper_results` contains **discounted QALYs** (0.11-0.20) using 3% annual discounting—the standard for cost-effectiveness analysis
+- `MonteCarloSimulation` returns **undiscounted life years** (~0.3-0.5)—more intuitive but not directly comparable to paper values
+- For exact paper reproduction, use `paper_results`; for custom scenarios, use Monte Carlo
 
 ## Key Finding
 

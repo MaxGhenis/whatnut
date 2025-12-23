@@ -23,12 +23,18 @@ The analysis uses a hierarchical Bayesian model with non-centered parameterizati
 - Standardized deviations: $z_{nut,pathway} \sim \text{Normal}(0, 1)$
 - Confounding fraction: $c \sim \text{Beta}(1.5, 4.5)$
 
+**Justification for τ ~ HalfNormal(0.03):** The scale parameter 0.03 constrains nut-specific deviations to approximately ±6% on the log-RR scale at 2 standard deviations (95% prior interval). This was calibrated through pilot analyses:
+- τ ~ HalfNormal(0.01) produced excessive shrinkage, making all nuts nearly identical despite known compositional differences
+- τ ~ HalfNormal(0.10) produced implausibly wide between-nut variation (±20% deviations), larger than compositional differences would justify
+- τ ~ HalfNormal(0.03) balances information sharing across nuts with nut-specific flexibility, allowing walnuts to differ from almonds by the magnitude seen in RCT residual effects (~10-15%)
+
 **Model:**
 1. Compute nutrient-predicted effect: $\theta_{nutrients} = \sum_{n} \beta_n \cdot \text{composition}_{nut,n}$
 2. Add hierarchical deviation (non-centered): $\theta_{true} = \theta_{nutrients} + \tau \cdot z$
-3. Apply nut-specific adjustment prior: $\theta_{adjusted} = \theta_{true} + \log(a_{nut,pathway})$
-   - Where $a$ is the RR-scale multiplier from the table below (e.g., walnut CVD $a = 1.25$)
-   - Equivalently: $RR_{adjusted} = RR_{true} \times a$
+3. Apply nut-specific adjustment: $RR_{adjusted} = RR_{true}^{a_{nut,pathway}}$
+   - Where $a$ is the adjustment exponent from the table below (e.g., walnut CVD $a = 1.25$)
+   - On log scale: $\theta_{adjusted} = a \times \theta_{true}$
+   - For protective effects (RR < 1), adjustments $a > 1$ amplify the effect
 4. Apply confounding: $\theta_{causal} = c \cdot \theta_{adjusted}$
 5. Convert to RR: $RR_{pathway} = \exp(\theta_{causal})$
 
@@ -46,7 +52,7 @@ For each of 500 posterior samples:
 
 ## Nut-Specific Adjustment Priors
 
-These adjustment factors are **priors** used in the hierarchical model (step 3 above: $\theta_{adjusted} = \theta_{true} + \log(a_{nut,pathway})$). The adjustment is **additive on the log-RR scale**, which is equivalent to multiplicative on the RR scale: $RR_{adjusted} = RR_{nutrients} \times a$. For example, walnut's CVD adjustment of 1.25 means $\log(1.25) = 0.22$ is added to the log-RR, amplifying the protective effect by 25%.
+These adjustment factors are **priors** used in the hierarchical model. The adjustment is applied as an **exponent** on the RR scale: $RR_{adjusted} = RR_{nutrients}^{a}$. On the log-RR scale, this is multiplicative: $\log(RR_{adjusted}) = a \times \log(RR_{nutrients})$. For protective effects (RR < 1), adjustments > 1 amplify the effect. For example, walnut's CVD adjustment of 1.25 applied to a nutrient-predicted RR of 0.80 yields $0.80^{1.25} = 0.75$ (a 25% mortality reduction becomes a 25% stronger effect, yielding 25% × 1.25 ≈ 31% reduction).
 
 ### Derivation of Adjustment Values
 

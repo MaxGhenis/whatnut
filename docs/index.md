@@ -88,6 +88,8 @@ Walnuts have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total
 
 I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte Carlo (MCMC) sampling. The model uses non-centered parameterization to ensure efficient sampling, with convergence diagnostics reported in the Results section.
 
+**Note on model structure**: This is a **prior synthesis model** that propagates uncertainty from multiple evidence sources (nutrient effect estimates, nut-specific RCT residuals, confounding calibration) through to QALY estimates. Unlike traditional Bayesian analyses that update beliefs from outcome data via a likelihood function, this model synthesizes prior information without a likelihood linking to mortality observations. The "posterior" represents the distribution of plausible QALY estimates given current evidence, not updated beliefs from new data. This approach is appropriate because the goal is uncertainty quantification from existing evidence synthesis, not parameter estimation from a novel dataset.
+
 #### Pathway-Specific Effects
 
 The model estimates separate relative risks for three mortality pathways. CVD mortality shows the largest effects (RR 0.83-0.90), informed by ALA omega-3, fiber, and magnesium priors. Cancer mortality shows smaller effects (RR 0.97-0.99, corresponding to 1-3% reductions), informed by fiber and vitamin E priors. Other mortality shows intermediate effects (RR 0.94-0.97), representing a composite of remaining causes. This decomposition allows different nutrients to contribute differentially to each pathway—for example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
