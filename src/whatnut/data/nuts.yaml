@@ -109,9 +109,9 @@ pecan:
       sd: 0.10
       rationale: "Some omega-3; Hart 2025, Guarneiri 2021 RCTs"
     cancer:
-      mean: 0.98
+      mean: 1.00
       sd: 0.12
-      rationale: "Limited evidence"
+      rationale: "Insufficient evidence for deviation from nutrients"
     other:
       mean: 1.00
       sd: 0.12
@@ -136,15 +136,15 @@ macadamia:
     cvd:
       mean: 1.08
       sd: 0.10
-      rationale: "Omega-7; FDA qualified health claim"
+      rationale: "FDA qualified health claim, MUFA profile"
     cancer:
-      mean: 0.95
+      mean: 1.00
       sd: 0.15
-      rationale: "Limited evidence, lower antioxidants"
+      rationale: "Insufficient evidence for deviation from nutrients"
     other:
       mean: 1.05
       sd: 0.12
-      rationale: "Insulin sensitivity from omega-7"
+      rationale: "Insulin sensitivity effects"
   cost_per_kg_usd: 22.50
   evidence: moderate
 
@@ -167,9 +167,9 @@ peanut:
       sd: 0.06
       rationale: "Large cohort data (n=118,962); slight discount vs tree nuts"
     cancer:
-      mean: 0.90
+      mean: 1.00
       sd: 0.08
-      rationale: "Aflatoxin concern"
+      rationale: "Neutral; US aflatoxin regulated <20ppb"
     other:
       mean: 0.98
       sd: 0.08

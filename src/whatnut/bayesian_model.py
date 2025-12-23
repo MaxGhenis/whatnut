@@ -115,8 +115,19 @@ PATHWAY_NUTRIENT_PRIORS = {
         'protein': {'mean': -0.005, 'sd': 0.005, 'unit': 'g',
                     'source': 'Muscle maintenance in elderly'},
     },
+    # ==========================================================================
+    # QUALITY PATHWAY - RETAINED FOR FUTURE EXTENSIONS, NOT USED IN PAPER
+    # ==========================================================================
+    # The quality pathway models effects on morbidity/quality-of-life (fatigue,
+    # cognition, CVD events) separate from mortality. However, the published
+    # analysis sets quality_multiplier=1.0 (see run_full_lifecycle_mc) to avoid
+    # double-counting benefits already captured through mortality pathways.
+    # This structure is retained for potential future extensions that might
+    # separately model morbidity reductions from nut consumption.
+    # ==========================================================================
     'quality': {
         # Effects on quality of life (morbidity, not mortality)
+        # NOTE: This pathway is DISABLED in published results (multiplier=1.0)
         'ala_omega3': {'mean': -0.02, 'sd': 0.02, 'unit': 'g',
                        'source': 'Anti-inflammatory, mood'},
         'omega6': {'mean': 0.0, 'sd': 0.002, 'unit': 'g',

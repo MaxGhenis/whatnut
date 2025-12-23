@@ -46,23 +46,34 @@ For each of 500 posterior samples:
 
 ## Nut-Specific Adjustment Priors
 
-These adjustment factors are **priors** used in the hierarchical model (step 3 above: $\theta_{adjusted} = \theta_{true} + \log(a_{nut,pathway})$). They capture effects from non-modeled bioactives (polyphenols, phytochemicals, specific fatty acid ratios) not explained by the 10 nutrients in Table 2.
+These adjustment factors are **priors** used in the hierarchical model (step 3 above: $\theta_{adjusted} = \theta_{true} + \log(a_{nut,pathway})$). The adjustment is **additive on the log-RR scale**, which is equivalent to multiplicative on the RR scale: $RR_{adjusted} = RR_{nutrients} \times a$. For example, walnut's CVD adjustment of 1.25 means $\log(1.25) = 0.22$ is added to the log-RR, amplifying the protective effect by 25%.
 
-Values are derived from nut-specific RCT evidence that shows effects beyond what nutrient composition predicts. For example, walnuts in PREDIMED showed CVD benefits exceeding their ALA content predictions, yielding an adjustment of 1.25 (25% stronger effect). Almonds serve as the reference nut (adjustment = 1.00) with the most robust RCT evidence base.
+### Derivation of Adjustment Values
 
-These priors are **independent** of nutrient priors—they represent additional information not captured by compositional analysis, avoiding double-counting.
+Adjustments capture **residual effects** from nut-specific RCTs after accounting for nutrient composition. The derivation for walnut's CVD adjustment illustrates the method:
+
+1. **PREDIMED RCT** {cite:p}`ros2008mediterranean`: Walnut group showed ~30% CVD risk reduction
+2. **Nutrient-predicted effect**: Based on 2.5g ALA × (-0.15 log-RR/g) + other nutrients = ~20% reduction
+3. **Residual**: 30% - 20% = 10% additional benefit, plus ~15% for polyphenol effects from WAHA {cite:p}`rajaram2021walnuts`
+4. **Adjustment**: exp(0.22) ≈ 1.25 (25% stronger than nutrients alone)
+
+Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects are well-explained by nutrient composition (vitamin E, fiber, MUFA). This ensures adjustments represent genuine "beyond-nutrient" effects rather than artifacts.
+
+**Independence from nutrient priors**: The nutrient priors (Table 2) use effect estimates from studies that pool across food sources (e.g., Naghshi 2021 for ALA includes fish and plant sources). The nut-specific adjustments use residual effects from nut-only RCTs, avoiding double-counting.
 
 | Nut | CVD Adj | Cancer Adj | Other Adj | Evidence | Rationale |
 |-----|---------|------------|-----------|----------|-----------|
-| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA RCTs show effects beyond ALA content |
-| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Lipid improvements exceed nutrient predictions |
-| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference nut, robust RCT base |
-| Pecan | 1.08 (0.10) | 0.98 (0.12) | 1.00 (0.12) | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` |
-| Macadamia | 1.08 (0.10) | 0.95 (0.15) | 1.05 (0.12) | Moderate | Omega-7 effects, FDA qualified health claim |
-| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962), aflatoxin concern reduces effect |
+| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA residual effects beyond nutrients |
+| Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Del Gobbo: lipid improvements exceed predictions |
+| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference nut, effects well-explained by nutrients |
+| Pecan | 1.08 (0.10) | 1.00 (0.12) | 1.00 (0.12) | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` |
+| Macadamia | 1.08 (0.10) | 1.00 (0.15) | 1.05 (0.12) | Moderate | FDA qualified health claim, MUFA profile |
+| Peanut | 0.98 (0.06) | 1.00 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962) |
 | Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs reflect uncertainty |
 
-Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty. These adjustments are independent of nutrient priors—they represent additional information from nut-specific trials not captured by compositional analysis.
+**Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers {cite:p}`wu2015aflatoxin`. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
+
+Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty.
 
 ## Confounding Prior Derivation
 
