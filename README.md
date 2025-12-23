@@ -15,8 +15,16 @@ This package provides a rigorous, evidence-based analysis of the health effects 
 ## Installation
 
 ```bash
-pip install whatnut
+# Install from GitHub (not yet on PyPI)
+pip install git+https://github.com/MaxGhenis/whatnut.git
+
+# Or clone and install locally
+git clone https://github.com/MaxGhenis/whatnut.git
+cd whatnut
+pip install -e .
 ```
+
+**Requirements**: Python ≥3.10
 
 ## Usage
 
