@@ -82,6 +82,17 @@ class NutResult:
         """Format months for inline use."""
         return f"{self.months:.1f}"
 
+    @property
+    def qaly_undiscounted(self) -> float:
+        """Undiscounted QALYs (life years × average quality weight)."""
+        # Uses average quality weight of 0.807 over remaining lifespan
+        return self.life_years * 0.807
+
+    @property
+    def qaly_undiscounted_fmt(self) -> str:
+        """Format undiscounted QALY for inline use."""
+        return f"{self.qaly_undiscounted:.2f}"
+
 
 @dataclass
 class PathwayRR:
@@ -303,8 +314,14 @@ class PaperResults:
     # Derived values
     @property
     def qaly_range(self) -> str:
-        """QALY range across all nuts."""
+        """Discounted QALY range across all nuts."""
         vals = [n.qaly_mean for n in self.nuts.values()]
+        return f"{min(vals):.2f}-{max(vals):.2f}"
+
+    @property
+    def qaly_undiscounted_range(self) -> str:
+        """Undiscounted QALY range across all nuts."""
+        vals = [n.qaly_undiscounted for n in self.nuts.values()]
         return f"{min(vals):.2f}-{max(vals):.2f}"
 
     @property
@@ -361,18 +378,19 @@ class PaperResults:
         return "\n".join(lines)
 
     def table_3_qalys(self) -> str:
-        """Generate Table 3: QALY estimates."""
+        """Generate Table 3: Life year and QALY estimates."""
         lines = [
-            "| Nut | Mean QALY | 95% CI | P(>0) | LY Gained | ICER | ICER 95% CI |",
-            "|-----|-----------|--------|-------|-----------|------|-------------|",
+            "| Nut | Life Years | Months | QALY (undiscounted) | QALY (3% discounted) | P(>0) | ICER |",
+            "|-----|------------|--------|---------------------|----------------------|-------|------|",
         ]
-        # Sort by QALY descending
-        sorted_nuts = sorted(self.nuts.values(), key=lambda n: n.qaly_mean, reverse=True)
+        # Sort by life years descending
+        sorted_nuts = sorted(self.nuts.values(), key=lambda n: n.life_years, reverse=True)
         for n in sorted_nuts:
             p_pct = f"{n.p_positive:.0%}"
             lines.append(
-                f"| {n.name} | {n.qaly_mean:.2f} | [{n.qaly_ci_lower:.2f}, {n.qaly_ci_upper:.2f}] | "
-                f"{p_pct} | {n.life_years:.2f} | \\${n.icer:,} | {n.icer_ci_fmt} |"
+                f"| {n.name} | {n.life_years:.2f} | {n.months:.1f} | "
+                f"{n.qaly_undiscounted:.2f} | {n.qaly_mean:.2f} | "
+                f"{p_pct} | \\${n.icer:,} |"
             )
         return "\n".join(lines)
 

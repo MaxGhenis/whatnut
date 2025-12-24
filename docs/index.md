@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# What Nut? A Bayesian Analysis of Quality-Adjusted Life Years from Nut Consumption
+# What Nut? A Bayesian Analysis of Life Expectancy from Nut Consumption
 
 **Max Ghenis**
 
@@ -45,17 +45,17 @@ Three limitations motivate this analysis. First, most studies examine "any nuts"
 
 Second, relative risk reductions do not directly map to absolute benefits. A 22% mortality reduction translates to different absolute life expectancy gains depending on baseline mortality risk, age distribution of benefits, and cause-specific mortality patterns.
 
-Third, health policy requires standardized metrics for resource allocation. Quality-adjusted life years (QALYs) combine life expectancy and health-related quality of life into a single metric. The UK National Institute for Health and Care Excellence (NICE), US Institute for Clinical and Economic Review (ICER), and WHO-CHOICE (World Health Organization CHOosing Interventions that are Cost-Effective) use QALYs in cost-effectiveness analyses. To my knowledge, no existing study quantifies QALY gains from nut consumption.
+Third, no existing study quantifies absolute life expectancy gains from nut consumption. Health policy requires standardized metrics for resource allocation; quality-adjusted life years (QALYs) enable comparison across interventions. The UK National Institute for Health and Care Excellence (NICE), US Institute for Clinical and Economic Review (ICER), and WHO-CHOICE (World Health Organization CHOosing Interventions that are Cost-Effective) use QALYs in cost-effectiveness analyses.
 
 ### Contribution
 
-This paper develops a Bayesian Monte Carlo framework for estimating QALY gains from nut consumption, addressing: (1) expected benefit magnitude in standardized units; (2) nut type comparisons based on compositional differences; (3) explicit treatment of confounding uncertainty calibrated to multiple evidence sources. Throughout this paper, "nuts" refers to tree nuts plus peanuts (a legume), following epidemiological convention.
+This paper develops a Bayesian Monte Carlo framework for estimating life expectancy gains from nut consumption, addressing: (1) expected benefit magnitude in absolute terms (life years); (2) nut type comparisons based on compositional differences; (3) explicit treatment of confounding uncertainty calibrated to multiple evidence sources. QALYs are computed for cost-effectiveness comparison with other health interventions. Throughout this paper, "nuts" refers to tree nuts plus peanuts (a legume), following epidemiological convention.
 
-### A Note on Discounting and Metrics
+### A Note on Metrics
 
-This paper reports **undiscounted life years** ({eval}`r.life_years_range` years, or {eval}`r.months_range` months) as the primary metric—representing the actual expected increase in lifespan from daily nut consumption. This is more intuitive for individual decision-making ("how much longer will I live?").
+This paper reports **life years gained** ({eval}`r.life_years_range` years, or {eval}`r.months_range` months) as the primary metric—representing the actual expected increase in lifespan from daily nut consumption. This is more intuitive for individual decision-making ("how much longer will I live?").
 
-For cost-effectiveness ratios (ICERs), I use **discounted QALYs** ({eval}`r.qaly_range`) following standard health economics practice. Discounting at 3% annually values benefits occurring 30 years in the future at only 41% of immediate benefits, consistent with NICE, ICER, and WHO-CHOICE guidelines. The discounted values are used only for ICER calculations to enable comparison with other health interventions.
+For cost-effectiveness comparison with other health interventions, I also report **QALYs** (quality-adjusted life years), which weight life years by age-specific quality of life using population EQ-5D norms. I present both undiscounted QALYs and discounted QALYs (3% annually, following NICE/ICER/WHO-CHOICE guidelines). Note that this analysis models only **mortality effects**—potential morbidity benefits (e.g., fewer non-fatal CVD events, improved cognitive function) are not included, making these QALY estimates conservative.
 
 ## Methods
 
@@ -87,13 +87,13 @@ Walnuts have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total
 
 I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte Carlo (MCMC) sampling. The model uses non-centered parameterization to ensure efficient sampling, with convergence diagnostics reported in the Results section.
 
-**Note on model structure**: This is a **prior synthesis model** that propagates uncertainty from multiple evidence sources (nutrient effect estimates, nut-specific RCT residuals, confounding calibration) through to QALY estimates. Unlike traditional Bayesian analyses that update beliefs from outcome data via a likelihood function, this model synthesizes prior information without a likelihood linking to mortality observations. The "posterior" represents the distribution of plausible QALY estimates given current evidence, not updated beliefs from new data. This approach is appropriate because the goal is uncertainty quantification from existing evidence synthesis, not parameter estimation from a novel dataset.
+**Note on model structure**: This is a **prior synthesis model** that propagates uncertainty from multiple evidence sources (nutrient effect estimates, nut-specific RCT residuals, confounding calibration) through to life expectancy estimates. Unlike traditional Bayesian analyses that update beliefs from outcome data via a likelihood function, this model synthesizes prior information without a likelihood linking to mortality observations. The "posterior" represents the distribution of plausible life expectancy gains given current evidence, not updated beliefs from new data. This approach is appropriate because the goal is uncertainty quantification from existing evidence synthesis, not parameter estimation from a novel dataset.
 
 #### Pathway-Specific Effects
 
 The model estimates separate relative risks for three mortality pathways. CVD mortality shows the largest effects (RR 0.83-0.90), informed by ALA omega-3, fiber, and magnesium priors. Cancer mortality shows smaller effects (RR 0.97-0.99, corresponding to 1-3% reductions), informed by fiber and vitamin E priors. Other mortality shows intermediate effects (RR 0.94-0.97), representing a composite of remaining causes. This decomposition allows different nutrients to contribute differentially to each pathway—for example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
 
-I do not model a separate quality-of-life pathway. While nuts may improve morbidity through reduced CVD events, fatigue, and cognitive function, such effects are largely captured through the mortality pathways (survivors of prevented CVD events have higher quality of life). Including a separate quality pathway would risk double-counting benefits. The primary QALY calculation therefore uses mortality-based life expectancy gains weighted by population EQ-5D norms.
+I do not model a separate morbidity pathway. While nuts may improve quality of life through reduced non-fatal CVD events, improved cognitive function, and other morbidity effects, this analysis focuses solely on mortality. QALYs are computed by weighting mortality-based life expectancy gains by population EQ-5D norms (age-specific quality weights), not by modeling nut-specific quality improvements. This makes the estimates conservative—actual benefits may be larger if nuts reduce morbidity beyond their mortality effects.
 
 #### Nutrient-Derived Priors
 
@@ -199,9 +199,9 @@ These checks confirm the model produces valid predictions across the full poster
 
 ### Primary Finding
 
-The hierarchical Bayesian model estimates QALY gains ranging from {eval}`r.pecan.qaly` (pecans) to {eval}`r.walnut.qaly` (walnuts) for a {eval}`r.target_age`-year-old consuming 28g/day over their remaining lifespan. In undiscounted terms, this translates to approximately 3-5 additional months of quality-adjusted life (0.25-0.45 life years). The discounted values ({eval}`r.qaly_range` QALYs) are lower due to time preference: benefits accruing 30-40 years in the future are weighted less than immediate benefits. Both metrics are reported in Table 3; undiscounted life years may be more intuitive for individual decision-making, while discounted QALYs are standard for cost-effectiveness analysis.
+The hierarchical Bayesian model estimates that a {eval}`r.target_age`-year-old consuming 28g/day of nuts over their remaining lifespan gains {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months), with walnuts ({eval}`r.walnut.life_years_fmt` years) ranking highest and pecans ({eval}`r.pecan.life_years_fmt` years) lowest. Approximately {eval}`r.cvd_contribution`% of this benefit operates through CVD mortality prevention.
 
-**Table 3: QALY and Life Year Estimates by Nut Type.** Posterior estimates from MCMC sampling ({eval}`r.n_samples` draws, {eval}`r.n_chains` chains, 0% divergences). QALYs and costs discounted at {eval}`int(r.discount_rate * 100)`% annually. Life years (LY) are undiscounted. P(>0) = posterior probability that QALY gain exceeds zero. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
+**Table 3: Life Year and QALY Estimates by Nut Type.** Posterior estimates from MCMC sampling ({eval}`r.n_samples` draws, {eval}`r.n_chains` chains, 0% divergences). Life years (LY) are the primary metric. QALYs weight life years by age-specific quality of life; both undiscounted and discounted (3% annually) QALYs are shown. P(>0) = posterior probability of positive benefit. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
 
 ```{code-cell} python
 :tags: [remove-input]
@@ -261,7 +261,7 @@ Credible interval width reflects both nutrient prior uncertainty and hierarchica
 
 ### Key Findings
 
-The hierarchical Bayesian model estimates {eval}`r.qaly_range` discounted QALYs from daily nut consumption, with walnut and almond sharing the top position and pecan ranking lowest. This spread (~45% of the category effect) is larger than previous analyses suggested, reflecting the mechanistic importance of nutrient composition.
+The hierarchical Bayesian model estimates {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) from daily nut consumption, with walnut and almond sharing the top position and pecan ranking lowest. This spread (~45% of the category effect) is larger than previous analyses suggested, reflecting the mechanistic importance of nutrient composition.
 
 The dominance of CVD pathway (~{eval}`r.cvd_contribution`% of benefit) explains the walnut advantage: its 2.5g ALA omega-3 content drives a CVD RR of 0.83 compared to 0.88-0.89 for nuts with negligible ALA. This mechanistic link provides stronger causal support than overall mortality associations.
 
@@ -308,11 +308,13 @@ The model treats nut consumption as additive to baseline diet, but in practice n
 
 ### Limitations
 
-Several limitations warrant consideration. Estimates rely on observational data, and residual confounding may remain despite calibration. Source studies come predominantly from the US and Europe, limiting generalizability to other populations. I modeled a fixed 28g/day dose, though dose-response may be non-linear—{cite:t}`aune2016nut` find benefits plateau above ~20g/day. The model assumes perfect adherence, whereas dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`.
+Several limitations warrant consideration. First, this analysis models only **mortality effects**—potential morbidity benefits from nuts (fewer non-fatal strokes and heart attacks, improved metabolic markers, better cognitive function) are not captured. The QALY estimates are therefore conservative; actual quality-adjusted benefits may be larger.
+
+Second, estimates rely on observational data, and residual confounding may remain despite calibration. Source studies come predominantly from the US and Europe, limiting generalizability to other populations. I modeled a fixed 28g/day dose, though dose-response may be non-linear—{cite:t}`aune2016nut` find benefits plateau above ~20g/day. The model assumes perfect adherence, whereas dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`.
 
 ## Conclusion
 
-Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields {eval}`r.qaly_range` discounted QALYs for a {eval}`r.target_age`-year-old, with walnuts and almonds ranking highest. Approximately {eval}`r.cvd_contribution`% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias). All nuts fall below NICE's new £{eval}`f'{r.nice_lower_gbp:,}'`/QALY (\${eval}`f'{r.nice_lower_usd:,}'`) threshold and ICER's \${eval}`f'{r.icer_threshold:,}'`/QALY benchmark. Peanuts achieve the lowest ICER, combining the third-highest QALY estimate with the lowest cost. These findings do not apply to individuals with nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults {cite:p}`gupta2021prevalence`).
+Using a hierarchical Bayesian model with pathway-specific nutrient effects and MCMC sampling (0% divergences), I estimate that daily nut consumption (28g) yields {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) for a {eval}`r.target_age`-year-old, with walnuts and almonds ranking highest. Approximately {eval}`r.cvd_contribution`% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. For cost-effectiveness comparison, ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.icer_fmt`/QALY (macadamias), all below NICE and ICER thresholds. These estimates reflect mortality effects only; potential morbidity benefits (reduced non-fatal CVD events, improved cognitive function) would increase actual QALYs. Findings do not apply to individuals with nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults {cite:p}`gupta2021prevalence`).
 
 ## Data and Code Availability
 
