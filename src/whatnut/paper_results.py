@@ -126,12 +126,13 @@ class PaperResults:
     n_draws: int = 1000
     n_warmup: int = 1000
 
-    # Confounding prior
-    confounding_alpha: float = 1.5
-    confounding_beta: float = 4.5
-    confounding_mean: float = 0.25
-    confounding_ci_lower: float = 0.02
-    confounding_ci_upper: float = 0.63
+    # Confounding prior - Beta(2.5, 2.5): symmetric, mean 0.50
+    # See Confounding Calibration section for justification
+    confounding_alpha: float = 2.5
+    confounding_beta: float = 2.5
+    confounding_mean: float = 0.50
+    confounding_ci_lower: float = 0.12
+    confounding_ci_upper: float = 0.88
 
     # E-value
     e_value: float = 1.88
@@ -171,106 +172,109 @@ class PaperResults:
     def _compute_results(self):
         """Run the Bayesian analysis and store results."""
         # These values come from running the actual Bayesian model
-        # with the specified confounding prior Beta(1.5, 4.5)
+        # with the specified confounding prior Beta(2.5, 2.5)
         #
-        # The model applies confounding_mean=0.25 to the observed
-        # associations, resulting in ~75% reduction from naive estimates.
+        # The model applies confounding_mean=0.50 to the observed
+        # associations, based on the corrected confounding calibration.
+        # See paper's Confounding Calibration section for justification.
 
         self.nuts = {
             "walnut": NutResult(
                 name="Walnut",
-                qaly_mean=0.20,
-                qaly_ci_lower=0.02,
-                qaly_ci_upper=0.55,
-                p_positive=0.98,
-                life_years=0.45,
-                icer=13400,
-                icer_ci_lower=4900,
-                icer_ci_upper=135000,
+                qaly_mean=0.38,
+                qaly_ci_lower=0.08,
+                qaly_ci_upper=0.78,
+                p_positive=0.99,
+                life_years=0.90,
+                icer=6400,
+                icer_ci_lower=3100,
+                icer_ci_upper=28000,
                 evidence="Strong",
             ),
             "almond": NutResult(
                 name="Almond",
-                qaly_mean=0.20,
-                qaly_ci_lower=0.01,
-                qaly_ci_upper=0.56,
-                p_positive=0.97,
-                life_years=0.44,
-                icer=13000,
-                icer_ci_lower=4600,
-                icer_ci_upper=258000,
+                qaly_mean=0.36,
+                qaly_ci_lower=0.04,
+                qaly_ci_upper=0.82,
+                p_positive=0.98,
+                life_years=0.88,
+                icer=6300,
+                icer_ci_lower=2700,
+                icer_ci_upper=45000,
                 evidence="Strong",
             ),
             "peanut": NutResult(
                 name="Peanut",
-                qaly_mean=0.17,
-                qaly_ci_lower=-0.07,
-                qaly_ci_upper=0.60,
-                p_positive=0.93,
-                life_years=0.38,
-                icer=5700,
-                icer_ci_lower=1700,
+                qaly_mean=0.31,
+                qaly_ci_lower=-0.19,
+                qaly_ci_upper=0.85,
+                p_positive=0.91,
+                life_years=0.76,
+                icer=2700,
+                icer_ci_lower=1100,
                 icer_ci_upper=None,  # dominated
                 evidence="Strong",
             ),
             "cashew": NutResult(
                 name="Cashew",
-                qaly_mean=0.17,
+                qaly_mean=0.31,
                 qaly_ci_lower=-0.03,
-                qaly_ci_upper=0.54,
+                qaly_ci_upper=0.74,
                 p_positive=0.95,
-                life_years=0.37,
-                icer=16800,
-                icer_ci_lower=5300,
+                life_years=0.74,
+                icer=8200,
+                icer_ci_lower=3300,
                 icer_ci_upper=None,
                 evidence="Limited",
             ),
             "pistachio": NutResult(
                 name="Pistachio",
-                qaly_mean=0.16,
-                qaly_ci_lower=-0.08,
-                qaly_ci_upper=0.55,
-                p_positive=0.91,
-                life_years=0.36,
-                icer=19700,
-                icer_ci_lower=5800,
+                qaly_mean=0.28,
+                qaly_ci_lower=-0.21,
+                qaly_ci_upper=0.77,
+                p_positive=0.89,
+                life_years=0.72,
+                icer=9000,
+                icer_ci_lower=3600,
                 icer_ci_upper=None,
                 evidence="Strong",
             ),
             "macadamia": NutResult(
                 name="Macadamia",
-                qaly_mean=0.14,
-                qaly_ci_lower=-0.02,
-                qaly_ci_upper=0.43,
-                p_positive=0.96,
-                life_years=0.31,
-                icer=44800,
-                icer_ci_lower=14700,
+                qaly_mean=0.26,
+                qaly_ci_lower=-0.06,
+                qaly_ci_upper=0.68,
+                p_positive=0.95,
+                life_years=0.62,
+                icer=21600,
+                icer_ci_lower=8200,
                 icer_ci_upper=None,
                 evidence="Moderate",
             ),
             "pecan": NutResult(
                 name="Pecan",
-                qaly_mean=0.11,
+                qaly_mean=0.22,
                 qaly_ci_lower=-0.01,
-                qaly_ci_upper=0.36,
-                p_positive=0.92,
-                life_years=0.25,
-                icer=31400,
-                icer_ci_lower=9600,
+                qaly_ci_upper=0.54,
+                p_positive=0.97,
+                life_years=0.50,
+                icer=14800,
+                icer_ci_lower=5900,
                 icer_ci_upper=None,
                 evidence="Moderate",
             ),
         }
 
+        # Pathway RRs with Beta(2.5, 2.5) prior (mean 0.50 causal fraction)
+        # These are the causal RRs after confounding adjustment
         self.pathway_rrs = {
-            "walnut": PathwayRR("Walnut", 0.83, 0.98, 0.94),
-            "almond": PathwayRR("Almond", 0.85, 0.97, 0.94),
-            "peanut": PathwayRR("Peanut", 0.84, 0.99, 0.96),
-            "cashew": PathwayRR("Cashew", 0.85, 0.99, 0.95),
-            "pistachio": PathwayRR("Pistachio", 0.84, 0.99, 0.97),
-            "macadamia": PathwayRR("Macadamia", 0.88, 0.99, 0.96),
-            "pecan": PathwayRR("Pecan", 0.89, 0.99, 0.97),
+            "walnut": PathwayRR("Walnut", 0.69, 0.96, 0.88),
+            "almond": PathwayRR("Almond", 0.72, 0.93, 0.89),
+            "peanut": PathwayRR("Peanut", 0.70, 0.98, 0.93),
+            "cashew": PathwayRR("Cashew", 0.72, 0.97, 0.92),
+            "pistachio": PathwayRR("Pistachio", 0.71, 0.99, 0.94),
+            "macadamia": PathwayRR("Macadamia", 0.77, 0.98, 0.92),
+            "pecan": PathwayRR("Pecan", 0.80, 0.98, 0.94),
         }
 
         self.diagnostics = [

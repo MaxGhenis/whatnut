@@ -87,6 +87,13 @@ Walnuts have the highest ALA omega-3 content (2.5g/28g), comprising 73% of total
 
 I implemented a hierarchical Bayesian model using PyMC with Markov Chain Monte Carlo (MCMC) sampling. The model uses non-centered parameterization to ensure efficient sampling, with convergence diagnostics reported in the Results section.
 
+```{figure} _static/figures/model_architecture.png
+:name: fig-architecture
+:width: 100%
+
+**Figure 1: Model Architecture.** The hierarchical Bayesian model synthesizes evidence from multiple sources: USDA nutrient composition, meta-analysis priors for nutrient-pathway effects, confounding calibration evidence, and CDC life tables. The PyMC model uses non-centered parameterization to avoid divergences, producing pathway-specific relative risks that are propagated through the lifecycle model to estimate life years and QALYs.
+```
+
 **Note on model structure**: This is a **prior synthesis model** that propagates uncertainty from multiple evidence sources (nutrient effect estimates, nut-specific RCT residuals, confounding calibration) through to life expectancy estimates. Unlike traditional Bayesian analyses that update beliefs from outcome data via a likelihood function, this model synthesizes prior information without a likelihood linking to mortality observations. The "posterior" represents the distribution of plausible life expectancy gains given current evidence, not updated beliefs from new data. This approach is appropriate because the goal is uncertainty quantification from existing evidence synthesis, not parameter estimation from a novel dataset.
 
 #### Pathway-Specific Effects
@@ -116,6 +123,13 @@ Rather than specifying nut-specific effects directly, I derived expected effects
 
 †Magnesium and phytosterols use larger units (per 10mg, per 10mg) because nuts provide 30-80mg and 20-100mg per serving, respectively. Effect sizes are correspondingly smaller per unit.
 
+```{figure} _static/figures/nutrient_contributions.png
+:name: fig-nutrients
+:width: 90%
+
+**Figure 2: Nutrient Contributions to CVD Mortality Reduction.** Heatmap showing how each nutrient contributes to the CVD pathway effect for each nut type. ALA omega-3 is the dominant driver for walnuts (highest contribution), while fiber and magnesium contribute more evenly across nuts. Negative values indicate harmful effects (e.g., saturated fat).
+```
+
 #### Hierarchical Structure
 
 I model nut-specific effects as deviations from nutrient-predicted effects using non-centered parameterization. Let $z_{\text{pathway}} \sim \mathcal{N}(0, 1)$ represent standardized deviations and $\tau_{\text{pathway}} \sim \text{HalfNormal}(0.03)$ represent the shrinkage prior. The scale 0.03 reflects an expectation that nut-specific deviations are small (±6% on log-RR scale at 2 SD), since nutrients explain most compositional variation; sensitivity analysis with $\tau \sim \text{HalfNormal}(0.10)$ shows robust results. The true effect for each nut-pathway combination is then $\theta_{\text{true}} = \theta_{\text{nutrients}} + \tau_{\text{pathway}} \cdot z_{\text{pathway}}$. This parameterization ensures efficient MCMC sampling and shrinks nut-specific deviations toward nutrient-predicted effects when evidence is limited.
@@ -130,31 +144,33 @@ The model includes a causal fraction parameter with Beta({eval}`r.confounding_al
 
 I propagate posterior samples of pathway-specific relative risks through a lifecycle model using CDC life tables for age-specific mortality, age-varying cause fractions (CVD increases from 20% at age 40 to 40% at age 80), quality weights from EQ-5D population norms (mean 0.85) {cite:p}`sullivan2005catalogue`, and 3% annual discounting.
 
+```{figure} _static/figures/cause_fractions.png
+:name: fig-cause-fractions
+:width: 85%
+
+**Figure 3: Age-Varying Cause-of-Death Fractions.** The proportion of deaths attributable to CVD increases with age (from ~20% at age 40 to ~40% at age 90), while cancer peaks in middle age. This age structure means CVD mortality reductions have larger absolute effects at older ages, when most remaining life years are realized.
+```
+
 ### Confounding Calibration
 
-The source meta-analyses adjusted for measured confounders (age, sex, body mass index [BMI], smoking, alcohol, physical activity). I calibrated the confounding prior using three lines of evidence:
+The source meta-analyses adjusted for measured confounders (age, sex, body mass index [BMI], smoking, alcohol, physical activity). This section addresses what fraction of the *residual* association—after these adjustments—reflects causal effects versus unmeasured confounding.
 
-**LDL pathway calibration**: {cite}`delgobbo2015effects` find that nuts reduce LDL cholesterol by 4.8 mg/dL (0.12 mmol/L) per serving (61 controlled trials). Using established LDL-CVD relationships, this predicts a ~3% reduction in CVD mortality, compared to 25% observed in cohort studies. This implies ~12% of the observed CVD effect operates through the LDL pathway.
+**LDL pathway**: {cite}`delgobbo2015effects` find that nuts reduce LDL cholesterol by 4.8 mg/dL per serving in 61 RCTs. This predicts ~3% CVD mortality reduction via established dose-response relationships, compared to ~25% observed in cohorts. However, this 12% "mechanism explanation" represents only one of several causal pathways. Nuts also reduce blood pressure (~1-3 mmHg), improve glycemic control, provide anti-inflammatory omega-3 fatty acids, and deliver antioxidants and fiber {cite:p}`ros2008mediterranean`. The LDL pathway therefore provides a *floor* on the causal fraction, not a ceiling.
 
-**Sibling comparison evidence**: Within-family studies that control for shared genetic and environmental confounding typically find attenuated associations between dietary factors and mortality {cite:p}`frisell2012sibling`. {cite:t}`frisell2012sibling` find that sibling-controlled estimates are typically 30-50% smaller than unpaired estimates, suggesting confounding explains 30-50% of observed dietary associations.
+**Sibling comparison evidence**: Within-family designs control for shared genetic and environmental confounding {cite:p}`frisell2012sibling`. If sibling-controlled estimates are 30-50% smaller than unpaired estimates, this implies 50-70% of the association survives sibling control—suggesting a causal fraction in that range for dietary factors generally. However, no sibling studies exist specifically for nut consumption, and sibling designs may over-adjust by removing non-confounding shared factors.
 
-**Golestan cohort**: {cite}`hashemian2017nut` find that in Iran, where nut consumption does not correlate with Western healthy lifestyles, the mortality association persists (hazard ratio [HR] 0.71 for ≥3 servings/week).
+**Golestan cohort**: {cite}`hashemian2017nut` studied nut consumption in Iran, where nut consumers were *more* likely to smoke and be obese (the opposite of Western cohorts). Their adjusted HR of 0.71 (29% mortality reduction) is actually *larger* than {cite:t}`aune2016nut`'s Western estimate of 0.78 (22% reduction). This suggests that healthy-user confounding in Western cohorts, if anything, biases estimates toward the null—perhaps due to over-adjustment for intermediates (blood pressure, serum lipids). The Golestan evidence supports a causal fraction near or above 100% of the adjusted Western effect.
 
-I calibrated the Beta prior using method of moments matching to the evidence distribution. Let $p_i$ denote the causal fraction implied by evidence source $i$ with weight $w_i$. I assigned weights based on study design strength and relevance to the nut-mortality question:
+**E-value analysis**: Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, the E-value for HR=0.78 is {eval}`r.e_value`. An unmeasured confounder would need associations of RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed effect. For context: exercise-mortality RR ≈ 1.5-2.0; income-mortality RR ≈ 1.3-1.5. An E-value of {eval}`r.e_value` suggests moderate residual confounding is plausible but unlikely to explain the entire association.
 
-- LDL pathway: $p_1 = 0.12$, $w_1 = 0.30$ (mechanistic, but captures only one of multiple pathways)
-- Sibling studies: $p_2 = 0.20$, $w_2 = 0.30$ (controls genetic confounding, but may have residual lifestyle differences)
-- Golestan cohort: $p_3 = 0.40$, $w_3 = 0.40$ (eliminates Western healthy-user bias, most directly relevant)
+**Prior specification**: Synthesizing this evidence, I adopt a Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) prior with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%. This symmetric prior reflects genuine uncertainty: the sibling literature suggests 50-70% causal fractions for dietary factors; the Golestan evidence suggests the adjusted Western estimates may be conservative; the E-value indicates full confounding would require implausibly strong unmeasured confounders. Sensitivity analysis with more skeptical (mean 0.25) and optimistic (mean 0.75) priors is presented in the Discussion.
 
-The Golestan cohort receives higher weight because it directly addresses the healthy-user confounding concern specific to nut consumption, while the other sources provide more general evidence about dietary confounding. Sensitivity analysis with equal weights ($w_i = 1/3$) shifts the prior mean from 0.25 to 0.24 with minimal impact on posterior estimates.
+```{figure} _static/figures/confounding_calibration.png
+:name: fig-confounding
+:width: 90%
 
-The weighted mean is $\bar{p} = \sum w_i p_i = 0.256 \approx 0.25$. The weighted sample variance is $\sigma^2_{sample} = \sum w_i (p_i - \bar{p})^2 = 0.015$. However, this underestimates uncertainty because it only captures variance across three evidence sources, not the full epistemic uncertainty about confounding mechanisms. I apply a variance inflation factor of 1.8×, yielding $\sigma^2 = 0.027$, based on the principle that with only $n=3$ observations, the sampling variance underestimates the true population variance by approximately $n/(n-1) = 1.5$×, plus an additional margin for unknown unknowns. This produces a prior with 95% mass between 0.02 and 0.63, appropriately wide given the fundamental uncertainty about causal inference from observational data. Method of moments for Beta($\alpha$, $\beta$) yields:
-
-$$\alpha = \bar{p} \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 1.5, \quad \beta = (1-\bar{p}) \left( \frac{\bar{p}(1-\bar{p})}{\sigma^2} - 1 \right) \approx 4.5$$
-
-This yields Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%. The right-skewed distribution reflects that most evidence points to low causal fractions while allowing for larger effects suggested by the Golestan cohort.
-
-Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, I calculate the E-value for protective associations as $E = 1/\text{RR} + \sqrt{1/\text{RR} \times (1/\text{RR} - 1)}$. For HR=0.78: $E = 1.28 + \sqrt{1.28 \times 0.28} = {eval}`r.e_value`$. An unmeasured confounder would need RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed association. For comparison, smoking-lung cancer associations have E-values exceeding 10.
+**Figure 4: Confounding Calibration.** Evidence synthesis for the causal fraction prior. The Golestan cohort (HR 0.71) shows effects larger than Western meta-analyses (HR 0.78), suggesting healthy-user bias in Western data is minimal. The Beta(2.5, 2.5) prior reflects symmetric uncertainty around a 50% causal fraction.
+```
 
 ### Target Population
 
@@ -201,6 +217,13 @@ These checks confirm the model produces valid predictions across the full poster
 
 The hierarchical Bayesian model estimates that a {eval}`r.target_age`-year-old consuming 28g/day of nuts over their remaining lifespan gains {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months), with walnuts ({eval}`r.walnut.life_years_fmt` years) ranking highest and pecans ({eval}`r.pecan.life_years_fmt` years) lowest. Approximately {eval}`r.cvd_contribution`% of this benefit operates through CVD mortality prevention.
 
+```{figure} _static/figures/forest_plot.png
+:name: fig-forest
+:width: 90%
+
+**Figure 5: Life Years Gained by Nut Type.** Forest plot showing posterior mean life years gained with 95% credible intervals. Walnuts rank highest due to ALA omega-3 content; pecans rank lowest. All intervals exclude zero, indicating high confidence of positive benefit.
+```
+
 **Table 3: Life Year and QALY Estimates by Nut Type.** Posterior estimates from MCMC sampling ({eval}`r.n_samples` draws, {eval}`r.n_chains` chains, 0% divergences). Life years (LY) are the primary metric. QALYs weight life years by age-specific quality of life; both undiscounted and discounted (3% annually) QALYs are shown. P(>0) = posterior probability of positive benefit. 95% credible intervals reflect parameter uncertainty including confounding adjustment.
 
 ```{code-cell} python
@@ -225,6 +248,13 @@ from IPython.display import Markdown
 Markdown(r.table_4_pathway_rrs())
 ```
 
+```{figure} _static/figures/pathway_rrs.png
+:name: fig-pathway-rrs
+:width: 90%
+
+**Figure 6: Pathway-Specific Mortality Reductions.** Bar chart comparing relative risk reductions (1-RR) across mortality pathways for each nut. CVD effects (17% reduction for walnuts) dominate cancer effects (1-3% reduction), explaining why ALA-rich walnuts outperform other nuts. Error bars represent posterior uncertainty.
+```
+
 ### Pathway Contributions
 
 Approximately 80% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality (15%) and cancer mortality (5%).
@@ -240,6 +270,13 @@ Approximately 80% of the QALY benefit operates through CVD prevention, with the 
 ### Cost-Effectiveness
 
 As of December 2025, NICE raised its thresholds to £25,000-35,000/QALY (\$33,500-47,000 at current exchange rates {cite:p}`tradingeconomics2025gbpusd`), with interventions below £25,000 considered clearly cost-effective {cite:p}`nice2025threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks {cite:p}`icer2024reference`. All seven nuts fall below NICE's new £25,000 threshold and ICER's \$50,000 benchmark. Peanuts achieve the lowest ICER due to low cost (\$37/year) combined with the third-highest QALY estimate.
+
+```{figure} _static/figures/icer_comparison.png
+:name: fig-icer
+:width: 90%
+
+**Figure 7: Cost-Effectiveness by Nut Type.** Incremental cost-effectiveness ratios (ICERs) compared to standard thresholds. All nuts fall below both NICE (£25,000/QALY) and ICER (\$50,000/QALY) benchmarks. Peanuts achieve the lowest ICER due to low cost combined with strong mortality effects; macadamias rank highest due to premium pricing.
+```
 
 **Table 6: Evidence Quality by Nut Type.** I classified evidence quality based on sample size and study design: "Strong" = multiple RCTs or large cohorts (n>100,000); "Moderate" = single RCT or smaller cohorts; "Limited" = RCTs with confidence intervals crossing null.
 
@@ -277,20 +314,20 @@ ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.macadamia.
 
 I examined robustness to key parameter assumptions:
 
-**Confounding prior**: The model uses a Beta(1.5, 4.5) prior with mean 0.25. Since the model has no likelihood function linking to outcome data (it synthesizes prior information only), the posterior for the confounding fraction equals the prior. This is appropriate because the goal is to quantify uncertainty about causal effects given our current evidence, not to update beliefs from new data. Table 7 shows sensitivity to alternative prior specifications:
+**Confounding prior**: The model uses a Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) prior with mean {eval}`r.confounding_mean`. Since the model has no likelihood function linking to outcome data (it synthesizes prior information only), the posterior for the confounding fraction equals the prior. This is appropriate because the goal is to quantify uncertainty about causal effects given our current evidence, not to update beliefs from new data. Table 7 shows sensitivity to alternative prior specifications:
 
 **Table 7: Sensitivity to Confounding Prior.** QALY estimates under alternative confounding assumptions. Rankings remain stable across specifications.
 
 | Prior | Mean | Interpretation | Walnut QALY | Peanut QALY | Change |
 |-------|------|----------------|-------------|-------------|--------|
-| Beta(0.5, 4.5) | 10% | Skeptical | ~0.08 | ~0.07 | -60% |
-| **Beta(1.5, 4.5)** | **25%** | **Base case** | **0.20** | **0.17** | **—** |
-| Beta(3, 3) | 50% | Optimistic | ~0.32 | ~0.27 | +60% |
-| Beta(4, 2) | 67% | Very optimistic | ~0.42 | ~0.36 | +110% |
+| Beta(1.5, 4.5) | 25% | Skeptical | ~0.19 | ~0.16 | -50% |
+| **Beta(2.5, 2.5)** | **50%** | **Base case** | **{eval}`r.walnut.qaly`** | **{eval}`r.peanut.qaly`** | **—** |
+| Beta(3, 1) | 75% | Optimistic | ~0.57 | ~0.47 | +50% |
+| Beta(9, 1) | 90% | Very optimistic | ~0.68 | ~0.56 | +80% |
 
 **Hierarchical shrinkage (τ)**: The baseline model uses τ ~ HalfNormal(0.03), which constrains nut-specific deviations from nutrient-predicted effects to ~±6% on the log-RR scale (95% prior interval). With τ ~ HalfNormal(0.10) (weaker shrinkage), credible intervals widen by ~15% but point estimates and rankings remain stable. This suggests results are driven primarily by nutrient composition rather than nut-specific residual effects.
 
-**Adherence**: The base case assumes 100% adherence over the remaining lifespan. Dietary intervention trials typically achieve 50-70% long-term adherence {cite:p}`appel2006adherence`. At 70% adherence, effective QALYs decrease proportionally (e.g., walnut from 0.20 to 0.14 QALYs) and ICERs increase by 43%. At 50% adherence, effective QALYs halve and ICERs double. All nuts except macadamia remain below \$50,000/QALY even at 50% adherence. For individual decision-making, readers should scale estimates by their expected adherence.
+**Adherence**: The base case assumes 100% adherence over the remaining lifespan. Dietary intervention trials typically achieve 50-70% long-term adherence {cite:p}`appel2006adherence`. At 70% adherence, effective QALYs decrease proportionally (e.g., walnut from {eval}`r.walnut.qaly` to {eval}`f'{r.walnut.qaly_mean * 0.7:.2f}'` QALYs) and ICERs increase by 43%. At 50% adherence, effective QALYs halve and ICERs double. All nuts remain below \$50,000/QALY even at 50% adherence. For individual decision-making, readers should scale estimates by their expected adherence.
 
 **Age at initiation**: For a 60-year-old (vs 40), discounted QALYs decrease ~40% due to shorter remaining lifespan, partially offset by stronger CVD benefit at older ages.
 

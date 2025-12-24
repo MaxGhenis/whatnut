@@ -306,7 +306,10 @@ def build_pathway_model(nuts: list[str] = None):
             )
 
         # --- Confounding adjustment ---
-        causal_frac = pm.Beta('causal_fraction', alpha=1.5, beta=4.5)
+        # Beta(2.5, 2.5) prior: mean 0.50, 95% CI [0.12, 0.88]
+        # Reflects genuine uncertainty about causal fraction of adjusted associations
+        # See paper's Confounding Calibration section for justification
+        causal_frac = pm.Beta('causal_fraction', alpha=2.5, beta=2.5)
 
         # --- Causal effects by pathway ---
         causal_effect = {}
