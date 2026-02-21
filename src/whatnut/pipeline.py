@@ -7,12 +7,12 @@ Usage:
 
 import argparse
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 
-from whatnut.config import NUT_IDS, PATHWAYS, get_mortality_curve, get_nut
+from whatnut.config import NUT_IDS, PATHWAYS, get_confounding_prior, get_mortality_curve, get_nut
 from whatnut.lifecycle import LifecycleResult, run_lifecycle
 from whatnut.model import ModelSamples, sample_model
 
@@ -129,8 +129,8 @@ def run_analysis(
     seed: int = 42,
     start_age: int = 40,
     discount_rate: float = 0.03,
-    confounding_alpha: float = 2.5,
-    confounding_beta: float = 2.5,
+    confounding_alpha: float | None = None,
+    confounding_beta: float | None = None,
 ) -> AnalysisResults:
     """Run full analysis: model sampling -> lifecycle -> summary.
 
@@ -139,12 +139,19 @@ def run_analysis(
         seed: Random seed for reproducibility.
         start_age: Age at start of nut consumption.
         discount_rate: Annual discount rate for QALYs and costs.
-        confounding_alpha: Beta prior alpha for causal fraction.
-        confounding_beta: Beta prior beta for causal fraction.
+        confounding_alpha: Beta prior alpha for causal fraction (default: from priors.yaml).
+        confounding_beta: Beta prior beta for causal fraction (default: from priors.yaml).
 
     Returns:
         AnalysisResults with every number needed for the paper.
     """
+    # Use confounding prior from config when not overridden
+    conf_prior = get_confounding_prior()
+    if confounding_alpha is None:
+        confounding_alpha = conf_prior.alpha
+    if confounding_beta is None:
+        confounding_beta = conf_prior.beta
+
     # Compute baseline life years from mortality table
     mortality = get_mortality_curve(start_age)
     survival = np.cumprod(1 - mortality)

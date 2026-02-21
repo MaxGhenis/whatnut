@@ -11,9 +11,8 @@ The JSON file is committed to git as the reproducibility checkpoint.
 """
 
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
 
 
 RESULTS_PATH = Path(__file__).parent / "data" / "results.json"
@@ -35,7 +34,7 @@ class NutResult:
     life_years_ci_upper: float
     icer: float
     icer_ci_lower: float
-    icer_ci_upper: Optional[float]
+    icer_ci_upper: float | None
     annual_cost: float
     rr_cvd: float
     rr_cancer: float
@@ -138,14 +137,8 @@ class PaperResults:
     icer_threshold: int = 50000
 
     # Nut results (populated from JSON)
-    nuts: dict = None
-    pathway_rrs: dict = None
-
-    def __post_init__(self):
-        if self.nuts is None:
-            self.nuts = {}
-        if self.pathway_rrs is None:
-            self.pathway_rrs = {}
+    nuts: dict[str, NutResult] = field(default_factory=dict)
+    pathway_rrs: dict[str, PathwayRR] = field(default_factory=dict)
 
     # Convenience accessors
     @property

@@ -25,7 +25,7 @@ walnut:
   pathway_adjustments:
     cvd:
       mean: 1.25           # Strong omega-3 effect
-      sd: 0.08
+      sd: 0.15
       rationale: "Highest ALA omega-3 (2.5g/28g); PREDIMED, WAHA RCTs"
     cancer:
       mean: 1.05
@@ -218,7 +218,7 @@ cashew:
   pathway_adjustments:
     cvd:
       mean: 0.95
-      sd: 0.10
+      sd: 0.12
       rationale: "Mixed RCT results (Mah 2017), CIs cross zero"
     cancer:
       mean: 0.95

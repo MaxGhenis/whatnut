@@ -33,10 +33,10 @@ pip install -e .
 from whatnut.results import r
 
 # Get exact values from the paper
-print(f"Walnuts: {r.walnut.life_years_fmt} life years")   # Output: 1.12
-print(f"Walnuts: {r.walnut.qaly} QALYs (discounted)")     # Output: 0.22
-print(f"Peanuts: {r.peanut.icer_fmt}/QALY")               # Output: $10,923/QALY
-print(f"Life years range: {r.life_years_range}")           # Output: 0.19-1.12
+print(f"Walnuts: {r.walnut.life_years_fmt} life years")   # Output: 0.96
+print(f"Walnuts: {r.walnut.qaly} QALYs (discounted)")     # Output: 0.19
+print(f"Peanuts: {r.peanut.icer_fmt}/QALY")               # Output: $11,889/QALY
+print(f"Life years range: {r.life_years_range}")           # Output: 0.22-0.96
 ```
 
 ### Run analysis (advanced)
@@ -49,13 +49,13 @@ for nid, na in results.nuts.items():
 ```
 
 **Note on metrics**:
-- **Life years** (0.19-1.12) are the primary metric — the actual expected increase in lifespan
-- **QALYs discounted** (0.04-0.22) weight life years by quality of life and discount at 3%/year
-- **QALYs undiscounted** (0.12-0.69) weight life years by quality of life without discounting
+- **Life years** (0.22-0.96) are the primary metric — the actual expected increase in lifespan
+- **QALYs discounted** (0.04-0.19) weight life years by quality of life and discount at 3%/year
+- **QALYs undiscounted** (0.14-0.60) weight life years by quality of life without discounting
 
 ## Key finding
 
-> **Eating any nut daily yields 0.19-1.12 additional life years** (2-13 months). Walnuts rank highest due to ALA omega-3 content; peanuts are most cost-effective ($10,923/QALY). The difference between nuts is substantial — walnuts provide ~6x more life years than cashews.
+> **Eating any nut daily yields 0.22-0.96 additional life years** (3-12 months). Walnuts rank highest due to ALA omega-3 content; peanuts are most cost-effective ($11,889/QALY). The difference between nuts is substantial — walnuts provide ~4x more life years than cashews.
 
 ## Documentation
 

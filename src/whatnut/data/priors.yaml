@@ -3,7 +3,7 @@
 # Organized by mortality pathway
 #
 # Key scientific decisions:
-# - ALA CVD prior: -0.07/g (Naghshi 2021: RR 0.90 for ~1.5g/day → -0.07/g)
+# - ALA CVD prior: -0.05/g (Naghshi 2021: RR 0.95 per 1g/day CVD mortality, ln(0.95)=-0.051)
 # - Single confounding prior: Beta(2.5, 2.5) mean 0.50
 # - Tau (hierarchical shrinkage): HalfNormal(0.03)
 
@@ -26,10 +26,10 @@ pathways:
 
 cvd:
   ala_omega3:
-    mean: -0.07
+    mean: -0.05
     sd: 0.03
     unit: g
-    source: "Naghshi 2021 (BMJ): RR 0.90 for ~1.5g/day ALA intake → -0.07/g"
+    source: "Naghshi 2021: RR 0.95 per 1g/day CVD mortality, ln(0.95)=-0.051"
   omega6:
     mean: -0.005
     sd: 0.003
@@ -51,10 +51,10 @@ cvd:
     unit: g
     source: "Sacks 2017 AHA advisory: LDL/CHD pathway"
   magnesium:
-    mean: -0.0003
-    sd: 0.0001
-    unit: "mg (effect per 10mg)"
-    source: "Fang 2016: RR 0.90 per 100mg for CHD; -0.003 per 10mg"
+    mean: -0.001
+    sd: 0.0004
+    unit: mg
+    source: "Fang 2016: RR 0.90 per 100mg, ln(0.90)/100 = -0.00105/mg, rounded to -0.001"
   arginine:
     mean: -0.02
     sd: 0.02
@@ -66,10 +66,10 @@ cvd:
     unit: mg
     source: "Food-based vitamin E (not supplement doses)"
   phytosterols:
-    mean: -0.001
-    sd: 0.001
-    unit: "mg (effect per 10mg)"
-    source: "LDL lowering mechanism; -0.01 per 10mg"
+    mean: -0.0001
+    sd: 0.0002
+    unit: mg
+    source: "LDL lowering mechanism; effect per mg, derived from -0.001 per 10mg"
   protein:
     mean: 0.0
     sd: 0.005
@@ -78,10 +78,10 @@ cvd:
 
 cancer:
   ala_omega3:
-    mean: -0.02
+    mean: 0.0
     sd: 0.03
     unit: g
-    source: "Naghshi 2021: weaker for cancer than CVD"
+    source: "Naghshi 2021: per-gram RR 1.03 (0.98-1.08), non-significant; prior centered at zero"
   omega6:
     mean: 0.002
     sd: 0.005
@@ -105,8 +105,8 @@ cancer:
   magnesium:
     mean: -0.0001
     sd: 0.0002
-    unit: "mg (effect per 10mg)"
-    source: "Limited cancer evidence; -0.001 per 10mg"
+    unit: mg
+    source: "Limited cancer evidence"
   arginine:
     mean: 0.0
     sd: 0.01
@@ -119,9 +119,9 @@ cancer:
     source: "Antioxidant; mixed evidence at food-level doses"
   phytosterols:
     mean: 0.0
-    sd: 0.0005
-    unit: "mg (effect per 10mg)"
-    source: "No cancer mechanism; per 10mg"
+    sd: 0.00005
+    unit: mg
+    source: "No cancer mechanism; effect per mg"
   protein:
     mean: 0.0
     sd: 0.003
@@ -157,8 +157,8 @@ other:
   magnesium:
     mean: -0.0002
     sd: 0.0001
-    unit: "mg (effect per 10mg)"
-    source: "Diabetes prevention; -0.002 per 10mg"
+    unit: mg
+    source: "Diabetes prevention"
   arginine:
     mean: -0.01
     sd: 0.02
@@ -171,9 +171,9 @@ other:
     source: "Antioxidant"
   phytosterols:
     mean: 0.0
-    sd: 0.0003
-    unit: "mg (effect per 10mg)"
-    source: "No mechanism; per 10mg"
+    sd: 0.00003
+    unit: mg
+    source: "No mechanism; effect per mg"
   protein:
     mean: -0.005
     sd: 0.005

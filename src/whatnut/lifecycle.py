@@ -84,11 +84,11 @@ def run_lifecycle(
     other_fracs = np.empty(n_years)
 
     for i, age in enumerate(ages):
-        cf, canf, of = get_cause_fractions(age)
-        cvd_fracs[i] = cf
-        cancer_fracs[i] = canf
-        other_fracs[i] = of
-        weighted_rr[i] = cf * rr_cvd + canf * rr_cancer + of * rr_other
+        cvd_frac, cancer_frac, other_frac = get_cause_fractions(age)
+        cvd_fracs[i] = cvd_frac
+        cancer_fracs[i] = cancer_frac
+        other_fracs[i] = other_frac
+        weighted_rr[i] = cvd_frac * rr_cvd + cancer_frac * rr_cancer + other_frac * rr_other
 
     # Intervention mortality
     mortality_intervention = mortality_baseline * weighted_rr

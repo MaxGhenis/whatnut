@@ -4,9 +4,8 @@ This is the single entry point for all data used by the model.
 All YAML files live in src/whatnut/data/.
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import numpy as np
 import yaml
@@ -214,14 +213,11 @@ def get_nut(nut_id: str) -> NutProfile:
     raw = data[nut_id]
     model_nutrients = _extract_model_nutrients(raw["nutrients"])
     adj = raw["pathway_adjustments"]
-    pathway_adjustments = {}
-    for p in PATHWAYS:
-        if p in adj:
-            pathway_adjustments[p] = PathwayAdjustment(
-                mean=adj[p]["mean"],
-                sd=adj[p]["sd"],
-                rationale=adj[p]["rationale"],
-            )
+    pathway_adjustments = {
+        p: PathwayAdjustment(mean=adj[p]["mean"], sd=adj[p]["sd"], rationale=adj[p]["rationale"])
+        for p in PATHWAYS
+        if p in adj
+    }
     return NutProfile(
         id=nut_id,
         fdc_id=raw["fdc_id"],
@@ -237,7 +233,7 @@ def get_all_nuts() -> list[NutProfile]:
     return [get_nut(nid) for nid in NUT_IDS]
 
 
-def get_nutrient_matrix(nut_ids: Optional[list[str]] = None) -> np.ndarray:
+def get_nutrient_matrix(nut_ids: list[str] | None = None) -> np.ndarray:
     """Build (n_nuts x n_nutrients) matrix for vectorized computation."""
     if nut_ids is None:
         nut_ids = NUT_IDS

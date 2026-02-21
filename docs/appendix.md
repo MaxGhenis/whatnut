@@ -2,16 +2,7 @@
 
 ## Target population
 
-This analysis applies to:
-- **Age**: Adults 30-70 years (primary analysis uses 40-year-old baseline)
-- **Health status**: General population, not specifically high-risk
-- **Geography**: Estimates derived primarily from US and European cohorts
-- **Exclusions**: Those with nut allergies (~1-2% of population)
-
-Not modeled:
-- Secondary prevention (existing CVD)
-- Very elderly (80+)
-- Non-Western populations
+This analysis applies to adults aged 30-70 years (the primary analysis uses a 40-year-old baseline) drawn from the general population rather than specifically high-risk groups, with estimates derived primarily from US and European cohorts. Individuals with nut allergies (~1-2% of the population) are excluded. The model does not cover secondary prevention (existing CVD), the very elderly (80+), or non-Western populations.
 
 ## Monte Carlo uncertainty propagation algorithm
 
@@ -23,10 +14,7 @@ The analysis uses a hierarchical forward sampling model with non-centered parame
 - Standardized deviations: $z_{nut,pathway} \sim \text{Normal}(0, 1)$
 - Confounding fraction: $c \sim \text{Beta}(2.5, 2.5)$
 
-**Justification for τ ~ HalfNormal(0.03):** The scale parameter 0.03 constrains nut-specific deviations to approximately ±6% on the log-RR scale at 2 standard deviations (95% prior interval). This was calibrated through pilot analyses:
-- τ ~ HalfNormal(0.01) produced excessive shrinkage, making all nuts nearly identical despite known compositional differences
-- τ ~ HalfNormal(0.10) produced implausibly wide between-nut variation (±20% deviations), larger than compositional differences would justify
-- τ ~ HalfNormal(0.03) balances information sharing across nuts with nut-specific flexibility, allowing walnuts to differ from almonds by the magnitude seen in RCT residual effects (~10-15%)
+**Justification for τ ~ HalfNormal(0.03):** The scale parameter 0.03 constrains nut-specific deviations to approximately ±6% on the log-RR scale at 2 standard deviations (95% prior interval). This was calibrated through pilot analyses. Setting τ ~ HalfNormal(0.01) produced excessive shrinkage, making all nuts nearly identical despite known compositional differences. Setting τ ~ HalfNormal(0.10) produced implausibly wide between-nut variation (±20% deviations), larger than compositional differences would justify. The chosen value of τ ~ HalfNormal(0.03) balances information sharing across nuts with nut-specific flexibility, allowing walnuts to differ from almonds by the magnitude seen in RCT residual effects (~10-15%).
 
 **Model:**
 1. Compute nutrient-predicted effect: $\theta_{nutrients} = \sum_{n} \beta_n \cdot \text{composition}_{nut,n}$
@@ -38,17 +26,9 @@ The analysis uses a hierarchical forward sampling model with non-centered parame
 4. Apply confounding: $\theta_{causal} = c \cdot \theta_{adjusted}$
 5. Convert to RR: $RR_{pathway} = \exp(\theta_{causal})$
 
-**Monte Carlo sampling:**
-- 10,000 forward samples from priors (no MCMC needed since there is no likelihood)
-- Seed=42 for reproducibility
-- Runtime: ~30 seconds (pure numpy, no external inference library required)
+**Monte Carlo sampling:** The model draws 10,000 forward samples from priors (no MCMC is needed since there is no likelihood). A fixed seed of 42 ensures reproducibility, and runtime is approximately 30 seconds using pure NumPy with no external inference library required.
 
-**Lifecycle integration:**
-For each of 10,000 samples:
-1. Extract pathway-specific RRs (already confounding-adjusted)
-2. Compute age-weighted mortality reduction using CDC life tables
-3. Apply EQ-5D quality weights by age (population norms)
-4. Compute discounted QALYs (3% annual rate)
+**Lifecycle integration:** For each of the 10,000 samples, the model extracts pathway-specific RRs (already confounding-adjusted), computes age-weighted mortality reduction using CDC life tables, applies EQ-5D quality weights by age (population norms), and computes discounted QALYs at a 3% annual rate.
 
 ## Nut-specific adjustment priors
 
@@ -77,13 +57,13 @@ Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects
 | Peanut | 0.98 (0.06) | 1.00 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962) |
 | Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs reflect uncertainty |
 
-**Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers {cite:p}`wu2015aflatoxin`. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
+**Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers {cite:p}`wu2010aflatoxin`. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
 
 Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty.
 
 ## Confounding prior derivation
 
-I adopt a **symmetric, weakly informative** Beta(2.5, 2.5) prior with mean 0.50 and 95% CI: 12-88%. This prior reflects genuine uncertainty about the causal fraction rather than a precise calibration.
+I adopt a **symmetric, weakly informative** Beta(2.5, 2.5) prior with mean 0.50 and 95% interval: 12-88%. This prior reflects genuine uncertainty about the causal fraction rather than a precise calibration.
 
 Three evidence sources inform this choice:
 
@@ -100,10 +80,8 @@ The LDL pathway provides a **floor** on the causal fraction (not a ceiling), sin
 ## Cost-effectiveness model
 
 ### Data sources
-- **Life tables**: CDC National Vital Statistics (2021) for age-specific mortality
-- **Quality weights**: Age-varying HRQoL from Sullivan et al. (2006)
-- **Discounting**: 3% annual rate (standard for NICE, ICER, WHO-CHOICE)
-- **Cost data**: USDA ERS retail prices (2024)
+
+The cost-effectiveness model draws on CDC National Vital Statistics (2021) life tables for age-specific mortality, age-varying health-related quality of life weights from Sullivan et al. (2006), a 3% annual discount rate (standard for NICE, ICER, and WHO-CHOICE), and USDA ERS retail prices (2024) for cost data.
 
 ### Lifecycle model
 
@@ -165,9 +143,4 @@ Both approaches use forward Monte Carlo sampling (no MCMC is needed since there 
 
 ## Limitations
 
-1. **Confounding**: The 50% causal fraction estimate is uncertain (95% CI: 12-88%). True value could be higher or lower.
-2. **Generalizability**: Most studies from Western populations (US, Europe, Australia)
-3. **Dose-response**: I model 28g/day; effects may be non-linear above this threshold
-4. **Nut-specific evidence**: Limited RCT evidence for cashews, pecans, macadamias
-5. **Adherence**: Assumes daily consumption; intermittent eating reduces benefits
-6. **Competing risks**: Other mortality causes limit achievable gains in elderly populations
+The 50% causal fraction estimate is uncertain (95% interval: 12-88%), and the true value could be higher or lower. Most source studies come from Western populations (US, Europe, Australia), limiting generalizability. The model assumes 28g/day, though effects may be non-linear above this threshold. RCT evidence for cashews, pecans, and macadamias remains limited relative to walnuts and almonds. The base case assumes daily consumption; intermittent intake would reduce estimated benefits proportionally. Finally, competing risks from other mortality causes limit the achievable gains in elderly populations.

@@ -412,6 +412,81 @@ class TestUnitConsistency:
 
 
 # ---------------------------------------------------------------------------
+# Scientific parameter accuracy (fixes for methodology review)
+# ---------------------------------------------------------------------------
+
+
+class TestScientificParameters:
+    """Verify corrected scientific parameters from methodology review."""
+
+    def test_ala_cvd_prior_mean_is_minus_005(self):
+        """Fix 1: ALA CVD prior should be -0.05 (Naghshi 2021: RR 0.95/g)."""
+        prior = get_nutrient_prior("cvd", "ala_omega3")
+        assert prior.mean == pytest.approx(-0.05, abs=0.005), (
+            f"ALA CVD prior mean is {prior.mean}, expected -0.05 "
+            "(Naghshi 2021: RR 0.95 per 1g/day, ln(0.95)=-0.051)"
+        )
+
+    def test_ala_cancer_prior_mean_is_zero(self):
+        """Fix 2: ALA cancer prior should be 0.0 (non-significant per-gram)."""
+        prior = get_nutrient_prior("cancer", "ala_omega3")
+        assert prior.mean == pytest.approx(0.0, abs=0.005), (
+            f"ALA cancer prior mean is {prior.mean}, expected 0.0 "
+            "(Naghshi 2021: per-gram RR 1.03, non-significant)"
+        )
+
+    def test_phytosterol_cvd_contribution_small(self):
+        """Fix 3: Phytosterol contribution for pistachio (61mg) should be < 0.01."""
+        prior = get_nutrient_prior("cvd", "phytosterols")
+        pistachio = get_nut("pistachio")
+        ps = pistachio.nutrients["phytosterols"]  # 61 mg
+        contribution = abs(prior.mean * ps)
+        assert contribution < 0.01, (
+            f"Phytosterol CVD contribution for pistachio = {contribution:.4f}, "
+            "expected < 0.01 (per-mg coefficient should be ~-0.0001)"
+        )
+
+    def test_phytosterol_unit_is_mg(self):
+        """Fix 3: Phytosterol unit should be 'mg' (not 'mg (effect per 10mg)')."""
+        prior = get_nutrient_prior("cvd", "phytosterols")
+        assert prior.unit == "mg", (
+            f"Phytosterol unit is '{prior.unit}', expected 'mg'"
+        )
+
+    def test_magnesium_cvd_prior_mean_near_minus_0001(self):
+        """Fix 4: Magnesium CVD prior should be ~-0.001/mg (Fang 2016)."""
+        prior = get_nutrient_prior("cvd", "magnesium")
+        assert prior.mean == pytest.approx(-0.001, abs=0.0003), (
+            f"Magnesium CVD prior mean is {prior.mean}, expected -0.001 "
+            "(Fang 2016: RR 0.90 per 100mg, ln(0.90)/100=-0.00105/mg)"
+        )
+
+    def test_magnesium_unit_is_mg(self):
+        """Fix 4: Magnesium unit should be 'mg' (not 'mg (effect per 10mg)')."""
+        prior = get_nutrient_prior("cvd", "magnesium")
+        assert prior.unit == "mg", (
+            f"Magnesium unit is '{prior.unit}', expected 'mg'"
+        )
+
+    def test_walnut_cvd_pathway_sd_wide(self):
+        """Fix 5: Walnut CVD pathway adjustment SD should be >= 0.12."""
+        walnut = get_nut("walnut")
+        adj = walnut.pathway_adjustments["cvd"]
+        assert adj.sd >= 0.12, (
+            f"Walnut CVD pathway SD is {adj.sd}, expected >= 0.12 "
+            "(widened to reflect reviewer concerns about researcher DOF)"
+        )
+
+    def test_cashew_cvd_pathway_sd_wide(self):
+        """Fix 5: Cashew CVD pathway adjustment SD should be >= 0.10."""
+        cashew = get_nut("cashew")
+        adj = cashew.pathway_adjustments["cvd"]
+        assert adj.sd >= 0.10, (
+            f"Cashew CVD pathway SD is {adj.sd}, expected >= 0.10"
+        )
+
+
+# ---------------------------------------------------------------------------
 # Version consistency (Issue 3)
 # ---------------------------------------------------------------------------
 
