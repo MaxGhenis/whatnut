@@ -86,16 +86,13 @@ The cost-effectiveness model draws on CDC National Vital Statistics (2021) life 
 ### Lifecycle model
 
 For a 40-year-old beginning daily nut consumption:
-- **Life years gained**: 1.09-1.89 years (13-23 months)
-- **Undiscounted QALYs**: 0.67-1.16 (life years × age-weighted quality)
-- **Discounted QALYs**: 0.22-0.37 (3% annual discounting over 40+ years)
-- **ICERs**: ~\$2,700/QALY (peanuts) to ~\$21,500/QALY (macadamias)
+The model estimates 0.22-0.96 additional life years (3-12 months) across nut types, corresponding to 0.14-0.59 undiscounted QALYs (life years weighted by age-specific EQ-5D quality weights) and 0.04-0.19 discounted QALYs (at 3% annual discounting over the remaining lifespan). ICERs range from approximately $11,900/QALY (peanuts) to $57,000/QALY (cashews).
 
 ## E-value analysis
 
 Per {cite}`vanderweele2017sensitivity`, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
 
-For a protective exposure with hazard ratio $HR$, we first convert to relative risk $RR = 1/HR$, then calculate:
+For a protective exposure with hazard ratio $HR$, I first convert to relative risk $RR = 1/HR$, then calculate:
 
 $$E\text{-value} = RR + \sqrt{RR \times (RR - 1)}$$
 
