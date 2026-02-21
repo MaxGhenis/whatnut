@@ -55,7 +55,7 @@ This paper develops a Monte Carlo uncertainty propagation framework for estimati
 
 This paper reports **life years gained** ({eval}`r.life_years_range` years, or {eval}`r.months_range` months) as the primary metric—representing the actual expected increase in lifespan from daily nut consumption. This is more intuitive for individual decision-making ("how much longer will I live?").
 
-For cost-effectiveness comparison with other health interventions, I also report **QALYs** (quality-adjusted life years), which weight life years by age-specific quality of life using population EuroQol 5-Dimension (EQ-5D) norms. I present both undiscounted QALYs and discounted QALYs (3% annually, following NICE/ICER/WHO-CHOICE guidelines). Note that this analysis models only **mortality effects**—potential morbidity benefits (e.g., fewer non-fatal CVD events, improved cognitive function) are not included, making these QALY estimates conservative.
+For cost-effectiveness comparison with other health interventions, I also report **QALYs** (quality-adjusted life years), which weight life years by age-specific quality of life using population EuroQol 5-Dimension (EQ-5D) norms. I present both undiscounted QALYs and discounted QALYs (3% annually, following NICE/ICER/WHO-CHOICE guidelines). Note that this analysis models only **mortality effects**—potential morbidity benefits (e.g., fewer non-fatal CVD events, improved cognitive function) are not included, so QALY estimates represent lower bounds on total benefit.
 
 ## Methods
 
@@ -100,7 +100,7 @@ I implemented a Monte Carlo uncertainty propagation model with hierarchical stru
 
 The model estimates separate relative risks for three mortality pathways. CVD mortality shows the largest effects (RR {eval}`r.cvd_effect_range`), informed by ALA omega-3, fiber, and magnesium priors. Cancer mortality shows smaller effects (RR {eval}`r.cancer_effect_range`), informed by fiber and vitamin E priors. Other mortality shows intermediate effects, representing a composite of remaining causes. This decomposition allows different nutrients to contribute differentially to each pathway—for example, ALA omega-3 strongly affects CVD but has negligible cancer effects, while fiber contributes to both.
 
-I do not model a separate morbidity pathway. While nuts may improve quality of life through reduced non-fatal CVD events, improved cognitive function, and other morbidity effects, this analysis focuses solely on mortality. QALYs are computed by weighting mortality-based life expectancy gains by population EQ-5D norms (age-specific quality weights), not by modeling nut-specific quality improvements. This makes the estimates conservative—actual benefits may be larger if nuts reduce morbidity beyond their mortality effects.
+I do not model a separate morbidity pathway. While nuts may improve quality of life through reduced non-fatal CVD events, improved cognitive function, and other morbidity effects, this analysis focuses solely on mortality. QALYs are computed by weighting mortality-based life expectancy gains by population EQ-5D norms (age-specific quality weights), not by modeling nut-specific quality improvements. Excluding morbidity benefits means these estimates are lower bounds—actual benefits may be larger if nuts reduce morbidity beyond their mortality effects.
 
 #### Nutrient-derived priors
 
@@ -165,13 +165,13 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **E-value analysis**: Using VanderWeele's method {cite:p}`vanderweele2017sensitivity`, the E-value for HR=0.78 is {eval}`r.e_value`. An unmeasured confounder would need associations of RR ≥ {eval}`r.e_value` with both nut consumption and mortality to fully explain the observed effect. For context: exercise-mortality RR ≈ 1.5-2.0; income-mortality RR ≈ 1.3-1.5. An E-value of {eval}`r.e_value` suggests moderate residual confounding is plausible but unlikely to explain the entire association.
 
-**Prior specification**: Synthesizing this evidence, I adopt a Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) prior—a **symmetric, weakly informative prior** with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%. This prior reflects genuine uncertainty rather than a precise calibration: the evidence sources above provide qualitative guidance (LDL floor ~12%, sibling attenuation 50-70%, Golestan suggesting ≥100%), but no formal mapping to prior parameters is possible. The symmetric Beta(2.5, 2.5) represents an agnostic stance—substantial probability mass on both low (25%) and high (75%) causal fractions. Sensitivity analysis with skeptical (mean 0.25) and optimistic (mean 0.75) priors is presented in the Discussion; rankings remain stable across specifications.
+**Prior specification**: Synthesizing this evidence, I adopt a Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) prior—a **symmetric, weakly informative prior** with mean {eval}`r.confounding_mean` and 95% CI: {eval}`int(r.confounding_ci_lower * 100)`-{eval}`int(r.confounding_ci_upper * 100)`%. This prior reflects genuine uncertainty rather than a precise calibration: the evidence sources above provide qualitative guidance (LDL floor ~12%, sibling attenuation 50-70%, Golestan suggesting ≥100%), but no formal mapping to prior parameters is possible. The symmetric Beta(2.5, 2.5) represents an agnostic stance—approximately 12% probability mass below 0.25 and 12% above 0.75. Sensitivity analysis with skeptical (mean 0.25) and optimistic (mean 0.75) priors is presented in the Discussion; rankings remain stable across specifications.
 
 ```{figure} _static/figures/confounding_calibration.png
 :name: fig-confounding
 :width: 90%
 
-**Figure 4: Confounding calibration.** Evidence synthesis for the causal fraction prior. The Golestan cohort (HR 0.71) shows effects larger than Western meta-analyses (HR 0.78), suggesting healthy-user bias in Western data is minimal. The Beta(2.5, 2.5) prior reflects symmetric uncertainty around a 50% causal fraction.
+**Figure 4: Confounding calibration.** Evidence synthesis for the causal fraction prior. The Golestan cohort (HR 0.71) shows effects larger than Western meta-analyses (HR 0.78), consistent with minimal healthy-user bias in Western data. The Beta(2.5, 2.5) prior reflects symmetric uncertainty around a 50% causal fraction.
 ```
 
 ### Target population
@@ -239,7 +239,7 @@ The base case assumes 100% adherence. Real-world dietary adherence is typically 
 |-----------|------------|--------|------|
 | 100% (base) | 0.96 | 11.5 | $13,115/QALY |
 | 70% (realistic) | 0.67 | 8.1 | $18,736/QALY |
-| 50% (conservative) | 0.48 | 5.8 | $26,230/QALY |
+| 50% (low) | 0.48 | 5.8 | $26,230/QALY |
 
 At 50% adherence (~3.5 servings/week), the model estimates approximately 6 months of additional life expectancy for walnuts, with an ICER of ~$26,000/QALY, which falls below the $50,000/QALY threshold.
 
@@ -267,12 +267,14 @@ Markdown(r.table_4_pathway_rrs())
 
 Approximately {eval}`r.cvd_contribution`% of the QALY benefit operates through CVD prevention, with the remainder split between other mortality ({eval}`r.other_contribution`%) and cancer mortality ({eval}`r.cancer_contribution`%).
 
+The "other mortality" pathway—comprising respiratory, metabolic, neurodegenerative, and infectious disease deaths—accounts for {eval}`r.other_contribution`% of estimated benefit despite weaker direct evidence than CVD. This contribution arises from two factors: the "other" cause fraction is large (35-55% of deaths depending on age), and the nutrient priors for this pathway reflect plausible but uncertain anti-inflammatory and metabolic mechanisms (ALA, fiber, magnesium). The ALA "other mortality" prior (-0.05/g, SD 0.04) matches the CVD prior magnitude but carries wider uncertainty (SD 0.04 vs 0.03), reflecting the less direct evidence base. Readers who consider these "other" pathway priors too optimistic can reference the skeptical confounding prior (Table 7), which attenuates all pathway effects proportionally.
+
 **Table 5: Pathway contribution to total benefit.** Decomposition of QALY gains by mortality pathway. CVD dominates due to both stronger relative risk reductions and higher cause-specific mortality at older ages.
 
 | Pathway | Contribution | Mean RR Range | Key Nutrients |
 |---------|-------------|---------------|---------------|
 | CVD mortality | ~{eval}`r.cvd_contribution`% | {eval}`r.cvd_effect_range` | ALA omega-3, fiber, magnesium |
-| Other mortality | ~{eval}`r.other_contribution`% | 0.90-0.98 | Fiber, protein |
+| Other mortality | ~{eval}`r.other_contribution`% | 0.90-0.98 | Fiber, protein, ALA |
 | Cancer mortality | ~{eval}`r.cancer_contribution`% | {eval}`r.cancer_effect_range` | Fiber, vitamin E |
 
 ### Cost-effectiveness
@@ -283,7 +285,7 @@ As of December 2025, NICE raised its thresholds to £25,000-35,000/QALY (\$33,50
 :name: fig-icer
 :width: 90%
 
-**Figure 7: Cost-effectiveness by nut type.** Incremental cost-effectiveness ratios (ICERs) compared to standard thresholds. Four nuts (peanuts, walnuts, almonds, pistachios) fall below both NICE (£25,000/QALY) and ICER (\$50,000/QALY) benchmarks; cashews and pecans exceed \$50,000/QALY. Peanuts achieve the lowest ICER due to low cost; cashews rank highest due to limited evidence.
+**Figure 7: Cost-effectiveness by nut type.** Incremental cost-effectiveness ratios (ICERs) compared to standard thresholds. Three nuts (peanuts, walnuts, almonds) fall below both NICE (£25,000/QALY) and ICER (\$50,000/QALY) benchmarks; pistachios and macadamias fall between thresholds; cashews and pecans exceed \$50,000/QALY. Peanuts achieve the lowest ICER due to low cost; cashews rank highest due to limited evidence.
 ```
 
 ### Comparison to other health interventions
@@ -305,7 +307,7 @@ The model estimates {eval}`r.months_range` months of life expectancy gain from n
 
 ### Uncertainty quantification
 
-Uncertainty interval width reflects both nutrient prior uncertainty and hierarchical shrinkage. Nuts with unique nutrient profiles (walnuts: ALA; macadamias: omega-7) have narrower uncertainty intervals because their effects are more mechanistically constrained. Nuts with generic profiles (cashews, pecans) rely more heavily on the hierarchical prior, producing wider uncertainty.
+Uncertainty interval width reflects both nutrient prior uncertainty and hierarchical shrinkage. Nuts with distinctive nutrient profiles (walnuts: ALA; macadamias: omega-7) have narrower uncertainty intervals because their effects are more mechanistically constrained. Nuts with generic profiles (cashews, pecans) rely more heavily on the hierarchical prior, producing wider uncertainty.
 
 ## Discussion
 
@@ -313,11 +315,11 @@ Uncertainty interval width reflects both nutrient prior uncertainty and hierarch
 
 The model estimates {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) from daily nut consumption, with walnuts ranking highest ({eval}`r.walnut.life_years_fmt` years) and cashews lowest ({eval}`r.cashew.life_years_fmt` years). This 6-fold spread reflects both nutrient composition differences and nut-specific pathway adjustments derived from RCT residual effects.
 
-The CVD pathway accounts for approximately {eval}`r.cvd_contribution`% of benefit, with other mortality contributing {eval}`r.other_contribution`% and cancer {eval}`r.cancer_contribution`%. The difference between walnuts and other nuts reflects both high ALA omega-3 content and a 1.25 CVD pathway adjustment derived from PREDIMED and WAHA RCT residual effects. This mechanistic link provides stronger causal support than overall mortality associations.
+The CVD pathway accounts for approximately {eval}`r.cvd_contribution`% of benefit, with other mortality contributing {eval}`r.other_contribution`% and cancer {eval}`r.cancer_contribution`%. The difference between walnuts and other nuts reflects both high ALA omega-3 content and a 1.25 CVD pathway adjustment derived from PREDIMED and WAHA RCT residual effects. This mechanistic link provides stronger causal support than overall mortality associations. Notably, the model estimates a walnut cancer RR slightly above 1.0 ({eval}`f"{r.walnut.rr_cancer:.4f}"`), reflecting the neutral ALA cancer prior (mean 0.0) combined with sampling variability; this small harm estimate is not statistically distinguishable from zero.
 
 ### Comparison to prior estimates
 
-These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior with mean {eval}`r.confounding_mean` mediates between these extremes. Supporting a causal interpretation, {cite:t}`liu2020changes` found that within-person increases in nut consumption of 0.5 servings/day were associated with 8% lower CVD risk (RR 0.92, 95% CI: 0.86-0.98), while decreases were associated with higher risk. However, {cite:t}`shin2024korea` found no significant CVD-specific mortality reduction in a Korean cohort of 114,140 participants, suggesting the CVD-specific association may be population-dependent.
+These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior with mean {eval}`r.confounding_mean` mediates between these extremes. Supporting a causal interpretation, {cite:t}`liu2020changes` found that within-person increases in nut consumption of 0.5 servings/day were associated with 8% lower CVD risk (RR 0.92, 95% CI: 0.86-0.98), while decreases were associated with higher risk. However, {cite:t}`shin2024korea` found no significant CVD-specific mortality reduction in a Korean cohort of 114,140 participants, indicating the CVD-specific association may be population-dependent. Long-term cohort evidence further supports the mortality association: {cite:t}`vandenbrandt2015nut` found a 23% reduction in all-cause mortality (HR 0.77) for nut consumers (≥10g/day vs non-consumers) over 10 years in the Netherlands Cohort Study (n=120,852), and {cite:t}`suprono2025ahs2` reported an 18% reduction (HR 0.82, 95% CI: 0.74-0.92) for tree nut consumers in the Adventist Health Study-2 (n=75,680), with effects stronger for CVD than cancer mortality.
 
 ### Cost-effectiveness
 
@@ -338,7 +340,7 @@ I examined robustness to key parameter assumptions:
 | Beta(3, 1) | 75% | Optimistic | 0.28 | 0.12 | +47% |
 | Beta(9, 1) | 90% | Very optimistic | 0.33 | 0.14 | +74% |
 
-**Hierarchical shrinkage (τ)**: The baseline model uses τ ~ HalfNormal(0.03), which constrains nut-specific deviations from nutrient-predicted effects to ~±6% on the log-RR scale (95% prior interval). With τ ~ HalfNormal(0.10) (weaker shrinkage), uncertainty intervals widen by ~15% but point estimates and rankings remain stable. This suggests results are driven primarily by nutrient composition rather than nut-specific residual effects.
+**Hierarchical shrinkage (τ)**: The baseline model uses τ ~ HalfNormal(0.03), which constrains nut-specific deviations from nutrient-predicted effects to ~±6% on the log-RR scale (95% prior interval). With τ ~ HalfNormal(0.10) (weaker shrinkage), uncertainty intervals widen by ~15% but point estimates and rankings remain stable. This pattern indicates results are driven primarily by nutrient composition rather than nut-specific residual effects.
 
 **Adherence**: The base case assumes 100% adherence over the remaining lifespan. Dietary intervention trials typically achieve 50-70% long-term adherence {cite:p}`appel2006adherence`. At 70% adherence, effective life years decrease proportionally (e.g., walnut from {eval}`r.walnut.life_years_fmt` to {eval}`f'{r.walnut.life_years * 0.7:.2f}'` years) and ICERs increase by ~43%. At 50% adherence, life years halve and ICERs double. At 50% adherence, three nuts (peanuts, walnuts, almonds) remain below \$50,000/QALY; the remainder exceed this threshold. Estimates scale linearly with adherence fraction.
 
@@ -350,13 +352,13 @@ I examined robustness to key parameter assumptions:
 
 The model treats nut consumption as additive to baseline diet, but in practice nuts replace other foods. The net health impact depends on what is displaced. Replacing refined carbohydrates (chips, crackers) would yield the largest incremental benefit, as nuts provide fiber, unsaturated fats, and micronutrients absent from processed snacks; this substitution pattern likely underlies the cohort associations, as snack replacement is the most common use case. Replacing other sources of healthy fats (olive oil, fatty fish) would yield smaller or negligible incremental benefit, since these foods share similar fatty acid profiles and cardioprotective effects. Replacing red meat would yield an intermediate benefit from reduced saturated fat and heme iron intake, partially offset by lower protein bioavailability.
 
-{cite:t}`li2015substitution` modeled isocaloric substitution in the Nurses' Health Study and found that replacing one serving of red meat with nuts reduced all-cause mortality by 19%, while replacing fish showed no significant change. These substitution patterns suggest the QALY estimates in this paper are most applicable when nuts replace less healthy alternatives—the realistic scenario for most consumers adding nuts to their diet.
+{cite:t}`li2015substitution` modeled isocaloric substitution in the Nurses' Health Study and found that replacing one serving of red meat with nuts reduced all-cause mortality by 19%, while replacing fish showed no significant change. These substitution patterns indicate the QALY estimates in this paper are most applicable when nuts replace less healthy alternatives.
 
 ### Practical interpretation of estimates
 
 Among the seven nut types analyzed, the model estimates the largest life expectancy gains for walnuts ({eval}`r.walnut.life_years_fmt` years) and almonds, while peanuts yield the lowest ICER ({eval}`r.peanut.icer_fmt`/QALY). Because nutrient effects are approximately additive across the profiles examined, combining nut types would be expected to produce intermediate estimates.
 
-The model assumes 28g/day (one ounce), the standard serving size. Dose-response evidence from {cite:t}`aune2016nut` and {cite:t}`liu2025nut` suggests benefits may plateau above 15-20 g/day, such that the marginal gain from 20g to 28g may be smaller than from 0g to 20g. The modeled nutrients (fatty acids, fiber, minerals) are unaffected by roasting method.
+The model assumes 28g/day (one ounce), the standard serving size. Dose-response evidence from {cite:t}`aune2016nut` and {cite:t}`liu2025nut` indicates benefits may plateau above 15-20 g/day, such that the marginal gain from 20g to 28g may be smaller than from 0g to 20g. The modeled nutrients (fatty acids, fiber, minerals) are unaffected by roasting method.
 
 Daily consumption of a standard 28g serving of Brazil nuts would provide approximately 544 ug of selenium, exceeding the tolerable upper intake level (400 ug/day), precluding inclusion in this analysis. For peanuts, US and EU regulatory limits (20 ppb) and routine testing make aflatoxin exposure negligible in these markets {cite:p}`wu2010aflatoxin`; this may not hold in regions with less stringent regulatory frameworks.
 
@@ -364,7 +366,7 @@ At 70% adherence (approximately five servings per week), the model estimates app
 
 ### Limitations
 
-Several limitations warrant consideration. First, this analysis models only **mortality effects**—potential morbidity benefits from nuts (fewer non-fatal strokes and heart attacks, improved metabolic markers, better cognitive function) are not captured. The QALY estimates are therefore conservative; actual quality-adjusted benefits may be larger.
+Several limitations warrant consideration. First, this analysis models only **mortality effects**—potential morbidity benefits from nuts (fewer non-fatal strokes and heart attacks, improved metabolic markers, better cognitive function) are not captured. The QALY estimates therefore represent lower bounds on total benefit; actual quality-adjusted gains may be larger.
 
 Second, estimates rely on observational data, and residual confounding may remain despite calibration. Source studies come predominantly from the US and Europe, limiting generalizability to other populations. I modeled a fixed 28g/day dose, though dose-response may be non-linear—{cite:t}`aune2016nut` find benefits plateau above ~20g/day. The model assumes perfect adherence, whereas dietary intervention studies find real-world adherence of 50-70% {cite:p}`appel2006adherence`.
 

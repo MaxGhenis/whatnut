@@ -39,8 +39,8 @@ These adjustment factors are **priors** used in the hierarchical model. The adju
 Adjustments capture **residual effects** from nut-specific RCTs after accounting for nutrient composition. The derivation for walnut's CVD adjustment illustrates the method:
 
 1. **PREDIMED RCT** {cite:p}`ros2008mediterranean`: Walnut group showed ~30% CVD risk reduction
-2. **Nutrient-predicted effect**: Based on 2.5g ALA × (-0.15 log-RR/g) + other nutrients = ~20% reduction
-3. **Residual**: 30% - 20% = 10% additional benefit, plus ~15% for polyphenol effects from WAHA {cite:p}`rajaram2021walnuts`
+2. **Nutrient-predicted effect**: Based on 2.5g ALA × (-0.05 log-RR/g) + other nutrients = ~15% reduction
+3. **Residual**: 30% - 15% = 15% additional benefit, plus polyphenol effects from WAHA {cite:p}`rajaram2021walnuts`
 4. **Adjustment**: exp(0.22) ≈ 1.25 (25% stronger than nutrients alone)
 
 Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects are well-explained by nutrient composition (vitamin E, fiber, MUFA). This ensures adjustments represent genuine "beyond-nutrient" effects rather than artifacts.
@@ -130,11 +130,7 @@ CVD fraction increases with age; CVD has the lowest RR (0.75).
 
 An alternative approach samples cause-specific relative risks directly from meta-analysis estimates (e.g., log-normal distributions based on {cite:t}`aune2016nut`) rather than deriving them from nutrient composition. This simpler approach yields broadly comparable results because the nutrient-derived priors are calibrated to match meta-analysis estimates.
 
-The nutrient-derived approach used in this analysis provides several advantages:
-- **Mechanistic interpretability**: Effects attributed to specific nutrients (ALA, fiber, magnesium)
-- **Principled shrinkage**: Poorly-evidenced nuts shrink toward nutrient-predicted effects
-- **Transparent priors**: Each prior is traceable to independent meta-analyses
-- **Nut differentiation**: Compositional differences drive differential estimates across nut types
+The nutrient-derived approach used in this analysis provides several advantages over direct meta-analysis sampling. First, it offers mechanistic interpretability by attributing effects to specific nutrients (ALA, fiber, magnesium). Second, poorly-evidenced nuts shrink toward nutrient-predicted effects through principled hierarchical shrinkage. Third, each prior is traceable to independent meta-analyses, ensuring transparency. Fourth, compositional differences drive differential estimates across nut types—for example, the model can distinguish walnuts from almonds based on ALA content rather than relying on a single pooled nut estimate.
 
 Both approaches use forward Monte Carlo sampling (no MCMC is needed since there is no likelihood function). The nutrient-derived approach is preferred for its mechanistic transparency and ability to differentiate nuts based on composition.
 
