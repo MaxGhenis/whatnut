@@ -369,3 +369,59 @@ class TestCauseFractions:
         result = get_cause_fractions(50)
         assert isinstance(result, tuple)
         assert len(result) == 3
+
+
+# ---------------------------------------------------------------------------
+# Unit consistency (Issue 1: magnesium/phytosterol 10x unit error)
+# ---------------------------------------------------------------------------
+
+
+class TestUnitConsistency:
+    """Nutrient priors should produce plausible per-serving contributions."""
+
+    def test_magnesium_contribution_plausible(self):
+        """Magnesium contribution to log-RR should be small (< 0.05 per serving)."""
+        prior = get_nutrient_prior("cvd", "magnesium")
+        walnut = get_nut("walnut")
+        mg = walnut.nutrients["magnesium"]  # ~44 mg
+        contribution = abs(prior.mean * mg)
+        assert contribution < 0.05, (
+            f"Magnesium contribution {contribution:.4f} too large (unit error?)"
+        )
+
+    def test_phytosterol_contribution_plausible(self):
+        """Phytosterol contribution to log-RR should be small (< 0.10 per serving)."""
+        prior = get_nutrient_prior("cvd", "phytosterols")
+        peanut = get_nut("peanut")
+        ps = peanut.nutrients["phytosterols"]  # ~62 mg
+        contribution = abs(prior.mean * ps)
+        assert contribution < 0.10, (
+            f"Phytosterol contribution {contribution:.4f} too large (unit error?)"
+        )
+
+    def test_total_nutrient_log_rr_plausible(self):
+        """Total nutrient-predicted log-RR should be in [-0.5, 0] for CVD."""
+        X = get_nutrient_matrix()
+        priors = get_pathway_priors("cvd")
+        mu = np.array([priors[n].mean for n in NUTRIENTS])
+        log_rrs = X @ mu
+        for i, nid in enumerate(NUT_IDS):
+            assert -0.5 < log_rrs[i] < 0, (
+                f"{nid} CVD log-RR {log_rrs[i]:.3f} outside [-0.5, 0]"
+            )
+
+
+# ---------------------------------------------------------------------------
+# Version consistency (Issue 3)
+# ---------------------------------------------------------------------------
+
+
+def test_version_matches_pyproject():
+    """__init__.__version__ should match pyproject.toml version."""
+    import tomllib
+    from pathlib import Path
+    import whatnut
+    pyproject = Path(__file__).parent.parent / "pyproject.toml"
+    with open(pyproject, "rb") as f:
+        data = tomllib.load(f)
+    assert whatnut.__version__ == data["project"]["version"]

@@ -23,6 +23,7 @@ from whatnut.config import (
     NUT_IDS,
     PATHWAYS,
     get_confounding_prior,
+    get_nut,
     get_nutrient_matrix,
     get_pathway_priors,
     get_tau_prior,
@@ -107,6 +108,15 @@ def sample_model(
         tau = np.abs(rng.normal(0, tau_prior.sigma, size=(n_samples, 1)))
         z = rng.standard_normal(size=(n_samples, n_nuts))
         true_log_rr = expected_log_rr + tau * z
+
+        # Apply nut-specific pathway adjustments (exponent on RR scale)
+        # RR_adjusted = RR_true^a, i.e., log(RR_adjusted) = a * log(RR_true)
+        for k, nid in enumerate(nut_ids):
+            nut = get_nut(nid)
+            if pathway in nut.pathway_adjustments:
+                adj = nut.pathway_adjustments[pathway]
+                a = rng.normal(adj.mean, adj.sd, size=n_samples)
+                true_log_rr[:, k] *= a
 
         # Apply confounding adjustment
         causal_log_rr = true_log_rr * causal_fraction[:, np.newaxis]

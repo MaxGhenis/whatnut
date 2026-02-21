@@ -12,7 +12,7 @@ from pathlib import Path
 
 import numpy as np
 
-from whatnut.config import NUT_IDS, PATHWAYS, get_nut
+from whatnut.config import NUT_IDS, PATHWAYS, get_mortality_curve, get_nut
 from whatnut.lifecycle import LifecycleResult, run_lifecycle
 from whatnut.model import ModelSamples, sample_model
 
@@ -71,6 +71,9 @@ class AnalysisResults:
     confounding_beta: float
     confounding_mean: float
 
+    # Baseline metrics
+    baseline_life_years: float
+
     # Per-nut results
     nuts: dict[str, NutAnalysis]
 
@@ -89,6 +92,7 @@ class AnalysisResults:
             "confounding_alpha": self.confounding_alpha,
             "confounding_beta": self.confounding_beta,
             "confounding_mean": self.confounding_mean,
+            "baseline_life_years": self.baseline_life_years,
             "cvd_contribution_mean": self.cvd_contribution_mean,
             "cancer_contribution_mean": self.cancer_contribution_mean,
             "other_contribution_mean": self.other_contribution_mean,
@@ -141,6 +145,11 @@ def run_analysis(
     Returns:
         AnalysisResults with every number needed for the paper.
     """
+    # Compute baseline life years from mortality table
+    mortality = get_mortality_curve(start_age)
+    survival = np.cumprod(1 - mortality)
+    baseline_life_years = float(np.sum(survival))
+
     # Step 1: Sample RRs from model
     samples = sample_model(
         n_samples=n_samples,
@@ -240,6 +249,7 @@ def run_analysis(
         confounding_alpha=confounding_alpha,
         confounding_beta=confounding_beta,
         confounding_mean=confounding_mean,
+        baseline_life_years=round(baseline_life_years, 2),
         nuts=nut_analyses,
         cvd_contribution_mean=round(float(np.mean(all_cvd)), 2),
         cancer_contribution_mean=round(float(np.mean(all_cancer)), 2),

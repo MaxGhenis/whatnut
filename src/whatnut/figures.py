@@ -57,7 +57,7 @@ def fig1_model_architecture():
                        linewidth=2, mutation_scale=15)
 
     # Title
-    ax.text(7, 7.5, 'Hierarchical Bayesian Model Architecture',
+    ax.text(7, 7.5, 'Model Architecture',
             fontsize=16, fontweight='bold', ha='center', va='center')
 
     # Layer 1: Inputs

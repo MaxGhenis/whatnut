@@ -51,10 +51,10 @@ cvd:
     unit: g
     source: "Sacks 2017 AHA advisory: LDL/CHD pathway"
   magnesium:
-    mean: -0.003
-    sd: 0.001
-    unit: mg
-    source: "Fang 2016: RR 0.90 per 100mg for CHD"
+    mean: -0.0003
+    sd: 0.0001
+    unit: "mg (effect per 10mg)"
+    source: "Fang 2016: RR 0.90 per 100mg for CHD; -0.003 per 10mg"
   arginine:
     mean: -0.02
     sd: 0.02
@@ -66,10 +66,10 @@ cvd:
     unit: mg
     source: "Food-based vitamin E (not supplement doses)"
   phytosterols:
-    mean: -0.01
-    sd: 0.01
-    unit: mg
-    source: "LDL lowering mechanism"
+    mean: -0.001
+    sd: 0.001
+    unit: "mg (effect per 10mg)"
+    source: "LDL lowering mechanism; -0.01 per 10mg"
   protein:
     mean: 0.0
     sd: 0.005
@@ -103,10 +103,10 @@ cancer:
     unit: g
     source: "Weak cancer association"
   magnesium:
-    mean: -0.001
-    sd: 0.002
-    unit: mg
-    source: "Limited cancer evidence"
+    mean: -0.0001
+    sd: 0.0002
+    unit: "mg (effect per 10mg)"
+    source: "Limited cancer evidence; -0.001 per 10mg"
   arginine:
     mean: 0.0
     sd: 0.01
@@ -119,9 +119,9 @@ cancer:
     source: "Antioxidant; mixed evidence at food-level doses"
   phytosterols:
     mean: 0.0
-    sd: 0.005
-    unit: mg
-    source: "No cancer mechanism"
+    sd: 0.0005
+    unit: "mg (effect per 10mg)"
+    source: "No cancer mechanism; per 10mg"
   protein:
     mean: 0.0
     sd: 0.003
@@ -155,10 +155,10 @@ other:
     unit: g
     source: "Metabolic effects"
   magnesium:
-    mean: -0.002
-    sd: 0.001
-    unit: mg
-    source: "Diabetes prevention"
+    mean: -0.0002
+    sd: 0.0001
+    unit: "mg (effect per 10mg)"
+    source: "Diabetes prevention; -0.002 per 10mg"
   arginine:
     mean: -0.01
     sd: 0.02
@@ -171,9 +171,9 @@ other:
     source: "Antioxidant"
   phytosterols:
     mean: 0.0
-    sd: 0.003
-    unit: mg
-    source: "No mechanism"
+    sd: 0.0003
+    unit: "mg (effect per 10mg)"
+    source: "No mechanism; per 10mg"
   protein:
     mean: -0.005
     sd: 0.005

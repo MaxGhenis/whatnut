@@ -17,7 +17,7 @@ from whatnut.lifecycle import LifecycleResult, run_lifecycle
 from whatnut.model import ModelSamples, sample_model, summarize_rr
 from whatnut.pipeline import AnalysisResults, NutAnalysis, run_analysis
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     # Config

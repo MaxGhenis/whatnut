@@ -124,8 +124,8 @@ class PaperResults:
     allergy_prevalence_lower: float = 2.0
     allergy_prevalence_upper: float = 4.0
 
-    # Baseline metrics
-    baseline_life_years: float = 35.32
+    # Baseline metrics (loaded from generated JSON, fallback to hardcoded)
+    baseline_life_years: float = 40.78
     baseline_qalys: float = 28.49
     average_quality_weight: float = 0.807
 
@@ -297,6 +297,9 @@ def _load_results() -> PaperResults:
     cancer_pct = round(float(data.get("cancer_contribution_mean", 0.05)) * 100)
     other_pct = round(float(data.get("other_contribution_mean", 0.15)) * 100)
 
+    # Load baseline_life_years from JSON if present (derived from mortality table)
+    baseline_ly = data.get("baseline_life_years", 40.78)
+
     return PaperResults(
         seed=data["seed"],
         n_samples=data["n_samples"],
@@ -305,6 +308,7 @@ def _load_results() -> PaperResults:
         confounding_alpha=data["confounding_alpha"],
         confounding_beta=data["confounding_beta"],
         confounding_mean=data["confounding_mean"],
+        baseline_life_years=baseline_ly,
         nuts=nuts,
         pathway_rrs=pathway_rrs,
         cvd_contribution=cvd_pct,

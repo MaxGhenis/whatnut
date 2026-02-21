@@ -253,3 +253,36 @@ class TestSummarizeRR:
             for nut_id in NUT_IDS:
                 for key, val in summary[pathway][nut_id].items():
                     assert isinstance(val, float), f"{pathway}/{nut_id}/{key} is {type(val)}"
+
+
+# ---------------------------------------------------------------------------
+# Pathway adjustments (Issue 2)
+# ---------------------------------------------------------------------------
+
+
+class TestPathwayAdjustments:
+    """Pathway adjustments from nuts.yaml should modify model output."""
+
+    def test_walnut_cvd_adjusted_more_than_almond(self):
+        """Walnut CVD adjustment (1.25) > almond (1.00), so walnut CVD RR
+        should be lower (more protective) relative to nutrient predictions."""
+        samples = sample_model(n_samples=1000, seed=42)
+        walnut_idx = samples.nut_ids.index("walnut")
+        almond_idx = samples.nut_ids.index("almond")
+        # Walnut has stronger CVD adjustment (1.25 > 1.00)
+        # So walnut CVD effect should be amplified
+        walnut_cvd = np.mean(samples.rr["cvd"][:, walnut_idx])
+        almond_cvd = np.mean(samples.rr["cvd"][:, almond_idx])
+        # Walnut has 2.5g ALA + 1.25 adj, almond has 0g ALA + 1.00 adj
+        # Walnut should have lower CVD RR
+        assert walnut_cvd < almond_cvd, (
+            f"Walnut CVD RR ({walnut_cvd:.4f}) should be < almond ({almond_cvd:.4f}) "
+            "due to pathway adjustment"
+        )
+
+    def test_cashew_adjustment_dampens_effect(self):
+        """Cashew CVD adjustment (0.95) should dampen CVD effect."""
+        from whatnut.config import get_nut
+        cashew = get_nut("cashew")
+        adj = cashew.pathway_adjustments["cvd"]
+        assert adj.mean < 1.0, "Cashew CVD adjustment should be < 1.0"

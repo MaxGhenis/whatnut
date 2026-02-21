@@ -1,6 +1,6 @@
 # Technical Appendix
 
-## Target Population
+## Target population
 
 This analysis applies to:
 - **Age**: Adults 30-70 years (primary analysis uses 40-year-old baseline)
@@ -50,11 +50,11 @@ For each of 10,000 samples:
 3. Apply EQ-5D quality weights by age (population norms)
 4. Compute discounted QALYs (3% annual rate)
 
-## Nut-Specific Adjustment Priors
+## Nut-specific adjustment priors
 
 These adjustment factors are **priors** used in the hierarchical model. The adjustment is applied as an **exponent** on the RR scale: $RR_{adjusted} = RR_{nutrients}^{a}$. On the log-RR scale, this is multiplicative: $\log(RR_{adjusted}) = a \times \log(RR_{nutrients})$. For protective effects (RR < 1), adjustments > 1 amplify the effect. For example, walnut's CVD adjustment of 1.25 applied to a nutrient-predicted RR of 0.80 yields $0.80^{1.25} = 0.75$ (a 25% mortality reduction becomes a 25% stronger effect, yielding 25% × 1.25 ≈ 31% reduction).
 
-### Derivation of Adjustment Values
+### Derivation of adjustment values
 
 Adjustments capture **residual effects** from nut-specific RCTs after accounting for nutrient composition. The derivation for walnut's CVD adjustment illustrates the method:
 
@@ -97,9 +97,9 @@ The LDL pathway provides a **floor** on the causal fraction (not a ceiling), sin
 
 **Sensitivity analysis**: Beta(1.5, 4.5) with mean 0.25 is presented as a skeptical alternative. Rankings remain stable across prior specifications (see Table 7 in main text).
 
-## Cost-Effectiveness Model
+## Cost-effectiveness model
 
-### Data Sources
+### Data sources
 - **Life tables**: CDC National Vital Statistics (2021) for age-specific mortality
 - **Quality weights**: Age-varying HRQoL from Sullivan et al. (2006)
 - **Discounting**: 3% annual rate (standard for NICE, ICER, WHO-CHOICE)
@@ -113,7 +113,7 @@ For a 40-year-old beginning daily nut consumption:
 - **Discounted QALYs**: 0.22-0.37 (3% annual discounting over 40+ years)
 - **ICERs**: ~\$2,700/QALY (peanuts) to ~\$21,500/QALY (macadamias)
 
-## E-Value Analysis
+## E-value analysis
 
 Per {cite}`vanderweele2017sensitivity`, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
 
@@ -127,7 +127,7 @@ For HR = 0.78:
 
 An unmeasured confounder would need RR ≥ 1.8 with both nut consumption and mortality to fully explain the observed effect.
 
-## Pathway-Specific Mortality Effects
+## Pathway-specific mortality effects
 
 From {cite}`aune2016nut`:
 
@@ -137,7 +137,7 @@ From {cite}`aune2016nut`:
 | Cancer | 0.87 | 0.80-0.93 | 21,353 |
 | Other | 0.90 | 0.85-0.95 | Assumed |
 
-### Age-Varying Cause Fractions
+### Age-varying cause fractions
 
 Cause-of-death proportions vary by age (CDC WONDER 2021):
 

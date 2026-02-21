@@ -1,7 +1,7 @@
 version: 1
 project:
-  title: "What Nut? A Bayesian Analysis of Quality-Adjusted Life Years from Nut Consumption"
-  description: "Bayesian QALY analysis of nut consumption"
+  title: "What Nut? A Monte Carlo Analysis of Life Expectancy from Nut Consumption"
+  description: "Monte Carlo analysis of life expectancy from nut consumption"
   authors:
     - name: Max Ghenis
       email: max@maxghenis.com
@@ -10,7 +10,6 @@ project:
   keywords:
     - nutrition
     - QALY
-    - Bayesian
     - Monte Carlo
     - health economics
     - nuts

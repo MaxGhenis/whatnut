@@ -319,3 +319,30 @@ class TestJSONGeneration:
         assert loaded["n_samples"] == results.n_samples
         for nut_id in NUT_IDS:
             assert loaded["nuts"][nut_id]["qaly_mean"] == results.nuts[nut_id].qaly_mean
+
+
+# ---------------------------------------------------------------------------
+# Baseline life years (Issue 4)
+# ---------------------------------------------------------------------------
+
+
+class TestBaselineLifeYears:
+    """baseline_life_years should be derived from CDC mortality table."""
+
+    def test_baseline_life_years_from_mortality_table(self):
+        """baseline_life_years should be derived from CDC mortality table, not hardcoded."""
+        from whatnut.config import get_mortality_curve
+        mortality = get_mortality_curve(40)
+        survival = np.cumprod(1 - mortality)
+        expected = float(np.sum(survival))
+        # Should be approximately 40 years for a 40-year-old
+        assert 35 < expected < 45, f"Expected ~40 years, got {expected:.2f}"
+
+    def test_baseline_life_years_in_results(self, results):
+        """AnalysisResults should include baseline_life_years derived from mortality."""
+        assert hasattr(results, "baseline_life_years"), (
+            "AnalysisResults should have baseline_life_years attribute"
+        )
+        assert 35 < results.baseline_life_years < 45, (
+            f"baseline_life_years = {results.baseline_life_years}, expected ~40"
+        )
