@@ -78,7 +78,7 @@ The cost-effectiveness model draws on CDC National Vital Statistics (2021) life 
 
 ### Lifecycle model
 
-For a 40-year-old beginning daily nut consumption, the model estimates 0.22-0.96 additional life years (2.6-11.5 months) across nut types, corresponding to 0.14-0.59 undiscounted QALYs (life years weighted by age-specific EQ-5D quality weights) and 0.04-0.19 discounted QALYs (at 3% annual discounting over the remaining lifespan). ICERs range from approximately $11,900/QALY (peanuts) to $57,000/QALY (cashews).
+For a 40-year-old beginning daily nut consumption, the model estimates 0.22-0.96 additional life years (2.6-11.5 months) across nut types, corresponding to 0.14-0.59 undiscounted QALYs (life years weighted by age-specific EQ-5D quality weights) and 0.04-0.19 discounted QALYs (at 3% annual discounting over the remaining lifespan). ICERs range from approximately \$11,900/QALY (peanuts) to \$57,000/QALY (cashews).
 
 ## E-value analysis
 

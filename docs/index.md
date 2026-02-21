@@ -208,8 +208,8 @@ The model estimates that a {eval}`r.target_age`-year-old consuming 28g/day of nu
 ```{code-cell} python
 :tags: [remove-input]
 
-from IPython.display import Markdown
-Markdown(r.table_3_qalys())
+from IPython.display import HTML
+HTML(r.table_3_qalys())
 ```
 
 Note: "Dominated" indicates ICER undefined when lower CI bound for QALYs is ≤0. Evidence quality: Strong = multiple RCTs or large cohorts (n>100,000); Moderate = single RCT or smaller cohorts; Limited = RCTs with confidence intervals crossing null.
@@ -237,11 +237,11 @@ The base case assumes 100% adherence. Real-world dietary adherence is typically 
 
 | Adherence | Life Years | Months | ICER |
 |-----------|------------|--------|------|
-| 100% (base) | 0.96 | 11.5 | $13,115/QALY |
-| 70% (typical) | 0.67 | 8.1 | $18,736/QALY |
-| 50% | 0.48 | 5.8 | $26,230/QALY |
+| 100% (base) | 0.96 | 11.5 | \$13,115/QALY |
+| 70% (typical) | 0.67 | 8.1 | \$18,736/QALY |
+| 50% | 0.48 | 5.8 | \$26,230/QALY |
 
-At 50% adherence (~3.5 servings/week), the model estimates approximately 6 months of additional life expectancy for walnuts, with an ICER of ~$26,000/QALY, which falls below the $50,000/QALY threshold.
+At 50% adherence (~3.5 servings/week), the model estimates approximately 6 months of additional life expectancy for walnuts, with an ICER of ~\$26,000/QALY, which falls below the \$50,000/QALY threshold.
 
 ### Pathway-specific relative risks
 
@@ -252,8 +252,8 @@ CVD mortality reductions (3-13% across nuts) are substantially larger than cance
 ```{code-cell} python
 :tags: [remove-input]
 
-from IPython.display import Markdown
-Markdown(r.table_4_pathway_rrs())
+from IPython.display import HTML
+HTML(r.table_4_pathway_rrs())
 ```
 
 ```{figure} _static/figures/pathway_rrs.png
@@ -296,18 +296,18 @@ To contextualize these estimates, Table 6 compares nut consumption to other evid
 
 | Intervention | Life Years | ICER | Evidence Quality |
 |--------------|------------|------|------------------|
-| **Nuts (walnuts, 40yo)** | 0.96 | $13,115/QALY | Meta-analyses + RCTs |
-| Regular exercise (150 min/week) | 3-5 | $0-500/year | Strong RCT evidence |
+| **Nuts (walnuts, 40yo)** | 0.96 | \$13,115/QALY | Meta-analyses + RCTs |
+| Regular exercise (150 min/week) | 3-5 | \$0-500/year | Strong RCT evidence |
 | Mediterranean diet adherence | 1-2 | Variable | {cite:t}`estruch2018primary`, cohorts |
 | Smoking cessation (at 40) | 7-10 | Cost-saving | Strong cohort evidence |
-| Statin therapy (primary prev.) | 0.5-1 | $10,000-50,000/QALY | RCTs (low-risk) |
-| Blood pressure control | 1-2 | $5,000-20,000/QALY | RCTs |
+| Statin therapy (primary prev.) | 0.5-1 | \$10,000-50,000/QALY | RCTs (low-risk) |
+| Blood pressure control | 1-2 | \$5,000-20,000/QALY | RCTs |
 
-The model estimates {eval}`r.months_range` months of life expectancy gain from nut consumption at ICERs of {eval}`r.icer_range`/QALY. Exercise (3-5 life years) and smoking cessation (7-10 life years) yield larger absolute gains; most nut types fall below the $50,000/QALY threshold used by ICER, though cashews and pecans exceed this benchmark.
+The model estimates {eval}`r.months_range` months of life expectancy gain from nut consumption at ICERs of {eval}`r.icer_range`/QALY. Exercise (3-5 life years) and smoking cessation (7-10 life years) yield larger absolute gains; most nut types fall below the \$50,000/QALY threshold used by ICER, though cashews and pecans exceed this benchmark.
 
 ### Uncertainty quantification
 
-Uncertainty interval width reflects both nutrient prior uncertainty and hierarchical shrinkage. Nuts with distinctive nutrient profiles (walnuts: ALA; macadamias: omega-7) have narrower uncertainty intervals because their effects are more mechanistically constrained. Nuts with generic profiles (cashews, pecans) rely more heavily on the hierarchical prior, producing wider uncertainty.
+Uncertainty interval width reflects nutrient prior precision, evidence quality, and hierarchical shrinkage. Walnuts have relatively narrow intervals because ALA's CVD effect is well-characterized by multiple meta-analyses. In contrast, macadamias — despite a distinctive omega-7 profile — have wide intervals because palmitoleic acid's health effects are poorly studied, and macadamia-specific RCT evidence is limited. Cashews and pecans similarly show wide intervals due to limited direct evidence, leading to greater reliance on the hierarchical prior.
 
 ## Discussion
 
@@ -319,7 +319,7 @@ The CVD pathway accounts for approximately {eval}`r.cvd_contribution`% of benefi
 
 ### Comparison to prior estimates
 
-These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior with mean {eval}`r.confounding_mean` mediates between these extremes. Supporting a causal interpretation, {cite:t}`liu2020changes` found that within-person increases in nut consumption of 0.5 servings/day were associated with 8% lower CVD risk (RR 0.92, 95% CI: 0.86-0.98), while decreases were associated with higher risk. However, {cite:t}`shin2024korea` found no significant CVD-specific mortality reduction in a Korean cohort of 114,140 participants, indicating the CVD-specific association may be population-dependent. Long-term cohort evidence further supports the mortality association: {cite:t}`vandenbrandt2015nut` found a 23% reduction in all-cause mortality (HR 0.77) for nut consumers (≥10g/day vs non-consumers) over 10 years in the Netherlands Cohort Study (n=120,852), and {cite:t}`suprono2025ahs2` reported reduced CVD mortality (HR 0.86, 95% CI: 0.79-0.94, comparing 90th vs 10th percentile of nut intake) in the Adventist Health Study-2 (n=75,680), with stronger associations for ischemic heart disease (HR 0.81, 95% CI: 0.70-0.94).
+These estimates are lower than unadjusted observational associations. {cite:t}`liu2021walnut` estimated 1.3 additional life years for walnut consumers at age 60, while {cite:t}`fadnes2022estimating` modeled ~2 years gained from sustained nut consumption starting at age 20 — both without explicit confounding adjustment. This paper's walnut estimate of {eval}`r.walnut.life_years_fmt` years (starting at age 40) is lower primarily because the Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior (mean {eval}`r.confounding_mean`) attributes roughly half the observed association to non-causal factors. These estimates are also higher than pure LDL-pathway predictions (~3% mortality reduction). Supporting a causal interpretation, {cite:t}`liu2020changes` found that within-person increases in nut consumption of 0.5 servings/day were associated with 8% lower CVD risk (RR 0.92, 95% CI: 0.86-0.98), while decreases were associated with higher risk. However, {cite:t}`shin2024korea` found no significant CVD-specific mortality reduction in a Korean cohort of 114,140 participants, indicating the CVD-specific association may be population-dependent. Long-term cohort evidence further supports the mortality association: {cite:t}`vandenbrandt2015nut` found a 23% reduction in all-cause mortality (HR 0.77) for nut consumers (≥10g/day vs non-consumers) over 10 years in the Netherlands Cohort Study (n=120,852), and {cite:t}`suprono2025ahs2` reported reduced CVD mortality (HR 0.86, 95% CI: 0.79-0.94, comparing 90th vs 10th percentile of nut intake) in the Adventist Health Study-2 (n=75,680), with stronger associations for ischemic heart disease (HR 0.81, 95% CI: 0.70-0.94).
 
 ### Cost-effectiveness
 
@@ -362,7 +362,7 @@ The model assumes 28g/day (one ounce), the standard serving size. Dose-response 
 
 Daily consumption of a standard 28g serving of Brazil nuts would provide approximately 544 ug of selenium, exceeding the tolerable upper intake level (400 ug/day), precluding inclusion in this analysis. For peanuts, US and EU regulatory limits (20 ppb) and routine testing make aflatoxin exposure negligible in these markets {cite:p}`wu2010aflatoxin`; this may not hold in regions with less stringent regulatory frameworks.
 
-At 70% adherence (approximately five servings per week), the model estimates approximately 8 months of additional life expectancy for walnuts, with proportionally scaled ICERs remaining below the $50,000/QALY threshold.
+At 70% adherence (approximately five servings per week), the model estimates approximately 8 months of additional life expectancy for walnuts, with proportionally scaled ICERs remaining below the \$50,000/QALY threshold.
 
 ### Limitations
 
@@ -372,7 +372,7 @@ Second, estimates rely on observational data, and residual confounding may remai
 
 ## Conclusion
 
-Using Monte Carlo uncertainty propagation with pathway-specific nutrient effects, I estimate that daily nut consumption (28g) yields {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) for a {eval}`r.target_age`-year-old, with walnuts ranking highest followed by almonds. Approximately {eval}`r.cvd_contribution`% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. For cost-effectiveness comparison, ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.cashew.icer_fmt`/QALY (cashews); three nuts (peanuts, walnuts, almonds) fall below both NICE and ICER thresholds, while cashews and pecans exceed the $50,000/QALY benchmark. For some nuts (macadamias, cashews), the 95% uncertainty interval for life years gained crosses zero. These estimates reflect mortality effects only; including morbidity reductions (non-fatal CVD events, cognitive decline) would increase QALYs by an unquantified amount. Findings do not apply to individuals with nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults {cite:p}`gupta2021prevalence`).
+Using Monte Carlo uncertainty propagation with pathway-specific nutrient effects, I estimate that daily nut consumption (28g) yields {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) for a {eval}`r.target_age`-year-old, with walnuts ranking highest followed by almonds. Approximately {eval}`r.cvd_contribution`% of benefit operates through CVD prevention, driven primarily by ALA omega-3, fiber, and magnesium content. For cost-effectiveness comparison, ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.cashew.icer_fmt`/QALY (cashews); three nuts (peanuts, walnuts, almonds) fall below both NICE and ICER thresholds, while cashews and pecans exceed the \$50,000/QALY benchmark. For some nuts (macadamias, cashews), the 95% uncertainty interval for life years gained crosses zero. These estimates reflect mortality effects only; including morbidity reductions (non-fatal CVD events, cognitive decline) would increase QALYs by an unquantified amount. Findings do not apply to individuals with nut allergies ({eval}`r.allergy_prevalence_lower`-{eval}`r.allergy_prevalence_upper`% of adults {cite:p}`gupta2021prevalence`).
 
 ## Data and code availability
 

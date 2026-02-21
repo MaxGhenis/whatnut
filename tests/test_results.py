@@ -212,16 +212,12 @@ class TestRangeProperties:
 class TestTableGenerators:
     """Table generators should produce valid markdown tables."""
 
-    def test_table_3_qalys_is_markdown(self):
+    def test_table_3_qalys_is_html(self):
         table = r.table_3_qalys()
         assert isinstance(table, str)
-        lines = table.strip().split("\n")
-        # Header + separator + at least 7 nut rows
-        assert len(lines) >= 9
-        # First line should be header
-        assert lines[0].startswith("|")
-        # Second line should be separator
-        assert "---" in lines[1]
+        assert table.startswith("<table>")
+        assert "<thead>" in table
+        assert "<tbody>" in table
 
     def test_table_3_contains_all_nuts(self):
         table = r.table_3_qalys()
@@ -232,18 +228,16 @@ class TestTableGenerators:
 
     def test_table_3_has_columns(self):
         table = r.table_3_qalys()
-        header = table.split("\n")[0]
-        assert "Life Years" in header
-        assert "QALY" in header
-        assert "ICER" in header
+        assert "Life Years" in table
+        assert "QALY" in table
+        assert "ICER" in table
 
-    def test_table_4_pathway_rrs_is_markdown(self):
+    def test_table_4_pathway_rrs_is_html(self):
         table = r.table_4_pathway_rrs()
         assert isinstance(table, str)
-        lines = table.strip().split("\n")
-        assert len(lines) >= 9
-        assert lines[0].startswith("|")
-        assert "---" in lines[1]
+        assert table.startswith("<table>")
+        assert "<thead>" in table
+        assert "<tbody>" in table
 
     def test_table_4_contains_all_nuts(self):
         table = r.table_4_pathway_rrs()
@@ -252,10 +246,9 @@ class TestTableGenerators:
 
     def test_table_4_has_pathway_columns(self):
         table = r.table_4_pathway_rrs()
-        header = table.split("\n")[0]
-        assert "CVD" in header
-        assert "Cancer" in header
-        assert "Other" in header
+        assert "CVD" in table
+        assert "Cancer" in table
+        assert "Other" in table
 
 
 # ---------------------------------------------------------------------------

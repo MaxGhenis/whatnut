@@ -215,31 +215,34 @@ class PaperResults:
 
     # Table generators
     def table_3_qalys(self) -> str:
-        lines = [
-            "| Nut | Life Years | Months | QALY (undiscounted) | QALY (3% discounted) | P(>0) | ICER |",
-            "|-----|------------|--------|---------------------|----------------------|-------|------|",
-        ]
+        headers = ["Nut", "Life Years", "Months", "QALY (undiscounted)", "QALY (3% discounted)", "P(>0)", "ICER"]
+        rows = []
         sorted_nuts = sorted(self.nuts.values(), key=lambda n: n.life_years, reverse=True)
         for n in sorted_nuts:
-            p_pct = f"{n.p_positive:.0%}"
-            lines.append(
-                f"| {n.name} | {n.life_years:.2f} | {n.months:.1f} | "
-                f"{n.qaly_undiscounted:.2f} | {n.qaly_mean:.2f} | "
-                f"{p_pct} | \\${n.icer:,.0f} |"
-            )
-        return "\n".join(lines)
+            rows.append([
+                n.name, f"{n.life_years:.2f}", f"{n.months:.1f}",
+                f"{n.qaly_undiscounted:.2f}", f"{n.qaly_mean:.2f}",
+                f"{n.p_positive:.0%}", f"${n.icer:,.0f}",
+            ])
+        return _html_table(headers, rows)
 
     def table_4_pathway_rrs(self) -> str:
-        lines = [
-            "| Nut | CVD RR | Cancer RR | Other RR |",
-            "|-----|--------|-----------|----------|",
-        ]
+        headers = ["Nut", "CVD RR", "Cancer RR", "Other RR"]
+        rows = []
         sorted_rrs = sorted(self.pathway_rrs.values(), key=lambda p: p.cvd)
         for p in sorted_rrs:
-            lines.append(
-                f"| {p.name} | {p.cvd:.2f} | {p.cancer:.2f} | {p.other:.2f} |"
-            )
-        return "\n".join(lines)
+            rows.append([p.name, f"{p.cvd:.2f}", f"{p.cancer:.2f}", f"{p.other:.2f}"])
+        return _html_table(headers, rows)
+
+
+def _html_table(headers: list[str], rows: list[list[str]]) -> str:
+    """Build an HTML table string from headers and rows."""
+    ths = "".join(f"<th>{h}</th>" for h in headers)
+    body = ""
+    for row in rows:
+        tds = "".join(f"<td>{c}</td>" for c in row)
+        body += f"<tr>{tds}</tr>"
+    return f"<table><thead><tr>{ths}</tr></thead><tbody>{body}</tbody></table>"
 
 
 def _load_results() -> PaperResults:
