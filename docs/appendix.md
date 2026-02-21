@@ -13,15 +13,15 @@ Not modeled:
 - Very elderly (80+)
 - Non-Western populations
 
-## Bayesian MCMC Algorithm
+## Monte Carlo uncertainty propagation algorithm
 
-The analysis uses a hierarchical Bayesian model with non-centered parameterization, implemented in PyMC. The model structure:
+The analysis uses a hierarchical forward sampling model with non-centered parameterization. Since there is no likelihood function linking to outcome data, inference is via direct Monte Carlo sampling from priors rather than MCMC.
 
 **Priors:**
 - Nutrient effects: $\beta_{nutrient,pathway} \sim \text{Normal}(\mu_{meta}, \sigma_{meta})$ from Table 2
 - Hierarchical shrinkage: $\tau_{pathway} \sim \text{HalfNormal}(0.03)$
 - Standardized deviations: $z_{nut,pathway} \sim \text{Normal}(0, 1)$
-- Confounding fraction: $c \sim \text{Beta}(1.5, 4.5)$
+- Confounding fraction: $c \sim \text{Beta}(2.5, 2.5)$
 
 **Justification for τ ~ HalfNormal(0.03):** The scale parameter 0.03 constrains nut-specific deviations to approximately ±6% on the log-RR scale at 2 standard deviations (95% prior interval). This was calibrated through pilot analyses:
 - τ ~ HalfNormal(0.01) produced excessive shrinkage, making all nuts nearly identical despite known compositional differences
@@ -38,16 +38,16 @@ The analysis uses a hierarchical Bayesian model with non-centered parameterizati
 4. Apply confounding: $\theta_{causal} = c \cdot \theta_{adjusted}$
 5. Convert to RR: $RR_{pathway} = \exp(\theta_{causal})$
 
-**MCMC Sampling:**
-- 4 chains, 1000 warmup + 1000 draws each = 4000 posterior samples
-- NUTS sampler with target_accept=0.95, max_treedepth=12
+**Monte Carlo sampling:**
+- 10,000 forward samples from priors (no MCMC needed since there is no likelihood)
 - Seed=42 for reproducibility
+- Runtime: ~30 seconds (pure numpy, no external inference library required)
 
-**Lifecycle Integration:**
-For each of 500 posterior samples:
-1. Extract pathway-specific RRs and confounding fraction
+**Lifecycle integration:**
+For each of 10,000 samples:
+1. Extract pathway-specific RRs (already confounding-adjusted)
 2. Compute age-weighted mortality reduction using CDC life tables
-3. Sample quality weight: $q \sim \text{Beta}(17, 3)$, mean = 0.85
+3. Apply EQ-5D quality weights by age (population norms)
 4. Compute discounted QALYs (3% annual rate)
 
 ## Nut-Specific Adjustment Priors
@@ -81,19 +81,21 @@ Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects
 
 Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty.
 
-## Confounding Prior Derivation
+## Confounding prior derivation
 
-The evidence-optimized prior Beta(1.5, 4.5) was derived by minimizing squared error to calibration targets:
+I adopt a **symmetric, weakly informative** Beta(2.5, 2.5) prior with mean 0.50 and 95% CI: 12-88%. This prior reflects genuine uncertainty about the causal fraction rather than a precise calibration.
 
-| Source | Target Causal % | Weight | Rationale |
-|--------|-----------------|--------|-----------|
-| LDL pathway calibration | 12% | 0.30 | Mechanistic, most direct |
-| Sibling comparisons | 20% | 0.30 | Genetic confounding control |
-| Golestan cohort (Iran) | 40% | 0.40 | Cross-cultural, shows effect persists |
+Three evidence sources inform this choice:
 
-**Derivation**: The weighted mean is $\bar{p} = 0.30(0.12) + 0.30(0.20) + 0.40(0.40) = 0.256 \approx 0.25$. We inflate variance beyond the weighted sample variance ($\sigma^2_{sample} = 0.015$) to $\sigma^2 = 0.027$ to capture additional epistemic uncertainty about confounding mechanisms. Method of moments yields $\alpha = 1.55 \approx 1.5$, $\beta = 4.50$.
+| Source | Implied Causal % | Interpretation |
+|--------|-----------------|----------------|
+| LDL pathway calibration | ~12% (floor) | Mechanistic, most direct; but only one of many causal pathways |
+| Sibling comparisons | 50-70% | Genetic confounding control; no nut-specific studies exist |
+| Golestan cohort (Iran) | ≥50-100% | Cross-cultural, shows effect persists without Western healthy-user bias |
 
-**Result**: Beta(1.5, 4.5) with mean 0.25 (95% CI: 2-63%).
+The LDL pathway provides a **floor** on the causal fraction (not a ceiling), since nuts affect multiple causal pathways beyond LDL. The Golestan cohort shows effects at least as large as Western estimates, consistent with a high causal fraction. The symmetric Beta(2.5, 2.5) represents an agnostic stance that allows the full range of possibilities.
+
+**Sensitivity analysis**: Beta(1.5, 4.5) with mean 0.25 is presented as a skeptical alternative. Rankings remain stable across prior specifications (see Table 7 in main text).
 
 ## Cost-Effectiveness Model
 
@@ -103,22 +105,13 @@ The evidence-optimized prior Beta(1.5, 4.5) was derived by minimizing squared er
 - **Discounting**: 3% annual rate (standard for NICE, ICER, WHO-CHOICE)
 - **Cost data**: USDA ERS retail prices (2024)
 
-### Lifecycle Model
+### Lifecycle model
 
 For a 40-year-old beginning daily nut consumption:
-- **Undiscounted life years gained**: ~0.43 years (5 months)
-- **Undiscounted QALYs**: ~0.27 (life years × age-weighted quality)
-- **Discounted QALYs**: ~0.08-0.10 (3% annual discounting over 40+ years)
-- **ICERs**: $10,000/QALY (peanuts) to $57,000/QALY (macadamias)
-
-### Sensitivity to Discount Rate
-
-| Discount Rate | Rationale | QALYs (any nut) | Cost/QALY Range |
-|---------------|-----------|-----------------|-----------------|
-| 0% | Undiscounted | 0.28 | \$7,000–45,000 |
-| 1.5% | NICE long-term | 0.16 | \$10,000–62,000 |
-| 3% | Base case (ICER) | 0.08 | \$25,000–160,000 |
-| 3.5% | NICE standard | 0.07 | \$29,000–180,000 |
+- **Life years gained**: 1.09-1.89 years (13-23 months)
+- **Undiscounted QALYs**: 0.67-1.16 (life years × age-weighted quality)
+- **Discounted QALYs**: 0.22-0.37 (3% annual discounting over 40+ years)
+- **ICERs**: ~\$2,700/QALY (peanuts) to ~\$21,500/QALY (macadamias)
 
 ## E-Value Analysis
 
@@ -158,66 +151,23 @@ Cause-of-death proportions vary by age (CDC WONDER 2021):
 
 CVD fraction increases with age; CVD has the lowest RR (0.75).
 
-## Alternative Approach: Direct Monte Carlo Simulation
+## Comparison with direct meta-analysis sampling
 
-The main analysis uses a hierarchical Bayesian model with nutrient-derived priors and MCMC sampling. This section presents the simpler Monte Carlo approach used in earlier versions of this analysis, which serves as a validation check.
+An alternative approach samples cause-specific relative risks directly from meta-analysis estimates (e.g., log-normal distributions based on {cite:t}`aune2016nut`) rather than deriving them from nutrient composition. This simpler approach yields broadly comparable results because the nutrient-derived priors are calibrated to match meta-analysis estimates.
 
-### Monte Carlo Model (10,000 iterations)
-
-**Step 1: Sample cause-specific relative risks from meta-analysis**
-
-For each iteration, sample from log-normal distributions based on {cite:t}`aune2016nut`:
-- CVD mortality: RR ~ LogNormal(log(0.75), 0.03)
-- Cancer mortality: RR ~ LogNormal(log(0.87), 0.04)
-- Other mortality: RR ~ LogNormal(log(0.90), 0.03)
-
-**Step 2: Apply nut-specific pathway adjustments**
-
-Nut-specific adjustments are exponents on cause-specific RRs, reflecting RCT evidence beyond meta-analysis averages:
-
-| Nut | CVD Adj (SD) | Cancer Adj (SD) | Other Adj (SD) |
-|-----|--------------|-----------------|----------------|
-| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) |
-| Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) |
-| Peanut | 0.98 (0.06) | 0.90 (0.08) | 0.98 (0.08) |
-
-**Step 3: Apply confounding adjustment**
-
-Sample causal fraction from Beta(1.5, 4.5) with mean 0.25 and apply to log-RR.
-
-**Step 4: Compute lifecycle QALYs**
-
-Using CDC life tables, age-varying cause fractions, quality weights from Beta(17, 3), and 3% discounting.
-
-### Comparison of Approaches
-
-| Approach | Mean QALY | 95% CI | Computation |
-|----------|-----------|--------|-------------|
-| Monte Carlo (direct RR) | 0.08 | [0.01, 0.24] | 10,000 iterations, ~1 second |
-| MCMC (nutrient-derived) | 0.11-0.20 | [0.01, 0.56] | 4,000 samples, ~10 minutes |
-
-### Why Results Are Similar
-
-Both approaches yield comparable estimates because:
-1. Both use the same confounding calibration (Beta(1.5, 4.5))
-2. Both use the same pathway decomposition (CVD/cancer/other)
-3. The nutrient-derived priors in MCMC are calibrated to match meta-analysis estimates
-
-### Why Use the MCMC Approach?
-
-The hierarchical Bayesian model provides:
+The nutrient-derived approach used in this analysis provides several advantages:
 - **Mechanistic interpretability**: Effects attributed to specific nutrients (ALA, fiber, magnesium)
 - **Principled shrinkage**: Poorly-evidenced nuts shrink toward nutrient-predicted effects
 - **Transparent priors**: Each prior is traceable to independent meta-analyses
-- **Convergence diagnostics**: R-hat, ESS, divergences confirm valid inference
+- **Nut differentiation**: Compositional differences drive differential estimates across nut types
 
-The Monte Carlo approach is appropriate for quick estimates or validation. The MCMC model is preferred for publication and comparative analysis.
+Both approaches use forward Monte Carlo sampling (no MCMC is needed since there is no likelihood function). The nutrient-derived approach is preferred for its mechanistic transparency and ability to differentiate nuts based on composition.
 
 ## Limitations
 
-1. **Confounding**: Our 25% causal estimate is uncertain (95% CI: 2-63%). True value could be higher or lower.
+1. **Confounding**: The 50% causal fraction estimate is uncertain (95% CI: 12-88%). True value could be higher or lower.
 2. **Generalizability**: Most studies from Western populations (US, Europe, Australia)
-3. **Dose-response**: We model 28g/day; effects may be non-linear above this threshold
+3. **Dose-response**: I model 28g/day; effects may be non-linear above this threshold
 4. **Nut-specific evidence**: Limited RCT evidence for cashews, pecans, macadamias
 5. **Adherence**: Assumes daily consumption; intermittent eating reduces benefits
 6. **Competing risks**: Other mortality causes limit achievable gains in elderly populations
