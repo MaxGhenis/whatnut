@@ -8,11 +8,7 @@ This analysis applies to adults aged 30-70 years (the primary analysis uses a 40
 
 The analysis uses a hierarchical forward sampling model with non-centered parameterization. Since there is no likelihood function linking to outcome data, inference is via direct Monte Carlo sampling from priors rather than MCMC.
 
-**Priors:**
-- Nutrient effects: $\beta_{nutrient,pathway} \sim \text{Normal}(\mu_{meta}, \sigma_{meta})$ from Table 2
-- Hierarchical shrinkage: $\tau_{pathway} \sim \text{HalfNormal}(0.03)$
-- Standardized deviations: $z_{nut,pathway} \sim \text{Normal}(0, 1)$
-- Confounding fraction: $c \sim \text{Beta}(2.5, 2.5)$
+**Priors:** Nutrient effects follow $\beta_{nutrient,pathway} \sim \text{Normal}(\mu_{meta}, \sigma_{meta})$ from Table 2; the hierarchical shrinkage scale follows $\tau_{pathway} \sim \text{HalfNormal}(0.03)$; standardized deviations follow $z_{nut,pathway} \sim \text{Normal}(0, 1)$; and the confounding fraction follows $c \sim \text{Beta}(2.5, 2.5)$.
 
 **Justification for τ ~ HalfNormal(0.03):** The scale parameter 0.03 constrains nut-specific deviations to approximately ±6% on the log-RR scale at 2 standard deviations (95% prior interval). This was calibrated through pilot analyses. Setting τ ~ HalfNormal(0.01) produced excessive shrinkage, making all nuts nearly identical despite known compositional differences. Setting τ ~ HalfNormal(0.10) produced implausibly wide between-nut variation (±20% deviations), larger than compositional differences would justify. The chosen value of τ ~ HalfNormal(0.03) balances information sharing across nuts with nut-specific flexibility, allowing walnuts to differ from almonds by the magnitude seen in RCT residual effects (~10-15%).
 
@@ -38,10 +34,7 @@ These adjustment factors are **priors** used in the hierarchical model. The adju
 
 Adjustments capture **residual effects** from nut-specific RCTs after accounting for nutrient composition. The derivation for walnut's CVD adjustment illustrates the method:
 
-1. **PREDIMED RCT** {cite:p}`ros2008mediterranean`: Walnut group showed ~30% CVD risk reduction
-2. **Nutrient-predicted effect**: Based on 2.5g ALA × (-0.05 log-RR/g) + other nutrients = ~15% reduction
-3. **Residual**: 30% - 15% = 15% additional benefit, plus polyphenol effects from WAHA {cite:p}`rajaram2021walnuts`
-4. **Adjustment**: exp(0.22) ≈ 1.25 (25% stronger than nutrients alone)
+In the PREDIMED RCT {cite:p}`ros2008mediterranean`, the nut intervention arm (which included 15g walnuts, 7.5g almonds, and 7.5g hazelnuts daily, not walnuts alone) showed approximately 30% CVD risk reduction. The nutrient-predicted effect, based on 2.5g ALA × (-0.05 log-RR/g) plus other nutrients, accounts for approximately 15% reduction. The residual 15% additional benefit, combined with polyphenol effects observed in the walnut-specific WAHA trial {cite:p}`rajaram2021walnuts` (which measured lipid subclasses rather than clinical CVD events), yields an adjustment of exp(0.22) ≈ 1.25 (25% stronger than nutrients alone). The wide SD (0.15) on this adjustment reflects uncertainty in attributing the mixed-nut PREDIMED result to walnuts specifically.
 
 Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects are well-explained by nutrient composition (vitamin E, fiber, MUFA). This ensures adjustments represent genuine "beyond-nutrient" effects rather than artifacts.
 
@@ -49,13 +42,13 @@ Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects
 
 | Nut | CVD Adj | Cancer Adj | Other Adj | Evidence | Rationale |
 |-----|---------|------------|-----------|----------|-----------|
-| Walnut | 1.25 (0.08) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA residual effects beyond nutrients |
+| Walnut | 1.25 (0.15) | 1.05 (0.10) | 1.10 (0.10) | Strong | PREDIMED, WAHA residual effects beyond nutrients |
 | Pistachio | 1.12 (0.08) | 1.02 (0.10) | 1.05 (0.10) | Moderate | Del Gobbo: lipid improvements exceed predictions |
 | Almond | 1.00 (0.06) | 1.05 (0.08) | 1.00 (0.06) | Strong | Reference nut, effects well-explained by nutrients |
 | Pecan | 1.08 (0.10) | 1.00 (0.12) | 1.00 (0.12) | Moderate | {cite}`hart2025pecan`, {cite}`guarneiri2021pecan` |
 | Macadamia | 1.08 (0.10) | 1.00 (0.15) | 1.05 (0.12) | Moderate | FDA qualified health claim, MUFA profile |
 | Peanut | 0.98 (0.06) | 1.00 (0.08) | 0.98 (0.08) | Strong | {cite}`bao2013association` (n=118,962) |
-| Cashew | 0.95 (0.10) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs reflect uncertainty |
+| Cashew | 0.95 (0.12) | 0.95 (0.12) | 0.95 (0.12) | Limited | {cite}`mah2017cashew`, wider CIs reflect uncertainty |
 
 **Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers {cite:p}`wu2010aflatoxin`. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
 
@@ -85,8 +78,7 @@ The cost-effectiveness model draws on CDC National Vital Statistics (2021) life 
 
 ### Lifecycle model
 
-For a 40-year-old beginning daily nut consumption:
-The model estimates 0.22-0.96 additional life years (3-12 months) across nut types, corresponding to 0.14-0.59 undiscounted QALYs (life years weighted by age-specific EQ-5D quality weights) and 0.04-0.19 discounted QALYs (at 3% annual discounting over the remaining lifespan). ICERs range from approximately $11,900/QALY (peanuts) to $57,000/QALY (cashews).
+For a 40-year-old beginning daily nut consumption, the model estimates 0.22-0.96 additional life years (2.6-11.5 months) across nut types, corresponding to 0.14-0.59 undiscounted QALYs (life years weighted by age-specific EQ-5D quality weights) and 0.04-0.19 discounted QALYs (at 3% annual discounting over the remaining lifespan). ICERs range from approximately $11,900/QALY (peanuts) to $57,000/QALY (cashews).
 
 ## E-value analysis
 
@@ -98,9 +90,9 @@ $$E\text{-value} = RR + \sqrt{RR \times (RR - 1)}$$
 
 For HR = 0.78:
 - $RR = 1/0.78 = 1.28$
-- $E\text{-value} = 1.28 + \sqrt{1.28 \times 0.28} = 1.28 + 0.60 \approx 1.8$
+- $E\text{-value} = 1.28 + \sqrt{1.28 \times 0.28} = 1.28 + 0.60 = 1.88$
 
-An unmeasured confounder would need RR ≥ 1.8 with both nut consumption and mortality to fully explain the observed effect.
+An unmeasured confounder would need RR ≥ 1.88 with both nut consumption and mortality to fully explain the observed effect.
 
 ## Pathway-specific mortality effects
 
@@ -108,9 +100,12 @@ From {cite}`aune2016nut`:
 
 | Cause of Death | Relative Risk | 95% CI | Deaths in Meta-Analysis |
 |----------------|--------------|--------|------------------------|
-| CVD | 0.75 | 0.71-0.79 | 20,381 |
+| CHD | 0.71 | 0.63-0.80 | 20,381 |
+| CVD | 0.79 | 0.70-0.88 | — |
 | Cancer | 0.87 | 0.80-0.93 | 21,353 |
 | Other | 0.90 | 0.85-0.95 | Assumed |
+
+Note: CHD = coronary heart disease; CVD = cardiovascular disease (broader category). The model's "CVD pathway" incorporates both CHD and broader cardiovascular effects.
 
 ### Age-varying cause fractions
 

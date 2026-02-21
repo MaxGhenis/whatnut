@@ -51,11 +51,11 @@ for nid, na in results.nuts.items():
 **Note on metrics**:
 - **Life years** (0.22-0.96) are the primary metric — the actual expected increase in lifespan
 - **QALYs discounted** (0.04-0.19) weight life years by quality of life and discount at 3%/year
-- **QALYs undiscounted** (0.14-0.60) weight life years by quality of life without discounting
+- **QALYs undiscounted** (0.14-0.59) weight life years by quality of life without discounting
 
 ## Key finding
 
-> **Eating any nut daily yields 0.22-0.96 additional life years** (3-12 months). Walnuts rank highest due to ALA omega-3 content; peanuts are most cost-effective ($11,889/QALY). The difference between nuts is substantial — walnuts provide ~4x more life years than cashews.
+> **Eating any nut daily yields 0.22-0.96 additional life years** (2.6-11.5 months). Walnuts rank highest due to ALA omega-3 content; peanuts are most cost-effective ($11,889/QALY). The difference between nuts is substantial — walnuts provide ~4x more life years than cashews.
 
 ## Documentation
 

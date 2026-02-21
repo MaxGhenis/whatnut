@@ -113,8 +113,8 @@ class PaperResults:
     e_value: float = 1.88
 
     # Pathway contributions
-    cvd_contribution: int = 80
-    other_contribution: int = 15
+    cvd_contribution: int = 53
+    other_contribution: int = 41
     cancer_contribution: int = 5
 
     # Population
@@ -124,7 +124,7 @@ class PaperResults:
     allergy_prevalence_upper: float = 4.0
 
     # Baseline metrics (loaded from generated JSON, fallback to hardcoded)
-    baseline_life_years: float = 40.78
+    baseline_life_years: float = 39.78
     baseline_qalys: float = 28.49
     average_quality_weight: float = 0.807
 

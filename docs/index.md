@@ -67,7 +67,7 @@ I constructed a hierarchical evidence base drawing on four categories of sources
 
 Nuts vary in macronutrient and micronutrient composition {cite:p}`usda2024fooddata`. All contain 12-22g fat per 28g serving, but differ in fatty acid profiles (monounsaturated vs. polyunsaturated), micronutrient content, and caloric density (157-204 kcal per serving).
 
-**Table 1: Nut nutrient profiles.** Macronutrients and key micronutrients per 28g serving. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid); MUFA = monounsaturated fatty acids; PUFA = polyunsaturated fatty acids. Values from USDA FoodData Central SR Legacy database, accessed December 2024.
+**Table 1: Nut nutrient profiles.** Macronutrients and selected micronutrients per 28g serving. ALA = alpha-linolenic acid (plant-based omega-3 fatty acid); MUFA = monounsaturated fatty acids; PUFA = polyunsaturated fatty acids. Values from USDA FoodData Central SR Legacy database, accessed December 2024.
 
 | Nut | FDC ID | kcal | Fat (g) | MUFA | PUFA | ALA (g) | Fiber (g) | Protein (g) | Notable |
 |-----|--------|------|---------|------|------|---------|-----------|-------------|---------|
@@ -134,7 +134,7 @@ Rather than specifying nut-specific effects directly, I derived expected effects
 
 #### Hierarchical structure
 
-I model nut-specific effects as deviations from nutrient-predicted effects using non-centered parameterization. Let $z_{\text{pathway}} \sim \mathcal{N}(0, 1)$ represent standardized deviations and $\tau_{\text{pathway}} \sim \text{HalfNormal}(0.03)$ represent the shrinkage prior. The scale 0.03 reflects an expectation that nut-specific deviations are small (±6% on log-RR scale at 2 SD), since nutrients explain most compositional variation; sensitivity analysis with $\tau \sim \text{HalfNormal}(0.10)$ shows robust results. The true effect for each nut-pathway combination is then $\theta_{\text{true}} = \theta_{\text{nutrients}} + \tau_{\text{pathway}} \cdot z_{\text{pathway}}$. This parameterization ensures appropriate hierarchical shrinkage, pulling nut-specific deviations toward nutrient-predicted effects when evidence is limited.
+I model nut-specific effects as deviations from nutrient-predicted effects using non-centered parameterization. Let $z_{\text{pathway}} \sim \mathcal{N}(0, 1)$ represent standardized deviations and $\tau_{\text{pathway}} \sim \text{HalfNormal}(0.03)$ represent the shrinkage prior. The scale 0.03 reflects an expectation that nut-specific deviations are small (±6% on log-RR scale at 2 SD), since nutrients explain most compositional variation; sensitivity analysis with $\tau \sim \text{HalfNormal}(0.10)$ shows point estimates and rankings unchanged. The true effect for each nut-pathway combination is then $\theta_{\text{true}} = \theta_{\text{nutrients}} + \tau_{\text{pathway}} \cdot z_{\text{pathway}}$. This parameterization ensures appropriate hierarchical shrinkage, pulling nut-specific deviations toward nutrient-predicted effects when evidence is limited.
 
 Prior predictive checks confirm these priors generate plausible ranges: sampling from nutrient priors yields all-cause RRs spanning 0.72-0.92 across nuts (95% interval), consistent with the meta-analytic range of 0.72-0.84 {cite:p}`aune2016nut`.
 
@@ -180,13 +180,13 @@ I modeled a {eval}`r.target_age`-year-old from the United States or Europe with 
 
 ### Cost-effectiveness analysis
 
-I calculated incremental cost-effectiveness ratios (ICERs) as $\text{ICER} = \frac{\text{Annual cost} \times \text{Years of consumption}}{\text{QALY gain}}$. Annual costs use 2024 US retail prices from USDA Economic Research Service: peanuts (\$37/year for 28g/day), almonds (\$95/year), walnuts (\$97/year), cashews (\$103/year), pistachios (\$114/year), pecans (\$126/year), and macadamias (\$229/year) {cite:p}`usda2024prices`. I discounted costs at 3% annually, matching the QALY discount rate.
+I calculated incremental cost-effectiveness ratios (ICERs) as $\text{ICER} = \frac{\text{Annual cost} \times \text{Years of consumption}}{\text{QALY gain}}$. Annual costs use 2024 US retail prices from USDA Economic Research Service for 28g/day (10.22 kg/year): peanuts (\${eval}`f"{r.peanut.annual_cost:.0f}"`/year), almonds (\${eval}`f"{r.almond.annual_cost:.0f}"`/year), walnuts (\${eval}`f"{r.walnut.annual_cost:.0f}"`/year), cashews (\${eval}`f"{r.cashew.annual_cost:.0f}"`/year), pistachios (\${eval}`f"{r.pistachio.annual_cost:.0f}"`/year), pecans (\${eval}`f"{r.pecan.annual_cost:.0f}"`/year), and macadamias (\${eval}`f"{r.macadamia.annual_cost:.0f}"`/year) {cite:p}`usda2024prices`. I discounted costs at 3% annually, matching the QALY discount rate.
 
 ## Results
 
 ### Consistency validation
 
-As a consistency check, I verified that the model's implied all-cause mortality hazard ratio matches the source meta-analysis. Weighting pathway-specific RRs by cause-specific mortality fractions yields an implied all-cause HR consistent with {cite:t}`aune2016nut`'s estimate of 0.78 (95% CI: 0.72-0.84). This confirms the pathway decomposition preserves the overall effect magnitude.
+As a consistency check, I verified that the model's implied all-cause mortality effects are broadly compatible with the source meta-analysis. Weighting pathway-specific RRs by cause-specific mortality fractions yields implied pre-confounding all-cause RRs of approximately 0.85-0.97 across nut types. After accounting for the confounding prior (mean 0.50), these correspond to post-adjustment RRs of 0.92-0.99, which are attenuated relative to {cite:t}`aune2016nut`'s unadjusted estimate of 0.78. This attenuation is expected: the confounding adjustment reduces effects by approximately half, and the nutrient-derived model does not capture all mechanistic pathways.
 
 ### Predictive checks
 
@@ -200,7 +200,7 @@ The model estimates that a {eval}`r.target_age`-year-old consuming 28g/day of nu
 :name: fig-forest
 :width: 90%
 
-**Figure 5: Life years gained by nut type.** Forest plot showing mean life years gained with 95% uncertainty intervals. Walnuts rank highest due to ALA omega-3 content combined with favorable pathway adjustments; cashews rank lowest. For most nut types, the 95% uncertainty interval excludes zero.
+**Figure 5: Life years gained by nut type.** Forest plot showing mean life years gained with 95% uncertainty intervals. Walnuts rank highest due to ALA omega-3 content combined with above-unity pathway adjustments; cashews rank lowest. For most nut types, the 95% uncertainty interval excludes zero.
 ```
 
 **Table 3: Life year and QALY estimates by nut type.** Monte Carlo estimates ({eval}`r.n_samples` samples, seed={eval}`r.seed`). Life years (LY) are the primary metric. QALYs weight life years by age-specific quality of life; both undiscounted and discounted (3% annually) QALYs are shown. P(>0) = probability of positive benefit. 95% uncertainty intervals reflect parameter uncertainty including confounding adjustment.
@@ -231,21 +231,21 @@ Benefits decrease by approximately 5-23% across the 40-70 age range because high
 
 ### Adherence scenarios
 
-The base case assumes 100% adherence. Real-world dietary adherence is typically 50-70% {cite:p}`appel2006adherence`. Table 3c shows life years under realistic adherence:
+The base case assumes 100% adherence. Real-world dietary adherence is typically 50-70% {cite:p}`appel2006adherence`. Table 3c shows life years under reduced adherence:
 
-**Table 3c: Life years by adherence level.** Walnuts shown as representative. Benefits scale proportionally with adherence.
+**Table 3c: Life years by adherence level.** Walnuts shown as representative. Benefits scale proportionally with adherence; costs are assumed fixed (nuts purchased daily but consumed on a fraction of days), so ICERs scale inversely with adherence.
 
 | Adherence | Life Years | Months | ICER |
 |-----------|------------|--------|------|
 | 100% (base) | 0.96 | 11.5 | $13,115/QALY |
-| 70% (realistic) | 0.67 | 8.1 | $18,736/QALY |
-| 50% (low) | 0.48 | 5.8 | $26,230/QALY |
+| 70% (typical) | 0.67 | 8.1 | $18,736/QALY |
+| 50% | 0.48 | 5.8 | $26,230/QALY |
 
 At 50% adherence (~3.5 servings/week), the model estimates approximately 6 months of additional life expectancy for walnuts, with an ICER of ~$26,000/QALY, which falls below the $50,000/QALY threshold.
 
 ### Pathway-specific relative risks
 
-CVD effects are 5-10x larger than cancer effects (17% vs 2% mortality reduction), which explains why walnuts (high ALA omega-3) rank highest among the nuts analyzed.
+CVD mortality reductions (3-13% across nuts) are substantially larger than cancer effects (0-4%), which explains why walnuts (high ALA omega-3) rank highest among the nuts analyzed.
 
 **Table 4: Pathway-specific relative risks by nut type.** Mean RRs for each mortality pathway. Lower values indicate greater benefit.
 
@@ -279,7 +279,7 @@ The "other mortality" pathway—comprising respiratory, metabolic, neurodegenera
 
 ### Cost-effectiveness
 
-As of December 2025, NICE raised its thresholds to £25,000-35,000/QALY (\$33,500-47,000 at current exchange rates {cite:p}`tradingeconomics2025gbpusd`), with interventions below £25,000 falling below the lower threshold {cite:p}`nice2025threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks {cite:p}`icer2024reference`. Three nuts (peanuts, walnuts, almonds) fall below both NICE's new £25,000/QALY threshold (\$33,500) and ICER's \$50,000/QALY benchmark. Pistachios and macadamias fall between these thresholds, while pecans and cashews exceed \$50,000/QALY due to higher cost, limited evidence, or both. Peanuts achieve the lowest ICER due to low cost (\$37/year) combined with a CVD mortality RR of {eval}`r.cvd_effect_range`.
+As of December 2025, NICE raised its thresholds to £25,000-35,000/QALY (\$33,500-47,000 at current exchange rates {cite:p}`tradingeconomics2025gbpusd`), with interventions below £25,000 falling below the lower threshold {cite:p}`nice2025threshold`. ICER evaluates interventions at \$50,000, \$100,000, and \$150,000/QALY benchmarks {cite:p}`icer2024reference`. Three nuts (peanuts, walnuts, almonds) fall below both NICE's new £25,000/QALY threshold (\$33,500) and ICER's \$50,000/QALY benchmark. Pistachios and macadamias fall between these thresholds, while pecans and cashews exceed \$50,000/QALY due to higher cost, limited evidence, or both. Peanuts achieve the lowest ICER due to low cost (\${eval}`f"{r.peanut.annual_cost:.0f}"`/year) combined with moderate CVD effects (RR {eval}`f"{r.peanut.rr_cvd:.2f}"`).
 
 ```{figure} _static/figures/icer_comparison.png
 :name: fig-icer
@@ -313,17 +313,17 @@ Uncertainty interval width reflects both nutrient prior uncertainty and hierarch
 
 ### Key findings
 
-The model estimates {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) from daily nut consumption, with walnuts ranking highest ({eval}`r.walnut.life_years_fmt` years) and cashews lowest ({eval}`r.cashew.life_years_fmt` years). This 6-fold spread reflects both nutrient composition differences and nut-specific pathway adjustments derived from RCT residual effects.
+The model estimates {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) from daily nut consumption, with walnuts ranking highest ({eval}`r.walnut.life_years_fmt` years) and cashews lowest ({eval}`r.cashew.life_years_fmt` years). This approximately 4-fold spread reflects both nutrient composition differences and nut-specific pathway adjustments derived from RCT residual effects.
 
-The CVD pathway accounts for approximately {eval}`r.cvd_contribution`% of benefit, with other mortality contributing {eval}`r.other_contribution`% and cancer {eval}`r.cancer_contribution`%. The difference between walnuts and other nuts reflects both high ALA omega-3 content and a 1.25 CVD pathway adjustment derived from PREDIMED and WAHA RCT residual effects. This mechanistic link provides stronger causal support than overall mortality associations. Notably, the model estimates a walnut cancer RR slightly above 1.0 ({eval}`f"{r.walnut.rr_cancer:.4f}"`), reflecting the neutral ALA cancer prior (mean 0.0) combined with sampling variability; this small harm estimate is not statistically distinguishable from zero.
+The CVD pathway accounts for approximately {eval}`r.cvd_contribution`% of benefit, with other mortality contributing {eval}`r.other_contribution`% and cancer {eval}`r.cancer_contribution`%. The difference between walnuts and other nuts reflects both high ALA omega-3 content and a 1.25 CVD pathway adjustment derived from PREDIMED and WAHA RCT residual effects. This mechanistic link provides stronger causal support than overall mortality associations. The model estimates a walnut cancer RR slightly above 1.0 ({eval}`f"{r.walnut.rr_cancer:.4f}"`), reflecting the neutral ALA cancer prior (mean 0.0) combined with sampling variability; this small harm estimate is not statistically distinguishable from zero.
 
 ### Comparison to prior estimates
 
-These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior with mean {eval}`r.confounding_mean` mediates between these extremes. Supporting a causal interpretation, {cite:t}`liu2020changes` found that within-person increases in nut consumption of 0.5 servings/day were associated with 8% lower CVD risk (RR 0.92, 95% CI: 0.86-0.98), while decreases were associated with higher risk. However, {cite:t}`shin2024korea` found no significant CVD-specific mortality reduction in a Korean cohort of 114,140 participants, indicating the CVD-specific association may be population-dependent. Long-term cohort evidence further supports the mortality association: {cite:t}`vandenbrandt2015nut` found a 23% reduction in all-cause mortality (HR 0.77) for nut consumers (≥10g/day vs non-consumers) over 10 years in the Netherlands Cohort Study (n=120,852), and {cite:t}`suprono2025ahs2` reported an 18% reduction (HR 0.82, 95% CI: 0.74-0.92) for tree nut consumers in the Adventist Health Study-2 (n=75,680), with effects stronger for CVD than cancer mortality.
+These estimates are lower than unadjusted observational associations (22% mortality reduction from {cite}`aune2016nut`) but higher than pure LDL-pathway predictions (~3% reduction). The Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) confounding prior with mean {eval}`r.confounding_mean` mediates between these extremes. Supporting a causal interpretation, {cite:t}`liu2020changes` found that within-person increases in nut consumption of 0.5 servings/day were associated with 8% lower CVD risk (RR 0.92, 95% CI: 0.86-0.98), while decreases were associated with higher risk. However, {cite:t}`shin2024korea` found no significant CVD-specific mortality reduction in a Korean cohort of 114,140 participants, indicating the CVD-specific association may be population-dependent. Long-term cohort evidence further supports the mortality association: {cite:t}`vandenbrandt2015nut` found a 23% reduction in all-cause mortality (HR 0.77) for nut consumers (≥10g/day vs non-consumers) over 10 years in the Netherlands Cohort Study (n=120,852), and {cite:t}`suprono2025ahs2` reported reduced CVD mortality (HR 0.86, 95% CI: 0.79-0.94, comparing 90th vs 10th percentile of nut intake) in the Adventist Health Study-2 (n=75,680), with stronger associations for ischemic heart disease (HR 0.81, 95% CI: 0.70-0.94).
 
 ### Cost-effectiveness
 
-ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.cashew.icer_fmt`/QALY (cashews). Three nuts (peanuts, walnuts, almonds) fall below both NICE's new £{eval}`f'{r.nice_lower_gbp:,}'`/QALY (\${eval}`f'{r.nice_lower_usd:,}'`) threshold and ICER's \${eval}`f'{r.icer_threshold:,}'`/QALY benchmark. Pistachios and macadamias fall between these thresholds; pecans and cashews exceed \$50,000/QALY. Peanuts achieve the lowest ICER, combining low cost with a CVD mortality RR of {eval}`r.cvd_effect_range`.
+ICERs range from {eval}`r.peanut.icer_fmt`/QALY (peanuts) to {eval}`r.cashew.icer_fmt`/QALY (cashews). Three nuts (peanuts, walnuts, almonds) fall below both NICE's new £{eval}`f'{r.nice_lower_gbp:,}'`/QALY (\${eval}`f'{r.nice_lower_usd:,}'`) threshold and ICER's \${eval}`f'{r.icer_threshold:,}'`/QALY benchmark. Pistachios and macadamias fall between these thresholds; pecans and cashews exceed \$50,000/QALY. Peanuts achieve the lowest ICER, combining low cost with moderate CVD effects.
 
 ### Sensitivity analyses
 
