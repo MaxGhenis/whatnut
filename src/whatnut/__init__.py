@@ -1,85 +1,51 @@
-"""Whatnut: Bayesian QALY analysis of nut consumption."""
+"""Whatnut: Monte Carlo analysis of life expectancy from nut consumption."""
 
-from whatnut.evidence import SOURCES, Source, EffectSize, get_source, validate_sources
-from whatnut.nuts import NUTS, Nut, Nutrients, AdjustmentFactor, get_nut
-from whatnut.simulation import (
-    MonteCarloSimulation,
-    SimulationParams,
-    SimulationResult,
-    NutResult,
-    CategoryEffect,
-    DEFAULT_PARAMS,
-)
-from whatnut.precomputed import (
-    get_results,
-    get_lifecycle_results,
-    RESULTS,
-    LIFECYCLE_RESULTS,
-    PrecomputedResults,
-    PrecomputedLifecycleResults,
-    PrecomputedLifecycleResult,
-)
-from whatnut.lifecycle import (
-    LifecycleCEA,
-    LifecycleParams,
-    LifecycleResult,
-    NutCostData,
-    NUT_COSTS,
-    get_nut_cost,
-    run_nut_cea,
+from whatnut.config import (
+    NUTRIENTS,
+    NUT_IDS,
+    PATHWAYS,
+    get_nut,
+    get_all_nuts,
+    get_nutrient_matrix,
     get_mortality_curve,
     get_quality_curve,
+    get_cause_fractions,
+    validate,
 )
-from whatnut.lifecycle_pathways import (
-    PathwayLifecycleCEA,
-    PathwayParams,
-    PathwayResult,
-    CAUSE_SPECIFIC_RR,
-)
+from whatnut.evidence import SOURCES, Source, EffectSize, get_source, validate_sources
+from whatnut.lifecycle import LifecycleResult, run_lifecycle
+from whatnut.model import ModelSamples, sample_model, summarize_rr
+from whatnut.pipeline import AnalysisResults, NutAnalysis, run_analysis
 
 __version__ = "0.1.0"
 
 __all__ = [
+    # Config
+    "NUTRIENTS",
+    "NUT_IDS",
+    "PATHWAYS",
+    "get_nut",
+    "get_all_nuts",
+    "get_nutrient_matrix",
+    "get_mortality_curve",
+    "get_quality_curve",
+    "get_cause_fractions",
+    "validate",
     # Evidence
     "SOURCES",
     "Source",
     "EffectSize",
     "get_source",
     "validate_sources",
-    # Nuts
-    "NUTS",
-    "Nut",
-    "Nutrients",
-    "AdjustmentFactor",
-    "get_nut",
-    # Simulation
-    "MonteCarloSimulation",
-    "SimulationParams",
-    "SimulationResult",
-    "NutResult",
-    "CategoryEffect",
-    "DEFAULT_PARAMS",
-    # Precomputed
-    "get_results",
-    "get_lifecycle_results",
-    "RESULTS",
-    "LIFECYCLE_RESULTS",
-    "PrecomputedResults",
-    "PrecomputedLifecycleResults",
-    "PrecomputedLifecycleResult",
-    # Lifecycle CEA
-    "LifecycleCEA",
-    "LifecycleParams",
+    # Model
+    "ModelSamples",
+    "sample_model",
+    "summarize_rr",
+    # Lifecycle
     "LifecycleResult",
-    "NutCostData",
-    "NUT_COSTS",
-    "get_nut_cost",
-    "run_nut_cea",
-    "get_mortality_curve",
-    "get_quality_curve",
-    # Pathway-specific lifecycle
-    "PathwayLifecycleCEA",
-    "PathwayParams",
-    "PathwayResult",
-    "CAUSE_SPECIFIC_RR",
+    "run_lifecycle",
+    # Pipeline
+    "AnalysisResults",
+    "NutAnalysis",
+    "run_analysis",
 ]

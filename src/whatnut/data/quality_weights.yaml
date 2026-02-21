@@ -1,0 +1,26 @@
+# Age-specific health-related quality of life (HRQoL)
+# Source: Sullivan & Ghushchyan (2006), "Catalogue of EQ-5D Scores for the United Kingdom"
+# Medical Care 44(12):1192-1201. doi:10.1097/01.mlr.0000204115.33578.82
+# Adapted from UK/US population norms
+#
+# Format: age -> HRQoL weight (0-1 scale, 1 = perfect health)
+# Intermediate ages interpolated linearly
+
+weights:
+  20: 0.94
+  25: 0.93
+  30: 0.92
+  35: 0.91
+  40: 0.89
+  45: 0.87
+  50: 0.85
+  55: 0.83
+  60: 0.80
+  65: 0.78
+  70: 0.75
+  75: 0.72
+  80: 0.68
+  85: 0.62
+  90: 0.55
+  95: 0.48
+  100: 0.40

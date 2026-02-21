@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "whatnut"
-version = "0.1.0"
-description = "Bayesian QALY analysis of nut consumption"
+version = "0.2.0"
+description = "Monte Carlo analysis of life expectancy from nut consumption"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
@@ -31,10 +31,6 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-bayesian = [
-    "pymc>=5.0",
-    "arviz>=0.16",
-]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
@@ -47,12 +43,12 @@ docs = [
     "jupyter>=1.0",
 ]
 all = [
-    "whatnut[bayesian,dev,docs]",
+    "whatnut[dev,docs]",
 ]
 
 [project.urls]
-Homepage = "https://github.com/MaxGhenis/whatnut-py"
-Documentation = "https://maxghenis.github.io/whatnut-py"
+Homepage = "https://github.com/MaxGhenis/whatnut"
+Documentation = "https://maxghenis.github.io/whatnut"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/whatnut"]

@@ -1,0 +1,209 @@
+# Nutrient-pathway priors for Monte Carlo uncertainty propagation
+# Each prior is Normal(mean, sd) for log-RR per unit nutrient
+# Organized by mortality pathway
+#
+# Key scientific decisions:
+# - ALA CVD prior: -0.07/g (Naghshi 2021: RR 0.90 for ~1.5g/day → -0.07/g)
+# - Single confounding prior: Beta(2.5, 2.5) mean 0.50
+# - Tau (hierarchical shrinkage): HalfNormal(0.03)
+
+nutrients:
+  - ala_omega3
+  - omega6
+  - omega7
+  - fiber
+  - saturated_fat
+  - magnesium
+  - arginine
+  - vitamin_e
+  - phytosterols
+  - protein
+
+pathways:
+  - cvd
+  - cancer
+  - other
+
+cvd:
+  ala_omega3:
+    mean: -0.07
+    sd: 0.03
+    unit: g
+    source: "Naghshi 2021 (BMJ): RR 0.90 for ~1.5g/day ALA intake → -0.07/g"
+  omega6:
+    mean: -0.005
+    sd: 0.003
+    unit: g
+    source: "Farvid 2014: CHD benefit from linoleic acid"
+  omega7:
+    mean: -0.03
+    sd: 0.04
+    unit: g
+    source: "Palmitoleic acid, insulin sensitivity; mechanistic, wide prior"
+  fiber:
+    mean: -0.015
+    sd: 0.005
+    unit: g
+    source: "Threapleton 2013: RR 0.91 per 7g for CVD"
+  saturated_fat:
+    mean: 0.025
+    sd: 0.01
+    unit: g
+    source: "Sacks 2017 AHA advisory: LDL/CHD pathway"
+  magnesium:
+    mean: -0.003
+    sd: 0.001
+    unit: mg
+    source: "Fang 2016: RR 0.90 per 100mg for CHD"
+  arginine:
+    mean: -0.02
+    sd: 0.02
+    unit: g
+    source: "Vasodilation mechanism; limited RCT evidence, wide prior"
+  vitamin_e:
+    mean: -0.005
+    sd: 0.008
+    unit: mg
+    source: "Food-based vitamin E (not supplement doses)"
+  phytosterols:
+    mean: -0.01
+    sd: 0.01
+    unit: mg
+    source: "LDL lowering mechanism"
+  protein:
+    mean: 0.0
+    sd: 0.005
+    unit: g
+    source: "Neutral for CVD"
+
+cancer:
+  ala_omega3:
+    mean: -0.02
+    sd: 0.03
+    unit: g
+    source: "Naghshi 2021: weaker for cancer than CVD"
+  omega6:
+    mean: 0.002
+    sd: 0.005
+    unit: g
+    source: "Mixed evidence, possible inflammatory pathway"
+  omega7:
+    mean: 0.0
+    sd: 0.02
+    unit: g
+    source: "No known cancer mechanism"
+  fiber:
+    mean: -0.01
+    sd: 0.004
+    unit: g
+    source: "Colorectal cancer protection"
+  saturated_fat:
+    mean: 0.005
+    sd: 0.008
+    unit: g
+    source: "Weak cancer association"
+  magnesium:
+    mean: -0.001
+    sd: 0.002
+    unit: mg
+    source: "Limited cancer evidence"
+  arginine:
+    mean: 0.0
+    sd: 0.01
+    unit: g
+    source: "Neutral"
+  vitamin_e:
+    mean: -0.008
+    sd: 0.01
+    unit: mg
+    source: "Antioxidant; mixed evidence at food-level doses"
+  phytosterols:
+    mean: 0.0
+    sd: 0.005
+    unit: mg
+    source: "No cancer mechanism"
+  protein:
+    mean: 0.0
+    sd: 0.003
+    unit: g
+    source: "Neutral"
+
+other:
+  ala_omega3:
+    mean: -0.05
+    sd: 0.04
+    unit: g
+    source: "Anti-inflammatory effects on respiratory, diabetes"
+  omega6:
+    mean: -0.002
+    sd: 0.003
+    unit: g
+    source: "Weak effect"
+  omega7:
+    mean: -0.02
+    sd: 0.03
+    unit: g
+    source: "Insulin sensitivity → diabetes pathway"
+  fiber:
+    mean: -0.012
+    sd: 0.005
+    unit: g
+    source: "Glycemic control"
+  saturated_fat:
+    mean: 0.01
+    sd: 0.01
+    unit: g
+    source: "Metabolic effects"
+  magnesium:
+    mean: -0.002
+    sd: 0.001
+    unit: mg
+    source: "Diabetes prevention"
+  arginine:
+    mean: -0.01
+    sd: 0.02
+    unit: g
+    source: "Immune function"
+  vitamin_e:
+    mean: -0.003
+    sd: 0.005
+    unit: mg
+    source: "Antioxidant"
+  phytosterols:
+    mean: 0.0
+    sd: 0.003
+    unit: mg
+    source: "No mechanism"
+  protein:
+    mean: -0.005
+    sd: 0.005
+    unit: g
+    source: "Muscle maintenance in elderly"
+
+# Confounding prior
+# Single canonical prior: Beta(2.5, 2.5) with mean 0.50
+# Symmetric, weakly informative; 95% CI [0.12, 0.88]
+# Reflects genuine uncertainty about causal fraction
+confounding:
+  alpha: 2.5
+  beta: 2.5
+  mean: 0.50
+  ci_lower: 0.12
+  ci_upper: 0.88
+  rationale: >
+    Symmetric, weakly informative prior reflecting genuine uncertainty.
+    Evidence sources: LDL pathway floor (~12%), sibling comparison
+    attenuation (50-70%), Golestan cohort persistence (HR 0.71).
+    Sensitivity analyses with Beta(1.5, 4.5) mean 0.25 (skeptical)
+    and Beta(3, 1) mean 0.75 (optimistic) reported in Discussion.
+
+# Hierarchical shrinkage prior
+# tau ~ HalfNormal(sigma) per pathway
+# Controls nut-specific deviations from nutrient-predicted effects
+tau:
+  sigma: 0.03
+  rationale: >
+    Constrains nut-specific deviations to ~±6% on log-RR scale (2 SD).
+    Calibrated: 0.01 produces excessive shrinkage; 0.10 produces
+    implausibly wide variation. 0.03 allows walnuts to differ from
+    almonds by ~10-15%, matching RCT residual effects.

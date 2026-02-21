@@ -1,6 +1,10 @@
 # Nut profiles: nutrients, pathway adjustments, costs, and evidence
 # Sources: USDA FoodData Central (2024), cited literature
 # All nutrient values per 28g (1 oz) serving
+#
+# This is the SINGLE SOURCE OF TRUTH for all nut data.
+# Extended nutrients (magnesium, arginine, phytosterols, protein) included
+# for pathway-specific Monte Carlo model.
 
 walnut:
   fdc_id: 170187  # Nuts, walnuts, english
@@ -15,6 +19,9 @@ walnut:
     vitamin_e_mg: 0.7
     fiber_g: 1.9
     protein_g: 4.3
+    magnesium_mg: 44.2
+    arginine_g: 0.64
+    phytosterols_mg: 20
   pathway_adjustments:
     cvd:
       mean: 1.25           # Strong omega-3 effect
@@ -44,6 +51,9 @@ almond:
     vitamin_e_mg: 7.3              # Highest of all nuts
     fiber_g: 3.5
     protein_g: 6.0
+    magnesium_mg: 76.5             # Highest magnesium
+    arginine_g: 0.74
+    phytosterols_mg: 35            # Highest phytosterols
   pathway_adjustments:
     cvd:
       mean: 1.00           # Reference nut
@@ -73,6 +83,9 @@ pistachio:
     vitamin_e_mg: 0.8
     fiber_g: 2.9
     protein_g: 5.7
+    magnesium_mg: 33.6
+    arginine_g: 0.60
+    phytosterols_mg: 61
     lutein_mcg: 342                # Unique: eye health
   pathway_adjustments:
     cvd:
@@ -103,6 +116,9 @@ pecan:
     vitamin_e_mg: 0.4
     fiber_g: 2.7
     protein_g: 2.6
+    magnesium_mg: 33.9
+    arginine_g: 0.34
+    phytosterols_mg: 29
   pathway_adjustments:
     cvd:
       mean: 1.08
@@ -132,6 +148,9 @@ macadamia:
     vitamin_e_mg: 0.2
     fiber_g: 2.4
     protein_g: 2.2
+    magnesium_mg: 36.4
+    arginine_g: 0.43
+    phytosterols_mg: 33
   pathway_adjustments:
     cvd:
       mean: 1.08
@@ -161,6 +180,9 @@ peanut:
     vitamin_e_mg: 2.4
     fiber_g: 2.4
     protein_g: 7.3                 # Highest protein (legume)
+    magnesium_mg: 47.6
+    arginine_g: 0.93              # Highest arginine
+    phytosterols_mg: 62
   pathway_adjustments:
     cvd:
       mean: 0.98
@@ -190,6 +212,9 @@ cashew:
     vitamin_e_mg: 0.3
     fiber_g: 0.9                   # Lowest fiber
     protein_g: 5.2
+    magnesium_mg: 82.8             # Very high magnesium
+    arginine_g: 0.62
+    phytosterols_mg: 45
   pathway_adjustments:
     cvd:
       mean: 0.95

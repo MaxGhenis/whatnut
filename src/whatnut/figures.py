@@ -102,9 +102,9 @@ def fig1_model_architecture():
                                          facecolor='#EBF5FB', edgecolor=COLORS['cvd'],
                                          linewidth=2.5)
     ax.add_patch(model_box)
-    ax.text(7, 2.8, 'Hierarchical Bayesian Model (PyMC)',
+    ax.text(7, 2.8, 'Monte Carlo Uncertainty Propagation',
             fontsize=11, fontweight='bold', ha='center', va='center')
-    ax.text(7, 2.4, 'Non-centered parameterization • 4 chains × 1000 draws • 0% divergences',
+    ax.text(7, 2.4, 'Forward sampling from priors • 10,000 draws • Numpy-based',
             fontsize=8, ha='center', va='center', color=COLORS['secondary'])
 
     # Arrow from lifecycle
@@ -141,7 +141,7 @@ def fig1_model_architecture():
 
 def fig2_pathway_rrs():
     """Create a bar chart comparing pathway-specific relative risks."""
-    from whatnut.paper_results import r
+    from whatnut.results import r
 
     nuts = ['Walnut', 'Almond', 'Peanut', 'Cashew', 'Pistachio', 'Macadamia', 'Pecan']
     nut_keys = [n.lower() for n in nuts]
@@ -197,7 +197,7 @@ def fig2_pathway_rrs():
 
 def fig3_forest_plot():
     """Create a forest plot of life years gained by nut type."""
-    from whatnut.paper_results import r
+    from whatnut.results import r
 
     # Sort by life years
     nuts_sorted = sorted(r.nuts.values(), key=lambda x: x.life_years, reverse=True)
@@ -351,22 +351,24 @@ def fig5_confounding_calibration():
 
 def fig6_nutrient_contributions():
     """Heatmap showing nutrient contributions to each nut's effect."""
-    from whatnut.bayesian_model import load_extended_nut_nutrients, PATHWAY_NUTRIENT_PRIORS
+    from whatnut.config import get_nutrient_matrix, get_pathway_priors, NUT_IDS, NUTRIENTS
 
-    nuts = ['walnut', 'almond', 'peanut', 'cashew', 'pistachio', 'macadamia', 'pecan']
-    nutrients_data = load_extended_nut_nutrients()
+    nuts = list(NUT_IDS)
+    cvd_priors = get_pathway_priors('cvd')
 
     # Key nutrients
     key_nutrients = ['ala_omega3', 'fiber', 'magnesium', 'omega7', 'vitamin_e', 'protein']
     nutrient_labels = ['ALA Omega-3', 'Fiber', 'Magnesium', 'Omega-7', 'Vitamin E', 'Protein']
 
-    # Calculate contribution to CVD effect (the dominant pathway)
+    # Build nutrient matrix for just key nutrients
+    from whatnut.config import get_nut as _get_nut
     contributions = np.zeros((len(nuts), len(key_nutrients)))
 
     for i, nut in enumerate(nuts):
+        nut_profile = _get_nut(nut)
         for j, nutrient in enumerate(key_nutrients):
-            amount = nutrients_data[nut].get(nutrient, 0)
-            effect = PATHWAY_NUTRIENT_PRIORS['cvd'][nutrient]['mean']
+            amount = nut_profile.nutrients.get(nutrient, 0)
+            effect = cvd_priors[nutrient].mean
             contributions[i, j] = -amount * effect * 100  # Convert to % reduction contribution
 
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -401,7 +403,7 @@ def fig6_nutrient_contributions():
 
 def fig7_icer_comparison():
     """Bar chart comparing ICERs to cost-effectiveness thresholds."""
-    from whatnut.paper_results import r
+    from whatnut.results import r
 
     nuts_sorted = sorted(r.nuts.values(), key=lambda x: x.icer)
 

@@ -1,0 +1,48 @@
+# Cause-of-death fractions by age
+# Source: CDC WONDER, 2021 US mortality data (approximate)
+#
+# CVD includes heart disease and cerebrovascular disease
+# Cancer includes all malignant neoplasms
+# Other includes respiratory, diabetes, accidents, Alzheimer's, etc.
+#
+# Format: age -> (cvd, cancer, other) fractions
+# Fractions must sum to 1.0 at each age
+# Intermediate ages interpolated linearly
+
+fractions:
+  20:
+    cvd: 0.10
+    cancer: 0.05
+    other: 0.85
+  30:
+    cvd: 0.12
+    cancer: 0.10
+    other: 0.78
+  40:
+    cvd: 0.20
+    cancer: 0.25
+    other: 0.55
+  50:
+    cvd: 0.25
+    cancer: 0.35
+    other: 0.40
+  60:
+    cvd: 0.30
+    cancer: 0.35
+    other: 0.35
+  70:
+    cvd: 0.35
+    cancer: 0.30
+    other: 0.35
+  80:
+    cvd: 0.40
+    cancer: 0.20
+    other: 0.40
+  90:
+    cvd: 0.45
+    cancer: 0.10
+    other: 0.45
+  100:
+    cvd: 0.50
+    cancer: 0.05
+    other: 0.45
