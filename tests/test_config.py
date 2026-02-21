@@ -493,6 +493,10 @@ class TestScientificParameters:
 
 def test_version_matches_pyproject():
     """__init__.__version__ should match pyproject.toml version."""
+    import sys
+    import pytest
+    if sys.version_info < (3, 11):
+        pytest.skip("tomllib requires Python 3.11+")
     import tomllib
     from pathlib import Path
     import whatnut
