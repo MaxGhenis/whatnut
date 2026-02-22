@@ -67,10 +67,21 @@ jobs:
           uv pip install --system -e ".[docs]"
           npm install -g mystmd
 
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latexmk
+
       - name: Build docs
         run: |
           cd docs
           BASE_URL="/whatnut/" myst build --html --execute
+
+      - name: Build PDF
+        run: |
+          cd docs
+          myst build --pdf
+          cp _build/exports/*.pdf _build/html/ 2>/dev/null || true
 
       - name: Setup Pages
         if: github.ref == 'refs/heads/master'
