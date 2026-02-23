@@ -75,7 +75,7 @@ jobs:
       - name: Build docs
         run: |
           cd docs
-          BASE_URL="/whatnut/" myst build --html --execute
+          BASE_URL="/whatnut-paper/" myst build --html --execute
 
       - name: Build PDF
         run: |
