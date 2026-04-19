@@ -1,7 +1,7 @@
 version: 1
 project:
-  title: "What Nut? A Monte Carlo Analysis of Life Expectancy from Nut Consumption"
-  description: "Monte Carlo analysis of life expectancy from nut consumption"
+  title: "What Nut? A Skeptical Evidence-Synthesis Model of Mortality Benefit from Nut Consumption"
+  description: "Skeptical Monte Carlo evidence synthesis of plausible mortality benefit from nut consumption"
   authors:
     - name: Max Ghenis
       email: max@maxghenis.com

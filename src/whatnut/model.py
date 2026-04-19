@@ -8,8 +8,11 @@ For each of N samples:
   1. Sample nutrient-pathway betas from Normal priors
   2. Compute expected log-RR: X @ beta (nutrient matrix x coefficients)
   3. Add hierarchical deviation: expected + tau * z, z ~ N(0,1)
-  4. Sample causal_fraction ~ Beta(alpha, beta)
-  5. Compute causal log-RR, convert to RR
+  4. Apply Jensen correction so E[RR] is HR-centered on exp(X @ mu)
+     (mirrors optiqal's hr-centered lognormal parameterization)
+  5. Apply tiered publication-bias shrinkage on the nut-specific adjustment
+  6. Sample causal_fraction ~ Beta(alpha, beta) and shrink the log-RR
+  7. Convert to RR
 
 Returns arrays of RR samples per nut per pathway.
 """
@@ -26,6 +29,7 @@ from whatnut.config import (
     get_nut,
     get_nutrient_matrix,
     get_pathway_priors,
+    get_study_quality_shrinkage,
     get_tau_prior,
 )
 
@@ -53,6 +57,7 @@ def sample_model(
     nut_ids: list[str] | None = None,
     confounding_alpha: float | None = None,
     confounding_beta: float | None = None,
+    hr_centered: bool = True,
 ) -> ModelSamples:
     """Run forward Monte Carlo sampling from priors.
 
@@ -62,6 +67,13 @@ def sample_model(
         nut_ids: Nut IDs to include (default: all 7).
         confounding_alpha: Override confounding prior alpha.
         confounding_beta: Override confounding prior beta.
+        hr_centered: When True, apply a Jensen correction at the per-nut
+            aggregate level so E[RR] equals exp(X @ mu). Mirrors optiqal's
+            hr-centered lognormal parameterization. The numerical effect at
+            current prior SDs is small (<0.3pp on RR) but the correction is
+            the methodologically correct interpretation of the per-unit
+            log_mean priors when they are sourced from meta-analysis point
+            estimates.
 
     Returns:
         ModelSamples with pathway-specific RR arrays.
@@ -76,6 +88,7 @@ def sample_model(
     # Load priors
     conf_prior = get_confounding_prior()
     tau_prior = get_tau_prior()
+    shrinkage = get_study_quality_shrinkage()
     c_alpha = confounding_alpha if confounding_alpha is not None else conf_prior.alpha
     c_beta = confounding_beta if confounding_beta is not None else conf_prior.beta
 
@@ -109,13 +122,40 @@ def sample_model(
         z = rng.standard_normal(size=(n_samples, n_nuts))
         true_log_rr = expected_log_rr + tau * z
 
+        if hr_centered:
+            # Jensen correction (pre-adjustment): shift log-RR so that the
+            # pre-adjustment aggregate satisfies E[RR] == exp(X @ mu)
+            # rather than exp(X @ mu + aggregate_variance / 2).
+            # Per-nut nutrient variance (deterministic): sum(sigma_j^2 * x_j^2)
+            nutrient_var = (sigma**2) @ (X.T**2)  # shape (n_nuts,)
+            # Sample-specific tau variance: tau is HalfNormal, so tau^2
+            tau_var = tau**2  # shape (n_samples, 1)
+            jensen_shift = 0.5 * (nutrient_var[None, :] + tau_var)
+            true_log_rr = true_log_rr - jensen_shift
+            # Note: the subsequent a-multiplication and causal-fraction
+            # shrinkage re-introduce a small Jensen gap of order
+            # 0.5 * Var(a) * (X @ mu)^2 + 0.5 * (a_mean^2 - a_mean) * nutrient_var
+            # that is not corrected here. At current prior SDs the residual
+            # gap is under 0.15pp on RR (worst case walnut CVD); documented
+            # in docs/appendix.md.
+
         # Apply nut-specific pathway adjustments (exponent on RR scale)
         # RR_adjusted = RR_true^a, i.e., log(RR_adjusted) = a * log(RR_true)
+        #
+        # Before sampling, shrink the adjustment mean toward the null
+        # (a=1.0) by the evidence-tier publication-bias factor. This is the
+        # tiered pub-bias layer imported from optiqal: strong evidence
+        # retains 85% of the nut-specific edge, moderate 70%, limited 50%.
+        # Following optiqal, only the central estimate is shrunk; adj.sd is
+        # left alone so uncertainty reflects replication risk, not the
+        # shrinkage itself.
         for k, nid in enumerate(nut_ids):
             nut = get_nut(nid)
             if pathway in nut.pathway_adjustments:
                 adj = nut.pathway_adjustments[pathway]
-                a = rng.normal(adj.mean, adj.sd, size=n_samples)
+                retention = shrinkage.retention(nut.evidence)
+                shrunk_mean = 1.0 + (adj.mean - 1.0) * retention
+                a = rng.normal(shrunk_mean, adj.sd, size=n_samples)
                 true_log_rr[:, k] *= a
 
         # Apply confounding adjustment

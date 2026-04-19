@@ -1,48 +1,66 @@
-# Cause-of-death fractions by age
-# Source: CDC WONDER, 2021 US mortality data (approximate)
+# Cause-of-death fractions by age (2021 US, total population)
+# Source: Xu JQ, Murphy SL, Kochanek KD, Arias E. Deaths: Final
+#   Data for 2021. National Vital Statistics Reports, Vol 73,
+#   No 8. Hyattsville, MD: NCHS, October 2024. Table 6.
+# https://www.cdc.gov/nchs/data/nvsr/nvsr73/nvsr73-08.pdf
+# Raw PDF cached at data/raw/cdc_nvsr/nvsr73-08.pdf.
 #
-# CVD includes heart disease and cerebrovascular disease
-# Cancer includes all malignant neoplasms
-# Other includes respiratory, diabetes, accidents, Alzheimer's, etc.
+# Fractions are derived from the 2021 death-rate-by-age rows of
+# Table 6 by:
+#   cvd    = (heart + cerebrovascular) / all-causes
+#   cancer = malignant neoplasms / all-causes
+#   other  = 1 - cvd - cancer
+# Heart disease is ICD-10 I00-I09, I11, I13, I20-I51;
+# cerebrovascular is I60-I69; malignant neoplasms is C00-C97.
+# This is narrower than the ICD-10 I00-I99 CVD block (omits
+# hypertensive disease and other cardiovascular causes, together
+# ~3-5 pp of total deaths), because NVSR Table 6 reports only
+# the 15 leading causes and the broader aggregate requires a
+# CDC WONDER interactive query not suitable for automation.
 #
-# Format: age -> (cvd, cancer, other) fractions
-# Fractions must sum to 1.0 at each age
-# Intermediate ages interpolated linearly
+# NVSR Table 6 reports 10-year age groups (25-34, 35-44, ...);
+# the fractions below are written at the lower-bound anchor age
+# of each group, with 20 extrapolated downward and 100 set to
+# the 85+ group value. config.py interpolates linearly between
+# anchors.
+#
+# Regenerate with:
+#   python -m whatnut.data_build.cdc_cause_fractions --apply
 
 fractions:
   20:
-    cvd: 0.10
-    cancer: 0.05
-    other: 0.85
-  30:
-    cvd: 0.12
-    cancer: 0.10
-    other: 0.78
-  40:
-    cvd: 0.20
-    cancer: 0.25
-    other: 0.55
-  50:
-    cvd: 0.25
-    cancer: 0.35
-    other: 0.40
-  60:
-    cvd: 0.30
-    cancer: 0.35
-    other: 0.35
-  70:
-    cvd: 0.35
-    cancer: 0.30
-    other: 0.35
-  80:
-    cvd: 0.40
-    cancer: 0.20
-    other: 0.40
-  90:
-    cvd: 0.45
-    cancer: 0.10
-    other: 0.45
+    cvd: 0.058
+    cancer: 0.044
+    other: 0.898
+  25:
+    cvd: 0.058
+    cancer: 0.044
+    other: 0.898
+  35:
+    cvd: 0.119
+    cancer: 0.090
+    other: 0.791
+  45:
+    cvd: 0.186
+    cancer: 0.155
+    other: 0.658
+  55:
+    cvd: 0.217
+    cancer: 0.226
+    other: 0.557
+  65:
+    cvd: 0.233
+    cancer: 0.247
+    other: 0.520
+  75:
+    cvd: 0.258
+    cancer: 0.199
+    other: 0.544
+  85:
+    cvd: 0.330
+    cancer: 0.109
+    other: 0.562
   100:
-    cvd: 0.50
-    cancer: 0.05
-    other: 0.45
+    cvd: 0.330
+    cancer: 0.109
+    other: 0.562

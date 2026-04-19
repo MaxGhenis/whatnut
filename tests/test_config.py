@@ -145,7 +145,7 @@ class TestNutProfiles:
 
     def test_get_nut_unknown_raises(self):
         with pytest.raises(ValueError, match="Unknown nut"):
-            get_nut("hazelnut")
+            get_nut("brazil")
 
     def test_get_all_nuts_returns_all(self):
         nuts = get_all_nuts()
@@ -204,11 +204,15 @@ class TestNutrientMatrix:
                     assert X[i, j] >= 0, f"{nut_id}/{nutrient} is negative: {X[i, j]}"
 
     def test_walnut_ala_column_value(self):
-        """Spot check: walnut ALA should be 2.5 g/28g."""
+        """Spot check: walnut ALA should be ~2.5 g/28g.
+
+        USDA SR Legacy reports 9.08 g per 100 g (walnut FDC 170187 PUFA
+        18:3), which scales to 2.542 g per 28 g serving.
+        """
         X = get_nutrient_matrix()
         walnut_idx = NUT_IDS.index("walnut")
         ala_idx = NUTRIENTS.index("ala_omega3")
-        assert X[walnut_idx, ala_idx] == pytest.approx(2.5, abs=0.01)
+        assert X[walnut_idx, ala_idx] == pytest.approx(2.542, abs=0.01)
 
 
 # ---------------------------------------------------------------------------
@@ -237,16 +241,28 @@ class TestPriors:
     def test_confounding_prior(self):
         prior = get_confounding_prior()
         assert isinstance(prior, ConfoundingPrior)
-        assert prior.alpha == 2.5
-        assert prior.beta == 2.5
-        assert prior.mean == pytest.approx(0.50)
+        assert prior.alpha == pytest.approx(1.5)
+        assert prior.beta == pytest.approx(6.0)
+        assert prior.mean == pytest.approx(0.20)
         assert 0 < prior.ci_lower < prior.ci_upper < 1
 
     def test_tau_prior(self):
         prior = get_tau_prior()
         assert isinstance(prior, TauPrior)
         assert prior.sigma > 0
-        assert prior.sigma == pytest.approx(0.03)
+        assert prior.sigma == pytest.approx(0.015)
+
+    def test_study_quality_shrinkage(self):
+        from whatnut.config import get_study_quality_shrinkage
+
+        s = get_study_quality_shrinkage()
+        assert 0 < s.strong < s.moderate < s.limited < 1
+        # Retention is the complement (fraction of residual kept)
+        assert s.retention("strong") == pytest.approx(1 - s.strong)
+        assert s.retention("moderate") == pytest.approx(1 - s.moderate)
+        assert s.retention("limited") == pytest.approx(1 - s.limited)
+        # Unknown evidence tags fall back to the most skeptical tier
+        assert s.retention("nonexistent") == s.retention("limited")
 
 
 # ---------------------------------------------------------------------------
@@ -258,9 +274,14 @@ class TestMortality:
     """Mortality rates and curve interpolation."""
 
     def test_mortality_at_known_age(self):
-        """Rate at age 40 should match YAML value exactly."""
+        """Rate at age 40 should match the CDC NVSR 72-12 Table 1 value.
+
+        Exact qx(40) for the US total population in 2021 is 0.002916
+        (Arias & Xu 2023). This replaces a prior hand-rounded value of
+        0.00193 that diverged ~33% from the cited source.
+        """
         rate = get_mortality_rate(40)
-        assert rate == pytest.approx(0.00193, rel=0.01)
+        assert rate == pytest.approx(0.002916, rel=0.01)
 
     def test_mortality_increases_with_age(self):
         curve = get_mortality_curve(40, 100)

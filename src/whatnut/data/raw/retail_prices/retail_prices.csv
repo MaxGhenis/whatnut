@@ -1,0 +1,9 @@
+nut,retailer,product_name,product_url,retrieval_date,package_size_g,package_price_usd,price_per_kg_usd,note
+walnut,nuts.com,"English Walnut Halves (Raw, No Shell)",https://nuts.com/nuts/walnuts,2026-04-19,453.6,13.49,29.74,"Raw halves, per-lb price; 1 lb = 453.6 g"
+almond,nuts.com,"Raw Almonds (No Shell)",https://nuts.com/nuts/almonds,2026-04-19,453.6,10.49,23.13,"Raw whole, per-lb price"
+pistachio,nuts.com,"Raw Pistachios (No Shell)",https://nuts.com/nuts/pistachios,2026-04-19,226.8,9.99,44.06,"8 oz bag = 226.8 g; extrapolated to per-kg"
+pecan,nuts.com,"Georgia Pecans (Raw, No Shell)",https://nuts.com/nuts/pecans,2026-04-19,396.9,14.49,36.51,"14 oz bag = 396.9 g"
+macadamia,nuts.com,"Raw Macadamia Nuts",https://nuts.com/nuts/macadamia,2026-04-19,226.8,15.49,68.30,"8 oz bag"
+peanut,nuts.com,"Raw Spanish Peanuts",https://nuts.com/nuts/peanuts,2026-04-19,453.6,5.49,12.11,"Per-lb price, cheapest raw peanut option"
+hazelnut,nuts.com,"Raw Hazelnuts / Filberts (No Shell)",https://nuts.com/nuts/hazelnuts,2026-04-19,453.6,14.49,31.95,"Per-lb price"
+cashew,nuts.com,"Raw Cashews",https://nuts.com/nuts/cashews,2026-04-19,453.6,15.99,35.25,"Per-lb price"

@@ -1,7 +1,16 @@
 # Age-specific health-related quality of life (HRQoL)
-# Source: Sullivan & Ghushchyan (2006), "Catalogue of EQ-5D Scores for the United Kingdom"
-# Medical Care 44(12):1192-1201. doi:10.1097/01.mlr.0000204115.33578.82
-# Adapted from UK/US population norms
+# Source: Sullivan PW, Ghushchyan V. "Preference-Based EQ-5D Index Scores
+# for Chronic Conditions in the United States." Medical Decision Making
+# 2006;26(1):38-44. doi:10.1177/0272989X05284691
+# (Matches the canonical bib entry @sullivan2006catalogue.)
+#
+# Values below are interpreted/smoothed US population norms derived from
+# the Sullivan & Ghushchyan 2006 EQ-5D index. They should be regarded as
+# approximate: the source paper reports mean EQ-5D ~0.87 at age 45-54 and
+# ~0.78 at 75+, so the table below is a declining fit through those anchor
+# points rather than a verbatim age-specific lookup. A formal replication
+# would derive these from the MEPS EQ-5D self-assessed data underlying the
+# Sullivan/Ghushchyan index.
 #
 # Format: age -> HRQoL weight (0-1 scale, 1 = perfect health)
 # Intermediate ages interpolated linearly

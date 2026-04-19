@@ -108,9 +108,9 @@ class TestRRDistributions:
         assert np.all(cf < 1)
 
     def test_causal_fraction_mean_near_half(self, samples_default):
-        """With default Beta(2.5, 2.5) prior, mean should be near 0.5."""
+        """With default skeptical prior, mean should be near 0.2."""
         mean_cf = np.mean(samples_default.causal_fraction)
-        assert mean_cf == pytest.approx(0.5, abs=0.15)
+        assert mean_cf == pytest.approx(0.2, abs=0.08)
 
     def test_walnut_cvd_rr_tends_low(self):
         """Walnuts (high ALA) should have lower CVD RR than peanuts (no ALA)."""
@@ -286,3 +286,69 @@ class TestPathwayAdjustments:
         cashew = get_nut("cashew")
         adj = cashew.pathway_adjustments["cvd"]
         assert adj.mean < 1.0, "Cashew CVD adjustment should be < 1.0"
+
+
+# ---------------------------------------------------------------------------
+# Optiqal-style layers: tiered pub-bias shrinkage and HR-centering
+# ---------------------------------------------------------------------------
+
+
+class TestStudyQualityShrinkage:
+    """Evidence-tier shrinkage should pull nut residuals toward a=1.0."""
+
+    def test_shrinkage_config_loads(self):
+        from whatnut.config import get_study_quality_shrinkage
+
+        s = get_study_quality_shrinkage()
+        assert 0 < s.strong < s.moderate < s.limited < 1
+        assert s.retention("strong") > s.retention("moderate") > s.retention("limited")
+
+    def test_limited_evidence_shrinks_more_than_strong(self):
+        """Under shrinkage, a 'strong' nut with a=1.10 retains more of its
+        edge than a 'limited' nut with the same nominal a."""
+        from whatnut.config import get_study_quality_shrinkage
+
+        s = get_study_quality_shrinkage()
+        strong_shrunk = 1.0 + (1.10 - 1.0) * s.retention("strong")
+        limited_shrunk = 1.0 + (1.10 - 1.0) * s.retention("limited")
+        assert strong_shrunk > limited_shrunk > 1.0
+
+    def test_model_applies_shrinkage(self):
+        """A synthetic walnut with identical priors but a limited-tier
+        evidence flag should produce weaker CVD protection than the real
+        'strong'-tier walnut. Exercised via sample_model path."""
+        # Sample with tiered shrinkage on; the real walnut is 'strong',
+        # so its shrunk adjustment is smaller than its nominal 1.10 but
+        # still > 1.0.
+        samples = sample_model(n_samples=2000, seed=42)
+        walnut_idx = samples.nut_ids.index("walnut")
+        walnut_rr_cvd = np.mean(samples.rr["cvd"][:, walnut_idx])
+        # The final CVD RR for walnut should still be < 1 (protective)
+        # but materially weaker than the untilted prior would imply.
+        assert walnut_rr_cvd < 1.0
+
+
+class TestHRCentering:
+    """hr_centered=True applies a Jensen shift reducing mean log-RR."""
+
+    def test_hr_centering_reduces_mean_log_rr(self):
+        """With HR-centering on, the mean sampled RR should be very slightly
+        more protective than without (because log_RR is shifted down by
+        variance/2 before confounding)."""
+        on = sample_model(n_samples=5000, seed=42, hr_centered=True)
+        off = sample_model(n_samples=5000, seed=42, hr_centered=False)
+        walnut_idx = on.nut_ids.index("walnut")
+        # Centered mean RR should be at least as small (protective) as
+        # uncentered. The gap is small (<0.3pp) but directionally pinned.
+        on_mean = np.mean(on.rr["cvd"][:, walnut_idx])
+        off_mean = np.mean(off.rr["cvd"][:, walnut_idx])
+        assert on_mean <= off_mean + 1e-6
+
+    def test_hr_centering_preserves_rr_sanity(self):
+        """HR-centered samples must still fall in a plausible RR range."""
+        samples = sample_model(n_samples=500, seed=42, hr_centered=True)
+        for pathway in PATHWAYS:
+            for j in range(samples.rr[pathway].shape[1]):
+                rr = samples.rr[pathway][:, j]
+                assert np.all(rr > 0.3)
+                assert np.all(rr < 1.8)

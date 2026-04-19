@@ -44,7 +44,13 @@ def fig1_model_architecture():
 
     Shows: Nutrients → Pathway Priors → Hierarchical Model →
            Confounding Adjustment → Lifecycle Integration → Life Years/QALYs
+
+    Labels with numbers (confounding prior, life-year range, ICER range)
+    are pulled from `whatnut.results.r` so the diagram tracks the live
+    configuration and never drifts from the paper text.
     """
+    from whatnut.results import r
+
     fig, ax = plt.subplots(figsize=(14, 8))
     ax.set_xlim(0, 14)
     ax.set_ylim(0, 8)
@@ -83,7 +89,8 @@ def fig1_model_architecture():
     ax.text(3.5, 4.5, 'Nutrient × Pathway\nEffect Priors', fontsize=10, ha='center', va='center',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#FDF2E9',
                      edgecolor='#E67E22', linewidth=1.5))
-    ax.text(8, 4.5, 'Beta(2.5, 2.5)\nCausal Fraction', fontsize=10, ha='center', va='center',
+    ax.text(8, 4.5, f'Beta({r.confounding_alpha:g}, {r.confounding_beta:g})\nCausal Fraction',
+            fontsize=10, ha='center', va='center',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#FDF2E9',
                      edgecolor='#E67E22', linewidth=1.5))
     ax.text(11, 4.5, 'Age-Varying\nMortality Rates', fontsize=10, ha='center', va='center',
@@ -119,15 +126,22 @@ def fig1_model_architecture():
     ax.text(4, 1, 'Pathway-Specific RRs', fontsize=10, ha='center', va='center',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#FADBD8',
                      edgecolor=COLORS['cvd'], linewidth=1.5))
-    ax.text(7, 1, 'Life Years\n(6-11 months)', fontsize=10, ha='center', va='center',
+    ax.text(7, 1, f'Life Years\n({r.months_range} months)',
+            fontsize=10, ha='center', va='center',
             bbox=dict(boxstyle='round,pad=0.4', facecolor='#D5F5E3',
                      edgecolor=COLORS['highlight'], linewidth=2))
-    ax.text(10, 1, 'ICERs\n($2,700-$21,600)', fontsize=10, ha='center', va='center',
+    # Escape $ so matplotlib doesn't enter math mode
+    icer_label = r.icer_range.replace('$', r'\$')
+    ax.text(10, 1, f'ICERs\n({icer_label})',
+            fontsize=10, ha='center', va='center',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#D5F5E3',
                      edgecolor=COLORS['highlight'], linewidth=1.5))
 
-    # Pathway breakdown annotation
-    ax.text(1, 1, 'CVD: 0.69-0.80\nCancer: 0.93-0.99\nOther: 0.88-0.94',
+    # Pathway breakdown annotation (live ranges across nuts)
+    ax.text(1, 1,
+            f'CVD: {r.cvd_effect_range}\n'
+            f'Cancer: {r.cancer_effect_range}\n'
+            f'Other: {r.other_effect_range}',
             fontsize=8, ha='left', va='center',
             family='monospace', color=COLORS['secondary'])
 
@@ -171,16 +185,25 @@ def fig2_pathway_rrs():
     ax.set_title('Pathway-Specific Mortality Reduction by Nut Type', fontsize=14, fontweight='bold')
     ax.set_xticks(x)
     ax.set_xticklabels(nuts, fontsize=10)
-    ax.legend(loc='upper right', fontsize=10)
-    ax.set_ylim(0, 35)
+    ax.legend(loc='upper left', fontsize=10)
+    # Dynamic y-limit with ~35% headroom so the annotation box fits cleanly
+    # above the tallest bar
+    ymax = max(cvd_reduction + cancer_reduction + other_reduction + [1e-9])
+    ax.set_ylim(0, ymax * 1.45)
 
-    # Add value labels on CVD bars (the largest)
+    # Add value labels on CVD bars (the largest). Use one decimal because
+    # the skeptical model produces small per-cause reductions.
     for bar, val in zip(bars1, cvd_reduction):
-        ax.annotate(f'{val:.0f}%', xy=(bar.get_x() + bar.get_width()/2, bar.get_height()),
+        ax.annotate(f'{val:.1f}%', xy=(bar.get_x() + bar.get_width()/2, bar.get_height()),
                    xytext=(0, 3), textcoords='offset points', ha='center', fontsize=8)
 
-    # Add annotation about CVD dominance
-    ax.text(0.98, 0.95, 'CVD reductions are\n5-10× larger than\ncancer reductions',
+    # Annotation comparing CVD vs cancer reductions, derived live so it
+    # tracks the current prior specification.
+    cvd_max = max(cvd_reduction) if cvd_reduction else 0.0
+    cancer_max = max(cancer_reduction) if cancer_reduction else 1e-9
+    ratio = cvd_max / cancer_max if cancer_max > 0 else float('inf')
+    ratio_label = f'{ratio:.0f}×' if ratio < 100 else 'much larger'
+    ax.text(0.98, 0.95, f'CVD reductions are\n{ratio_label} larger than\ncancer reductions',
             transform=ax.transAxes, fontsize=9, ha='right', va='top',
             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
@@ -220,8 +243,10 @@ def fig3_forest_plot():
         ax.vlines(ci_lower, i-0.1, i+0.1, color=COLORS['primary'], linewidth=2)
         ax.vlines(ci_upper, i-0.1, i+0.1, color=COLORS['primary'], linewidth=2)
 
-        # Value label
-        ax.text(ci_upper + 0.05, i, f'{nut.life_years:.2f} yr ({nut.months:.0f} mo)',
+        # Value label (use 1-decimal months so "0 mo" never appears for
+        # sub-month gains).
+        ax.text(ci_upper + 0.02, i,
+                f'{nut.life_years:.2f} yr ({nut.months:.1f} mo)',
                 va='center', fontsize=10)
 
     ax.set_yticks(y_positions)
@@ -230,7 +255,11 @@ def fig3_forest_plot():
     ax.set_title('Life Expectancy Gains from Daily Nut Consumption (28g/day)',
                  fontsize=14, fontweight='bold')
     ax.axvline(0, color='gray', linestyle='--', linewidth=0.5)
-    ax.set_xlim(-0.2, 2.0)
+    # Dynamic x-limit so the plot scales with the live life-year range
+    ly_values = [n.life_years for n in nuts_sorted]
+    xmax = max(ly_values + [0.05]) * 1.8  # headroom for the label text
+    xmin = min(ly_values + [0.0]) - 0.02
+    ax.set_xlim(min(xmin, -0.05), xmax)
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -244,14 +273,14 @@ def fig3_forest_plot():
 
 
 def fig4_cause_fractions():
-    """Show how cause-of-death fractions vary with age."""
-    ages = np.arange(40, 100, 5)
+    """Show how cause-of-death fractions vary with age, using the live
+    cause_fractions.yaml table rather than a stylized approximation."""
+    from whatnut.config import get_cause_fractions
 
-    # Approximate cause fractions (based on CDC data patterns)
-    # CVD increases with age, cancer peaks mid-life, other decreases
-    cvd_frac = 0.20 + 0.003 * (ages - 40)  # 20% at 40, ~38% at 100
-    cancer_frac = 0.25 - 0.002 * (ages - 40)  # 25% at 40, ~13% at 100
-    other_frac = 1 - cvd_frac - cancer_frac
+    ages = np.arange(40, 96, 5)
+    cvd_frac = np.array([get_cause_fractions(a)[0] for a in ages])
+    cancer_frac = np.array([get_cause_fractions(a)[1] for a in ages])
+    other_frac = np.array([get_cause_fractions(a)[2] for a in ages])
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -267,11 +296,13 @@ def fig4_cause_fractions():
     ax.set_xlim(40, 95)
     ax.set_ylim(0, 100)
 
-    # Annotation
-    ax.annotate('CVD fraction increases\nwith age (20% → 40%)',
-               xy=(75, 30), xytext=(55, 15),
-               fontsize=9, ha='center',
-               arrowprops=dict(arrowstyle='->', color='gray'))
+    # Annotation reads the start/end CVD fraction live
+    cvd_start_pct = int(round(cvd_frac[0] * 100))
+    cvd_end_pct = int(round(cvd_frac[-1] * 100))
+    ax.annotate(f'CVD fraction shifts\nwith age ({cvd_start_pct}% → {cvd_end_pct}%)',
+                xy=(75, 30), xytext=(55, 15),
+                fontsize=9, ha='center',
+                arrowprops=dict(arrowstyle='->', color='gray'))
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -285,18 +316,33 @@ def fig4_cause_fractions():
 
 
 def fig5_confounding_calibration():
-    """Visualize the confounding calibration evidence synthesis."""
+    """Visualize the confounding calibration evidence synthesis.
+
+    Prior parameters are sourced from the generated results.json so the
+    figure tracks the live Beta(alpha, beta) configuration and never
+    contradicts the paper text.
+    """
     from scipy import stats
+
+    from whatnut.results import r
+
+    alpha = r.confounding_alpha
+    beta = r.confounding_beta
+    mean = r.confounding_mean
+    ci_lower = r.confounding_ci_lower
+    ci_upper = r.confounding_ci_upper
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-    # Left panel: Evidence sources
+    # Left panel: Evidence sources — implied causal-fraction bounds from
+    # each evidence line (see Methods §"Confounding Calibration").
     ax1 = axes[0]
-
-    sources = ['LDL Pathway\n(mechanism floor)', 'Sibling Studies\n(general dietary)',
-               'Golestan Cohort\n(Iran, low confounding)']
-    values = [0.12, 0.60, 1.0]  # Corrected interpretations
-    weights = [0.2, 0.3, 0.5]
+    sources = [
+        'LDL Pathway\n(mechanism floor)',
+        'Mendelian\nRandomization',
+        'Golestan Cohort\n(Iran, low confounding)',
+    ]
+    values = [0.12, 0.05, 1.0]
     colors = ['#3498DB', '#9B59B6', '#27AE60']
 
     bars = ax1.barh(sources, values, color=colors, alpha=0.7, edgecolor='black')
@@ -304,34 +350,34 @@ def fig5_confounding_calibration():
     ax1.set_xlabel('Implied Causal Fraction', fontsize=11)
     ax1.set_title('Evidence Sources for Causal Fraction', fontsize=12, fontweight='bold')
     ax1.set_xlim(0, 1.2)
-    ax1.axvline(0.5, color='red', linestyle='--', linewidth=2, label='Prior mean (0.50)')
+    ax1.axvline(mean, color='red', linestyle='--', linewidth=2,
+                label=f'Prior mean ({mean:.2f})')
 
-    # Add value labels
     for bar, val in zip(bars, values):
         ax1.text(val + 0.03, bar.get_y() + bar.get_height()/2,
-                f'{val:.0%}', va='center', fontsize=10)
+                 f'{val:.0%}', va='center', fontsize=10)
 
     ax1.legend(loc='lower right')
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
 
-    # Right panel: Prior distribution
+    # Right panel: Prior distribution (live from config)
     ax2 = axes[1]
-
     x = np.linspace(0, 1, 200)
-    prior = stats.beta(2.5, 2.5)
+    prior = stats.beta(alpha, beta)
 
     ax2.fill_between(x, prior.pdf(x), alpha=0.3, color=COLORS['primary'])
-    ax2.plot(x, prior.pdf(x), color=COLORS['primary'], linewidth=2, label='Beta(2.5, 2.5)')
+    ax2.plot(x, prior.pdf(x), color=COLORS['primary'], linewidth=2,
+             label=f'Beta({alpha:g}, {beta:g})')
 
-    # Mark key values
-    ax2.axvline(0.5, color='red', linestyle='--', linewidth=2, label='Mean = 0.50')
-    ax2.axvline(0.12, color='gray', linestyle=':', linewidth=1.5)
-    ax2.axvline(0.88, color='gray', linestyle=':', linewidth=1.5)
+    ax2.axvline(mean, color='red', linestyle='--', linewidth=2,
+                label=f'Mean = {mean:.2f}')
+    ax2.axvline(ci_lower, color='gray', linestyle=':', linewidth=1.5)
+    ax2.axvline(ci_upper, color='gray', linestyle=':', linewidth=1.5)
 
-    ax2.fill_between(x[(x >= 0.12) & (x <= 0.88)],
-                     prior.pdf(x[(x >= 0.12) & (x <= 0.88)]),
-                     alpha=0.2, color='green', label='95% CI: [0.12, 0.88]')
+    in_ci = (x >= ci_lower) & (x <= ci_upper)
+    ax2.fill_between(x[in_ci], prior.pdf(x[in_ci]), alpha=0.2, color='green',
+                     label=f'95% CI: [{ci_lower:.2f}, {ci_upper:.2f}]')
 
     ax2.set_xlabel('Causal Fraction', fontsize=11)
     ax2.set_ylabel('Density', fontsize=11)
@@ -415,11 +461,11 @@ def fig7_icer_comparison():
     bars = ax.bar(x, icers, color=[COLORS['nuts'].get(n.name.lower(), '#888')
                                     for n in nuts_sorted], alpha=0.85, edgecolor='black')
 
-    # Threshold lines
+    # Threshold lines (escape $ to avoid matplotlib math mode)
     ax.axhline(r.icer_threshold, color='red', linestyle='--', linewidth=2,
-               label=f'ICER threshold (${r.icer_threshold:,}/QALY)')
+               label=f'ICER threshold (\\${r.icer_threshold:,}/QALY)')
     ax.axhline(r.nice_lower_usd, color='orange', linestyle='--', linewidth=2,
-               label=f'NICE threshold (${r.nice_lower_usd:,}/QALY)')
+               label=f'NICE threshold (\\${r.nice_lower_usd:,}/QALY)')
 
     ax.set_xticks(x)
     ax.set_xticklabels([n.name for n in nuts_sorted], fontsize=10)
@@ -427,17 +473,35 @@ def fig7_icer_comparison():
     ax.set_title('Cost-Effectiveness by Nut Type', fontsize=14, fontweight='bold')
     ax.legend(loc='upper left', fontsize=9)
 
-    # Value labels
-    for bar, val in zip(bars, icers):
-        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 500,
-               f'${val:,}', ha='center', fontsize=9)
+    # Dynamic y-limit so the chart scales with the live ICER distribution
+    ymax = max(icers + [r.icer_threshold, r.nice_lower_usd, 1]) * 1.15
+    ax.set_ylim(0, ymax)
 
-    ax.set_ylim(0, 60000)
+    # Value labels (offset 1.5% of y-axis so they sit above the bars).
+    # Escape $ to keep matplotlib out of math mode.
+    offset = ymax * 0.015
+    for bar, val in zip(bars, icers):
+        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + offset,
+                f'\\${val:,.0f}', ha='center', fontsize=9)
+
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
-    # Annotation
-    ax.text(0.98, 0.15, 'All nuts are\ncost-effective\n(below thresholds)',
+    # Annotation derived live from how many nuts fall below the ICER threshold
+    n_total = len(nuts_sorted)
+    n_below_icer = sum(1 for n in nuts_sorted if n.icer <= r.icer_threshold)
+    n_below_nice = sum(1 for n in nuts_sorted if n.icer <= r.nice_lower_usd)
+    if n_below_nice == n_total:
+        annotation = 'All nuts are\ncost-effective\n(below thresholds)'
+    elif n_below_icer == n_total:
+        annotation = (f'All {n_total} nuts below\nthe ${r.icer_threshold:,} ICER\n'
+                      f'threshold; {n_below_nice}/{n_total} below NICE')
+    else:
+        annotation = (f'{n_below_icer}/{n_total} below ${r.icer_threshold:,}\n'
+                      f'ICER; {n_below_nice}/{n_total} below NICE')
+    # Escape $ so matplotlib doesn't enter math mode
+    annotation = annotation.replace('$', r'\$')
+    ax.text(0.98, 0.15, annotation,
             transform=ax.transAxes, fontsize=10, ha='right', va='bottom',
             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.5))
 

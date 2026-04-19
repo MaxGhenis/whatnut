@@ -62,13 +62,14 @@ class TestResultParameters:
     def test_start_age(self, results):
         assert results.start_age == 40
 
-    def test_discount_rate(self, results):
-        assert results.discount_rate == 0.03
+    def test_discount_rates(self, results):
+        assert results.qaly_discount_rate == 0.0
+        assert results.cost_discount_rate == 0.03
 
     def test_confounding(self, results):
-        assert results.confounding_alpha == 2.5
-        assert results.confounding_beta == 2.5
-        assert results.confounding_mean == pytest.approx(0.5)
+        assert results.confounding_alpha == pytest.approx(1.5)
+        assert results.confounding_beta == pytest.approx(6.0)
+        assert results.confounding_mean == pytest.approx(0.2)
 
 
 # ---------------------------------------------------------------------------

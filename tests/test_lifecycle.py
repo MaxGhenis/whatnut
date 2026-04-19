@@ -24,7 +24,8 @@ def protective_result() -> LifecycleResult:
         rr_other=0.90,
         annual_cost=100.0,
         start_age=40,
-        discount_rate=0.03,
+        qaly_discount_rate=0.03,
+        cost_discount_rate=0.03,
     )
 
 
@@ -37,7 +38,8 @@ def neutral_result() -> LifecycleResult:
         rr_other=1.0,
         annual_cost=100.0,
         start_age=40,
-        discount_rate=0.03,
+        qaly_discount_rate=0.03,
+        cost_discount_rate=0.03,
     )
 
 
@@ -100,7 +102,8 @@ class TestDeterministicRR:
             rr_other=1.08,
             annual_cost=100.0,
             start_age=40,
-            discount_rate=0.03,
+            qaly_discount_rate=0.03,
+            cost_discount_rate=0.03,
         )
         assert result.life_years_gained < 0
 
@@ -146,7 +149,8 @@ class TestPathwayContributions:
             rr_other=0.99,
             annual_cost=100.0,
             start_age=60,
-            discount_rate=0.03,
+            qaly_discount_rate=0.03,
+            cost_discount_rate=0.03,
         )
         assert result.cvd_contribution > result.cancer_contribution
         assert result.cvd_contribution > result.other_contribution
@@ -218,7 +222,8 @@ class TestDiscountRate:
             rr_other=0.90,
             annual_cost=100.0,
             start_age=40,
-            discount_rate=0.0,
+            qaly_discount_rate=0.0,
+            cost_discount_rate=0.03,
         )
         assert result.life_years_gained_discounted == pytest.approx(
             result.life_years_gained, rel=1e-6
@@ -231,15 +236,15 @@ class TestDiscountRate:
         """3% discount should reduce QALYs more than 0% but still be positive."""
         result_0 = run_lifecycle(
             rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, discount_rate=0.0,
+            annual_cost=100.0, start_age=40, qaly_discount_rate=0.0, cost_discount_rate=0.03,
         )
         result_3 = run_lifecycle(
             rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, discount_rate=0.03,
+            annual_cost=100.0, start_age=40, qaly_discount_rate=0.03, cost_discount_rate=0.03,
         )
         result_5 = run_lifecycle(
             rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, discount_rate=0.05,
+            annual_cost=100.0, start_age=40, qaly_discount_rate=0.05, cost_discount_rate=0.03,
         )
         assert result_0.qalys_gained_discounted > result_3.qalys_gained_discounted
         assert result_3.qalys_gained_discounted > result_5.qalys_gained_discounted
@@ -248,11 +253,11 @@ class TestDiscountRate:
         """Different discount rates should produce different ICERs."""
         result_0 = run_lifecycle(
             rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, discount_rate=0.0,
+            annual_cost=100.0, start_age=40, qaly_discount_rate=0.0, cost_discount_rate=0.03,
         )
         result_3 = run_lifecycle(
             rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, discount_rate=0.03,
+            annual_cost=100.0, start_age=40, qaly_discount_rate=0.03, cost_discount_rate=0.03,
         )
         assert result_0.cost_per_qaly != result_3.cost_per_qaly
 

@@ -48,6 +48,21 @@ class LifecycleResult:
     other_contribution: float
 
 
+@dataclass
+class LifecycleVectorResult:
+    """Vectorized lifecycle output across Monte Carlo samples.
+
+    Each field is a 1-D array of length n_samples.
+    """
+
+    life_years_gained: np.ndarray
+    qalys_gained: np.ndarray
+    life_years_gained_discounted: np.ndarray
+    qalys_gained_discounted: np.ndarray
+    total_cost_discounted: np.ndarray
+    cost_per_qaly: np.ndarray
+
+
 def run_lifecycle(
     rr_cvd: float,
     rr_cancer: float,
@@ -55,7 +70,8 @@ def run_lifecycle(
     annual_cost: float,
     start_age: int = 40,
     max_age: int = 110,
-    discount_rate: float = 0.03,
+    qaly_discount_rate: float = 0.0,
+    cost_discount_rate: float = 0.03,
 ) -> LifecycleResult:
     """Run pathway-specific lifecycle model for a single set of RRs.
 
@@ -66,7 +82,8 @@ def run_lifecycle(
         annual_cost: Annual cost of intervention in USD.
         start_age: Age at start of intervention.
         max_age: Maximum modeled age.
-        discount_rate: Annual discount rate for costs and QALYs.
+        qaly_discount_rate: Annual discount rate for life years and QALYs.
+        cost_discount_rate: Annual discount rate for costs.
 
     Returns:
         LifecycleResult with life years, QALYs, costs, and ICER.
@@ -124,13 +141,14 @@ def run_lifecycle(
     qalys_gained = float(np.sum(qaly_gain_by_age))
 
     # Discounting
-    discount_factors = 1 / (1 + discount_rate) ** np.arange(n_years)
-    ly_gained_disc = float(np.sum(ly_gained_by_age * discount_factors))
-    qalys_gained_disc = float(np.sum(qaly_gain_by_age * discount_factors))
+    qaly_discount_factors = 1 / (1 + qaly_discount_rate) ** np.arange(n_years)
+    ly_gained_disc = float(np.sum(ly_gained_by_age * qaly_discount_factors))
+    qalys_gained_disc = float(np.sum(qaly_gain_by_age * qaly_discount_factors))
 
     # Costs
     annual_costs = annual_cost * survival_intervention
-    total_cost_disc = float(np.sum(annual_costs * discount_factors))
+    cost_discount_factors = 1 / (1 + cost_discount_rate) ** np.arange(n_years)
+    total_cost_disc = float(np.sum(annual_costs * cost_discount_factors))
 
     # ICER
     cost_per_qaly = (
@@ -138,13 +156,20 @@ def run_lifecycle(
     )
 
     # Overall pathway contributions (weighted by discounted LY)
-    ly_cvd_disc = float(np.sum(ly_gained_by_age * cvd_contrib_by_age * discount_factors))
-    ly_cancer_disc = float(np.sum(ly_gained_by_age * cancer_contrib_by_age * discount_factors))
-    ly_other_disc = float(np.sum(ly_gained_by_age * other_contrib_by_age * discount_factors))
+    ly_cvd_disc = float(np.sum(ly_gained_by_age * cvd_contrib_by_age * qaly_discount_factors))
+    ly_cancer_disc = float(np.sum(ly_gained_by_age * cancer_contrib_by_age * qaly_discount_factors))
+    ly_other_disc = float(np.sum(ly_gained_by_age * other_contrib_by_age * qaly_discount_factors))
 
     cvd_contribution = ly_cvd_disc / ly_gained_disc if ly_gained_disc > 0 else 0
     cancer_contribution = ly_cancer_disc / ly_gained_disc if ly_gained_disc > 0 else 0
     other_contribution = ly_other_disc / ly_gained_disc if ly_gained_disc > 0 else 0
+    # Clamp pathway contributions to [0, 1] to suppress sampling-noise
+    # artifacts near null RRs (e.g., cashew's cancer contribution at -0.00
+    # or CVD at 1.01 when cancer_RR ≈ 1.0001). The ratios remain exact
+    # algebraically; this clamp only affects reported round numbers.
+    cvd_contribution = float(np.clip(cvd_contribution, 0.0, 1.0))
+    cancer_contribution = float(np.clip(cancer_contribution, 0.0, 1.0))
+    other_contribution = float(np.clip(other_contribution, 0.0, 1.0))
 
     return LifecycleResult(
         life_years_cvd=ly_cvd,
@@ -159,4 +184,81 @@ def run_lifecycle(
         cvd_contribution=cvd_contribution,
         cancer_contribution=cancer_contribution,
         other_contribution=other_contribution,
+    )
+
+
+def run_lifecycle_vectorized(
+    rr_cvd: np.ndarray,
+    rr_cancer: np.ndarray,
+    rr_other: np.ndarray,
+    annual_cost: float,
+    start_age: int = 40,
+    max_age: int = 110,
+    qaly_discount_rate: float = 0.0,
+    cost_discount_rate: float = 0.03,
+) -> LifecycleVectorResult:
+    """Vectorized lifecycle over Monte Carlo samples.
+
+    All RR inputs are 1-D arrays of shape (n_samples,). Output arrays have
+    the same length. This replaces the per-sample Python loop in pipeline.
+    """
+    rr_cvd = np.asarray(rr_cvd)
+    rr_cancer = np.asarray(rr_cancer)
+    rr_other = np.asarray(rr_other)
+
+    ages = np.arange(start_age, max_age + 1)
+    n_years = len(ages)
+
+    mortality_baseline = get_mortality_curve(start_age, max_age)
+    quality_weights = get_quality_curve(start_age, max_age)
+
+    cvd_fracs = np.empty(n_years)
+    cancer_fracs = np.empty(n_years)
+    other_fracs = np.empty(n_years)
+    for i, age in enumerate(ages):
+        cvd_fracs[i], cancer_fracs[i], other_fracs[i] = get_cause_fractions(age)
+
+    # weighted_rr: (n_samples, n_years)
+    weighted_rr = (
+        cvd_fracs[None, :] * rr_cvd[:, None]
+        + cancer_fracs[None, :] * rr_cancer[:, None]
+        + other_fracs[None, :] * rr_other[:, None]
+    )
+    mortality_intervention = mortality_baseline[None, :] * weighted_rr
+
+    survival_baseline = np.cumprod(1 - mortality_baseline)
+    survival_baseline = np.insert(survival_baseline[:-1], 0, 1.0)
+
+    survival_intervention = np.cumprod(1 - mortality_intervention, axis=1)
+    survival_intervention = np.concatenate(
+        [np.ones((mortality_intervention.shape[0], 1)), survival_intervention[:, :-1]],
+        axis=1,
+    )
+
+    ly_gained_by_age = survival_intervention - survival_baseline[None, :]
+    ly_total = np.sum(ly_gained_by_age, axis=1)
+
+    qaly_gain_by_age = ly_gained_by_age * quality_weights[None, :]
+    qalys_total = np.sum(qaly_gain_by_age, axis=1)
+
+    qaly_discount = (1 / (1 + qaly_discount_rate) ** np.arange(n_years))
+    cost_discount = (1 / (1 + cost_discount_rate) ** np.arange(n_years))
+
+    ly_disc = np.sum(ly_gained_by_age * qaly_discount[None, :], axis=1)
+    qalys_disc = np.sum(qaly_gain_by_age * qaly_discount[None, :], axis=1)
+
+    annual_costs = annual_cost * survival_intervention
+    total_cost_disc = np.sum(annual_costs * cost_discount[None, :], axis=1)
+
+    cost_per_qaly = np.where(
+        qalys_disc > 0, total_cost_disc / np.where(qalys_disc > 0, qalys_disc, 1.0), np.inf
+    )
+
+    return LifecycleVectorResult(
+        life_years_gained=ly_total,
+        qalys_gained=qalys_total,
+        life_years_gained_discounted=ly_disc,
+        qalys_gained_discounted=qalys_disc,
+        total_cost_discounted=total_cost_disc,
+        cost_per_qaly=cost_per_qaly,
     )

@@ -1,232 +1,275 @@
-# Nut profiles: nutrients, pathway adjustments, costs, and evidence
-# Sources: USDA FoodData Central (2024), cited literature
-# All nutrient values per 28g (1 oz) serving
+# Nut profiles: nutrients (auto-generated), pathway adjustments,
+# costs, and evidence.
+# - Nutrients: USDA SR Legacy, per 28 g serving, scaled from
+#   per-100 g values by the extraction script in
+#   src/whatnut/data_build/usda_fdc.py. Raw per-food JSON
+#   snapshots live under src/whatnut/data/raw/usda_fdc/.
+# - Phytosterols: Phillips et al. 2005, J Agric Food Chem
+#   53(24):9436-9445 (SR Legacy omits phytosterols).
+# - Prices: see cost_per_kg_usd comments and @whatnut2026prices.
+# - pathway_adjustments: hand-curated from the nut-specific RCTs
+#   cited per-adjustment; tiered publication-bias shrinkage is
+#   applied at sampling time (see priors.yaml:study_quality_shrinkage).
 #
-# This is the SINGLE SOURCE OF TRUTH for all nut data.
-# Extended nutrients (magnesium, arginine, phytosterols, protein) included
-# for pathway-specific Monte Carlo model.
+# This file is the SINGLE SOURCE OF TRUTH for per-nut data.
+# Regenerate nutrient sections with:
+#     python -m whatnut.data_build.usda_fdc --apply
 
 walnut:
-  fdc_id: 170187  # Nuts, walnuts, english
+  fdc_id: 170187
+  _sr_legacy_description: Nuts, walnuts, english
   nutrients:
-    calories_kcal: 185
-    total_fat_g: 18.5
-    saturated_fat_g: 1.7
+    calories_kcal: 183.12
+    protein_g: 4.256
+    total_fat_g: 18.256
+    saturated_fat_g: 1.716
     monounsaturated_fat_g: 2.5
-    polyunsaturated_fat_g: 13.4    # Highest PUFA
-    omega3_ala_g: 2.5              # Highest of all nuts
+    polyunsaturated_fat_g: 13.216
+    omega3_ala_g: 2.542
     omega7_g: 0.0
-    vitamin_e_mg: 0.7
-    fiber_g: 1.9
-    protein_g: 4.3
-    magnesium_mg: 44.2
-    arginine_g: 0.64
+    fiber_g: 1.876
+    magnesium_mg: 44.24
+    vitamin_e_mg: 0.196
+    arginine_g: 0.638
     phytosterols_mg: 20
   pathway_adjustments:
     cvd:
-      mean: 1.25           # Strong omega-3 effect
-      sd: 0.15
-      rationale: "Highest ALA omega-3 (2.5g/28g); PREDIMED, WAHA RCTs"
+      mean: 1.1
+      sd: 0.12
+      rationale: Highest ALA omega-3; modest residual benefit beyond nutrient model
     cancer:
-      mean: 1.05
-      sd: 0.10
-      rationale: "Moderate antioxidant content"
+      mean: 1.0
+      sd: 0.08
+      rationale: No clear walnut-specific cancer mortality evidence
     other:
-      mean: 1.10
-      sd: 0.10
-      rationale: "Anti-inflammatory effects"
-  cost_per_kg_usd: 9.65    # USDA ERS 2024
+      mean: 1.0
+      sd: 0.08
+      rationale: No clear walnut-specific other-cause mortality evidence
+  cost_per_kg_usd: 29.74
   evidence: strong
-
 almond:
-  fdc_id: 170567  # Nuts, almonds
+  fdc_id: 170567
+  _sr_legacy_description: Nuts, almonds
   nutrients:
-    calories_kcal: 164
-    total_fat_g: 14.2
-    saturated_fat_g: 1.1
-    monounsaturated_fat_g: 9.0     # High MUFA
-    polyunsaturated_fat_g: 3.5
-    omega3_ala_g: 0.0
-    omega7_g: 0.0
-    vitamin_e_mg: 7.3              # Highest of all nuts
+    calories_kcal: 162.12
+    protein_g: 5.936
+    total_fat_g: 13.972
+    saturated_fat_g: 1.064
+    monounsaturated_fat_g: 8.848
+    polyunsaturated_fat_g: 3.444
+    omega3_ala_g: 0.001
+    omega7_g: 0.067
     fiber_g: 3.5
-    protein_g: 6.0
-    magnesium_mg: 76.5             # Highest magnesium
-    arginine_g: 0.74
-    phytosterols_mg: 35            # Highest phytosterols
+    magnesium_mg: 75.6
+    vitamin_e_mg: 7.168
+    arginine_g: 0.689
+    phytosterols_mg: 35
   pathway_adjustments:
     cvd:
-      mean: 1.00           # Reference nut
-      sd: 0.06
-      rationale: "Reference category; robust RCT base"
+      mean: 1.0
+      sd: 0.05
+      rationale: Reference category; robust RCT base
     cancer:
-      mean: 1.05
-      sd: 0.08
-      rationale: "Vitamin E antioxidant effect"
-    other:
-      mean: 1.00
+      mean: 1.0
       sd: 0.06
-      rationale: "Reference"
-  cost_per_kg_usd: 8.86
+      rationale: No clear almond-specific cancer mortality evidence
+    other:
+      mean: 1.0
+      sd: 0.05
+      rationale: Reference
+  cost_per_kg_usd: 23.13
   evidence: strong
-
 pistachio:
-  fdc_id: 170184  # Nuts, pistachio nuts, raw
+  fdc_id: 170184
+  _sr_legacy_description: Nuts, pistachio nuts, raw
   nutrients:
-    calories_kcal: 159
-    total_fat_g: 12.8
-    saturated_fat_g: 1.6
-    monounsaturated_fat_g: 6.8
-    polyunsaturated_fat_g: 3.8
-    omega3_ala_g: 0.07
-    omega7_g: 0.0
-    vitamin_e_mg: 0.8
-    fiber_g: 2.9
-    protein_g: 5.7
-    magnesium_mg: 33.6
-    arginine_g: 0.60
-    phytosterols_mg: 61
-    lutein_mcg: 342                # Unique: eye health
+    calories_kcal: 156.8
+    protein_g: 5.656
+    total_fat_g: 12.684
+    saturated_fat_g: 1.655
+    monounsaturated_fat_g: 6.524
+    polyunsaturated_fat_g: 4.032
+    omega3_ala_g: 0.081
+    omega7_g: 0.139
+    fiber_g: 2.968
+    magnesium_mg: 33.88
+    vitamin_e_mg: 0.801
+    arginine_g: 0.596
+    phytosterols_mg: 60
   pathway_adjustments:
     cvd:
-      mean: 1.12
-      sd: 0.08
-      rationale: "Best lipid improvements in Del Gobbo meta-analysis"
+      mean: 1.04
+      sd: 0.07
+      rationale: Lipid improvements suggest a modest residual CVD edge
     cancer:
-      mean: 1.02
-      sd: 0.10
-      rationale: "Lutein, some antioxidants"
+      mean: 1.0
+      sd: 0.08
+      rationale: No clear pistachio-specific cancer mortality evidence
     other:
-      mean: 1.05
-      sd: 0.10
-      rationale: "Fiber, glycemic effects"
-  cost_per_kg_usd: 11.25
+      mean: 1.0
+      sd: 0.08
+      rationale: No clear pistachio-specific other-cause mortality evidence
+  cost_per_kg_usd: 44.06
   evidence: moderate
-
 pecan:
-  fdc_id: 170182  # Nuts, pecans
+  fdc_id: 170182
+  _sr_legacy_description: Nuts, pecans
   nutrients:
-    calories_kcal: 196
-    total_fat_g: 20.4
-    saturated_fat_g: 1.8
-    monounsaturated_fat_g: 11.6
-    polyunsaturated_fat_g: 6.1
-    omega3_ala_g: 0.28
+    calories_kcal: 193.48
+    protein_g: 2.568
+    total_fat_g: 20.16
+    saturated_fat_g: 1.73
+    monounsaturated_fat_g: 11.424
+    polyunsaturated_fat_g: 6.048
+    omega3_ala_g: 0.276
     omega7_g: 0.0
-    vitamin_e_mg: 0.4
-    fiber_g: 2.7
-    protein_g: 2.6
-    magnesium_mg: 33.9
-    arginine_g: 0.34
+    fiber_g: 2.688
+    magnesium_mg: 33.88
+    vitamin_e_mg: 0.392
+    arginine_g: 0.33
     phytosterols_mg: 29
   pathway_adjustments:
     cvd:
-      mean: 1.08
-      sd: 0.10
-      rationale: "Some omega-3; Hart 2025, Guarneiri 2021 RCTs"
+      mean: 1.03
+      sd: 0.08
+      rationale: Recent pecan RCTs support at most a modest residual CVD effect
     cancer:
-      mean: 1.00
-      sd: 0.12
-      rationale: "Insufficient evidence for deviation from nutrients"
+      mean: 1.0
+      sd: 0.1
+      rationale: Insufficient evidence for deviation from nutrients
     other:
-      mean: 1.00
-      sd: 0.12
-      rationale: "Limited evidence"
-  cost_per_kg_usd: 12.86
+      mean: 1.0
+      sd: 0.1
+      rationale: Limited evidence
+  cost_per_kg_usd: 36.51
   evidence: moderate
-
 macadamia:
-  fdc_id: 170178  # Nuts, macadamia nuts, raw
+  fdc_id: 170178
+  _sr_legacy_description: Nuts, macadamia nuts, raw
   nutrients:
-    calories_kcal: 204             # Highest calorie density
-    total_fat_g: 21.5              # Highest fat
-    saturated_fat_g: 3.4           # Highest saturated fat
-    monounsaturated_fat_g: 16.7    # Highest MUFA
-    polyunsaturated_fat_g: 0.4
-    omega3_ala_g: 0.06
-    omega7_g: 4.7                  # Unique: omega-7 (palmitoleic acid)
-    vitamin_e_mg: 0.2
-    fiber_g: 2.4
-    protein_g: 2.2
+    calories_kcal: 201.04
+    protein_g: 2.215
+    total_fat_g: 21.224
+    saturated_fat_g: 3.388
+    monounsaturated_fat_g: 16.492
+    polyunsaturated_fat_g: 0.42
+    omega3_ala_g: 0.058
+    omega7_g: 3.64
+    fiber_g: 2.408
     magnesium_mg: 36.4
-    arginine_g: 0.43
+    vitamin_e_mg: 0.151
+    arginine_g: 0.392
     phytosterols_mg: 33
   pathway_adjustments:
     cvd:
-      mean: 1.08
-      sd: 0.10
-      rationale: "FDA qualified health claim, MUFA profile"
+      mean: 1.02
+      sd: 0.08
+      rationale: MUFA-heavy profile may modestly outperform nutrients alone
     cancer:
-      mean: 1.00
-      sd: 0.15
-      rationale: "Insufficient evidence for deviation from nutrients"
+      mean: 1.0
+      sd: 0.1
+      rationale: Insufficient evidence for deviation from nutrients
     other:
-      mean: 1.05
-      sd: 0.12
-      rationale: "Insulin sensitivity effects"
-  cost_per_kg_usd: 22.50
+      mean: 1.0
+      sd: 0.1
+      rationale: No clear macadamia-specific other-cause mortality evidence
+  cost_per_kg_usd: 68.3
   evidence: moderate
-
 peanut:
-  fdc_id: 172430  # Peanuts, all types, raw
+  fdc_id: 172430
+  _sr_legacy_description: Peanuts, all types, raw
   nutrients:
-    calories_kcal: 161
-    total_fat_g: 14.0
-    saturated_fat_g: 1.9
-    monounsaturated_fat_g: 6.9
-    polyunsaturated_fat_g: 4.4
-    omega3_ala_g: 0.0
-    omega7_g: 0.0
-    vitamin_e_mg: 2.4
-    fiber_g: 2.4
-    protein_g: 7.3                 # Highest protein (legume)
-    magnesium_mg: 47.6
-    arginine_g: 0.93              # Highest arginine
+    calories_kcal: 158.76
+    protein_g: 7.224
+    total_fat_g: 13.776
+    saturated_fat_g: 1.758
+    monounsaturated_fat_g: 6.832
+    polyunsaturated_fat_g: 4.368
+    omega3_ala_g: 0.001
+    omega7_g: 0.003
+    fiber_g: 2.38
+    magnesium_mg: 47.04
+    vitamin_e_mg: 2.332
+    arginine_g: 0.862
     phytosterols_mg: 62
   pathway_adjustments:
     cvd:
       mean: 0.98
       sd: 0.06
-      rationale: "Large cohort data (n=118,962); slight discount vs tree nuts"
+      rationale: Large cohort data (n=118,962); slight discount vs tree nuts
     cancer:
-      mean: 1.00
-      sd: 0.08
-      rationale: "Neutral; US aflatoxin regulated <20ppb"
+      mean: 1.0
+      sd: 0.06
+      rationale: Neutral; US aflatoxin regulated <20ppb
     other:
-      mean: 0.98
-      sd: 0.08
-      rationale: "Legume, different nutrient profile"
-  cost_per_kg_usd: 3.61
+      mean: 1.0
+      sd: 0.06
+      rationale: No clear peanut-specific other-cause mortality deviation
+  cost_per_kg_usd: 12.11
   evidence: strong
-
-cashew:
-  fdc_id: 170162  # Nuts, cashew nuts, raw
+hazelnut:
+  fdc_id: 170581
+  _sr_legacy_description: Nuts, hazelnuts or filberts
   nutrients:
-    calories_kcal: 157             # Lowest calorie density
-    total_fat_g: 12.4              # Lowest fat
-    saturated_fat_g: 2.2
-    monounsaturated_fat_g: 6.7
-    polyunsaturated_fat_g: 2.2
-    omega3_ala_g: 0.02
-    omega7_g: 0.0
-    vitamin_e_mg: 0.3
-    fiber_g: 0.9                   # Lowest fiber
-    protein_g: 5.2
-    magnesium_mg: 82.8             # Very high magnesium
-    arginine_g: 0.62
+    calories_kcal: 175.84
+    protein_g: 4.2
+    total_fat_g: 17.024
+    saturated_fat_g: 1.249
+    monounsaturated_fat_g: 12.796
+    polyunsaturated_fat_g: 2.218
+    omega3_ala_g: 0.024
+    omega7_g: 0.032
+    fiber_g: 2.716
+    magnesium_mg: 45.64
+    vitamin_e_mg: 4.2
+    arginine_g: 0.619
+    phytosterols_mg: 27
+  pathway_adjustments:
+    cvd:
+      mean: 1.03
+      sd: 0.07
+      rationale: Part of PREDIMED nut arm; lipid improvements in Orem 2013
+    cancer:
+      mean: 1.0
+      sd: 0.08
+      rationale: No clear hazelnut-specific cancer mortality evidence
+    other:
+      mean: 1.0
+      sd: 0.08
+      rationale: No clear hazelnut-specific other-cause mortality evidence
+  cost_per_kg_usd: 31.95
+  evidence: moderate
+cashew:
+  fdc_id: 170162
+  _sr_legacy_description: Nuts, cashew nuts, raw
+  nutrients:
+    calories_kcal: 154.84
+    protein_g: 5.096
+    total_fat_g: 12.264
+    saturated_fat_g: 2.178
+    monounsaturated_fat_g: 6.664
+    polyunsaturated_fat_g: 2.195
+    omega3_ala_g: 0.017
+    omega7_g: 0.038
+    fiber_g: 0.924
+    magnesium_mg: 81.76
+    vitamin_e_mg: 0.252
+    arginine_g: 0.594
     phytosterols_mg: 45
   pathway_adjustments:
     cvd:
-      mean: 0.95
-      sd: 0.12
-      rationale: "Mixed RCT results (Mah 2017), CIs cross zero"
+      mean: 0.97
+      sd: 0.1
+      rationale: Mixed RCT results (Mah 2017), CIs cross zero. Mean <1.00 means nutrient
+        prediction is discounted (applied as exponent on RR), not that cashew adds
+        CVD benefit beyond nutrients.
     cancer:
-      mean: 0.95
-      sd: 0.12
-      rationale: "Limited evidence"
+      mean: 1.0
+      sd: 0.1
+      rationale: Limited evidence; neutral by default
     other:
-      mean: 0.95
-      sd: 0.12
-      rationale: "Limited evidence"
-  cost_per_kg_usd: 10.00
+      mean: 1.0
+      sd: 0.1
+      rationale: Limited evidence; neutral by default
+  cost_per_kg_usd: 35.25
   evidence: limited

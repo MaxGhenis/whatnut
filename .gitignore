@@ -42,3 +42,9 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+.vercel
+
+# Vercel + docs build artifacts
+public/
+docs/exports/
+docs/_build/

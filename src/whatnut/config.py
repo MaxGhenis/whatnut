@@ -28,7 +28,7 @@ NUTRIENTS = [
 
 PATHWAYS = ["cvd", "cancer", "other"]
 
-NUT_IDS = ["walnut", "almond", "pistachio", "pecan", "macadamia", "peanut", "cashew"]
+NUT_IDS = ["walnut", "almond", "pistachio", "pecan", "macadamia", "peanut", "hazelnut", "cashew"]
 
 
 # ---------------------------------------------------------------------------
@@ -64,6 +64,26 @@ class TauPrior:
 
     sigma: float
     rationale: str
+
+
+@dataclass(frozen=True)
+class StudyQualityShrinkage:
+    """Publication-bias shrinkage fractions by evidence tier.
+
+    Applied as ``a_shrunk = 1.0 + (a - 1.0) * (1 - shrinkage)`` to each
+    nut-specific pathway adjustment, shrinking the residual toward the null
+    (a=1.0) in proportion to the evidence tier's known pub-bias risk.
+    """
+
+    strong: float
+    moderate: float
+    limited: float
+    rationale: str
+
+    def retention(self, evidence: str) -> float:
+        """Fraction of the nut-specific residual retained after shrinkage."""
+        shrinkage = getattr(self, evidence, self.limited)
+        return 1.0 - shrinkage
 
 
 @dataclass(frozen=True)
@@ -132,6 +152,11 @@ def load_cause_fractions() -> dict:
     return _load_yaml("cause_fractions.yaml")
 
 
+def load_constants() -> dict:
+    """Load narrative constants (target age, NICE thresholds, FX rates)."""
+    return _load_yaml("constants.yaml")
+
+
 # ---------------------------------------------------------------------------
 # Typed accessors
 # ---------------------------------------------------------------------------
@@ -173,6 +198,18 @@ def get_tau_prior() -> TauPrior:
     data = load_priors()
     t = data["tau"]
     return TauPrior(sigma=t["sigma"], rationale=t["rationale"])
+
+
+def get_study_quality_shrinkage() -> StudyQualityShrinkage:
+    """Get the tiered publication-bias shrinkage configuration."""
+    data = load_priors()
+    s = data["study_quality_shrinkage"]
+    return StudyQualityShrinkage(
+        strong=s["strong"],
+        moderate=s["moderate"],
+        limited=s["limited"],
+        rationale=s["rationale"],
+    )
 
 
 def _extract_model_nutrients(raw_nutrients: dict) -> dict[str, float]:
@@ -295,21 +332,33 @@ def get_quality_curve(start_age: int, max_age: int = 110) -> np.ndarray:
 
 
 def get_cause_fractions(age: int) -> tuple[float, float, float]:
-    """Get (cvd, cancer, other) cause fractions for a given age."""
+    """Get (cvd, cancer, other) cause fractions for a given age.
+
+    Values are interpolated linearly from the NVSR-sourced anchor grid
+    in cause_fractions.yaml and then renormalized so the triple sums to
+    exactly 1.0 (anchors are rounded to three decimals, so raw sums can
+    drift by ~0.001 between anchors).
+    """
+    def _normalize(cvd: float, cancer: float, other: float) -> tuple[float, float, float]:
+        total = cvd + cancer + other
+        if total <= 0:
+            return cvd, cancer, other
+        return cvd / total, cancer / total, other / total
+
     raw = load_cause_fractions()["fractions"]
     ages = sorted(raw.keys())
     if age <= ages[0]:
         d = raw[ages[0]]
-        return (d["cvd"], d["cancer"], d["other"])
+        return _normalize(d["cvd"], d["cancer"], d["other"])
     if age >= ages[-1]:
         d = raw[ages[-1]]
-        return (d["cvd"], d["cancer"], d["other"])
+        return _normalize(d["cvd"], d["cancer"], d["other"])
     lower_age = max(a for a in ages if a <= age)
     upper_age = min(a for a in ages if a > age)
     frac = (age - lower_age) / (upper_age - lower_age)
     lower = raw[lower_age]
     upper = raw[upper_age]
-    return (
+    return _normalize(
         lower["cvd"] + frac * (upper["cvd"] - lower["cvd"]),
         lower["cancer"] + frac * (upper["cancer"] - lower["cancer"]),
         lower["other"] + frac * (upper["other"] - lower["other"]),
@@ -339,10 +388,12 @@ def validate() -> list[str]:
             if key != "omega6" and val < 0:
                 errors.append(f"{nid}.{key} = {val} (negative)")
 
-    # Check mortality rates are in (0, 1)
+    # Check mortality rates are in (0, 1]. CDC life tables set qx=1.0 at
+    # the terminal age (everyone has died by the end of that year), so
+    # the upper bound is closed.
     rates = load_mortality()["rates"]
     for age, rate in rates.items():
-        if not (0 < rate < 1):
+        if not (0 < rate <= 1):
             errors.append(f"Mortality rate at age {age} = {rate} (out of range)")
 
     # Check quality weights are in (0, 1]

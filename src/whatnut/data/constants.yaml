@@ -1,0 +1,31 @@
+# Narrative constants used in the paper text and figures.
+# Source each value so a future reviewer can trace provenance.
+
+# Target population
+target_age: 40              # 40-year-old reference case, US
+life_expectancy_approx: 40  # Round approximation of remaining life expectancy
+
+# Nut-allergy prevalence (US adults)
+# Source: Gupta et al. 2019 JAMA Network Open, n=40,443; peanut ~1.8%,
+# tree nut ~1.2%, combined ~3%. Range 2-4% reflects convincingly-allergic
+# vs self-reported.
+allergy_prevalence_lower: 2.0
+allergy_prevalence_upper: 4.0
+
+# NICE cost-effectiveness thresholds (2025 update)
+# Source: NICE Dec 2025 announcement (see nice2025threshold in references.bib).
+# The 2024 reference was £20,000-30,000; raised to £25,000-35,000.
+nice_lower_gbp: 25000
+nice_upper_gbp: 35000
+
+# GBP/USD FX rate used to convert NICE thresholds to USD in the text.
+# Spot rate snapshot, end of Q4 2024. Sensitive to when paper is rendered;
+# update on every revision.
+gbp_usd_rate: 1.34
+gbp_usd_rate_date: "2024-12-31"
+
+# Secondary ICER threshold used for context (ICER reference case upper).
+# Source: icer2024reference in references.bib ($100,000-$150,000/QALY;
+# $50,000 is a widely-used lower "high-value" benchmark retained here for
+# legacy figure annotations).
+icer_threshold_usd: 50000

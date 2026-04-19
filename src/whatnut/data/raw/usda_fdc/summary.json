@@ -1,0 +1,146 @@
+{
+  "almond": {
+    "description": "Nuts, almonds",
+    "fdc_id": 170567,
+    "nutrients_per_28g": {
+      "arginine_g": 0.689,
+      "calories_kcal": 162.12,
+      "fiber_g": 3.5,
+      "magnesium_mg": 75.6,
+      "monounsaturated_fat_g": 8.848,
+      "omega3_ala_g": 0.001,
+      "omega7_g": 0.067,
+      "polyunsaturated_fat_g": 3.444,
+      "protein_g": 5.936,
+      "saturated_fat_g": 1.064,
+      "total_fat_g": 13.972,
+      "vitamin_e_mg": 7.168
+    }
+  },
+  "cashew": {
+    "description": "Nuts, cashew nuts, raw",
+    "fdc_id": 170162,
+    "nutrients_per_28g": {
+      "arginine_g": 0.594,
+      "calories_kcal": 154.84,
+      "fiber_g": 0.924,
+      "magnesium_mg": 81.76,
+      "monounsaturated_fat_g": 6.664,
+      "omega3_ala_g": 0.017,
+      "omega7_g": 0.038,
+      "polyunsaturated_fat_g": 2.195,
+      "protein_g": 5.096,
+      "saturated_fat_g": 2.178,
+      "total_fat_g": 12.264,
+      "vitamin_e_mg": 0.252
+    }
+  },
+  "hazelnut": {
+    "description": "Nuts, hazelnuts or filberts",
+    "fdc_id": 170581,
+    "nutrients_per_28g": {
+      "arginine_g": 0.619,
+      "calories_kcal": 175.84,
+      "fiber_g": 2.716,
+      "magnesium_mg": 45.64,
+      "monounsaturated_fat_g": 12.796,
+      "omega3_ala_g": 0.024,
+      "omega7_g": 0.032,
+      "polyunsaturated_fat_g": 2.218,
+      "protein_g": 4.2,
+      "saturated_fat_g": 1.249,
+      "total_fat_g": 17.024,
+      "vitamin_e_mg": 4.2
+    }
+  },
+  "macadamia": {
+    "description": "Nuts, macadamia nuts, raw",
+    "fdc_id": 170178,
+    "nutrients_per_28g": {
+      "arginine_g": 0.392,
+      "calories_kcal": 201.04,
+      "fiber_g": 2.408,
+      "magnesium_mg": 36.4,
+      "monounsaturated_fat_g": 16.492,
+      "omega3_ala_g": 0.058,
+      "omega7_g": 3.64,
+      "polyunsaturated_fat_g": 0.42,
+      "protein_g": 2.215,
+      "saturated_fat_g": 3.388,
+      "total_fat_g": 21.224,
+      "vitamin_e_mg": 0.151
+    }
+  },
+  "peanut": {
+    "description": "Peanuts, all types, raw",
+    "fdc_id": 172430,
+    "nutrients_per_28g": {
+      "arginine_g": 0.862,
+      "calories_kcal": 158.76,
+      "fiber_g": 2.38,
+      "magnesium_mg": 47.04,
+      "monounsaturated_fat_g": 6.832,
+      "omega3_ala_g": 0.001,
+      "omega7_g": 0.003,
+      "polyunsaturated_fat_g": 4.368,
+      "protein_g": 7.224,
+      "saturated_fat_g": 1.758,
+      "total_fat_g": 13.776,
+      "vitamin_e_mg": 2.332
+    }
+  },
+  "pecan": {
+    "description": "Nuts, pecans",
+    "fdc_id": 170182,
+    "nutrients_per_28g": {
+      "arginine_g": 0.33,
+      "calories_kcal": 193.48,
+      "fiber_g": 2.688,
+      "magnesium_mg": 33.88,
+      "monounsaturated_fat_g": 11.424,
+      "omega3_ala_g": 0.276,
+      "omega7_g": 0.0,
+      "polyunsaturated_fat_g": 6.048,
+      "protein_g": 2.568,
+      "saturated_fat_g": 1.73,
+      "total_fat_g": 20.16,
+      "vitamin_e_mg": 0.392
+    }
+  },
+  "pistachio": {
+    "description": "Nuts, pistachio nuts, raw",
+    "fdc_id": 170184,
+    "nutrients_per_28g": {
+      "arginine_g": 0.596,
+      "calories_kcal": 156.8,
+      "fiber_g": 2.968,
+      "magnesium_mg": 33.88,
+      "monounsaturated_fat_g": 6.524,
+      "omega3_ala_g": 0.081,
+      "omega7_g": 0.139,
+      "polyunsaturated_fat_g": 4.032,
+      "protein_g": 5.656,
+      "saturated_fat_g": 1.655,
+      "total_fat_g": 12.684,
+      "vitamin_e_mg": 0.801
+    }
+  },
+  "walnut": {
+    "description": "Nuts, walnuts, english",
+    "fdc_id": 170187,
+    "nutrients_per_28g": {
+      "arginine_g": 0.638,
+      "calories_kcal": 183.12,
+      "fiber_g": 1.876,
+      "magnesium_mg": 44.24,
+      "monounsaturated_fat_g": 2.5,
+      "omega3_ala_g": 2.542,
+      "omega7_g": 0.0,
+      "polyunsaturated_fat_g": 13.216,
+      "protein_g": 4.256,
+      "saturated_fat_g": 1.716,
+      "total_fat_g": 18.256,
+      "vitamin_e_mg": 0.196
+    }
+  }
+}

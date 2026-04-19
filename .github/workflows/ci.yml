@@ -37,15 +37,9 @@ jobs:
           files: ./coverage.xml
           fail_ci_if_error: false
 
-  docs:
+  # PDF build only. HTML is built and deployed by Vercel from vercel.json.
+  pdf:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -72,28 +66,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk
 
-      - name: Build docs
-        run: |
-          cd docs
-          BASE_URL="/whatnut-paper/" myst build --html --execute
-
       - name: Build PDF
         run: |
           cd docs
           myst build --pdf
-          cp exports/*.pdf _build/html/ 2>/dev/null || true
 
-      - name: Setup Pages
-        if: github.ref == 'refs/heads/master'
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        if: github.ref == 'refs/heads/master'
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
         with:
-          path: docs/_build/html
-
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/master'
-        id: deployment
-        uses: actions/deploy-pages@v4
+          name: whatnut-pdf
+          path: docs/exports/*.pdf
+          retention-days: 90

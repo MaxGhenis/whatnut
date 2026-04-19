@@ -43,12 +43,13 @@ class TestAnalysisStructure:
         assert results.seed == 42
         assert results.n_samples == N_FAST
         assert results.start_age == 40
-        assert results.discount_rate == 0.03
+        assert results.qaly_discount_rate == 0.0
+        assert results.cost_discount_rate == 0.03
 
     def test_confounding_stored(self, results):
-        assert results.confounding_alpha == 2.5
-        assert results.confounding_beta == 2.5
-        assert results.confounding_mean == pytest.approx(0.5)
+        assert results.confounding_alpha == pytest.approx(1.5)
+        assert results.confounding_beta == pytest.approx(6.0)
+        assert results.confounding_mean == pytest.approx(0.2)
 
 
 # ---------------------------------------------------------------------------
@@ -169,6 +170,9 @@ class TestAggregateContributions:
         )
         assert total == pytest.approx(1.0, abs=0.1)
 
+    def test_other_pathway_no_longer_dominates(self, results):
+        assert results.other_contribution_mean < 0.35
+
 
 # ---------------------------------------------------------------------------
 # JSON serialization
@@ -193,7 +197,8 @@ class TestSerialization:
         assert d["seed"] == 42
         assert d["n_samples"] == N_FAST
         assert d["start_age"] == 40
-        assert d["discount_rate"] == 0.03
+        assert d["qaly_discount_rate"] == 0.0
+        assert d["cost_discount_rate"] == 0.03
 
     def test_json_serializable(self, results):
         """to_dict output should be fully JSON-serializable."""
@@ -264,8 +269,14 @@ class TestCustomParameters:
         assert r.start_age == 60
 
     def test_custom_discount_rate(self):
-        r = run_analysis(n_samples=N_FAST, seed=42, discount_rate=0.05)
-        assert r.discount_rate == 0.05
+        r = run_analysis(
+            n_samples=N_FAST,
+            seed=42,
+            qaly_discount_rate=0.0,
+            cost_discount_rate=0.05,
+        )
+        assert r.qaly_discount_rate == 0.0
+        assert r.cost_discount_rate == 0.05
 
     def test_custom_confounding(self):
         r = run_analysis(
@@ -277,6 +288,109 @@ class TestCustomParameters:
         assert r.confounding_alpha == 1.0
         assert r.confounding_beta == 5.0
         assert r.confounding_mean == pytest.approx(1.0 / 6.0)
+
+    def test_walnut_not_year_scale_by_default(self):
+        """Walnut gains should stay in the "weeks to a few months" band the
+        skeptical paper claims — not the year-scale prior model."""
+        r = run_analysis(n_samples=500, seed=42)
+        assert r.nuts["walnut"].life_years_mean < 0.35
+
+    def test_confounding_ci_matches_beta_ppf(self):
+        """Regression: CI must be derived from the Beta(alpha, beta) ppf,
+        not hardcoded (prevents the 0.12-0.88 stale-default bug)."""
+        from scipy.stats import beta as beta_dist
+
+        r = run_analysis(n_samples=500, seed=42)
+        expected_lower = float(beta_dist.ppf(0.025, r.confounding_alpha, r.confounding_beta))
+        expected_upper = float(beta_dist.ppf(0.975, r.confounding_alpha, r.confounding_beta))
+        assert r.confounding_ci_lower == pytest.approx(expected_lower, abs=1e-4)
+        assert r.confounding_ci_upper == pytest.approx(expected_upper, abs=1e-4)
+
+    def test_discount_asymmetry(self):
+        """QALY discount must only affect QALYs; cost discount only costs."""
+        base = run_analysis(
+            n_samples=500, seed=42, qaly_discount_rate=0.0, cost_discount_rate=0.03
+        )
+        flip_cost = run_analysis(
+            n_samples=500, seed=42, qaly_discount_rate=0.0, cost_discount_rate=0.05
+        )
+        flip_qaly = run_analysis(
+            n_samples=500, seed=42, qaly_discount_rate=0.03, cost_discount_rate=0.03
+        )
+        # Changing cost rate shouldn't change QALY means
+        assert flip_cost.nuts["walnut"].qaly_mean == pytest.approx(
+            base.nuts["walnut"].qaly_mean, abs=1e-6
+        )
+        # Changing QALY rate should change QALY means
+        assert flip_qaly.nuts["walnut"].qaly_mean != pytest.approx(
+            base.nuts["walnut"].qaly_mean, abs=1e-6
+        )
+
+    def test_baseline_qalys_derived_from_quality(self):
+        """baseline_qalys should equal sum(survival * quality) — verifies
+        average_quality_weight reflects the discounted-quality view."""
+        r = run_analysis(n_samples=500, seed=42)
+        assert 0 < r.average_quality_weight < 1
+        assert r.baseline_qalys < r.baseline_life_years
+        assert r.baseline_qalys == pytest.approx(
+            r.baseline_life_years * r.average_quality_weight, abs=0.05
+        )
+
+    def test_baseline_life_years_matches_cdc(self):
+        """Baseline LY at age 40 should be close to CDC ex(40) ~ 39.5.
+
+        CDC NVSR 72-12 Table 1 reports life expectancy at age 40 for the
+        US total population in 2021 as ~39.5 years. Our pipeline sums
+        survival probabilities from age 40 to 110 (no partial-year
+        adjustment at the final age), so values between ~39 and 40 are
+        expected. Catches the off-by-0.5 bug where survival was indexed
+        at END of each age year instead of START.
+        """
+        r = run_analysis(n_samples=500, seed=42)
+        assert 38.8 < r.baseline_life_years < 40.0, (
+            f"baseline_life_years={r.baseline_life_years} is outside the "
+            "plausible CDC 2021 range for a 40-year-old."
+        )
+
+
+# ---------------------------------------------------------------------------
+# Value-pinning regression tests — lock headline numbers so silent drift in
+# priors / data files doesn't pass CI.
+# ---------------------------------------------------------------------------
+
+
+class TestHeadlineValuePins:
+    """Pin substantive outputs so priors/data drift is caught by CI."""
+
+    @pytest.fixture(scope="class")
+    def results_full(self):
+        return run_analysis(n_samples=10_000, seed=42)
+
+    def test_walnut_life_years_in_window(self, results_full):
+        w = results_full.nuts["walnut"]
+        assert 0.10 < w.life_years_mean < 0.30, (
+            f"Walnut life_years={w.life_years_mean} outside expected window "
+            "[0.10, 0.30]. Any regression that blows past this window is a "
+            "material change in the skeptical framing."
+        )
+
+    def test_peanut_icer_in_window(self, results_full):
+        p = results_full.nuts["peanut"]
+        assert 40_000 < p.icer_median < 200_000, (
+            f"Peanut ICER={p.icer_median} outside expected window "
+            "[$40k, $200k]. Peanuts should remain the cheapest ICER "
+            "even at specialty-retail pricing; values outside this range "
+            "suggest a price or QALY regression."
+        )
+
+    def test_cvd_contribution_dominates(self, results_full):
+        assert results_full.cvd_contribution_mean > 0.65, (
+            f"CVD contribution={results_full.cvd_contribution_mean} is too "
+            "low; skeptical model should concentrate benefit in CVD."
+        )
+
+    def test_baseline_life_years_near_cdc(self, results_full):
+        assert 38.8 < results_full.baseline_life_years < 40.0
 
 
 # ---------------------------------------------------------------------------
