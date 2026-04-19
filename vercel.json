@@ -1,6 +1,6 @@
 {
-  "installCommand": "pip install --break-system-packages -e '.[docs]' && npm install -g mystmd",
-  "buildCommand": "cd docs && BASE_URL=/whatnut/ myst build --html --execute && mkdir -p ../public/whatnut && cp -R _build/html/. ../public/whatnut/",
+  "installCommand": "pip install --break-system-packages -e '.' && npm install -g mystmd",
+  "buildCommand": "python scripts/render_docs.py && cd docs && BASE_URL=/whatnut/ myst build --html && mkdir -p ../public/whatnut && cp -R _build/html/. ../public/whatnut/",
   "outputDirectory": "public",
   "framework": null,
   "cleanUrls": true,
