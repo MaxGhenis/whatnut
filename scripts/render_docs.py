@@ -96,7 +96,11 @@ def render_file(path: Path, ns: dict) -> None:
     text = CODE_CELL_RE.sub(lambda m: _render_cell(m, ns), text)
     text = EVAL_RE.sub(lambda m: str(eval(m.group(1), ns)), text)
     path.write_text(text)
-    print(f"[render_docs] wrote {path.relative_to(REPO_ROOT)}")
+    try:
+        display_path = path.relative_to(REPO_ROOT)
+    except ValueError:
+        display_path = path
+    print(f"[render_docs] wrote {display_path}")
 
 
 def _install_ipython_shim() -> None:
