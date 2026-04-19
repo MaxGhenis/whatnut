@@ -58,13 +58,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv pip install --system -e ".[docs]"
+          uv pip install --system -e "."
           npm install -g mystmd
 
       - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk
+
+      - name: Pre-render docs
+        run: python scripts/render_docs.py
 
       - name: Build PDF
         run: |
