@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import re
 import sys
+import types
 from pathlib import Path
 
 
@@ -98,8 +99,24 @@ def render_file(path: Path, ns: dict) -> None:
     print(f"[render_docs] wrote {path.relative_to(REPO_ROOT)}")
 
 
+def _install_ipython_shim() -> None:
+    """Expose `from IPython.display import HTML` without installing IPython.
+
+    The paper's code cells write `from IPython.display import HTML` for an
+    interactive Jupyter experience. At Vercel build time we just need the
+    same API surface without pulling in the full IPython stack.
+    """
+    ipython = types.ModuleType("IPython")
+    display = types.ModuleType("IPython.display")
+    display.HTML = _HTML
+    ipython.display = display
+    sys.modules["IPython"] = ipython
+    sys.modules["IPython.display"] = display
+
+
 def main() -> None:
     sys.path.insert(0, str(SRC_DIR))
+    _install_ipython_shim()
     from whatnut.results import r  # noqa: E402
 
     ns: dict = {"r": r, "HTML": _HTML, "__name__": "__render_docs__"}
