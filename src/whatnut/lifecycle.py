@@ -150,9 +150,13 @@ def run_lifecycle(
     cost_discount_factors = 1 / (1 + cost_discount_rate) ** np.arange(n_years)
     total_cost_disc = float(np.sum(annual_costs * cost_discount_factors))
 
-    # ICER
+    # ICER. Treat QALYs within float-noise of zero as zero so a neutral
+    # scenario (no benefit, RR=1.0) returns +inf rather than a huge but
+    # finite value driven by sub-epsilon drift in the survival integration.
     cost_per_qaly = (
-        total_cost_disc / qalys_gained_disc if qalys_gained_disc > 0 else float("inf")
+        total_cost_disc / qalys_gained_disc
+        if qalys_gained_disc > 1e-12
+        else float("inf")
     )
 
     # Overall pathway contributions (weighted by discounted LY)
@@ -250,8 +254,9 @@ def run_lifecycle_vectorized(
     annual_costs = annual_cost * survival_intervention
     total_cost_disc = np.sum(annual_costs * cost_discount[None, :], axis=1)
 
+    qalys_positive = qalys_disc > 1e-12
     cost_per_qaly = np.where(
-        qalys_disc > 0, total_cost_disc / np.where(qalys_disc > 0, qalys_disc, 1.0), np.inf
+        qalys_positive, total_cost_disc / np.where(qalys_positive, qalys_disc, 1.0), np.inf
     )
 
     return LifecycleVectorResult(
