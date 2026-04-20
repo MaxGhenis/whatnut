@@ -33,7 +33,7 @@ format:
     mainfont: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
   pdf:
     documentclass: article
-    pdf-engine: pdflatex
+    pdf-engine: xelatex
     geometry:
       - margin=1in
     fig-cap-location: bottom
