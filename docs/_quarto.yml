@@ -39,6 +39,7 @@ format:
     toc: true
     toc-depth: 3
     number-sections: false
+    mainfont: Latin Modern Roman
 
 bibliography: references.bib
 citeproc: true
