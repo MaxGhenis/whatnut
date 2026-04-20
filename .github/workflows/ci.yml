@@ -43,11 +43,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -57,26 +52,24 @@ jobs:
         uses: astral-sh/setup-uv@v4
 
       - name: Install dependencies
-        run: |
-          uv pip install --system -e "."
-          npm install -g mystmd
+        run: uv pip install --system -e ".[docs]"
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.5.57"
 
       - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk
 
-      - name: Pre-render docs
-        run: python scripts/render_docs.py
-
       - name: Build PDF
-        run: |
-          cd docs
-          myst build --pdf
+        run: quarto render docs/ --to pdf
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: whatnut-pdf
-          path: docs/exports/*.pdf
+          path: docs/_build/*.pdf
           retention-days: 90
