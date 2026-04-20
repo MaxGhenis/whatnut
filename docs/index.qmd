@@ -90,7 +90,7 @@ Walnuts have the highest ALA omega-3 content (2.5 g/28 g), comprising 72% of tot
 
 I implemented a Monte Carlo uncertainty propagation model with hierarchical structure and standardized prior draws (the `τ · z` reparameterization keeps the hierarchical scale numerically well-behaved). The model samples from nutrient-derived priors (no likelihood function or outcome data) and propagates uncertainty through a lifecycle model to estimate life expectancy gains. Because there is no likelihood, the "non-centered parameterization" label sometimes attached to this structure in Bayesian hierarchical inference does not add anything here — it is purely a numpy-level convenience for sampling `θ_nut = θ_nutrients + τ · z`.
 
-![**Figure 1: Model architecture.** The model transforms nut composition into life expectancy estimates through four stages: (1) **Nutrients** from USDA data define each nut's profile; (2) **Pathway effects** translate nutrients into CVD, cancer, and other mortality reductions using meta-analysis priors; (3) **Confounding adjustment** accounts for observational study limitations; (4) **Lifecycle integration** converts relative risks to absolute life years using CDC mortality tables. Technical details (non-centered parameterization, Monte Carlo uncertainty propagation) are described in the Methods text.](_static/figures/model_architecture.png) {#fig-architecture width=100%}
+![**Figure 1: Model architecture.** The model transforms nut composition into life expectancy estimates through four stages: (1) **Nutrients** from USDA data define each nut's profile; (2) **Pathway effects** translate nutrients into CVD, cancer, and other mortality reductions using meta-analysis priors; (3) **Confounding adjustment** accounts for observational study limitations; (4) **Lifecycle integration** converts relative risks to absolute life years using CDC mortality tables. Technical details (non-centered parameterization, Monte Carlo uncertainty propagation) are described in the Methods text.](_static/figures/model_architecture.png){#fig-architecture width="100%"}
 
 **Note on model structure**: This is an **evidence synthesis model** that propagates uncertainty from multiple prior sources (nutrient effect estimates, nut-specific RCT residuals, confounding calibration) through to life expectancy estimates. Unlike traditional Bayesian analyses that update beliefs from outcome data via a likelihood function, this model synthesizes prior information without a likelihood linking to mortality observations. The output distributions represent **propagated prior uncertainty** — the range of plausible life expectancy gains given current evidence — not posterior distributions from data-driven updating. This approach is appropriate because the goal is uncertainty quantification from existing evidence synthesis, not parameter estimation from a novel dataset. Throughout this paper, I use "uncertainty interval" rather than "posterior" to avoid implying data-driven updating where none occurs.
 
@@ -123,7 +123,7 @@ Rather than specifying nut-specific effects directly, I derived expected effects
 
 ††Vitamin E: RCTs of high-dose supplements (SELECT, HOPE-TOO) found null or harmful effects, but these tested pharmacological doses (400-800 IU/day) far exceeding food-based intake. The vitamin E prior reflects food-matrix effects at nutritional doses (7mg from almonds vs 400mg from supplements), with wide uncertainty (SD = 100% of mean for cancer) to account for conflicting evidence. Dropping vitamin E from the model changes walnut QALYs by <2%.
 
-![**Figure 2: Nutrient contributions to CVD mortality reduction.** Heatmap showing how each nutrient contributes to the CVD pathway effect for each nut type. ALA omega-3 is the dominant driver for walnuts (highest contribution), while fiber and magnesium contribute more evenly across nuts. Negative values indicate harmful effects (e.g., saturated fat).](_static/figures/nutrient_contributions.png) {#fig-nutrients width=90%}
+![**Figure 2: Nutrient contributions to CVD mortality reduction.** Heatmap showing how each nutrient contributes to the CVD pathway effect for each nut type. ALA omega-3 is the dominant driver for walnuts (highest contribution), while fiber and magnesium contribute more evenly across nuts. Negative values indicate harmful effects (e.g., saturated fat).](_static/figures/nutrient_contributions.png){#fig-nutrients width="90%"}
 
 #### Hierarchical structure
 
@@ -147,7 +147,7 @@ The model includes a causal fraction parameter with Beta(`{python} r.confounding
 
 I propagate Monte Carlo samples of pathway-specific relative risks through a lifecycle model using CDC life tables for age-specific mortality (NVSR Vol 72 No 12), age-varying cause-of-death fractions derived from Table 6 of @xu2024deaths (2021 US total population), and age-specific quality weights smoothed from EQ-5D population norms in @sullivan2006catalogue (~0.89 at age 40, declining with age). Under the NVSR-based cause fractions, the combined heart-disease plus cerebrovascular share of all-cause mortality rises from ~15% at age 40 to ~29% at age 80 (see appendix); this is ~3–5 pp narrower than the broader ICD-10 I00–I99 aggregate used in CDC WONDER. Health gains are undiscounted in the base case, while costs are discounted at 3% and survival-weighted using the intervention survival curve.
 
-![**Figure 3: Age-varying cause-of-death fractions.** Derived from Table 6 of @xu2024deaths (2021 US total population). The combined heart disease + cerebrovascular share of all-cause mortality rises from ~15% at age 40 to ~29% at age 80 (broader ICD-10 I00–I99 CVD would add ~3–5 pp), while malignant neoplasms peak in midlife. This age structure means CVD mortality reductions have larger absolute effects at older ages, when most remaining life years are realized.](_static/figures/cause_fractions.png) {#fig-cause-fractions width=85%}
+![**Figure 3: Age-varying cause-of-death fractions.** Derived from Table 6 of @xu2024deaths (2021 US total population). The combined heart disease + cerebrovascular share of all-cause mortality rises from ~15% at age 40 to ~29% at age 80 (broader ICD-10 I00–I99 CVD would add ~3–5 pp), while malignant neoplasms peak in midlife. This age structure means CVD mortality reductions have larger absolute effects at older ages, when most remaining life years are realized.](_static/figures/cause_fractions.png){#fig-cause-fractions width="85%"}
 
 ### Confounding calibration
 
@@ -163,7 +163,7 @@ The source meta-analyses adjusted for measured confounders (age, sex, body mass 
 
 **Prior specification**: Synthesizing this evidence, I adopt a Beta(`{python} r.confounding_alpha`, `{python} r.confounding_beta`) prior with mean `{python} r.confounding_mean` and 95% CI: `{python} f"{int(round(r.confounding_ci_lower * 100))}-{int(round(r.confounding_ci_upper * 100))}"`%. This is intentionally skeptical rather than agnostic. The LDL floor, largely null Mendelian-randomization evidence for tree-nut exposures (with an anomalous positive processed-peanut/IHD signal that the authors themselves treat as driven by processing rather than peanuts), and the broader history of healthy-user bias in nutrition all argue against treating much of the cohort association as causal by default. Golestan and substitution evidence keep the prior from collapsing fully to zero, but the base case no longer assumes anything close to a 50% causal carry-through.
 
-![**Figure 4: Confounding calibration.** Evidence synthesis for the causal fraction prior. The base case uses a skeptical Beta(`{python} r.confounding_alpha`, `{python} r.confounding_beta`) prior centered at `{python} f"{int(round(r.confounding_mean * 100))}"`%, reflecting the gap between cohort associations and more causally credible evidence sources.](_static/figures/confounding_calibration.png) {#fig-confounding width=90%}
+![**Figure 4: Confounding calibration.** Evidence synthesis for the causal fraction prior. The base case uses a skeptical Beta(`{python} r.confounding_alpha`, `{python} r.confounding_beta`) prior centered at `{python} f"{int(round(r.confounding_mean * 100))}"`%, reflecting the gap between cohort associations and more causally credible evidence sources.](_static/figures/confounding_calibration.png){#fig-confounding width="90%"}
 
 ### Target population
 
@@ -193,7 +193,7 @@ I verified that individual Monte Carlo draws produce scientifically plausible ou
 
 The model estimates that a `{python} r.target_age`-year-old consuming 28g/day of nuts over their remaining lifespan gains `{python} r.life_years_range` additional life years (`{python} r.months_range` months), with walnuts (`{python} r.walnut.life_years_fmt` years) ranking highest and cashews (`{python} r.cashew.life_years_fmt` years) lowest. Under the skeptical base case, these are modest absolute effects rather than transformative gains. Approximately `{python} r.cvd_contribution`% of modeled benefit operates through CVD mortality prevention.
 
-![**Figure 5: Life years gained by nut type.** Forest plot showing mean life years gained with 95% uncertainty intervals. Walnuts rank highest due to ALA omega-3 content and a modest CVD-specific residual adjustment. For several nut types, the interval overlaps zero, reflecting meaningful uncertainty.](_static/figures/forest_plot.png) {#fig-forest width=90%}
+![**Figure 5: Life years gained by nut type.** Forest plot showing mean life years gained with 95% uncertainty intervals. Walnuts rank highest due to ALA omega-3 content and a modest CVD-specific residual adjustment. For several nut types, the interval overlaps zero, reflecting meaningful uncertainty.](_static/figures/forest_plot.png){#fig-forest width="90%"}
 
 **Table 3: Life year and QALY estimates by nut type.** Monte Carlo estimates (`{python} r.n_samples` samples, seed=`{python} r.seed`). Life years (LY) are the primary metric. QALYs weight life years by age-specific quality of life using 0% health discounting. `P(>0)` and `P(<0)` summarize the direction of expected net benefit under the sampled prior draws.
 
@@ -223,7 +223,7 @@ from IPython.display import HTML
 HTML(r.table_4_pathway_rrs())
 ```
 
-![**Figure 6: Pathway-specific mortality reductions.** Bar chart comparing relative risk reductions (1-RR) across mortality pathways for each nut. The skeptical base case makes CVD the dominant pathway and treats cancer and other-cause effects as near-null for many nuts.](_static/figures/pathway_rrs.png) {#fig-pathway-rrs width=90%}
+![**Figure 6: Pathway-specific mortality reductions.** Bar chart comparing relative risk reductions (1-RR) across mortality pathways for each nut. The skeptical base case makes CVD the dominant pathway and treats cancer and other-cause effects as near-null for many nuts.](_static/figures/pathway_rrs.png){#fig-pathway-rrs width="90%"}
 
 ### Pathway contributions
 
@@ -245,7 +245,7 @@ ICERs range from `{python} r.icer_range`/QALY under the current specification. B
 
 These ICERs should be treated as secondary outputs. They depend on the chosen cost discount rate, the assumption of sustained intake, and the unresolved question of what food nuts replace in practice.
 
-![**Figure 7: Cost-effectiveness by nut type.** Incremental cost-effectiveness ratios (ICERs). Lower-cost nuts remain competitive despite smaller benefits, while expensive nuts become hard to justify once the mortality estimates are shrunk aggressively.](_static/figures/icer_comparison.png) {#fig-icer width=90%}
+![**Figure 7: Cost-effectiveness by nut type.** Incremental cost-effectiveness ratios (ICERs). Lower-cost nuts remain competitive despite smaller benefits, while expensive nuts become hard to justify once the mortality estimates are shrunk aggressively.](_static/figures/icer_comparison.png){#fig-icer width="90%"}
 
 ### Uncertainty quantification
 
@@ -327,8 +327,3 @@ Using a skeptical Monte Carlo evidence-synthesis framework with pathway-specific
 
 **Analysis plan**: This analysis was not pre-registered. The prior specification, pathway decomposition, and evidence tiers were finalized iteratively against meta-analytic literature and peer review rather than written ex ante, so results should be interpreted as a reproducible retrospective analysis rather than a confirmatory test of a pre-specified hypothesis.
 
-```{bibliography}
-```
-
-```{tableofcontents}
-```

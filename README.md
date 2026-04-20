@@ -63,7 +63,10 @@ for nid, na in results.nuts.items():
 
 ## Documentation
 
-Full methodology and interactive analysis available in the MyST documentation.
+Full methodology, figures, and an interactive tour of the model are at
+[maxghenis.com/whatnut](https://maxghenis.com/whatnut). The paper is built
+with [Quarto](https://quarto.org) from `docs/index.qmd` and
+`docs/appendix.qmd`.
 
 ## Reproducibility
 
@@ -85,9 +88,14 @@ python -m whatnut.pipeline --generate
 **Reproducibility**: Same seed (42) produces identical results across platforms.
 
 ### Build the paper
+Requires [Quarto](https://quarto.org/docs/get-started/) installed and the
+`[docs]` extras for the Jupyter kernel:
+
 ```bash
-cd docs/
-myst build --html  # or --pdf
+pip install -e ".[docs]"
+quarto render docs/                 # HTML + figures into docs/_build/
+quarto render docs/ --to pdf        # PDF (needs LaTeX: MacTeX, TeX Live, etc.)
+quarto preview docs/                # live reload during edits
 ```
 
 ### Data sources
