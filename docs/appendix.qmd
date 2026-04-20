@@ -100,6 +100,7 @@ For a protective exposure with hazard ratio $HR$, I first convert to relative ri
 $$E\text{-value} = RR + \sqrt{RR \times (RR - 1)}$$
 
 For HR = 0.78:
+
 - $RR = 1/0.78 = 1.28$
 - $E\text{-value} = 1.28 + \sqrt{1.28 \times 0.28} = 1.28 + 0.60 = 1.88$
 

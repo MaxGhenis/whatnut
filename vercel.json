@@ -3,6 +3,5 @@
   "buildCommand": "PATH=/tmp/quarto/bin:$PATH quarto render docs/ --to html && mkdir -p public/whatnut && cp -R docs/_build/. public/whatnut/",
   "outputDirectory": "public",
   "framework": null,
-  "cleanUrls": true,
-  "trailingSlash": true
+  "cleanUrls": true
 }

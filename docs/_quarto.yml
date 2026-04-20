@@ -28,6 +28,7 @@ format:
     toc-depth: 3
     code-fold: true
     fig-cap-location: bottom
+    format-links: false
     html-math-method: katex
     mainfont: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
   pdf:

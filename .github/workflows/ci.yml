@@ -37,8 +37,8 @@ jobs:
           files: ./coverage.xml
           fail_ci_if_error: false
 
-  # PDF build only. HTML is built and deployed by Vercel from vercel.json.
-  pdf:
+  # Full docs build: same Quarto invocation Vercel uses, plus PDF export.
+  docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -57,14 +57,17 @@ jobs:
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.5.57"
+          version: "1.9.37"
+
+      - name: Render HTML (same as Vercel)
+        run: quarto render docs/ --to html
 
       - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk
 
-      - name: Build PDF
+      - name: Render PDF
         run: quarto render docs/ --to pdf
 
       - name: Upload PDF artifact
