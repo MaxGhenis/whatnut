@@ -1,14 +1,10 @@
 ---
-kernelspec:
-  name: python3
-  display_name: Python 3
+title: "Technical Appendix"
 ---
 
-# Technical Appendix
-
-```{code-cell} python
-:tags: [remove-cell]
-
+```{python}
+#| echo: false
+#| output: false
 from whatnut.results import r
 ```
 
@@ -38,9 +34,9 @@ The analysis uses a hierarchical forward sampling model with standardized prior 
 
 **Tiered publication-bias shrinkage:** Steps 3–4 import two layers from the newer Optiqal framework. HR-centering ensures the aggregate *pre-adjustment* RR has the expected mean $\exp(\sum_n \mu_n x_{nut,n})$ rather than one inflated by the half-variance of the log-RR; after the nut-specific adjustment multiplication in step 5, a residual Jensen gap of order $\tfrac{1}{2}\mathrm{Var}(a_{\text{shrunk}})(\sum_n \mu_n x_{nut,n})^2$ remains that the base case leaves uncorrected. The numerical effect is small (under 0.15 pp on RR, worst case walnut CVD) but the gap is noted for completeness. Tiered shrinkage addresses the well-documented gap between initial effect sizes and replicated effects as evidence quality falls: strong-evidence nuts retain 85% of the nominal central estimate for the nut-specific residual, moderate 70%, limited 50%. Following optiqal's convention, only the central estimate is shrunk; the adjustment SD is left intact so that uncertainty reflects replication risk rather than the attenuation factor itself. Nutrient priors (Table 2) are already drawn from meta-analyses, so they are assumed pre-shrunk and this layer only touches the nut-specific residual.
 
-**Monte Carlo sampling:** The model draws {eval}`f"{r.n_samples:,}"` forward samples from priors (no MCMC is needed since there is no likelihood). A fixed seed of {eval}`r.seed` ensures reproducibility; runtime is well under one second using vectorized NumPy with no external inference library required.
+**Monte Carlo sampling:** The model draws `{python} f"{r.n_samples:,}"` forward samples from priors (no MCMC is needed since there is no likelihood). A fixed seed of `{python} r.seed` ensures reproducibility; runtime is well under one second using vectorized NumPy with no external inference library required.
 
-**Lifecycle integration:** For each of the {eval}`f"{r.n_samples:,}"` samples, the model extracts pathway-specific RRs (already confounding-adjusted), computes age-weighted mortality reduction using CDC life tables, applies the smoothed EQ-5D quality-weight trajectory by age, and computes undiscounted QALYs alongside cost-discounted lifetime costs.
+**Lifecycle integration:** For each of the `{python} f"{r.n_samples:,}"` samples, the model extracts pathway-specific RRs (already confounding-adjusted), computes age-weighted mortality reduction using CDC life tables, applies the smoothed EQ-5D quality-weight trajectory by age, and computes undiscounted QALYs alongside cost-discounted lifetime costs.
 
 ## Nut-specific adjustment priors
 
@@ -50,7 +46,7 @@ These adjustment factors are **priors** used in the hierarchical model. The adju
 
 Adjustments capture **residual effects** from nut-specific RCTs after accounting for nutrient composition. The derivation for walnut's CVD adjustment illustrates the method:
 
-In the PREDIMED trial — 2008 pilot biomarker study {cite:p}`ros2008mediterranean`; primary CVD-endpoint results {cite:p}`estruch2018primary` — the nut intervention arm (which included 15g walnuts, 7.5g almonds, and 7.5g hazelnuts daily, not walnuts alone) showed approximately 30% reduction in major cardiovascular events. Attributing much of that residual to walnuts specifically is too aggressive: the mixed nut arm does not separately identify walnut-specific causal effects. The revised model therefore treats walnut's residual edge as modest, using a CVD adjustment of 1.10 with a wide SD (0.12) rather than the much larger multiplier used previously.
+In the PREDIMED trial — 2008 pilot biomarker study [@ros2008mediterranean]; primary CVD-endpoint results [@estruch2018primary] — the nut intervention arm (which included 15g walnuts, 7.5g almonds, and 7.5g hazelnuts daily, not walnuts alone) showed approximately 30% reduction in major cardiovascular events. Attributing much of that residual to walnuts specifically is too aggressive: the mixed nut arm does not separately identify walnut-specific causal effects. The revised model therefore treats walnut's residual edge as modest, using a CVD adjustment of 1.10 with a wide SD (0.12) rather than the much larger multiplier used previously.
 
 Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects are well-explained by nutrient composition (vitamin E, fiber, MUFA). This ensures adjustments represent genuine "beyond-nutrient" effects rather than artifacts.
 
@@ -64,16 +60,16 @@ Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects
 | Pecan | 1.03 (0.08) | 1.00 (0.10) | 1.00 (0.10) | Moderate | Small residual CVD effect only |
 | Macadamia | 1.02 (0.08) | 1.00 (0.10) | 1.00 (0.10) | Moderate | MUFA profile, but weak residual evidence |
 | Peanut | 0.98 (0.06) | 1.00 (0.06) | 1.00 (0.06) | Strong | Slightly below tree nuts on CVD |
-| Hazelnut | 1.03 (0.07) | 1.00 (0.08) | 1.00 (0.08) | Moderate | Part of PREDIMED nut arm {cite:p}`estruch2018primary`; lipid improvements in {cite:t}`orem2013hazelnut` |
+| Hazelnut | 1.03 (0.07) | 1.00 (0.08) | 1.00 (0.08) | Moderate | Part of PREDIMED nut arm [@estruch2018primary]; lipid improvements in @orem2013hazelnut |
 | Cashew | 0.97 (0.10) | 1.00 (0.10) | 1.00 (0.10) | Limited | Mixed RCT evidence, near-neutral |
 
-**Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers {cite:p}`wu2010aflatoxin`. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
+**Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers [@wu2010aflatoxin]. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
 
 Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty.
 
 ## Confounding prior derivation
 
-I adopt a **skeptical** Beta({eval}`r.confounding_alpha`, {eval}`r.confounding_beta`) prior with mean {eval}`r.confounding_mean` and 95% interval {eval}`f"{r.confounding_ci_lower:.2f}-{r.confounding_ci_upper:.2f}"` (roughly {eval}`f"{int(round(r.confounding_ci_lower * 100))}-{int(round(r.confounding_ci_upper * 100))}"`%). This prior reflects healthy-user bias in nutrition cohorts, weak Mendelian-randomization support, and the gap between biomarker changes and hard outcomes.
+I adopt a **skeptical** Beta(`{python} r.confounding_alpha`, `{python} r.confounding_beta`) prior with mean `{python} r.confounding_mean` and 95% interval `{python} f"{r.confounding_ci_lower:.2f}-{r.confounding_ci_upper:.2f}"` (roughly `{python} f"{int(round(r.confounding_ci_lower * 100))}-{int(round(r.confounding_ci_upper * 100))}"`%). This prior reflects healthy-user bias in nutrition cohorts, weak Mendelian-randomization support, and the gap between biomarker changes and hard outcomes.
 
 Three evidence sources inform this choice:
 
@@ -89,15 +85,15 @@ The LDL pathway still provides a floor rather than a ceiling, but the model no l
 
 ### Data sources
 
-The cost-effectiveness model draws on CDC National Vital Statistics (2021) life tables for age-specific mortality (NVSR Vol 72 No 12), cause-of-death fractions from Table 6 of {cite:t}`xu2024deaths`, age-varying health-related quality of life weights derived from Sullivan & Ghushchyan (2006) US EQ-5D index, a 3% annual discount rate for costs, and per-nut retail prices retrieved from nuts.com on 2026-04-19 ({cite:p}`whatnut2026prices`). The raw price snapshot (one row per nut, with product URL, package size, and price) lives at `src/whatnut/data/raw/retail_prices/retail_prices.csv`; `whatnut.data_build.retail_prices` reads that CSV, validates the row-level math, and writes the per-nut median to nuts.yaml.
+The cost-effectiveness model draws on CDC National Vital Statistics (2021) life tables for age-specific mortality (NVSR Vol 72 No 12), cause-of-death fractions from Table 6 of @xu2024deaths, age-varying health-related quality of life weights derived from Sullivan & Ghushchyan (2006) US EQ-5D index, a 3% annual discount rate for costs, and per-nut retail prices retrieved from nuts.com on 2026-04-19 ([@whatnut2026prices]). The raw price snapshot (one row per nut, with product URL, package size, and price) lives at `src/whatnut/data/raw/retail_prices/retail_prices.csv`; `whatnut.data_build.retail_prices` reads that CSV, validates the row-level math, and writes the per-nut median to nuts.yaml.
 
 ### Lifecycle model
 
-For a 40-year-old beginning daily nut consumption, the current model estimates {eval}`r.life_years_range` additional life years ({eval}`r.months_range` months) across nut types, corresponding to {eval}`r.qaly_range` QALYs under 0% health discounting. ICERs range from approximately {eval}`r.icer_range` per QALY across nut types.
+For a 40-year-old beginning daily nut consumption, the current model estimates `{python} r.life_years_range` additional life years (`{python} r.months_range` months) across nut types, corresponding to `{python} r.qaly_range` QALYs under 0% health discounting. ICERs range from approximately `{python} r.icer_range` per QALY across nut types.
 
 ## E-value analysis
 
-Per {cite}`vanderweele2017sensitivity`, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
+Per @vanderweele2017sensitivity, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
 
 For a protective exposure with hazard ratio $HR$, I first convert to relative risk $RR = 1/HR$, then calculate:
 
@@ -111,7 +107,7 @@ An unmeasured confounder would need RR ≥ 1.88 with both nut consumption and mo
 
 ## Pathway-specific mortality effects
 
-From {cite}`aune2016nut`:
+From @aune2016nut:
 
 | Cause of Death | Relative Risk | 95% CI | Deaths in Meta-Analysis |
 |----------------|--------------|--------|------------------------|
@@ -124,7 +120,7 @@ Note: CHD = coronary heart disease; CVD = cardiovascular disease (broader catego
 
 ### Age-varying cause fractions
 
-Cause-of-death proportions vary by age, extracted from Table 6 of {cite:t}`xu2024deaths`. `whatnut.data_build.cdc_cause_fractions` parses the 2021 rows for All causes, Diseases of heart, Cerebrovascular diseases, and Malignant neoplasms; CVD below is defined as heart + cerebrovascular (ICD-10 I00–I09 + I11 + I13 + I20–I51 + I60–I69), narrower than the full ICD-10 I00–I99 block by ~3–5 pp. Rows below report fractions at the lower bound of each NVSR 10-year age group (e.g., "40" is the 35–44 band):
+Cause-of-death proportions vary by age, extracted from Table 6 of @xu2024deaths. `whatnut.data_build.cdc_cause_fractions` parses the 2021 rows for All causes, Diseases of heart, Cerebrovascular diseases, and Malignant neoplasms; CVD below is defined as heart + cerebrovascular (ICD-10 I00–I09 + I11 + I13 + I20–I51 + I60–I69), narrower than the full ICD-10 I00–I99 block by ~3–5 pp. Rows below report fractions at the lower bound of each NVSR 10-year age group (e.g., "40" is the 35–44 band):
 
 | Age (group start) | CVD | Cancer | Other |
 |-------------------|-----|--------|-------|
@@ -140,7 +136,7 @@ In Aune 2016's meta-analytic estimates above, CVD carries the lowest (most prote
 
 ## Comparison with direct meta-analysis sampling
 
-An alternative approach samples cause-specific relative risks directly from meta-analysis estimates (e.g., log-normal distributions based on {cite:t}`aune2016nut`) rather than deriving them from nutrient composition. This simpler approach yields broadly comparable results because the nutrient-derived priors are calibrated to match meta-analysis estimates.
+An alternative approach samples cause-specific relative risks directly from meta-analysis estimates (e.g., log-normal distributions based on @aune2016nut) rather than deriving them from nutrient composition. This simpler approach yields broadly comparable results because the nutrient-derived priors are calibrated to match meta-analysis estimates.
 
 The nutrient-derived approach used in this analysis provides several advantages over direct meta-analysis sampling. First, it offers mechanistic interpretability by attributing effects to specific nutrients (ALA, fiber, magnesium). Second, poorly-evidenced nuts shrink toward nutrient-predicted effects through principled hierarchical shrinkage. Third, each prior is traceable to independent meta-analyses, ensuring transparency. Fourth, compositional differences drive differential estimates across nut types—for example, the model can distinguish walnuts from almonds based on ALA content rather than relying on a single pooled nut estimate.
 

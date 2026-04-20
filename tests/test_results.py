@@ -94,7 +94,6 @@ class TestNutResultProperties:
     def test_walnut_icer_fmt(self):
         icer_str = r.walnut.icer_fmt
         assert icer_str.startswith("$")
-        # Remove $ and commas, should be a valid number
         num_str = icer_str.replace("$", "").replace(",", "")
         float(num_str)  # Should not raise
 

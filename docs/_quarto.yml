@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: _build
+  render:
+    - index.qmd
+    - appendix.qmd
+
+website:
+  title: "What Nut?"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Paper
+      - href: appendix.qmd
+        text: Technical Appendix
+    right:
+      - icon: github
+        href: https://github.com/MaxGhenis/whatnut
+
+execute:
+  echo: false
+  warning: false
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    fig-cap-location: bottom
+    html-math-method: katex
+    mainfont: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=1in
+    fig-cap-location: bottom
+    toc: true
+    toc-depth: 3
+    number-sections: false
+
+bibliography: references.bib
+citeproc: true
+
+author:
+  - name: Max Ghenis
+    email: max@maxghenis.com
