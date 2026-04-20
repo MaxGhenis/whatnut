@@ -33,13 +33,13 @@ format:
     mainfont: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
   pdf:
     documentclass: article
+    pdf-engine: pdflatex
     geometry:
       - margin=1in
     fig-cap-location: bottom
     toc: true
     toc-depth: 3
     number-sections: false
-    mainfont: Latin Modern Roman
 
 bibliography: references.bib
 citeproc: true
