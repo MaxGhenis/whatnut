@@ -1,5 +1,5 @@
 {
-  "installCommand": "pip install --break-system-packages -e '.[docs]' && curl -L -o /tmp/quarto.tar.gz https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-linux-amd64.tar.gz && mkdir -p /tmp/quarto && tar -xzf /tmp/quarto.tar.gz -C /tmp/quarto --strip-components=1",
+  "installCommand": "bash scripts/install_quarto.sh",
   "buildCommand": "PATH=/tmp/quarto/bin:$PATH quarto render docs/ --to html && mkdir -p public/whatnut && cp -R docs/_build/. public/whatnut/",
   "outputDirectory": "public",
   "framework": null,
