@@ -1,0 +1,107 @@
+/*-- scss:defaults --*/
+// Design tokens mirrored from maxghenis.com src/styles/global.css so the
+// paper sits in the same visual world as the rest of the site. Keep the
+// CSS custom properties too (the injected site header uses them).
+
+$ink:         #0f172a;
+$ink-soft:    #334155;
+$ink-muted:   #64748b;
+$cream:       #fefdf8;
+$cream-dark:  #faf9f4;
+$amber:       #f59e0b;
+$amber-dark:  #d97706;
+
+// Bootstrap colour overrides.
+$body-bg:      $cream;
+$body-color:   $ink-soft;
+$primary:      $amber-dark;
+$link-color:   $amber-dark;
+$link-hover-color: $amber;
+
+// Typography. Playfair Display for headings and body logo, Source Sans 3
+// for prose, JetBrains Mono for code — the same trio as the Astro site.
+$font-family-sans-serif: "Source Sans 3", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+$headings-font-family: "Playfair Display", Georgia, serif;
+$headings-font-weight: 600;
+$headings-color: $ink;
+$headings-line-height: 1.2;
+
+$font-size-base: 1rem;
+$line-height-base: 1.7;
+
+// Soften the default table so it reads like prose.
+$table-cell-padding-y: 0.5rem;
+$table-cell-padding-x: 0.75rem;
+$table-border-color: rgba(15, 23, 42, 0.08);
+
+// Keep the built-in TOC sidebar tidy.
+$border-radius: 8px;
+
+/*-- scss:rules --*/
+
+// Typography lands on top of Bootstrap. These match the maxghenis.com
+// global.css rhythm: sentence-case h1, tighter letter-spacing on headings,
+// accent underline on h2.
+
+:root {
+  --whatnut-ink: #{$ink};
+  --whatnut-ink-soft: #{$ink-soft};
+  --whatnut-ink-muted: #{$ink-muted};
+  --whatnut-cream: #{$cream};
+  --whatnut-cream-dark: #{$cream-dark};
+  --whatnut-amber: #{$amber};
+  --whatnut-amber-dark: #{$amber-dark};
+  --whatnut-amber-glow: rgba(245, 158, 11, 0.15);
+}
+
+body {
+  font-feature-settings: "ss01" on, "cv11" on;
+}
+
+h1 {
+  font-size: 2.75rem;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 2.5em;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid rgba(15, 23, 42, 0.08);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 2em;
+}
+
+.quarto-title-block .quarto-title-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #fefdf8;
+}
+
+.quarto-title-block .quarto-title-banner h1.title {
+  color: #fefdf8;
+}
+
+.quarto-title-meta,
+.quarto-title-authors {
+  color: $ink-muted;
+}
+
+// Tables inherit Quarto's classes but need a gentler header.
+table.table thead th {
+  background: $cream-dark;
+  border-bottom: 2px solid $ink;
+  font-family: $font-family-sans-serif;
+  font-weight: 600;
+  color: $ink;
+}
+
+// Links inside prose use the amber accent and keep the 150ms fade.
+main a {
+  transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
