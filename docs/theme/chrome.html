@@ -24,12 +24,14 @@
     src: url('https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2') format('woff2');
   }
 
-  /* Site header */
+  /* Site header — stretch full-width so Quarto's right TOC can't collide
+     with the socials, and force it above the sidebar sticky stack. */
   .wn-site-header {
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: rgba(254, 253, 248, 0.85);
+    z-index: 1050;
+    width: 100%;
+    background: rgba(254, 253, 248, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(15, 23, 42, 0.06);
@@ -38,9 +40,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
+    max-width: none;
+    margin: 0;
+    padding: 0.75rem 2rem;
     gap: 1.5rem;
   }
   .wn-logo-link {
@@ -48,12 +50,15 @@
     align-items: center;
     text-decoration: none;
     color: var(--whatnut-ink, #0f172a);
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
   .wn-logo-text {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    white-space: nowrap;
   }
   .wn-nav-links {
     display: flex;
@@ -174,11 +179,20 @@
     .wn-footer-bottom { flex-direction: column; gap: 0.5rem; }
   }
 
-  /* Pad the Quarto content so it doesn't butt against the sticky header. */
-  body > main.content,
-  body > div#quarto-content {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+  /* Keep Quarto's sticky right TOC below the sticky site header so the
+     "On this page" title doesn't slide under the socials. Quarto sets
+     the TOC position via --bs-body-... tokens, but the simplest fix is a
+     hard top offset sized to match the header. */
+  #quarto-margin-sidebar,
+  nav#TOC,
+  .sidebar.margin-sidebar {
+    top: 4.5rem !important;
+  }
+  @media (max-width: 768px) {
+    #quarto-margin-sidebar,
+    nav#TOC,
+    .sidebar.margin-sidebar {
+      top: 3.75rem !important;
+    }
   }
 </style>
