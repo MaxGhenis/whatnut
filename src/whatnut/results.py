@@ -9,19 +9,24 @@ module, e.g., `` `{python} r.walnut.qaly` ``.
 Values are generated from code (not hardcoded), ensuring reproducibility.
 The JSON file is committed to git as the reproducibility checkpoint.
 
-Exception: `table_7_sensitivity()` runs the analysis live against
-alternative confounding priors at doc-build time rather than reading
-pre-computed values, so the sensitivity table always stays in sync with
-the current model. This is the only result that is not materialized in
-results.json.
+The report layer is artifact-only: tables never rerun the scientific model.
 """
 
-import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from whatnut.artifact import read_results_artifact
 
 RESULTS_PATH = Path(__file__).parent / "data" / "results.json"
+
+
+def _natural_join(items: list[str]) -> str:
+    """Join a short list for prose."""
+    if len(items) <= 1:
+        return "".join(items)
+    if len(items) == 2:
+        return " and ".join(items)
+    return f"{', '.join(items[:-1])}, and {items[-1]}"
 
 
 @dataclass
@@ -34,15 +39,25 @@ class NutResult:
     qaly_ci_lower: float
     qaly_ci_upper: float
     qaly_undiscounted_mean: float
+    qaly_undiscounted_ci_lower: float
+    qaly_undiscounted_ci_upper: float
+    expected_upside: float
+    expected_downside: float
     p_positive: float
     p_negative: float
     life_years: float
     life_years_ci_lower: float
     life_years_ci_upper: float
-    icer: float
-    icer_ci_lower: float
-    icer_ci_upper: float | None
+    icer: float | None
+    icer_undiscounted: float | None
+    p_nmb_positive: float
+    p_nmb_positive_undiscounted: float
+    p_optimal: float
+    expected_net_monetary_benefit: float
+    expected_net_monetary_benefit_undiscounted: float
+    nut_alternative_rank: int
     annual_cost: float
+    lifetime_cost: float
     rr_cvd: float
     rr_cancer: float
     rr_other: float
@@ -52,21 +67,20 @@ class NutResult:
 
     @property
     def qaly(self) -> str:
-        return f"{self.qaly_mean:.2f}"
+        return f"{self.qaly_mean:.3f}"
 
     @property
     def qaly_ci(self) -> str:
-        return f"[{self.qaly_ci_lower:.2f}, {self.qaly_ci_upper:.2f}]"
+        return f"[{self.qaly_ci_lower:.3f}, {self.qaly_ci_upper:.3f}]"
+
+    @property
+    def qaly_model_interval(self) -> str:
+        """Formatted 95% Monte Carlo model interval."""
+        return self.qaly_ci
 
     @property
     def icer_fmt(self) -> str:
-        return f"${self.icer:,.0f}"
-
-    @property
-    def icer_ci_fmt(self) -> str:
-        if self.icer_ci_upper is None:
-            return f"[${self.icer_ci_lower:,.0f}, undefined]"
-        return f"[${self.icer_ci_lower:,.0f}, ${self.icer_ci_upper:,.0f}]"
+        return "undefined" if self.icer is None else f"${self.icer:,.0f}"
 
     @property
     def life_years_fmt(self) -> str:
@@ -86,7 +100,27 @@ class NutResult:
 
     @property
     def qaly_undiscounted_fmt(self) -> str:
-        return f"{self.qaly_undiscounted:.2f}"
+        return f"{self.qaly_undiscounted:.3f}"
+
+    @property
+    def qaly_undiscounted_ci(self) -> str:
+        return (
+            f"[{self.qaly_undiscounted_ci_lower:.3f}, "
+            f"{self.qaly_undiscounted_ci_upper:.3f}]"
+        )
+
+    @property
+    def icer_undiscounted_fmt(self) -> str:
+        if self.icer_undiscounted is None:
+            return "undefined"
+        return f"${self.icer_undiscounted:,.0f}"
+
+    @property
+    def expected_nmb_fmt(self) -> str:
+        value = self.expected_net_monetary_benefit
+        if value < 0:
+            return f"-${abs(value):,.0f}"
+        return f"${value:,.0f}"
 
 
 @dataclass
@@ -110,11 +144,15 @@ class PaperResults:
     """
 
     # Model parameters
+    schema_version: str
     seed: int
     n_samples: int
     start_age: int
     qaly_discount_rate: float
     cost_discount_rate: float
+    undiscounted_qaly_discount_rate: float
+    undiscounted_cost_discount_rate: float
+    willingness_to_pay: float
 
     # Confounding prior (alpha/beta/mean from JSON; CI derived from Beta ppf)
     confounding_alpha: float
@@ -146,7 +184,12 @@ class PaperResults:
     nice_lower_gbp: int = field(default=25000)
     nice_upper_gbp: int = field(default=35000)
     gbp_usd_rate: float = field(default=1.34)
-    icer_threshold: int = field(default=50000)
+    reference_case: dict = field(default_factory=dict)
+    decision_context: dict = field(default_factory=dict)
+    decision_summary: dict = field(default_factory=dict)
+    model_interval: dict = field(default_factory=dict)
+    methodology_provenance: dict = field(default_factory=dict)
+    sensitivity_results: dict = field(default_factory=dict)
 
     # Nut results (populated from JSON)
     nuts: dict[str, NutResult] = field(default_factory=dict)
@@ -198,8 +241,124 @@ class PaperResults:
 
     @property
     def icer_range(self) -> str:
-        vals = [n.icer for n in self.nuts.values()]
+        vals = [n.icer for n in self.nuts.values() if n.icer is not None]
+        if not vals:
+            return "undefined"
         return f"${min(vals):,.0f}-${max(vals):,.0f}"
+
+    @property
+    def icer_undiscounted_range(self) -> str:
+        vals = [
+            n.icer_undiscounted
+            for n in self.nuts.values()
+            if n.icer_undiscounted is not None
+        ]
+        if not vals:
+            return "undefined"
+        return f"${min(vals):,.0f}-${max(vals):,.0f}"
+
+    @property
+    def nut_alternative_ranking(self) -> list[NutResult]:
+        """Nut-only ordering by expected NMB; comparator is separate."""
+        return sorted(self.nuts.values(), key=lambda nut: nut.nut_alternative_rank)
+
+    @property
+    def best_nut_alternative(self) -> NutResult:
+        return self.nuts[self.decision_summary["best_nut_alternative_id"]]
+
+    @property
+    def highest_health_gain_nut(self) -> NutResult:
+        return max(self.nuts.values(), key=lambda nut: nut.life_years)
+
+    @property
+    def lowest_icer_nut(self) -> NutResult | None:
+        defined = [nut for nut in self.nuts.values() if nut.icer is not None]
+        return min(defined, key=lambda nut: nut.icer) if defined else None
+
+    @property
+    def highest_health_gain_summary(self) -> str:
+        nut = self.highest_health_gain_nut
+        return (
+            f"{nut.name}s yield the largest expected gain "
+            f"({nut.life_years_fmt} life years)"
+        )
+
+    @property
+    def lowest_icer_summary(self) -> str:
+        nut = self.lowest_icer_nut
+        if nut is None:
+            return "No expected ICER is defined because expected QALY gains are non-positive"
+        return f"{nut.name}s have the lowest defined expected ICER"
+
+    @property
+    def health_gain_and_icer_summary(self) -> str:
+        health_nut = self.highest_health_gain_nut
+        icer_nut = self.lowest_icer_nut
+        health_text = (
+            f"{health_nut.name}s yield the largest expected gain "
+            f"({health_nut.life_years_fmt} life years)"
+        )
+        if icer_nut is None:
+            return (
+                f"{health_text}; no expected ICER is defined because expected "
+                "QALY gains are non-positive"
+            )
+        if icer_nut is health_nut or icer_nut.name == health_nut.name:
+            return f"{health_text}; they also have the lowest defined expected ICER"
+        return f"{health_text}; {icer_nut.name}s have the lowest defined expected ICER"
+
+    @property
+    def nut_ranking_summary(self) -> str:
+        ranked = self.nut_alternative_ranking
+        names = [f"{nut.name.lower()}s" for nut in ranked[:3]]
+        return f"the top three nut alternatives are {_natural_join(names)}"
+
+    @property
+    def decision_result_sentence(self) -> str:
+        """Dynamic conclusion for the generated willingness-to-pay scenario."""
+        recommended_ids = self.decision_summary["recommended_option_ids"]
+        recommended_nuts = [
+            self.nuts[option_id]
+            for option_id in recommended_ids
+            if option_id in self.nuts
+        ]
+        includes_comparator = len(recommended_nuts) != len(recommended_ids)
+
+        if len(recommended_ids) == 1 and includes_comparator:
+            if self.decision_summary[
+                "all_nut_interventions_have_negative_expected_nmb"
+            ]:
+                return (
+                    "every nut has negative expected net monetary benefit, so the "
+                    "no-modeled-daily-nut comparator is preferred"
+                )
+            return "the no-modeled-daily-nut comparator has the highest expected NMB"
+
+        if len(recommended_ids) == 1:
+            nut = recommended_nuts[0]
+            return (
+                f"{nut.name}s have the highest expected net monetary benefit "
+                "and are preferred"
+            )
+
+        labels = [f"{nut.name}s" for nut in recommended_nuts]
+        if includes_comparator:
+            labels.insert(0, "the no-modeled-daily-nut comparator")
+        return f"expected net monetary benefit is tied between {_natural_join(labels)}"
+
+    def sensitivity_qaly_change_percent(
+        self,
+        nut_id: str,
+        interpretation: str,
+    ) -> int:
+        """Return a materialized scenario's QALY change from the base case."""
+        scenarios = self.sensitivity_results["confounding_prior"]
+        base = next(row for row in scenarios if row["is_base"])
+        scenario = next(
+            row for row in scenarios if row["interpretation"] == interpretation
+        )
+        base_value = base["qaly_mean"][nut_id]
+        return round(100 * (scenario["qaly_mean"][nut_id] / base_value - 1))
 
     @property
     def nice_lower_usd(self) -> int:
@@ -249,15 +408,40 @@ class PaperResults:
 
     # Table generators
     def table_3_qalys(self) -> str:
-        headers = ["Nut", "Life Years", "Months", "QALY (0% health discount)", "P(>0)", "P(<0)", "ICER"]
-        rows = []
-        sorted_nuts = sorted(self.nuts.values(), key=lambda n: n.life_years, reverse=True)
-        for n in sorted_nuts:
-            rows.append([
-                n.name, f"{n.life_years:.2f}", f"{n.months:.1f}",
-                f"{n.qaly_mean:.2f}",
-                f"{n.p_positive:.0%}", f"{n.p_negative:.0%}", f"${n.icer:,.0f}",
-            ])
+        discount = int(round(self.qaly_discount_rate * 100))
+        headers = [
+            "Nut-only rank",
+            "Option",
+            f"QALY ({discount}%; 95% MI)",
+            f"E[NMB] @ ${self.willingness_to_pay / 1000:.0f}k",
+            "P(NMB > no nut)",
+            "P(optimal)",
+        ]
+        rows = [
+            [
+                "—",
+                "No modeled nut",
+                "0",
+                "$0",
+                "—",
+                f"{self.decision_summary.get('comparator_probability_optimal', 0):.1%}",
+            ]
+        ]
+        for n in self.nut_alternative_ranking:
+            rows.append(
+                [
+                    str(n.nut_alternative_rank),
+                    n.name,
+                    f"{n.qaly_mean:.3f} {n.qaly_model_interval}",
+                    (
+                        f"-${abs(n.expected_net_monetary_benefit):,.0f}"
+                        if n.expected_net_monetary_benefit < 0
+                        else f"${n.expected_net_monetary_benefit:,.0f}"
+                    ),
+                    f"{n.p_nmb_positive:.1%}",
+                    f"{n.p_optimal:.1%}",
+                ]
+            )
         return _html_table(headers, rows)
 
     def table_4_pathway_rrs(self) -> str:
@@ -281,53 +465,45 @@ class PaperResults:
         cancer_p = precision(cancer_vals)
         other_p = precision(other_vals)
         for p in sorted_rrs:
-            rows.append([
-                p.name,
-                f"{p.cvd:.{cvd_p}f}",
-                f"{p.cancer:.{cancer_p}f}",
-                f"{p.other:.{other_p}f}",
-            ])
+            rows.append(
+                [
+                    p.name,
+                    f"{p.cvd:.{cvd_p}f}",
+                    f"{p.cancer:.{cancer_p}f}",
+                    f"{p.other:.{other_p}f}",
+                ]
+            )
         return _html_table(headers, rows)
 
     def table_7_sensitivity(self) -> str:
-        """Sensitivity of walnut and peanut QALYs to the confounding prior.
-
-        Values are computed live against the current model so the row for
-        the base-case prior always matches the headline numbers.
-        """
+        """Render materialized confounding-prior sensitivity results."""
         headers = ["Prior", "Mean", "Interpretation", "Walnut QALY", "Peanut QALY"]
-        scenarios = [
-            (1.0, 9.0, "Very skeptical"),
-            (self.confounding_alpha, self.confounding_beta, "Base case"),
-            (1.5, 4.5, "Moderate"),
-            (2.5, 5.0, "Optimistic"),
-        ]
-        # Lazy import avoids circularity at module load
-        from whatnut.pipeline import run_analysis
-
         rows = []
-        for alpha, beta, label in scenarios:
-            res = run_analysis(
-                n_samples=self.n_samples,
-                seed=self.seed,
-                confounding_alpha=alpha,
-                confounding_beta=beta,
+        scenarios = self.sensitivity_results.get("confounding_prior", [])
+        if not scenarios:
+            raise ValueError(
+                "Confounding sensitivity results are absent; regenerate the "
+                "artifact with `python -m whatnut.pipeline --generate`."
             )
-            mean_pct = int(round(100 * alpha / (alpha + beta)))
-            walnut_q = res.nuts["walnut"].qaly_mean
-            peanut_q = res.nuts["peanut"].qaly_mean
-            is_base = label == "Base case"
+        for scenario in scenarios:
+            alpha = scenario["alpha"]
+            beta = scenario["beta"]
+            label = scenario["interpretation"]
+            mean_pct = int(round(100 * scenario["mean"]))
+            walnut_q = scenario["qaly_mean"]["walnut"]
+            peanut_q = scenario["qaly_mean"]["peanut"]
+            is_base = scenario["is_base"]
             prior_cell = f"Beta({alpha:g}, {beta:g})"
             if is_base:
                 prior_cell = f"<strong>{prior_cell}</strong>"
                 label = f"<strong>{label}</strong>"
                 mean_pct_cell = f"<strong>{mean_pct}%</strong>"
-                walnut_cell = f"<strong>{walnut_q:.2f}</strong>"
-                peanut_cell = f"<strong>{peanut_q:.2f}</strong>"
+                walnut_cell = f"<strong>{walnut_q:.3f}</strong>"
+                peanut_cell = f"<strong>{peanut_q:.3f}</strong>"
             else:
                 mean_pct_cell = f"{mean_pct}%"
-                walnut_cell = f"{walnut_q:.2f}"
-                peanut_cell = f"{peanut_q:.2f}"
+                walnut_cell = f"{walnut_q:.3f}"
+                peanut_cell = f"{peanut_q:.3f}"
             rows.append([prior_cell, mean_pct_cell, label, walnut_cell, peanut_cell])
         return _html_table(headers, rows)
 
@@ -342,16 +518,15 @@ def _html_table(headers: list[str], rows: list[list[str]]) -> str:
     return f"<table><thead><tr>{ths}</tr></thead><tbody>{body}</tbody></table>"
 
 
-def _load_results() -> PaperResults:
-    """Load results from generated JSON."""
-    if not RESULTS_PATH.exists():
+def load_results(path: Path = RESULTS_PATH) -> PaperResults:
+    """Load one validated result artifact into the reporting model."""
+    if not path.exists():
         raise FileNotFoundError(
-            f"Results file not found: {RESULTS_PATH}\n"
+            f"Results file not found: {path}\n"
             "Run: python -m whatnut.pipeline --generate"
         )
 
-    with open(RESULTS_PATH) as f:
-        data = json.load(f)
+    data = read_results_artifact(path)
 
     nuts = {}
     pathway_rrs = {}
@@ -363,15 +538,27 @@ def _load_results() -> PaperResults:
             qaly_ci_lower=nd["qaly_ci_lower"],
             qaly_ci_upper=nd["qaly_ci_upper"],
             qaly_undiscounted_mean=nd["qaly_undiscounted_mean"],
+            qaly_undiscounted_ci_lower=nd["qaly_undiscounted_ci_lower"],
+            qaly_undiscounted_ci_upper=nd["qaly_undiscounted_ci_upper"],
+            expected_upside=nd["expected_upside"],
+            expected_downside=nd["expected_downside"],
             p_positive=nd["p_positive"],
-            p_negative=nd.get("p_negative", round(1 - nd["p_positive"], 2)),
+            p_negative=nd["p_negative"],
             life_years=nd["life_years_mean"],
             life_years_ci_lower=nd["life_years_ci_lower"],
             life_years_ci_upper=nd["life_years_ci_upper"],
-            icer=nd["icer_median"],
-            icer_ci_lower=nd["icer_ci_lower"],
-            icer_ci_upper=nd["icer_ci_upper"],
+            icer=nd["icer_expected"],
+            icer_undiscounted=nd["icer_undiscounted_expected"],
+            p_nmb_positive=nd["p_nmb_positive"],
+            p_nmb_positive_undiscounted=nd["p_nmb_positive_undiscounted"],
+            p_optimal=nd["p_optimal"],
+            expected_net_monetary_benefit=nd["expected_net_monetary_benefit"],
+            expected_net_monetary_benefit_undiscounted=nd[
+                "expected_net_monetary_benefit_undiscounted"
+            ],
+            nut_alternative_rank=nd["nut_alternative_rank"],
             annual_cost=nd["annual_cost"],
+            lifetime_cost=nd["lifetime_cost_mean"],
             rr_cvd=nd["rr_cvd"],
             rr_cancer=nd["rr_cancer"],
             rr_other=nd["rr_other"],
@@ -391,17 +578,20 @@ def _load_results() -> PaperResults:
     cancer_pct = round(float(data["cancer_contribution_mean"]) * 100)
     other_pct = round(float(data["other_contribution_mean"]) * 100)
 
-    # Narrative constants (target_age, NICE thresholds, etc.) are piped
-    # through the JSON; fall back to defaults if the JSON is from an older
-    # run that predates constants.yaml.
-    constants = data.get("constants", {})
+    # Narrative constants are part of schema 1.0.0 and therefore validated
+    # before this point; the report layer has no compatibility defaults.
+    constants = data["constants"]
 
     return PaperResults(
+        schema_version=data["schema_version"],
         seed=data["seed"],
         n_samples=data["n_samples"],
         start_age=data["start_age"],
         qaly_discount_rate=data["qaly_discount_rate"],
         cost_discount_rate=data["cost_discount_rate"],
+        undiscounted_qaly_discount_rate=data["undiscounted_qaly_discount_rate"],
+        undiscounted_cost_discount_rate=data["undiscounted_cost_discount_rate"],
+        willingness_to_pay=data["willingness_to_pay"],
         confounding_alpha=data["confounding_alpha"],
         confounding_beta=data["confounding_beta"],
         confounding_mean=data["confounding_mean"],
@@ -414,14 +604,19 @@ def _load_results() -> PaperResults:
         cvd_contribution=cvd_pct,
         cancer_contribution=cancer_pct,
         other_contribution=other_pct,
-        target_age=constants.get("target_age", 40),
-        life_expectancy=constants.get("life_expectancy_approx", 40),
-        allergy_prevalence_lower=constants.get("allergy_prevalence_lower", 2.0),
-        allergy_prevalence_upper=constants.get("allergy_prevalence_upper", 4.0),
-        nice_lower_gbp=constants.get("nice_lower_gbp", 25000),
-        nice_upper_gbp=constants.get("nice_upper_gbp", 35000),
-        gbp_usd_rate=constants.get("gbp_usd_rate", 1.34),
-        icer_threshold=constants.get("icer_threshold_usd", 50000),
+        target_age=data["start_age"],
+        life_expectancy=round(data["baseline_life_years"]),
+        allergy_prevalence_lower=constants["allergy_prevalence_lower"],
+        allergy_prevalence_upper=constants["allergy_prevalence_upper"],
+        nice_lower_gbp=constants["nice_lower_gbp"],
+        nice_upper_gbp=constants["nice_upper_gbp"],
+        gbp_usd_rate=constants["gbp_usd_rate"],
+        reference_case=data["reference_case"],
+        decision_context=data["decision_context"],
+        decision_summary=data["decision_summary"],
+        model_interval=data["model_interval"],
+        methodology_provenance=data["methodology_provenance"],
+        sensitivity_results=data["sensitivity_results"],
         nuts=nuts,
         pathway_rrs=pathway_rrs,
     )
@@ -436,7 +631,7 @@ def get_results() -> PaperResults:
     """Get the loaded results (lazy singleton)."""
     global _RESULTS
     if _RESULTS is None:
-        _RESULTS = _load_results()
+        _RESULTS = load_results()
     return _RESULTS
 
 

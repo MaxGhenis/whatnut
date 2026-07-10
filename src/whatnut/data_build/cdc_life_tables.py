@@ -23,7 +23,6 @@ import urllib.request
 from pathlib import Path
 
 import openpyxl
-import yaml
 
 from whatnut.data_build import DATA_DIR, RAW_DIR
 
@@ -36,8 +35,30 @@ NVSR_CACHE = NVSR_CACHE_DIR / "Table01.xlsx"
 
 # Anchor ages used by mortality.yaml. The config interpolator fills in
 # single-year values between anchors in log space.
-ANCHOR_AGES = [0, 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60,
-               65, 70, 75, 80, 85, 90, 95, 100]
+ANCHOR_AGES = [
+    0,
+    1,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95,
+    100,
+]
 
 
 def download_table01() -> Path:

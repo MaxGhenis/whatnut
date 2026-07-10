@@ -4,7 +4,6 @@ Every claim in the analysis must trace back to a source defined here.
 """
 
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
@@ -13,8 +12,8 @@ class EffectSize:
 
     metric: str  # "relative_risk", "hazard_ratio", "odds_ratio", "mean_difference"
     point_estimate: float
-    ci_lower: Optional[float] = None
-    ci_upper: Optional[float] = None
+    ci_lower: float | None = None
+    ci_upper: float | None = None
     ci_level: float = 0.95  # Default 95% CI
 
 
@@ -27,11 +26,11 @@ class Source:
     url: str
     study_type: str  # "meta_analysis", "cohort", "rct", "database"
     key_finding: str
-    doi: Optional[str] = None
-    database: Optional[str] = None  # For non-DOI sources like USDA
-    effect_size: Optional[EffectSize] = None
-    sample_size: Optional[int] = None
-    population: Optional[str] = None
+    doi: str | None = None
+    database: str | None = None  # For non-DOI sources like USDA
+    effect_size: EffectSize | None = None
+    sample_size: int | None = None
+    population: str | None = None
 
 
 # Primary sources - every claim must trace here
@@ -249,7 +248,7 @@ SOURCES: list[Source] = [
 ]
 
 
-def get_source(source_id: str) -> Optional[Source]:
+def get_source(source_id: str) -> Source | None:
     """Get a source by ID."""
     for source in SOURCES:
         if source.id == source_id:

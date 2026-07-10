@@ -3,8 +3,7 @@
 TDD: Define expected structure and validation for primary sources.
 """
 
-import pytest
-from whatnut.evidence import SOURCES, Source, get_source, validate_sources
+from whatnut.evidence import SOURCES, get_source, validate_sources
 
 
 class TestSourceStructure:

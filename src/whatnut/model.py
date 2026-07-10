@@ -22,8 +22,8 @@ from dataclasses import dataclass
 import numpy as np
 
 from whatnut.config import (
-    NUTRIENTS,
     NUT_IDS,
+    NUTRIENTS,
     PATHWAYS,
     get_confounding_prior,
     get_nut,
@@ -64,7 +64,7 @@ def sample_model(
     Args:
         n_samples: Number of Monte Carlo draws.
         seed: Random seed for reproducibility.
-        nut_ids: Nut IDs to include (default: all 7).
+        nut_ids: Nut IDs to include (default: all configured nuts).
         confounding_alpha: Override confounding prior alpha.
         confounding_beta: Override confounding prior beta.
         hr_centered: When True, apply a Jensen correction at the per-nut

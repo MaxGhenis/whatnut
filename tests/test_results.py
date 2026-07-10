@@ -4,18 +4,22 @@ Covers loading of results.json, NutResult properties, PaperResults
 range properties, table generators, and pathway RRs.
 """
 
+from copy import deepcopy
+
 import pytest
 
+from whatnut.artifact import RESULTS_SCHEMA_VERSION
 from whatnut.config import NUT_IDS
+from whatnut.pipeline import generate_results_json, run_analysis
 from whatnut.results import (
     RESULTS_PATH,
     NutResult,
     PaperResults,
     PathwayRR,
     get_results,
+    load_results,
     r,
 )
-
 
 # ---------------------------------------------------------------------------
 # Results file existence and loading
@@ -56,6 +60,9 @@ class TestResultParameters:
     def test_seed(self, results):
         assert results.seed == 42
 
+    def test_schema_version(self, results):
+        assert results.schema_version == RESULTS_SCHEMA_VERSION
+
     def test_n_samples(self, results):
         assert results.n_samples == 10_000
 
@@ -63,8 +70,29 @@ class TestResultParameters:
         assert results.start_age == 40
 
     def test_discount_rates(self, results):
-        assert results.qaly_discount_rate == 0.0
+        assert results.qaly_discount_rate == 0.03
         assert results.cost_discount_rate == 0.03
+        assert results.undiscounted_qaly_discount_rate == 0.0
+        assert results.undiscounted_cost_discount_rate == 0.03
+        assert results.willingness_to_pay == 50_000
+
+    def test_reference_case_loaded(self, results):
+        assert results.reference_case["id"] == "whatnut_consumer_3pct"
+        assert results.reference_case["perspective"] == "consumer_out_of_pocket"
+        assert results.reference_case["health_discount_rate"] == pytest.approx(0.03)
+        assert results.reference_case["cost_discount_rate"] == pytest.approx(0.03)
+        assert results.reference_case["formal_reference_case"] is False
+
+    def test_decision_and_model_metadata_loaded(self, results):
+        assert results.decision_context["comparator"] == (
+            "No modeled daily-nut intervention."
+        )
+        assert results.decision_summary["recommended_nut_id"] is None
+        assert results.decision_summary["best_nut_alternative_id"] == "peanut"
+        assert results.model_interval["level"] == pytest.approx(0.95)
+        assert results.model_interval["posterior"] is False
+        assert results.methodology_provenance["runtime_dependency"] is False
+        assert len(results.sensitivity_results["confounding_prior"]) == 4
 
     def test_confounding(self, results):
         assert results.confounding_alpha == pytest.approx(1.5)
@@ -97,11 +125,6 @@ class TestNutResultProperties:
         num_str = icer_str.replace("$", "").replace(",", "")
         float(num_str)  # Should not raise
 
-    def test_walnut_icer_ci_fmt(self):
-        ci = r.walnut.icer_ci_fmt
-        assert ci.startswith("[")
-        assert ci.endswith("]")
-
     def test_life_years_fmt(self):
         ly = r.walnut.life_years_fmt
         assert isinstance(ly, str)
@@ -122,6 +145,64 @@ class TestNutResultProperties:
         s = r.walnut.qaly_undiscounted_fmt
         assert isinstance(s, str)
         float(s)
+
+    def test_qaly_undiscounted_interval(self):
+        assert r.walnut.qaly_undiscounted_ci.startswith("[")
+
+    def test_icer_undiscounted_property(self):
+        assert r.walnut.icer_undiscounted_fmt.startswith("$")
+
+    def test_decision_metrics(self):
+        assert r.peanut.nut_alternative_rank == 1
+        assert 0 <= r.walnut.p_nmb_positive <= 1
+        assert 0 <= r.walnut.p_optimal <= 1
+        assert r.walnut.lifetime_cost > 0
+
+    def test_default_decision_prose_is_derived_from_artifact(self):
+        assert "every nut has negative expected net monetary benefit" in (
+            r.decision_result_sentence
+        )
+        assert r.nut_ranking_summary == (
+            "the top three nut alternatives are peanuts, almonds, and walnuts"
+        )
+        assert r.health_gain_and_icer_summary == (
+            "Walnuts yield the largest expected gain "
+            f"({r.walnut.life_years_fmt} life years); they also have the lowest "
+            "defined expected ICER"
+        )
+        assert r.best_nut_alternative is r.peanut
+        assert r.peanut.expected_nmb_fmt.startswith("-$")
+
+    def test_custom_wtp_artifact_updates_decision_prose(self, tmp_path):
+        analysis = run_analysis(
+            n_samples=1_000,
+            seed=42,
+            willingness_to_pay=250_000,
+        )
+        path = tmp_path / "wtp-250000.json"
+        generate_results_json(analysis, path)
+
+        custom = load_results(path)
+
+        assert custom.decision_summary["recommended_nut_id"] == "walnut"
+        assert custom.best_nut_alternative.name == "Walnut"
+        assert custom.best_nut_alternative.expected_net_monetary_benefit > 0
+        assert custom.best_nut_alternative.expected_nmb_fmt.startswith("$")
+        assert not custom.best_nut_alternative.expected_nmb_fmt.startswith("-$")
+        assert "Walnuts" in custom.decision_result_sentence
+        assert "comparator is preferred" not in custom.decision_result_sentence
+        assert custom.nut_ranking_summary.startswith(
+            "the top three nut alternatives are walnuts"
+        )
+
+    def test_decision_prose_handles_expected_nmb_ties(self):
+        tied = deepcopy(get_results())
+        tied.decision_summary["recommended_option_ids"] = ["walnut", "almond"]
+        tied.decision_summary["recommended_nut_id"] = None
+
+        assert tied.decision_result_sentence == (
+            "expected net monetary benefit is tied between Walnuts and Almonds"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -184,6 +265,25 @@ class TestRangeProperties:
         assert isinstance(ir, str)
         assert "$" in ir
 
+    def test_icer_undiscounted_range(self):
+        ir = r.icer_undiscounted_range
+        assert isinstance(ir, str)
+        assert "$" in ir
+
+    def test_icer_ranges_are_defined_when_no_expected_ratio_exists(self, monkeypatch):
+        results = get_results()
+        for nut in results.nuts.values():
+            monkeypatch.setattr(nut, "icer", None)
+            monkeypatch.setattr(nut, "icer_undiscounted", None)
+
+        assert results.icer_range == "undefined"
+        assert results.icer_undiscounted_range == "undefined"
+
+    def test_nut_alternative_ranking_is_complete(self):
+        assert [nut.nut_alternative_rank for nut in r.nut_alternative_ranking] == list(
+            range(1, len(NUT_IDS) + 1)
+        )
+
     def test_life_years_range(self):
         lr = r.life_years_range
         assert isinstance(lr, str)
@@ -228,9 +328,18 @@ class TestTableGenerators:
 
     def test_table_3_has_columns(self):
         table = r.table_3_qalys()
-        assert "Life Years" in table
+        assert "Nut-only rank" in table
+        assert "Option" in table
         assert "QALY" in table
-        assert "ICER" in table
+        assert "95% MI" in table
+        assert "E[NMB]" in table
+        assert "P(optimal)" in table
+        assert "No modeled nut" in table
+
+    def test_table_3_is_ordered_by_nut_alternative_rank(self):
+        table = r.table_3_qalys()
+        positions = [table.index(nut.name) for nut in r.nut_alternative_ranking]
+        assert positions == sorted(positions)
 
     def test_table_4_pathway_rrs_is_html(self):
         table = r.table_4_pathway_rrs()
@@ -249,6 +358,21 @@ class TestTableGenerators:
         assert "CVD" in table
         assert "Cancer" in table
         assert "Other" in table
+
+    def test_table_7_uses_materialized_sensitivities(self):
+        table = r.table_7_sensitivity()
+        very_skeptical = next(
+            row
+            for row in r.sensitivity_results["confounding_prior"]
+            if row["interpretation"] == "Very skeptical"
+        )
+
+        assert "Very skeptical" in table
+        assert "Base case" in table
+        assert "Optimistic" in table
+        assert f"{r.walnut.qaly_mean:.3f}" in table
+        assert f"{very_skeptical['qaly_mean']['peanut']:.3f}" in table
+        assert "<td>0.00</td>" not in table
 
 
 # ---------------------------------------------------------------------------

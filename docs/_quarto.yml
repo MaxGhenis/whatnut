@@ -43,6 +43,7 @@ format:
 
 bibliography: references.bib
 citeproc: true
+jupyter: python3
 
 author:
   - name: Max Ghenis

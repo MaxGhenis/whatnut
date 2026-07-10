@@ -28,7 +28,6 @@ import csv
 import statistics
 import sys
 from collections import defaultdict
-from pathlib import Path
 
 import yaml
 

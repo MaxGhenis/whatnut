@@ -9,14 +9,14 @@ import pytest
 
 from whatnut.config import (
     DATA_DIR,
-    NUTRIENTS,
     NUT_IDS,
+    NUTRIENTS,
     PATHWAYS,
+    ConfoundingPrior,
     NutProfile,
     NutrientPrior,
-    ConfoundingPrior,
-    TauPrior,
     PathwayAdjustment,
+    TauPrior,
     get_all_nuts,
     get_cause_fractions,
     get_confounding_prior,
@@ -36,7 +36,6 @@ from whatnut.config import (
     load_quality_weights,
     validate,
 )
-
 
 # ---------------------------------------------------------------------------
 # YAML file loading
@@ -197,7 +196,6 @@ class TestNutrientMatrix:
     def test_no_negative_values_except_omega6(self):
         """All nutrient values should be non-negative (omega6 could be edge case)."""
         X = get_nutrient_matrix()
-        nutrient_idx = {n: i for i, n in enumerate(NUTRIENTS)}
         for i, nut_id in enumerate(NUT_IDS):
             for j, nutrient in enumerate(NUTRIENTS):
                 if nutrient != "omega6":
@@ -470,9 +468,7 @@ class TestScientificParameters:
     def test_phytosterol_unit_is_mg(self):
         """Fix 3: Phytosterol unit should be 'mg' (not 'mg (effect per 10mg)')."""
         prior = get_nutrient_prior("cvd", "phytosterols")
-        assert prior.unit == "mg", (
-            f"Phytosterol unit is '{prior.unit}', expected 'mg'"
-        )
+        assert prior.unit == "mg", f"Phytosterol unit is '{prior.unit}', expected 'mg'"
 
     def test_magnesium_cvd_prior_mean_near_minus_0001(self):
         """Fix 4: Magnesium CVD prior should be ~-0.001/mg (Fang 2016)."""
@@ -485,9 +481,7 @@ class TestScientificParameters:
     def test_magnesium_unit_is_mg(self):
         """Fix 4: Magnesium unit should be 'mg' (not 'mg (effect per 10mg)')."""
         prior = get_nutrient_prior("cvd", "magnesium")
-        assert prior.unit == "mg", (
-            f"Magnesium unit is '{prior.unit}', expected 'mg'"
-        )
+        assert prior.unit == "mg", f"Magnesium unit is '{prior.unit}', expected 'mg'"
 
     def test_walnut_cvd_pathway_sd_wide(self):
         """Fix 5: Walnut CVD pathway adjustment SD should be >= 0.12."""
@@ -502,9 +496,7 @@ class TestScientificParameters:
         """Fix 5: Cashew CVD pathway adjustment SD should be >= 0.10."""
         cashew = get_nut("cashew")
         adj = cashew.pathway_adjustments["cvd"]
-        assert adj.sd >= 0.10, (
-            f"Cashew CVD pathway SD is {adj.sd}, expected >= 0.10"
-        )
+        assert adj.sd >= 0.10, f"Cashew CVD pathway SD is {adj.sd}, expected >= 0.10"
 
 
 # ---------------------------------------------------------------------------
@@ -515,12 +507,17 @@ class TestScientificParameters:
 def test_version_matches_pyproject():
     """__init__.__version__ should match pyproject.toml version."""
     import sys
+
     import pytest
+
     if sys.version_info < (3, 11):
         pytest.skip("tomllib requires Python 3.11+")
-    import tomllib
     from pathlib import Path
+
+    import tomllib
+
     import whatnut
+
     pyproject = Path(__file__).parent.parent / "pyproject.toml"
     with open(pyproject, "rb") as f:
         data = tomllib.load(f)

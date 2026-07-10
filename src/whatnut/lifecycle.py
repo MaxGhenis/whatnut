@@ -19,6 +19,11 @@ from whatnut.config import (
     get_mortality_curve,
     get_quality_curve,
 )
+from whatnut.reference_case import (
+    DEFAULT_COST_DISCOUNT_RATE,
+    DEFAULT_QALY_DISCOUNT_RATE,
+    validate_discount_rate,
+)
 
 
 @dataclass
@@ -70,8 +75,8 @@ def run_lifecycle(
     annual_cost: float,
     start_age: int = 40,
     max_age: int = 110,
-    qaly_discount_rate: float = 0.0,
-    cost_discount_rate: float = 0.03,
+    qaly_discount_rate: float = DEFAULT_QALY_DISCOUNT_RATE,
+    cost_discount_rate: float = DEFAULT_COST_DISCOUNT_RATE,
 ) -> LifecycleResult:
     """Run pathway-specific lifecycle model for a single set of RRs.
 
@@ -88,6 +93,9 @@ def run_lifecycle(
     Returns:
         LifecycleResult with life years, QALYs, costs, and ICER.
     """
+    qaly_discount_rate = validate_discount_rate(qaly_discount_rate, label="QALY")
+    cost_discount_rate = validate_discount_rate(cost_discount_rate, label="cost")
+
     ages = np.arange(start_age, max_age + 1)
     n_years = len(ages)
 
@@ -105,7 +113,9 @@ def run_lifecycle(
         cvd_fracs[i] = cvd_frac
         cancer_fracs[i] = cancer_frac
         other_fracs[i] = other_frac
-        weighted_rr[i] = cvd_frac * rr_cvd + cancer_frac * rr_cancer + other_frac * rr_other
+        weighted_rr[i] = (
+            cvd_frac * rr_cvd + cancer_frac * rr_cancer + other_frac * rr_other
+        )
 
     # Intervention mortality
     mortality_intervention = mortality_baseline * weighted_rr
@@ -160,9 +170,15 @@ def run_lifecycle(
     )
 
     # Overall pathway contributions (weighted by discounted LY)
-    ly_cvd_disc = float(np.sum(ly_gained_by_age * cvd_contrib_by_age * qaly_discount_factors))
-    ly_cancer_disc = float(np.sum(ly_gained_by_age * cancer_contrib_by_age * qaly_discount_factors))
-    ly_other_disc = float(np.sum(ly_gained_by_age * other_contrib_by_age * qaly_discount_factors))
+    ly_cvd_disc = float(
+        np.sum(ly_gained_by_age * cvd_contrib_by_age * qaly_discount_factors)
+    )
+    ly_cancer_disc = float(
+        np.sum(ly_gained_by_age * cancer_contrib_by_age * qaly_discount_factors)
+    )
+    ly_other_disc = float(
+        np.sum(ly_gained_by_age * other_contrib_by_age * qaly_discount_factors)
+    )
 
     cvd_contribution = ly_cvd_disc / ly_gained_disc if ly_gained_disc > 0 else 0
     cancer_contribution = ly_cancer_disc / ly_gained_disc if ly_gained_disc > 0 else 0
@@ -198,8 +214,8 @@ def run_lifecycle_vectorized(
     annual_cost: float,
     start_age: int = 40,
     max_age: int = 110,
-    qaly_discount_rate: float = 0.0,
-    cost_discount_rate: float = 0.03,
+    qaly_discount_rate: float = DEFAULT_QALY_DISCOUNT_RATE,
+    cost_discount_rate: float = DEFAULT_COST_DISCOUNT_RATE,
 ) -> LifecycleVectorResult:
     """Vectorized lifecycle over Monte Carlo samples.
 
@@ -209,6 +225,8 @@ def run_lifecycle_vectorized(
     rr_cvd = np.asarray(rr_cvd)
     rr_cancer = np.asarray(rr_cancer)
     rr_other = np.asarray(rr_other)
+    qaly_discount_rate = validate_discount_rate(qaly_discount_rate, label="QALY")
+    cost_discount_rate = validate_discount_rate(cost_discount_rate, label="cost")
 
     ages = np.arange(start_age, max_age + 1)
     n_years = len(ages)
@@ -245,8 +263,8 @@ def run_lifecycle_vectorized(
     qaly_gain_by_age = ly_gained_by_age * quality_weights[None, :]
     qalys_total = np.sum(qaly_gain_by_age, axis=1)
 
-    qaly_discount = (1 / (1 + qaly_discount_rate) ** np.arange(n_years))
-    cost_discount = (1 / (1 + cost_discount_rate) ** np.arange(n_years))
+    qaly_discount = 1 / (1 + qaly_discount_rate) ** np.arange(n_years)
+    cost_discount = 1 / (1 + cost_discount_rate) ** np.arange(n_years)
 
     ly_disc = np.sum(ly_gained_by_age * qaly_discount[None, :], axis=1)
     qalys_disc = np.sum(qaly_gain_by_age * qaly_discount[None, :], axis=1)
@@ -256,7 +274,9 @@ def run_lifecycle_vectorized(
 
     qalys_positive = qalys_disc > 1e-12
     cost_per_qaly = np.where(
-        qalys_positive, total_cost_disc / np.where(qalys_positive, qalys_disc, 1.0), np.inf
+        qalys_positive,
+        total_cost_disc / np.where(qalys_positive, qalys_disc, 1.0),
+        np.inf,
     )
 
     return LifecycleVectorResult(

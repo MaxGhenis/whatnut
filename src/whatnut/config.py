@@ -28,7 +28,16 @@ NUTRIENTS = [
 
 PATHWAYS = ["cvd", "cancer", "other"]
 
-NUT_IDS = ["walnut", "almond", "pistachio", "pecan", "macadamia", "peanut", "hazelnut", "cashew"]
+NUT_IDS = [
+    "walnut",
+    "almond",
+    "pistachio",
+    "pecan",
+    "macadamia",
+    "peanut",
+    "hazelnut",
+    "cashew",
+]
 
 
 # ---------------------------------------------------------------------------
@@ -251,7 +260,9 @@ def get_nut(nut_id: str) -> NutProfile:
     model_nutrients = _extract_model_nutrients(raw["nutrients"])
     adj = raw["pathway_adjustments"]
     pathway_adjustments = {
-        p: PathwayAdjustment(mean=adj[p]["mean"], sd=adj[p]["sd"], rationale=adj[p]["rationale"])
+        p: PathwayAdjustment(
+            mean=adj[p]["mean"], sd=adj[p]["sd"], rationale=adj[p]["rationale"]
+        )
         for p in PATHWAYS
         if p in adj
     }
@@ -287,7 +298,9 @@ def get_nutrient_matrix(nut_ids: list[str] | None = None) -> np.ndarray:
 # ---------------------------------------------------------------------------
 
 
-def _interpolate_table(table: dict[int, float], age: int, *, log_space: bool = False, floor: float = 0.0) -> float:
+def _interpolate_table(
+    table: dict[int, float], age: int, *, log_space: bool = False, floor: float = 0.0
+) -> float:
     """Interpolate a value from an age-keyed table."""
     ages = sorted(table.keys())
     if age <= ages[0]:
@@ -339,7 +352,10 @@ def get_cause_fractions(age: int) -> tuple[float, float, float]:
     exactly 1.0 (anchors are rounded to three decimals, so raw sums can
     drift by ~0.001 between anchors).
     """
-    def _normalize(cvd: float, cancer: float, other: float) -> tuple[float, float, float]:
+
+    def _normalize(
+        cvd: float, cancer: float, other: float
+    ) -> tuple[float, float, float]:
         total = cvd + cancer + other
         if total <= 0:
             return cvd, cancer, other

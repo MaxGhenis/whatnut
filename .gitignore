@@ -48,3 +48,4 @@ Thumbs.db
 public/
 docs/exports/
 docs/_build/
+tmp/

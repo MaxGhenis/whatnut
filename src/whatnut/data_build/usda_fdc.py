@@ -20,7 +20,6 @@ import json
 import sys
 import urllib.request
 import zipfile
-from pathlib import Path
 
 import yaml
 
@@ -143,7 +142,7 @@ def main(argv: list[str] | None = None) -> int:
             "description": food.get("description", ""),
             "nutrients_per_28g": nutrients,
         }
-        print(f"{name:<10} FDC {fdc_id}: {food.get('description','?')[:60]}")
+        print(f"{name:<10} FDC {fdc_id}: {food.get('description', '?')[:60]}")
         for k, v in nutrients.items():
             print(f"  {k}: {v}")
 

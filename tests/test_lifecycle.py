@@ -7,8 +7,12 @@ life years gained, pathway contributions, ICER, and discount rate effects.
 import numpy as np
 import pytest
 
-from whatnut.lifecycle import LifecycleResult, run_lifecycle
-
+from whatnut.config import get_cause_fractions, get_mortality_curve
+from whatnut.lifecycle import (
+    LifecycleResult,
+    run_lifecycle,
+    run_lifecycle_vectorized,
+)
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -110,14 +114,95 @@ class TestDeterministicRR:
     def test_stronger_protection_gives_more_benefit(self):
         """Lower RRs should give more life years gained."""
         strong = run_lifecycle(
-            rr_cvd=0.70, rr_cancer=0.85, rr_other=0.80,
-            annual_cost=100.0, start_age=40,
+            rr_cvd=0.70,
+            rr_cancer=0.85,
+            rr_other=0.80,
+            annual_cost=100.0,
+            start_age=40,
         )
         weak = run_lifecycle(
-            rr_cvd=0.95, rr_cancer=0.98, rr_other=0.97,
-            annual_cost=100.0, start_age=40,
+            rr_cvd=0.95,
+            rr_cancer=0.98,
+            rr_other=0.97,
+            annual_cost=100.0,
+            start_age=40,
         )
         assert strong.life_years_gained > weak.life_years_gained
+
+    def test_pathway_relative_risks_are_weighted_exactly_once(self):
+        """Cause-specific RRs should enter the mortality curve once."""
+        start_age = 40
+        max_age = 80
+        rr_cvd, rr_cancer, rr_other = 0.75, 0.9, 1.05
+        result = run_lifecycle(
+            rr_cvd=rr_cvd,
+            rr_cancer=rr_cancer,
+            rr_other=rr_other,
+            annual_cost=100.0,
+            start_age=start_age,
+            max_age=max_age,
+        )
+
+        ages = np.arange(start_age, max_age + 1)
+        mortality = get_mortality_curve(start_age, max_age)
+        weighted_rr = np.array(
+            [
+                sum(
+                    fraction * rr
+                    for fraction, rr in zip(
+                        get_cause_fractions(int(age)),
+                        (rr_cvd, rr_cancer, rr_other),
+                    )
+                )
+                for age in ages
+            ]
+        )
+        baseline = np.insert(np.cumprod(1 - mortality)[:-1], 0, 1.0)
+        intervention = np.insert(np.cumprod(1 - mortality * weighted_rr)[:-1], 0, 1.0)
+        expected_life_years = float(np.sum(intervention - baseline))
+
+        assert result.life_years_gained == pytest.approx(expected_life_years)
+
+
+class TestVectorizedParity:
+    """Vectorized lifecycle results must match scalar calculations draw by draw."""
+
+    def test_scalar_and_vectorized_paths_match(self):
+        rr_cvd = np.array([0.8, 1.0, 1.1])
+        rr_cancer = np.array([0.95, 1.0, 1.05])
+        rr_other = np.array([0.9, 1.0, 1.08])
+        vector = run_lifecycle_vectorized(
+            rr_cvd=rr_cvd,
+            rr_cancer=rr_cancer,
+            rr_other=rr_other,
+            annual_cost=100.0,
+            start_age=40,
+            qaly_discount_rate=0.03,
+            cost_discount_rate=0.03,
+        )
+
+        fields = (
+            "life_years_gained",
+            "qalys_gained",
+            "life_years_gained_discounted",
+            "qalys_gained_discounted",
+            "total_cost_discounted",
+            "cost_per_qaly",
+        )
+        for index in range(len(rr_cvd)):
+            scalar = run_lifecycle(
+                rr_cvd=float(rr_cvd[index]),
+                rr_cancer=float(rr_cancer[index]),
+                rr_other=float(rr_other[index]),
+                annual_cost=100.0,
+                start_age=40,
+                qaly_discount_rate=0.03,
+                cost_discount_rate=0.03,
+            )
+            for field in fields:
+                assert getattr(vector, field)[index] == pytest.approx(
+                    getattr(scalar, field)
+                )
 
 
 # ---------------------------------------------------------------------------
@@ -186,12 +271,18 @@ class TestICER:
     def test_icer_increases_with_cost(self):
         """Higher annual cost should increase ICER."""
         cheap = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=50.0, start_age=40,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=50.0,
+            start_age=40,
         )
         expensive = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=500.0, start_age=40,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=500.0,
+            start_age=40,
         )
         assert expensive.cost_per_qaly > cheap.cost_per_qaly
 
@@ -209,10 +300,15 @@ class TestDiscountRate:
 
     def test_discounting_reduces_life_years(self, protective_result):
         """Discounted life years should be less than undiscounted."""
-        assert protective_result.life_years_gained_discounted < protective_result.life_years_gained
+        assert (
+            protective_result.life_years_gained_discounted
+            < protective_result.life_years_gained
+        )
 
     def test_discounting_reduces_qalys(self, protective_result):
-        assert protective_result.qalys_gained_discounted < protective_result.qalys_gained
+        assert (
+            protective_result.qalys_gained_discounted < protective_result.qalys_gained
+        )
 
     def test_zero_discount_gives_equal_values(self):
         """With 0% discount, discounted == undiscounted."""
@@ -235,16 +331,31 @@ class TestDiscountRate:
     def test_higher_discount_reduces_more(self):
         """3% discount should reduce QALYs more than 0% but still be positive."""
         result_0 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, qaly_discount_rate=0.0, cost_discount_rate=0.03,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            qaly_discount_rate=0.0,
+            cost_discount_rate=0.03,
         )
         result_3 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, qaly_discount_rate=0.03, cost_discount_rate=0.03,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            qaly_discount_rate=0.03,
+            cost_discount_rate=0.03,
         )
         result_5 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, qaly_discount_rate=0.05, cost_discount_rate=0.03,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            qaly_discount_rate=0.05,
+            cost_discount_rate=0.03,
         )
         assert result_0.qalys_gained_discounted > result_3.qalys_gained_discounted
         assert result_3.qalys_gained_discounted > result_5.qalys_gained_discounted
@@ -252,12 +363,22 @@ class TestDiscountRate:
     def test_discount_rate_affects_icer(self):
         """Different discount rates should produce different ICERs."""
         result_0 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, qaly_discount_rate=0.0, cost_discount_rate=0.03,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            qaly_discount_rate=0.0,
+            cost_discount_rate=0.03,
         )
         result_3 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, qaly_discount_rate=0.03, cost_discount_rate=0.03,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            qaly_discount_rate=0.03,
+            cost_discount_rate=0.03,
         )
         assert result_0.cost_per_qaly != result_3.cost_per_qaly
 
@@ -273,24 +394,38 @@ class TestAgeSensitivity:
     def test_younger_start_more_undiscounted_qalys(self):
         """Starting younger gives more years to accrue benefit."""
         young = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=30,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=30,
         )
         old = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=60,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=60,
         )
         assert young.qalys_gained > old.qalys_gained
 
     def test_max_age_parameter(self):
         """Custom max_age should produce different-length computations."""
         result_100 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, max_age=100,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            max_age=100,
         )
         result_110 = run_lifecycle(
-            rr_cvd=0.80, rr_cancer=0.95, rr_other=0.90,
-            annual_cost=100.0, start_age=40, max_age=110,
+            rr_cvd=0.80,
+            rr_cancer=0.95,
+            rr_other=0.90,
+            annual_cost=100.0,
+            start_age=40,
+            max_age=110,
         )
         # More years modeled should give at least as many life years
         assert result_110.life_years_gained >= result_100.life_years_gained

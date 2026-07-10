@@ -28,4 +28,3 @@ gbp_usd_rate_date: "2024-12-31"
 # Source: icer2024reference in references.bib ($100,000-$150,000/QALY;
 # $50,000 is a widely-used lower "high-value" benchmark retained here for
 # legacy figure annotations).
-icer_threshold_usd: 50000

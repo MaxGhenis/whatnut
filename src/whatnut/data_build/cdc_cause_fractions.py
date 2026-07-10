@@ -66,7 +66,7 @@ def extract_2021_row(text: str, cause: str) -> list[float] | None:
     idx = text.find(cause)
     if idx < 0:
         return None
-    block = text[idx:idx + 2500]
+    block = text[idx : idx + 2500]
     m = re.search(
         r"2021\.?\s*\.?\.?[\s\.]*([\d,\.]+(?:\s+[\d,\.]+){10,})",
         block,
@@ -175,7 +175,9 @@ def main(argv: list[str] | None = None) -> int:
     print("Age group -> (cvd, cancer, other):")
     for age in sorted(fractions):
         f = fractions[age]
-        print(f"  {age}+ : cvd={f['cvd']:.3f}  cancer={f['cancer']:.3f}  other={f['other']:.3f}")
+        print(
+            f"  {age}+ : cvd={f['cvd']:.3f}  cancer={f['cancer']:.3f}  other={f['other']:.3f}"
+        )
 
     yaml_text = build_cause_fractions_yaml(fractions)
     out = DATA_DIR / "cause_fractions.yaml"

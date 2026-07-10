@@ -10,9 +10,14 @@ import json
 import numpy as np
 import pytest
 
-from whatnut.config import NUT_IDS, PATHWAYS
+from whatnut.artifact import (
+    RESULTS_SCHEMA_VERSION,
+    read_results_artifact,
+    validate_results_artifact,
+)
+from whatnut.config import NUT_IDS
 from whatnut.pipeline import AnalysisResults, NutAnalysis, run_analysis
-
+from whatnut.results import RESULTS_PATH
 
 N_FAST = 100
 
@@ -43,8 +48,11 @@ class TestAnalysisStructure:
         assert results.seed == 42
         assert results.n_samples == N_FAST
         assert results.start_age == 40
-        assert results.qaly_discount_rate == 0.0
+        assert results.qaly_discount_rate == 0.03
         assert results.cost_discount_rate == 0.03
+        assert results.undiscounted_qaly_discount_rate == 0.0
+        assert results.undiscounted_cost_discount_rate == 0.03
+        assert results.willingness_to_pay == 50_000
 
     def test_confounding_stored(self, results):
         assert results.confounding_alpha == pytest.approx(1.5)
@@ -94,13 +102,13 @@ class TestNutAnalysisFields:
 
     def test_life_years_ci_ordered(self, results):
         for nut_id, na in results.nuts.items():
-            assert na.life_years_ci_lower <= na.life_years_mean <= na.life_years_ci_upper
+            assert (
+                na.life_years_ci_lower <= na.life_years_mean <= na.life_years_ci_upper
+            )
 
     def test_p_positive_in_zero_one(self, results):
         for nut_id, na in results.nuts.items():
-            assert 0 <= na.p_positive <= 1, (
-                f"{nut_id}: p_positive = {na.p_positive}"
-            )
+            assert 0 <= na.p_positive <= 1, f"{nut_id}: p_positive = {na.p_positive}"
 
     def test_annual_cost_positive(self, results):
         for nut_id, na in results.nuts.items():
@@ -125,10 +133,6 @@ class TestNutAnalysisFields:
                 f"{nut_id}: contributions sum to {total}"
             )
 
-    def test_icer_median_positive_or_inf(self, results):
-        for nut_id, na in results.nuts.items():
-            assert na.icer_median > 0 or na.icer_median == float("inf")
-
     def test_evidence_levels_valid(self, results):
         valid = {"strong", "moderate", "limited"}
         for nut_id, na in results.nuts.items():
@@ -147,6 +151,68 @@ class TestNutAnalysisFields:
             assert -1 <= na.qaly_mean <= 2, (
                 f"{nut_id}: qaly_mean = {na.qaly_mean} outside [-1, 2]"
             )
+            assert -1 <= na.qaly_undiscounted_mean <= 2, (
+                f"{nut_id}: qaly_undiscounted_mean = {na.qaly_undiscounted_mean} "
+                "outside [-1, 2]"
+            )
+
+    def test_primary_qalys_do_not_exceed_undiscounted_sensitivity(self, results):
+        for nut_id, na in results.nuts.items():
+            assert na.qaly_mean <= na.qaly_undiscounted_mean, nut_id
+
+    def test_decision_metrics_are_well_formed(self, results):
+        ranks = []
+        for nut_id, na in results.nuts.items():
+            assert na.lifetime_cost_mean > 0, nut_id
+            assert na.icer_expected is None or na.icer_expected > 0, nut_id
+            assert (
+                na.icer_undiscounted_expected is None
+                or na.icer_undiscounted_expected > 0
+            ), nut_id
+            assert 0 <= na.p_nmb_positive <= 1, nut_id
+            assert 0 <= na.p_nmb_positive_undiscounted <= 1, nut_id
+            assert 0 <= na.p_optimal <= 1, nut_id
+            assert (
+                abs(na.expected_upside + na.expected_downside - na.qaly_mean) < 0.011
+            ), nut_id
+            ranks.append(na.nut_alternative_rank)
+        assert sorted(ranks) == list(range(1, len(results.nuts) + 1))
+
+    def test_mutually_exclusive_optimal_probabilities_include_comparator(self, results):
+        total = results.decision_summary["comparator_probability_optimal"] + sum(
+            nut.p_optimal for nut in results.nuts.values()
+        )
+        assert total == pytest.approx(1.0, abs=0.02)
+
+    def test_no_intervention_is_expected_nmb_choice(self, results):
+        assert results.decision_summary["recommended_nut_id"] is None
+        assert results.decision_summary[
+            "all_nut_interventions_have_negative_expected_nmb"
+        ]
+        assert (
+            max(
+                results.nuts.values(),
+                key=lambda nut: nut.expected_net_monetary_benefit,
+            ).nut_id
+            == "peanut"
+        )
+
+    def test_negative_nmb_flag_uses_unrounded_decision_values(self, tmp_path):
+        from whatnut.pipeline import generate_results_json
+
+        results = run_analysis(
+            n_samples=100,
+            seed=42,
+            willingness_to_pay=208_969.01,
+        )
+        out_path = tmp_path / "break_even.json"
+        generate_results_json(results, path=out_path)
+        artifact = read_results_artifact(out_path)
+
+        assert artifact["decision_summary"]["recommended_nut_id"] is None
+        assert artifact["decision_summary"][
+            "all_nut_interventions_have_negative_expected_nmb"
+        ]
 
 
 # ---------------------------------------------------------------------------
@@ -197,15 +263,50 @@ class TestSerialization:
         assert d["seed"] == 42
         assert d["n_samples"] == N_FAST
         assert d["start_age"] == 40
-        assert d["qaly_discount_rate"] == 0.0
+        assert d["qaly_discount_rate"] == 0.03
         assert d["cost_discount_rate"] == 0.03
+        assert d["undiscounted_qaly_discount_rate"] == 0.0
+        assert d["undiscounted_cost_discount_rate"] == 0.03
+        assert d["willingness_to_pay"] == 50_000
+        assert d["schema_version"] == RESULTS_SCHEMA_VERSION
+
+    def test_to_dict_has_reference_case(self, results):
+        d = results.to_dict()
+        assert d["reference_case"]["id"] == "whatnut_consumer_3pct"
+        assert d["reference_case"]["perspective"] == "consumer_out_of_pocket"
+        assert d["reference_case"]["health_discount_rate"] == pytest.approx(0.03)
+        assert d["reference_case"]["cost_discount_rate"] == pytest.approx(0.03)
+        assert d["reference_case"]["formal_reference_case"] is False
+
+    def test_to_dict_has_decision_and_provenance_metadata(self, results):
+        d = results.to_dict()
+        assert d["decision_context"]["comparator"] == (
+            "No modeled daily-nut intervention."
+        )
+        assert d["decision_summary"]["criterion"] == (
+            "maximum_expected_net_monetary_benefit"
+        )
+        assert d["model_interval"] == {
+            "kind": "monte_carlo_model_interval",
+            "level": 0.95,
+            "quantiles": [0.025, 0.975],
+            "posterior": False,
+        }
+        assert len(d["methodology_provenance"]["optiqal_reference_commit"]) == 40
 
     def test_json_serializable(self, results):
         """to_dict output should be fully JSON-serializable."""
         d = results.to_dict()
         json_str = json.dumps(d)
         assert isinstance(json_str, str)
-        assert len(json_str) > 0
+
+    def test_to_dict_is_a_complete_valid_artifact(self):
+        results = run_analysis(n_samples=20, seed=42)
+
+        artifact = results.to_dict()
+
+        validate_results_artifact(artifact)
+        assert len(artifact["sensitivity_results"]["confounding_prior"]) == 4
 
     def test_json_round_trip(self, results):
         """Serialize to JSON and deserialize, values should match."""
@@ -216,16 +317,12 @@ class TestSerialization:
         assert loaded["nuts"]["walnut"]["qaly_mean"] == d["nuts"]["walnut"]["qaly_mean"]
 
     def test_no_nan_or_inf_in_json(self, results):
-        """JSON should not contain NaN or Infinity (except icer_ci_upper which can be None)."""
+        """Strict artifact values should not contain NaN or Infinity."""
         d = results.to_dict()
         for nut_id, nd in d["nuts"].items():
             for key, val in nd.items():
-                if val is None:
-                    continue  # icer_ci_upper can be None
                 if isinstance(val, float):
-                    assert np.isfinite(val) or key == "icer_median", (
-                        f"{nut_id}.{key} = {val} (not finite)"
-                    )
+                    assert np.isfinite(val), f"{nut_id}.{key} = {val} (not finite)"
 
 
 # ---------------------------------------------------------------------------
@@ -277,6 +374,9 @@ class TestCustomParameters:
         )
         assert r.qaly_discount_rate == 0.0
         assert r.cost_discount_rate == 0.05
+        assert r.undiscounted_cost_discount_rate == 0.05
+        assert r.reference_case["health_discount_rate"] == 0.0
+        assert r.reference_case["cost_discount_rate"] == 0.05
 
     def test_custom_confounding(self):
         r = run_analysis(
@@ -288,6 +388,39 @@ class TestCustomParameters:
         assert r.confounding_alpha == 1.0
         assert r.confounding_beta == 5.0
         assert r.confounding_mean == pytest.approx(1.0 / 6.0)
+
+    def test_custom_willingness_to_pay(self):
+        r = run_analysis(n_samples=N_FAST, seed=42, willingness_to_pay=100_000)
+
+        assert r.willingness_to_pay == 100_000
+        assert r.decision_summary["willingness_to_pay_usd_per_qaly"] == 100_000
+
+    @pytest.mark.parametrize("n_samples", [0, -1, 1.5, True])
+    def test_invalid_sample_count_rejected(self, n_samples):
+        with pytest.raises(ValueError, match="n_samples"):
+            run_analysis(n_samples=n_samples)
+
+    @pytest.mark.parametrize("start_age", [-1, 110, 40.5, True])
+    def test_invalid_start_age_rejected(self, start_age):
+        with pytest.raises(ValueError, match="start_age"):
+            run_analysis(n_samples=10, start_age=start_age)
+
+    @pytest.mark.parametrize("seed", [-1, 1.5, True])
+    def test_invalid_seed_rejected(self, seed):
+        with pytest.raises(ValueError, match="seed"):
+            run_analysis(n_samples=10, seed=seed)
+
+    @pytest.mark.parametrize(
+        ("alpha", "beta"),
+        [(0, 6), (-1, 6), (1.5, 0), (float("nan"), 6), (1.5, float("inf"))],
+    )
+    def test_invalid_confounding_parameters_rejected(self, alpha, beta):
+        with pytest.raises(ValueError, match="confounding_"):
+            run_analysis(
+                n_samples=10,
+                confounding_alpha=alpha,
+                confounding_beta=beta,
+            )
 
     def test_walnut_not_year_scale_by_default(self):
         """Walnut gains should stay in the "weeks to a few months" band the
@@ -301,8 +434,12 @@ class TestCustomParameters:
         from scipy.stats import beta as beta_dist
 
         r = run_analysis(n_samples=500, seed=42)
-        expected_lower = float(beta_dist.ppf(0.025, r.confounding_alpha, r.confounding_beta))
-        expected_upper = float(beta_dist.ppf(0.975, r.confounding_alpha, r.confounding_beta))
+        expected_lower = float(
+            beta_dist.ppf(0.025, r.confounding_alpha, r.confounding_beta)
+        )
+        expected_upper = float(
+            beta_dist.ppf(0.975, r.confounding_alpha, r.confounding_beta)
+        )
         assert r.confounding_ci_lower == pytest.approx(expected_lower, abs=1e-4)
         assert r.confounding_ci_upper == pytest.approx(expected_upper, abs=1e-4)
 
@@ -339,12 +476,11 @@ class TestCustomParameters:
     def test_baseline_life_years_matches_cdc(self):
         """Baseline LY at age 40 should be close to CDC ex(40) ~ 39.5.
 
-        CDC NVSR 72-12 Table 1 reports life expectancy at age 40 for the
-        US total population in 2021 as ~39.5 years. Our pipeline sums
-        survival probabilities from age 40 to 110 (no partial-year
-        adjustment at the final age), so values between ~39 and 40 are
-        expected. Catches the off-by-0.5 bug where survival was indexed
-        at END of each age year instead of START.
+        CDC NVSR 72-12 Table 1 reports ex(40)=38.83 years for the 2021 US
+        total population. Our interpolated annual curve sums survival from
+        age 40 to 110 and runs roughly 0.4-0.5 years higher, so values between
+        ~39 and 40 are expected. This catches the larger off-by-one error from
+        indexing survival at the end rather than start of each age year.
         """
         r = run_analysis(n_samples=500, seed=42)
         assert 38.8 < r.baseline_life_years < 40.0, (
@@ -359,12 +495,13 @@ class TestCustomParameters:
 # ---------------------------------------------------------------------------
 
 
+@pytest.fixture(scope="module")
+def results_full():
+    return run_analysis(n_samples=10_000, seed=42, include_sensitivities=True)
+
+
 class TestHeadlineValuePins:
     """Pin substantive outputs so priors/data drift is caught by CI."""
-
-    @pytest.fixture(scope="class")
-    def results_full(self):
-        return run_analysis(n_samples=10_000, seed=42)
 
     def test_walnut_life_years_in_window(self, results_full):
         w = results_full.nuts["walnut"]
@@ -376,11 +513,18 @@ class TestHeadlineValuePins:
 
     def test_peanut_icer_in_window(self, results_full):
         p = results_full.nuts["peanut"]
-        assert 40_000 < p.icer_median < 200_000, (
-            f"Peanut ICER={p.icer_median} outside expected window "
-            "[$40k, $200k]. Peanuts should remain the cheapest ICER "
-            "even at specialty-retail pricing; values outside this range "
-            "suggest a price or QALY regression."
+        assert 200_000 < p.icer_expected < 400_000, (
+            f"Peanut expected ICER={p.icer_expected} outside expected window "
+            "[$200k, $400k]. Values outside "
+            "this range suggest a price, QALY, or discounting regression."
+        )
+
+    def test_peanut_undiscounted_icer_in_window(self, results_full):
+        p = results_full.nuts["peanut"]
+        assert 60_000 < p.icer_undiscounted_expected < 150_000, (
+            "Peanut 0%-health-discount sensitivity ICER="
+            f"{p.icer_undiscounted_expected} outside expected window "
+            "[$60k, $150k]."
         )
 
     def test_cvd_contribution_dominates(self, results_full):
@@ -391,6 +535,30 @@ class TestHeadlineValuePins:
 
     def test_baseline_life_years_near_cdc(self, results_full):
         assert 38.8 < results_full.baseline_life_years < 40.0
+
+    def test_stored_precision_reconstructs_decision_metrics(self, results_full):
+        for nut in results_full.nuts.values():
+            reconstructed_icer = nut.lifetime_cost_mean / nut.qaly_mean
+            reconstructed_nmb = (
+                results_full.willingness_to_pay * nut.qaly_mean - nut.lifetime_cost_mean
+            )
+            assert reconstructed_icer == pytest.approx(nut.icer_expected, abs=2.0)
+            assert reconstructed_nmb == pytest.approx(
+                nut.expected_net_monetary_benefit, abs=0.1
+            )
+
+    def test_committed_results_json_matches_full_pipeline(self, results_full):
+        committed = read_results_artifact(RESULTS_PATH)
+
+        generated = json.loads(json.dumps(results_full.to_dict()))
+        assert committed == generated
+
+    def test_sensitivity_results_are_materialized(self, results_full):
+        rows = results_full.sensitivity_results["confounding_prior"]
+        assert len(rows) == 4
+        assert sum(row["is_base"] for row in rows) == 1
+        base = next(row for row in rows if row["is_base"])
+        assert base["qaly_mean"]["walnut"] == results_full.nuts["walnut"].qaly_mean
 
 
 # ---------------------------------------------------------------------------
@@ -434,6 +602,81 @@ class TestJSONGeneration:
         for nut_id in NUT_IDS:
             assert loaded["nuts"][nut_id]["qaly_mean"] == results.nuts[nut_id].qaly_mean
 
+    def test_generation_materializes_report_sensitivities(self, tmp_path):
+        from whatnut.pipeline import generate_results_json
+
+        results = run_analysis(n_samples=20, seed=42)
+        assert results.sensitivity_results == {}
+
+        out_path = tmp_path / "results.json"
+        generate_results_json(results, path=out_path)
+        loaded = read_results_artifact(out_path)
+
+        assert len(loaded["sensitivity_results"]["confounding_prior"]) == 4
+
+    def test_one_sample_cli_formats_undefined_expected_icers(self, monkeypatch, capsys):
+        from whatnut.pipeline import main
+
+        monkeypatch.setattr(
+            "sys.argv",
+            ["whatnut.pipeline", "--n-samples", "1", "--seed", "0"],
+        )
+
+        main()
+
+        assert "undefined" in capsys.readouterr().out
+
+    @pytest.mark.parametrize(
+        "argv",
+        [
+            ["whatnut.pipeline", "--generate", "--n-samples", "20"],
+            ["whatnut.pipeline", "--generate", "--seed", "0"],
+            ["whatnut.pipeline", "--generate", "--start-age", "60"],
+            ["whatnut.pipeline", "--generate", "--qaly-discount-rate", "0"],
+            ["whatnut.pipeline", "--generate", "--cost-discount-rate", "0.05"],
+            ["whatnut.pipeline", "--generate", "--willingness-to-pay", "100000"],
+        ],
+    )
+    def test_custom_cli_generation_requires_separate_output(self, monkeypatch, argv):
+        from whatnut.pipeline import main
+
+        monkeypatch.setattr("sys.argv", argv)
+
+        with pytest.raises(SystemExit):
+            main()
+
+    def test_custom_cli_generation_writes_separate_artifact(
+        self, monkeypatch, tmp_path
+    ):
+        from whatnut.pipeline import main
+
+        output_path = tmp_path / "scenario.json"
+        monkeypatch.setattr(
+            "sys.argv",
+            [
+                "whatnut.pipeline",
+                "--generate",
+                "--n-samples",
+                "20",
+                "--start-age",
+                "60",
+                "--willingness-to-pay",
+                "250000",
+                "--output",
+                str(output_path),
+            ],
+        )
+
+        main()
+
+        artifact = read_results_artifact(output_path)
+        assert artifact["start_age"] == 60
+        assert artifact["constants"]["target_age"] == 60
+        assert artifact["constants"]["life_expectancy_approx"] == round(
+            artifact["baseline_life_years"]
+        )
+        assert artifact["willingness_to_pay"] == 250_000
+
 
 # ---------------------------------------------------------------------------
 # Baseline life years (Issue 4)
@@ -444,8 +687,9 @@ class TestBaselineLifeYears:
     """baseline_life_years should be derived from CDC mortality table."""
 
     def test_baseline_life_years_from_mortality_table(self):
-        """baseline_life_years should be derived from CDC mortality table, not hardcoded."""
+        """baseline_life_years should be derived from CDC mortality table."""
         from whatnut.config import get_mortality_curve
+
         mortality = get_mortality_curve(40)
         survival = np.cumprod(1 - mortality)
         expected = float(np.sum(survival))

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "whatnut"
-version = "0.2.0"
+version = "0.3.0"
 description = "Monte Carlo analysis of life expectancy from nut consumption"
 readme = "README.md"
 license = "MIT"
@@ -20,6 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
     "numpy>=1.24",
@@ -36,7 +37,6 @@ dependencies = [
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
-    "black>=23.0",
     "ruff>=0.1",
     "mypy>=1.0",
 ]
@@ -50,7 +50,7 @@ all = [
 
 [project.urls]
 Homepage = "https://github.com/MaxGhenis/whatnut"
-Documentation = "https://maxghenis.github.io/whatnut"
+Documentation = "https://maxghenis.com/whatnut"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/whatnut"]
@@ -58,10 +58,14 @@ packages = ["src/whatnut"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --cov=whatnut --cov-report=term-missing"
+pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 88
+
+[tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
 
 [tool.mypy]
 python_version = "3.10"

@@ -8,9 +8,8 @@ Uses n_samples=100 for speed.
 import numpy as np
 import pytest
 
-from whatnut.config import NUT_IDS, PATHWAYS, NUTRIENTS
+from whatnut.config import NUT_IDS, PATHWAYS
 from whatnut.model import ModelSamples, sample_model, summarize_rr
-
 
 N_FAST = 100  # Small sample count for fast tests
 
@@ -252,7 +251,9 @@ class TestSummarizeRR:
         for pathway in PATHWAYS:
             for nut_id in NUT_IDS:
                 for key, val in summary[pathway][nut_id].items():
-                    assert isinstance(val, float), f"{pathway}/{nut_id}/{key} is {type(val)}"
+                    assert isinstance(val, float), (
+                        f"{pathway}/{nut_id}/{key} is {type(val)}"
+                    )
 
 
 # ---------------------------------------------------------------------------
@@ -283,6 +284,7 @@ class TestPathwayAdjustments:
     def test_cashew_adjustment_dampens_effect(self):
         """Cashew CVD adjustment (0.95) should dampen CVD effect."""
         from whatnut.config import get_nut
+
         cashew = get_nut("cashew")
         adj = cashew.pathway_adjustments["cvd"]
         assert adj.mean < 1.0, "Cashew CVD adjustment should be < 1.0"
