@@ -6,12 +6,22 @@ and present results in an accessible way.
 
 from pathlib import Path
 
+import matplotlib
+
+matplotlib.use("Agg")
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 
 # Use a clean style
 plt.style.use("seaborn-v0_8-whitegrid")
+plt.rcParams.update(
+    {
+        "font.family": "DejaVu Sans",
+        "figure.dpi": 100,
+        "savefig.dpi": 150,
+    }
+)
 
 # Color palette - accessible and professional
 COLORS = {
@@ -81,7 +91,7 @@ def fig1_model_architecture():
 
     input_nodes = [
         (1.3, "USDA Nutrient\nComposition"),
-        (3.9, "Evidence Priors\n+ Nut Adjustments"),
+        (3.9, "Outcome-Matched\nMortality Priors"),
         (6.5, "Confounding\nEvidence"),
         (9.1, "Life, Quality +\nCause Tables"),
         (11.9, "Retail Prices +\nQALY Value (λ)"),
@@ -109,7 +119,7 @@ def fig1_model_architecture():
     ax.text(
         7,
         4.65,
-        "Batched Lifecycle Projection\nLife Years • QALYs • Consumer Cost",
+        "Hazard-Scale Lifecycle\nHalf-Cycle LY • QALYs • Cost",
         fontsize=10,
         ha="center",
         va="center",
@@ -251,7 +261,7 @@ def fig2_pathway_rrs():
         x,
         other_reduction,
         width,
-        label="Other Mortality",
+        label="Other Mortality (structural null)",
         color=COLORS["other"],
         alpha=0.85,
     )
@@ -339,8 +349,8 @@ def fig3_forest_plot():
         ax.plot(nut.life_years, i, "o", color=COLORS["primary"], markersize=10)
 
         # Direct 95% Monte Carlo model interval for life years.
-        ci_lower = nut.life_years_ci_lower
-        ci_upper = nut.life_years_ci_upper
+        ci_lower = nut.life_years_model_interval_lower
+        ci_upper = nut.life_years_model_interval_upper
         ax.hlines(i, ci_lower, ci_upper, color=COLORS["primary"], linewidth=2)
 
         # Caps
@@ -359,6 +369,7 @@ def fig3_forest_plot():
 
     ax.set_yticks(y_positions)
     ax.set_yticklabels([n.name for n in nuts_sorted], fontsize=11)
+    ax.invert_yaxis()
     ax.set_xlabel("Life Years Gained", fontsize=12)
     ax.set_title(
         "Life Expectancy Gains from Daily Nut Consumption (28g/day)",
@@ -368,8 +379,8 @@ def fig3_forest_plot():
     ax.axvline(0, color="gray", linestyle="--", linewidth=0.5)
     # Scale to the interval endpoints, not only the point estimates, and leave
     # enough right-hand room for labels placed beyond each upper endpoint.
-    interval_lowers = [nut.life_years_ci_lower for nut in nuts_sorted]
-    interval_uppers = [nut.life_years_ci_upper for nut in nuts_sorted]
+    interval_lowers = [nut.life_years_model_interval_lower for nut in nuts_sorted]
+    interval_uppers = [nut.life_years_model_interval_upper for nut in nuts_sorted]
     data_min = min(interval_lowers + [0.0])
     data_max = max(interval_uppers + [0.05])
     data_span = max(data_max - data_min, 0.1)
@@ -464,45 +475,40 @@ def fig5_confounding_calibration():
     alpha = r.confounding_alpha
     beta = r.confounding_beta
     mean = r.confounding_mean
-    ci_lower = r.confounding_ci_lower
-    ci_upper = r.confounding_ci_upper
+    ci_lower = r.confounding_prior_interval_lower
+    ci_upper = r.confounding_prior_interval_upper
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-    # Left panel: Evidence sources — implied causal-fraction bounds from
-    # each evidence line (see Methods §"Confounding Calibration").
+    # Left panel: qualitative calibration evidence. These sources do not
+    # identify commensurate numeric causal fractions, so avoid pseudo-precise
+    # bars and state their direction and limitations directly.
     ax1 = axes[0]
     sources = [
-        "LDL Pathway\n(mechanism floor)",
-        "Mendelian\nRandomization",
-        "Golestan Cohort\n(Iran, low confounding)",
+        ("LDL biomarker bridge", "low double-digit floor\n(one pathway only)"),
+        ("Mendelian randomization", "near-null signal\n(weak instruments)"),
+        ("Golestan cohort", "association persists\n(not a causal-fraction estimate)"),
     ]
-    values = [0.12, 0.05, 1.0]
     colors = ["#3498DB", "#9B59B6", "#27AE60"]
-
-    bars = ax1.barh(sources, values, color=colors, alpha=0.7, edgecolor="black")
-
-    ax1.set_xlabel("Implied Causal Fraction", fontsize=11)
-    ax1.set_title(
-        "Evidence Sources for Causal Fraction", fontsize=12, fontweight="bold"
-    )
-    ax1.set_xlim(0, 1.2)
-    ax1.axvline(
-        mean, color="red", linestyle="--", linewidth=2, label=f"Prior mean ({mean:.2f})"
-    )
-
-    for bar, val in zip(bars, values):
+    for index, ((label, interpretation), color) in enumerate(zip(sources, colors)):
+        y = 2 - index
         ax1.text(
-            val + 0.03,
-            bar.get_y() + bar.get_height() / 2,
-            f"{val:.0%}",
-            va="center",
+            0.05,
+            y,
+            label,
             fontsize=10,
+            fontweight="bold",
+            va="center",
+            bbox=dict(boxstyle="round", facecolor=color, alpha=0.25),
         )
+        ax1.text(0.52, y, interpretation, fontsize=9, va="center")
 
-    ax1.legend(loc="lower right")
-    ax1.spines["top"].set_visible(False)
-    ax1.spines["right"].set_visible(False)
+    ax1.set_title(
+        "Qualitative Evidence for Causal Fraction", fontsize=12, fontweight="bold"
+    )
+    ax1.set_xlim(0, 1)
+    ax1.set_ylim(-0.6, 2.6)
+    ax1.axis("off")
 
     # Right panel: Prior distribution (live from config)
     ax2 = axes[1]
@@ -517,7 +523,6 @@ def fig5_confounding_calibration():
         linewidth=2,
         label=f"Beta({alpha:g}, {beta:g})",
     )
-
     ax2.axvline(
         mean, color="red", linestyle="--", linewidth=2, label=f"Mean = {mean:.2f}"
     )
@@ -566,25 +571,10 @@ def fig6_nutrient_contributions():
     nuts = list(NUT_IDS)
     cvd_priors = get_pathway_priors("cvd")
 
-    # Key nutrients
-    key_nutrients = [
-        "ala_omega3",
-        "fiber",
-        "magnesium",
-        "omega7",
-        "saturated_fat",
-        "vitamin_e",
-        "protein",
-    ]
-    nutrient_labels = [
-        "ALA Omega-3",
-        "Fiber",
-        "Magnesium",
-        "Omega-7",
-        "Saturated fat",
-        "Vitamin E",
-        "Protein",
-    ]
+    # Only identified coefficients enter the canonical CVD pathway. Excluded
+    # mechanistic and substitution-only terms are not plotted as if estimated.
+    key_nutrients = ["ala_omega3", "fiber", "magnesium"]
+    nutrient_labels = ["ALA Omega-3", "Fiber", "Magnesium"]
 
     # Build nutrient matrix for just key nutrients
     from whatnut.config import get_nut as _get_nut
@@ -624,7 +614,7 @@ def fig6_nutrient_contributions():
             )
 
     ax.set_title(
-        "Nominal Nutrient Contributions to CVD Log-RR (Pre-Shrinkage)",
+        "Identified Nutrient Contributions to CVD Log-HR (Pre-Causal Fraction)",
         fontsize=14,
         fontweight="bold",
     )
@@ -690,6 +680,9 @@ def fig7_icer_comparison():
     # Dynamic y-limit so the chart scales with the live ICER distribution
     ymax = max(icers + [r.willingness_to_pay, 1]) * 1.15
     ax.set_ylim(0, ymax)
+    ax.yaxis.set_major_formatter(
+        matplotlib.ticker.FuncFormatter(lambda value, _: f"${value / 1000:,.0f}k")
+    )
 
     # Value labels (offset 1.5% of y-axis so they sit above the bars).
     # Escape $ to keep matplotlib out of math mode.
@@ -723,13 +716,13 @@ def fig7_icer_comparison():
     annotation = annotation.replace("$", r"\$")
     annotation_color = "lightgreen" if n_below_benchmark else "mistyrose"
     ax.text(
-        0.98,
-        0.15,
+        0.55,
+        0.96,
         annotation,
         transform=ax.transAxes,
         fontsize=10,
-        ha="right",
-        va="bottom",
+        ha="center",
+        va="top",
         bbox=dict(boxstyle="round", facecolor=annotation_color, alpha=0.7),
     )
 

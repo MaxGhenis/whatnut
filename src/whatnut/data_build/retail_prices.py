@@ -68,7 +68,7 @@ def per_nut_price(rows: list[dict]) -> float:
 
 def apply_to_nuts_yaml(prices: dict[str, float]) -> None:
     """Rewrite cost_per_kg_usd in nuts.yaml for each nut, preserving
-    nutrients/pathway_adjustments/evidence fields."""
+    nutrient fields."""
     nuts_path = DATA_DIR / "nuts.yaml"
     with open(nuts_path) as f:
         data = yaml.safe_load(f)

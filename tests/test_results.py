@@ -113,11 +113,11 @@ class TestNutResultProperties:
         # Should be a number formatted to 2 decimal places
         float(r.walnut.qaly)  # Should not raise
 
-    def test_walnut_qaly_ci_format(self):
-        ci = r.walnut.qaly_ci
-        assert ci.startswith("[")
-        assert ci.endswith("]")
-        assert "," in ci
+    def test_walnut_qaly_model_interval_format(self):
+        interval = r.walnut.qaly_model_interval
+        assert interval.startswith("[")
+        assert interval.endswith("]")
+        assert "," in interval
 
     def test_walnut_icer_fmt(self):
         icer_str = r.walnut.icer_fmt
@@ -147,7 +147,7 @@ class TestNutResultProperties:
         float(s)
 
     def test_qaly_undiscounted_interval(self):
-        assert r.walnut.qaly_undiscounted_ci.startswith("[")
+        assert r.walnut.qaly_undiscounted_model_interval.startswith("[")
 
     def test_icer_undiscounted_property(self):
         assert r.walnut.icer_undiscounted_fmt.startswith("$")
@@ -167,7 +167,7 @@ class TestNutResultProperties:
         )
         assert r.health_gain_and_icer_summary == (
             "Walnuts yield the largest expected gain "
-            f"({r.walnut.life_years_fmt} life years); they also have the lowest "
+            f"({r.walnut.life_years_fmt} life years); Peanuts have the lowest "
             "defined expected ICER"
         )
         assert r.best_nut_alternative is r.peanut
@@ -177,9 +177,10 @@ class TestNutResultProperties:
         analysis = run_analysis(
             n_samples=1_000,
             seed=42,
-            willingness_to_pay=250_000,
+            willingness_to_pay=350_000,
+            include_sensitivities=True,
         )
-        path = tmp_path / "wtp-250000.json"
+        path = tmp_path / "wtp-350000.json"
         generate_results_json(analysis, path)
 
         custom = load_results(path)

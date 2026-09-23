@@ -15,11 +15,10 @@ from whatnut.config import (
     ConfoundingPrior,
     NutProfile,
     NutrientPrior,
-    PathwayAdjustment,
-    TauPrior,
     get_all_nuts,
     get_cause_fractions,
     get_confounding_prior,
+    get_evidence_registry,
     get_mortality_curve,
     get_mortality_rate,
     get_nut,
@@ -28,7 +27,6 @@ from whatnut.config import (
     get_pathway_priors,
     get_quality_curve,
     get_quality_weight,
-    get_tau_prior,
     load_cause_fractions,
     load_mortality,
     load_nuts_yaml,
@@ -52,7 +50,7 @@ class TestYAMLLoading:
         assert "cancer" in data
         assert "other" in data
         assert "confounding" in data
-        assert "tau" in data
+        assert "substitution_contrasts" in data
 
     def test_nuts_yaml_loads(self):
         data = load_nuts_yaml()
@@ -130,13 +128,8 @@ class TestNutProfiles:
                 f"greater than {nut_id} ALA ({other.nutrients['ala_omega3']})"
             )
 
-    def test_walnut_has_pathway_adjustments(self, walnut):
-        for pathway in PATHWAYS:
-            assert pathway in walnut.pathway_adjustments
-            adj = walnut.pathway_adjustments[pathway]
-            assert isinstance(adj, PathwayAdjustment)
-            assert adj.mean > 0
-            assert adj.sd > 0
+    def test_nut_profiles_have_no_hand_curated_mortality_adjustment(self, walnut):
+        assert not hasattr(walnut, "pathway_adjustments")
 
     def test_walnut_annual_cost(self, walnut):
         expected = walnut.cost_per_kg_usd * 10.22
@@ -158,13 +151,10 @@ class TestNutProfiles:
             assert nut.cost_per_kg_usd > 0
             assert nut.annual_cost > 0
 
-    def test_all_nuts_have_evidence_level(self):
-        valid_levels = {"strong", "moderate", "limited"}
+    def test_nut_profiles_do_not_encode_evidence_tiers(self):
         for nut_id in NUT_IDS:
             nut = get_nut(nut_id)
-            assert nut.evidence in valid_levels, (
-                f"{nut_id} evidence '{nut.evidence}' not in {valid_levels}"
-            )
+            assert not hasattr(nut, "evidence")
 
 
 # ---------------------------------------------------------------------------
@@ -227,6 +217,9 @@ class TestPriors:
         assert prior.mean < 0  # Protective effect
         assert prior.sd > 0
         assert prior.unit == "g"
+        assert prior.outcome == "CVD mortality"
+        assert prior.source_url
+        assert prior.applicable_actions == ("gross_addition",)
 
     def test_pathway_priors_complete(self):
         for pathway in PATHWAYS:
@@ -244,23 +237,27 @@ class TestPriors:
         assert prior.mean == pytest.approx(0.20)
         assert 0 < prior.ci_lower < prior.ci_upper < 1
 
-    def test_tau_prior(self):
-        prior = get_tau_prior()
-        assert isinstance(prior, TauPrior)
-        assert prior.sigma > 0
-        assert prior.sigma == pytest.approx(0.015)
+    def test_substitution_only_fats_are_inactive_for_gross_addition(self):
+        for nutrient in ("omega6", "saturated_fat"):
+            prior = get_nutrient_prior("cvd", nutrient)
+            assert prior.mean == 0
+            assert prior.sd == 0
+            assert prior.applicable_actions == ()
 
-    def test_study_quality_shrinkage(self):
-        from whatnut.config import get_study_quality_shrinkage
+    def test_evidence_registry_classifies_every_coefficient(self):
+        registry = get_evidence_registry()
+        active = registry["active_coefficients"]
+        excluded = registry["structurally_excluded_coefficients"]
 
-        s = get_study_quality_shrinkage()
-        assert 0 < s.strong < s.moderate < s.limited < 1
-        # Retention is the complement (fraction of residual kept)
-        assert s.retention("strong") == pytest.approx(1 - s.strong)
-        assert s.retention("moderate") == pytest.approx(1 - s.moderate)
-        assert s.retention("limited") == pytest.approx(1 - s.limited)
-        # Unknown evidence tags fall back to the most skeptical tier
-        assert s.retention("nonexistent") == s.retention("limited")
+        assert len(active) == 4
+        assert len(excluded) == len(PATHWAYS) * len(NUTRIENTS) - 4
+        assert {(item["pathway"], item["nutrient"]) for item in active} == {
+            ("cvd", "ala_omega3"),
+            ("cvd", "fiber"),
+            ("cvd", "magnesium"),
+            ("cancer", "fiber"),
+        }
+        assert registry["deferred_substitution_contrasts"]
 
 
 # ---------------------------------------------------------------------------
@@ -281,31 +278,37 @@ class TestMortality:
         rate = get_mortality_rate(40)
         assert rate == pytest.approx(0.002916, rel=0.01)
 
+    def test_complete_single_age_table_is_retained(self):
+        rates = load_mortality()["rates"]
+        assert set(rates) == set(range(101))
+        assert rates[41] == pytest.approx(0.003078)
+        assert rates[99] == pytest.approx(0.323082)
+        assert rates[100] == 1.0
+
     def test_mortality_increases_with_age(self):
         curve = get_mortality_curve(40, 100)
         for i in range(1, len(curve)):
             assert curve[i] >= curve[i - 1], f"Mortality decreased at age {40 + i}"
 
     def test_mortality_in_valid_range(self):
-        curve = get_mortality_curve(0, 110)
+        curve = get_mortality_curve(0, 100)
         assert np.all(curve >= 0)
         assert np.all(curve <= 1)
 
     def test_mortality_curve_length(self):
-        curve = get_mortality_curve(40, 110)
-        assert len(curve) == 71  # ages 40..110 inclusive
+        curve = get_mortality_curve(40)
+        assert len(curve) == 61  # ages 40..100 inclusive
 
-    def test_interpolation_between_ages(self):
-        """Interpolation at age 42 should be between 40 and 45."""
+    def test_adjacent_published_single_age_values(self):
+        """Adjacent adult ages come directly from the CDC table."""
         rate_40 = get_mortality_rate(40)
         rate_42 = get_mortality_rate(42)
         rate_45 = get_mortality_rate(45)
         assert rate_40 < rate_42 < rate_45
 
-    def test_extrapolation_beyond_table(self):
-        """Ages beyond max table entry should still return valid rates."""
-        rate = get_mortality_rate(105)
-        assert 0 < rate <= 1
+    def test_extrapolation_beyond_terminal_age_is_rejected(self):
+        with pytest.raises(ValueError, match="between 0 and 100"):
+            get_mortality_rate(105)
 
 
 # ---------------------------------------------------------------------------
@@ -326,13 +329,13 @@ class TestQualityCurve:
             assert curve[i] <= curve[i - 1], f"Quality increased at age {40 + i}"
 
     def test_quality_in_valid_range(self):
-        curve = get_quality_curve(20, 110)
+        curve = get_quality_curve(20, 100)
         assert np.all(curve > 0)
         assert np.all(curve <= 1)
 
     def test_quality_curve_length(self):
-        curve = get_quality_curve(40, 110)
-        assert len(curve) == 71
+        curve = get_quality_curve(40)
+        assert len(curve) == 61
 
     def test_interpolation_between_ages(self):
         w_40 = get_quality_weight(40)
@@ -398,15 +401,12 @@ class TestCauseFractions:
 class TestUnitConsistency:
     """Nutrient priors should produce plausible per-serving contributions."""
 
-    def test_magnesium_contribution_plausible(self):
-        """Magnesium contribution to log-RR should be small (< 0.05 per serving)."""
+    def test_magnesium_uses_identified_cvd_mortality_estimate(self):
+        """An imprecise estimate stays continuous rather than being zeroed by p-value."""
         prior = get_nutrient_prior("cvd", "magnesium")
-        walnut = get_nut("walnut")
-        mg = walnut.nutrients["magnesium"]  # ~44 mg
-        contribution = abs(prior.mean * mg)
-        assert contribution < 0.05, (
-            f"Magnesium contribution {contribution:.4f} too large (unit error?)"
-        )
+        assert prior.mean == pytest.approx(-0.000304592)
+        assert prior.sd == pytest.approx(0.000183229)
+        assert prior.applicable_actions == ("gross_addition",)
 
     def test_phytosterol_contribution_plausible(self):
         """Phytosterol contribution to log-RR should be small (< 0.10 per serving)."""
@@ -470,33 +470,26 @@ class TestScientificParameters:
         prior = get_nutrient_prior("cvd", "phytosterols")
         assert prior.unit == "mg", f"Phytosterol unit is '{prior.unit}', expected 'mg'"
 
-    def test_magnesium_cvd_prior_mean_near_minus_0001(self):
-        """Fix 4: Magnesium CVD prior should be ~-0.001/mg (Fang 2016)."""
+    def test_magnesium_cvd_prior_refuses_outcome_mismatch(self):
+        """Bagheri's CVD-mortality estimate replaces Fang's stroke estimate."""
         prior = get_nutrient_prior("cvd", "magnesium")
-        assert prior.mean == pytest.approx(-0.001, abs=0.0003), (
-            f"Magnesium CVD prior mean is {prior.mean}, expected -0.001 "
-            "(Fang 2016: RR 0.90 per 100mg, ln(0.90)/100=-0.00105/mg)"
-        )
+        assert prior.mean == pytest.approx(-0.000304592)
+        assert prior.sd == pytest.approx(0.000183229)
+        assert prior.outcome == "CVD mortality"
+        assert "Bagheri 2021" in prior.source
 
     def test_magnesium_unit_is_mg(self):
         """Fix 4: Magnesium unit should be 'mg' (not 'mg (effect per 10mg)')."""
         prior = get_nutrient_prior("cvd", "magnesium")
         assert prior.unit == "mg", f"Magnesium unit is '{prior.unit}', expected 'mg'"
 
-    def test_walnut_cvd_pathway_sd_wide(self):
-        """Fix 5: Walnut CVD pathway adjustment SD should be >= 0.12."""
-        walnut = get_nut("walnut")
-        adj = walnut.pathway_adjustments["cvd"]
-        assert adj.sd >= 0.12, (
-            f"Walnut CVD pathway SD is {adj.sd}, expected >= 0.12 "
-            "(widened to reflect reviewer concerns about researcher DOF)"
-        )
-
-    def test_cashew_cvd_pathway_sd_wide(self):
-        """Fix 5: Cashew CVD pathway adjustment SD should be >= 0.10."""
-        cashew = get_nut("cashew")
-        adj = cashew.pathway_adjustments["cvd"]
-        assert adj.sd >= 0.10, f"Cashew CVD pathway SD is {adj.sd}, expected >= 0.10"
+    def test_fiber_priors_are_cause_specific_mortality_estimates(self):
+        cvd = get_nutrient_prior("cvd", "fiber")
+        cancer = get_nutrient_prior("cancer", "fiber")
+        assert cvd.mean == pytest.approx(-0.0139262)
+        assert cvd.sd == pytest.approx(0.00204191)
+        assert cancer.mean == pytest.approx(-0.00943107)
+        assert cancer.sd == pytest.approx(0.00140976)
 
 
 # ---------------------------------------------------------------------------

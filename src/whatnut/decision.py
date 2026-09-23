@@ -63,6 +63,7 @@ SINGLE_NUT_ADDITION_DECISION = DecisionContext(
         "Current diet or routine.",
         "Food displaced by the added nut.",
         "Dietary substitution effects.",
+        "Energy compensation, calorie surplus, and adiposity effects.",
         "Direct morbidity effects or harms.",
         "Adherence decay or finite intervention persistence.",
         "Personalized transport to the user's baseline risk.",
@@ -164,7 +165,7 @@ def summarize_cost_effectiveness(
             expected_cost / expected_qaly if expected_qaly > 0 else float("inf")
         ),
         "p_benefit": float(np.mean(qaly_draws > 0)),
-        "p_harm": float(np.mean(qaly_draws < 0)),
+        "p_negative_mortality_effect": float(np.mean(qaly_draws < 0)),
         "expected_upside": float(np.mean(np.maximum(qaly_draws, 0))),
         "expected_downside": float(np.mean(np.minimum(qaly_draws, 0))),
         "expected_net_monetary_benefit": float(np.mean(net_monetary_benefit)),
@@ -192,7 +193,13 @@ def summarize_mutually_exclusive_nmb(
     if len(shapes) != 1:
         raise ValueError("all option NMB draws must have the same shape.")
 
-    matrix = np.column_stack([draws[option_id] for option_id in option_ids])
+    # The declared economic resolution is one millionth of a dollar. Apply it
+    # to draw-wise comparisons as well as expected-NMB ranking so platform-scale
+    # floating noise cannot turn an economic tie into a different decision.
+    matrix = np.round(
+        np.column_stack([draws[option_id] for option_id in option_ids]),
+        EXPECTED_NMB_DECIMALS,
+    )
     draw_max = np.max(matrix, axis=1, keepdims=True)
     is_optimal = matrix == draw_max
     optimal_share = is_optimal / np.sum(is_optimal, axis=1, keepdims=True)

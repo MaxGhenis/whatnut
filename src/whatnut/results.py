@@ -34,20 +34,22 @@ class NutResult:
     """Results for a single nut type."""
 
     name: str
-    evidence: str
     qaly_mean: float
-    qaly_ci_lower: float
-    qaly_ci_upper: float
+    qaly_model_interval_lower: float
+    qaly_model_interval_upper: float
+    expected_qaly_cvd: float
+    expected_qaly_cancer: float
+    expected_qaly_other: float
     qaly_undiscounted_mean: float
-    qaly_undiscounted_ci_lower: float
-    qaly_undiscounted_ci_upper: float
+    qaly_undiscounted_model_interval_lower: float
+    qaly_undiscounted_model_interval_upper: float
     expected_upside: float
     expected_downside: float
     p_positive: float
     p_negative: float
     life_years: float
-    life_years_ci_lower: float
-    life_years_ci_upper: float
+    life_years_model_interval_lower: float
+    life_years_model_interval_upper: float
     icer: float | None
     icer_undiscounted: float | None
     p_nmb_positive: float
@@ -70,13 +72,12 @@ class NutResult:
         return f"{self.qaly_mean:.3f}"
 
     @property
-    def qaly_ci(self) -> str:
-        return f"[{self.qaly_ci_lower:.3f}, {self.qaly_ci_upper:.3f}]"
-
-    @property
     def qaly_model_interval(self) -> str:
         """Formatted 95% Monte Carlo model interval."""
-        return self.qaly_ci
+        return (
+            f"[{self.qaly_model_interval_lower:.3f}, "
+            f"{self.qaly_model_interval_upper:.3f}]"
+        )
 
     @property
     def icer_fmt(self) -> str:
@@ -103,10 +104,10 @@ class NutResult:
         return f"{self.qaly_undiscounted:.3f}"
 
     @property
-    def qaly_undiscounted_ci(self) -> str:
+    def qaly_undiscounted_model_interval(self) -> str:
         return (
-            f"[{self.qaly_undiscounted_ci_lower:.3f}, "
-            f"{self.qaly_undiscounted_ci_upper:.3f}]"
+            f"[{self.qaly_undiscounted_model_interval_lower:.3f}, "
+            f"{self.qaly_undiscounted_model_interval_upper:.3f}]"
         )
 
     @property
@@ -158,12 +159,13 @@ class PaperResults:
     confounding_alpha: float
     confounding_beta: float
     confounding_mean: float
-    confounding_ci_lower: float
-    confounding_ci_upper: float
+    confounding_prior_interval_lower: float
+    confounding_prior_interval_upper: float
 
     # Baseline metrics (derived from mortality + quality tables)
     baseline_life_years: float
-    baseline_qalys: float
+    baseline_qalys_undiscounted: float
+    baseline_qalys_discounted: float
     average_quality_weight: float
 
     # E-value for the reference HR (Aune 2016 all-cause, HR=0.78)
@@ -184,10 +186,12 @@ class PaperResults:
     nice_lower_gbp: int = field(default=25000)
     nice_upper_gbp: int = field(default=35000)
     gbp_usd_rate: float = field(default=1.34)
+    analysis_spec: dict = field(default_factory=dict)
     reference_case: dict = field(default_factory=dict)
     decision_context: dict = field(default_factory=dict)
     decision_summary: dict = field(default_factory=dict)
     model_interval: dict = field(default_factory=dict)
+    evidence_registry: dict = field(default_factory=dict)
     methodology_provenance: dict = field(default_factory=dict)
     sensitivity_results: dict = field(default_factory=dict)
 
@@ -533,20 +537,26 @@ def load_results(path: Path = RESULTS_PATH) -> PaperResults:
     for nid, nd in data["nuts"].items():
         nuts[nid] = NutResult(
             name=nd["name"],
-            evidence=nd["evidence"],
             qaly_mean=nd["qaly_mean"],
-            qaly_ci_lower=nd["qaly_ci_lower"],
-            qaly_ci_upper=nd["qaly_ci_upper"],
+            qaly_model_interval_lower=nd["qaly_model_interval_lower"],
+            qaly_model_interval_upper=nd["qaly_model_interval_upper"],
+            expected_qaly_cvd=nd["expected_qaly_cvd"],
+            expected_qaly_cancer=nd["expected_qaly_cancer"],
+            expected_qaly_other=nd["expected_qaly_other"],
             qaly_undiscounted_mean=nd["qaly_undiscounted_mean"],
-            qaly_undiscounted_ci_lower=nd["qaly_undiscounted_ci_lower"],
-            qaly_undiscounted_ci_upper=nd["qaly_undiscounted_ci_upper"],
+            qaly_undiscounted_model_interval_lower=nd[
+                "qaly_undiscounted_model_interval_lower"
+            ],
+            qaly_undiscounted_model_interval_upper=nd[
+                "qaly_undiscounted_model_interval_upper"
+            ],
             expected_upside=nd["expected_upside"],
             expected_downside=nd["expected_downside"],
             p_positive=nd["p_positive"],
             p_negative=nd["p_negative"],
             life_years=nd["life_years_mean"],
-            life_years_ci_lower=nd["life_years_ci_lower"],
-            life_years_ci_upper=nd["life_years_ci_upper"],
+            life_years_model_interval_lower=nd["life_years_model_interval_lower"],
+            life_years_model_interval_upper=nd["life_years_model_interval_upper"],
             icer=nd["icer_expected"],
             icer_undiscounted=nd["icer_undiscounted_expected"],
             p_nmb_positive=nd["p_nmb_positive"],
@@ -578,7 +588,7 @@ def load_results(path: Path = RESULTS_PATH) -> PaperResults:
     cancer_pct = round(float(data["cancer_contribution_mean"]) * 100)
     other_pct = round(float(data["other_contribution_mean"]) * 100)
 
-    # Narrative constants are part of schema 1.0.0 and therefore validated
+    # Narrative constants are part of schema 2.0.0 and therefore validated
     # before this point; the report layer has no compatibility defaults.
     constants = data["constants"]
 
@@ -595,10 +605,11 @@ def load_results(path: Path = RESULTS_PATH) -> PaperResults:
         confounding_alpha=data["confounding_alpha"],
         confounding_beta=data["confounding_beta"],
         confounding_mean=data["confounding_mean"],
-        confounding_ci_lower=data["confounding_ci_lower"],
-        confounding_ci_upper=data["confounding_ci_upper"],
+        confounding_prior_interval_lower=data["confounding_prior_interval_lower"],
+        confounding_prior_interval_upper=data["confounding_prior_interval_upper"],
         baseline_life_years=data["baseline_life_years"],
-        baseline_qalys=data["baseline_qalys"],
+        baseline_qalys_undiscounted=data["baseline_qalys_undiscounted"],
+        baseline_qalys_discounted=data["baseline_qalys_discounted"],
         average_quality_weight=data["average_quality_weight"],
         e_value=data["e_value"],
         cvd_contribution=cvd_pct,
@@ -611,10 +622,12 @@ def load_results(path: Path = RESULTS_PATH) -> PaperResults:
         nice_lower_gbp=constants["nice_lower_gbp"],
         nice_upper_gbp=constants["nice_upper_gbp"],
         gbp_usd_rate=constants["gbp_usd_rate"],
+        analysis_spec=data["analysis_spec"],
         reference_case=data["reference_case"],
         decision_context=data["decision_context"],
         decision_summary=data["decision_summary"],
         model_interval=data["model_interval"],
+        evidence_registry=data["evidence_registry"],
         methodology_provenance=data["methodology_provenance"],
         sensitivity_results=data["sensitivity_results"],
         nuts=nuts,

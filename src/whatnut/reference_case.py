@@ -54,7 +54,7 @@ US_SECOND_PANEL_REFERENCE_CASE = ReferenceCase(
     formal_reference_case=True,
     notes=(
         "Discount both health effects and costs at 3% in the primary case.",
-        "What Nut uses EQ-5D population norms.",
+        "What Nut uses published US EQ-5D-5L age-band population norms.",
         "What Nut reports mortality-derived QALYs, not a full formal CUA.",
     ),
 )
@@ -71,7 +71,9 @@ WHATNUT_CONSUMER_REFERENCE_CASE = ReferenceCase(
     formal_reference_case=False,
     notes=(
         "Uses US Second Panel-style 3% health and cost discounting.",
-        "Uses EQ-5D population norms for mortality-derived QALYs.",
+        "Annual life-years, QALYs, and recurring costs use half-cycle occupancy "
+        "with midpoint discounting.",
+        "Uses published US EQ-5D-5L age-band norms for mortality-derived QALYs.",
         "Includes consumer retail nut costs, not a health-care-sector cost inventory.",
         "What Nut reports mortality-derived QALYs, not a full formal CUA.",
     ),

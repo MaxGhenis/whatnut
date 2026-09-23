@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "whatnut"
-version = "0.3.0"
-description = "Monte Carlo analysis of life expectancy from nut consumption"
+version = "0.4.0"
+description = "Monte Carlo mortality-potential and consumer decision model for daily nuts"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
@@ -25,9 +25,7 @@ classifiers = [
 dependencies = [
     "numpy>=1.24",
     "scipy>=1.10",
-    "pandas>=2.0",
     "matplotlib>=3.7",
-    "seaborn>=0.12",
     "pyyaml>=6.0",
     "pypdf>=6.10.2",
     "openpyxl>=3.1.5",
@@ -42,7 +40,6 @@ dev = [
 ]
 docs = [
     "ipykernel>=6.0",
-    "jupyter>=1.0",
 ]
 all = [
     "whatnut[dev,docs]",
@@ -51,6 +48,9 @@ all = [
 [project.urls]
 Homepage = "https://github.com/MaxGhenis/whatnut"
 Documentation = "https://maxghenis.com/whatnut"
+
+[project.scripts]
+whatnut = "whatnut.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/whatnut"]
