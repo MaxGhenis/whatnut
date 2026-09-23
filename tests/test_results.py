@@ -16,7 +16,6 @@ from whatnut.results import (
     r,
 )
 
-
 # ---------------------------------------------------------------------------
 # Results file existence and loading
 # ---------------------------------------------------------------------------
@@ -65,6 +64,13 @@ class TestResultParameters:
     def test_discount_rates(self, results):
         assert results.qaly_discount_rate == 0.0
         assert results.cost_discount_rate == 0.03
+        assert results.reference_qaly_discount_rate == 0.03
+        assert results.reference_cost_discount_rate == 0.03
+
+    def test_reference_case_loaded(self, results):
+        assert results.reference_case["id"] == "us_second_panel_healthcare_sector_3pct"
+        assert results.reference_case["health_discount_rate"] == pytest.approx(0.03)
+        assert results.reference_case["cost_discount_rate"] == pytest.approx(0.03)
 
     def test_confounding(self, results):
         assert results.confounding_alpha == pytest.approx(1.5)
@@ -123,6 +129,15 @@ class TestNutResultProperties:
         assert isinstance(s, str)
         float(s)
 
+    def test_qaly_reference_properties(self):
+        assert isinstance(r.walnut.qaly_reference, str)
+        float(r.walnut.qaly_reference)
+        assert r.walnut.qaly_reference_ci.startswith("[")
+
+    def test_icer_reference_properties(self):
+        assert r.walnut.icer_reference_fmt.startswith("$")
+        assert r.walnut.icer_reference_ci_fmt.startswith("[")
+
 
 # ---------------------------------------------------------------------------
 # PaperResults convenience accessors
@@ -179,8 +194,18 @@ class TestRangeProperties:
         assert isinstance(qr, str)
         assert "-" in qr
 
+    def test_qaly_reference_range(self):
+        qr = r.qaly_reference_range
+        assert isinstance(qr, str)
+        assert "-" in qr
+
     def test_icer_range(self):
         ir = r.icer_range
+        assert isinstance(ir, str)
+        assert "$" in ir
+
+    def test_icer_reference_range(self):
+        ir = r.icer_reference_range
         assert isinstance(ir, str)
         assert "$" in ir
 

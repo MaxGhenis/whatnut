@@ -15,16 +15,22 @@ import numpy as np
 from scipy.stats import beta as beta_dist
 
 from whatnut.config import (
-    NUT_IDS,
-    PATHWAYS,
     get_confounding_prior,
     get_mortality_curve,
     get_nut,
     get_quality_curve,
     load_constants,
 )
-from whatnut.lifecycle import LifecycleResult, run_lifecycle, run_lifecycle_vectorized
-from whatnut.model import ModelSamples, sample_model
+from whatnut.lifecycle import run_lifecycle, run_lifecycle_vectorized
+from whatnut.model import sample_model
+from whatnut.reference_case import (
+    DEFAULT_COST_DISCOUNT_RATE,
+    DEFAULT_QALY_DISCOUNT_RATE,
+    DEFAULT_REFERENCE_CASE,
+    DEFAULT_REFERENCE_COST_DISCOUNT_RATE,
+    DEFAULT_REFERENCE_QALY_DISCOUNT_RATE,
+    validate_discount_rate,
+)
 
 
 @dataclass
@@ -40,13 +46,18 @@ class NutAnalysis:
     life_years_ci_lower: float
     life_years_ci_upper: float
 
-    # QALYs (discounted)
+    # QALYs under the main paper discounting convention.
     qaly_mean: float
     qaly_ci_lower: float
     qaly_ci_upper: float
 
     # QALYs (undiscounted)
     qaly_undiscounted_mean: float
+
+    # QALYs under the institutional 3%/3% reference case.
+    qaly_reference_mean: float
+    qaly_reference_ci_lower: float
+    qaly_reference_ci_upper: float
 
     # Probability of positive benefit
     p_positive: float
@@ -57,6 +68,9 @@ class NutAnalysis:
     icer_median: float
     icer_ci_lower: float
     icer_ci_upper: float | None  # None when the 2.5th-percentile QALY is ≤ 0
+    icer_reference_median: float
+    icer_reference_ci_lower: float
+    icer_reference_ci_upper: float | None
 
     # Pathway-specific RRs (Monte Carlo expected RRs; not a true posterior
     # because the model has no likelihood — see docs/index.md Methods).
@@ -80,6 +94,8 @@ class AnalysisResults:
     start_age: int
     qaly_discount_rate: float
     cost_discount_rate: float
+    reference_qaly_discount_rate: float
+    reference_cost_discount_rate: float
     confounding_alpha: float
     confounding_beta: float
     confounding_mean: float
@@ -97,6 +113,7 @@ class AnalysisResults:
     # Narrative constants loaded from data/constants.yaml so values in the
     # paper text never drift from a single source of truth.
     constants: dict
+    reference_case: dict
 
     # Per-nut results
     nuts: dict[str, NutAnalysis]
@@ -114,6 +131,8 @@ class AnalysisResults:
             "start_age": self.start_age,
             "qaly_discount_rate": self.qaly_discount_rate,
             "cost_discount_rate": self.cost_discount_rate,
+            "reference_qaly_discount_rate": self.reference_qaly_discount_rate,
+            "reference_cost_discount_rate": self.reference_cost_discount_rate,
             "confounding_alpha": self.confounding_alpha,
             "confounding_beta": self.confounding_beta,
             "confounding_mean": self.confounding_mean,
@@ -127,6 +146,7 @@ class AnalysisResults:
             "cancer_contribution_mean": self.cancer_contribution_mean,
             "other_contribution_mean": self.other_contribution_mean,
             "constants": self.constants,
+            "reference_case": self.reference_case,
             "nuts": {},
         }
         for nid, na in self.nuts.items():
@@ -140,12 +160,18 @@ class AnalysisResults:
                 "qaly_ci_lower": na.qaly_ci_lower,
                 "qaly_ci_upper": na.qaly_ci_upper,
                 "qaly_undiscounted_mean": na.qaly_undiscounted_mean,
+                "qaly_reference_mean": na.qaly_reference_mean,
+                "qaly_reference_ci_lower": na.qaly_reference_ci_lower,
+                "qaly_reference_ci_upper": na.qaly_reference_ci_upper,
                 "p_positive": na.p_positive,
                 "p_negative": na.p_negative,
                 "annual_cost": na.annual_cost,
                 "icer_median": na.icer_median,
                 "icer_ci_lower": na.icer_ci_lower,
                 "icer_ci_upper": na.icer_ci_upper,
+                "icer_reference_median": na.icer_reference_median,
+                "icer_reference_ci_lower": na.icer_reference_ci_lower,
+                "icer_reference_ci_upper": na.icer_reference_ci_upper,
                 "rr_cvd": na.rr_cvd,
                 "rr_cancer": na.rr_cancer,
                 "rr_other": na.rr_other,
@@ -160,8 +186,8 @@ def run_analysis(
     n_samples: int = 10_000,
     seed: int = 42,
     start_age: int = 40,
-    qaly_discount_rate: float = 0.0,
-    cost_discount_rate: float = 0.03,
+    qaly_discount_rate: float = DEFAULT_QALY_DISCOUNT_RATE,
+    cost_discount_rate: float = DEFAULT_COST_DISCOUNT_RATE,
     confounding_alpha: float | None = None,
     confounding_beta: float | None = None,
 ) -> AnalysisResults:
@@ -171,14 +197,21 @@ def run_analysis(
         n_samples: Number of Monte Carlo draws.
         seed: Random seed for reproducibility.
         start_age: Age at start of nut consumption.
-        qaly_discount_rate: Annual discount rate for life years and QALYs.
+        qaly_discount_rate: Main annual discount rate for life years and QALYs.
         cost_discount_rate: Annual discount rate for costs.
-        confounding_alpha: Beta prior alpha for causal fraction (default: from priors.yaml).
-        confounding_beta: Beta prior beta for causal fraction (default: from priors.yaml).
+        confounding_alpha: Beta prior alpha for causal fraction
+            (default: from priors.yaml).
+        confounding_beta: Beta prior beta for causal fraction
+            (default: from priors.yaml).
 
     Returns:
         AnalysisResults with every number needed for the paper.
     """
+    qaly_discount_rate = validate_discount_rate(qaly_discount_rate, label="QALY")
+    cost_discount_rate = validate_discount_rate(cost_discount_rate, label="cost")
+    reference_qaly_discount_rate = DEFAULT_REFERENCE_QALY_DISCOUNT_RATE
+    reference_cost_discount_rate = DEFAULT_REFERENCE_COST_DISCOUNT_RATE
+
     # Use confounding prior from config when not overridden
     conf_prior = get_confounding_prior()
     if confounding_alpha is None:
@@ -188,8 +221,12 @@ def run_analysis(
 
     # Derive 95% CI from the actual Beta(alpha, beta) parameters rather
     # than relying on the YAML hints; keeps the paper in sync with priors.
-    confounding_ci_lower = float(beta_dist.ppf(0.025, confounding_alpha, confounding_beta))
-    confounding_ci_upper = float(beta_dist.ppf(0.975, confounding_alpha, confounding_beta))
+    confounding_ci_lower = float(
+        beta_dist.ppf(0.025, confounding_alpha, confounding_beta)
+    )
+    confounding_ci_upper = float(
+        beta_dist.ppf(0.975, confounding_alpha, confounding_beta)
+    )
 
     # Compute baseline life years and QALYs from mortality and quality tables.
     # Survival is evaluated at the START of each age year: survival[0] = 1.0
@@ -235,16 +272,36 @@ def run_analysis(
             qaly_discount_rate=qaly_discount_rate,
             cost_discount_rate=cost_discount_rate,
         )
-        qalys_disc = vec.qalys_gained_discounted
+        vec_reference = run_lifecycle_vectorized(
+            rr_cvd=samples.rr["cvd"][:, j],
+            rr_cancer=samples.rr["cancer"][:, j],
+            rr_other=samples.rr["other"][:, j],
+            annual_cost=nut_profile.annual_cost,
+            start_age=start_age,
+            qaly_discount_rate=reference_qaly_discount_rate,
+            cost_discount_rate=reference_cost_discount_rate,
+        )
+        qalys_main = vec.qalys_gained_discounted
         qalys_undisc = vec.qalys_gained
+        qalys_reference = vec_reference.qalys_gained_discounted
         life_years = vec.life_years_gained
         icers = vec.cost_per_qaly
+        icers_reference = vec_reference.cost_per_qaly
 
         # Summarize
         icer_finite = icers[np.isfinite(icers) & (icers > 0)]
         icer_upper = (
             float(np.percentile(icer_finite, 97.5))
-            if len(icer_finite) > 0 and np.percentile(qalys_disc, 2.5) > 0
+            if len(icer_finite) > 0 and np.percentile(qalys_main, 2.5) > 0
+            else None
+        )
+        icer_reference_finite = icers_reference[
+            np.isfinite(icers_reference) & (icers_reference > 0)
+        ]
+        icer_reference_upper = (
+            float(np.percentile(icer_reference_finite, 97.5))
+            if len(icer_reference_finite) > 0
+            and np.percentile(qalys_reference, 2.5) > 0
             else None
         )
 
@@ -277,16 +334,46 @@ def run_analysis(
             life_years_mean=round(float(np.mean(life_years)), 2),
             life_years_ci_lower=round(float(np.percentile(life_years, 2.5)), 3),
             life_years_ci_upper=round(float(np.percentile(life_years, 97.5)), 3),
-            qaly_mean=round(float(np.mean(qalys_disc)), 2),
-            qaly_ci_lower=round(float(np.percentile(qalys_disc, 2.5)), 3),
-            qaly_ci_upper=round(float(np.percentile(qalys_disc, 97.5)), 3),
+            qaly_mean=round(float(np.mean(qalys_main)), 2),
+            qaly_ci_lower=round(float(np.percentile(qalys_main, 2.5)), 3),
+            qaly_ci_upper=round(float(np.percentile(qalys_main, 97.5)), 3),
             qaly_undiscounted_mean=round(float(np.mean(qalys_undisc)), 2),
-            p_positive=round(float(np.mean(qalys_disc > 0)), 2),
-            p_negative=round(float(np.mean(qalys_disc < 0)), 2),
+            qaly_reference_mean=round(float(np.mean(qalys_reference)), 2),
+            qaly_reference_ci_lower=round(
+                float(np.percentile(qalys_reference, 2.5)), 3
+            ),
+            qaly_reference_ci_upper=round(
+                float(np.percentile(qalys_reference, 97.5)), 3
+            ),
+            p_positive=round(float(np.mean(qalys_main > 0)), 2),
+            p_negative=round(float(np.mean(qalys_main < 0)), 2),
             annual_cost=round(nut_profile.annual_cost, 2),
-            icer_median=round(float(np.median(icer_finite)), 0) if len(icer_finite) > 0 else float("inf"),
-            icer_ci_lower=round(float(np.percentile(icer_finite, 2.5)), 0) if len(icer_finite) > 0 else 0,
+            icer_median=(
+                round(float(np.median(icer_finite)), 0)
+                if len(icer_finite) > 0
+                else float("inf")
+            ),
+            icer_ci_lower=(
+                round(float(np.percentile(icer_finite, 2.5)), 0)
+                if len(icer_finite) > 0
+                else 0
+            ),
             icer_ci_upper=round(icer_upper, 0) if icer_upper is not None else None,
+            icer_reference_median=(
+                round(float(np.median(icer_reference_finite)), 0)
+                if len(icer_reference_finite) > 0
+                else float("inf")
+            ),
+            icer_reference_ci_lower=(
+                round(float(np.percentile(icer_reference_finite, 2.5)), 0)
+                if len(icer_reference_finite) > 0
+                else 0
+            ),
+            icer_reference_ci_upper=(
+                round(icer_reference_upper, 0)
+                if icer_reference_upper is not None
+                else None
+            ),
             rr_cvd=round(rr_cvd_mean, 4),
             rr_cancer=round(rr_cancer_mean, 4),
             rr_other=round(rr_other_mean, 4),
@@ -307,6 +394,8 @@ def run_analysis(
         start_age=start_age,
         qaly_discount_rate=qaly_discount_rate,
         cost_discount_rate=cost_discount_rate,
+        reference_qaly_discount_rate=reference_qaly_discount_rate,
+        reference_cost_discount_rate=reference_cost_discount_rate,
         confounding_alpha=confounding_alpha,
         confounding_beta=confounding_beta,
         confounding_mean=confounding_mean,
@@ -317,6 +406,7 @@ def run_analysis(
         average_quality_weight=round(average_quality_weight, 3),
         e_value=round(e_value, 2),
         constants=load_constants(),
+        reference_case=DEFAULT_REFERENCE_CASE.to_dict(),
         nuts=nut_analyses,
         cvd_contribution_mean=round(float(np.mean(all_cvd)), 2),
         cancer_contribution_mean=round(float(np.mean(all_cancer)), 2),
@@ -352,10 +442,27 @@ def main():
     )
     parser.add_argument("--n-samples", type=int, default=10_000)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--qaly-discount-rate",
+        type=float,
+        default=DEFAULT_QALY_DISCOUNT_RATE,
+        help="Main annual discount rate for life years and QALYs.",
+    )
+    parser.add_argument(
+        "--cost-discount-rate",
+        type=float,
+        default=DEFAULT_COST_DISCOUNT_RATE,
+        help="Annual discount rate for costs.",
+    )
     args = parser.parse_args()
 
     print(f"Running analysis (n={args.n_samples}, seed={args.seed})...")
-    results = run_analysis(n_samples=args.n_samples, seed=args.seed)
+    results = run_analysis(
+        n_samples=args.n_samples,
+        seed=args.seed,
+        qaly_discount_rate=args.qaly_discount_rate,
+        cost_discount_rate=args.cost_discount_rate,
+    )
 
     if args.generate:
         path = generate_results_json(results)
@@ -363,7 +470,11 @@ def main():
     else:
         print(f"\n{'Nut':12s} {'LY':>6s} {'QALY':>6s} {'P(>0)':>6s} {'ICER':>10s}")
         print("-" * 44)
-        for nid in sorted(results.nuts, key=lambda k: results.nuts[k].qaly_mean, reverse=True):
+        for nid in sorted(
+            results.nuts,
+            key=lambda k: results.nuts[k].qaly_mean,
+            reverse=True,
+        ):
             na = results.nuts[nid]
             print(
                 f"{nid:12s} {na.life_years_mean:6.2f} {na.qaly_mean:6.2f} "

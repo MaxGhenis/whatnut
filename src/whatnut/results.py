@@ -20,7 +20,6 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-
 RESULTS_PATH = Path(__file__).parent / "data" / "results.json"
 
 
@@ -34,6 +33,9 @@ class NutResult:
     qaly_ci_lower: float
     qaly_ci_upper: float
     qaly_undiscounted_mean: float
+    qaly_reference_mean: float
+    qaly_reference_ci_lower: float
+    qaly_reference_ci_upper: float
     p_positive: float
     p_negative: float
     life_years: float
@@ -42,6 +44,9 @@ class NutResult:
     icer: float
     icer_ci_lower: float
     icer_ci_upper: float | None
+    icer_reference: float
+    icer_reference_ci_lower: float
+    icer_reference_ci_upper: float | None
     annual_cost: float
     rr_cvd: float
     rr_cancer: float
@@ -88,6 +93,30 @@ class NutResult:
     def qaly_undiscounted_fmt(self) -> str:
         return f"{self.qaly_undiscounted:.2f}"
 
+    @property
+    def qaly_reference(self) -> str:
+        return f"{self.qaly_reference_mean:.2f}"
+
+    @property
+    def qaly_reference_ci(self) -> str:
+        return (
+            f"[{self.qaly_reference_ci_lower:.2f}, "
+            f"{self.qaly_reference_ci_upper:.2f}]"
+        )
+
+    @property
+    def icer_reference_fmt(self) -> str:
+        return f"${self.icer_reference:,.0f}"
+
+    @property
+    def icer_reference_ci_fmt(self) -> str:
+        if self.icer_reference_ci_upper is None:
+            return f"[${self.icer_reference_ci_lower:,.0f}, undefined]"
+        return (
+            f"[${self.icer_reference_ci_lower:,.0f}, "
+            f"${self.icer_reference_ci_upper:,.0f}]"
+        )
+
 
 @dataclass
 class PathwayRR:
@@ -115,6 +144,8 @@ class PaperResults:
     start_age: int
     qaly_discount_rate: float
     cost_discount_rate: float
+    reference_qaly_discount_rate: float
+    reference_cost_discount_rate: float
 
     # Confounding prior (alpha/beta/mean from JSON; CI derived from Beta ppf)
     confounding_alpha: float
@@ -147,6 +178,7 @@ class PaperResults:
     nice_upper_gbp: int = field(default=35000)
     gbp_usd_rate: float = field(default=1.34)
     icer_threshold: int = field(default=50000)
+    reference_case: dict = field(default_factory=dict)
 
     # Nut results (populated from JSON)
     nuts: dict[str, NutResult] = field(default_factory=dict)
@@ -197,8 +229,18 @@ class PaperResults:
         return f"{min(vals):.2f}-{max(vals):.2f}"
 
     @property
+    def qaly_reference_range(self) -> str:
+        vals = [n.qaly_reference_mean for n in self.nuts.values()]
+        return f"{min(vals):.2f}-{max(vals):.2f}"
+
+    @property
     def icer_range(self) -> str:
         vals = [n.icer for n in self.nuts.values()]
+        return f"${min(vals):,.0f}-${max(vals):,.0f}"
+
+    @property
+    def icer_reference_range(self) -> str:
+        vals = [n.icer_reference for n in self.nuts.values()]
         return f"${min(vals):,.0f}-${max(vals):,.0f}"
 
     @property
@@ -249,15 +291,39 @@ class PaperResults:
 
     # Table generators
     def table_3_qalys(self) -> str:
-        headers = ["Nut", "Life Years", "Months", "QALY (0% health discount)", "P(>0)", "P(<0)", "ICER"]
+        discount = int(round(self.qaly_discount_rate * 100))
+        reference_discount = int(round(self.reference_qaly_discount_rate * 100))
+        headers = [
+            "Nut",
+            "Life Years",
+            "Months",
+            f"QALY ({discount}% health discount)",
+            f"Ref QALY ({reference_discount}%)",
+            "P(>0)",
+            "P(<0)",
+            "ICER",
+            "Ref ICER",
+        ]
         rows = []
-        sorted_nuts = sorted(self.nuts.values(), key=lambda n: n.life_years, reverse=True)
+        sorted_nuts = sorted(
+            self.nuts.values(),
+            key=lambda n: n.life_years,
+            reverse=True,
+        )
         for n in sorted_nuts:
-            rows.append([
-                n.name, f"{n.life_years:.2f}", f"{n.months:.1f}",
-                f"{n.qaly_mean:.2f}",
-                f"{n.p_positive:.0%}", f"{n.p_negative:.0%}", f"${n.icer:,.0f}",
-            ])
+            rows.append(
+                [
+                    n.name,
+                    f"{n.life_years:.2f}",
+                    f"{n.months:.1f}",
+                    f"{n.qaly_mean:.2f}",
+                    f"{n.qaly_reference_mean:.2f}",
+                    f"{n.p_positive:.0%}",
+                    f"{n.p_negative:.0%}",
+                    f"${n.icer:,.0f}",
+                    f"${n.icer_reference:,.0f}",
+                ]
+            )
         return _html_table(headers, rows)
 
     def table_4_pathway_rrs(self) -> str:
@@ -363,6 +429,13 @@ def _load_results() -> PaperResults:
             qaly_ci_lower=nd["qaly_ci_lower"],
             qaly_ci_upper=nd["qaly_ci_upper"],
             qaly_undiscounted_mean=nd["qaly_undiscounted_mean"],
+            qaly_reference_mean=nd.get("qaly_reference_mean", nd["qaly_mean"]),
+            qaly_reference_ci_lower=nd.get(
+                "qaly_reference_ci_lower", nd["qaly_ci_lower"]
+            ),
+            qaly_reference_ci_upper=nd.get(
+                "qaly_reference_ci_upper", nd["qaly_ci_upper"]
+            ),
             p_positive=nd["p_positive"],
             p_negative=nd.get("p_negative", round(1 - nd["p_positive"], 2)),
             life_years=nd["life_years_mean"],
@@ -371,6 +444,13 @@ def _load_results() -> PaperResults:
             icer=nd["icer_median"],
             icer_ci_lower=nd["icer_ci_lower"],
             icer_ci_upper=nd["icer_ci_upper"],
+            icer_reference=nd.get("icer_reference_median", nd["icer_median"]),
+            icer_reference_ci_lower=nd.get(
+                "icer_reference_ci_lower", nd["icer_ci_lower"]
+            ),
+            icer_reference_ci_upper=nd.get(
+                "icer_reference_ci_upper", nd["icer_ci_upper"]
+            ),
             annual_cost=nd["annual_cost"],
             rr_cvd=nd["rr_cvd"],
             rr_cancer=nd["rr_cancer"],
@@ -402,6 +482,14 @@ def _load_results() -> PaperResults:
         start_age=data["start_age"],
         qaly_discount_rate=data["qaly_discount_rate"],
         cost_discount_rate=data["cost_discount_rate"],
+        reference_qaly_discount_rate=data.get(
+            "reference_qaly_discount_rate",
+            data.get("reference_case", {}).get("health_discount_rate", 0.03),
+        ),
+        reference_cost_discount_rate=data.get(
+            "reference_cost_discount_rate",
+            data.get("reference_case", {}).get("cost_discount_rate", 0.03),
+        ),
         confounding_alpha=data["confounding_alpha"],
         confounding_beta=data["confounding_beta"],
         confounding_mean=data["confounding_mean"],
@@ -422,6 +510,7 @@ def _load_results() -> PaperResults:
         nice_upper_gbp=constants.get("nice_upper_gbp", 35000),
         gbp_usd_rate=constants.get("gbp_usd_rate", 1.34),
         icer_threshold=constants.get("icer_threshold_usd", 50000),
+        reference_case=data.get("reference_case", {}),
         nuts=nuts,
         pathway_rrs=pathway_rrs,
     )

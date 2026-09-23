@@ -36,7 +36,7 @@ The analysis uses a hierarchical forward sampling model with standardized prior 
 
 **Monte Carlo sampling:** The model draws `{python} f"{r.n_samples:,}"` forward samples from priors (no MCMC is needed since there is no likelihood). A fixed seed of `{python} r.seed` ensures reproducibility; runtime is well under one second using vectorized NumPy with no external inference library required.
 
-**Lifecycle integration:** For each of the `{python} f"{r.n_samples:,}"` samples, the model extracts pathway-specific RRs (already confounding-adjusted), computes age-weighted mortality reduction using CDC life tables, applies the smoothed EQ-5D quality-weight trajectory by age, and computes undiscounted QALYs alongside cost-discounted lifetime costs.
+**Lifecycle integration:** For each of the `{python} f"{r.n_samples:,}"` samples, the model extracts pathway-specific RRs (already confounding-adjusted), computes age-weighted mortality reduction using CDC life tables, applies the smoothed EQ-5D quality-weight trajectory by age, and computes undiscounted main QALYs alongside 3%-discounted lifetime costs. A parallel 3%/3% reference-case result is retained in `results.json` for reviewer-facing comparability.
 
 ## Nut-specific adjustment priors
 
@@ -85,11 +85,11 @@ The LDL pathway still provides a floor rather than a ceiling, but the model no l
 
 ### Data sources
 
-The cost-effectiveness model draws on CDC National Vital Statistics (2021) life tables for age-specific mortality (NVSR Vol 72 No 12), cause-of-death fractions from Table 6 of @xu2024deaths, age-varying health-related quality of life weights derived from Sullivan & Ghushchyan (2006) US EQ-5D index, a 3% annual discount rate for costs, and per-nut retail prices retrieved from nuts.com on 2026-04-19 ([@whatnut2026prices]). The raw price snapshot (one row per nut, with product URL, package size, and price) lives at `src/whatnut/data/raw/retail_prices/retail_prices.csv`; `whatnut.data_build.retail_prices` reads that CSV, validates the row-level math, and writes the per-nut median to nuts.yaml.
+The cost-effectiveness model draws on CDC National Vital Statistics (2021) life tables for age-specific mortality (NVSR Vol 72 No 12), cause-of-death fractions from Table 6 of @xu2024deaths, age-varying health-related quality of life weights derived from Sullivan & Ghushchyan (2006) US EQ-5D index, 0% main health discounting, a 3% annual discount rate for costs, a 3%/3% reference-case sensitivity, and per-nut retail prices retrieved from nuts.com on 2026-04-19 ([@whatnut2026prices]). The raw price snapshot (one row per nut, with product URL, package size, and price) lives at `src/whatnut/data/raw/retail_prices/retail_prices.csv`; `whatnut.data_build.retail_prices` reads that CSV, validates the row-level math, and writes the per-nut median to nuts.yaml.
 
 ### Lifecycle model
 
-For a 40-year-old beginning daily nut consumption, the current model estimates `{python} r.life_years_range` additional life years (`{python} r.months_range` months) across nut types, corresponding to `{python} r.qaly_range` QALYs under 0% health discounting. ICERs range from approximately `{python} r.icer_range` per QALY across nut types.
+For a 40-year-old beginning daily nut consumption, the current model estimates `{python} r.life_years_range` additional life years (`{python} r.months_range` months) across nut types, corresponding to `{python} r.qaly_range` main QALYs without health discounting and `{python} r.qaly_reference_range` QALYs under 3% reference-case health discounting. Main ICERs range from approximately `{python} r.icer_range` per QALY; reference-case ICERs range from `{python} r.icer_reference_range` per QALY.
 
 ## E-value analysis
 

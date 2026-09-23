@@ -10,9 +10,8 @@ import json
 import numpy as np
 import pytest
 
-from whatnut.config import NUT_IDS, PATHWAYS
+from whatnut.config import NUT_IDS
 from whatnut.pipeline import AnalysisResults, NutAnalysis, run_analysis
-
 
 N_FAST = 100
 
@@ -45,6 +44,8 @@ class TestAnalysisStructure:
         assert results.start_age == 40
         assert results.qaly_discount_rate == 0.0
         assert results.cost_discount_rate == 0.03
+        assert results.reference_qaly_discount_rate == 0.03
+        assert results.reference_cost_discount_rate == 0.03
 
     def test_confounding_stored(self, results):
         assert results.confounding_alpha == pytest.approx(1.5)
@@ -94,7 +95,11 @@ class TestNutAnalysisFields:
 
     def test_life_years_ci_ordered(self, results):
         for nut_id, na in results.nuts.items():
-            assert na.life_years_ci_lower <= na.life_years_mean <= na.life_years_ci_upper
+            assert (
+                na.life_years_ci_lower
+                <= na.life_years_mean
+                <= na.life_years_ci_upper
+            )
 
     def test_p_positive_in_zero_one(self, results):
         for nut_id, na in results.nuts.items():
@@ -146,6 +151,10 @@ class TestNutAnalysisFields:
         for nut_id, na in results.nuts.items():
             assert -1 <= na.qaly_mean <= 2, (
                 f"{nut_id}: qaly_mean = {na.qaly_mean} outside [-1, 2]"
+            )
+            assert -1 <= na.qaly_reference_mean <= 2, (
+                f"{nut_id}: qaly_reference_mean = {na.qaly_reference_mean} "
+                "outside [-1, 2]"
             )
 
 
@@ -199,6 +208,14 @@ class TestSerialization:
         assert d["start_age"] == 40
         assert d["qaly_discount_rate"] == 0.0
         assert d["cost_discount_rate"] == 0.03
+        assert d["reference_qaly_discount_rate"] == 0.03
+        assert d["reference_cost_discount_rate"] == 0.03
+
+    def test_to_dict_has_reference_case(self, results):
+        d = results.to_dict()
+        assert d["reference_case"]["id"] == "us_second_panel_healthcare_sector_3pct"
+        assert d["reference_case"]["health_discount_rate"] == pytest.approx(0.03)
+        assert d["reference_case"]["cost_discount_rate"] == pytest.approx(0.03)
 
     def test_json_serializable(self, results):
         """to_dict output should be fully JSON-serializable."""
@@ -216,7 +233,7 @@ class TestSerialization:
         assert loaded["nuts"]["walnut"]["qaly_mean"] == d["nuts"]["walnut"]["qaly_mean"]
 
     def test_no_nan_or_inf_in_json(self, results):
-        """JSON should not contain NaN or Infinity (except icer_ci_upper which can be None)."""
+        """JSON should not contain NaN or Infinity except nullable ICER bounds."""
         d = results.to_dict()
         for nut_id, nd in d["nuts"].items():
             for key, val in nd.items():
@@ -301,8 +318,12 @@ class TestCustomParameters:
         from scipy.stats import beta as beta_dist
 
         r = run_analysis(n_samples=500, seed=42)
-        expected_lower = float(beta_dist.ppf(0.025, r.confounding_alpha, r.confounding_beta))
-        expected_upper = float(beta_dist.ppf(0.975, r.confounding_alpha, r.confounding_beta))
+        expected_lower = float(
+            beta_dist.ppf(0.025, r.confounding_alpha, r.confounding_beta)
+        )
+        expected_upper = float(
+            beta_dist.ppf(0.975, r.confounding_alpha, r.confounding_beta)
+        )
         assert r.confounding_ci_lower == pytest.approx(expected_lower, abs=1e-4)
         assert r.confounding_ci_upper == pytest.approx(expected_upper, abs=1e-4)
 
@@ -378,9 +399,16 @@ class TestHeadlineValuePins:
         p = results_full.nuts["peanut"]
         assert 40_000 < p.icer_median < 200_000, (
             f"Peanut ICER={p.icer_median} outside expected window "
-            "[$40k, $200k]. Peanuts should remain the cheapest ICER "
-            "even at specialty-retail pricing; values outside this range "
-            "suggest a price or QALY regression."
+            "[$40k, $200k]. Peanuts should remain one of the cheaper "
+            "main-case ICERs at specialty-retail pricing; values outside "
+            "this range suggest a price, QALY, or discounting regression."
+        )
+
+    def test_peanut_reference_icer_in_window(self, results_full):
+        p = results_full.nuts["peanut"]
+        assert 200_000 < p.icer_reference_median < 500_000, (
+            f"Peanut reference-case ICER={p.icer_reference_median} outside "
+            "expected window [$200k, $500k]."
         )
 
     def test_cvd_contribution_dominates(self, results_full):
@@ -444,8 +472,9 @@ class TestBaselineLifeYears:
     """baseline_life_years should be derived from CDC mortality table."""
 
     def test_baseline_life_years_from_mortality_table(self):
-        """baseline_life_years should be derived from CDC mortality table, not hardcoded."""
+        """baseline_life_years should be derived from CDC mortality table."""
         from whatnut.config import get_mortality_curve
+
         mortality = get_mortality_curve(40)
         survival = np.cumprod(1 - mortality)
         expected = float(np.sum(survival))
