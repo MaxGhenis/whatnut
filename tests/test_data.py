@@ -79,8 +79,8 @@ def test_evidence_row_helpers():
 
 
 # The price captures are one day's readings and cannot be fetched again, so the
-# repository keeps them (see .gitignore). Extensions listed here are committed.
-COMMITTED_PRICE_CAPTURES = (".json",)
+# repository keeps every one a price was read from (see .gitignore).
+COMMITTED_PRICE_CAPTURES = (".json", ".html.gz")
 
 
 def test_price_captures_are_committed_and_match_the_manifest():
@@ -100,7 +100,7 @@ def test_price_captures_are_committed_and_match_the_manifest():
         for rel, meta in manifest["files"].items()
         if rel.startswith("raw/") and rel.endswith(COMMITTED_PRICE_CAPTURES)
     }
-    assert len(kept) >= 16, "the nuts.com, Walmart, Costco and Target captures"
+    assert len(kept) >= 19, "the nuts.com, Walmart, Costco and Target captures"
     for rel, meta in sorted(kept.items()):
         path = prices / rel
         assert path.exists(), f"data/prices/{rel} is missing"

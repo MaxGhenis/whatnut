@@ -74,8 +74,10 @@ data/sources/crossref/texts/
 data/sources/crossref/primary/
 # Retail prices are the exception: a price is one day's reading, and a later
 # fetch reads that day's price, so the captures in data/prices/raw/ cannot be
-# fetched again. The small JSON captures (nuts.com product JSON; the Walmart,
-# Costco and Target browser records) are committed; the large Walmart page
-# HTML is not.
-data/prices/raw/walmart/*.html.gz
+# fetched again. Every capture a price was read from is committed: the
+# nuts.com product JSON, the Walmart, Costco and Target browser records, and
+# the three Walmart pages Walmart served to a script before it blocked the
+# rest (raw/walmart/ip_*.html.gz). Only the unused Walmart search page stays
+# out.
+data/prices/raw/walmart/walmart_search_*.html.gz
 _build/
