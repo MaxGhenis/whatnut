@@ -37,3 +37,11 @@ caption {
 #TOC ul.collapse {
   display: block;
 }
+
+/* Wide tables scroll inside their own box. Without this, on a phone the
+   evidence and bracket tables set the page's width (570 px at a 375 px
+   viewport) and the whole manuscript scrolls sideways. Quarto wraps each
+   table as figure.quarto-float-tbl > div > table. */
+figure.quarto-float-tbl > div {
+  overflow-x: auto;
+}

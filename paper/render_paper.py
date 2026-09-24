@@ -5,14 +5,19 @@
 2. assert the filled qmd has no executable cell, no inline `{python}` and no
    leftover `{{`, and that every citation key is in paper/references.bib
 3. stamp paper/VERSION into the wrapper (public/whatnut/index.html): every
-   `web/index.html?v=` link and the "Revision N · YYYY-MM-DD" pill
-4. quarto render paper --to html --no-execute (no kernel, no Jupyter), and
-   --to pdf as well when a TeX engine is installed
-5. copy the render to public/whatnut/web/ (the wrapper itself is untouched)
+   `web/index.html?v=` and `web/index.pdf?v=` link, the "Revision N ·
+   YYYY-MM-DD" pill and the description's "revision N of the manuscript"
+4. quarto render paper --to html --no-execute, then --to typst --no-execute
+   (no kernel, no Jupyter, no TeX: Typst ships with Quarto). These are the two
+   renders Vercel runs, so both builds stage the same files. Quarto's
+   post-render script, paper/external_links.ts, writes target="_blank" into the
+   HTML's external links; this step checks it did.
+5. copy paper/_build/ (index.html, figures, index.pdf) to public/whatnut/web/
+   (the wrapper itself is only stamped, in step 3)
 
-python paper/render_paper.py            # HTML, plus PDF when TeX is available
-python paper/render_paper.py --no-pdf   # HTML only (what CI and Vercel produce)
-python paper/render_paper.py --pdf      # require the PDF
+python paper/render_paper.py            # HTML and PDF (what CI and Vercel produce)
+python paper/render_paper.py --no-pdf   # HTML only, for quick previews; the
+                                        # wrapper's "Download PDF" link then 404s
 """
 
 from __future__ import annotations
@@ -23,6 +28,7 @@ import re
 import shutil
 import subprocess
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 PAPER = Path(__file__).resolve().parent
@@ -59,16 +65,28 @@ def read_version() -> tuple[str, int, str]:
     return version, int(m.group(1)), f"{m.group(2)}-{m.group(3)}-{m.group(4)}"
 
 
+# "This page embeds revision N of the manuscript." in the description; the
+# words may wrap across lines.
+REVISION_PHRASE_RE = re.compile(r"\brevision(\s+)\d+(\s+of\s+the\s+manuscript)\b")
+
+
 def stamp_wrapper(html: str, version: str, revision: int, date: str) -> str:
-    """Put the version on every manuscript link and in the revision pill."""
-    out, n_links = re.subn(r"(web/index\.html)\?v=[^\"'#\s]*", rf"\1?v={version}", html)
+    """Put the version on every manuscript link (HTML and PDF), in the revision
+    pill and in the description's "revision N of the manuscript"."""
+    out, n_html = re.subn(r"(web/index\.html)\?v=[^\"'#\s]*", rf"\1?v={version}", html)
+    out, n_pdf = re.subn(r"(web/index\.pdf)\?v=[^\"'#\s]*", rf"\1?v={version}", out)
     out, n_pill = re.subn(
         r"Revision \d+ · \d{4}-\d{2}-\d{2}", f"Revision {revision} · {date}", out
     )
-    if n_links < 2 or n_pill != 1:
+    out, n_phrase = REVISION_PHRASE_RE.subn(
+        lambda m: f"revision{m.group(1)}{revision}{m.group(2)}", out
+    )
+    if n_html < 2 or n_pdf != 1 or n_pill != 1 or n_phrase != 1:
         raise RenderError(
-            f"wrapper has {n_links} versioned manuscript links and {n_pill} "
-            "revision pills; expected at least 2 and exactly 1"
+            f"wrapper has {n_html} versioned HTML manuscript links, {n_pdf} "
+            f"versioned PDF links, {n_pill} revision pills and {n_phrase} "
+            "'revision N of the manuscript' phrases; expected at least 2, "
+            "exactly 1, exactly 1 and exactly 1"
         )
     return out
 
@@ -112,17 +130,35 @@ def assert_clean_qmd(qmd_path: Path) -> None:
         )
 
 
-def tex_available() -> bool:
-    if shutil.which("xelatex"):
-        return True
-    home = Path.home()
-    return any(
-        p.exists()
-        for p in [
-            *home.glob("Library/TinyTeX/bin/*/xelatex"),
-            *home.glob(".TinyTeX/bin/*/xelatex"),
-        ]
-    )
+EXTERNAL_HREF = re.compile(r"^\s*(?:https?:|mailto:)", re.I)
+
+
+class _Anchors(HTMLParser):
+    """Every <a> start tag's attributes (script and style bodies are skipped)."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.anchors: list[dict[str, str]] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self.anchors.append({k: v or "" for k, v in attrs})
+
+
+def external_links_not_in_new_tab(html: str) -> list[str]:
+    """hrefs of external links (http, https, mailto) that lack target="_blank"
+    or rel="noopener". Empty once paper/external_links.ts has run."""
+    parser = _Anchors()
+    parser.feed(html)
+    return [
+        a["href"]
+        for a in parser.anchors
+        if EXTERNAL_HREF.match(a.get("href", ""))
+        and (
+            a.get("target") != "_blank"
+            or "noopener" not in a.get("rel", "").lower().split()
+        )
+    ]
 
 
 def quarto(to: str) -> None:
@@ -145,37 +181,47 @@ def quarto(to: str) -> None:
         )
 
 
-def copy_html() -> None:
+def check_html() -> None:
     src = BUILD / "index.html"
     if not src.exists():
         raise RenderError(f"{src.relative_to(ROOT)} was not produced")
     html = src.read_text(encoding="utf-8")
     if "{{" in html:
         raise RenderError("rendered HTML contains '{{'")
+    stuck = external_links_not_in_new_tab(html)
+    if stuck:
+        raise RenderError(
+            f"{len(stuck)} external links would open inside the sandboxed iframe "
+            "(did the post-render script paper/external_links.ts run?): "
+            + ", ".join(stuck[:5])
+        )
+
+
+def check_pdf() -> None:
+    pdf = BUILD / "index.pdf"
+    if not pdf.exists():
+        raise RenderError(f"{pdf.relative_to(ROOT)} was not produced")
+    if not pdf.read_bytes().startswith(b"%PDF-"):
+        raise RenderError(f"{pdf.relative_to(ROOT)} is not a PDF")
+
+
+def stage() -> None:
+    """public/whatnut/web/ becomes a copy of paper/_build/, as on Vercel
+    (`cp -R paper/_build/. public/whatnut/web/`)."""
     if WEB.exists():
         shutil.rmtree(WEB)
-    shutil.copytree(
-        BUILD, WEB, ignore=shutil.ignore_patterns("*.pdf", "*.tex", "*.log")
-    )
-
-
-def copy_pdf() -> None:
-    pdfs = sorted(BUILD.glob("*.pdf"))
-    if not pdfs:
-        raise RenderError("PDF render produced no .pdf")
-    WEB.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(pdfs[0], WEB / "index.pdf")
+    shutil.copytree(BUILD, WEB)
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    group = ap.add_mutually_exclusive_group()
-    group.add_argument(
-        "--pdf", action="store_true", help="also render the PDF; fail if no TeX engine"
+    ap.add_argument(
+        "--no-pdf",
+        action="store_true",
+        help="skip the Typst PDF (quick previews; CI and Vercel build it)",
     )
-    group.add_argument("--no-pdf", action="store_true", help="HTML only")
     args = ap.parse_args(argv)
     try:
         fill_paper.write()
@@ -193,15 +239,12 @@ def main(argv: list[str] | None = None) -> int:
         if BUILD.exists():
             shutil.rmtree(BUILD)
         quarto("html")
-        copy_html()
-        want_pdf = args.pdf or (not args.no_pdf and tex_available())
-        if args.pdf and not tex_available():
-            raise RenderError(
-                "--pdf needs xelatex on PATH (or TinyTeX: quarto install tinytex)"
-            )
-        if want_pdf:
-            quarto("pdf")
-            copy_pdf()
+        check_html()
+        if not args.no_pdf:
+            quarto("typst")
+            check_pdf()
+            check_html()  # the second render left the HTML in place
+        stage()
     except (fill_paper.FillError, RenderError) as exc:
         print(f"render_paper: {exc}", file=sys.stderr)
         return 1
