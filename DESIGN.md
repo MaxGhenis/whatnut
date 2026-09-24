@@ -23,7 +23,7 @@ scripts/                      fetchers (one per data folder), check_citations.py
 src/whatnut/
   data.py                     loaders; verify sha256 against MANIFEST.json on load
   lifetable.py                life expectancy from qx with hazard multipliers and a phase-in ramp
-  model.py                    dose curves, bracket, background intake, Monte Carlo
+  model.py                    dose curves, scenarios, calibration pooling, Monte Carlo
   pipeline.py                 writes results/results.json and paper/figures/*.png (deterministic)
   results.py                  typed accessors over results.json; verify()
 paper/
@@ -48,17 +48,18 @@ The old model (`src/whatnut/{config,model,lifecycle,pipeline,results,evidence,fi
 
   M(a) = exp( φ(a) · c · [ f(B + Δ) − f(B) ] )
 
-where f(g) is the log relative risk at intake g (f(0) = 0), c is the causal multiplier for the bracket member being computed, and φ(a) is a linear phase-in from 0 at a0 to 1 at a0 + T. T = 10 years in the main case (Fadnes et al. 2022's convention), with 0 and 20 as sensitivities. Output: ΔLE = e_treated(a0) − e_baseline(a0), in undiscounted years and days.
+where f(g) is the log relative risk at intake g (f(0) = 0), c is the causal multiplier for the scenario being computed, and φ(a) is a linear phase-in from 0 at a0 to 1 at a0 + T. T = 10 years in the main case (Fadnes et al. 2022's convention), with 0 and 20 as sensitivities. Output: ΔLE = e_treated(a0) − e_baseline(a0), in undiscounted years and days.
 
 **Dose curves.**
 - *All-cause, primary:* f from Aune et al. 2016's nonlinear all-cause dose-response (points extracted into `data/curves/`), interpolated monotonically in log RR, flat beyond the highest observed intake. If only the linear per-28 g estimate and a stated plateau are available, use f(g) = ln(RR28) · (1 − e^(−g/k)) / (1 − e^(−28/k)), with k set so 90% of the 28 g effect is reached at the reported plateau dose. Document which was used.
 - *CVD-only carve-out:* Aune's CVD dose-response applied only to the CVD share of the hazard: h' = h · [1 − p_cvd(a,s) + p_cvd(a,s) · RR_cvd(g)].
-- *Randomized floor:* LDL change from nut trials (Del Gobbo et al. 2015, linear per 28.4 g) converted to mmol/L, times the Cholesterol Treatment Trialists' 2010 slope per 1 mmol/L. Two versions bound the floor: CHD-death slope applied to CHD deaths only (low) and all-cause-mortality slope applied to all deaths (high).
+- *LDL pathway (first draft: "randomized floor"; decision 4):* LDL change from nut trials (Del Gobbo et al. 2015, linear per 28.4 g) converted to mmol/L, times the Cholesterol Treatment Trialists' 2010 slope per 1 mmol/L. Two versions: CHD-death slope applied to CHD deaths only (`ldl_chd`) and all-cause-mortality slope applied to all deaths (`ldl_all`).
 
-**Bracket (the causal multiplier c).**
+**Scenarios (the causal multiplier c).** (First draft: "bracket"; revised by decisions 3 and 16.)
 - Face value: c = 1 on the cohort curve.
-- Calibrated: the cohort RR scaled by Schwingshackl et al. 2021's ratio of risk ratios (RCT over cohort) for the matching stratum. For a food, the matching stratum is dietary intake versus dietary intake. Express as c_cal = ln(RR28 · RRR) / ln(RR28). Also report the all-cause-mortality stratum.
-- A transparent dial at c = 0.1, 0.33 and 1.
+- Calibrated: the cohort RR scaled by Schwingshackl et al. 2021's ratio of risk ratios (RCT over cohort), c = ln(RR28 · RRR) / ln(RR28). The main calibration uses all 71 pairs; the mortality calibration the all-cause-mortality pairs; three more strata are sensitivities (decision 3, revised).
+- Cardiovascular deaths only, and the two LDL-pathway scenarios, as above.
+- A transparent dial at c = 0.1, 0.33 and 1 (reported in one sentence of Results).
 
 **Uncertainty.** Monte Carlo, n = 20,000, fixed seed. RR28 lognormal from its CI (the curve's shape scales with the draw); RRR lognormal from its prediction interval; LDL slope normal from its CI; CTT slopes lognormal from their CIs. Report mean and 80% and 95% intervals. Common random numbers across scenarios.
 
@@ -127,24 +128,46 @@ The integrity check (`data/CHECK.md`) found seven places where the evidence cons
 9. **Brazil nut.** Not modeled; appears only in the selenium note.
 10. **Evidence rows for reference data.** The life tables, the mortality file, USDA FoodData Central, IHME Burden of Proof and the Fadnes targets each get an evidence row (kind `reference_value` or `life_table`), so the bibliography and the citation check cover them. `source.url` is allowed when a source has no DOI.
 
+## Revision after review (2026-09-24)
+
+Six reviewers read the first full draft: numbers and citations, mechanism against code, a hostile referee, reproduction from a clean clone, the deploy wrapper, and voice. These decisions supersede the matching earlier ones.
+
+3 (revised). **Calibration.** The main calibration (`calibrated`) uses all 71 Schwingshackl pairs (RRR 1.09, PI 0.81–1.46), the middle of the five strata the paper reports: all-cause-mortality pairs (1.17, `calibrated_mortality`, the second calibration in the main results), pairs whose cohort estimate was protective (1.12, `calibrated_protective`), the six ALA and Mediterranean-diet intake pairs pooled here (about 1.07, `calibrated_analog`) and the intake-versus-intake stratum (0.98, `calibrated_diet`). The intake stratum was the first draft's "matching" calibration; its pairs include pregnancy and colorectal-adenoma outcomes, single pairs range 0.63–3.07, and the authors caution that the ratio's direction depends on the direction of the underlying effects, so it is now a sensitivity. The protective-pairs ratio comes mostly from supplement comparisons (the 19 protective intake pairs pool to about 1.00). Each stratum is reported with both anchors: Aune's linear per-28 g estimate (main) and the main curve's own relative risk at 28 g.
+
+4 (revised). **LDL pathway, not a floor.** The randomized scenarios are the LDL pathway. They can understate the effect (other pathways; statin trials last about five years while lifelong lower LDL does more per mmol/L) or overstate it (LDL effects from 4–6 week trials at about 60 g/day, a nonlinear dose-response with larger effects at 60 g/day or more, and the one two-year trial found less per gram).
+
+11. **Reference dose 15 g/day.** The main curve first reaches its minimum at 15 g (a test checks), so the reference case, the scenario figure, the sensitivity and calibration tables, the cost figure and the ALA sensitivity use 15 g; the reference table adds one Aune serving (28 g).
+
+12. **New sensitivities.** The curve measured from 5 g, Aune's first tabulated intake, so the step from none to some counts for nothing; the curve rescaled to the cohorts with ten or more years of follow-up (RR 0.84 per 28 g) and to the estimate without the five smallest studies (0.80), each drawn on the main estimate's column; deaths from external causes (ICD-10 V01–Y89, a new column in the cause shares) left out of the multiplier; the log relative risk falling linearly to half between 65 and 85 (a modeling choice); the fixed-effect ALA slope (0.99); sex-specific background ALA.
+
+13. **Nearest pairs.** The six pairs are evidence rows (`schwingshackl2021_pair_*`), pooled by DerSimonian–Laird with a t(k − 2) prediction interval (`model.pool_ratios`). They rest on two trial sources, and the Mediterranean-diet trial evidence is PREDIMED with both Mediterranean arms combined. `data/calibration/` holds all 23 intake pairs read from Supplementary Figure 9; a test pools them and reproduces the published 0.98 (0.93–1.04), PI 0.90–1.07.
+
+14. **Estimand.** Nuts eaten in place of other calories, which is what energy-adjusted cohort analyses and isocaloric trials describe; adding nuts on top of an unchanged diet is a different intervention.
+
+15. **Engine.** Each draw's gain depends on the draw only through its scalar log multiplier, so `Model.gain` evaluates the life table on 1,025 multipliers spanning the draws and interpolates (error under 0.001 day; a test compares with evaluating every draw).
+
+16. **Names.** "Scenarios", not a "bracket" of "members": LDL pathway, coronary deaths (`ldl_chd`); LDL pathway, all deaths (`ldl_all`); cardiovascular deaths only; mortality calibration; main calibration; face value. One label set (`model.SCENARIO_LABEL`, written to results.json) feeds the figures, the tables and the prose.
+
+17. **Sources the reviewers added.** PREDIMED's all-cause and cardiovascular death and stroke hazards and its nut mix (NEJM full text), PREDIMED's observational nut-frequency analysis (Guasch-Ferré 2013), Aune's follow-up strata, Luu's peanut-butter and second-fifth estimates, SELECT's diabetes result, Silverman 2016 (non-statin LDL lowering), Ference 2017 (cumulative LDL exposure), the WAHA two-year walnut trial, Liu 2020 (changes in nut intake), the 2022 umbrella review (which reuses Aune's estimate) and a 2026 meta-analysis (abstract only; its highest-versus-lowest estimate is used because its per-serving unit looks misprinted). The IHME curve is cited to IHME's visualization, and Zheng 2022 for the method.
+
 ## Deviations
 
 Where the model (src/whatnut/, builder B1) departs from or fills a gap in the text above. One line each.
 
 - **Curve uncertainty row.** "The row the curve's 28 g point comes from" is read as the linear per-28 g row: all-cause scales by draws of `aune2016_allcause_per28g` (0.78, 0.72–0.84), the CVD curve by `aune2016_cvd_per28g_mortality` (0.76, 0.67–0.86); the S14/S15 pointwise CIs are not used.
-- **RR28 in the calibration.** c_cal = ln(RR28 · RRR)/ln(RR28) uses the same per-28 g draw as the curve scale, so the calibrated log RR at 28 g is ln RR28 + ln RRR, draw by draw.
+- **RR28 in the calibration.** c = ln(RR28 · RRR)/ln(RR28) uses the same per-28 g draw as the curve scale. On the linear per-28 g estimate the calibrated log RR at 28 g is ln RR28 + ln RRR, draw by draw; on the main curve, whose value at 28 g is ln 0.82 rather than ln 0.78, it is 0.80 × (ln RR28 + ln RRR). The alternative anchor, c = ln(RR_curve(28) · RRR)/ln RR_curve(28), is reported for every stratum (decision 3, revised).
 - **Prediction-interval level.** The schema has no level for `pi_low`/`pi_high`; RRR draws take the row's `ci_level` (95%, as Schwingshackl 2021 reports).
-- **Overall stratum is a grid member.** `calibrated_overall` (RRR 1.09) sits in the grid beside `calibrated` and `calibrated_all_cause`.
+- **All strata are grid members.** Every calibration stratum (`calibrated` on all pairs, `calibrated_mortality`, `calibrated_protective`, `calibrated_analog`, `calibrated_diet`) sits in the grid.
 - **CVD-only carve-out at c = 1.** DESIGN does not give its multiplier; it takes the CVD curve at face value (`ASSUMPTIONS["cvd_only_c"]`).
-- **Phase-in.** φ scales the log hazard multiplier (Fadnes 2022 does not say whether they ramp the HR or its log), takes its mid-year value in each single year of age, and applies to every member, including the floor and the cause-restricted members (h' = h[1 − p + p·exp(φβ)]).
+- **Phase-in.** φ scales the log hazard multiplier (Fadnes 2022 does not say whether they ramp the HR or its log), takes its mid-year value in each single year of age, and applies to every scenario, including the LDL pathway and the cause-restricted scenarios (h' = h[1 − p + p·exp(φβ)]).
 - **Cause shares by age.** The 2023 file has 10-year groups from 25–34 to 85+; single ages take their group's share, ages under 25 take the 25–34 share (no cause-restricted output starts below 30), and the open interval takes 85+.
-- **Peanut floor dose.** Jafari Azad 2020's doses are paywalled; its WMD (−3.31 mg/dL) is read as the effect of one 28.4 g/day serving, and its SE comes from P = 0.472, parsed from the row's notes because the schema has no P-value field.
-- **Floor above face value at high background.** The running-minimum curve is flat from 15 g/day, so face value is exactly zero for B ≥ 15 while the linear LDL floor is not; the ordering floor ≤ face value holds, and is tested, from zero background only.
+- **Peanut LDL dose.** Jafari Azad 2020's doses are paywalled; its WMD (−3.31 mg/dL) is read as the effect of one 28.4 g/day serving, and its SE comes from P = 0.472, parsed from the row's notes because the schema has no P-value field.
+- **LDL pathway above face value at high background.** The running-minimum curve is flat from 15 g/day, so face value is exactly zero for B ≥ 15 while the linear LDL pathway is not; the ordering LDL pathway ≤ face value holds, and is tested, from zero background only.
 - **Rows without a DOI.** `wweia_1720_ala_adults` and `nchs_mortality_2023` have `title_matches: null` (Crossref cannot match them); the model and the test accept them when they carry `source.url` and `value_checked_in`.
-- **Background ALA.** 1.93 g/day (decision 7, row `wweia_1720_ala_adults`) and 5 g/day, not the brief's 1.5 g.
-- **ALA channel scope.** Reported at the reference case (age 40, 0 → 28 g/day) for face value and calibrated, as total gain and as the paired increment over the class effect.
-- **Cost.** Price is the median of the primary retail rows per nut (`prices_by_nut.csv`); costs accrue while alive (treated survival), each single year discounted at mid-year and the open interval at its baseline midpoint; cost per life-year is reported for calibrated, calibrated_all_cause, face value and both floors, with the peanut floors using peanut LDL.
-- **Extra sensitivities, free with data on disk.** The 2021 baseline (archived NVSR 72-12 tables and 2021 cause shares) for the reference case and the Fadnes rows; the floor with Del Gobbo's randomized trials only (−4.2 mg/dL).
+- **Background ALA.** The sex-specific US means (rows `wweia_1720_ala_men`, 2.16, and `wweia_1720_ala_women`, 1.72 g/day; decision 12) and 5 g/day, not the brief's 1.5 g.
+- **ALA channel scope.** Reported at the reference case (age 40, 0 → 15 g/day) for face value and the main calibration, with the random-effects and the fixed-effect slopes, as total gain and as the paired increment over the class effect.
+- **Cost.** Price is the median of the primary retail rows per nut (`prices_by_nut.csv`); costs accrue while alive (treated survival), each single year discounted at mid-year and the open interval at its baseline midpoint; cost per life-year is reported at the reference dose for the main and mortality calibrations, face value and both LDL-pathway scenarios, with peanuts' LDL pathway using peanut LDL.
+- **Extra sensitivities, free with data on disk.** The 2021 baseline (archived NVSR 72-12 tables and 2021 cause shares) for the reference case and the Fadnes rows; the LDL pathway with all 61 of Del Gobbo's controlled trials, randomized and not (−4.8 mg/dL).
 - **Fadnes reproduction rows.** The test uses the age-20 targets from evidence rows `fadnes2022_us_{men,women}_25g`; results.json also compares ages 40, 60 and 80 from `data/curves/fadnes2022_targets.yaml` (the age-40 and age-80 targets were read from figure images).
 - **Linear-plateau sensitivity beyond 28 g.** The formula keeps rising slowly past 28 g/day, as written; it is not flattened.
 - **Tooling.** pytest no longer runs coverage (`--cov` dropped with pytest-cov); seaborn, black and mypy left the dependencies; the fetch scripts' `requests` and `pypdf` moved to a `fetch` extra.

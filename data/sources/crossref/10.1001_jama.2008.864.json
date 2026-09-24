@@ -1,0 +1,538 @@
+{
+ "DOI": "10.1001/jama.2008.864",
+ "ISSN": [
+  "0098-7484"
+ ],
+ "URL": "https://doi.org/10.1001/jama.2008.864",
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Lippman",
+   "given": "Scott M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Klein",
+   "given": "Eric A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Goodman",
+   "given": "Phyllis J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lucia",
+   "given": "M. Scott",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Thompson",
+   "given": "Ian M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ford",
+   "given": "Leslie G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Parnes",
+   "given": "Howard L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Minasian",
+   "given": "Lori M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gaziano",
+   "given": "J. Michael",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Hartline",
+   "given": "Jo Ann",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Parsons",
+   "given": "J. Kellogg",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bearden",
+   "given": "James D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Crawford",
+   "given": "E. David",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Goodman",
+   "given": "Gary E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Claudio",
+   "given": "Jaime",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Winquist",
+   "given": "Eric",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cook",
+   "given": "Elise D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Karp",
+   "given": "Daniel D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Walther",
+   "given": "Philip",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lieber",
+   "given": "Michael M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Kristal",
+   "given": "Alan R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Darke",
+   "given": "Amy K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Arnold",
+   "given": "Kathryn B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ganz",
+   "given": "Patricia A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Santella",
+   "given": "Regina M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Albanes",
+   "given": "Demetrius",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Taylor",
+   "given": "Philip R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Probstfield",
+   "given": "Jeffrey L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Jagpal",
+   "given": "T. J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Crowley",
+   "given": "John J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Meyskens",
+   "given": "Frank L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Baker",
+   "given": "Laurence H.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Coltman",
+   "given": "Charles A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "JAMA"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2008,
+    12,
+    9
+   ]
+  ],
+  "date-time": "2008-12-09T21:42:45Z",
+  "timestamp": 1228858965000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2016,
+    12,
+    15
+   ]
+  ],
+  "date-time": "2016-12-15T14:44:03Z",
+  "timestamp": 1481813043000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    16
+   ]
+  ],
+  "date-time": "2026-09-16T05:09:44Z",
+  "timestamp": 1789535384621,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 1810,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0098-7484"
+  }
+ ],
+ "issue": "1",
+ "issued": {
+  "date-parts": [
+   [
+    2009,
+    1,
+    7
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2009,
+     1,
+     7
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://jamanetwork.com/journals/jama/fullarticle/183163",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "10",
+ "original-title": [],
+ "page": "39",
+ "prefix": "10.1001",
+ "published": {
+  "date-parts": [
+   [
+    2009,
+    1,
+    7
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2009,
+    1,
+    7
+   ]
+  ]
+ },
+ "publisher": "American Medical Association (AMA)",
+ "reference-count": 0,
+ "references-count": 0,
+ "relation": {
+  "has-review": [
+   {
+    "asserted-by": "object",
+    "id": "10.3410/f.1147393.604568",
+    "id-type": "doi"
+   }
+  ]
+ },
+ "resource": {
+  "primary": {
+   "URL": "http://jama.jamanetwork.com/article.aspx?doi=10.1001/jama.2008.864"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "JAMA"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [
+  "The Selenium and Vitamin E Cancer Prevention Trial (SELECT)"
+ ],
+ "title": [
+  "Effect of Selenium and Vitamin E on Risk of Prostate Cancer and Other Cancers"
+ ],
+ "type": "journal-article",
+ "volume": "301"
+}

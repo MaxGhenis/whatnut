@@ -1,0 +1,1173 @@
+{
+ "DOI": "10.1093/eurheartj/ehx144",
+ "ISSN": [
+  "0195-668X",
+  "1522-9645"
+ ],
+ "URL": "https://doi.org/10.1093/eurheartj/ehx144",
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "Division of Translational Research and Clinical Epidemiology, Division of Cardiovascular Medicine, Wayne State University School of Medicine, Detroit, MI 48202, USA"
+    }
+   ],
+   "family": "Ference",
+   "given": "Brian A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Irving Institute for Clinical and Translational Research, Columbia University, New York, NY, USA"
+    }
+   ],
+   "family": "Ginsberg",
+   "given": "Henry N.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Trinity College Dublin, Ireland"
+    }
+   ],
+   "family": "Graham",
+   "given": "Ian",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Primary Care and Public Health, Imperial Centre for Cardiovascular Disease Prevention, Imperial College, London, UK"
+    }
+   ],
+   "family": "Ray",
+   "given": "Kausik K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "College of Medical, Veterinary, and Life Sciences, University of Glasgow, Glasgow, UK"
+    }
+   ],
+   "family": "Packard",
+   "given": "Chris J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "INSERM UMRS1166, Department of Endocrinology-Metabolism, ICAN - Institute of CardioMetabolism and Nutrition, AP-HP, H\u00f4pital de la Piti\u00e9, Paris, France"
+    }
+   ],
+   "family": "Bruckert",
+   "given": "Eric",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Medicine, Robarts Research Institute, Schulich School of Medicine and Dentistry, University of Western Ontario, London, Ontario, Canada"
+    }
+   ],
+   "family": "Hegele",
+   "given": "Robert A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Atherosclerosis Research, Children\u2019s Hospital Oakland Research Institute, Oakland, CA 94609, USA"
+    }
+   ],
+   "family": "Krauss",
+   "given": "Ronald M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Faculty of Health Sciences, University of Witwatersrand, Johannesburg, South Africa"
+    }
+   ],
+   "family": "Raal",
+   "given": "Frederick J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Deutsches Herzzentrum M\u00fcnchen, Technische Universit\u00e4t M\u00fcnchen, Munich 80636, Germany"
+    },
+    {
+     "name": "Deutsches Zentrum f\u00fcr Herz und Kreislauferkrankungen (DZHK), Partner Site Munich Heart Alliance, Munich 81377, Germany"
+    }
+   ],
+   "family": "Schunkert",
+   "given": "Heribert",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Lipid Disorders Clinic, Centre for Cardiovascular Medicine, Royal Perth Hospital, School of Medicine and Pharmacology, University of Western Australia, Perth, Western Australia, Australia"
+    }
+   ],
+   "family": "Watts",
+   "given": "Gerald F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Molecular and Clinical Medicine, Wallenberg Laboratory, Sahlgrenska University Hospital, University of Gothenburg, Gothenburg, Sweden"
+    }
+   ],
+   "family": "Bor\u00e9n",
+   "given": "Jan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Medicine, Center for Preventive Cardiology of the Knight Cardiovascular Institute, Oregon Health and Science University, Portland, OR, USA"
+    }
+   ],
+   "family": "Fazio",
+   "given": "Sergio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Molecular Genetics, University of Texas Southwestern Medical Center, Dallas, TX, USA"
+    },
+    {
+     "name": "Department of Internal Medicine, University of Texas Southwestern Medical Center, Dallas, TX, USA"
+    }
+   ],
+   "family": "Horton",
+   "given": "Jay D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Research Unit of Lipids and Atherosclerosis, University Rovira i Virgili, C. Sant Lloren\u00e7 21, Reus 43201, Spain"
+    }
+   ],
+   "family": "Masana",
+   "given": "Luis",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "South Australian Health and Medical Research Institute, University of Adelaide, Adelaide, Australia"
+    }
+   ],
+   "family": "Nicholls",
+   "given": "Stephen J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Clinical Biochemistry and The Copenhagen General Population Study, Herlev and Gentofte Hospital, Copenhagen University Hospital, Denmark"
+    },
+    {
+     "name": "Faculty of Health and Medical Sciences, University of Copenhagen, Denmark"
+    },
+    {
+     "name": "The Copenhagen City Heart Study, Frederiksberg Hospital, Copenhagen University Hospital, Denmark"
+    }
+   ],
+   "family": "Nordestgaard",
+   "given": "B\u00f8rge G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Pediatrics, Molecular Genetics Section, University of Groningen, University Medical Center Groningen, Antonius Deusinglaan 1, Groningen AV 9713, The Netherlands"
+    }
+   ],
+   "family": "van de Sluis",
+   "given": "Bart",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Helsinki University Central Hospital and Research Programs\u2019 Unit, Diabetes and Obesity, Heart and Lung Centre, University of Helsinki, Helsinki, Finland"
+    }
+   ],
+   "family": "Taskinen",
+   "given": "Marja-Riitta",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Hacettepe University, Ankara, Turkey"
+    }
+   ],
+   "family": "Tokg\u00f6zo\u011flu",
+   "given": "Lale",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Cardiology, Charit\u00e9-Universit\u00e4tsmedizin Berlin (CBF), Hindenburgdamm 30, Berlin 12203, Germany"
+    },
+    {
+     "name": "Irving Institute for Clinical and Translational Research, Columbia University, New York, NY, USA"
+    },
+    {
+     "name": "INSERM UMRS1166, Department of Endocrinology-Metabolism, ICAN - Institute of CardioMetabolism and Nutrition, AP-HP, H\u00f4pital de la Piti\u00e9, Paris, France"
+    }
+   ],
+   "family": "Landmesser",
+   "given": "Ulf",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Klinik f\u00fcr Innere Medizin III, Kardiologie, Angiologie und Internistische Intensivmedizin, Universit\u00e4tsklinikum des Saarlandes, Homburg, Saar, Germany"
+    }
+   ],
+   "family": "Laufs",
+   "given": "Ulrich",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Molecular and Clinical Medicine, University of Gothenburg, Gothenburg, Sweden"
+    },
+    {
+     "name": "Department of Cardiology, Sahlgrenska University Hospital, Gothenburg, Sweden"
+    }
+   ],
+   "family": "Wiklund",
+   "given": "Olov",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "European Atherosclerosis Society, Gothenburg, Sweden"
+    }
+   ],
+   "family": "Stock",
+   "given": "Jane K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "INSERM, Dyslipidemia and Atherosclerosis Research, and University of Pierre and Marie Curie, Piti\u00e9-S\u00e2lpetri\u00e8re University Hospital, Paris, France"
+    }
+   ],
+   "family": "Chapman",
+   "given": "M. John",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Pharmacological and Biomolecular Sciences, University of Milan and IRCCS Multimedica, Milan, Italy"
+    }
+   ],
+   "family": "Catapano",
+   "given": "Alberico L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "European Heart Journal"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    3,
+    8
+   ]
+  ],
+  "date-time": "2017-03-08T23:24:39Z",
+  "timestamp": 1489015479000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2022,
+    7,
+    25
+   ]
+  ],
+  "date-time": "2022-07-25T14:43:05Z",
+  "timestamp": 1658760185000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    24
+   ]
+  ],
+  "date-time": "2026-09-24T08:01:46Z",
+  "timestamp": 1790236906570,
+  "version": "4.1.0"
+ },
+ "is-referenced-by-count": 3586,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0195-668X"
+  },
+  {
+   "type": "electronic",
+   "value": "1522-9645"
+  }
+ ],
+ "issue": "32",
+ "issued": {
+  "date-parts": [
+   [
+    2017,
+    4,
+    24
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "32",
+  "published-online": {
+   "date-parts": [
+    [
+     2017,
+     4,
+     24
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2017,
+     8,
+     21
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://academic.oup.com/eurheartj/article-pdf/38/32/2459/24120630/ehx144.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "286",
+ "original-title": [],
+ "page": "2459-2472",
+ "prefix": "10.1093",
+ "published": {
+  "date-parts": [
+   [
+    2017,
+    4,
+    24
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2017,
+    4,
+    24
+   ]
+  ]
+ },
+ "published-other": {
+  "date-parts": [
+   [
+    2017,
+    8,
+    21
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2017,
+    8,
+    21
+   ]
+  ]
+ },
+ "publisher": "Oxford University Press (OUP)",
+ "reference": [
+  {
+   "DOI": "10.1016/S0140-6736(04)17018-9",
+   "article-title": "Effect of potentially modifiable risk factors associated with myocardial infarction in 52 countries (the INTERHEART study): case-control study",
+   "author": "Yusuf",
+   "doi-asserted-by": "crossref",
+   "first-page": "937",
+   "journal-title": "Lancet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B1",
+   "volume": "364",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1016/j.cell.2015.01.036",
+   "article-title": "A century of cholesterol and coronaries: from plaques to genes to statins",
+   "author": "Goldstein",
+   "doi-asserted-by": "crossref",
+   "first-page": "161",
+   "journal-title": "Cell",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B2",
+   "volume": "161",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1136/ebmed-2016-110602",
+   "article-title": "Cholesterol paradox: a correlate does not a surrogate make",
+   "author": "DuBroff",
+   "doi-asserted-by": "crossref",
+   "first-page": "15",
+   "journal-title": "Evid Based Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B3",
+   "volume": "22",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2015-010401",
+   "article-title": "Lack of an association or an inverse association between low-density-lipoprotein cholesterol and mortality in the elderly: a systematic review",
+   "author": "Ravnskov",
+   "doi-asserted-by": "crossref",
+   "first-page": "e010401.",
+   "journal-title": "BMJ Open",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B4",
+   "volume": "6",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/0021-9150(75)90095-7",
+   "article-title": "The participation of aortic proteins in the formation of complexes between low density lipoproteins and intima-media extracts",
+   "author": "Camejo",
+   "doi-asserted-by": "crossref",
+   "first-page": "77",
+   "journal-title": "Atherosclerosis",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B5",
+   "volume": "21",
+   "year": "1975"
+  },
+  {
+   "DOI": "10.1038/nature00804",
+   "article-title": "Subendothelial retention of atherogenic lipoproteins in early atherosclerosis",
+   "author": "Sk\u00e5l\u00e9n",
+   "doi-asserted-by": "crossref",
+   "first-page": "750",
+   "journal-title": "Nature",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B6",
+   "volume": "417",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1161/01.ATV.9.6.908",
+   "article-title": "Initiation of atherosclerotic lesions in cholesterol-fed rabbits. II. Selective retention of LDL vs. selective increases in LDL permeability in susceptible sites of arteries",
+   "author": "Schwenke",
+   "doi-asserted-by": "crossref",
+   "first-page": "908",
+   "journal-title": "Arteriosclerosis",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B7",
+   "volume": "9",
+   "year": "1989"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)38299-7",
+   "article-title": "Ultrastructure of the intima in WHHL and cholesterol-fed rabbit aortas prepared by ultra-rapid freezing and freeze-etching",
+   "author": "Frank",
+   "doi-asserted-by": "crossref",
+   "first-page": "967",
+   "journal-title": "J Lipid Res",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B8",
+   "volume": "30",
+   "year": "1989"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.106.676890",
+   "article-title": "Subendothelial lipoprotein retention as the initiating process in atherosclerosis: update and therapeutic implications",
+   "author": "Tabas",
+   "doi-asserted-by": "crossref",
+   "first-page": "1832",
+   "journal-title": "Circulation",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B9",
+   "volume": "116",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)38428-5",
+   "article-title": "Large lipoproteins are excluded from the arterial wall in diabetic cholesterol-fed rabbits",
+   "author": "Nordestgaard",
+   "doi-asserted-by": "crossref",
+   "first-page": "1491",
+   "journal-title": "J Lipid Res",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B10",
+   "volume": "29",
+   "year": "1988"
+  },
+  {
+   "DOI": "10.1016/j.atherosclerosis.2003.11.002",
+   "article-title": "Lipoprotein concentrations in newborns are associated with allelic variations in their mothers",
+   "author": "Descamps",
+   "doi-asserted-by": "crossref",
+   "first-page": "287",
+   "journal-title": "Atherosclerosis",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B11",
+   "volume": "172",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)34780-5",
+   "article-title": "Animal lipoproteins: chemistry, structure, and comparative aspects",
+   "author": "Chapman",
+   "doi-asserted-by": "crossref",
+   "first-page": "789",
+   "journal-title": "J Lipid Res",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B12",
+   "volume": "21",
+   "year": "1980"
+  },
+  {
+   "DOI": "10.1093/eurheartj/eht273",
+   "article-title": "Familial hypercholesterolaemia is underdiagnosed and undertreated in the general population: guidance for clinicians to prevent coronary heart disease. Consensus Statement of the European Atherosclerosis Society",
+   "author": "Nordestgaard",
+   "doi-asserted-by": "crossref",
+   "first-page": "3478",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B13",
+   "volume": "34",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehu274",
+   "article-title": "Homozygous familial hypercholesterolaemia: new insights and guidance for clinicians to improve detection and clinical management. A position paper from the Consensus Panel on Familial Hypercholesterolaemia of the European Atherosclerosis Society",
+   "author": "Cuchel",
+   "doi-asserted-by": "crossref",
+   "first-page": "2146",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B14",
+   "volume": "35",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2016.03.520",
+   "article-title": "Diagnostic yield of sequencing familial hypercholesterolemia genes in patients with severe hypercholesterolemia",
+   "author": "Khera",
+   "doi-asserted-by": "crossref",
+   "first-page": "2578",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B15",
+   "volume": "67",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehw028",
+   "article-title": "Mutations causative of familial hypercholesterolaemia: screening of 98 098 individuals from the Copenhagen General Population Study estimated a prevalence of 1 in 217",
+   "author": "Benn",
+   "doi-asserted-by": "crossref",
+   "first-page": "1384",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B16",
+   "volume": "37",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/S0002-9149(99)00095-8",
+   "article-title": "Low-density lipoprotein cholesterol bulk is the pivotal determinant of atherosclerosis in familial hypercholesterolemia",
+   "author": "Raal",
+   "doi-asserted-by": "crossref",
+   "first-page": "1330",
+   "journal-title": "Am J Cardiol",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B17",
+   "volume": "83",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1016/S0002-9149(97)89309-5",
+   "article-title": "Relationship of cholesterol-year score to severity of calcific atherosclerosis and tissue deposition in homozygous familial hypercholesterolemia",
+   "author": "Schmidt",
+   "doi-asserted-by": "crossref",
+   "first-page": "575",
+   "journal-title": "Am J Cardiol",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B18",
+   "volume": "77",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehv157",
+   "article-title": "Familial hypercholesterolaemia in children and adolescents: gaining decades of life by optimizing detection and treatment",
+   "author": "Wiegman",
+   "doi-asserted-by": "crossref",
+   "first-page": "2425",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B19",
+   "volume": "36",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1056/NEJMoa054013",
+   "article-title": "Sequence variations in PCSK9, low LDL, and protection against coronary heart disease",
+   "author": "Cohen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1264",
+   "journal-title": "N Engl J Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B20",
+   "volume": "354",
+   "year": "2006"
+  },
+  {
+   "article-title": "Lipid-related markers and cardiovascular disease prediction",
+   "author": "Emerging Risk Factors",
+   "first-page": "2499",
+   "journal-title": "JAMA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B21",
+   "volume": "307",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(07)61778-4",
+   "article-title": "Blood cholesterol and vascular mortality by age, sex, and blood pressure: a meta-analysis of individual data from 61 prospective studies with 55,000 vascular deaths",
+   "author": "Prospective Studies Collaboration",
+   "doi-asserted-by": "crossref",
+   "first-page": "1829",
+   "journal-title": "Lancet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B22",
+   "volume": "370",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1002/sim.3034",
+   "article-title": "Mendelian randomization: using genes as instruments for making causal inferences in epidemiology",
+   "author": "Lawlor",
+   "doi-asserted-by": "crossref",
+   "first-page": "1133",
+   "journal-title": "Stat Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B23",
+   "volume": "27",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1038/nature09270",
+   "article-title": "Biological, clinical and population relevance of 95 loci for blood lipids",
+   "author": "Teslovich",
+   "doi-asserted-by": "crossref",
+   "first-page": "707",
+   "journal-title": "Nature",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B24",
+   "volume": "466",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1038/ng.2797",
+   "article-title": "Discovery and refinement of loci associated with lipid levels",
+   "author": "Global Lipids Genetics Consortium",
+   "doi-asserted-by": "crossref",
+   "first-page": "1274",
+   "journal-title": "Nat Genet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B25",
+   "volume": "45",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1097/MOL.0000000000000247",
+   "article-title": "Mendelian randomization studies: using naturally randomized genetic data to fill evidence gaps",
+   "author": "Ference",
+   "doi-asserted-by": "crossref",
+   "first-page": "566",
+   "journal-title": "Curr Opin Lipidol",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B26",
+   "volume": "26",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1038/ng.3396",
+   "article-title": "A comprehensive 1000 Genomes-based genome-wide association meta-analysis of coronary artery disease",
+   "author": "CARDIoGRAMplusC4D Consortium",
+   "doi-asserted-by": "crossref",
+   "first-page": "1121",
+   "journal-title": "Nat Genet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B27",
+   "volume": "47",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2012.09.017",
+   "article-title": "Effect of long-term exposure to lower low-density lipoprotein cholesterol beginning early in life on the risk of coronary heart disease: a Mendelian randomization analysis",
+   "author": "Ference",
+   "doi-asserted-by": "crossref",
+   "first-page": "2631",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B28",
+   "volume": "60",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0002986",
+   "article-title": "Lifelong reduction of LDL-cholesterol related to a common variant in the LDL-receptor gene decreases the risk of coronary artery disease: a Mendelian Randomisation study",
+   "author": "Linsel-Nitschke",
+   "doi-asserted-by": "crossref",
+   "first-page": "e2986.",
+   "journal-title": "PLoS One",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B29",
+   "volume": "3",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1093/eurheartj/eht571",
+   "article-title": "Mendelian randomization of blood lipids for coronary heart disease",
+   "author": "Holmes",
+   "doi-asserted-by": "crossref",
+   "first-page": "539",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B30",
+   "volume": "36",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2015.02.020",
+   "article-title": "Effect of naturally random allocation to lower low-density lipoprotein cholesterol on the risk of coronary heart disease mediated by polymorphisms in NPC1L1, HMGCR, or both: a 2 x 2 factorial Mendelian randomization study",
+   "author": "Ference",
+   "doi-asserted-by": "crossref",
+   "first-page": "1552",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B31",
+   "volume": "65",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(10)61350-5",
+   "article-title": "Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170 000 participants in 26 randomised trials",
+   "author": "Cholesterol Treatment Trialists\u2019 (CTT) Collaboration",
+   "doi-asserted-by": "crossref",
+   "first-page": "1670",
+   "journal-title": "Lancet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B32",
+   "volume": "376",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(16)31357-5",
+   "article-title": "Interpretation of the evidence for the efficacy and safety of statin therapy",
+   "author": "Collins",
+   "doi-asserted-by": "crossref",
+   "first-page": "2532",
+   "journal-title": "Lancet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B33",
+   "volume": "388",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1001/jama.2012.366",
+   "article-title": "Association of LDL cholesterol, non-HDL cholesterol, and apolipoprotein B levels with risk of cardiovascular events among patients treated with statins: a meta-analysis",
+   "author": "Boekholdt",
+   "doi-asserted-by": "crossref",
+   "first-page": "1302",
+   "journal-title": "JAMA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B34",
+   "volume": "307",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1001/jama.295.13.jpc60002",
+   "article-title": "Effect of very high-intensity statin therapy on regression of coronary atherosclerosis: the ASTEROID trial",
+   "author": "Nissen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1556",
+   "journal-title": "JAMA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B35",
+   "volume": "295",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1110874",
+   "article-title": "Effect of two intensive statin regimens on progression of coronary disease",
+   "author": "Nicholls",
+   "doi-asserted-by": "crossref",
+   "first-page": "2078",
+   "journal-title": "N Engl J Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B36",
+   "volume": "365",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1073/pnas.0500269102",
+   "article-title": "The target of ezetimibe is Niemann-Pick C1-Like 1 (NPC1L1)",
+   "author": "Garcia-Calvo",
+   "doi-asserted-by": "crossref",
+   "first-page": "8132",
+   "journal-title": "Proc Natl Acad Sci USA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B37",
+   "volume": "102",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1410489",
+   "article-title": "Ezetimibe added to statin therapy after acute coronary syndromes",
+   "author": "Cannon",
+   "doi-asserted-by": "crossref",
+   "first-page": "2387",
+   "journal-title": "N Engl J Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B38",
+   "volume": "372",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(11)60739-3",
+   "article-title": "The effects of lowering LDL cholesterol with simvastatin plus ezetimibe in patients with chronic kidney disease (Study of Heart and Renal Protection): a randomised placebo-controlled trial",
+   "author": "Baigent",
+   "doi-asserted-by": "crossref",
+   "first-page": "2181",
+   "journal-title": "Lancet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B39",
+   "volume": "377",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehv108",
+   "article-title": "Genetic variation in the cholesterol transporter NPC1L1, ischemic vascular disease and gallstone disease",
+   "author": "Lauridsen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1601",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B40",
+   "volume": "36",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.ahj.2015.11.015",
+   "article-title": "Rationale and design of the Further cardiovascular OUtcomes Research with PCSK9 Inhibition in subjects with Elevated Risk (FOURIER) Trial",
+   "author": "Sabatine",
+   "doi-asserted-by": "crossref",
+   "first-page": "94",
+   "journal-title": "Am Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B41",
+   "volume": "173",
+   "year": "2016"
+  },
+  {
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B42"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1604304",
+   "article-title": "Variation in PCSK9 and HMGCR and risk of cardiovascular disease and diabetes",
+   "author": "Ference",
+   "doi-asserted-by": "crossref",
+   "first-page": "2144",
+   "journal-title": "N Engl J Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B43",
+   "volume": "375",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1001/jama.2016.16951",
+   "article-title": "Effect of evolocumab on progression of coronary disease in statin-treated patients. The GLAGOV randomized clinical trial",
+   "author": "Nicholls",
+   "doi-asserted-by": "crossref",
+   "first-page": "2373",
+   "journal-title": ". JAMA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B44",
+   "volume": "316",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1001/jama.1984.03340270029025",
+   "article-title": "The Lipid Research Clinics coronary primary prevention trial results: reduction in the incidence of coronary artery disease",
+   "author": "Lipid Research Clinics Program",
+   "doi-asserted-by": "crossref",
+   "first-page": "351",
+   "journal-title": "JAMA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B45",
+   "volume": "251",
+   "year": "1984"
+  },
+  {
+   "DOI": "10.1056/NEJM199010043231404",
+   "article-title": "Effect of partial ileal bypass surgery on mortality and morbidity from coronary heart disease in patients with hypercholesterolemia. Report of the Program on the Surgical Control of the Hyperlipidemias (POSCH)",
+   "author": "Buchwald",
+   "doi-asserted-by": "crossref",
+   "first-page": "946",
+   "journal-title": "N Engl J Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B46",
+   "volume": "323",
+   "year": "1990"
+  },
+  {
+   "DOI": "10.1001/jama.2016.13985",
+   "article-title": "Association between lowering LDL-C and cardiovascular risk reduction among different therapeutic interventions: a systematic review and meta-analysis",
+   "author": "Silverman",
+   "doi-asserted-by": "crossref",
+   "first-page": "1289",
+   "journal-title": "JAMA",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B47",
+   "volume": "316",
+   "year": "2016"
+  },
+  {
+   "author": "Lincoff AM for the ACCELERATE Trial Investigators",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B48"
+  },
+  {
+   "article-title": "The environment and disease. Association or causation?",
+   "author": "Hill",
+   "first-page": "295",
+   "journal-title": "Proc R Soc Med",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B49",
+   "volume": "58",
+   "year": "1965"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.115.019014",
+   "article-title": "Long-term safety and efficacy of lowering low-density lipoprotein cholesterol with statin therapy: 20-year follow-up of West of Scotland Coronary Prevention Study",
+   "author": "Ford",
+   "doi-asserted-by": "crossref",
+   "first-page": "1073",
+   "journal-title": "Circulation",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B50",
+   "volume": "133",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehw272",
+   "article-title": "2016 ESC/EAS guidelines for the management of dyslipidaemias",
+   "author": "Catapano",
+   "doi-asserted-by": "crossref",
+   "first-page": "2999",
+   "journal-title": "Eur Heart J",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B51",
+   "volume": "37",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1161/01.cir.0000437738.63853.7a",
+   "article-title": "2013 ACC/AHA guideline on the treatment of blood cholesterol to reduce atherosclerotic cardiovascular risk in adults: a report of the American College of Cardiology/American Heart Association Task Force on practice guidelines",
+   "author": "Stone",
+   "doi-asserted-by": "crossref",
+   "first-page": "S1",
+   "journal-title": "Circulation",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B52",
+   "volume": "129(25 Suppl 2)",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(14)61730-X",
+   "article-title": "Genetic risk, coronary heart disease events, and the clinical benefit of statin therapy: an analysis of primary and secondary prevention trials",
+   "author": "Mega",
+   "doi-asserted-by": "crossref",
+   "first-page": "2264",
+   "journal-title": "Lancet",
+   "key": "key\n\t\t\t\t20180222014134_ehx144-B53",
+   "volume": "385",
+   "year": "2015"
+  }
+ ],
+ "reference-count": 53,
+ "references-count": 53,
+ "relation": {
+  "has-review": [
+   {
+    "asserted-by": "object",
+    "id": "10.3410/f.727555798.793563055",
+    "id-type": "doi"
+   }
+  ]
+ },
+ "resource": {
+  "primary": {
+   "URL": "https://academic.oup.com/eurheartj/article/38/32/2459/3745109"
+  }
+ },
+ "score": 1,
+ "short-container-title": [],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Low-density lipoproteins cause atherosclerotic cardiovascular disease. 1. Evidence from genetic, epidemiologic, and clinical studies. A consensus statement from the European Atherosclerosis Society Consensus Panel"
+ ],
+ "type": "journal-article",
+ "volume": "38"
+}

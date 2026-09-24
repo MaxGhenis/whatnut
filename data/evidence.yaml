@@ -94,6 +94,197 @@
     value_checked_in: "full text"
     checked_on: "2026-09-23"
 
+- id: aune2016_allcause_fu10plus
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment; studies with 10 or more years of follow-up"
+  outcome: "All-cause mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.84
+  ci_low: 0.79
+  ci_high: 0.90
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Follow-up 10 to 30 years in this subgroup (Supplementary table 7)"
+  population: "9 of the 16 risk estimates in the all-cause dose-response analysis"
+  notes: >-
+    Subgroup of the linear dose-response meta-analysis (all studies: 0.78, 0.72-0.84, n = 16). 10 years or
+    more: n = 9, I2 43.4%, P heterogeneity within subgroup 0.08; between-subgroup P (meta-regression) 0.03
+    against the under-10-year subgroup (0.61, 0.49-0.76, n = 7). The table title says per 28 grams per day.
+    Deduced membership (Supplementary tables 7 and 22): Mann 1997 Oxford Vegetarian Study (13.3 y), Fraser
+    1997 older white Adventists (12), Blomhoff 2006 Iowa Women's Health Study (15), Leenders 2013 EPIC (13),
+    Bao 2013 Nurses' Health Study (30) and Health Professionals Follow-up Study (24), van den Brandt 2015
+    Netherlands Cohort Study (10), Gopinath 2015 Blue Mountains (15), Wang 2016 Linxian (19-26). Across all 16
+    estimates follow-up runs from 4.3 to 30 years, median about 11 years (computed). Source text: Additional
+    file 1,
+    https://static-content.springer.com/esm/art%3A10.1186%2Fs12916-016-0730-3/MediaObjects/12916_2016_730_MOESM1_ESM.pdf
+    (texts/aune2016_additional_file1_MOESM1_ESM.pdf).
+  source:
+    key: aune2016nut
+    doi: "10.1186/s12916-016-0730-3"
+    pmid: "27916000"
+    pmcid: "PMC5137221"
+    first_author: "Aune"
+    authors: "Aune D, Keum N, Giovannucci E, Fadnes LT, Boffetta P, Greenwood DC, Tonstad S, Vatten LJ, Riboli E, Norat T"
+    title: "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies"
+    journal: "BMC Medicine"
+    year: 2016
+    volume: "14"
+    issue: "1"
+    pages: "207"
+  locator: "Additional file 1, Supplementary table 17, 'Duration of follow-up', all-cause mortality columns (PDF pp. 44-45); Supplementary table 7 (pp. 26-31) and Supplementary Table 22 (pp. 50-51); Results, subgroup paragraph"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: aune2016_allcause_fu_under10
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment; studies with under 10 years of follow-up"
+  outcome: "All-cause mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.61
+  ci_low: 0.49
+  ci_high: 0.76
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Follow-up 4.3 to 9.6 years in this subgroup, plus Luu 2015 (5.4 to 12.2 years across its three cohorts), if membership is as deduced (Supplementary table 7)"
+  population: "7 of the 16 risk estimates in the all-cause dose-response analysis"
+  notes: >-
+    Subgroup of the linear dose-response meta-analysis (all studies: 0.78, 0.72-0.84, n = 16). Under 10
+    years: n = 7, I2 72.2%, P heterogeneity within subgroup 0.001. P for heterogeneity between the two
+    follow-up subgroups (meta-regression) 0.03. The table title says per 28 grams per day. Membership is not
+    listed; matching follow-up in Supplementary table 7 to the 16 studies in Supplementary table 22 gives
+    exactly 7 under 10 years only if Luu 2015 (one estimate; SCCS 5.4, SMHS 6.5, SWHS 12.2 years) is counted
+    here: Fraser 1997 Black Adventists (about 9.5 y), Guasch-Ferré 2013 PREDIMED (4.8), Fernandez-Montero 2014
+    SUN (5), Hshieh 2015 Physicians' Health Study (9.6), Luu 2015, Bonaccio 2015 Moli-sani (4.3), Eslamparast
+    2016 Golestan (7) (deduced, not stated). Results and Discussion describe a weaker (Discussion: slightly
+    weaker) association among studies with longer follow-up. Random-effects model (DerSimonian-Laird). Source text: Additional file 1,
+    https://static-content.springer.com/esm/art%3A10.1186%2Fs12916-016-0730-3/MediaObjects/12916_2016_730_MOESM1_ESM.pdf
+    (texts/aune2016_additional_file1_MOESM1_ESM.pdf; byte-identical to the repo copy
+    data/curves/raw/aune2016_MOESM1_ESM.pdf).
+  source:
+    key: aune2016nut
+    doi: "10.1186/s12916-016-0730-3"
+    pmid: "27916000"
+    pmcid: "PMC5137221"
+    first_author: "Aune"
+    authors: "Aune D, Keum N, Giovannucci E, Fadnes LT, Boffetta P, Greenwood DC, Tonstad S, Vatten LJ, Riboli E, Norat T"
+    title: "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies"
+    journal: "BMC Medicine"
+    year: 2016
+    volume: "14"
+    issue: "1"
+    pages: "207"
+  locator: "Additional file 1, Supplementary table 17, 'Duration of follow-up', all-cause mortality columns (PDF pp. 44-45); Supplementary table 7 (pp. 26-31) and Supplementary Table 22 (pp. 50-51) for follow-up and membership; Results, subgroup paragraph"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: balakrishna2022_umbrella
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts, 28 g/day vs none (per serving)"
+  outcome: "All-cause mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.78
+  ci_low: 0.72
+  ci_high: 0.84
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Dose-response curves plateau from about 20 g/day (Supplemental Figure 16, not retrieved)"
+  population: "Umbrella review of 89 articles (23 meta-analyses of disease and mortality); the all-cause estimate comes from the most comprehensive meta-analysis: 16 estimates, 819,448 participants, 85,870 deaths"
+  notes: >-
+    Re-reports Aune 2016: Figure 3 attributes the all-cause row to reference 16 (Aune et al. 2016), with the same
+    RR, CI, I2 66%, participants and deaths as aune2016_allcause_per28g, so it is not independent evidence. AMSTAR-2
+    rating high. Shares authors with Aune 2016: Dagfinn Aune and Lars T. Fadnes wrote both. Search to 27 May 2021;
+    PROSPERO CRD42021258300. Per 28 g/day in the text: CVD 0.79 (0.70-0.89), CHD 0.75 (0.64-0.88), CVD mortality
+    0.78 (0.73-0.83), cancer mortality 0.89 (0.83-0.94); Figure 3 prints different values for CVD mortality (0.94)
+    and cancer mortality (0.97), so text and figure disagree there; the all-cause values agree.
+    Allergy: abstract, allergy and related adverse reactions to nuts in 1-2% of adult populations, with substantial
+    heterogeneity; Discussion cites a European meta-analysis (Nwaru 2014). Results: challenge-proven tree-nut
+    allergy in adults 0.4-1.4% (Zuidmeer 2008); peanut allergy 0-2.8% by gold-standard diagnosis; sesame 0.1-0.2%.
+    Funding: authors funded by their institutions, no additional funding; no conflicts declared.
+  source:
+    key: balakrishna2022umbrella
+    doi: "10.1093/advances/nmac077"
+    pmid: "36041171"
+    pmcid: "PMC9776667"
+    first_author: "Balakrishna"
+    authors: "Balakrishna R, Bjørnerud T, Bemanian M, Aune D, Fadnes LT"
+    title: "Consumption of Nuts and Seeds and Health Outcomes Including Cardiovascular Disease, Diabetes and Metabolic Disease, Cancer, and Mortality: An Umbrella Review"
+    journal: "Advances in Nutrition"
+    year: 2022
+    volume: "13"
+    issue: "6"
+    pages: "2136-2148"
+  locator: "Abstract; Results, 'All-cause mortality and other cause-specific mortality' and 'Allergy and adverse reactions'; Figure 3; Discussion; references 16, 134, 136; Acknowledgments (funding, disclosures)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+# --- Liu M et al. 2026, dose-response meta-analysis of nuts, CVD and all-cause mortality ---
+
+- id: liu2026_nutmeta_allcause
+  kind: cohort_meta_dose_response
+  exposure: "Nut consumption, highest vs lowest intake category"
+  outcome: "All-cause mortality"
+  measure: RR
+  unit: "highest vs lowest intake"
+  estimate: 0.77
+  ci_low: 0.73
+  ci_high: 0.81
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Intake range not given in the abstract; full text not read"
+  population: "Prospective cohort studies: 33 publications (63 studies) across CHD, stroke, CVD, CVD mortality and all-cause mortality; the abstract does not give the all-cause count; search to 24 October 2023"
+  notes: >-
+    Abstract only: the full text is paywalled (OpenAlex: closed access; Europe PMC: subscription; ScienceDirect
+    returned HTTP 403). Random-effects models; restricted cubic splines; NutriGrade for certainty. Highest vs
+    lowest intake, all-cause mortality 0.77 (0.73-0.81); per 28 g weekly increase 0.92 (0.90-0.94); all-cause
+    association nonlinear (P nonlinearity < 0.001). Other outcomes per 28 g weekly: CHD 0.96 (0.95-0.97), stroke
+    0.99 (0.97-1.01), CVD 0.98 (0.97-0.99), CVD mortality 0.90 (0.86-0.94). Unit caution: if the increment is
+    28 g/week (4 g/day), the implied RR per 28 g/day is 0.92^7 = 0.56 (computed here), far steeper than Aune 2016's
+    0.78, so the unit may be misprinted in the abstract. The row's estimate is therefore the highest-vs-lowest
+    contrast, which the abstract states without a unit problem; the per-28 g weekly figure is not used. The 63 studies count every outcome, not all-cause mortality alone. Authors (Zhengzhou University and
+    Shenzhen University, China) do not overlap with Aune or Fadnes; its author Hu F is Fulan Hu (Crossref), not
+    Frank B. Hu. Funding (Crossref funder metadata): National Natural Science Foundation of China, Guangdong Basic and
+    Applied Basic Research Foundation, China Postdoctoral Research Foundation, Shenzhen Science and Technology
+    Innovation Program; no competing interests declared (PubMed). PubMed entry December 2025; issue March 2026.
+  source:
+    key: liu2026nutmeta
+    doi: "10.1016/j.acvd.2025.08.010"
+    pmid: "41350177"
+    pmcid: null
+    first_author: "Liu"
+    authors: "Liu M, Wang M, Fu X, He X, Wang M, Su Y, Liu G, Hu F, Zhang M, Zhao Y, Hu D"
+    title: "Nut consumption and risk of cardiovascular disease events and all-cause mortality: A systematic review and dose-response meta-analysis of prospective cohort studies"
+    journal: "Archives of Cardiovascular Diseases"
+    year: 2026
+    volume: "119"
+    issue: "3"
+    pages: "216-232"
+  locator: "Abstract (Methods, Results); PubMed record 41350177; Crossref funder metadata"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "abstract"
+    checked_on: "2026-09-24"
+
 - id: aune2016_cvd_per28g
   kind: cohort_meta_dose_response
   exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment"
@@ -481,7 +672,13 @@
   notes: >-
     Fixed-effects WMD, I2 = 38.2%. Randomized-only subset of delgobbo2015_ldl_per28g; the lower-bias input for a
     randomized floor. Heterogeneity by quality score for LDL (P = 0.005 across all trials) was not significant within
-    randomized trials only (Supplemental Table 3, not retrieved).
+    randomized trials only (Supplemental Table 3, not retrieved). Table 1: randomized trials fed a median 59.5 g/day
+    for a median 5.5 weeks (all trials: 56 g/day, range 5-100, and 4 weeks, range 3-26). Trials by nut (Table 1):
+    cashew 2 (randomized, median 85.5 g/day), pecan 2 (randomized, 70 g/day), Brazil nut 1 (nonrandomized, 5 g/day),
+    macadamia 4 (2 randomized at 59 g/day, 2 nonrandomized at 43 g/day). The nut-type comparison (no significant
+    differences) is reported without saying whether it used all trials or randomized only (Results, 'Heterogeneity').
+    Trials at 100 g/day lowered LDL by up to 35 mg/dL (5 trials, 4 nonrandomized). Funding: NHLBI grant
+    R01-HL085710-07; the review ran under an LSRO contract funded by the International Tree Nut Council.
   source:
     key: delgobbo2015nuts
     doi: "10.3945/ajcn.115.110965"
@@ -743,6 +940,169 @@
     value_checked_in: "full text"
     checked_on: "2026-09-23"
 
+- id: silverman2016_ldl_nonstatin
+  kind: mediator_slope
+  exposure: "LDL-C reduction by established non-statin therapies that act mainly by upregulating LDL receptors (diet, bile acid sequestrants, ileal bypass, ezetimibe), per 1 mmol/L"
+  outcome: "Major vascular events (cardiovascular death, acute MI or other acute coronary syndrome, coronary revascularization, or stroke)"
+  measure: RR
+  unit: "per 1 mmol/L (38.7 mg/dL) LDL-C reduction"
+  estimate: 0.75
+  ci_low: 0.66
+  ci_high: 0.86
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Randomized trials of at least 6 months with at least 50 events; mean follow-up 4.3 y overall, 4.4 y in the diet trials (Table)"
+  population: "8 non-statin RCTs (4 diet, 2 bile acid sequestrant, 1 ileal bypass, 1 ezetimibe) within a 49-trial meta-regression of 312,175 participants and 39,645 major vascular events"
+  notes: >-
+    Random-effects meta-regression (REML, Knapp-Hartung), intercept fixed at 0; P = .002; difference from statins
+    P = .72. Statins (25 trials): RR 0.77 (95% CI 0.71-0.84) per 1 mmol/L; primary prevention 0.70 (0.53-0.93),
+    secondary 0.79 (0.73-0.86). Statins plus the four non-statin classes (33 trials): 0.77 (0.75-0.79).
+    Diet is not given its own number in the main text: Figure 3 plots the 4 diet trials as one class-level
+    fixed-effect point near the regression line, and the Results say each of the 5 established classes (statins,
+    diet, sequestrants, ileal bypass, ezetimibe) fell within 0.02 of its predicted RR; per-class forest plots are
+    in eFigures 3-12 of the Supplement, not retrieved. The 4 diet trials (Table footnote b and Figure 2B, refs 24, 25,
+    49, 50): MRC Research Committee low-fat diet in myocardial infarction (Lancet 1965), MRC soya-bean oil in
+    myocardial infarction (Lancet 1968), Oslo Diet-Heart Study (Leren, Circulation 1970), and Los Angeles Veterans
+    trial of a diet high in unsaturated fat (Dayton, Circulation 1969). Diet column of the Table: 1903 participants,
+    0 women, mean age 62, baseline LDL-C 4.0-5.6 mmol/L, 489 major vascular events, mean follow-up 4.4 y. None of the
+    diet trials tested nuts; three of the four titles name a low-fat diet, soya-bean oil, or a diet high in
+    unsaturated fat (the Oslo trial's diet was not read here). The
+    non-statin trials are old and small next to the statin trials (several hundred events each for diet,
+    sequestrants and ileal bypass; Discussion, limitations). Other classes, observed vs expected RR: niacin 0.94 vs
+    0.91; fibrates 0.88 vs 0.94; CETP inhibitors 1.01 vs 0.90; PCSK9 inhibitors 0.49 vs 0.61.
+    Funding: no study funding statement; Silverman was supported by NIH training grant 5T32HL007604; several
+    authors report ties to Merck, Amgen and other lipid-drug makers (Conflict of Interest Disclosures).
+    Full text read in the JAMA PDF archived by the Wayback Machine (capture 2022-03-11), because jamanetwork.com
+    returned HTTP 403 and a bot check.
+  source:
+    key: silverman2016ldl
+    doi: "10.1001/jama.2016.13985"
+    pmid: "27673306"
+    pmcid: null
+    first_author: "Silverman"
+    authors: "Silverman MG, Ference BA, Im K, Wiviott SD, Giugliano RP, Grundy SM, Braunwald E, Sabatine MS"
+    title: "Association Between Lowering LDL-C and Cardiovascular Risk Reduction Among Different Therapeutic Interventions: A Systematic Review and Meta-analysis"
+    journal: "JAMA"
+    year: 2016
+    volume: "316"
+    issue: "12"
+    pages: "1289-1297"
+  locator: "Abstract (Results); Results, paragraphs 1-4; Table (Trials Included in the Meta-analysis) and footnote b; Figure 2B; Figure 3; Discussion, limitations; references 24, 25, 49, 50; Article Information (disclosures)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+# --- Ference et al. 2017, EAS consensus: LDL causes ASCVD; cumulative exposure ---
+
+- id: ference2017_ldl_cumulative
+  kind: mendelian_randomization
+  exposure: "LDL-C lower by 1 mmol/L over about 40 years of exposure (genetically lower LDL-C, as in Mendelian randomization)"
+  outcome: "Atherosclerotic cardiovascular disease events (long-term proportional risk reduction)"
+  measure: RR
+  unit: "per 1 mmol/L lower LDL-C sustained 40 years"
+  estimate: 0.46
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: "Figure 2: Mendelian randomization studies, median follow-up 52 y (N = 194,427); randomized trials, median 5 y (N = 196,552)"
+  population: "Consensus panel synthesis of published meta-analyses: Mendelian randomization (text: over 300,000 participants, 80,000 CHD cases), prospective cohorts, randomized trials"
+  notes: >-
+    A planning value, not a pooled estimate: the panel's Tables 2 and 4 assume a 54% risk reduction per mmol/L over
+    40 years of exposure, as estimated from Mendelian randomization, computed as 1 - 0.46^(LDL-C reduction in mmol/L)
+    (Table 2 and Table 4 footnotes). The short-term counterpart is a 22% reduction per mmol/L over 5 years from
+    randomized trials, 1 - 0.78^(reduction) (Table 2 and Table 3 footnotes), taken from the CTT statin
+    meta-analysis: 22% per mmol/L over a median 5 years (Evidence from randomized controlled trials; ref 32).
+    Duration formula (Table 2 footnote): proportional reduction per mmol/L = 1 - exp(-0.249 - 0.0152 x (years - 5));
+    computed here, 22.0% at 5 y and 54.2% at 40 y. Text (cumulative-effect section): about 10% in year 1, 16% after
+    2 y, 20% after 3 y, then about 1.5% more per year; 5 y gives about 20-25% and 40 y about 50-55% per mmol/L.
+    Mendelian randomization suggests up to a three-fold greater proportional reduction per unit LDL-C than
+    shorter statin treatment started later in life (ref 28, Ference 2012 JACC; not read here). Figure 2 (image)
+    draws three lines: Mendelian randomization (52 y), cohorts (12 y, N = 403,501), trials (5 y); at 1 mmol/L the
+    MR line sits near 52-53% by eye. The lifetime figure is for LDL-C lower from birth; the panel extrapolates it to
+    treatment of equal total duration and says any mechanism that lowers LDL particles should act the same.
+    Funding: travel and meeting logistics from unrestricted educational grants by MSD and Amgen to the European
+    Atherosclerosis Society; the companies had no role in content; most panel members report industry ties.
+    Reviewer's claim (about 54% vs about 22% per mmol/L) matches the source.
+  source:
+    key: ference2017ldl
+    doi: "10.1093/eurheartj/ehx144"
+    pmid: "28444290"
+    pmcid: "PMC5837225"
+    first_author: "Ference"
+    authors: "Ference BA, Ginsberg HN, Graham I, Ray KK, Packard CJ, Bruckert E, Hegele RA, Krauss RM, Raal FJ, Schunkert H, Watts GF, Borén J, Fazio S, Horton JD, Masana L, Nicholls SJ, Nordestgaard BG, van de Sluis B, Taskinen MR, Tokgözoglu L, Landmesser U, Laufs U, Wiklund O, Stock JK, Chapman MJ, Catapano AL"
+    title: "Low-density lipoproteins cause atherosclerotic cardiovascular disease. 1. Evidence from genetic, epidemiologic, and clinical studies. A consensus statement from the European Atherosclerosis Society Consensus Panel"
+    journal: "European Heart Journal"
+    year: 2017
+    volume: "38"
+    issue: "32"
+    pages: "2459-2472"
+  locator: "Section 'Evidence for the cumulative effect of exposure to LDL on ASCVD'; Section 'Evidence from randomized controlled trials', paragraph 1; Table 2, Table 3 and Table 4 footnotes; Figure 2 and legend; Funding"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+# --- WAHA (Walnuts and Healthy Aging), 2-year randomized walnut trial ---
+
+- id: rajaram2021_waha_walnut_ldl
+  kind: rct_mediator
+  exposure: "Walnut-supplemented usual diet (about 15% of energy, 30-60 g/day raw walnuts) vs walnut-free control diet, 2 years"
+  outcome: "LDL cholesterol (Friedewald), 2-year change, walnut vs control"
+  measure: mean_difference
+  unit: "mg/dL"
+  estimate: -4.3
+  ci_low: -6.6
+  ci_high: -1.6
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "30 to 60 g/day for 2 years"
+  population: "Cognitively healthy adults aged 63-79 in Barcelona, Spain and California, USA; 708 randomized, 636 completed, 628 with full lipoprotein data (mean age 69, 67% women, 32% on statins); mean baseline LDL-C 117 mg/dL"
+  notes: >-
+    Two-center, parallel-group RCT (WAHA, NCT01634841), research letter; lipoproteins were a prespecified secondary
+    outcome. Walnuts delivered every 8 weeks. Between-group difference by ANCOVA adjusted for center, age, sex, BMI,
+    smoking, APOE e4, change in physical activity, diabetes, dyslipidemia, hypertension, statin use, change in statin
+    dose and baseline value (Figure legend). LDL-C -4.3 mg/dL is a 3.6% reduction; total cholesterol -8.5 (-11.2 to
+    -5.4); IDL cholesterol -1.3 (-1.5 to -1.0); LDL particle number -4.3%, small LDL particles -6.1%; triglycerides and
+    HDL unchanged. LDL-C fell 7.9% in men and 2.6% in women (P interaction 0.007); results did not differ by site.
+    Primary physicians could change lipid drugs; in-trial statin changes did not differ by arm. Weight change:
+    walnut +0.06 kg (-0.32 to 0.44), control -0.51 kg (-0.91 to -0.12). The printed CI is asymmetric about -4.3.
+    Computed here, assuming linearity at the 45 g/day midpoint: about -2.7 mg/dL per 28.4 g/day, against -4.2 in
+    Del Gobbo's randomized trials (median 5.5 weeks). Funding: grant from the California Walnut Commission (no role
+    in design, analysis or writing, per the paper); Rajaram, Sala-Vila, Sabaté and Ros received Commission research
+    funding; Sabaté and Ros were unpaid Commission advisory council members; Ros was a paid member of its Health
+    Research Advisory Group. Reviewer's claim (-4.3, -6.6 to -1.6; 15% of energy; 30-60 g/day) matches the source.
+  source:
+    key: rajaram2021waha
+    doi: "10.1161/CIRCULATIONAHA.121.054051"
+    pmid: "34455809"
+    pmcid: "PMC8478315"
+    first_author: "Rajaram"
+    authors: "Rajaram S, Cofán M, Sala-Vila A, Haddad E, Serra-Mir M, Bitok E, Roth I, Freitas-Simoes TM, Kaur A, Valls-Pedret C, Doménech M, Oda K, Corella D, Sabaté J, Ros E"
+    title: "Effects of Walnut Consumption for 2 Years on Lipoprotein Subclasses Among Healthy Elders: Findings From the WAHA Randomized Controlled Trial"
+    journal: "Circulation"
+    year: 2021
+    volume: "144"
+    issue: "13"
+    pages: "1083-1085"
+  locator: "Research letter, paragraphs 2-4 (design, lipid results); Figure legend (ANCOVA covariates); Sources of Funding; Disclosures"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+# --- Liu X et al. 2020, changes in nut intake and CVD, NHS, NHS II, HPFS ---
+
 # --- Schwingshackl et al. 2021, RCT vs cohort agreement in nutrition (ratio of risk ratios) ---
 
 - id: schwingshackl2021_rrr_overall
@@ -987,6 +1347,268 @@
     value_checked_in: "full text"
     checked_on: "2026-09-23"
 
+- id: schwingshackl2021_pair_ala_cvd
+  kind: calibration_corpus
+  exposure: "Alpha-linolenic acid intake: RCTs (Abdelhamid 2018a Cochrane review) matched to cohorts, high v low intake (Pan 2012 meta-analysis)"
+  outcome: "Ratio of risk ratios, RR(RCT) / RR(cohort); RCT outcome cardiovascular disease, cohort outcome cardiovascular disease"
+  measure: RRR
+  unit: null
+  estimate: 1.02
+  ci_low: 0.87
+  ci_high: 1.20
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "One matched intake-v-intake pair: 5 RCTs v 11 cohort studies (Supplementary Table 5)"
+  notes: >-
+    RR(RCT) 0.95 (0.83-1.07); RR(cohort) 0.93 (0.85-1.03), so the cohort RR is below 1 and the pair belongs to the
+    n = 64 set of schwingshackl2021_rrr_overall_cohort_rr_below_1 (it is not among the 7 pairs of supplementary
+    figure 4). Recomputed from those RRs: 1.022 (0.871-1.198). PI/ECO similarity 2 (similar but not identical).
+    Dropped from the paper's correlated-outcome sensitivity analysis as highly likely correlated with ALA
+    cardiovascular mortality (Supplementary Table 3). The three ALA pairs share one RCT body of evidence
+    (Abdelhamid 2018a), so they are not independent comparisons. Direction convention as in
+    schwingshackl2021_rrr_overall: with a cohort RR below 1, RRR above 1 means the trials found a smaller benefit.
+  source:
+    key: schwingshackl2021agreement
+    doi: "10.1136/bmj.n1864"
+    pmid: "34526355"
+    pmcid: "PMC8441535"
+    first_author: "Schwingshackl"
+    authors: "Schwingshackl L, Balduzzi S, Beyerbach J, Bröckelmann N, Werner SS, Zähringer J, Nagavci B, Meerpohl JJ"
+    title: "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+    journal: "BMJ"
+    year: 2021
+    volume: "374"
+    issue: null
+    pages: "n1864"
+  locator: "Supplementary Figure 9 (intake v intake, row 1 of 23); Supplementary Table 5 (pair RRs); Supplementary Table 3"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: schwingshackl2021_pair_ala_cvd_mortality
+  kind: calibration_corpus
+  exposure: "Alpha-linolenic acid intake: RCTs (Abdelhamid 2018a Cochrane review) matched to cohorts, high v low intake (Wei 2018 meta-analysis)"
+  outcome: "Ratio of risk ratios, RR(RCT) / RR(cohort); RCT outcome cardiovascular mortality, cohort outcome coronary heart disease mortality"
+  measure: RRR
+  unit: null
+  estimate: 1.13
+  ci_low: 0.85
+  ci_high: 1.51
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "One matched intake-v-intake pair: 4 RCTs v 9 cohort studies (Supplementary Table 5)"
+  notes: >-
+    RR(RCT) 0.96 (0.74-1.25); RR(cohort) 0.85 (0.75-0.96), so the cohort RR is below 1 and the pair belongs to the
+    n = 64 set of schwingshackl2021_rrr_overall_cohort_rr_below_1. Recomputed from those RRs: 1.129 (0.845-1.509).
+    PI/ECO similarity 2. This is the ALA outcome the paper keeps in its correlated-outcome sensitivity analysis
+    (Supplementary Table 3 drops the ALA cardiovascular disease and coronary heart disease pairs). Shares the RCT
+    body of evidence (Abdelhamid 2018a) with the other two ALA pairs and the cohort meta-analysis (Wei 2018) with
+    schwingshackl2021_pair_ala_chd. Direction convention as in schwingshackl2021_rrr_overall.
+  source:
+    key: schwingshackl2021agreement
+    doi: "10.1136/bmj.n1864"
+    pmid: "34526355"
+    pmcid: "PMC8441535"
+    first_author: "Schwingshackl"
+    authors: "Schwingshackl L, Balduzzi S, Beyerbach J, Bröckelmann N, Werner SS, Zähringer J, Nagavci B, Meerpohl JJ"
+    title: "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+    journal: "BMJ"
+    year: 2021
+    volume: "374"
+    issue: null
+    pages: "n1864"
+  locator: "Supplementary Figure 9 (intake v intake, row 2 of 23); Supplementary Table 5 (pair RRs); Supplementary Table 3"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: schwingshackl2021_pair_ala_chd
+  kind: calibration_corpus
+  exposure: "Alpha-linolenic acid intake: RCTs (Abdelhamid 2018a Cochrane review) matched to cohorts, high v low intake (Wei 2018 meta-analysis)"
+  outcome: "Ratio of risk ratios, RR(RCT) / RR(cohort); RCT outcome coronary heart disease, cohort outcome coronary heart disease"
+  measure: RRR
+  unit: null
+  estimate: 1.10
+  ci_low: 0.89
+  ci_high: 1.35
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "One matched intake-v-intake pair: 4 RCTs v 13 cohort studies (Supplementary Table 5)"
+  notes: >-
+    RR(RCT) 1.00 (0.82-1.22); RR(cohort) 0.91 (0.85-0.97), so the cohort RR is below 1 and the pair belongs to the
+    n = 64 set of schwingshackl2021_rrr_overall_cohort_rr_below_1. Recomputed from those RRs: 1.099 (0.891-1.355).
+    The trial point estimate is null (1.00), so the RRR here reflects no benefit in trials rather than a smaller one.
+    PI/ECO similarity 2. Dropped from the paper's correlated-outcome sensitivity analysis as highly likely
+    correlated with ALA cardiovascular mortality (Supplementary Table 3). Not independent of the other two ALA pairs
+    (same RCT body of evidence; same cohort meta-analysis as schwingshackl2021_pair_ala_cvd_mortality). Direction
+    convention as in schwingshackl2021_rrr_overall.
+  source:
+    key: schwingshackl2021agreement
+    doi: "10.1136/bmj.n1864"
+    pmid: "34526355"
+    pmcid: "PMC8441535"
+    first_author: "Schwingshackl"
+    authors: "Schwingshackl L, Balduzzi S, Beyerbach J, Bröckelmann N, Werner SS, Zähringer J, Nagavci B, Meerpohl JJ"
+    title: "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+    journal: "BMJ"
+    year: 2021
+    volume: "374"
+    issue: null
+    pages: "n1864"
+  locator: "Supplementary Figure 9 (intake v intake, row 3 of 23); Supplementary Table 5 (pair RRs); Supplementary Table 3"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: schwingshackl2021_pair_med_cvd_mortality
+  kind: calibration_corpus
+  exposure: "Mediterranean diet: RCT evidence (Rees 2019 Cochrane review; one trial, PREDIMED) matched to cohorts, high v low adherence (Rosato 2019 meta-analysis)"
+  outcome: "Ratio of risk ratios, RR(RCT) / RR(cohort); RCT outcome cardiovascular mortality, cohort outcome cardiovascular mortality"
+  measure: RRR
+  unit: null
+  estimate: 1.27
+  ci_low: 0.81
+  ci_high: 2.00
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "One matched intake-v-intake pair: 1 RCT v 7 cohort studies (Supplementary Table 5)"
+  notes: >-
+    RR(RCT) 0.93 (0.60-1.45), the count-based RR the authors substituted for the review's HR 0.81 (0.50-1.32) using
+    per-arm counts from Estruch 2018 (Supplementary Table 2); RR(cohort) 0.73 (0.67-0.81), below 1, so the pair belongs
+    to the n = 64 set of schwingshackl2021_rrr_overall_cohort_rr_below_1. Recomputed: 1.274 (0.811-2.001). The RCT
+    RR equals the crude RR of both PREDIMED Mediterranean arms combined (olive oil and mixed nuts, 57/4997 v 30/2450
+    in Estruch 2018 Table 3); the nut arm alone gives 1.03 (pool_pairs.py check 3). So about half of the trial
+    side is the PREDIMED nut arm, which overlaps predimed2018_nuts_major_cvd. PI/ECO similarity 2. Kept in the
+    paper's correlated-outcome sensitivity analysis. Shares the single trial with the other two Mediterranean-diet
+    pairs and the cohort meta-analysis (Rosato 2019) with schwingshackl2021_pair_med_cv_events. Direction convention
+    as in schwingshackl2021_rrr_overall.
+  source:
+    key: schwingshackl2021agreement
+    doi: "10.1136/bmj.n1864"
+    pmid: "34526355"
+    pmcid: "PMC8441535"
+    first_author: "Schwingshackl"
+    authors: "Schwingshackl L, Balduzzi S, Beyerbach J, Bröckelmann N, Werner SS, Zähringer J, Nagavci B, Meerpohl JJ"
+    title: "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+    journal: "BMJ"
+    year: 2021
+    volume: "374"
+    issue: null
+    pages: "n1864"
+  locator: "Supplementary Figure 9 (intake v intake, row 16 of 23); Supplementary Tables 2 and 5 (pair RRs); Supplementary Table 3"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: schwingshackl2021_pair_med_cv_events
+  kind: calibration_corpus
+  exposure: "Mediterranean diet: RCT evidence (Rees 2019 Cochrane review; one trial, PREDIMED) matched to cohorts, high v low adherence (Rosato 2019 meta-analysis)"
+  outcome: "Ratio of risk ratios, RR(RCT) / RR(cohort); RCT outcome combined cardiovascular events, cohort outcome cardiovascular disease"
+  measure: RRR
+  unit: null
+  estimate: 1.00
+  ci_low: 0.78
+  ci_high: 1.28
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "One matched intake-v-intake pair: 1 RCT v 11 cohort studies (Supplementary Table 5)"
+  notes: >-
+    RR(RCT) 0.81 (0.64-1.02), the count-based RR substituted for the review's HR 0.70 (0.58-0.85) (Supplementary
+    Table 2); RR(cohort) 0.81 (0.74-0.88), below 1, so the pair belongs to the n = 64 set of
+    schwingshackl2021_rrr_overall_cohort_rr_below_1. Recomputed: 1.000 (0.780-1.282); with the unrounded trial RR from
+    PREDIMED counts (0.805) and the printed cohort RR the ratio is 0.994, so this pair sits at 1, not above it. The RCT RR equals the crude RR of both
+    PREDIMED Mediterranean arms combined (179/4997 v 109/2450, the primary end point, in Estruch 2018 Table 3); the
+    nut arm alone gives 0.76 (pool_pairs.py check 3), so the trial side overlaps predimed2018_nuts_major_cvd.
+    PI/ECO similarity 2. Dropped from the paper's correlated-outcome sensitivity analysis as highly likely
+    correlated with Mediterranean-diet cardiovascular mortality (Supplementary Table 3). Direction convention as in
+    schwingshackl2021_rrr_overall.
+  source:
+    key: schwingshackl2021agreement
+    doi: "10.1136/bmj.n1864"
+    pmid: "34526355"
+    pmcid: "PMC8441535"
+    first_author: "Schwingshackl"
+    authors: "Schwingshackl L, Balduzzi S, Beyerbach J, Bröckelmann N, Werner SS, Zähringer J, Nagavci B, Meerpohl JJ"
+    title: "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+    journal: "BMJ"
+    year: 2021
+    volume: "374"
+    issue: null
+    pages: "n1864"
+  locator: "Supplementary Figure 9 (intake v intake, row 17 of 23); Supplementary Tables 2 and 5 (pair RRs); Supplementary Table 3"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: schwingshackl2021_pair_med_all_cause
+  kind: calibration_corpus
+  exposure: "Mediterranean diet: RCT evidence (Rees 2019 Cochrane review; one trial, PREDIMED) matched to cohorts, per 2-point increment in adherence score (Soltani 2019 meta-analysis)"
+  outcome: "Ratio of risk ratios, RR(RCT) / RR(cohort); RCT outcome all-cause mortality, cohort outcome all-cause mortality"
+  measure: RRR
+  unit: null
+  estimate: 1.12
+  ci_low: 0.90
+  ci_high: 1.39
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "One matched intake-v-intake pair: 1 RCT v 26 cohort studies (Supplementary Table 5)"
+  notes: >-
+    RR(RCT) 1.00 (0.81-1.25), the count-based RR substituted for the review's HR 1.00 (0.81-1.24) (Supplementary
+    Table 2); RR(cohort) 0.90 (0.89-0.91) per 2-point score increment, not high v low; below 1, so the pair belongs to
+    the n = 64 set of schwingshackl2021_rrr_overall_cohort_rr_below_1. The trial RR from counts is 1.006 (both
+    PREDIMED Mediterranean arms combined, 234/4997 v 114/2450 in Estruch 2018 Table 3), which is why the figure prints
+    1.12 while 1.00/0.90 gives 1.11; the nut arm alone gives 1.02 (pool_pairs.py check 3). The trial point estimate is
+    null, so the RRR reflects no benefit in the trial rather than a smaller one. PI/ECO similarity 2. Kept in the
+    paper's correlated-outcome sensitivity analysis. Shares the single trial with the other two Mediterranean-diet
+    pairs. Direction convention as in schwingshackl2021_rrr_overall.
+  source:
+    key: schwingshackl2021agreement
+    doi: "10.1136/bmj.n1864"
+    pmid: "34526355"
+    pmcid: "PMC8441535"
+    first_author: "Schwingshackl"
+    authors: "Schwingshackl L, Balduzzi S, Beyerbach J, Bröckelmann N, Werner SS, Zähringer J, Nagavci B, Meerpohl JJ"
+    title: "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+    journal: "BMJ"
+    year: 2021
+    volume: "374"
+    issue: null
+    pages: "n1864"
+  locator: "Supplementary Figure 9 (intake v intake, row 18 of 23); Supplementary Tables 2 and 5 (pair RRs); Supplementary Table 3"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
 # --- PREDIMED 2018 re-analysis (Estruch et al., NEJM) ---
 
 - id: predimed2018_nuts_major_cvd
@@ -1011,8 +1633,9 @@
     with the nuts, so it is not an isolated nut effect. Nut-arm composition from Sala-Vila et al. 2016 JAHA
     (doi 10.1161/JAHA.115.002543, PMC4859371, Methods, 'Dietary Intake'; cached as
     data/sources/crossref/texts/salavila2016predimed_epmc_PMC4859371.xml): 30 g/day mixed nuts, 15 g walnuts, 7.5 g
-    hazelnuts, 7.5 g almonds, provided free. NEJM full text and appendix not retrieved (nejm.org returned a Cloudflare
-    challenge, HTTP 403); numbers from the PubMed abstract.
+    hazelnuts, 7.5 g almonds, provided free (also stated in the NEJM paper; row predimed2018_nut_mix). Numbers first
+    read in the PubMed abstract; the NEJM full text was read on 2026-09-24 from
+    https://www.predimed.es/uploads/8/0/5/1/8051451/nejmoa1800389_olf.pdf (rows predimed2018_nuts_*).
     Funding (abstract): Instituto de Salud Carlos III, Spanish Ministry of Health, and others.
   source:
     key: estruch2018predimed
@@ -1074,6 +1697,253 @@
     value_checked_in: "abstract"
     checked_on: "2026-09-23"
 
+- id: predimed2018_nuts_all_cause_death
+  kind: rct_hard_endpoint
+  exposure: "Mediterranean diet supplemented with 30 g/day mixed nuts (15 g walnuts, 7.5 g hazelnuts, 7.5 g almonds) vs reduced-fat control diet advice"
+  outcome: "Death from any cause (secondary end point)"
+  measure: HR
+  unit: null
+  estimate: 1.12
+  ci_low: 0.86
+  ci_high: 1.47
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Allocated 30 g/day of mixed nuts on top of a Mediterranean diet"
+  population: "7447 Spanish adults (men 55-80, women 60-80 years; 57% women) at high cardiovascular risk without CVD at enrollment; nut arm n = 2454, control n = 2450; median follow-up 4.8 years (IQR 2.8 to 5.8)"
+  notes: >-
+    Intention-to-treat analysis of all 7447 participants. Cox model stratified by sex, recruiting site and
+    education (five categories), adjusted for age, smoking, hypertension, dyslipidemia, diabetes, family history
+    of premature CHD, BMI, waist-to-height ratio, physical activity (quintiles) and propensity scores built from
+    30 baseline variables; robust standard errors for intracluster correlation (Table 3, footnote to the
+    adjusted rows). Deaths: 116 in the nut arm (11.2 per 1000 person-years; 10,365 person-years) vs 114 in
+    control (11.7 per 1000; 9,763 person-years); 5-year absolute risk 5.4% in both. Same table: olive-oil arm
+    0.90 (0.69-1.18); both Mediterranean arms combined 0.98 (0.77-1.24). Figure 1B shows the same nut-arm HR.
+    Events counted through December 1, 2010; database locked September 2011. The Discussion says event rates
+    were lower than anticipated, reducing power for components of the primary end point. Why this is a
+    reanalysis: the 2018 paper says the investigators withdrew their 2013 report after finding departures
+    from randomization: 425 household members assigned without randomization to the enrolled member's group;
+    467 participants at Site D (1 of 11 sites) assigned by clinic rather than individually; apparently
+    inconsistent use of randomization tables at Site B (593 participants). The revised estimates do not rely
+    exclusively on the assumption that everyone was randomized. (The Table 3 footnote counts 617 Site D
+    participants excluded in the sensitivity analysis, vs 467 in Methods; not reconciled here.) PubMed lists
+    the 2013 report (doi 10.1056/NEJMoa1200303, PMID 23432189) as a Retracted Publication, with the retraction
+    notice at N Engl J Med 2018;378(25):2441-2442 (doi 10.1056/NEJMc1806491). The contrast bundles the
+    Mediterranean diet advice with the nuts. Funding: Instituto de Salud Carlos III and others; walnuts donated
+    by the California Walnut Commission, almonds by Borges, hazelnuts by Morella Nuts; the paper says sponsors
+    had no role. Source text: NEJM online-first article PDF (14 pages) hosted by the PREDIMED investigators,
+    https://www.predimed.es/uploads/8/0/5/1/8051451/nejmoa1800389_olf.pdf, saved as
+    texts/estruch2018predimed_nejm_predimed_es.pdf (SHA-256 ca8c63ac2f8e...). Supplementary Appendix not read.
+  source:
+    key: estruch2018predimed
+    doi: "10.1056/NEJMoa1800389"
+    pmid: "29897866"
+    pmcid: null
+    first_author: "Estruch"
+    authors: "Estruch R, Ros E, Salas-Salvadó J, Covas MI, Corella D, Arós F, Gómez-Gracia E, Ruiz-Gutiérrez V, Fiol M, Lapetra J, Lamuela-Raventos RM, Serra-Majem L, Pintó X, Basora J, Muñoz MA, Sorlí JV, Martínez JA, Fitó M, Gea A, Hernán MA, Martínez-González MA; PREDIMED Study Investigators"
+    title: "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts"
+    journal: "New England Journal of Medicine"
+    year: 2018
+    volume: "378"
+    issue: "25"
+    pages: "e34"
+  locator: "Table 3 (ITT hazard ratio, secondary end points, 'Death from any cause', nut column; event counts and rates above) and its footnotes; Figure 1B; Methods ('Participant Selection and Randomization', 'End Points'); Results ('Baseline Characteristics' for median follow-up); Discussion"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: predimed2018_nuts_cv_death
+  kind: rct_hard_endpoint
+  exposure: "Mediterranean diet supplemented with 30 g/day mixed nuts (15 g walnuts, 7.5 g hazelnuts, 7.5 g almonds) vs reduced-fat control diet advice"
+  outcome: "Death from cardiovascular causes (secondary end point)"
+  measure: HR
+  unit: null
+  estimate: 1.02
+  ci_low: 0.63
+  ci_high: 1.67
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Allocated 30 g/day of mixed nuts on top of a Mediterranean diet"
+  population: "7447 Spanish adults (men 55-80, women 60-80 years; 57% women) at high cardiovascular risk without CVD at enrollment; nut arm n = 2454, control n = 2450; median follow-up 4.8 years (IQR 2.8 to 5.8)"
+  notes: >-
+    Intention-to-treat, same adjusted Cox model as predimed2018_nuts_all_cause_death (stratified by sex, site
+    and education; adjusted for baseline risk factors and propensity scores; robust standard errors). Events:
+    31 in the nut arm (3.0 per 1000 person-years) vs 30 in control (3.1 per 1000); 5-year absolute risk 1.4%
+    vs 1.6%. Same table: olive-oil arm 0.62 (0.36-1.06); Mediterranean arms combined 0.80 (0.51-1.24). Few
+    events, so the interval is wide. Reanalysis after the 2013 report was withdrawn for departures from
+    randomization (details in predimed2018_nuts_all_cause_death). Source text: NEJM article PDF from
+    https://www.predimed.es/uploads/8/0/5/1/8051451/nejmoa1800389_olf.pdf (texts/estruch2018predimed_nejm_predimed_es.pdf).
+  source:
+    key: estruch2018predimed
+    doi: "10.1056/NEJMoa1800389"
+    pmid: "29897866"
+    pmcid: null
+    first_author: "Estruch"
+    authors: "Estruch R, Ros E, Salas-Salvadó J, Covas MI, Corella D, Arós F, Gómez-Gracia E, Ruiz-Gutiérrez V, Fiol M, Lapetra J, Lamuela-Raventos RM, Serra-Majem L, Pintó X, Basora J, Muñoz MA, Sorlí JV, Martínez JA, Fitó M, Gea A, Hernán MA, Martínez-González MA; PREDIMED Study Investigators"
+    title: "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts"
+    journal: "New England Journal of Medicine"
+    year: 2018
+    volume: "378"
+    issue: "25"
+    pages: "e34"
+  locator: "Table 3 (ITT hazard ratio, secondary end points, 'Death from cardiovascular causes', nut column; event counts and rates above) and its footnotes"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: predimed2018_nuts_stroke
+  kind: rct_hard_endpoint
+  exposure: "Mediterranean diet supplemented with 30 g/day mixed nuts (15 g walnuts, 7.5 g hazelnuts, 7.5 g almonds) vs reduced-fat control diet advice"
+  outcome: "Stroke (secondary end point)"
+  measure: HR
+  unit: null
+  estimate: 0.54
+  ci_low: 0.35
+  ci_high: 0.82
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Allocated 30 g/day of mixed nuts on top of a Mediterranean diet"
+  population: "7447 Spanish adults (men 55-80, women 60-80 years; 57% women) at high cardiovascular risk without CVD at enrollment; nut arm n = 2454, control n = 2450; median follow-up 4.8 years (IQR 2.8 to 5.8)"
+  notes: >-
+    Intention-to-treat, same adjusted Cox model as predimed2018_nuts_all_cause_death. Events: 32 strokes in
+    the nut arm (3.1 per 1000 person-years) vs 58 in control (5.9 per 1000); 5-year absolute risk 1.5% vs
+    3.0%. Same table: olive-oil arm 0.65 (0.44-0.95); Mediterranean arms combined 0.58 (0.42-0.82).
+    Myocardial infarction in the nut arm, for contrast: 0.76 (0.47-1.25). Component events, nut arm vs
+    control: stroke 32 vs 58, myocardial infarction 31 vs 38, cardiovascular death 31 vs 30 (primary end
+    point 83 vs 109). Reanalysis after the 2013 report was withdrawn for departures from
+    randomization (details in predimed2018_nuts_all_cause_death). Source text: NEJM article PDF from
+    https://www.predimed.es/uploads/8/0/5/1/8051451/nejmoa1800389_olf.pdf (texts/estruch2018predimed_nejm_predimed_es.pdf).
+  source:
+    key: estruch2018predimed
+    doi: "10.1056/NEJMoa1800389"
+    pmid: "29897866"
+    pmcid: null
+    first_author: "Estruch"
+    authors: "Estruch R, Ros E, Salas-Salvadó J, Covas MI, Corella D, Arós F, Gómez-Gracia E, Ruiz-Gutiérrez V, Fiol M, Lapetra J, Lamuela-Raventos RM, Serra-Majem L, Pintó X, Basora J, Muñoz MA, Sorlí JV, Martínez JA, Fitó M, Gea A, Hernán MA, Martínez-González MA; PREDIMED Study Investigators"
+    title: "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts"
+    journal: "New England Journal of Medicine"
+    year: 2018
+    volume: "378"
+    issue: "25"
+    pages: "e34"
+  locator: "Table 3 (ITT hazard ratio, secondary end points, 'Stroke', nut column; event counts and rates above) and its footnotes"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: predimed2018_nut_mix
+  kind: reference_value
+  exposure: "PREDIMED Mediterranean diet with nuts arm: daily mixed-nut allotment"
+  outcome: "Mixed nuts provided per person per day"
+  measure: value
+  unit: "g/day"
+  estimate: 30
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED nut-arm participants (n = 2454)"
+  notes: >-
+    Methods ('Interventions and Measurements'): 30 g of mixed nuts per day per person (15 g walnuts, 7.5 g
+    hazelnuts, 7.5 g almonds) at no cost. Table 1 footnote: recommended one daily serving of 30 g; packages of
+    2 kg walnuts, 1 kg almonds and 1 kg hazelnuts every 3 months, extra to be shared with family members.
+    Mediterranean-diet advice included 3 or more servings a week of tree nuts and peanuts (Table 1). Results
+    ('Adherence') say the nut arm raised nut consumption to 6 servings per week (reference group not stated
+    in the sentence; Table S8 not read). This primary source makes the Sala-Vila 2016 citation for the mix
+    optional (see salavila2016predimed_nut_mix). Source text: NEJM article PDF from
+    https://www.predimed.es/uploads/8/0/5/1/8051451/nejmoa1800389_olf.pdf.
+  source:
+    key: estruch2018predimed
+    doi: "10.1056/NEJMoa1800389"
+    pmid: "29897866"
+    pmcid: null
+    first_author: "Estruch"
+    authors: "Estruch R, Ros E, Salas-Salvadó J, Covas MI, Corella D, Arós F, Gómez-Gracia E, Ruiz-Gutiérrez V, Fiol M, Lapetra J, Lamuela-Raventos RM, Serra-Majem L, Pintó X, Basora J, Muñoz MA, Sorlí JV, Martínez JA, Fitó M, Gea A, Hernán MA, Martínez-González MA; PREDIMED Study Investigators"
+    title: "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts"
+    journal: "New England Journal of Medicine"
+    year: 2018
+    volume: "378"
+    issue: "25"
+    pages: "e34"
+  locator: "Methods, 'Interventions and Measurements'; Table 1 and footnote †; Results, 'Adherence to the Dietary Intervention'"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: guaschferre2013_predimed_nut_frequency
+  kind: cohort
+  exposure: "Baseline total nut consumption more than 3 servings/week vs never or almost never (1 serving = 28 g; food frequency questionnaire)"
+  outcome: "All-cause mortality"
+  measure: HR
+  unit: null
+  estimate: 0.61
+  ci_low: 0.45
+  ci_high: 0.83
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Baseline categories: never (n = 2,118), 1 to 3 servings/week (n = 2,803), more than 3 servings/week (n = 2,295; 32% of the cohort)"
+  population: "7,216 PREDIMED participants aged 55-80 at high cardiovascular risk, Spain (3,071 men, 4,145 women; mean age 67); median follow-up 4.8 years; 323 deaths"
+  notes: >-
+    Observational analysis of baseline nut intake within the trial cohort, all three arms pooled; the authors
+    call it an observational cohort, not an intention-to-treat comparison. Intake from a 137-item FFQ: one item
+    for almonds, peanuts, hazelnuts, pistachios and pine nuts, and one for walnuts; all nuts counted, 28 g per
+    serving. Estimate is multivariable model 3: Cox stratified by recruitment centre, adjusted for age, sex,
+    intervention group, BMI, smoking, education, leisure-time physical activity, diabetes, hypercholesterolemia,
+    oral antidiabetic, antihypertensive and statin use, total energy, quintiles of vegetables, fruits, red
+    meat, eggs and fish, alcohol (with a quadratic term), and a 13-point Mediterranean diet score without the
+    nut item. More than 3 servings/week vs never: crude 0.60 (0.45-0.79), model 1 0.55 (0.41-0.73), model 2
+    0.59 (0.43-0.79), model 3 0.61 (0.45-0.83); 1 to 3 servings/week model 3 0.71 (0.54-0.93); P trend 0.012.
+    Deaths 119 (5.6%), 117 (4.2%) and 87 (3.8%) by category. Walnuts more than 3/week 0.55 (0.40-0.76);
+    other nuts 0.66 (0.46-0.93). Cardiovascular mortality, more than 3/week: 0.45 (0.25-0.81). By arm
+    (Figure 1 legend), more than 3/week vs never: nut arm 0.37 (0.22-0.66), olive-oil arm 0.63 (0.36-1.1),
+    control 0.84 (0.48-1.44); P interaction 0.019. Yearly updated intake (GEE): RR 0.68 (0.50-0.93). Uses the
+    original PREDIMED data, before the 2018 reanalysis of randomization departures; its PubMed record lists no
+    correction or retraction (checked 2026-09-24). Same population, food and outcome as the randomized
+    contrast in predimed2018_nuts_all_cause_death (HR 1.12, 0.86-1.47). Conflicts: Salas-Salvadó reports
+    grants from and an unpaid advisory role with the International Nut and Dried Fruit Foundation, Ros grants
+    from and an unpaid advisory role with the California Walnut Commission; the IISPV received funds from the
+    International Nut and Dried Fruit Foundation. Funding: Spanish Ministry of Health (ISCIII), FEDER and others. Source text: PMC
+    full-text XML via NCBI efetch,
+    https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=3738153&retmode=xml
+    (texts/guaschferre2013_pmc_efetch_PMC3738153.xml).
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Abstract (Results); Methods, 'Dietary assessment' and 'Statistical analyses'; Results; Table 2 (total nuts, multivariable model 3) and footnote; Table 1; Figure 1 legend"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
 # --- Naghshi et al. 2021, dietary ALA and mortality, cohort dose-response ---
 
 - id: naghshi2021_ala_all_cause_per_g
@@ -1117,6 +1987,46 @@
     first_author_matches: true
     value_checked_in: "full text"
     checked_on: "2026-09-23"
+
+- id: naghshi2021_ala_all_cause_per_g_fixed
+  kind: cohort_meta_dose_response
+  exposure: "Dietary alpha-linolenic acid (ALA), per 1 g/day increment"
+  outcome: "All-cause mortality (fixed-effects linear dose-response)"
+  measure: RR
+  unit: "per 1 g/day ALA"
+  estimate: 0.99
+  ci_low: 0.98
+  ci_high: 1.01
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "ALA intakes across included studies varied from 0.35 to 3.0 g/day (Discussion)"
+  population: "Prospective cohorts; the same 12 studies as naghshi2021_ala_all_cause_per_g"
+  notes: >-
+    Fixed-effects counterpart of naghshi2021_ala_all_cause_per_g (random effects 0.95, 0.91-0.99). The authors
+    report that the association significant under random effects became non-significant under fixed effects
+    (Results, 'Fixed effects meta-analysis: mortality'; supplementary table 11). The NIH-AARP study carries 62.1% of
+    the fixed-effects weight. Used as the lower bound of the walnut ALA sensitivity.
+  source:
+    key: naghshi2021ala
+    doi: "10.1136/bmj.n2213"
+    pmid: "34645650"
+    pmcid: "PMC8513503"
+    first_author: "Naghshi"
+    authors: "Naghshi S, Aune D, Beyene J, Mobarak S, Asadi M, Sadeghi O"
+    title: "Dietary intake and biomarkers of alpha linolenic acid and risk of all cause, cardiovascular, and cancer mortality: systematic review and dose-response meta-analysis of cohort studies"
+    journal: "BMJ"
+    year: 2021
+    volume: "375"
+    issue: null
+    pages: "n2213"
+  locator: "Results, 'Fixed effects meta-analysis: mortality' (supplementary table 11)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
 
 - id: naghshi2021_ala_cvd_per_g
   kind: cohort_meta_dose_response
@@ -1265,7 +2175,7 @@
 
 - id: luu2015_scc_shanghai
   kind: cohort
-  exposure: "Nuts plus peanut butter (about half peanuts), highest vs lowest quintile; SCCS Q5 is 18.45 g/day or more, Q1 under 0.95 g/day"
+  exposure: "Total nut and peanut butter intake (the nut item is about half peanuts by regional survey data), highest vs lowest quintile; SCCS Q5 is 18.45 g/day or more, Q1 under 0.95 g/day"
   outcome: "All-cause mortality"
   measure: HR
   unit: null
@@ -1349,6 +2259,104 @@
     first_author_matches: true
     value_checked_in: "full text"
     checked_on: "2026-09-23"
+
+- id: luu2015_shanghai_peanut_q2
+  kind: cohort
+  exposure: "Peanuts, second vs lowest quintile; Q2 is 0.14 to under 0.72 g/day, Q1 under 0.14 g/day"
+  outcome: "All-cause mortality"
+  measure: HR
+  unit: null
+  estimate: 0.81
+  ci_low: 0.76
+  ci_high: 0.88
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Quintile cut-points 0.14, 0.72, 1.45, 2.54 g/day (Table 2 footnote a)"
+  population: "Shanghai Women's Health Study and Shanghai Men's Health Study: 134,265 adults (61,123 men, 73,142 women) in Shanghai, China; median follow-up 12.2 y (SWHS) and 6.5 y (SMHS)"
+  notes: >-
+    All fifths, combined SMHS/SWHS (Table 2, 'Peanut Intake (SMHS/SWHS)', Total column): Q1 under 0.14
+    g/day, reference, 2,328 deaths; Q2 0.14 to under 0.72, 0.81 (0.76-0.88), 1,121 deaths; Q3 0.72 to under
+    1.45, 0.78 (0.73-0.84), 1,393 deaths; Q4 1.45 to under 2.54, 0.81 (0.76-0.86), 1,786 deaths; Q5 2.54 or
+    more, 0.83 (0.77-0.88), 1,516 deaths; P trend < .001. Q2 by sex: men 0.87 (0.76-1.00), women 0.80
+    (0.73-0.87). The full association appears by the second fifth, under 0.72 g/day (about one-fortieth of a
+    28 g serving, computed), with no gradient above it. Exposure is peanuts only: tree nut intake was very low,
+    so only peanuts were asked about (Methods). Adjusted as in Table 2 footnote b; the Shanghai models use
+    alcohol ever/never and tea drinking, and omit vitamin supplements (Methods, 'Statistical Analysis').
+    Follow-up starts 1 year after enrollment. Values read in the PMC author manuscript (NIHMS698444); the 2016
+    correction (doi 10.1001/jamainternmed.2016.3981) changes Table 1 only. Source text:
+    https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=4474488&retmode=xml.
+  source:
+    key: luu2015nut
+    doi: "10.1001/jamainternmed.2014.8347"
+    pmid: "25730101"
+    pmcid: "PMC4474488"
+    first_author: "Luu"
+    authors: "Luu HN, Blot WJ, Xiang YB, Cai H, Hargreaves MK, Li H, Yang G, Signorello L, Gao YT, Zheng W, Shu XO"
+    title: "Prospective Evaluation of the Association of Nut/Peanut Consumption With Total and Cause-Specific Mortality"
+    journal: "JAMA Internal Medicine"
+    year: 2015
+    volume: "175"
+    issue: "5"
+    pages: "755-766"
+  locator: "Table 2 ('Peanut Intake (SMHS/SWHS)', Total, Men and Women columns) and footnote a; Methods, 'Dietary Assessment' and 'Statistical Analysis'"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: luu2015_sccs_peanut_butter_q5
+  kind: cohort
+  exposure: "Peanut butter only (SCCS), highest vs lowest quintile; Q5 is 6.32 g/day or more, Q1 under 0.19 g/day"
+  outcome: "All-cause mortality"
+  measure: HR
+  unit: null
+  estimate: 0.86
+  ci_low: 0.79
+  ci_high: 0.94
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Peanut butter quintile cut-points 0.19, 0.59, 2.18, 6.32 g/day (Table 2 footnote a)"
+  population: "Southern Community Cohort Study (SCCS): 71,764 US adults aged 40-79 of African and European descent, mostly low income, southeastern US, enrolled 2002-2009; median follow-up 5.4 y"
+  notes: >-
+    Peanut butter quintiles 2-5 vs 1: 0.91 (0.83-0.99), 0.80 (0.72-0.81 as printed; the interval barely
+    reaches the estimate, likely a typo in the source), 1.00 (0.91-1.09), 0.86 (0.79-0.94); P for trend .54
+    (Table 2). The top fifth sits below 1 but there is no gradient. Men Q5 0.88 (0.78-1.00), P trend .03;
+    women Q5 0.86 (0.76-0.98), P trend .11. Adjusted for age, sex, race, education, occupation, income,
+    marital status, smoking pack-years, alcohol, BMI, physical activity, vitamin supplements, Charlson index,
+    metabolic conditions, total energy, and red meat, chicken and duck, seafood, vegetable and fruit intake (Table 2
+    footnote b). Follow-up starts 1 year after enrollment. The Results text says the separate nut and peanut
+    butter analyses did not reach significance, but Table 2 shows nuts only Q5 0.73 (0.67-0.79) with P trend
+    < .001; only the peanut butter trend is non-significant. Values read in the PMC author manuscript
+    (NIHMS698444). A 2016 correction (JAMA Intern Med 2016;176(8):1236, doi 10.1001/jamainternmed.2016.3981,
+    PMID 27479681) changes Table 1 values only (education, income, antidiabetes medication, metabolic
+    conditions), not Table 2; read from https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2537205.
+    Funding: US National Cancer Institute grants. Source text: PMC XML via NCBI efetch,
+    https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=4474488&retmode=xml
+    (texts/luu2015_pmc_efetch_PMC4474488.xml).
+  source:
+    key: luu2015nut
+    doi: "10.1001/jamainternmed.2014.8347"
+    pmid: "25730101"
+    pmcid: "PMC4474488"
+    first_author: "Luu"
+    authors: "Luu HN, Blot WJ, Xiang YB, Cai H, Hargreaves MK, Li H, Yang G, Signorello L, Gao YT, Zheng W, Shu XO"
+    title: "Prospective Evaluation of the Association of Nut/Peanut Consumption With Total and Cause-Specific Mortality"
+    journal: "JAMA Internal Medicine"
+    year: 2015
+    volume: "175"
+    issue: "5"
+    pages: "755-766"
+  locator: "Table 2 ('Peanut Butter Intake Only (SCCS)', Total column) and footnotes a-c; Results, first paragraph on total mortality; Methods, 'Dietary Assessment' and 'Statistical Analysis'"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
 
 - id: vandenbrandt2015_nlcs
   kind: cohort
@@ -1604,6 +2612,98 @@
     first_author_matches: true
     value_checked_in: "full text"
     checked_on: "2026-09-23"
+
+- id: liu2020_nut_change_cvd
+  kind: cohort
+  exposure: "Within-person 4-year change in total nut intake (tree nuts and peanuts; serving 28 g), per 0.5 serving/day increase"
+  outcome: "Incident cardiovascular disease (nonfatal MI, fatal CHD, fatal or nonfatal stroke) in the next 4 years"
+  measure: RR
+  unit: "per 0.5 serving/day increase over 4 years"
+  estimate: 0.92
+  ci_low: 0.86
+  ci_high: 0.98
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: "Change categories from a decrease of 0.50 serving/day or more to an increase of 0.50 or more; mean changes in those two groups -1.04 and +1.05 serving/day (Table 2)"
+  population: "34,103 HPFS men (1986-2012), 77,815 NHS women (1986-2012), 80,737 NHS II women (1991-2013), free of CVD, cancer and diabetes; about 97% white; 8,460 CVD cases (Table 2, summed here)"
+  notes: >-
+    Pooled Cox models on 4-year change intervals, stratified by age, sex and calendar period, adjusted for initial
+    nut intake, lifestyle changes, BMI, hypertension, hypercholesterolemia, energy and diet quality (AHEI) changes;
+    the paper calls its Cox estimates relative risks. Per 0.5 serving/day: CHD 0.94 (0.89-0.99), stroke 0.89
+    (0.83-0.95). By change category vs no change (Table 2, model 4): increase of 0.50 serving/day or more 0.86
+    (0.78-0.94; 561 cases); decrease of 0.50 or more 1.14 (0.99-1.32).
+    Joint categories vs people who ate no nuts at both FFQs (Figure 2A): those at 0.5 serving/day or more at both
+    FFQs 0.75 (0.67-0.84) (Results text); starters, 0 then 0.5 or more, 0.83 with no CI printed and no significance
+    marker (see liu2020_nut_start_cvd). The abstract's 0.75 therefore compares consistently high eaters, not
+    starters, with consistent nonconsumers. Substitution: 0.5 serving/day of nuts in place of red meat, processed
+    meat, refined grains, French fries or desserts, 7-13% lower risk (Figure S1). Observational; people chose to
+    change. Funding: NIH grants; Liu received support from the Peanut Institute (printed as The Peanut Institution);
+    Li was partly funded by the California Walnut Commission; Guasch-Ferré by an American Diabetes Association grant.
+  source:
+    key: liu2020nutchange
+    doi: "10.1161/JAHA.119.013877"
+    pmid: "32233756"
+    pmcid: "PMC7428648"
+    first_author: "Liu"
+    authors: "Liu X, Guasch-Ferré M, Drouin-Chartier JP, Tobias DK, Bhupathiraju SN, Rexrode KM, Willett WC, Sun Q, Li Y"
+    title: "Changes in Nut Consumption and Subsequent Cardiovascular Disease Risk Among US Men and Women: 3 Large Prospective Cohort Studies"
+    journal: "Journal of the American Heart Association"
+    year: 2020
+    volume: "9"
+    issue: "7"
+    pages: "e013877"
+  locator: "Abstract (Methods and Results); Results, changes in nut consumption (Table 2, Figure 1) and joint categories (Figure 2A); Statistical Analysis; Sources of Funding; Disclosures"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+- id: liu2020_nut_start_cvd
+  kind: cohort
+  exposure: "Starting nuts: 0 serving/day at the first FFQ and 0.5 serving/day or more 4 years later, vs 0 at both"
+  outcome: "Incident cardiovascular disease in the next 4 years"
+  measure: RR
+  unit: null
+  estimate: 0.83
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: "Starters reached 0.5 serving/day or more (14 g/day at 28 g per serving, computed)"
+  population: "Pooled NHS, NHS II and HPFS (see liu2020_nut_change_cvd); 125 CVD cases among starters (Table S1: 47 HPFS, 65 NHS, 13 NHS II)"
+  notes: >-
+    The pooled RR is printed only as a bar label in Figure 2A; the figure prints no CI, the bar carries no
+    significance asterisk, and its upper error bar reaches about 1.0 by eye. The Results text says starters had
+    lower risk without giving numbers. Cohort-specific RRs for starters, fully adjusted (Table S1, model 3): HPFS 0.85
+    (0.63-1.15), NHS 0.85 (0.66-1.09), NHS II 0.73 (0.41-1.28). P for interaction between initial and 4th-year intake
+    0.54. For contrast, consistently high eaters (0.5 or more at both FFQs) 0.75 (0.67-0.84), the figure a reviewer
+    attributed to starters. Same adjustment set as the change model (Figure 2 legend).
+  source:
+    key: liu2020nutchange
+    doi: "10.1161/JAHA.119.013877"
+    pmid: "32233756"
+    pmcid: "PMC7428648"
+    first_author: "Liu"
+    authors: "Liu X, Guasch-Ferré M, Drouin-Chartier JP, Tobias DK, Bhupathiraju SN, Rexrode KM, Willett WC, Sun Q, Li Y"
+    title: "Changes in Nut Consumption and Subsequent Cardiovascular Disease Risk Among US Men and Women: 3 Large Prospective Cohort Studies"
+    journal: "Journal of the American Heart Association"
+    year: 2020
+    volume: "9"
+    issue: "7"
+    pages: "e013877"
+  locator: "Figure 2A (bar label, initial 0 and 4th year 0.5+); Results, joint-category paragraph; Supplement Table S1"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
+# --- Balakrishna et al. 2022, umbrella review of nuts and seeds ---
 
 # --- Mendelian randomization ---
 
@@ -2229,6 +3329,56 @@
     value_checked_in: "abstract"
     checked_on: "2026-09-23"
 
+- id: lippman2009_select_diabetes
+  kind: rct_hard_endpoint
+  exposure: "Selenium 200 ug/day as L-selenomethionine (with vitamin E placebo) vs placebo (SELECT)"
+  outcome: "Type 2 diabetes diagnosed after randomization (self-report or glitazone use; secondary outcome)"
+  measure: RR
+  unit: null
+  estimate: 1.07
+  ci_low: 0.94
+  ci_high: 1.22
+  ci_level: 0.99
+  pi_low: null
+  pi_high: null
+  support: "200 ug/day selenium as L-selenomethionine"
+  population: "35,533 men randomized 2001-2004 at 427 sites in the US, Canada and Puerto Rico (age 50+ for African American men, 55+ otherwise; PSA 4 ng/mL or less); analyzed selenium arm n = 8,752, placebo n = 8,696; median follow-up 5.46 years (range 4.17-7.33)"
+  notes: >-
+    Randomized, double-blind, placebo-controlled four-arm trial (selenium, vitamin E, both, placebo). Diabetes: 724 cases (10.0%) on selenium
+    vs 669 (9.3%) on placebo, P = .16 (abstract; Results). Vitamin E alone 1.04 (0.91-1.18); combination 0.97
+    (0.85-1.11). All intervals in the table are 99% (the trial used a two-sided alpha of .01). Diabetes data
+    were added mid-trial: glitazone use from 2003 and a diagnosis question from late 2005, first asked back to
+    randomization (Methods); prevalent cases excluded (Table 4 footnote). Supplements were stopped at the
+    planned 7-year interim analysis for lack of benefit on prostate cancer. The Discussion contrasts the NPC
+    trial's high-selenium yeast with SELECT's L-selenomethionine at an equivalent dose; see
+    stranges2007_npc_diabetes (HR 1.55). Values read in the PMC author manuscript (NIHMS470035) and the
+    PubMed abstract; the diabetes RR, CI and P agree in both. Funding: NCI Cooperative Agreement CA37429 and
+    the National Center for Complementary and Alternative Medicine; study agents and packaging provided by
+    companies. Source
+    text: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=3682779&retmode=xml
+    (texts/lippman2009_select_pmc_efetch_PMC3682779.xml) and PubMed 19066370
+    (texts/lippman2009_select_pubmed_19066370.xml).
+  source:
+    key: lippman2009select
+    doi: "10.1001/jama.2008.864"
+    pmid: "19066370"
+    pmcid: "PMC3682779"
+    first_author: "Lippman"
+    authors: "Lippman SM, Klein EA, Goodman PJ, Lucia MS, Thompson IM, Ford LG, Parnes HL, Minasian LM, Gaziano JM, Hartline JA, Parsons JK, Bearden JD, Crawford ED, Goodman GE, Claudio J, Winquist E, Cook ED, Karp DD, Walther P, Lieber MM, Kristal AR, Darke AK, Arnold KB, Ganz PA, Santella RM, Albanes D, Taylor PR, Probstfield JL, Jagpal TJ, Crowley JJ, Meyskens FL, Baker LH, Coltman CA"
+    title: "Effect of Selenium and Vitamin E on Risk of Prostate Cancer and Other Cancers: The Selenium and Vitamin E Cancer Prevention Trial (SELECT)"
+    journal: "JAMA"
+    year: 2009
+    volume: "301"
+    issue: "1"
+    pages: "39-51"
+  locator: "Abstract (Interventions, Results); Methods (event ascertainment, statistical design); Results, secondary outcomes paragraph; Table 4 'DIABETES' row, selenium column, and footnote †"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-24"
+
 - id: efsa2023_selenium_ul
   kind: reference_value
   exposure: "Total selenium intake, adults (including pregnancy and lactation)"
@@ -2470,6 +3620,84 @@
     value_checked_in: "data file"
     checked_on: "2026-09-23"
 
+- id: wweia_1720_ala_men
+  kind: reference_value
+  exposure: "Polyunsaturated fatty acid 18:3 (reported as PFA 18:3; the table does not separate ALA from other 18:3 isomers)"
+  outcome: "Mean intake per individual, US males 20 and over, day 1"
+  measure: value
+  unit: "g/day"
+  estimate: 2.16
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "WWEIA, NHANES 2017-March 2020 Prepandemic, males 20 and over (n = 3745), day 1, weighted"
+  notes: >-
+    SE 0.054. Sex-specific counterpart of wweia_1720_ala_adults (both sexes 1.93). Food and beverages only, excluding
+    supplements; single-day mean, not usual intake. The sample size is the table's n for the same row.
+  source:
+    key: usdawweia1720
+    doi: null
+    pmid: null
+    pmcid: null
+    first_author: "U.S. Department of Agriculture, Agricultural Research Service"
+    authors: "U.S. Department of Agriculture, Agricultural Research Service, Food Surveys Research Group"
+    title: "Nutrient Intakes from Food and Beverages: Mean Amounts Consumed per Individual, by Gender and Age, What We Eat in America, NHANES 2017-March 2020 Prepandemic (Table 1)"
+    journal: "What We Eat in America, NHANES 2017-March 2020 Prepandemic data tables"
+    year: 2022
+    volume: null
+    issue: null
+    pages: null
+    url: "https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/1720/Table_1_NIN_GEN_1720.pdf"
+  locator: "Table 1 (continued), page 6 of 9, column 'PFA 18:3', Males: row '20 and over' (primary/wweia_1720_table1_nutrients.pdf; read with pdftotext -layout)"
+  verified:
+    doi_resolves: null
+    title_matches: null
+    first_author_matches: null
+    value_checked_in: "data file"
+    checked_on: "2026-09-24"
+
+- id: wweia_1720_ala_women
+  kind: reference_value
+  exposure: "Polyunsaturated fatty acid 18:3 (reported as PFA 18:3; the table does not separate ALA from other 18:3 isomers)"
+  outcome: "Mean intake per individual, US females 20 and over, day 1"
+  measure: value
+  unit: "g/day"
+  estimate: 1.72
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "WWEIA, NHANES 2017-March 2020 Prepandemic, females 20 and over (n = 3962), day 1, weighted"
+  notes: >-
+    SE 0.039. Sex-specific counterpart of wweia_1720_ala_adults (both sexes 1.93). Food and beverages only, excluding
+    supplements; single-day mean, not usual intake. The sample size is the table's n for the same row.
+  source:
+    key: usdawweia1720
+    doi: null
+    pmid: null
+    pmcid: null
+    first_author: "U.S. Department of Agriculture, Agricultural Research Service"
+    authors: "U.S. Department of Agriculture, Agricultural Research Service, Food Surveys Research Group"
+    title: "Nutrient Intakes from Food and Beverages: Mean Amounts Consumed per Individual, by Gender and Age, What We Eat in America, NHANES 2017-March 2020 Prepandemic (Table 1)"
+    journal: "What We Eat in America, NHANES 2017-March 2020 Prepandemic data tables"
+    year: 2022
+    volume: null
+    issue: null
+    pages: null
+    url: "https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/1720/Table_1_NIN_GEN_1720.pdf"
+  locator: "Table 1 (continued), page 6 of 9, column 'PFA 18:3', Females: row '20 and over' (primary/wweia_1720_table1_nutrients.pdf; read with pdftotext -layout)"
+  verified:
+    doi_resolves: null
+    title_matches: null
+    first_author_matches: null
+    value_checked_in: "data file"
+    checked_on: "2026-09-24"
+
 # --- Aflatoxin ---
 
 - id: fda_aflatoxin_action_level
@@ -2670,34 +3898,37 @@
   support: "15th to 85th percentile of exposure in the data: 0 to 23.5 g/day; the curve is reported to 100 g/day"
   population: "Global, both sexes, all ages; 13 studies, 70 observations (6 flagged as outliers)"
   notes: >-
-    Burden of Proof mean relative risk curve. It falls to 0.757 by about 9 g/day and stays flat from
-    there to 100 g/day, so 0.757 is the RR at any intake of roughly 9 g/day or more. The interval is the
+    Burden of Proof mean relative risk curve. It falls to 0.757 by about 8 g/day (0.7574 at 8.08 g/day;
+    the minimum, 0.7571, comes further out) and stays flat from there to 100 g/day, so 0.757 is the RR at any
+    intake of roughly 8 g/day or more. The interval is the
     outer band, which includes between-study heterogeneity; Zheng et al. report 95% uncertainty intervals
     built from the fixed-effect posterior and the 95% quantile of heterogeneity. Star rating 2 (weak
     evidence); risk-outcome score (ROS) 0.105, where two stars means ROS above 0 up to 0.14. The exposure
     includes seeds (DESIGN.md decision 8). Values read from the IHME Burden of Proof API
     (https://vizhub.healthdata.org/burden-of-proof/api/v1/output_data?risk=114&cause=493 and
     .../risk_cause_metadata?risk=114&cause=493), cached in data/curves/raw/ihme_bop/; the full curve is
-    data/curves/ihme_bop_nuts_seeds_ihd.csv. Zheng et al. describe the method; the paper does not report
-    this pair.
+    data/curves/ihme_bop_nuts_seeds_ihd.csv. The method is Zheng et al. 2022 (Nature Medicine, doi
+    10.1038/s41591-022-01973-2, cited as zheng2022bop from paper/extra.bib), which does not report this pair; the
+    numbers come from IHME's visualization and its API, accessed 2026-09-23.
   source:
-    key: zheng2022bop
-    doi: "10.1038/s41591-022-01973-2"
-    pmid: "36216935"
-    pmcid: "PMC9556298"
-    first_author: "Zheng"
-    authors: "Zheng P, Afshin A, Biryukov S, Bisignano C, Brauer M, Bryazka D, Burkart K, Cercy KM, Cornaby L, Dai X, Dirac MA, Estep K, Fay KA, Feldman R, Ferrari AJ, Gakidou E, Gil GF, Griswold M, Hay SI, He J, Irvine CMS, Kassebaum NJ, LeGrand KE, Lescinsky H, Lim SS, Lo J, Mullany EC, Ong KL, Rao PC, Razo C, Reitsma MB, Roth GA, Santomauro DF, Sorensen RJD, Srinivasan V, Stanaway JD, Vollset SE, Vos T, Wang N, Welgan CA, Wozniak SS, Aravkin AY, Murray CJL"
-    title: "The Burden of Proof studies: assessing the evidence of risk"
-    journal: "Nature Medicine"
-    year: 2022
-    volume: "28"
-    issue: "10"
-    pages: "2038-2044"
+    key: ihmebop2026nutsihd
+    doi: null
+    pmid: null
+    pmcid: null
+    first_author: "Institute for Health Metrics and Evaluation"
+    authors: "Institute for Health Metrics and Evaluation"
+    title: "Burden of Proof: diet low in nuts and seeds and ischemic heart disease (risk 114, cause 493)"
+    journal: "Burden of Proof visualization, Institute for Health Metrics and Evaluation, University of Washington"
+    year: 2026
+    volume: null
+    issue: null
+    pages: null
+    url: "https://vizhub.healthdata.org/burden-of-proof/"
   locator: "API output_data (linear_cause and its lower/upper) and risk_cause_metadata (score, star_rating, risk_lower, risk_upper) for risk 114 x cause 493; paper: Methods (ROS, star-rating thresholds, uncertainty intervals)"
   verified:
-    doi_resolves: true
-    title_matches: true
-    first_author_matches: true
+    doi_resolves: null
+    title_matches: null
+    first_author_matches: null
     value_checked_in: "api"
     checked_on: "2026-09-23"
 

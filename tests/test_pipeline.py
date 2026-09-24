@@ -1,4 +1,4 @@
-"""End-to-end: determinism, the Fadnes reproduction, monotonicity, bracket order."""
+"""End-to-end: determinism, the Fadnes reproduction, monotonicity, scenario order."""
 
 from __future__ import annotations
 
@@ -70,7 +70,7 @@ def test_fadnes_reproduction_within_15_percent():
 
 def test_monotone_in_dose():
     """Delta LE is nondecreasing in delta (every member's mean; the curves are
-    nonincreasing in log RR and the floor is linear)."""
+    nonincreasing in log RR and the LDL pathway is linear)."""
     res, _ = fresh_run("a")
     for sex, a0, bg, mem in itertools.product(
         SEXES, GRID["a0"], GRID["background"], MEMBERS
@@ -81,9 +81,10 @@ def test_monotone_in_dose():
 
 def test_monotone_in_dose_every_stat_when_c_positive():
     res, _ = fresh_run("a")
-    members = ["face_value", "calibrated", "cvd_only", "floor_low", "floor_high"]
+    members = ["face_value", "calibrated_diet", "cvd_only", "ldl_chd", "ldl_all"]
     members += [m for m in MEMBERS if m.startswith("c_")]
-    assert res["calibration"]["calibrated"]["share_draws_c_below_0"] == 0
+    strata = res["calibration"]["strata"]
+    assert strata["calibrated_diet"]["linear"]["share_draws_c_below_0"] == 0
     for sex, a0, bg, mem in itertools.product(
         SEXES, GRID["a0"], GRID["background"], members
     ):
@@ -101,30 +102,38 @@ def test_marginal_value_nonincreasing_in_background():
     # and on the fine grid behind the marginal figure
     fm = res["figures"]["marginal_by_background"]
     for sex in SEXES:
-        v = fm[sex]["calibrated"]["mean"]
-        assert all(b <= a for a, b in zip(v, v[1:]))
+        for mem in ("calibrated", "face_value"):
+            v = fm[sex][mem]["mean"]
+            assert all(b <= a for a, b in zip(v, v[1:]))
 
 
-def test_bracket_ordering():
-    """floor_low <= floor_high everywhere; the floor sits below face value (c = 1)
-    from zero background. (From 20 g/day the cohort curve is flat, so face value is
-    zero while the linear LDL floor is not; see DESIGN, Deviations.)"""
+def test_scenario_ordering():
+    """ldl_chd <= ldl_all everywhere; the LDL pathway sits below face value (c = 1)
+    from zero background. (From 15 g/day the cohort curve is flat, so face value is
+    zero there while the linear LDL pathway is not.) At the reference case the
+    calibrations order by their ratios."""
     res, _ = fresh_run("a")
     for sex, a0, d, bg in itertools.product(
         SEXES, GRID["a0"], GRID["delta"], GRID["background"]
     ):
         c = cell(res, sex, a0, d, bg)
-        assert 0 < c["floor_low"]["mean"] <= c["floor_high"]["mean"]
+        assert 0 < c["ldl_chd"]["mean"] <= c["ldl_all"]["mean"]
         if bg == 0:
-            assert c["floor_high"]["mean"] <= c["face_value"]["mean"]
-            assert c["floor_high"]["p90"] <= c["face_value"]["p10"]
+            assert c["ldl_all"]["mean"] <= c["face_value"]["mean"]
+            assert c["ldl_all"]["p90"] <= c["face_value"]["p10"]
+    strata = res["calibration"]["strata"]
     for sex in SEXES:
-        ref = res["reference"]["bracket"][sex]
+        ref = res["reference"]["scenarios"][sex]
         assert (
-            ref["floor_low"]["mean"]
-            <= ref["floor_high"]["mean"]
+            ref["ldl_chd"]["mean"]
+            <= ref["ldl_all"]["mean"]
+            <= ref["calibrated_mortality"]["mean"]
+            <= ref["calibrated"]["mean"]
             <= ref["face_value"]["mean"]
         )
+        by_rrr = sorted(strata, key=lambda k: -strata[k]["rrr"])
+        means = [ref[k]["mean"] for k in by_rrr]
+        assert means == sorted(means), by_rrr
         assert ref["c_0.1"]["mean"] < ref["c_0.33"]["mean"] < ref["c_1"]["mean"]
         assert ref["c_1"] == ref["face_value"]
 
@@ -142,12 +151,41 @@ def test_interval_stats_are_ordered():
 def test_phase_in_sensitivity_orders_as_expected():
     """Reaching full effect sooner gains more; T = 10 is the main case."""
     res, _ = fresh_run("a")
-    pi = res["phase_in"]
+    rows = res["sensitivity"]["rows"]
     for sex in SEXES:
-        for mem in ("face_value", "calibrated", "floor_high"):
-            t0, t10, t20 = (pi[t][sex][mem]["mean"] for t in ("0", "10", "20"))
+        for col in ("face_value", "calibrated", "ldl_all"):
+            t0, t10, t20 = (
+                rows[r]["stats"][sex][col]["mean"]
+                for r in ("phase_in_0", "main", "phase_in_20")
+            )
             assert t0 > t10 > t20 > 0
-            assert pi["10"][sex][mem] == res["reference"]["bracket"][sex][mem]
+            assert (
+                rows["main"]["stats"][sex][col]
+                == (res["reference"]["scenarios"][sex][col])
+            )
+
+
+def test_sensitivities_move_the_expected_way():
+    """Each sensitivity that removes part of the association lowers the gain;
+    the plateau curve (90% of the per-28 g effect at 15 g) raises it."""
+    res, _ = fresh_run("a")
+    rows = res["sensitivity"]["rows"]
+    for sex in SEXES:
+        main = rows["main"]["stats"][sex]["face_value"]["mean"]
+        for rid in (
+            "curve_from_any",
+            "rr_fu10",
+            "rr_large",
+            "exclude_external",
+            "attenuate_with_age",
+        ):
+            assert 0 < rows[rid]["stats"][sex]["face_value"]["mean"] < main, rid
+        assert rows["curve_linear_plateau"]["stats"][sex]["face_value"]["mean"] > main
+        # the printed curve and the running minimum agree up to 15 g
+        for col in ("face_value", "calibrated"):
+            assert rows["curve_as_printed"]["stats"][sex][col]["mean"] == (
+                pytest.approx(rows["main"]["stats"][sex][col]["mean"], rel=1e-6)
+            )
 
 
 def test_ala_channel():
@@ -155,22 +193,21 @@ def test_ala_channel():
     5 g/day background, and walnut adds the most at the mean background."""
     res, _ = fresh_run("a")
     ala = res["ala"]["by_background"]
-    lo_bg, hi_bg = (
-        str(x)
-        for x in (res["ala"]["background_g"][0], ASSUMPTIONS["ala_background_high_g"])
-    )
-    for nut, e in ala[hi_bg].items():
-        assert e["counted_ala_g"] == 0
+    bgs = res["ala"]["background_g"]
+    for nut, e in ala["high"].items():
         for sex in SEXES:
-            assert e[sex]["face_value"]["increment"]["mean"] == 0
-    counted = {nut: e["counted_ala_g"] for nut, e in ala[lo_bg].items()}
-    assert max(counted, key=counted.get) == "walnut"
+            assert e[sex]["counted_ala_g"] == 0
+            assert e[sex]["face_value:ala"]["increment"]["mean"] == 0
     lo, hi = ASSUMPTIONS["ala_support_g"]
-    assert counted["walnut"] == pytest.approx(
-        hi - res["ala"]["background_g"][0], rel=1e-5
-    )
     for sex in SEXES:
-        assert ala[lo_bg]["walnut"][sex]["face_value"]["increment"]["mean"] > 0
+        counted = {nut: e[sex]["counted_ala_g"] for nut, e in ala["average"].items()}
+        assert max(counted, key=counted.get) == "walnut"
+        w = ala["average"]["walnut"]
+        expect = min(bgs["average"][sex] + w["nut_ala_g"], hi) - bgs["average"][sex]
+        assert counted["walnut"] == pytest.approx(expect, rel=1e-5)
+        rand = w[sex]["face_value:ala"]["increment"]["mean"]
+        fixed = w[sex]["face_value:ala_fixed"]["increment"]["mean"]
+        assert rand > fixed > 0  # the fixed-effect slope (0.99) is flatter
 
 
 def test_cost_per_life_year_is_ratio_of_means():
@@ -182,20 +219,20 @@ def test_cost_per_life_year_is_ratio_of_means():
             rel=1e-5,
         )
         for sex in SEXES:
-            x = e[sex]["calibrated"]
+            x = e[sex]["face_value"]
             assert x["usd_per_life_year"] == pytest.approx(
                 x["discounted_cost_usd"] / x["discounted_life_years"], rel=1e-4
             )
             # discounting shrinks life-years gained decades away
             assert x["discounted_life_years"] < x["life_years"]
-    # class effect: every tree nut gains the same; only the price differs
+    # class effect: every nut gains the same; only the price differs
     ly = {nut: c[nut]["male"]["calibrated"]["life_years"] for nut in c}
     assert len(set(ly.values())) == 1
-    # the peanut floor uses peanut trials, the tree-nut floor Del Gobbo's
-    assert c["peanut"]["floor_ldl_source"] != c["walnut"]["floor_ldl_source"]
+    # the peanut LDL pathway uses peanut trials, the tree-nut one Del Gobbo's
+    assert c["peanut"]["ldl_source"] != c["walnut"]["ldl_source"]
     assert (
-        c["peanut"]["male"]["floor_high"]["life_years"]
-        != c["walnut"]["male"]["floor_high"]["life_years"]
+        c["peanut"]["male"]["ldl_all"]["life_years"]
+        != c["walnut"]["male"]["ldl_all"]["life_years"]
     )
 
 

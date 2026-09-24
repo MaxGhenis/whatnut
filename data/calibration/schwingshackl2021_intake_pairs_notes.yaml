@@ -1,0 +1,18 @@
+# Schwingshackl et al. 2021, BMJ 374:n1864 (doi 10.1136/bmj.n1864): the 23
+# intake-v-intake pairs of Supplementary Figure 9, one row per pair.
+source: schwingshackl2021agreement
+file: schwingshackl2021_intake_pairs.csv
+read_from: >-
+  Supplementary Figure 9 of the web appendix (PMC8441535 supplement), which has no text layer
+  for the forest-plot numbers. Each ratio of risk ratios (RRR) and 95% CI was read three ways:
+  from the embedded 220 ppi image, from a 200 dpi page render, and by OCR (tesseract); all three
+  agree on all 23 pairs. cohort_rr and rct_rr come from Supplementary Table 5 (rows 16-21 with
+  the Supplementary Table 2 conversions); recomputing each RRR from them differs from the
+  figure by at most 0.009.
+checked_on: "2026-09-24"
+used_by: >-
+  tests/test_model.py only: pooling the 23 pairs with whatnut.model.pool_ratios reproduces
+  the published intake-v-intake stratum (row schwingshackl2021_rrr_intake_vs_intake), which
+  checks both the readings and the pooling code. The six pairs the model pools (the ALA and
+  Mediterranean-diet pairs) are evidence rows schwingshackl2021_pair_*, and a test checks
+  they equal their lines here.

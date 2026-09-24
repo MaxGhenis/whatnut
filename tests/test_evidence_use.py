@@ -7,17 +7,32 @@ import yaml
 
 from tests.helpers import ROOT, fresh_run
 from whatnut import data
-from whatnut.model import ASSUMPTIONS, DRAW_COLUMNS, EVIDENCE_IDS
+from whatnut.model import ANALOG_PAIR_IDS, ASSUMPTIONS, DRAW_COLUMNS, EVIDENCE_IDS
 
 ROWS = {
     r["id"]: r for r in yaml.safe_load((ROOT / "data" / "evidence.yaml").read_text())
 }
 # rows whose estimate enters a calculation (the rest are citations for reference data)
-EFFECT_IDS = {EVIDENCE_IDS[role] for role in (*DRAW_COLUMNS, "ala_background")}
+EFFECT_IDS = {
+    EVIDENCE_IDS[role]
+    for role in (
+        *DRAW_COLUMNS,
+        "rr28_fu10",
+        "rr28_large",
+        "ala_fixed",
+        "ala_background_female",
+        "ala_background_male",
+    )
+    if role in EVIDENCE_IDS
+} | set(ANALOG_PAIR_IDS)
 
 
 def ids_read_by_model() -> set[str]:
-    return set(EVIDENCE_IDS.values()) | {ASSUMPTIONS["peanut_ldl_serving_row"]}
+    return (
+        set(EVIDENCE_IDS.values())
+        | {ASSUMPTIONS["peanut_ldl_serving_row"]}
+        | set(ANALOG_PAIR_IDS)
+    )
 
 
 def test_model_rows_exist_and_citations_verified():
@@ -50,10 +65,23 @@ def test_structural_constants_match_their_rows():
     assert f"from {lo} to {hi} g/day" in ala["support"]
     aune = ROWS[EVIDENCE_IDS["rr28_all"]]
     assert f"above {ASSUMPTIONS['plateau_dose_g']}-20 g/day" in aune["support"]
+    # the reference table's second dose is one Aune serving
     assert (
-        ASSUMPTIONS["reference"]["delta"]
+        ASSUMPTIONS["reference_table_deltas"][-1]
         == data.row(EVIDENCE_IDS["rr28_all"]).per_grams()
     )
+    # the reference dose is where the main curve first reaches its minimum, and
+    # the any-versus-none sensitivity starts at Aune's first tabulated intake
+    g, rr = data.aune_curve("all_cause_mortality")
+    running = [min(rr[: i + 1]) for i in range(len(rr))]
+    first_min = g[running.index(min(running))]
+    assert ASSUMPTIONS["reference"]["delta"] == first_min
+    assert ASSUMPTIONS["any_vs_none_g"] == min(x for x in g if x > 0)
+    # the background ALA rows are the sex-specific counterparts of the adults row
+    adults = ROWS["wweia_1720_ala_adults"]["estimate"]
+    men = ROWS[EVIDENCE_IDS["ala_background_male"]]["estimate"]
+    women = ROWS[EVIDENCE_IDS["ala_background_female"]]["estimate"]
+    assert women < adults < men
 
 
 def test_data_files_recorded_with_current_hashes():

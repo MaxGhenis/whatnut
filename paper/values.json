@@ -1,39 +1,4 @@
 {
-  "abs_f40_face": {
-    "kind": "days",
-    "raw": 1.84691,
-    "text": "675"
-  },
-  "abs_f40_floor_low": {
-    "kind": "days",
-    "raw": 0.0109751,
-    "text": "4"
-  },
-  "abs_m40_calac": {
-    "kind": "days_interval",
-    "raw": 0.7303,
-    "text": "267 days (80% interval −88 to 621)"
-  },
-  "abs_m40_face": {
-    "kind": "days",
-    "raw": 1.9796,
-    "text": "723"
-  },
-  "abs_m40_face_years": {
-    "kind": "years:1",
-    "raw": 1.9796,
-    "text": "2.0"
-  },
-  "abs_m40_floor": {
-    "kind": "days_range",
-    "raw": 0.0176887,
-    "text": "6 to 22"
-  },
-  "abs_price_ratio": {
-    "kind": "number:0",
-    "raw": 6.264411027568922,
-    "text": "6"
-  },
   "age_old": {
     "kind": "integer",
     "raw": 70,
@@ -59,15 +24,45 @@
     "raw": 0.35,
     "text": "0.35"
   },
-  "ala_premium_avg": {
+  "ala_premium_m": {
     "kind": "days",
-    "raw": 0.548543,
-    "text": "200"
+    "raw": 0.430583,
+    "text": "157"
+  },
+  "ala_premium_m_fixed": {
+    "kind": "days",
+    "raw": 0.0842175,
+    "text": "31"
   },
   "ala_premium_seeds": {
     "kind": "days_words",
     "raw": 0.0,
     "text": "nothing"
+  },
+  "almonds_5g": {
+    "kind": "integer",
+    "raw": 4,
+    "text": "4"
+  },
+  "any_share": {
+    "kind": "pct:0",
+    "raw": 0.5877202190204638,
+    "text": "59%"
+  },
+  "att_from": {
+    "kind": "integer",
+    "raw": 65,
+    "text": "65"
+  },
+  "att_share": {
+    "kind": "pct:0",
+    "raw": 0.7885544144735183,
+    "text": "79%"
+  },
+  "att_to": {
+    "kind": "integer",
+    "raw": 85,
+    "text": "85"
   },
   "aune_min_g": {
     "kind": "integer",
@@ -84,6 +79,11 @@
     "raw": 0.85,
     "text": "0.85"
   },
+  "aune_rr_5g": {
+    "kind": "ratio:2",
+    "raw": 0.89,
+    "text": "0.89"
+  },
   "aune_rr_min": {
     "kind": "ratio:2",
     "raw": 0.82,
@@ -91,7 +91,7 @@
   },
   "baseline_2021_add": {
     "kind": "days_delta",
-    "raw": 0.05661000000000005,
+    "raw": 0.05667,
     "text": "21 days"
   },
   "bop_flat_g": {
@@ -109,22 +109,27 @@
     "raw": "two",
     "text": "two"
   },
-  "bracket_ratio": {
-    "kind": "number:0",
-    "raw": 32.8968359478862,
-    "text": "33"
-  },
   "brazil_se_per_nut": {
     "kind": "number:0",
     "raw": 96.0,
     "text": "96"
   },
   "c_cal_point": {
-    "kind": "ratio:2",
-    "raw": 1.08131,
-    "text": "1.08"
+    "kind": "pct:0",
+    "raw": 0.653155,
+    "text": "65%"
   },
-  "c_calac_point": {
+  "c_calmort_point": {
+    "kind": "pct:0",
+    "raw": 0.368096,
+    "text": "37%"
+  },
+  "c_max_point": {
+    "kind": "pct:0",
+    "raw": 1.08131,
+    "text": "108%"
+  },
+  "c_min_point": {
     "kind": "pct:0",
     "raw": 0.368096,
     "text": "37%"
@@ -146,18 +151,63 @@
   },
   "cpl_cheapest": {
     "kind": "dollars:0",
-    "raw": 2739.62,
-    "text": "$2,740"
+    "raw": 2421.06,
+    "text": "$2,421"
+  },
+  "cpl_cheapest_face": {
+    "kind": "dollars:0",
+    "raw": 1580.05,
+    "text": "$1,580"
   },
   "cpl_priciest": {
     "kind": "dollars:0",
-    "raw": 17162.1,
-    "text": "$17,162"
+    "raw": 15166.5,
+    "text": "$15,167"
+  },
+  "cpl_priciest_face": {
+    "kind": "dollars:0",
+    "raw": 9898.08,
+    "text": "$9,898"
   },
   "cvd_only_share": {
     "kind": "pct:0",
-    "raw": 0.3221044655485957,
+    "raw": 0.3212929272539174,
     "text": "32%"
+  },
+  "delgobbo_dose_all": {
+    "kind": "text",
+    "raw": "56",
+    "text": "56"
+  },
+  "delgobbo_dose_rct": {
+    "kind": "text",
+    "raw": "59.5",
+    "text": "59.5"
+  },
+  "delgobbo_weeks_all": {
+    "kind": "text",
+    "raw": "4",
+    "text": "4"
+  },
+  "delgobbo_weeks_rct": {
+    "kind": "text",
+    "raw": "5.5",
+    "text": "5.5"
+  },
+  "dial_lo": {
+    "kind": "number:1",
+    "raw": 0.1,
+    "text": "0.1"
+  },
+  "dial_mid": {
+    "kind": "number:2",
+    "raw": 0.33,
+    "text": "0.33"
+  },
+  "discount_pct": {
+    "kind": "pct:0",
+    "raw": 0.03,
+    "text": "3%"
   },
   "efsa_se": {
     "kind": "integer",
@@ -173,6 +223,21 @@
     "kind": "evidence",
     "raw": 0.78,
     "text": "0.78 (95% CI 0.72 to 0.84)"
+  },
+  "ev_aune_fu_long": {
+    "kind": "evidence",
+    "raw": 0.84,
+    "text": "0.84 (95% CI 0.79 to 0.90)"
+  },
+  "ev_aune_fu_short": {
+    "kind": "evidence",
+    "raw": 0.61,
+    "text": "0.61 (95% CI 0.49 to 0.76)"
+  },
+  "ev_aune_large": {
+    "kind": "evidence",
+    "raw": 0.8,
+    "text": "0.80 (95% CI 0.74 to 0.87)"
   },
   "ev_ctt_allcause": {
     "kind": "evidence",
@@ -199,6 +264,11 @@
     "raw": -4.2,
     "text": "−4.2 (95% CI −5.0 to −3.4)"
   },
+  "ev_gf2013": {
+    "kind": "evidence",
+    "raw": 0.61,
+    "text": "0.61 (95% CI 0.45 to 0.83)"
+  },
   "ev_gf_peanut": {
     "kind": "evidence",
     "raw": 0.87,
@@ -219,6 +289,26 @@
     "raw": 0.71,
     "text": "0.71 (95% CI 0.58 to 0.86)"
   },
+  "ev_liu2020_change": {
+    "kind": "evidence",
+    "raw": 0.92,
+    "text": "0.92 (95% CI 0.86 to 0.98)"
+  },
+  "ev_liu2020_start": {
+    "kind": "evidence",
+    "raw": 0.83,
+    "text": "0.83"
+  },
+  "ev_liu2026": {
+    "kind": "evidence",
+    "raw": 0.77,
+    "text": "0.77 (95% CI 0.73 to 0.81)"
+  },
+  "ev_luu_pb": {
+    "kind": "evidence",
+    "raw": 0.86,
+    "text": "0.86 (95% CI 0.79 to 0.94)"
+  },
   "ev_luu_sccs": {
     "kind": "evidence",
     "raw": 0.79,
@@ -229,15 +319,35 @@
     "raw": 0.83,
     "text": "0.83 (95% CI 0.77 to 0.88)"
   },
+  "ev_luu_shanghai_q2": {
+    "kind": "evidence",
+    "raw": 0.81,
+    "text": "0.81 (95% CI 0.76 to 0.88)"
+  },
   "ev_naghshi": {
     "kind": "evidence",
     "raw": 0.95,
     "text": "0.95 (95% CI 0.91 to 0.99)"
   },
+  "ev_naghshi_fixed": {
+    "kind": "evidence",
+    "raw": 0.99,
+    "text": "0.99 (95% CI 0.98 to 1.01)"
+  },
   "ev_npc": {
     "kind": "evidence",
     "raw": 1.55,
     "text": "1.55 (95% CI 1.03 to 2.33)"
+  },
+  "ev_predimed_cvdeath": {
+    "kind": "evidence",
+    "raw": 1.02,
+    "text": "1.02 (95% CI 0.63 to 1.67)"
+  },
+  "ev_predimed_death": {
+    "kind": "evidence",
+    "raw": 1.12,
+    "text": "1.12 (95% CI 0.86 to 1.47)"
   },
   "ev_predimed_evoo": {
     "kind": "evidence",
@@ -249,6 +359,11 @@
     "raw": 0.72,
     "text": "0.72 (95% CI 0.54 to 0.95)"
   },
+  "ev_predimed_stroke": {
+    "kind": "evidence",
+    "raw": 0.54,
+    "text": "0.54 (95% CI 0.35 to 0.82)"
+  },
   "ev_schw_allcause": {
     "kind": "evidence",
     "raw": 1.17,
@@ -259,20 +374,60 @@
     "raw": 0.98,
     "text": "0.98 (95% CI 0.93 to 1.04)"
   },
-  "ev_schw_supp": {
+  "ev_schw_overall": {
     "kind": "evidence",
-    "raw": 1.29,
-    "text": "1.29 (95% CI 1.17 to 1.42)"
+    "raw": 1.09,
+    "text": "1.09 (95% CI 1.04 to 1.14)"
+  },
+  "ev_select": {
+    "kind": "evidence",
+    "raw": 1.07,
+    "text": "1.07 (99% CI 0.94 to 1.22)"
+  },
+  "ev_silverman": {
+    "kind": "evidence",
+    "raw": 0.75,
+    "text": "0.75 (95% CI 0.66 to 0.86)"
+  },
+  "ev_waha": {
+    "kind": "evidence",
+    "raw": -4.3,
+    "text": "−4.3 (95% CI −6.6 to −1.6)"
   },
   "ev_wang_salted": {
     "kind": "evidence",
     "raw": 1.4866,
     "text": "1.49 (95% CI 1.05 to 2.11)"
   },
+  "ext_share_m35": {
+    "kind": "pct:0",
+    "raw": 0.542871,
+    "text": "54%"
+  },
+  "f40_cal": {
+    "kind": "days",
+    "raw": 1.2018,
+    "text": "439"
+  },
+  "f40_face": {
+    "kind": "days",
+    "raw": 1.84873,
+    "text": "675"
+  },
+  "f40_ldl_range": {
+    "kind": "range",
+    "raw": 0.0109612,
+    "text": "4 to 21"
+  },
   "fadnes_f20": {
     "kind": "years:1",
     "raw": 1.7,
     "text": "1.7"
+  },
+  "fadnes_f80": {
+    "kind": "years:1",
+    "raw": 0.5,
+    "text": "0.5"
   },
   "fadnes_m20": {
     "kind": "years:1",
@@ -284,15 +439,30 @@
     "raw": 0.84,
     "text": "0.84"
   },
-  "fda_aflatoxin": {
-    "kind": "integer",
-    "raw": 20,
-    "text": "20"
-  },
   "flax_days": {
     "kind": "integer",
     "raw": 128,
     "text": "128"
+  },
+  "from_any_share": {
+    "kind": "pct:0",
+    "raw": 0.41227978097953627,
+    "text": "41%"
+  },
+  "fu10_share": {
+    "kind": "pct:0",
+    "raw": 0.7013449067649064,
+    "text": "70%"
+  },
+  "harm_share_main": {
+    "kind": "pct:0",
+    "raw": 0.15185,
+    "text": "15%"
+  },
+  "harm_share_mort": {
+    "kind": "pct:0",
+    "raw": 0.16975,
+    "text": "17%"
   },
   "kcal_almond": {
     "kind": "number:0",
@@ -304,55 +474,130 @@
     "raw": 183.12,
     "text": "183"
   },
+  "ldl_conv": {
+    "kind": "number:2",
+    "raw": 38.67,
+    "text": "38.67"
+  },
   "le_max_gap_days": {
     "kind": "days_ceil",
-    "raw": 0.0021999999999877673,
+    "raw": 0.807057,
     "text": "a day"
   },
-  "m40_face_15": {
-    "kind": "days",
-    "raw": 1.9796,
-    "text": "723"
+  "luu_q2_range": {
+    "kind": "text",
+    "raw": "0.14 to 0.72",
+    "text": "0.14 to 0.72"
   },
-  "m40_floor_high_15": {
+  "m40_cal": {
     "kind": "days",
-    "raw": 0.060176,
-    "text": "22"
+    "raw": 1.28802,
+    "text": "470"
   },
-  "m40_floor_low_15": {
+  "m40_calmort": {
     "kind": "days",
-    "raw": 0.0176887,
-    "text": "6"
+    "raw": 0.728186,
+    "text": "266"
+  },
+  "m40_calmort_curve": {
+    "kind": "days",
+    "raw": 0.41299,
+    "text": "151"
+  },
+  "m40_dial_lo": {
+    "kind": "days",
+    "raw": 0.197792,
+    "text": "72"
+  },
+  "m40_dial_mid": {
+    "kind": "days",
+    "raw": 0.653008,
+    "text": "239"
+  },
+  "m40_face": {
+    "kind": "days",
+    "raw": 1.98155,
+    "text": "724"
+  },
+  "m40_face_years": {
+    "kind": "years:1",
+    "raw": 1.98155,
+    "text": "2.0"
+  },
+  "m40_ldl_range": {
+    "kind": "range",
+    "raw": 0.0176663,
+    "text": "6 to 22"
+  },
+  "m40_ldl_weeks": {
+    "kind": "number:0",
+    "raw": 3.1415778642857144,
+    "text": "3"
+  },
+  "m_old_cal": {
+    "kind": "days",
+    "raw": 0.695996,
+    "text": "254"
   },
   "m_old_face": {
     "kind": "days",
-    "raw": 1.06069,
-    "text": "387"
+    "raw": 1.06177,
+    "text": "388"
+  },
+  "m_young_cal": {
+    "kind": "days",
+    "raw": 1.39772,
+    "text": "511"
   },
   "m_young_face": {
     "kind": "days",
-    "raw": 2.15076,
+    "raw": 2.15287,
     "text": "786"
   },
-  "marg_b0": {
+  "main28_face": {
     "kind": "days",
-    "raw": 1.73876,
-    "text": "635"
+    "raw": 1.98155,
+    "text": "724"
   },
-  "marg_b10": {
+  "marg_cal_b0": {
     "kind": "days",
-    "raw": 0.239949,
-    "text": "88"
+    "raw": 1.13121,
+    "text": "413"
   },
-  "marg_b20": {
+  "marg_cal_b10": {
+    "kind": "days",
+    "raw": 0.156041,
+    "text": "57"
+  },
+  "marg_cal_b20": {
     "kind": "days",
     "raw": 0.0,
     "text": "0"
   },
-  "marg_floor_high": {
+  "marg_face_b0": {
     "kind": "days",
-    "raw": 0.0401165,
+    "raw": 1.74047,
+    "text": "636"
+  },
+  "marg_face_b10": {
+    "kind": "days",
+    "raw": 0.240185,
+    "text": "88"
+  },
+  "marg_face_b20": {
+    "kind": "days",
+    "raw": 0.0,
+    "text": "0"
+  },
+  "marg_ldl_all": {
+    "kind": "days",
+    "raw": 0.040138,
     "text": "15"
+  },
+  "marg_ldl_chd": {
+    "kind": "days",
+    "raw": 0.0117993,
+    "text": "4"
   },
   "mc_draws": {
     "kind": "integer",
@@ -364,20 +609,45 @@
     "raw": 400,
     "text": "400"
   },
-  "pchip_cut": {
-    "kind": "pct:0",
-    "raw": 0.1813851283087492,
-    "text": "18%"
+  "pchip28_face": {
+    "kind": "days",
+    "raw": 1.62213,
+    "text": "592"
   },
   "phase_in_years": {
     "kind": "integer",
     "raw": 10,
     "text": "10"
   },
+  "plateau_add": {
+    "kind": "pct:0",
+    "raw": 0.12712270697181505,
+    "text": "13%"
+  },
+  "predimed_nut_g": {
+    "kind": "integer",
+    "raw": 30,
+    "text": "30"
+  },
+  "predimed_phased_hr": {
+    "kind": "ratio:2",
+    "raw": 0.9534882039887792,
+    "text": "0.95"
+  },
+  "predimed_years": {
+    "kind": "text",
+    "raw": "4.8",
+    "text": "4.8"
+  },
   "price_date": {
     "kind": "text",
     "raw": "23 September 2026",
     "text": "23 September 2026"
+  },
+  "price_ratio": {
+    "kind": "number:0",
+    "raw": 6.264411027568922,
+    "text": "6"
   },
   "priciest_nut": {
     "kind": "text",
@@ -394,6 +664,11 @@
     "raw": 1.77836,
     "text": "1.78"
   },
+  "repro_f80": {
+    "kind": "years:2",
+    "raw": 0.620985,
+    "text": "0.62"
+  },
   "repro_m20": {
     "kind": "years:2",
     "raw": 2.02007,
@@ -404,30 +679,80 @@
     "raw": 17,
     "text": "17"
   },
+  "rr28_curve": {
+    "kind": "ratio:2",
+    "raw": 0.82,
+    "text": "0.82"
+  },
+  "rr28_linear": {
+    "kind": "ratio:2",
+    "raw": 0.78,
+    "text": "0.78"
+  },
+  "schw_analog": {
+    "kind": "pooled",
+    "raw": 1.07138,
+    "text": "1.07 (95% CI 0.98 to 1.18)"
+  },
+  "schw_overall_pi": {
+    "kind": "text",
+    "raw": "0.81 to 1.46",
+    "text": "0.81 to 1.46"
+  },
+  "sellers_max": {
+    "kind": "words",
+    "raw": 4,
+    "text": "four"
+  },
+  "sellers_min": {
+    "kind": "words",
+    "raw": 1,
+    "text": "one"
+  },
   "share_10g": {
     "kind": "pct:0",
-    "raw": 0.8783390583956355,
+    "raw": 0.8783376649592491,
     "text": "88%"
   },
-  "us_ala": {
+  "share_5g": {
+    "kind": "pct:0",
+    "raw": 0.5867073755393505,
+    "text": "59%"
+  },
+  "us_ala_f": {
     "kind": "number:2",
-    "raw": 1.93,
-    "text": "1.93"
+    "raw": 1.72,
+    "text": "1.72"
+  },
+  "us_ala_m": {
+    "kind": "number:2",
+    "raw": 2.16,
+    "text": "2.16"
   },
   "us_nuts_g": {
     "kind": "number:0",
     "raw": 11.907,
     "text": "12"
   },
+  "version": {
+    "kind": "text",
+    "raw": "r1-20260923",
+    "text": "r1-20260923"
+  },
+  "waha_implied": {
+    "kind": "number:1",
+    "raw": -6.65492957746479,
+    "text": "−6.7"
+  },
   "walnut_ala": {
     "kind": "number:2",
-    "raw": 2.5424,
-    "text": "2.54"
+    "raw": 1.362,
+    "text": "1.36"
   },
-  "walnut_ala_counted": {
+  "walnut_ala_counted_m": {
     "kind": "number:2",
-    "raw": 1.07,
-    "text": "1.07"
+    "raw": 0.84,
+    "text": "0.84"
   },
   "walnut_pufa": {
     "kind": "number:0",

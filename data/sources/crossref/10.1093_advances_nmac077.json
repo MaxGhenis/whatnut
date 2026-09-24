@@ -1,0 +1,2047 @@
+{
+ "DOI": "10.1093/advances/nmac077",
+ "ISSN": [
+  "2161-8313"
+ ],
+ "URL": "https://doi.org/10.1093/advances/nmac077",
+ "alternative-id": [
+  "S2161831323000686"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "Consumption of Nuts and Seeds and Health Outcomes Including Cardiovascular Disease, Diabetes and Metabolic Disease, Cancer, and Mortality: An Umbrella Review"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "Advances in Nutrition"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1093/advances/nmac077"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "Copyright \u00a9 2022 The Author(s) 2021. Published by Oxford University Press on behalf of the American Society for Nutrition. Published by Elsevier Inc. All rights reserved."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Balakrishna",
+   "given": "Rajiv",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Bj\u00f8rnerud",
+   "given": "Tonje",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bemanian",
+   "given": "Mitra",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-4533-1722",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Aune",
+   "given": "Dagfinn",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-8757-2092",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Fadnes",
+   "given": "Lars T",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Advances in Nutrition"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2022,
+    8,
+    24
+   ]
+  ],
+  "date-time": "2022-08-24T11:15:04Z",
+  "timestamp": 1661339704000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    31
+   ]
+  ],
+  "date-time": "2025-10-31T01:22:48Z",
+  "timestamp": 1761873768000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    18
+   ]
+  ],
+  "date-time": "2026-09-18T11:14:43Z",
+  "timestamp": 1789730083994,
+  "version": "4.0.1"
+ },
+ "is-referenced-by-count": 100,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "2161-8313"
+  }
+ ],
+ "issue": "6",
+ "issued": {
+  "date-parts": [
+   [
+    2022,
+    11
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "6",
+  "published-print": {
+   "date-parts": [
+    [
+     2022,
+     11
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2022-11-01T00:00:00Z",
+    "timestamp": 1667260800000
+   }
+  },
+  {
+   "URL": "https://www.elsevier.com/legal/tdmrep-license",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2022-11-01T00:00:00Z",
+    "timestamp": 1667260800000
+   }
+  },
+  {
+   "URL": "https://creativecommons.org/licenses/by/4.0/",
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      8,
+      30
+     ]
+    ],
+    "date-time": "2022-08-30T00:00:00Z",
+    "timestamp": 1661817600000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2161831323000686?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2161831323000686?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://academic.oup.com/advances/advance-article-pdf/doi/10.1093/advances/nmac077/45812825/nmac077.pdf",
+   "content-type": "application/pdf",
+   "content-version": "am",
+   "intended-application": "syndication"
+  },
+  {
+   "URL": "https://academic.oup.com/advances/advance-article-pdf/doi/10.1093/advances/nmac077/45812825/nmac077.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "2136-2148",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2022,
+    11
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2022,
+    11
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1017/S1368980011002540",
+   "article-title": "Mediterranean nuts: origins, ancient medicinal benefits and symbolism",
+   "author": "Casas-Agustench",
+   "doi-asserted-by": "crossref",
+   "first-page": "2296",
+   "issue": "12A",
+   "journal-title": "Public Health Nutr",
+   "key": "10.1093/advances/nmac077_bib1",
+   "volume": "14",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1017/S095442241100014X",
+   "article-title": "Tree nut phytochemicals: composition, antioxidant capacity, bioactivity, impact factors. A systematic review of almonds, Brazils, cashews, hazelnuts, macadamias, pecans, pine nuts, pistachios and walnuts",
+   "author": "Bolling",
+   "doi-asserted-by": "crossref",
+   "first-page": "244",
+   "issue": "2",
+   "journal-title": "Nutr Res Rev",
+   "key": "10.1093/advances/nmac077_bib2",
+   "volume": "24",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1017/BJN20061861",
+   "article-title": "Fatty acid composition of nuts \u2013 implications for cardiovascular health",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "S29",
+   "issue": "Suppl 2",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmac077_bib3",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "article-title": "Beneficial effects of walnut consumption on human health: role of micronutrients",
+   "author": "Ros",
+   "first-page": "498",
+   "issue": "6",
+   "journal-title": "Curr Opin Clin Nutr Metab Care",
+   "key": "10.1093/advances/nmac077_bib4",
+   "volume": "21",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1080/14786419.2017.1408093",
+   "article-title": "Health benefits of pistachios consumption",
+   "author": "Terzo",
+   "doi-asserted-by": "crossref",
+   "first-page": "715",
+   "issue": "5",
+   "journal-title": "Nat Prod Res",
+   "key": "10.1093/advances/nmac077_bib5",
+   "volume": "33",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2020.126192",
+   "article-title": "Bioactives and health benefits of nuts and dried fruits",
+   "author": "Alasalvar",
+   "doi-asserted-by": "crossref",
+   "first-page": "126192",
+   "journal-title": "Food Chem",
+   "key": "10.1093/advances/nmac077_bib6",
+   "volume": "314",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1155/2018/3753562",
+   "article-title": "Antioxidant and antimicrobial activities of crude extracts and fractions of cashew (Anacardium occidentale L.), cajui (Anacardium microcarpum), and pequi (Caryocar brasiliense C.): a systematic review",
+   "author": "Baptista",
+   "doi-asserted-by": "crossref",
+   "first-page": "3753562",
+   "journal-title": "Oxid Med Cell Longev",
+   "key": "10.1093/advances/nmac077_bib7",
+   "volume": "2018",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3390/nu9111271",
+   "article-title": "Benefits of nut consumption on insulin resistance and cardiovascular risk factors: multiple potential mechanisms of actions",
+   "author": "Kim",
+   "doi-asserted-by": "crossref",
+   "first-page": "1271",
+   "issue": "11",
+   "journal-title": "Nutrients",
+   "key": "10.1093/advances/nmac077_bib8",
+   "volume": "9",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1007/s11882-015-0555-8",
+   "article-title": "The prevalence of tree nut allergy: a systematic review",
+   "author": "McWilliam",
+   "doi-asserted-by": "crossref",
+   "first-page": "54",
+   "issue": "9",
+   "journal-title": "Curr Allergy Asthma Rep",
+   "key": "10.1093/advances/nmac077_bib9",
+   "volume": "15",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1080/10408398.2015.1137858",
+   "article-title": "The effect of dietary intake of sesame (Sesamumindicum L.) derivatives related to the lipid profile and blood pressure: a systematic review",
+   "author": "Cardoso",
+   "doi-asserted-by": "crossref",
+   "first-page": "116",
+   "issue": "1",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib10",
+   "volume": "58",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqaa108",
+   "article-title": "Association of nut intake with risk factors, cardiovascular disease, and mortality in 16 countries from 5 continents: analysis from the Prospective Urban and Rural Epidemiology (PURE) study",
+   "author": "de Souza",
+   "doi-asserted-by": "crossref",
+   "first-page": "208",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib11",
+   "volume": "112",
+   "year": "2020"
+  },
+  {
+   "key": "10.1093/advances/nmac077_bib12",
+   "unstructured": "Nuts and dried fruits statistical yearbook, [Internet]. International Nut and Dried Fruit Foundation; 2019; [cited May 17, 2021]. Available from: https://www.nutfruit.org/files/tech/1587539172_INC_Statistical_Yearbook_2019-2020.pdf."
+  },
+  {
+   "DOI": "10.1039/C7FO00915A",
+   "article-title": "Nut consumption in relation to all-cause and cause-specific mortality: a meta-analysis 18 prospective studies",
+   "author": "Chen",
+   "doi-asserted-by": "crossref",
+   "first-page": "3893",
+   "issue": "11",
+   "journal-title": "Food Funct",
+   "key": "10.1093/advances/nmac077_bib13",
+   "volume": "8",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3945/ajcn.114.099515",
+   "article-title": "Nut consumption on all-cause, cardiovascular, and cancer mortality risk: a systematic review and meta-analysis of epidemiologic studies",
+   "author": "Grosso",
+   "doi-asserted-by": "crossref",
+   "first-page": "783",
+   "issue": "4",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib14",
+   "volume": "101",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqaa358",
+   "article-title": "Nut consumption and type 2 diabetes risk: a systematic review and meta-analysis of observational studies",
+   "author": "Becerra-Tom\u00e1s",
+   "doi-asserted-by": "crossref",
+   "first-page": "960",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib15",
+   "volume": "113",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1186/s12916-016-0730-3",
+   "article-title": "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies",
+   "author": "Aune",
+   "doi-asserted-by": "crossref",
+   "first-page": "207",
+   "issue": "1",
+   "journal-title": "BMC Med",
+   "key": "10.1093/advances/nmac077_bib16",
+   "volume": "14",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.3390/nu9121311",
+   "article-title": "Nuts and human health outcomes: a systematic review",
+   "author": "de Souza",
+   "doi-asserted-by": "crossref",
+   "first-page": "1311",
+   "issue": "12",
+   "journal-title": "Nutrients",
+   "key": "10.1093/advances/nmac077_bib17",
+   "volume": "9",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.2174/1381612822666161010121356",
+   "article-title": "An umbrella review of nuts intake and risk of cardiovascular disease",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "1016",
+   "issue": "7",
+   "journal-title": "Curr Pharm Design",
+   "key": "10.1093/advances/nmac077_bib18",
+   "volume": "23",
+   "year": "2017"
+  },
+  {
+   "key": "10.1093/advances/nmac077_bib19",
+   "unstructured": "Institute for Health Metrics and Evaluation (IHME). GBD compare; Viz Hub [Internet]. University of Washington [cited August 13, 2020]. Available from:, http://vizhub.healthdata.org/gbd-compare"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(18)31694-5",
+   "article-title": "Forecasting life expectancy, years of life lost, and all-cause and cause-specific mortality for 250 causes of death: reference and alternative scenarios for 2016\u201340 for 195 countries and territories",
+   "author": "Foreman",
+   "doi-asserted-by": "crossref",
+   "first-page": "2052",
+   "issue": "10159",
+   "journal-title": "Lancet",
+   "key": "10.1093/advances/nmac077_bib20",
+   "volume": "392",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(18)32203-7",
+   "article-title": "Global, regional, and national age-sex-specific mortality for 282 causes of death in 195 countries and territories, 1980\u20132017: a systematic analysis for the Global Burden of Disease Study 2017",
+   "author": "GBD 2017 Causes of Death Collaborators",
+   "doi-asserted-by": "crossref",
+   "first-page": "1736",
+   "issue": "10159",
+   "journal-title": "Lancet",
+   "key": "10.1093/advances/nmac077_bib21",
+   "volume": "392",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1111/cea.12328",
+   "article-title": "Frequency, severity and causes of unexpected allergic reactions to food: a systematic literature review",
+   "author": "Versluis",
+   "doi-asserted-by": "crossref",
+   "first-page": "347",
+   "issue": "2",
+   "journal-title": "Clin Exp Allergy",
+   "key": "10.1093/advances/nmac077_bib22",
+   "volume": "45",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.foodres.2017.08.036",
+   "article-title": "Brazil nuts: nutritional composition, health benefits and safety aspects",
+   "author": "Cardoso",
+   "doi-asserted-by": "crossref",
+   "first-page": "9",
+   "issue": "2",
+   "journal-title": "Food Res Int",
+   "key": "10.1093/advances/nmac077_bib23",
+   "volume": "100",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3390/nu12082347",
+   "article-title": "Nuts and their effect on gut microbiota, gut function and symptoms in adults: a systematic review and meta-analysis of randomised controlled trials",
+   "author": "Creedon",
+   "doi-asserted-by": "crossref",
+   "first-page": "2347",
+   "issue": "8",
+   "journal-title": "Nutrients",
+   "key": "10.1093/advances/nmac077_bib24",
+   "volume": "12",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1017/S0007114520002925",
+   "article-title": "The effect of nut consumption (tree nuts and peanuts) on the gut microbiota of humans: a systematic review",
+   "author": "Fitzgerald",
+   "doi-asserted-by": "crossref",
+   "first-page": "508",
+   "issue": "5",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmac077_bib25",
+   "volume": "125",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.3390/nu10121935",
+   "article-title": "Nuts and cardio-metabolic disease: a review of meta-analyses",
+   "author": "Kim",
+   "doi-asserted-by": "crossref",
+   "first-page": "1935",
+   "issue": "12",
+   "journal-title": "Nutrients",
+   "key": "10.1093/advances/nmac077_bib26",
+   "volume": "10",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1177/2047487319843667",
+   "article-title": "Dietary components and risk of cardiovascular disease and all-cause mortality: a review of evidence from meta-analyses",
+   "author": "Kwok",
+   "doi-asserted-by": "crossref",
+   "issue": "13",
+   "journal-title": "Eur J Prev Cardiol",
+   "key": "10.1093/advances/nmac077_bib27",
+   "volume": "26",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.2174/1381612822666161010121356",
+   "article-title": "An umbrella review of nuts intake and risk of cardiovascular disease",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "1016",
+   "issue": "7",
+   "journal-title": "Curr Pharm Des",
+   "key": "10.1093/advances/nmac077_bib28",
+   "volume": "23",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1097/XEB.0000000000000055",
+   "article-title": "Summarizing systematic reviews: methodological development, conduct and reporting of an umbrella review approach",
+   "author": "Aromataris",
+   "doi-asserted-by": "crossref",
+   "first-page": "132",
+   "issue": "3",
+   "journal-title": "Int J Evid Based Healthc",
+   "key": "10.1093/advances/nmac077_bib29",
+   "volume": "13",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1136/ebmental-2018-300014",
+   "article-title": "Ten simple rules for conducting umbrella reviews",
+   "author": "Fusar-Poli",
+   "doi-asserted-by": "crossref",
+   "first-page": "95",
+   "issue": "3",
+   "journal-title": "Evid Based Ment Health",
+   "key": "10.1093/advances/nmac077_bib30",
+   "volume": "21",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1371/journal.pmed.1000100",
+   "article-title": "The PRISMA statement for reporting systematic reviews and meta-analyses of studies that evaluate health care interventions: explanation and elaboration",
+   "author": "Liberati",
+   "doi-asserted-by": "crossref",
+   "first-page": "e1000100",
+   "issue": "7",
+   "journal-title": "PLoS Med",
+   "key": "10.1093/advances/nmac077_bib31",
+   "volume": "6",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-19-1167",
+   "article-title": "Nut consumption and risk of cancer: a meta-analysis of prospective studies",
+   "author": "Long",
+   "doi-asserted-by": "crossref",
+   "first-page": "565",
+   "issue": "3",
+   "journal-title": "Cancer Epidemiol Biomarkers Prev",
+   "key": "10.1093/advances/nmac077_bib32",
+   "volume": "29",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/advances/nmaa152",
+   "article-title": "Association of total nut, tree nut, peanut, and peanut butter consumption with cancer incidence and mortality: a comprehensive systematic review and dose-response meta-analysis of observational studies",
+   "author": "Naghshi",
+   "doi-asserted-by": "crossref",
+   "first-page": "793",
+   "issue": "3",
+   "journal-title": "Adv Nutr",
+   "key": "10.1093/advances/nmac077_bib33",
+   "volume": "12",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/nutrit/nuv006",
+   "article-title": "Nut consumption and risk of cancer and type 2 diabetes: a systematic review and meta-analysis",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "409",
+   "issue": "7",
+   "journal-title": "Nutr Rev",
+   "key": "10.1093/advances/nmac077_bib34",
+   "volume": "73",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.18632/aging.103292",
+   "article-title": "Meta-analysis of the association between nut consumption and the risks of cancer incidence and cancer-specific mortality",
+   "author": "Zhang",
+   "doi-asserted-by": "crossref",
+   "first-page": "10772",
+   "issue": "11",
+   "journal-title": "Aging (Albany NY)",
+   "key": "10.1093/advances/nmac077_bib35",
+   "volume": "12",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1136/bmj.j4008",
+   "article-title": "AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both",
+   "author": "Shea",
+   "doi-asserted-by": "crossref",
+   "first-page": "j4008",
+   "journal-title": "BMJ",
+   "key": "10.1093/advances/nmac077_bib36",
+   "volume": "358",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076901",
+   "article-title": "Consumption of nuts and legumes and risk of incident ischemic heart disease, stroke, and diabetes: a systematic review and meta-analysis",
+   "author": "Afshin",
+   "doi-asserted-by": "crossref",
+   "first-page": "278",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib37",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1093/nutrit/nuz042",
+   "article-title": "Nut consumption and incidence of cardiovascular diseases and cardiovascular disease mortality: a meta-analysis of prospective cohort studies",
+   "author": "Becerra-Tom\u00e1s",
+   "doi-asserted-by": "crossref",
+   "first-page": "691",
+   "issue": "10",
+   "journal-title": "Nutr Rev",
+   "key": "10.1093/advances/nmac077_bib38",
+   "volume": "77",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1080/10408398.2017.1392288",
+   "article-title": "Food groups and risk of coronary heart disease, stroke and heart failure: a systematic review and dose-response meta-analysis of prospective studies",
+   "author": "Bechthold",
+   "doi-asserted-by": "crossref",
+   "first-page": "1071",
+   "issue": "7",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib39",
+   "volume": "59",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1093/ije/dyv039",
+   "article-title": "Relationship of tree nut, peanut and peanut butter intake with total and cause-specific mortality: a cohort study and meta-analysis",
+   "author": "van den Brandt",
+   "doi-asserted-by": "crossref",
+   "first-page": "1038",
+   "issue": "3",
+   "journal-title": "Int J Epidemiol",
+   "key": "10.1093/advances/nmac077_bib40",
+   "volume": "44",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1111/1753-0407.12173",
+   "article-title": "Meta-analysis of prospective studies on the effects of nut consumption on hypertension and type 2 diabetes mellitus",
+   "author": "Guo",
+   "doi-asserted-by": "crossref",
+   "first-page": "202",
+   "issue": "2",
+   "journal-title": "J Diabetes",
+   "key": "10.1093/advances/nmac077_bib41",
+   "volume": "7",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1186/s12986-018-0282-y",
+   "article-title": "Nut consumption and risk of metabolic syndrome and overweight/obesity: a meta-analysis of prospective cohort studies and randomized trials",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "46",
+   "issue": "1",
+   "journal-title": "Nutr Metab",
+   "key": "10.1093/advances/nmac077_bib42",
+   "volume": "15",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076109",
+   "article-title": "Nut consumption and risk of type 2 diabetes, cardiovascular disease, and all-cause mortality: a systematic review and meta-analysis",
+   "author": "Luo",
+   "doi-asserted-by": "crossref",
+   "first-page": "256",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib43",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.thromres.2014.06.017",
+   "article-title": "Nut consumption and the risk of coronary artery disease: a dose-response meta-analysis of 13 prospective studies",
+   "author": "Ma",
+   "doi-asserted-by": "crossref",
+   "first-page": "790",
+   "issue": "4",
+   "journal-title": "Thromb Res",
+   "key": "10.1093/advances/nmac077_bib44",
+   "volume": "134",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1017/S0007114515004316",
+   "article-title": "A systematic review and meta-analysis of nut consumption and incident risk of CVD and all-cause mortality",
+   "author": "Mayhew",
+   "doi-asserted-by": "crossref",
+   "first-page": "212",
+   "issue": "2",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmac077_bib45",
+   "volume": "115",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.3945/ajcn.117.153148",
+   "article-title": "Food groups and risk of all-cause mortality: a systematic review and meta-analysis of prospective studies",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "1462",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib46",
+   "volume": "105",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1007/s10654-017-0246-y",
+   "article-title": "Food groups and risk of type 2 diabetes mellitus: a systematic review and meta-analysis of prospective studies",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "363",
+   "issue": "5",
+   "journal-title": "Eur J Epidemiol",
+   "key": "10.1093/advances/nmac077_bib47",
+   "volume": "32",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1038/srep30394",
+   "article-title": "Nut intake and stroke risk: a dose-response meta-analysis of prospective cohort studies",
+   "author": "Shao",
+   "doi-asserted-by": "crossref",
+   "first-page": "30394",
+   "journal-title": "Sci Rep",
+   "key": "10.1093/advances/nmac077_bib48",
+   "volume": "6",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2014.06.009",
+   "article-title": "Consumption of nuts and legumes and risk of stroke: a meta-analysis of prospective cohort studies",
+   "author": "Shi",
+   "doi-asserted-by": "crossref",
+   "first-page": "1262",
+   "issue": "12",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.1093/advances/nmac077_bib49",
+   "volume": "24",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1097/MCA.0000000000000331",
+   "article-title": "Association between nut consumption and coronary heart disease: a meta-analysis",
+   "author": "Weng",
+   "doi-asserted-by": "crossref",
+   "first-page": "227",
+   "issue": "3",
+   "journal-title": "Coron Artery Dis",
+   "key": "10.1093/advances/nmac077_bib50",
+   "volume": "27",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1080/07315724.2018.1561341",
+   "article-title": "Relationship between nut consumption and metabolic syndrome: a meta-analysis of observational studies",
+   "author": "Zhang",
+   "doi-asserted-by": "crossref",
+   "first-page": "499",
+   "issue": "6",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.1093/advances/nmac077_bib51",
+   "volume": "38",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1007/s10654-015-9999-3",
+   "article-title": "Nut consumption and risk of stroke",
+   "author": "Zhang",
+   "doi-asserted-by": "crossref",
+   "first-page": "189",
+   "issue": "3",
+   "journal-title": "Eur J Epidemiol",
+   "key": "10.1093/advances/nmac077_bib52",
+   "volume": "30",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1177/1178638820926521",
+   "article-title": "Effect of tree nuts consumption on serum lipid profile in hyperlipidemic individuals: a systematic review",
+   "author": "Altamimi",
+   "doi-asserted-by": "crossref",
+   "journal-title": "Nutr Metab Insights",
+   "key": "10.1093/advances/nmac077_bib53",
+   "volume": "13",
+   "year": "2020"
+  },
+  {
+   "article-title": "[Nut consumption and cognitive function: a systematic review]",
+   "author": "Arias-Fern\u00e1ndez",
+   "first-page": "1179",
+   "issue": "5",
+   "journal-title": "Nutricion Hospitalaria",
+   "key": "10.1093/advances/nmac077_bib54",
+   "volume": "36",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1017/S0007114520004523",
+   "article-title": "Effects of pistachios on anthropometric indices, inflammatory markers, endothelial function, and blood pressure in adults: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Asbaghi",
+   "doi-asserted-by": "crossref",
+   "first-page": "718",
+   "issue": "5",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmac077_bib55",
+   "volume": "126",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1039/D0FO02878A",
+   "article-title": "The effect of almond intake on lipid profile: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Asbaghi",
+   "doi-asserted-by": "crossref",
+   "first-page": "1882",
+   "journal-title": "Food Funct",
+   "key": "10.1093/advances/nmac077_bib56",
+   "volume": "12",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1002/ptr.6337",
+   "article-title": "Effect of Nigella sativa (black seed) supplementation on glycemic control: a systematic review and meta-analysis of clinical trials",
+   "author": "Askari",
+   "doi-asserted-by": "crossref",
+   "first-page": "1341",
+   "issue": "5",
+   "journal-title": "Phytother Res",
+   "key": "10.1093/advances/nmac077_bib57",
+   "volume": "33",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.cyto.2019.154922",
+   "article-title": "Effect of flaxseed supplementation on markers of inflammation and endothelial function: a systematic review and meta-analysis",
+   "author": "Askarpour",
+   "doi-asserted-by": "crossref",
+   "first-page": "154922",
+   "journal-title": "Cytokine",
+   "key": "10.1093/advances/nmac077_bib58",
+   "volume": "126",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27457",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: a meta-analysis and systematic review",
+   "author": "Banel",
+   "doi-asserted-by": "crossref",
+   "first-page": "56",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib59",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2013-004660",
+   "article-title": "Effect of tree nuts on metabolic syndrome criteria: a systematic review and meta-analysis of randomised controlled trials",
+   "author": "Blanco Mejia",
+   "doi-asserted-by": "crossref",
+   "first-page": "e004660",
+   "issue": "7",
+   "journal-title": "BMJ Open",
+   "key": "10.1093/advances/nmac077_bib60",
+   "volume": "4",
+   "year": "2014"
+  },
+  {
+   "article-title": "Effectiveness of long-term consumption of nuts, seeds and seeds\u2019 oil on glucose and lipid levels in people with type 2 diabetes: systematic review",
+   "author": "De Lira",
+   "first-page": "S225",
+   "journal-title": "Obesity",
+   "key": "10.1093/advances/nmac077_bib61",
+   "volume": "19",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "article-title": "Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: systematic review, meta-analysis, and dose-response of 61 controlled intervention trials",
+   "author": "Del Gobbo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1347",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr-56",
+   "key": "10.1093/advances/nmac077_bib62",
+   "volume": "102",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.ctim.2020.102399",
+   "article-title": "The effect of almond intake on blood pressure: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Eslampour",
+   "doi-asserted-by": "crossref",
+   "first-page": "102399",
+   "journal-title": "Complement Ther Med",
+   "key": "10.1093/advances/nmac077_bib63",
+   "volume": "50",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "article-title": "Nut intake and adiposity: meta-analysis of clinical trials",
+   "author": "Flores-Mateo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1346",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib64",
+   "volume": "97",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1080/10408398.2017.1368007",
+   "article-title": "Effect of pistachio on brachial artery diameter and flow-mediated dilatation: a systematic review and meta-analysis of randomized, controlled-feeding clinical studies",
+   "author": "Fogacci",
+   "doi-asserted-by": "crossref",
+   "first-page": "328",
+   "issue": "2",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib65",
+   "volume": "59",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.ctim.2020.102513",
+   "article-title": "Pistachios and cardiometabolic risk factors: a systematic review and meta-analysis of randomized controlled clinical trials",
+   "author": "Ghanavati",
+   "doi-asserted-by": "crossref",
+   "first-page": "102513",
+   "journal-title": "Complement Ther Med",
+   "key": "10.1093/advances/nmac077_bib66",
+   "volume": "52",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1089/jmf.2015.0075",
+   "article-title": "Effects of the intake of sesame seeds (Sesamum indicum L.) and derivatives on oxidative stress: a systematic review",
+   "author": "Gouveia L de",
+   "doi-asserted-by": "crossref",
+   "first-page": "337",
+   "issue": "4",
+   "journal-title": "J Med Food",
+   "key": "10.1093/advances/nmac077_bib67",
+   "volume": "19",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1093/advances/nmaa113",
+   "article-title": "Intake of nuts or nut products does not lead to weight gain, independent of dietary substitution instructions: a systematic review and meta-analysis of randomized trials",
+   "author": "Guarneiri",
+   "doi-asserted-by": "crossref",
+   "first-page": "384",
+   "issue": "2",
+   "journal-title": "Adv Nutr",
+   "key": "10.1093/advances/nmac077_bib68",
+   "volume": "12",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy091",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: an updated meta-analysis and systematic review of controlled trials",
+   "author": "Guasch-Ferr\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "174",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib69",
+   "volume": "108",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.phrs.2019.104622",
+   "article-title": "Effect of flaxseed supplementation on lipid profile: an updated systematic review and dose-response meta-analysis of sixty-two randomized controlled trials",
+   "author": "Hadi",
+   "doi-asserted-by": "crossref",
+   "first-page": "104622",
+   "journal-title": "Pharmacol Res",
+   "key": "10.1093/advances/nmac077_bib70",
+   "volume": "152",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1024/0301-1526/a000693",
+   "article-title": "Effect of oral nut supplementation on endothelium-dependent vasodilation \u2013 a meta-analysis",
+   "author": "Huang",
+   "doi-asserted-by": "crossref",
+   "first-page": "203",
+   "issue": "3",
+   "journal-title": "Vasa",
+   "key": "10.1093/advances/nmac077_bib71",
+   "volume": "47",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1080/10408398.2018.1558395",
+   "article-title": "Peanut and cardiovascular disease risk factors: a systematic review and meta-analysis",
+   "author": "Jafari Azad",
+   "doi-asserted-by": "crossref",
+   "first-page": "1123",
+   "issue": "7",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib72",
+   "volume": "60",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.ctim.2020.102387",
+   "article-title": "The effects of cashew nut intake on lipid profile and blood pressure: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Jalali",
+   "doi-asserted-by": "crossref",
+   "first-page": "102387",
+   "journal-title": "Complement Ther Med",
+   "key": "10.1093/advances/nmac077_bib73",
+   "volume": "50",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.dsx.2021.02.038",
+   "article-title": "Effects of cashew nut consumption on body composition and glycemic indices: a meta-analysis and systematic review of randomized controlled trials",
+   "author": "Jamshidi",
+   "doi-asserted-by": "crossref",
+   "first-page": "605",
+   "issue": "2",
+   "journal-title": "Diabetes Metab Syndr",
+   "key": "10.1093/advances/nmac077_bib74",
+   "volume": "15",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1002/ptr.6901",
+   "article-title": "The effects of quinoa seed supplementation on cardiovascular risk factors: a systematic review and meta-analysis of controlled clinical trials",
+   "author": "Karimian",
+   "doi-asserted-by": "crossref",
+   "first-page": "1688",
+   "issue": "4",
+   "journal-title": "Phytother Res",
+   "key": "10.1093/advances/nmac077_bib75",
+   "volume": "35",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1096/fasebj.28.1_supplement.1025.6",
+   "article-title": "Tree nuts improve criteria of the metabolic syndrome: a systematic review and meta-analysis of randomized controlled dietary trials",
+   "author": "Kendall",
+   "doi-asserted-by": "crossref",
+   "first-page": "1025.6",
+   "issue": "S1",
+   "journal-title": "FASEB J",
+   "key": "10.1093/advances/nmac077_bib76",
+   "volume": "28",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.3945/jn.114.205302",
+   "article-title": "Flaxseed consumption may reduce blood pressure: a systematic review and meta-analysis of controlled trials",
+   "author": "Khalesi",
+   "doi-asserted-by": "crossref",
+   "first-page": "758",
+   "issue": "4",
+   "journal-title": "J Nutr",
+   "key": "10.1093/advances/nmac077_bib77",
+   "volume": "145",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1002/jsfa.8361",
+   "article-title": "Can sesame consumption improve blood pressure? A systematic review and meta-analysis of controlled trials",
+   "author": "Khosravi-Boroujeni",
+   "doi-asserted-by": "crossref",
+   "first-page": "3087",
+   "issue": "10",
+   "journal-title": "J Sci Food Agric",
+   "key": "10.1093/advances/nmac077_bib78",
+   "volume": "97",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1093/advances/nmz043",
+   "article-title": "Almond consumption and risk factors for cardiovascular disease: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Lee-Bravatti",
+   "doi-asserted-by": "crossref",
+   "first-page": "1076",
+   "issue": "6",
+   "journal-title": "Adv Nutr",
+   "key": "10.1093/advances/nmac077_bib79",
+   "volume": "10",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1002/ptr.6740",
+   "article-title": "Effects of walnut intake on blood pressure: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "2921",
+   "issue": "11",
+   "journal-title": "Phytother Res",
+   "key": "10.1093/advances/nmac077_bib80",
+   "volume": "34",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqz280",
+   "article-title": "Comparative effects of different types of tree nut consumption on blood lipids: a network meta-analysis of clinical trials",
+   "author": "Liu",
+   "doi-asserted-by": "crossref",
+   "first-page": "219",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib81",
+   "volume": "111",
+   "year": "2020"
+  },
+  {
+   "article-title": "The effect of cashew nut on cardiovascular risk factors and blood pressure: a systematic review and meta-analysis",
+   "author": "Mahboobi",
+   "first-page": "nzz031",
+   "issue": "Suppl 1",
+   "journal-title": "Curr Dev Nutr",
+   "key": "10.1093/advances/nmac077_bib82",
+   "volume": "3",
+   "year": "2019"
+  },
+  {
+   "article-title": "Nut consumption for the primary prevention of cardiovascular disease",
+   "author": "Martin",
+   "first-page": "CD011583",
+   "issue": "9",
+   "journal-title": "Cochrane Database Syst Rev",
+   "key": "10.1093/advances/nmac077_bib83",
+   "volume": "9",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1097/MD.0000000000005165",
+   "article-title": "Impact of different types of tree nut, peanut, and soy nut consumption on serum C-reactive protein (CRP): a systematic review and meta-analysis of randomized controlled clinical trials",
+   "author": "Mazidi",
+   "doi-asserted-by": "crossref",
+   "first-page": "e5165",
+   "issue": "44",
+   "journal-title": "Medicine",
+   "key": "10.1093/advances/nmac077_bib84",
+   "volume": "95",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2013-004660",
+   "article-title": "Tree nut consumption on metabolic syndrome criteria: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Mejia",
+   "doi-asserted-by": "crossref",
+   "first-page": "e004660",
+   "issue": "7",
+   "journal-title": "BMJ Open",
+   "key": "10.1093/advances/nmac077_bib85",
+   "volume": "4",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.clnesp.2018.07.009",
+   "article-title": "Effects of walnuts consumption on vascular endothelial function in humans: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Mohammadi-Sartang",
+   "doi-asserted-by": "crossref",
+   "first-page": "52",
+   "journal-title": "Clin Nutr ESPEN",
+   "key": "10.1093/advances/nmac077_bib86",
+   "volume": "28",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1111/obr.12550",
+   "article-title": "The effect of flaxseed supplementation on body weight and body composition: a systematic review and meta-analysis of 45 randomized placebo-controlled trials",
+   "author": "Mohammadi-Sartang",
+   "doi-asserted-by": "crossref",
+   "first-page": "1096",
+   "issue": "9",
+   "journal-title": "Obes Rev",
+   "key": "10.1093/advances/nmac077_bib87",
+   "volume": "18",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1093/nutrit/nux052",
+   "article-title": "Flaxseed supplementation on glucose control and insulin sensitivity: a systematic review and meta-analysis of 25 randomized, placebo-controlled trials",
+   "author": "Mohammadi-Sartang",
+   "doi-asserted-by": "crossref",
+   "first-page": "125",
+   "issue": "2",
+   "journal-title": "Nutr Rev",
+   "key": "10.1093/advances/nmac077_bib88",
+   "volume": "76",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3945/ajcn.114.091595",
+   "article-title": "The effect of tree nut, peanut, and soy nut consumption on blood pressure: a systematic review and meta-analysis of randomized controlled clinical trials",
+   "author": "Mohammadifard",
+   "doi-asserted-by": "crossref",
+   "first-page": "966",
+   "issue": "5",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib89",
+   "volume": "101",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1159/000506348",
+   "article-title": "Effect of cashew nut on lipid profile: a systematic review and meta-analysis",
+   "author": "Morvaridzadeh",
+   "doi-asserted-by": "crossref",
+   "first-page": "348",
+   "issue": "5",
+   "journal-title": "Complement Med Res",
+   "key": "10.1093/advances/nmac077_bib90",
+   "volume": "27",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/jn/135.9.2082",
+   "article-title": "A systematic review of the effects of nuts on blood lipid profiles in humans",
+   "author": "Mukuddem-Petersen",
+   "doi-asserted-by": "crossref",
+   "first-page": "2082",
+   "issue": "9",
+   "journal-title": "J Nutr",
+   "key": "10.1093/advances/nmac077_bib91",
+   "volume": "135",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.11124/JBISRIR-D-19-00397",
+   "article-title": "Effect of tree nuts on glycemic outcomes in adults with type 2 diabetes mellitus: a systematic review",
+   "author": "Muley",
+   "doi-asserted-by": "crossref",
+   "first-page": "966",
+   "issue": "5",
+   "journal-title": "JBI Evid Synth",
+   "key": "10.1093/advances/nmac077_bib92",
+   "volume": "19",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1017/jns.2016.19",
+   "article-title": "The effects of almond consumption on fasting blood lipid levels: a systematic review and meta-analysis of randomised controlled trials",
+   "author": "Musa-Veloso",
+   "doi-asserted-by": "crossref",
+   "first-page": "e34",
+   "journal-title": "J Nutr Sci",
+   "key": "10.1093/advances/nmac077_bib93",
+   "volume": "5",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1017/S0007114520001415",
+   "article-title": "Effect of walnut consumption on markers of blood glucose control: a systematic review and meta-analysis",
+   "author": "Neale",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "issue": "7",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmac077_bib94",
+   "volume": "124",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2017-016863",
+   "article-title": "The effect of nut consumption on markers of inflammation and endothelial function: a systematic review and meta-analysis of randomised controlled trials",
+   "author": "Neale",
+   "doi-asserted-by": "crossref",
+   "first-page": "e016863",
+   "issue": "11",
+   "journal-title": "BMJ Open",
+   "key": "10.1093/advances/nmac077_bib95",
+   "volume": "7",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1186/1475-2891-13-7",
+   "article-title": "Effect of fenugreek (Trigonella foenum-graecum L.) intake on glycemia: a meta-analysis of clinical trials",
+   "author": "Neelakantan",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "issue": "1",
+   "journal-title": "Nutr J",
+   "key": "10.1093/advances/nmac077_bib96",
+   "volume": "13",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.dsx.2020.07.052",
+   "article-title": "The effectiveness of pistachio on glycemic control and insulin sensitivity in patients with type 2 diabetes, prediabetes and metabolic syndrome: a systematic review and meta-analysis",
+   "author": "Nowrouzi-Sohrabi",
+   "doi-asserted-by": "crossref",
+   "first-page": "1589",
+   "issue": "5",
+   "journal-title": "Diabetes Metab Syndr Clin Res Rev",
+   "key": "10.1093/advances/nmac077_bib97",
+   "volume": "14",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1017/S0007114519001338",
+   "article-title": "Effects of nut and seed consumption on markers of glucose metabolism in adults with prediabetes: a systematic review of randomised controlled trials",
+   "author": "Ntzouvani",
+   "doi-asserted-by": "crossref",
+   "first-page": "361",
+   "issue": "4",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmac077_bib98",
+   "volume": "122",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27469",
+   "article-title": "Meta-analysis of the effects of flaxseed interventions on blood lipids",
+   "author": "Pan",
+   "doi-asserted-by": "crossref",
+   "first-page": "288",
+   "issue": "2",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib99",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3390/nu8120747",
+   "article-title": "Effects of hazelnut consumption on blood lipids and body weight: a systematic review and Bayesian meta-analysis",
+   "author": "Perna",
+   "doi-asserted-by": "crossref",
+   "first-page": "747",
+   "issue": "12",
+   "journal-title": "Nutrients",
+   "key": "10.1093/advances/nmac077_bib100",
+   "volume": "8",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/j.jada.2009.02.014",
+   "article-title": "Almonds have a neutral effect on serum lipid profiles: a meta-analysis of randomized trials",
+   "author": "Phung",
+   "doi-asserted-by": "crossref",
+   "first-page": "865",
+   "issue": "5",
+   "journal-title": "J Am Diet Assoc",
+   "key": "10.1093/advances/nmac077_bib101",
+   "volume": "109",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1093/advances/nmz048",
+   "article-title": "Effects of flaxseed interventions on circulating inflammatory biomarkers: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Rahimlou",
+   "doi-asserted-by": "crossref",
+   "first-page": "1108",
+   "issue": "6",
+   "journal-title": "Adv Nutr",
+   "key": "10.1093/advances/nmac077_bib102",
+   "volume": "10",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.3390/nu8030136",
+   "article-title": "Effect of flaxseed intervention on inflammatory marker C-reactive protein: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Ren",
+   "doi-asserted-by": "crossref",
+   "first-page": "136",
+   "issue": "3",
+   "journal-title": "Nutrients",
+   "key": "10.1093/advances/nmac077_bib103",
+   "volume": "8",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1080/10408398.2017.1392290",
+   "article-title": "Effect of chronic consumption of pistachios (Pistacia vera L.) on glucose metabolism in pre-diabetics and type 2 diabetics: a systematic review",
+   "author": "Ribeiro",
+   "doi-asserted-by": "crossref",
+   "first-page": "1115",
+   "issue": "7",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib104",
+   "volume": "59",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "article-title": "Nut consumption and blood lipid levels: a pooled analysis of 25 intervention trials",
+   "author": "Sabat\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "821",
+   "issue": "9",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1093/advances/nmac077_bib105",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "article-title": "Flaxseed supplementation reduces plasma lipoprotein(a) levels: a meta-analysis",
+   "author": "Sahebkar",
+   "first-page": "50",
+   "issue": "3",
+   "journal-title": "Altern Ther Health Med",
+   "key": "10.1093/advances/nmac077_bib106",
+   "volume": "27",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.3945/an.117.017178",
+   "article-title": "Food groups and risk of hypertension: a systematic review and dose-response meta-analysis of prospective studies",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "793",
+   "issue": "6",
+   "journal-title": "Adv Nutr",
+   "key": "10.1093/advances/nmac077_bib107",
+   "volume": "8",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2020.09.015",
+   "article-title": "Effects of tree nut and groundnut consumption compared with those of L-arginine supplementation on fasting and postprandial flow-mediated vasodilation: meta-analysis of human randomized controlled trials",
+   "author": "Smeets",
+   "doi-asserted-by": "crossref",
+   "first-page": "1699",
+   "issue": "4",
+   "journal-title": "Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib108",
+   "volume": "40",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/nutrit/nux071",
+   "article-title": "Clinical evidence on dietary supplementation with chia seed (Salvia hispanica L.): a systematic review and meta-analysis",
+   "author": "Teoh",
+   "doi-asserted-by": "crossref",
+   "first-page": "219",
+   "issue": "4",
+   "journal-title": "Nutr Rev",
+   "key": "10.1093/advances/nmac077_bib109",
+   "volume": "76",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/advances/nmaa153",
+   "article-title": "Nut consumption for cognitive performance: a systematic review",
+   "author": "Theodore",
+   "doi-asserted-by": "crossref",
+   "first-page": "777",
+   "issue": "3",
+   "journal-title": "Adv Nutr",
+   "key": "10.1093/advances/nmac077_bib110",
+   "volume": "12",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy236",
+   "article-title": "The effect of nuts on markers of glycemic control: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Tindall",
+   "doi-asserted-by": "crossref",
+   "first-page": "297",
+   "issue": "2",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib111",
+   "volume": "109",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2015.05.012",
+   "article-title": "Lipid and Blood Pressure Meta-analysis Collaboration (LBPMC) Group. Effects of flaxseed supplements on blood pressure: a systematic review and meta-analysis of controlled clinical trial",
+   "author": "Ursoniu",
+   "doi-asserted-by": "crossref",
+   "first-page": "615",
+   "issue": "3",
+   "journal-title": "Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib112",
+   "volume": "35",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.5114/aoms.2018.81034",
+   "article-title": "A systematic review and meta-analysis of clinical trials investigating the effects of flaxseed supplementation on plasma C-reactive protein concentrations",
+   "author": "Ursoniu",
+   "doi-asserted-by": "crossref",
+   "first-page": "12",
+   "issue": "1",
+   "journal-title": "Arch Med Sci",
+   "key": "10.1093/advances/nmac077_bib113",
+   "volume": "15",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0103376",
+   "article-title": "Effect of tree nuts on glycemic control in diabetes: a systematic review and meta-analysis of randomized controlled dietary trials",
+   "author": "Viguiliouk",
+   "doi-asserted-by": "crossref",
+   "first-page": "e103376",
+   "issue": "7",
+   "journal-title": "PloS One",
+   "key": "10.1093/advances/nmac077_bib114",
+   "volume": "9",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1097/MD.0000000000021136",
+   "article-title": "The relationship between pistachio (Pistacia vera L.) intake and adiposity: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Xia",
+   "doi-asserted-by": "crossref",
+   "first-page": "e21136",
+   "issue": "34",
+   "journal-title": "Medicine",
+   "key": "10.1093/advances/nmac077_bib115",
+   "volume": "99",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2017.04.011",
+   "article-title": "Effect of nut consumption on vascular endothelial function: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Xiao",
+   "doi-asserted-by": "crossref",
+   "first-page": "831",
+   "issue": "3",
+   "journal-title": "Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib116",
+   "volume": "37",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.ctim.2020.102505",
+   "article-title": "Walnut intake may increase circulating adiponectin and leptin levels but does not improve glycemic biomarkers: a systematic review and meta-analysis of randomized clinical trials",
+   "author": "Yang",
+   "doi-asserted-by": "crossref",
+   "first-page": "102505",
+   "journal-title": "Complement Ther Med",
+   "key": "10.1093/advances/nmac077_bib117",
+   "volume": "52",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.079152",
+   "article-title": "Nut consumption in relation to cardiovascular disease risk and type 2 diabetes: a systematic review and meta-analysis of prospective studies",
+   "author": "Zhou",
+   "doi-asserted-by": "crossref",
+   "first-page": "270",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib118",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076109",
+   "article-title": "Nut consumption and risk of type 2 diabetes, cardiovascular disease, and all-cause mortality: a systematic review and meta-analysis",
+   "author": "Luo",
+   "doi-asserted-by": "crossref",
+   "first-page": "256",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib119",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2019.04.001",
+   "article-title": "Inverse association of long-term nut consumption with weight gain and risk of overweight/obesity: a systematic review",
+   "author": "Eslami",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Nutr Res",
+   "key": "10.1093/advances/nmac077_bib120",
+   "volume": "68",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1039/D0FO00470G",
+   "article-title": "The effect of almond intake on anthropometric indices: a systematic review and meta-analysis",
+   "author": "Eslampour",
+   "doi-asserted-by": "crossref",
+   "first-page": "7340",
+   "issue": "9",
+   "journal-title": "Food Funct",
+   "key": "10.1093/advances/nmac077_bib121",
+   "volume": "11",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3402/fnr.v56i0.19103",
+   "doi-asserted-by": "crossref",
+   "key": "10.1093/advances/nmac077_bib122",
+   "unstructured": "Fogelholm, M, Anderssen, S, Gunnarsdottir, I, Lahti-Koski, M. Dietary macronutrients and food consumption as determinants of long-term weight change in adult populations: a systematic literature review. Food Nutr Res. [Internet] 2012;56. doi: 10.3402/fnr.v56i0.19103."
+  },
+  {
+   "DOI": "10.1016/j.obmed.2020.100311",
+   "article-title": "Flaxseed and its products improve glycemic control: a systematic review and meta-analysis",
+   "author": "Hajiahmadi",
+   "doi-asserted-by": "crossref",
+   "first-page": "100311",
+   "journal-title": "Obes Med",
+   "key": "10.1093/advances/nmac077_bib123",
+   "volume": "22",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.ctim.2020.102395",
+   "article-title": "Effects of walnut intake on anthropometric characteristics: a systematic review and dose-response meta-analysis of randomized controlled trials",
+   "author": "Fang",
+   "doi-asserted-by": "crossref",
+   "first-page": "102395",
+   "journal-title": "Complement Ther Med",
+   "key": "10.1093/advances/nmac077_bib124",
+   "volume": "50",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1080/10408398.2018.1514486",
+   "article-title": "Effect of nuts on energy intake, hunger, and fullness, a systematic review and meta-analysis of randomized clinical trials",
+   "author": "Akhlaghi",
+   "doi-asserted-by": "crossref",
+   "first-page": "84",
+   "issue": "1",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib125",
+   "volume": "60",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "article-title": "Nut intake and adiposity: meta-analysis of clinical trials",
+   "author": "Flores-Mateo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1346",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib126",
+   "volume": "97",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1093/nutrit/nuv006",
+   "article-title": "Nut consumption and risk of cancer and type 2 diabetes: a systematic review and meta-analysis",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "409",
+   "issue": "7",
+   "journal-title": "Nutr Rev",
+   "key": "10.1093/advances/nmac077_bib127",
+   "volume": "73",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1002/ijc.31198",
+   "article-title": "Food groups and risk of colorectal cancer",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "1748",
+   "issue": "9",
+   "journal-title": "Int J Cancer",
+   "key": "10.1093/advances/nmac077_bib128",
+   "volume": "142",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1080/10408398.2020.1828262",
+   "article-title": "Effect of chronic consumption of nuts on oxidative stress: a systematic review of clinical trials",
+   "author": "Silveira",
+   "doi-asserted-by": "crossref",
+   "first-page": "726",
+   "issue": "3",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "10.1093/advances/nmac077_bib129",
+   "volume": "62",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1097/MD.0000000000005165",
+   "article-title": "Impact of different types of tree nut, peanut, and soy nut consumption on serum C-reactive protein (CRP): a systematic review and meta-analysis of randomized controlled clinical trials",
+   "author": "Mazidi",
+   "doi-asserted-by": "crossref",
+   "first-page": "e5165",
+   "issue": "44",
+   "journal-title": "Medicine (Baltimore)",
+   "key": "10.1093/advances/nmac077_bib130",
+   "volume": "95",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2017-016863",
+   "article-title": "The effect of nut consumption on markers of inflammation and endothelial function: a systematic review and meta-analysis of randomised controlled trials",
+   "author": "Neale",
+   "doi-asserted-by": "crossref",
+   "first-page": "e016863",
+   "issue": "11",
+   "journal-title": "BMJ Open",
+   "key": "10.1093/advances/nmac077_bib131",
+   "volume": "7",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.nut.2018.02.017",
+   "article-title": "Effects of nut consumption on selected inflammatory markers: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Xiao",
+   "doi-asserted-by": "crossref",
+   "first-page": "129",
+   "journal-title": "Nutrition",
+   "key": "10.1093/advances/nmac077_bib132",
+   "volume": "54",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.jaci.2021.03.048",
+   "article-title": "Global patterns in anaphylaxis due to specific foods: a systematic review",
+   "author": "Conrado",
+   "doi-asserted-by": "crossref",
+   "first-page": "1515",
+   "issue": "6",
+   "journal-title": "J Allergy Clin Immunol",
+   "key": "10.1093/advances/nmac077_bib133",
+   "volume": "148",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1111/all.12423",
+   "article-title": "Prevalence of common food allergies in Europe: a systematic review and meta-analysis",
+   "author": "Nwaru",
+   "doi-asserted-by": "crossref",
+   "first-page": "992",
+   "issue": "8",
+   "journal-title": "Allergy",
+   "key": "10.1093/advances/nmac077_bib134",
+   "volume": "69",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.jaci.2007.05.026",
+   "article-title": "The prevalence of food allergy: a meta-analysis",
+   "author": "Rona",
+   "doi-asserted-by": "crossref",
+   "first-page": "638",
+   "issue": "3",
+   "journal-title": "J Allergy Clin Immunol",
+   "key": "10.1093/advances/nmac077_bib135",
+   "volume": "120",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.jaci.2008.02.019",
+   "article-title": "The prevalence of plant food allergies: a systematic review",
+   "author": "Zuidmeer",
+   "doi-asserted-by": "crossref",
+   "first-page": "1210",
+   "issue": "5",
+   "journal-title": "J Allergy Clin Immunol",
+   "key": "10.1093/advances/nmac077_bib136",
+   "volume": "121",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.jaci.2021.01.025",
+   "article-title": "Using data from food challenges to inform management of food-allergic consumers: a systematic review with individual participant data meta-analysis",
+   "author": "Patel",
+   "doi-asserted-by": "crossref",
+   "first-page": "2249",
+   "issue": "6",
+   "journal-title": "J Allergy Clin Immunol",
+   "key": "10.1093/advances/nmac077_bib137",
+   "volume": "147",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1111/all.12401",
+   "article-title": "Systematic review on cashew nut allergy",
+   "author": "van der Valk",
+   "doi-asserted-by": "crossref",
+   "first-page": "692",
+   "issue": "6",
+   "journal-title": "Allergy",
+   "key": "10.1093/advances/nmac077_bib138",
+   "volume": "69",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1111/all.12962",
+   "article-title": "Hypersensitivities to sesame and other common edible seeds",
+   "author": "Patel",
+   "doi-asserted-by": "crossref",
+   "first-page": "1405",
+   "issue": "10",
+   "journal-title": "Allergy",
+   "key": "10.1093/advances/nmac077_bib139",
+   "volume": "71",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1111/all.12185",
+   "article-title": "A systematic review of the effect of thermal processing on the allergenicity of tree nuts",
+   "author": "Masthoff",
+   "doi-asserted-by": "crossref",
+   "first-page": "983",
+   "issue": "8",
+   "journal-title": "Allergy",
+   "key": "10.1093/advances/nmac077_bib140",
+   "volume": "68",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0191767",
+   "article-title": "Integrating nutrient bioavailability and co-production links when identifying sustainable diets: how low should we reduce meat consumption?",
+   "author": "Barre",
+   "doi-asserted-by": "crossref",
+   "first-page": "e0191767",
+   "issue": "2",
+   "journal-title": "PloS One",
+   "key": "10.1093/advances/nmac077_bib141",
+   "volume": "13",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0150617",
+   "article-title": "How to build a standardized country-specific environmental food database for nutritional epidemiology studies",
+   "author": "Bertoluci",
+   "doi-asserted-by": "crossref",
+   "first-page": "e0150617",
+   "issue": "4",
+   "journal-title": "PLoS One",
+   "key": "10.1093/advances/nmac077_bib142",
+   "volume": "11",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.3390/su70912837",
+   "article-title": "Combining low price, low climate impact and high nutritional value in one shopping basket through diet optimization by linear programming",
+   "author": "van Dooren",
+   "doi-asserted-by": "crossref",
+   "first-page": "12837",
+   "journal-title": "Sustainability",
+   "key": "10.1093/advances/nmac077_bib143",
+   "volume": "7",
+   "year": "2015"
+  },
+  {
+   "author": "Fischer",
+   "key": "10.1093/advances/nmac077_bib144",
+   "series-title": "Plates, pyramids and planets. Developments in national healthy and sustainable dietary guidelines: a state of play assessment",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(18)31788-4",
+   "article-title": "Food in the Anthropocene: the EAT-Lancet Commission on healthy diets from sustainable food systems",
+   "author": "Willett",
+   "doi-asserted-by": "crossref",
+   "first-page": "447",
+   "issue": "10170",
+   "journal-title": "Lancet",
+   "key": "10.1093/advances/nmac077_bib145",
+   "volume": "393",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.gfs.2020.100357",
+   "article-title": "Treenuts and groundnuts in the EAT-Lancet reference diet: concerns regarding sustainable water use",
+   "author": "Vanham",
+   "doi-asserted-by": "crossref",
+   "first-page": "100357",
+   "journal-title": "Glob Food Sec",
+   "key": "10.1093/advances/nmac077_bib146",
+   "volume": "24",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3233/JAD-170248",
+   "article-title": "Relationships of dietary patterns, foods, and micro- and macronutrients with Alzheimer's disease and late-life cognitive disorders: a systematic review",
+   "author": "Solfrizzi",
+   "doi-asserted-by": "crossref",
+   "first-page": "815",
+   "issue": "3",
+   "journal-title": "J Alzheimers Dis",
+   "key": "10.1093/advances/nmac077_bib147",
+   "volume": "59",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3390/ijerph18020454",
+   "article-title": "The effect of nut consumption on diet quality, cardiometabolic and gastrointestinal health in children: a systematic review of randomized controlled trials",
+   "author": "Mead",
+   "doi-asserted-by": "crossref",
+   "first-page": "454",
+   "issue": "2",
+   "journal-title": "Int J Environ Res Public Health",
+   "key": "10.1093/advances/nmac077_bib148",
+   "volume": "18",
+   "year": "2021"
+  },
+  {
+   "article-title": "Polyunsaturated fatty acids for the primary and secondary prevention of cardiovascular disease",
+   "author": "Abdelhamid",
+   "first-page": "CD012345",
+   "issue": "7",
+   "journal-title": "Cochrane Database Syst Rev",
+   "key": "10.1093/advances/nmac077_bib149",
+   "volume": "7",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-20-0456",
+   "article-title": "Nut and peanut butter consumption and the risk of total cancer: a prospective cohort study",
+   "author": "Nieuwenhuis",
+   "doi-asserted-by": "crossref",
+   "first-page": "2100",
+   "issue": "10",
+   "journal-title": "Cancer Epidemiol Biomarkers Prev",
+   "key": "10.1093/advances/nmac077_bib150",
+   "volume": "29",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqab295",
+   "article-title": "Association of nut consumption with risk of total cancer and 5 specific cancers: evidence from 3 large prospective cohort studies",
+   "author": "Fang",
+   "doi-asserted-by": "crossref",
+   "first-page": "1925",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmac077_bib151",
+   "volume": "114",
+   "year": "2021"
+  }
+ ],
+ "reference-count": 151,
+ "references-count": 151,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S2161831323000686"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Advances in Nutrition"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Consumption of Nuts and Seeds and Health Outcomes Including Cardiovascular Disease, Diabetes and Metabolic Disease, Cancer, and Mortality: An Umbrella Review"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "13"
+}

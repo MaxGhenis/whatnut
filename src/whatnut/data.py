@@ -132,6 +132,9 @@ class EvidenceRow:
     notes: str | None
     source: dict
     verified: dict
+    exposure: str | None = None
+    outcome: str | None = None
+    population: str | None = None
 
     def _need(self, *names: str) -> None:
         missing = [n for n in names if getattr(self, n) is None]
@@ -225,6 +228,9 @@ def _evidence_cached(digest: str) -> dict[str, EvidenceRow]:
             notes=item.get("notes"),
             source=item.get("source") or {},
             verified=item.get("verified") or {},
+            exposure=item.get("exposure"),
+            outcome=item.get("outcome"),
+            population=item.get("population"),
         )
     return rows
 
@@ -296,6 +302,7 @@ class CauseShares:
     start: tuple[int, ...]
     cvd: tuple[float, ...]
     chd: tuple[float, ...]
+    external: tuple[float, ...]
 
     def at_ages(self, ages, cause: str) -> list[float]:
         """Share for each single age: the group containing it. Ages below the
@@ -324,6 +331,7 @@ def cause_shares(sex: str, vintage: str | None = None) -> CauseShares:
         start=tuple(int(r["age_group_start"]) for r in rows),
         cvd=tuple(float(r["cvd_share"]) for r in rows),
         chd=tuple(float(r["chd_share"]) for r in rows),
+        external=tuple(float(r["external_share"]) for r in rows),
     )
 
 

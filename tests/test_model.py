@@ -1,15 +1,27 @@
-"""Dose curves, draws and the bracket, checked against the evidence rows."""
+"""Dose curves, draws, calibration and the scenarios, checked against the evidence."""
 
 from __future__ import annotations
 
+import csv
 import math
 
 import numpy as np
 import pytest
 
 from whatnut import data
-from whatnut.model import ASSUMPTIONS, DRAW_COLUMNS, Draws, Model
+from whatnut.model import (
+    ANALOG_PAIR_IDS,
+    ASSUMPTIONS,
+    CALIBRATION_STRATA,
+    DRAW_COLUMNS,
+    Draws,
+    Model,
+    Variant,
+    pool_ratios,
+)
 from whatnut.pipeline import ala_counted
+
+PAIRS_CSV = data.ROOT / "data" / "calibration" / "schwingshackl2021_intake_pairs.csv"
 
 
 @pytest.fixture(scope="module")
@@ -57,23 +69,101 @@ def test_draws_are_one_seeded_matrix():
 
 
 def test_common_random_numbers_across_scenarios(m):
-    """Face value and calibrated share the RR28 draw, so c_cal is exactly the
-    ratio of their log multipliers, draw by draw."""
+    """Face value and every calibration share the RR28 draw, so each c is exactly
+    the ratio of their log multipliers, draw by draw."""
     _, face = m.scenario("face_value", 28, 0)
-    _, cal = m.scenario("calibrated", 28, 0)
-    assert np.allclose(cal / face, m.q["c_calibrated"])
+    for member in CALIBRATION_STRATA:
+        _, cal = m.scenario(member, 28, 0)
+        assert np.allclose(cal / face, m.q[f"c:{member}:linear"]), member
 
 
 def test_calibrated_multiplier_formula(m):
-    """DESIGN decision 3: c_cal = ln(RR28 x RRR) / ln(RR28); above 1 for the
-    intake-v-intake stratum (RRR 0.98)."""
+    """DESIGN decision 3: c = ln(RR28 x RRR) / ln(RR28), per draw; below 1 for
+    the main (all-pairs) calibration, above 1 for the intake stratum (RRR 0.98)."""
     rr = m.rows["rr28_all"].estimate
-    rrr = m.rows["rrr_intake"].estimate
-    c_point = math.log(rr * rrr) / math.log(rr)
-    assert c_point > 1
-    assert np.median(m.q["c_calibrated"]) == pytest.approx(c_point, rel=0.02)
-    rrr_all = m.rows["rrr_all_cause"].estimate
-    assert math.log(rr * rrr_all) / math.log(rr) < 1
+    for member, role in CALIBRATION_STRATA.items():
+        rrr = m.rows[role].estimate
+        c_point = math.log(rr * rrr) / math.log(rr)
+        med = np.median(m.q[f"c:{member}:linear"])
+        assert med == pytest.approx(c_point, abs=0.03), member
+        assert (c_point > 1) == (rrr < 1), member
+
+
+def test_curve_anchor_uses_the_curve_at_one_serving(m):
+    """Anchor 'curve': c = 1 + ln RRR / ln RR_curve(28), with RR_curve(28) the
+    main curve's value at Aune's serving (its running minimum, 0.82)."""
+    serving = m.rows["rr28_all"].per_grams()
+    rr_curve = math.exp(float(m.curves["main"].f(serving)))
+    assert rr_curve == pytest.approx(min(data.aune_curve("all_cause_mortality")[1]))
+    rrr = m.rows["rrr_all_cause"].estimate
+    c_point = math.log(rr_curve * rrr) / math.log(rr_curve)
+    med = np.median(m.q["c:calibrated_mortality:curve"])
+    assert med == pytest.approx(c_point, abs=0.03)
+    _, lin = m.scenario("calibrated_mortality", 15, 0)
+    _, cur = m.scenario("calibrated_mortality", 15, 0, Variant(anchor="curve"))
+    assert np.mean(cur) > np.mean(lin)  # less protective (log RR closer to 0)
+
+
+def _pair_rows():
+    with PAIRS_CSV.open(encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def _as_rows(lines):
+    return [
+        data.EvidenceRow(
+            id=f"pair{i}",
+            kind="calibration_corpus",
+            measure="RRR",
+            unit=None,
+            estimate=float(x["rrr"]),
+            ci_low=float(x["ci_low"]),
+            ci_high=float(x["ci_high"]),
+            ci_level=0.95,
+            pi_low=None,
+            pi_high=None,
+            support=None,
+            notes=None,
+            source={},
+            verified={},
+        )
+        for i, x in enumerate(lines)
+    ]
+
+
+def test_pooling_reproduces_the_published_intake_stratum():
+    """pool_ratios on the 23 intake pairs read from Supplementary Figure 9 gives
+    the published 0.98 (0.93 to 1.04), prediction interval 0.90 to 1.07."""
+    lines = _pair_rows()
+    assert len(lines) == 23
+    pooled = pool_ratios(_as_rows(lines), "intake")
+    row = data.row("schwingshackl2021_rrr_intake_vs_intake")
+    for got, want in (
+        (pooled.estimate, row.estimate),
+        (pooled.ci_low, row.ci_low),
+        (pooled.ci_high, row.ci_high),
+        (pooled.pi_low, row.pi_low),
+        (pooled.pi_high, row.pi_high),
+    ):
+        assert round(got, 2) == pytest.approx(want, abs=0.01)
+
+
+def test_analog_pairs_match_the_readings(m):
+    """The six pooled evidence rows equal their lines in the 23-pair file, and
+    the pool is the ALA and Mediterranean-diet subset."""
+    lines = _pair_rows()
+    subset = [
+        x for x in lines if x["topic"] in ("alpha-linolenic acid", "Mediterranean diet")
+    ]
+    assert len(subset) == len(ANALOG_PAIR_IDS)
+    rows = [data.row(rid) for rid in ANALOG_PAIR_IDS]
+    assert sorted((r.estimate, r.ci_low, r.ci_high) for r in rows) == sorted(
+        (float(x["rrr"]), float(x["ci_low"]), float(x["ci_high"])) for x in subset
+    )
+    pooled = m.rows["rrr_analog"]
+    direct = pool_ratios(_as_rows(subset), "subset")
+    assert pooled.estimate == pytest.approx(direct.estimate)
+    assert pooled.pi_high == pytest.approx(direct.pi_high)
 
 
 def test_lognormal_draws_match_row_intervals(m):
@@ -99,10 +189,10 @@ def test_peanut_ldl_se_from_p_value(m):
     assert 2 * (1 - __import__("scipy").stats.norm.cdf(z)) == pytest.approx(0.472)
 
 
-def test_floor_is_linear_in_dose_and_ignores_background(m):
-    _, b10 = m.scenario("floor_high", 10, 0)
-    _, b20 = m.scenario("floor_high", 20, 0)
-    _, b20bg = m.scenario("floor_high", 20, 20)
+def test_ldl_pathway_is_linear_in_dose_and_ignores_background(m):
+    _, b10 = m.scenario("ldl_all", 10, 0)
+    _, b20 = m.scenario("ldl_all", 20, 0)
+    _, b20bg = m.scenario("ldl_all", 20, 20)
     assert np.allclose(b20, 2 * b10)
     assert np.array_equal(b20, b20bg)
     # 28.4 g/day of tree nuts lowers LDL by Del Gobbo's estimate, in mmol/L
@@ -135,6 +225,46 @@ def test_cause_restricted_multiplier(m):
     lm = m.log_mult("male", 60, 0, "cvd", beta)
     p = m.cause_share("male", 60, "cvd")
     assert np.allclose(np.exp(lm[0]), 1 - p + p * 0.8)
+
+
+def test_from_any_curve_ignores_the_first_grams(m):
+    """Sensitivity: the curve measured from Aune's first tabulated intake, so
+    nothing below it counts."""
+    g0 = ASSUMPTIONS["any_vs_none_g"]
+    f, main = m.curves["from_any"].f, m.curves["main"].f
+    assert np.all(f(np.linspace(0, g0, 11)) == 0)
+    for g in (10, 15, 28):
+        assert f(g) == pytest.approx(main(g) - main(g0))
+
+
+def test_age_weight(m):
+    at = ASSUMPTIONS["age_attenuation"]
+    w = m.age_weight("male", 40)
+    ages = m.base["male"].ages_from(40)
+    assert np.all(w[ages <= at["from_age"]] == 1)
+    assert np.all(w[ages >= at["to_age"]] == at["weight_at_end"])
+    assert np.all(np.diff(w) <= 0)
+
+
+def test_external_causes_left_out(m):
+    """The nonexternal structure applies the multiplier to 1 - external share."""
+    beta = np.array([math.log(0.8)])
+    lm = m.log_mult("male", 40, 0, "nonexternal", beta)
+    p = 1 - m.cause_share("male", 40, "external")
+    assert np.allclose(np.exp(lm[0]), 1 - p + p * 0.8)
+    assert 0 < p.min() and p.max() < 1
+
+
+def test_interpolated_gain_matches_exact(m):
+    """gain() interpolates the life table on a grid of multipliers; the error
+    against evaluating every draw is under 0.01 day."""
+    days = ASSUMPTIONS["days_per_year"]
+    for member in ("face_value", "calibrated", "calibrated_mortality", "ldl_chd"):
+        for v in (Variant(), Variant(attenuate_with_age=True)):
+            s, beta = m.scenario(member, 15, 0, v)
+            a = m.gain("female", 30, s, beta, attenuate=v.attenuate_with_age)
+            b = m.exact_gain("female", 30, s, beta, attenuate=v.attenuate_with_age)
+            assert np.max(np.abs(a - b)) * days < 0.01, member
 
 
 def test_ala_counted_inside_support():

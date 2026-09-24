@@ -2,7 +2,7 @@
 
     from whatnut.results import r
     r.verify()
-    r.le_gain("male", 40, 28, 0, "calibrated", "mean")   # years
+    r.le_gain("male", 40, 15, 0, "calibrated", "mean")   # years
     r.meta["n"], r.meta["seed"]
 
 ``r`` loads the file lazily on first use. Set WHATNUT_RESULTS to read another
@@ -111,9 +111,9 @@ class Results:
     def reference(self) -> dict[str, Any]:
         return self.data["reference"]
 
-    def bracket(self, sex: str, member: str, stat: str = "mean") -> float:
+    def scenario(self, sex: str, member: str, stat: str = "mean") -> float:
         """The reference case (years)."""
-        return float(self.reference["bracket"][sex][member][stat])
+        return float(self.reference["scenarios"][sex][member][stat])
 
     # ---- consistency -----------------------------------------------------
 
@@ -141,13 +141,13 @@ class Results:
             member = rest.removesuffix("_mean_days")
             days = self.le_gain(sex, a0, delta, bg, member) * self.days_per_year
             check(f"reference.headline_days.{name}", stored, float(f"{days:.6g}"))
-        # 2. the reference bracket is the grid's reference cell
+        # 2. the reference scenarios are the grid's reference cell
         for sex in SEXES:
             for member in self.members:
                 for stat in self.stats:
                     check(
-                        f"reference.bracket.{sex}.{member}.{stat}",
-                        self.bracket(sex, member, stat),
+                        f"reference.scenarios.{sex}.{member}.{stat}",
+                        self.scenario(sex, member, stat),
                         self.le_gain(sex, a0, delta, bg, member, stat),
                     )
         # 3. marginal value of the next grams is the grid's delta = step column

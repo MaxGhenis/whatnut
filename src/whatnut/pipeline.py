@@ -20,13 +20,20 @@ import numpy as np
 from whatnut import data
 from whatnut.lifetable import baseline_ex
 from whatnut.model import (
+    ANALOG_PAIR_IDS,
     ASSUMPTIONS,
+    CALIBRATION_ANCHORS,
     CALIBRATION_STRATA,
     EVIDENCE_IDS,
+    LDL_MEMBERS,
+    MAIN,
+    MAIN_MEMBERS,
     MEMBER_DESCRIPTIONS,
     MEMBERS,
+    SCENARIO_LABEL,
     STAT_NAMES,
     Model,
+    Variant,
     dial_name,
     summarize,
 )
@@ -39,6 +46,9 @@ SEXES = tuple(ASSUMPTIONS["grid"]["sex"])
 REF = ASSUMPTIONS["reference"]
 DAYS = ASSUMPTIONS["days_per_year"]
 SIG_FIGS = 6
+
+# The scenarios the figures draw beside the LDL-pathway range.
+FIGURE_MEMBERS = ("ldl_chd", "ldl_all", "calibrated", "face_value")
 
 
 def key(x: float) -> str:
@@ -68,21 +78,26 @@ class Scenarios:
         member: str,
         delta: float,
         background: float,
-        years: int | None = None,
-        curve: str = "main",
+        v: Variant = MAIN,
     ) -> dict[str, float]:
         m = self.m
         member = _alias(member)
-        if member in ("floor_low", "floor_high"):
-            what: tuple = (delta,)
+        if member in LDL_MEMBERS:
+            what: tuple = (delta, v.ldl)
         elif member == "cvd_only":
             what = (m.cvd_curve.delta_f(background, delta),)
         else:
-            what = (curve, m.curves[curve].delta_f(background, delta))
-        k = (sex, a0, member, years, *what)
+            what = (
+                v.curve,
+                v.rr_role,
+                v.anchor,
+                v.exclude_external,
+                m.curves[v.curve].delta_f(background, delta),
+            )
+        k = (sex, a0, member, v.phase_in_years, v.attenuate_with_age, *what)
         if k not in self.cache:
-            structure, beta = m.scenario(member, delta, background, curve)
-            self.cache[k] = summarize(m.gain(sex, a0, structure, beta, years))
+            gain = m.variant_gain(sex, a0, member, delta, background, v)
+            self.cache[k] = summarize(gain)
         return self.cache[k]
 
 
@@ -111,34 +126,21 @@ def grid(sc: Scenarios) -> dict:
 def reference(sc: Scenarios, grid_out: dict, rounded_grid: dict) -> dict:
     m = sc.m
     a0, d, b = REF["a0"], REF["delta"], REF["background"]
-    bracket = {sex: grid_out[sex][key(a0)][key(d)][key(b)] for sex in SEXES}
+    scenarios = {sex: grid_out[sex][key(a0)][key(d)][key(b)] for sex in SEXES}
     # headline numbers, derived from the rounded grid exactly as results.verify does
     cell = {sex: rounded_grid[sex][key(a0)][key(d)][key(b)] for sex in SEXES}
     headline = {
         f"{sex}_{mem}_mean_days": cell[sex][mem]["mean"] * DAYS
-        for sex, mem in (
-            ("female", "calibrated"),
-            ("male", "calibrated"),
-            ("male", "face_value"),
-        )
+        for sex in SEXES
+        for mem in MAIN_MEMBERS
     }
-    # floor sensitivity: Del Gobbo's 61 controlled trials, randomized and not
-    all_trials = {}
-    for sex in SEXES:
-        all_trials[sex] = {}
-        for mem in ("floor_low", "floor_high"):
-            structure, _ = m.scenario(mem, d, b)
-            beta = m.q[
-                "ln_ctt_chd" if mem == "floor_low" else "ln_ctt_all"
-            ] * m.ldl_mmol_reduction(d, "tree_all_trials")
-            all_trials[sex][mem] = summarize(m.gain(sex, a0, structure, beta))
     return {
         "a0": a0,
         "delta": d,
         "background": b,
-        "bracket": bracket,
+        "table_deltas": ASSUMPTIONS["reference_table_deltas"],
+        "scenarios": scenarios,
         "headline_days": headline,
-        "floor_all_trials": all_trials,
         "baseline_le": {sex: m.baseline_le(sex, a0) for sex in SEXES},
     }
 
@@ -159,63 +161,169 @@ def marginal(grid_out: dict) -> dict:
 
 
 def calibration(m: Model) -> dict:
-    out = {}
-    rr28 = m.rows["rr28_all"].estimate
+    """Each stratum's ratio, and the share of the association it keeps (c) under
+    both anchors: Aune's linear per-28 g estimate and the main curve's own value
+    at 28 g."""
+    rr28 = m.rows["rr28_all"]
+    serving = rr28.per_grams()
+    rr_curve = math.exp(float(m.curves["main"].f(serving)))
+    anchors = {"linear": rr28.estimate, "curve": rr_curve}
+    out: dict = {
+        "rr28_row": rr28.id,
+        "serving_g": serving,
+        "anchor_rr": anchors,
+        "formula": "c = ln(RR_anchor * RRR) / ln(RR_anchor), per draw",
+        "strata": {},
+    }
     for member, role in CALIBRATION_STRATA.items():
         r = m.rows[role]
-        out[member] = {
+        entry = {
             "row": r.id,
             "rrr": r.estimate,
             "rrr_ci": [r.ci_low, r.ci_high],
             "rrr_pi": [r.pi_low, r.pi_high],
-            "rr28": rr28,
-            "c_point": math.log(rr28 * r.estimate) / math.log(rr28),
-            "c_draws": summarize(m.q[f"c_{member}"]),
-            "share_draws_c_above_1": float(np.mean(m.q[f"c_{member}"] > 1)),
-            "share_draws_c_below_0": float(np.mean(m.q[f"c_{member}"] < 0)),
+        }
+        if role == "rrr_analog":
+            entry["pair_rows"] = list(ANALOG_PAIR_IDS)
+        for anchor in CALIBRATION_ANCHORS:
+            a = anchors[anchor]
+            c = m.q[f"c:{member}:{anchor}"]
+            entry[anchor] = {
+                "c_point": math.log(a * r.estimate) / math.log(a),
+                "c_draws": summarize(c),
+                "share_draws_c_above_1": float(np.mean(c > 1)),
+                "share_draws_c_below_0": float(np.mean(c < 0)),
+            }
+        out["strata"][member] = entry
+    return out
+
+
+# Sensitivity rows: (id, variant, {column: scenario}). Columns are the scenarios
+# a choice can move; a row leaves out the columns it does not change.
+SENSITIVITY_ROWS = (
+    (
+        "main",
+        MAIN,
+        {"face_value": "face_value", "calibrated": "calibrated", "ldl_all": "ldl_all"},
+    ),
+    (
+        "curve_as_printed",
+        Variant(curve="pchip_as_printed"),
+        {"face_value": "face_value", "calibrated": "calibrated"},
+    ),
+    (
+        "curve_linear_plateau",
+        Variant(curve="linear_plateau"),
+        {"face_value": "face_value", "calibrated": "calibrated"},
+    ),
+    (
+        "curve_from_any",
+        Variant(curve="from_any"),
+        {"face_value": "face_value", "calibrated": "calibrated"},
+    ),
+    (
+        "rr_fu10",
+        Variant(rr_role="rr28_fu10"),
+        {"face_value": "face_value", "calibrated": "calibrated"},
+    ),
+    (
+        "rr_large",
+        Variant(rr_role="rr28_large"),
+        {"face_value": "face_value", "calibrated": "calibrated"},
+    ),
+    (
+        "exclude_external",
+        Variant(exclude_external=True),
+        {"face_value": "face_value", "calibrated": "calibrated"},
+    ),
+    (
+        "attenuate_with_age",
+        Variant(attenuate_with_age=True),
+        {"face_value": "face_value", "calibrated": "calibrated", "ldl_all": "ldl_all"},
+    ),
+    (
+        "phase_in_0",
+        Variant(phase_in_years=0),
+        {"face_value": "face_value", "calibrated": "calibrated", "ldl_all": "ldl_all"},
+    ),
+    (
+        "phase_in_20",
+        Variant(phase_in_years=20),
+        {"face_value": "face_value", "calibrated": "calibrated", "ldl_all": "ldl_all"},
+    ),
+    ("ldl_all_trials", Variant(ldl="tree_all_trials"), {"ldl_all": "ldl_all"}),
+)
+BASELINE_2021_ROW = (
+    "baseline_2021",
+    MAIN,
+    {"face_value": "face_value", "calibrated": "calibrated", "ldl_all": "ldl_all"},
+)
+
+
+def sensitivity(sc: Scenarios, sc2021: Scenarios | None) -> dict:
+    a0, d, b = REF["a0"], REF["delta"], REF["background"]
+    rows: dict = {}
+    todo = [(sc, *row) for row in SENSITIVITY_ROWS]
+    if sc2021 is not None:
+        todo.append((sc2021, *BASELINE_2021_ROW))
+    for s, rid, v, cols in todo:
+        rows[rid] = {
+            "columns": cols,
+            "stats": {
+                sex: {col: s.stats(sex, a0, mem, d, b, v) for col, mem in cols.items()}
+                for sex in SEXES
+            },
+        }
+    calibrations = {
+        member: {
+            anchor: {
+                sex: sc.stats(sex, a0, member, d, b, Variant(anchor=anchor))
+                for sex in SEXES
+            }
+            for anchor in CALIBRATION_ANCHORS
+        }
+        for member in CALIBRATION_STRATA
+    }
+    serving = ASSUMPTIONS["reference_table_deltas"][-1]
+    at_serving = {
+        name: {
+            sex: {
+                mem: sc.stats(sex, a0, mem, serving, b, Variant(curve=name))
+                for mem in ("face_value", "calibrated")
+            }
+            for sex in SEXES
+        }
+        for name in sc.m.curves
+    }
+    out = {
+        "a0": a0,
+        "delta": d,
+        "background": b,
+        "rows": rows,
+        "calibrations": calibrations,
+        "curves_at_serving": {"delta": serving, "curves": at_serving},
+    }
+    if sc2021 is not None:
+        out["baseline_2021"] = {
+            "life_tables": data.life_table_source("2021"),
+            "cause_shares_year": sc2021.m.shares[SEXES[0]].year,
         }
     return out
 
 
-def phase_in(sc: Scenarios) -> dict:
-    a0, d, b = REF["a0"], REF["delta"], REF["background"]
-    return {
-        key(t): {
-            sex: {mem: sc.stats(sex, a0, mem, d, b, years=t) for mem in MEMBERS}
-            for sex in SEXES
-        }
-        for t in ASSUMPTIONS["phase_in_sensitivity_years"]
-    }
-
-
-def curves(sc: Scenarios) -> dict:
-    m = sc.m
-    a0, d, b = REF["a0"], REF["delta"], REF["background"]
-    step = ASSUMPTIONS["marginal_step_g"]
-    members = ("face_value", "calibrated")
+def curves(m: Model) -> dict:
     grams = list(range(ASSUMPTIONS["figure_dose_max_g"] + 1))
-    out = {}
-    for name, curve in m.curves.items():
-        out[name] = {
+    out = {
+        name: {
             "kind": curve.kind,
+            "start_g": curve.start_g,
             "rr_by_gram": {key(g): math.exp(float(curve.f(g))) for g in grams},
-            "reference": {
-                sex: {mem: sc.stats(sex, a0, mem, d, b, curve=name) for mem in members}
-                for sex in SEXES
-            },
-            "marginal": {
-                sex: {
-                    key(bg): {
-                        mem: sc.stats(sex, a0, mem, step, bg, curve=name)
-                        for mem in members
-                    }
-                    for bg in ASSUMPTIONS["grid"]["background"]
-                }
-                for sex in SEXES
-            },
         }
+        for name, curve in m.curves.items()
+    }
     out["cvd_main"] = {
         "kind": m.cvd_curve.kind,
+        "start_g": m.cvd_curve.start_g,
         "rr_by_gram": {key(g): math.exp(float(m.cvd_curve.f(g))) for g in grams},
     }
     return out
@@ -227,60 +335,65 @@ def ala_counted(background: float, nut_ala: float) -> float:
     return max(0, min(background + nut_ala, hi) - max(background, lo))
 
 
+ALA_MEMBERS = ("face_value", "calibrated")
+ALA_SLOPES = ("ala", "ala_fixed")
+
+
 def ala(m: Model) -> dict:
     a0, d, b = REF["a0"], REF["delta"], REF["background"]
     comp = data.composition()
     basis = data.composition_basis_g()
-    backgrounds = [
-        m.rows["ala_background"].estimate,
-        ASSUMPTIONS["ala_background_high_g"],
-    ]
+    backgrounds = {
+        "average": {sex: m.rows[f"ala_background_{sex}"].estimate for sex in SEXES},
+        "high": {sex: ASSUMPTIONS["ala_background_high_g"] for sex in SEXES},
+    }
     out: dict = {
-        "rr_per_g_row": m.rows["ala"].id,
+        "slope_rows": {s: m.rows[s].id for s in ALA_SLOPES},
         "support_g": ASSUMPTIONS["ala_support_g"],
         "background_g": backgrounds,
-        "background_row": m.rows["ala_background"].id,
+        "background_rows": {sex: m.rows[f"ala_background_{sex}"].id for sex in SEXES},
         "by_background": {},
     }
     base = {
-        (sex, mem): m.gain(sex, a0, *m.scenario(mem, d, b))
+        (sex, mem): m.variant_gain(sex, a0, mem, d, b)
         for sex in SEXES
-        for mem in ("face_value", "calibrated")
+        for mem in ALA_MEMBERS
     }
-    for bg in backgrounds:
+    for bg_name, bgs in backgrounds.items():
         per_nut = {}
         for nut in ASSUMPTIONS["nuts"]:
             nut_ala = d * comp[nut]["ala_g"] / basis
-            counted = ala_counted(bg, nut_ala)
-            entry = {
-                "ala_basis": comp[nut]["ala_basis"],
-                "nut_ala_g": nut_ala,
-                "counted_ala_g": counted,
-            }
+            entry: dict = {"ala_basis": comp[nut]["ala_basis"], "nut_ala_g": nut_ala}
             for sex in SEXES:
-                entry[sex] = {}
-                for mem in ("face_value", "calibrated"):
-                    gain = m.gain(sex, a0, *m.scenario(mem, d, b, ala_g=counted))
-                    entry[sex][mem] = {
-                        "total": summarize(gain),
-                        "increment": summarize(gain - base[(sex, mem)]),
-                    }
+                counted = ala_counted(bgs[sex], nut_ala)
+                entry[sex] = {"counted_ala_g": counted}
+                for mem in ALA_MEMBERS:
+                    for slope in ALA_SLOPES:
+                        gain = m.variant_gain(
+                            sex, a0, mem, d, b, ala_g=counted, ala_role=slope
+                        )
+                        entry[sex][f"{mem}:{slope}"] = {
+                            "total": summarize(gain),
+                            "increment": summarize(gain - base[(sex, mem)]),
+                        }
             per_nut[nut] = entry
-        out["by_background"][key(bg)] = per_nut
+        out["by_background"][bg_name] = per_nut
     return out
+
+
+COST_MEMBERS = (
+    "calibrated",
+    "calibrated_mortality",
+    "face_value",
+    "ldl_all",
+    "ldl_chd",
+)
 
 
 def cost(m: Model) -> dict:
     a0, d, b = REF["a0"], REF["delta"], REF["background"]
     prices = data.prices_by_nut()
     dates = data.price_dates()
-    members = (
-        "calibrated",
-        "calibrated_all_cause",
-        "face_value",
-        "floor_high",
-        "floor_low",
-    )
     tree_excluded = set(ASSUMPTIONS["tree_nuts_exclude"])
     kg_per_year = d / ASSUMPTIONS["g_per_kg"] * DAYS
     # per sex and member: (discounted LY gained, discounted person-years treated,
@@ -288,14 +401,9 @@ def cost(m: Model) -> dict:
     memo: dict[tuple, tuple[float, float, float, float]] = {}
 
     def outcomes(sex: str, mem: str, group: str) -> tuple[float, float, float, float]:
-        k = (sex, mem, group if mem.startswith("floor") else "class")
+        k = (sex, mem, group if mem in LDL_MEMBERS else "class")
         if k not in memo:
-            if mem.startswith("floor"):
-                structure = "chd" if mem == "floor_low" else "all"
-                slope = m.q["ln_ctt_chd" if mem == "floor_low" else "ln_ctt_all"]
-                beta = slope * m.ldl_mmol_reduction(d, group)
-            else:
-                structure, beta = m.scenario(mem, d, b)
+            structure, beta = m.scenario(mem, d, b, Variant(ldl=group))
             w = m.discount_weights(sex, a0)
             ly_disc = m.gain(sex, a0, structure, beta, weights=w)
             ly = m.gain(sex, a0, structure, beta)
@@ -320,13 +428,13 @@ def cost(m: Model) -> dict:
             "retailers": p["retailers"],
             "price_dates": list(dates[nut]),
             "usd_per_year": usd_year,
-            "floor_ldl_source": EVIDENCE_IDS[
+            "ldl_source": EVIDENCE_IDS[
                 "ldl_peanut" if group == "peanut" else "ldl_tree"
             ],
         }
         for sex in SEXES:
             entry[sex] = {}
-            for mem in members:
+            for mem in COST_MEMBERS:
                 ly_disc, py_disc, ly, py = outcomes(sex, mem, group)
                 entry[sex][mem] = {
                     "discounted_life_years": ly_disc,
@@ -414,31 +522,22 @@ def fadnes(m: Model, m2021: Model | None) -> dict:
     }
 
 
-def baseline_sensitivity_2021(sc2021: Scenarios) -> dict:
-    a0, d, b = REF["a0"], REF["delta"], REF["background"]
-    return {
-        "life_tables": data.life_table_source("2021"),
-        "cause_shares_year": sc2021.m.shares[SEXES[0]].year,
-        "reference": {
-            sex: {mem: sc2021.stats(sex, a0, mem, d, b) for mem in MEMBERS}
-            for sex in SEXES
-        },
-    }
-
-
 def baseline_le(m: Model) -> dict:
-    ages = sorted(
-        {*ASSUMPTIONS["grid"]["a0"], *range(0, m.base[SEXES[0]].omega + 1, 10)}
-    )
-    out = {}
+    """The engine's baseline life expectancy against the published table: every
+    age's largest gap, and the table at the decades and the grid's ages."""
+    omega = m.base[SEXES[0]].omega
+    shown = sorted({*ASSUMPTIONS["grid"]["a0"], *range(0, omega + 1, 10)})
+    out: dict = {"max_gap_days": {}}
     for sex in SEXES:
         ours = baseline_ex(m.base[sex])
+        gap = np.abs(np.asarray(ours) - m.base[sex].ex_published)
+        out["max_gap_days"][sex] = float(np.max(gap)) * DAYS
         out[sex] = {
             key(a): {
                 "model": float(ours[a]),
                 "published": float(m.base[sex].ex_published[a]),
             }
-            for a in ages
+            for a in shown
         }
     return out
 
@@ -450,11 +549,19 @@ def figure_data(sc: Scenarios) -> dict:
     lo_age, hi_age = ASSUMPTIONS["figure_age_range"]
     ages = range(lo_age, hi_age + 1)
     bgs = range(ASSUMPTIONS["figure_background_max_g"] + 1)
-    dose_members = ("floor_low", "floor_high", "calibrated", "face_value")
 
     def series(xs, fn: Callable[[float], dict]) -> dict[str, list[float]]:
         cols = [fn(x) for x in xs]
         return {s: [c[s] for c in cols] for s in STAT_NAMES}
+
+    def panels(xs, fn: Callable[[str, str, float], dict]) -> dict:
+        return {
+            sex: {
+                mem: series(xs, lambda x, sex=sex, mem=mem: fn(sex, mem, x))
+                for mem in FIGURE_MEMBERS
+            }
+            for sex in SEXES
+        }
 
     m = sc.m
     max_g = ASSUMPTIONS["figure_dose_max_g"]
@@ -471,42 +578,18 @@ def figure_data(sc: Scenarios) -> dict:
         "days_by_dose": {
             "a0": a0,
             "grams": list(grams),
-            **{
-                sex: {
-                    mem: series(
-                        grams, lambda g, sex=sex, mem=mem: sc.stats(sex, a0, mem, g, 0)
-                    )
-                    for mem in dose_members
-                }
-                for sex in SEXES
-            },
+            **panels(grams, lambda sex, mem, g: sc.stats(sex, a0, mem, g, 0)),
         },
         "days_by_age": {
             "delta": d,
             "ages": list(ages),
-            **{
-                sex: {
-                    "calibrated": series(
-                        ages, lambda a, sex=sex: sc.stats(sex, a, "calibrated", d, 0)
-                    )
-                }
-                for sex in SEXES
-            },
+            **panels(ages, lambda sex, mem, a: sc.stats(sex, a, mem, d, 0)),
         },
         "marginal_by_background": {
             "a0": a0,
             "step_g": step,
             "backgrounds": list(bgs),
-            **{
-                sex: {
-                    mem: series(
-                        bgs,
-                        lambda bg, sex=sex, mem=mem: sc.stats(sex, a0, mem, step, bg),
-                    )
-                    for mem in ("calibrated", "face_value")
-                }
-                for sex in SEXES
-            },
+            **panels(bgs, lambda sex, mem, bg: sc.stats(sex, a0, mem, step, bg)),
         },
     }
 
@@ -564,6 +647,8 @@ def meta(m: Model) -> dict:
             "cause_shares_year": m.shares[SEXES[0]].year,
         },
         "members": MEMBER_DESCRIPTIONS,
+        "main_members": list(MAIN_MEMBERS),
+        "scenario_labels": SCENARIO_LABEL,
         "grid_axes": {
             **ASSUMPTIONS["grid"],
             "member": list(MEMBERS),
@@ -595,14 +680,12 @@ def compute(n: int | None = None, seed: int | None = None) -> dict:
     out["marginal_10g"] = marginal(out["grid"])
     out["calibration"] = calibration(m)
     out["c_dial"] = {dial_name(c): c for c in ASSUMPTIONS["c_dial"]}
-    out["phase_in"] = phase_in(sc)
-    out["curves"] = curves(sc)
+    out["sensitivity"] = sensitivity(sc, None if m2021 is None else Scenarios(m2021))
+    out["curves"] = curves(m)
     out["ala"] = ala(m)
     out["cost"] = cost(m)
     out["fadnes"] = fadnes(m, m2021)
     out["baseline_le"] = baseline_le(m)
-    if m2021 is not None:
-        out["baseline_2021"] = baseline_sensitivity_2021(Scenarios(m2021))
     out["figures"] = figure_data(sc)
     out["meta"] = meta(m)
     return out
@@ -649,7 +732,7 @@ STYLE = {
     "line_width": 1.6,
     "hairline": 0.6,
     "band_alpha": 0.14,
-    "floor_alpha": 0.45,
+    "ldl_alpha": 0.45,
     "marker_size": 5.5,
     "interval_80_width": 3.2,
     "interval_95_width": 1.0,
@@ -666,7 +749,7 @@ FIGURE_FILES = (
     "days_by_dose.png",
     "days_by_age.png",
     "marginal_by_background.png",
-    "bracket_reference.png",
+    "scenarios_reference.png",
     "cost_per_life_year.png",
 )
 
@@ -789,53 +872,55 @@ def fig_dose_curves(res: dict, path: Path, plt) -> None:
     plt.close(fig)
 
 
-def fig_days_by_dose(res: dict, path: Path, plt) -> None:
-    s, fd = STYLE, res["figures"]["days_by_dose"]
-    g = fd["grams"]
+def _scenario_panels(fd: dict, xs: list, xlabel: str, path: Path, plt) -> None:
+    """Women and men side by side: the LDL-pathway range (coronary to all
+    deaths, means), the main calibration's 80% interval and mean, and face value."""
+    s = STYLE
     fig, axes = plt.subplots(
         1, 2, figsize=(s["width_in"], s["height_in"]), sharey=True, layout="constrained"
     )
     for ax, sex in zip(axes, SEXES):
         d = fd[sex]
         ax.fill_between(
-            g,
-            _days(d["floor_low"]["mean"]),
-            _days(d["floor_high"]["mean"]),
+            xs,
+            _days(d["ldl_chd"]["mean"]),
+            _days(d["ldl_all"]["mean"]),
             color=s["aqua"],
-            alpha=s["floor_alpha"],
+            alpha=s["ldl_alpha"],
             linewidth=0,
-            label="Randomized floor (low to high)",
+            label=f"{SCENARIO_LABEL['ldl_chd'].split(',')[0]} (coronary to all deaths)",
         )
         ax.fill_between(
-            g,
+            xs,
             _days(d["calibrated"]["p10"]),
             _days(d["calibrated"]["p90"]),
             color=s["blue"],
             alpha=s["band_alpha"],
             linewidth=0,
-            label="Calibrated, 80% interval",
+            label=f"{SCENARIO_LABEL['calibrated']}, 80% interval",
         )
         ax.plot(
-            g,
+            xs,
             _days(d["calibrated"]["mean"]),
             color=s["blue"],
             lw=s["line_width"],
-            label="Calibrated, mean",
+            label=SCENARIO_LABEL["calibrated"],
         )
         ax.plot(
-            g,
+            xs,
             _days(d["face_value"]["mean"]),
             color=s["orange"],
             lw=s["line_width"],
-            label="Face value, mean",
+            label=SCENARIO_LABEL["face_value"],
         )
         ax.set_title(
             SEX_LABEL[sex], loc="left", color=s["ink"], fontsize=s["font_size"]
         )
-        ax.set_xlim(g[0], g[-1])
-        ax.set_xlabel("Nuts added (g/day)")
+        ax.set_xlim(xs[0], xs[-1])
+        ax.set_xlabel(xlabel)
         _thousands(ax)
-    axes[0].set_ylim(bottom=0)
+    for ax in axes:
+        ax.axhline(0, color=s["axis"], lw=s["hairline"])
     axes[0].set_ylabel("Life expectancy gained (days)")
     handles, labels = axes[0].get_legend_handles_labels()
     order = [3, 2, 1, 0]
@@ -849,104 +934,41 @@ def fig_days_by_dose(res: dict, path: Path, plt) -> None:
     plt.close(fig)
 
 
+def fig_days_by_dose(res: dict, path: Path, plt) -> None:
+    fd = res["figures"]["days_by_dose"]
+    _scenario_panels(fd, fd["grams"], "Nuts added (g/day)", path, plt)
+
+
 def fig_days_by_age(res: dict, path: Path, plt) -> None:
-    s, fd = STYLE, res["figures"]["days_by_age"]
-    ages = fd["ages"]
-    fig, ax = plt.subplots(
-        figsize=(s["width_in"], s["height_in"]), layout="constrained"
-    )
-    for sex in SEXES:
-        d, color = fd[sex]["calibrated"], s[SEX_COLOR[sex]]
-        ax.fill_between(
-            ages,
-            _days(d["p10"]),
-            _days(d["p90"]),
-            color=color,
-            alpha=s["band_alpha"],
-            linewidth=0,
-        )
-        ax.plot(
-            ages,
-            _days(d["mean"]),
-            color=color,
-            lw=s["line_width"],
-            label=f"{SEX_LABEL[sex]}, mean and 80% interval",
-        )
-        ax.annotate(
-            SEX_LABEL[sex],
-            (ages[-1], _days(d["mean"])[-1]),
-            xytext=(4, 0),
-            textcoords="offset points",
-            va="center",
-            color=s["ink_secondary"],
-        )
-    ax.set_xlim(ages[0], ages[-1])
-    ax.set_ylim(bottom=0)
-    ax.set_xlabel("Age at which the person starts eating nuts (years)")
-    ax.set_ylabel("Life expectancy gained (days)")
-    _thousands(ax)
-    ax.legend(loc="upper right")
-    _save(fig, path)
-    plt.close(fig)
+    fd = res["figures"]["days_by_age"]
+    _scenario_panels(fd, fd["ages"], "Age when nuts start (years)", path, plt)
 
 
 def fig_marginal(res: dict, path: Path, plt) -> None:
-    s, fd = STYLE, res["figures"]["marginal_by_background"]
-    bgs = fd["backgrounds"]
-    fig, ax = plt.subplots(
-        figsize=(s["width_in"], s["height_in"]), layout="constrained"
+    fd = res["figures"]["marginal_by_background"]
+    _scenario_panels(
+        fd,
+        fd["backgrounds"],
+        f"Nuts already eaten (g/day), before adding {fd['step_g']} g/day",
+        path,
+        plt,
     )
-    for sex in SEXES:
-        d, color = fd[sex]["calibrated"], s[SEX_COLOR[sex]]
-        ax.fill_between(
-            bgs,
-            _days(d["p10"]),
-            _days(d["p90"]),
-            color=color,
-            alpha=s["band_alpha"],
-            linewidth=0,
-        )
-        ax.plot(
-            bgs,
-            _days(d["mean"]),
-            color=color,
-            lw=s["line_width"],
-            label=f"{SEX_LABEL[sex]}, mean and 80% interval",
-        )
-    ax.set_xlim(bgs[0], bgs[-1])
-    ax.set_ylim(bottom=0)
-    ax.set_xlabel(f"Nuts already eaten (g/day), before adding {fd['step_g']} g/day")
-    ax.set_ylabel("Life expectancy gained (days)")
-    _thousands(ax)
-    ax.legend(loc="upper right")
-    _save(fig, path)
-    plt.close(fig)
 
 
-BRACKET_ROWS = (
-    ("face_value", "Face value (c = 1)"),
-    ("calibrated", "Calibrated: diet-intake stratum"),
-    ("calibrated_overall", "Calibrated: all pairs"),
-    ("calibrated_all_cause", "Calibrated: all-cause stratum"),
-    ("cvd_only", "CVD deaths only"),
-    ("floor_high", "Randomized floor, high"),
-    ("floor_low", "Randomized floor, low"),
-)
-
-
-def fig_bracket(res: dict, path: Path, plt) -> None:
+def fig_scenarios(res: dict, path: Path, plt) -> None:
     from matplotlib.lines import Line2D
 
     s = STYLE
-    br = res["reference"]["bracket"]
+    ref = res["reference"]
+    rows = list(reversed(res["meta"]["main_members"]))  # face value on top
     fig, ax = plt.subplots(
         figsize=(s["width_in"], s["tall_height_in"]), layout="constrained"
     )
-    n = len(BRACKET_ROWS)
-    for i, (mem, _) in enumerate(BRACKET_ROWS):
+    n = len(rows)
+    for i, mem in enumerate(rows):
         y0 = n - 1 - i
         for sex, sign in zip(SEXES, (1, -1)):
-            st, color = br[sex][mem], s[SEX_COLOR[sex]]
+            st, color = ref["scenarios"][sex][mem], s[SEX_COLOR[sex]]
             y = y0 + sign * s["row_offset"]
             ax.plot(
                 _days([st["p2_5"], st["p97_5"]]),
@@ -970,13 +992,13 @@ def fig_bracket(res: dict, path: Path, plt) -> None:
                 markeredgewidth=s["hairline"] * 2,
             )
     ax.set_yticks(range(n))
-    ax.set_yticklabels([label for _, label in reversed(BRACKET_ROWS)])
+    ax.set_yticklabels([SCENARIO_LABEL[mem] for mem in reversed(rows)])
     ax.tick_params(axis="y", length=0)
     ax.grid(axis="y", visible=False)
     ax.axvline(0, color=s["axis"], lw=s["hairline"])
     ax.set_xlabel(
-        f"Life expectancy gained (days), age {res['reference']['a0']}, "
-        f"{res['reference']['background']} to {res['reference']['delta']} g/day"
+        f"Life expectancy gained (days), age {ref['a0']}, "
+        f"{ref['background']} to {ref['delta']} g/day"
     )
     _thousands(ax, "x")
     handles = [
@@ -1011,30 +1033,34 @@ NUT_LABEL = {
     "peanut": "Peanut",
 }
 
+# filled markers: the main calibration; hollow: face value
+COST_MARKERS = (("calibrated", True), ("face_value", False))
+
 
 def fig_cost(res: dict, path: Path, plt) -> None:
     from matplotlib.lines import Line2D
 
     s, c = STYLE, res["cost"]
-    member = "calibrated"
     nuts = sorted(c["by_nut"], key=lambda k: c["by_nut"][k]["usd_per_year"])
     fig, ax = plt.subplots(
-        figsize=(s["width_in"], s["height_in"]), layout="constrained"
+        figsize=(s["width_in"], s["tall_height_in"]), layout="constrained"
     )
     n = len(nuts)
     for i, nut in enumerate(nuts):
         y0 = n - 1 - i
         for sex, sign in zip(SEXES, (1, -1)):
-            v = c["by_nut"][nut][sex][member]["usd_per_life_year"]
-            ax.plot(
-                [v],
-                [y0 + sign * s["row_offset"]],
-                "o",
-                color=s[SEX_COLOR[sex]],
-                markersize=s["marker_size"],
-                markeredgecolor=s["surface"],
-                markeredgewidth=s["hairline"] * 2,
-            )
+            color = s[SEX_COLOR[sex]]
+            for member, filled in COST_MARKERS:
+                v = c["by_nut"][nut][sex][member]["usd_per_life_year"]
+                ax.plot(
+                    [v],
+                    [y0 + sign * s["row_offset"]],
+                    "o",
+                    color=color,
+                    markerfacecolor=color if filled else s["surface"],
+                    markersize=s["marker_size"],
+                    markeredgewidth=s["hairline"] * 2,
+                )
     ax.set_yticks(range(n))
     ax.set_yticklabels(
         [
@@ -1047,7 +1073,7 @@ def fig_cost(res: dict, path: Path, plt) -> None:
     ax.set_xlim(left=0)
     ax.set_xlabel(
         f"Cost per life-year gained (US$, {c['discount_rate']:.0%} discounting), "
-        f"calibrated, {c['delta']} g/day from age {c['a0']}"
+        f"{c['delta']} g/day from age {c['a0']}"
     )
     _thousands(ax, "x")
     handles = [
@@ -1060,10 +1086,22 @@ def fig_cost(res: dict, path: Path, plt) -> None:
             markersize=s["marker_size"],
         )
         for sex in SEXES
+    ] + [
+        Line2D(
+            [],
+            [],
+            color=s["ink_secondary"],
+            marker="o",
+            lw=0,
+            markersize=s["marker_size"],
+            markerfacecolor=s["ink_secondary"] if filled else s["surface"],
+        )
+        for _, filled in COST_MARKERS
     ]
-    fig.legend(
-        handles, [SEX_LABEL[x] for x in SEXES], loc="outside lower center", ncols=2
-    )
+    labels = [SEX_LABEL[x] for x in SEXES] + [
+        SCENARIO_LABEL[mem] for mem, _ in COST_MARKERS
+    ]
+    fig.legend(handles, labels, loc="outside lower center", ncols=4)
     _save(fig, path)
     plt.close(fig)
 
@@ -1076,7 +1114,7 @@ def write_figures(res: dict, figures_dir: Path = FIGURES) -> list[Path]:
         fig_days_by_dose,
         fig_days_by_age,
         fig_marginal,
-        fig_bracket,
+        fig_scenarios,
         fig_cost,
     )
     paths = []
@@ -1097,11 +1135,10 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     t0 = time.perf_counter()
     res = run(args.results, args.figures, n=args.n)
-    ref = res["reference"]["bracket"]
+    ref = res["reference"]["scenarios"]
     for sex in SEXES:
         row = ", ".join(
-            f"{mem} {ref[sex][mem]['mean'] * DAYS:,.0f}"
-            for mem in ("floor_low", "floor_high", "calibrated", "face_value")
+            f"{mem} {ref[sex][mem]['mean'] * DAYS:,.0f}" for mem in MAIN_MEMBERS
         )
         print(f"{sex}: days gained, age {REF['a0']}, 0 -> {REF['delta']} g/day: {row}")
     print(

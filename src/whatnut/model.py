@@ -1,19 +1,21 @@
-"""Dose curves, the bracket of causal multipliers, Monte Carlo draws, scenarios.
+"""Dose curves, the scenarios' causal multipliers, Monte Carlo draws.
 
 From age a0, nut intake moves from B to B + delta g/day and stays there. The
 hazard at age a is multiplied by
 
     M(a) = exp(phi(a) * c * [f(B + delta) - f(B)])
 
-for the all-cause members of the bracket, where f is a log relative risk curve
-with f(0) = 0, c the causal multiplier and phi the phase-in (lifetable.phase_in).
-Cause-restricted members apply the multiplier to one cause's share p(a) of the
+for the cohort-curve scenarios, where f is a log relative risk curve with
+f(0) = 0, c the causal multiplier and phi the phase-in (lifetable.phase_in).
+Cause-restricted scenarios apply the multiplier to one cause's share p(a) of the
 hazard: M(a) = 1 - p(a) + p(a) * exp(phi(a) * beta).
 
 Every effect size is read from data/evidence.yaml by row id (EVIDENCE_IDS) and
 every curve point from data/curves/; structural constants live in ASSUMPTIONS.
 Each draw's scenario reduces to one scalar log hazard multiplier beta, so the
-engine evaluates the life table for all draws at once (lifetable.person_years).
+engine evaluates the life table on a fine grid of multipliers spanning the draws
+and interpolates (Model.gain; Model.exact_gain evaluates every draw).
+A Variant names the choices a sensitivity changes from the main case.
 """
 
 from __future__ import annotations
@@ -24,6 +26,7 @@ from dataclasses import dataclass, field
 import numpy as np
 from scipy.interpolate import PchipInterpolator
 from scipy.optimize import brentq
+from scipy.stats import t as student_t
 
 from whatnut import data
 from whatnut.lifetable import Baseline, life_expectancy, phase_in
@@ -43,6 +46,11 @@ ASSUMPTIONS = {
     "mc_seed": 20260923,  # modeling choice: the date the design was fixed
     # mean plus 80% and 95% intervals (DESIGN "Uncertainty")
     "percentiles": {"p10": 10, "p90": 90, "p2_5": 2.5, "p97_5": 97.5},
+    # each draw's gain depends on the draw only through its scalar log
+    # multiplier, so the engine evaluates the life table on this many evenly
+    # spaced multipliers spanning the draws and interpolates linearly (tests
+    # check the error against exact evaluation is under 0.01 day)
+    "gain_grid_points": 1025,
     # --- intervention ---
     # linear phase-in to full effect: Fadnes et al. 2022's 10 years (DESIGN
     # "Intervention"), with 0 and 20 as sensitivities
@@ -50,16 +58,26 @@ ASSUMPTIONS = {
     "phase_in_sensitivity_years": [0, 10, 20],
     # costs and life-years both discounted at 3% (DESIGN "Cost")
     "discount_rate": 0.03,
-    # --- bracket (DESIGN "Bracket") ---
+    # --- scenarios (DESIGN "Scenarios") ---
     "c_dial": [0.1, 0.33, 1],
-    # modeling choice: the CVD-only carve-out takes the CVD curve at face value
+    # modeling choice: the cardiovascular-only scenario takes the CVD curve at
+    # face value
     "cvd_only_c": 1,
     # --- dose curve sensitivity (b) (DESIGN decision 2): 90% of the per-28 g
     # effect reached at 15 g/day; Aune 2016 reports no further reduction above
     # 15-20 g/day (row aune2016_allcause_per28g, notes)
     "plateau_dose_g": 15,
     "plateau_share": 0.9,
-    # --- randomized floor (DESIGN decision 4) ---
+    # --- any-versus-none sensitivity (DESIGN decision 12): Aune's first
+    # tabulated intake above zero (Table S15; tests check it against the curve).
+    # The curve is measured from here, so the step from none to this much
+    # counts for nothing.
+    "any_vs_none_g": 5,
+    # --- age sensitivity (DESIGN decision 12), a modeling choice: the log
+    # relative risk keeps full strength to 65, falls linearly to half at 85 and
+    # stays at half
+    "age_attenuation": {"from_age": 65, "to_age": 85, "weight_at_end": 0.5},
+    # --- LDL pathway (DESIGN decision 4) ---
     # Jafari Azad 2020 prints no doses in the abstract (full text paywalled);
     # modeling choice: read its WMD as the effect of one serving of the size Del
     # Gobbo 2015 standardizes to (the per-g/day dose of this row's unit)
@@ -77,8 +95,11 @@ ASSUMPTIONS = {
         "delta": [5, 10, 15, 20, 28, 40],
         "background": [0, 10, 20, 28],
     },
-    # reference case: age 40, from no nuts to 28 g/day (one Aune serving)
-    "reference": {"a0": 40, "delta": 28, "background": 0},
+    # reference case: age 40, from no nuts to 15 g/day, the intake at which the
+    # main curve first reaches its lowest relative risk (tests check)
+    "reference": {"a0": 40, "delta": 15, "background": 0},
+    # the reference table adds one Aune serving (28 g) beside the reference dose
+    "reference_table_deltas": [15, 28],
     "marginal_step_g": 10,
     "nuts": [
         "walnut",
@@ -100,11 +121,17 @@ ASSUMPTIONS = {
 # Evidence rows the model reads, by role.
 EVIDENCE_IDS = {
     "rr28_all": "aune2016_allcause_per28g",
+    # sensitivities: the same curve rescaled to other per-28 g estimates
+    "rr28_fu10": "aune2016_allcause_fu10plus",
+    "rr28_large": "aune2016_allcause_per28g_excl_small_studies",
     "rr28_cvd": "aune2016_cvd_per28g_mortality",
-    "rrr_intake": "schwingshackl2021_rrr_intake_vs_intake",
-    "rrr_all_cause": "schwingshackl2021_rrr_all_cause",
+    # calibration strata (Schwingshackl 2021); the main calibration uses all
+    # 71 pairs (DESIGN decision 3)
     "rrr_overall": "schwingshackl2021_rrr_overall",
-    # the floor is randomized evidence only: Del Gobbo's randomized trials
+    "rrr_all_cause": "schwingshackl2021_rrr_all_cause",
+    "rrr_protective": "schwingshackl2021_rrr_overall_cohort_rr_below_1",
+    "rrr_intake": "schwingshackl2021_rrr_intake_vs_intake",
+    # the LDL pathway is randomized evidence only: Del Gobbo's randomized trials
     "ldl_tree": "delgobbo2015_ldl_per28g_rct",
     # sensitivity: all 61 controlled trials, randomized and nonrandomized
     "ldl_tree_all_trials": "delgobbo2015_ldl_per28g",
@@ -112,7 +139,9 @@ EVIDENCE_IDS = {
     "ctt_chd": "ctt2010_chd_death_per_mmol",
     "ctt_all": "ctt2010_all_cause_per_mmol",
     "ala": "naghshi2021_ala_all_cause_per_g",
-    "ala_background": "wweia_1720_ala_adults",
+    "ala_fixed": "naghshi2021_ala_all_cause_per_g_fixed",
+    "ala_background_female": "wweia_1720_ala_women",
+    "ala_background_male": "wweia_1720_ala_men",
     # reference data: the baseline's sources and the reproduction targets
     "baseline_life_tables": "nvsr7406_life_tables_2023",
     "baseline_deaths": "nchs_mortality_2023",
@@ -120,13 +149,28 @@ EVIDENCE_IDS = {
     "fadnes_male": "fadnes2022_us_men_25g",
 }
 
+# The Schwingshackl pairs nearest to nuts (DESIGN decision 13): the three ALA
+# and three Mediterranean-diet intake pairs, pooled here by random effects.
+ANALOG_PAIR_IDS = (
+    "schwingshackl2021_pair_ala_cvd",
+    "schwingshackl2021_pair_ala_cvd_mortality",
+    "schwingshackl2021_pair_ala_chd",
+    "schwingshackl2021_pair_med_cvd_mortality",
+    "schwingshackl2021_pair_med_cv_events",
+    "schwingshackl2021_pair_med_all_cause",
+)
+
 # One column of standard-normal draws per uncertain input, in this order.
+# Alternative per-28 g estimates (rr28_fu10, rr28_large) and the fixed-effect
+# ALA slope reuse their main input's column (common random numbers).
 DRAW_COLUMNS = (
     "rr28_all",
     "rr28_cvd",
-    "rrr_intake",
-    "rrr_all_cause",
     "rrr_overall",
+    "rrr_all_cause",
+    "rrr_protective",
+    "rrr_intake",
+    "rrr_analog",
     "ldl_tree",
     "ldl_tree_all_trials",
     "ldl_peanut",
@@ -136,10 +180,14 @@ DRAW_COLUMNS = (
 )
 
 CALIBRATION_STRATA = {
-    "calibrated": "rrr_intake",
-    "calibrated_all_cause": "rrr_all_cause",
-    "calibrated_overall": "rrr_overall",
+    "calibrated": "rrr_overall",
+    "calibrated_mortality": "rrr_all_cause",
+    "calibrated_protective": "rrr_protective",
+    "calibrated_analog": "rrr_analog",
+    "calibrated_diet": "rrr_intake",
 }
+
+CALIBRATION_ANCHORS = ("linear", "curve")
 
 
 def dial_name(c: float) -> str:
@@ -147,39 +195,80 @@ def dial_name(c: float) -> str:
 
 
 MEMBERS = (
-    "floor_low",
-    "floor_high",
+    "ldl_chd",
+    "ldl_all",
     "cvd_only",
-    "calibrated_all_cause",
-    "calibrated_overall",
+    "calibrated_mortality",
     "calibrated",
+    "calibrated_protective",
+    "calibrated_analog",
+    "calibrated_diet",
     "face_value",
     *(dial_name(c) for c in ASSUMPTIONS["c_dial"]),
 )
 
+# The scenarios the paper reports throughout; the other calibrations are
+# sensitivities.
+MAIN_MEMBERS = (
+    "ldl_chd",
+    "ldl_all",
+    "cvd_only",
+    "calibrated_mortality",
+    "calibrated",
+    "face_value",
+)
+
+LDL_MEMBERS = ("ldl_chd", "ldl_all")
+
 MEMBER_DESCRIPTIONS = {
-    "floor_low": (
-        "Randomized floor, low: nut-trial LDL change x CTT CHD-death slope, "
-        "CHD deaths only"
+    "ldl_chd": (
+        "LDL pathway, coronary deaths: randomized nut-trial LDL change x CTT "
+        "CHD-death slope, applied to coronary deaths only"
     ),
-    "floor_high": (
-        "Randomized floor, high: nut-trial LDL change x CTT all-cause slope, all deaths"
+    "ldl_all": (
+        "LDL pathway, all deaths: randomized nut-trial LDL change x CTT all-cause "
+        "slope, applied to all deaths"
     ),
     "cvd_only": (
-        "Aune CVD-mortality curve applied to the CVD share of deaths only (c = 1)"
+        "Cardiovascular deaths only: Aune CVD-mortality curve applied to the "
+        "cardiovascular share of deaths (c = 1)"
     ),
-    "calibrated_all_cause": (
-        "Cohort curve x Schwingshackl RRR, all-cause-mortality stratum"
+    "calibrated_mortality": (
+        "Mortality calibration: cohort curve scaled by Schwingshackl's RRR for "
+        "all-cause-mortality pairs"
     ),
-    "calibrated_overall": "Cohort curve x Schwingshackl RRR, overall",
     "calibrated": (
-        "Cohort curve x Schwingshackl RRR, dietary intake vs intake stratum"
+        "Main calibration: cohort curve scaled by Schwingshackl's RRR, all 71 pairs"
+    ),
+    "calibrated_protective": (
+        "Cohort curve scaled by Schwingshackl's RRR for pairs whose cohort estimate "
+        "was protective"
+    ),
+    "calibrated_analog": (
+        "Cohort curve scaled by the pooled RRR of the six ALA and Mediterranean-diet "
+        "intake pairs"
+    ),
+    "calibrated_diet": (
+        "Cohort curve scaled by Schwingshackl's RRR, dietary intake vs intake pairs"
     ),
     "face_value": "Aune all-cause cohort curve at face value (c = 1)",
     **{
         dial_name(c): f"Aune all-cause cohort curve with c = {c:g}"
         for c in ASSUMPTIONS["c_dial"]
     },
+}
+
+# The one name each scenario goes by in the paper's prose, tables and figures.
+SCENARIO_LABEL = {
+    "ldl_chd": "LDL pathway, coronary deaths",
+    "ldl_all": "LDL pathway, all deaths",
+    "cvd_only": "Cardiovascular deaths only",
+    "calibrated_mortality": "Mortality calibration",
+    "calibrated": "Main calibration",
+    "calibrated_protective": "Protective-pairs calibration",
+    "calibrated_analog": "Nearest-pairs calibration",
+    "calibrated_diet": "Diet calibration",
+    "face_value": "Face value",
 }
 
 STAT_NAMES = ("mean", *ASSUMPTIONS["percentiles"])
@@ -190,6 +279,22 @@ def summarize(x: np.ndarray) -> dict[str, float]:
     pct = ASSUMPTIONS["percentiles"]
     qs = np.percentile(x, list(pct.values()))
     return {"mean": float(np.mean(x)), **{k: float(v) for k, v in zip(pct, qs)}}
+
+
+@dataclass(frozen=True)
+class Variant:
+    """The choices a sensitivity changes from the main case (the defaults)."""
+
+    curve: str = "main"  # key of Model.curves
+    rr_role: str = "rr28_all"  # the per-28 g estimate that scales the curve
+    anchor: str = "linear"  # calibration anchor (CALIBRATION_ANCHORS)
+    ldl: str = "tree"  # LDL input of the LDL-pathway scenarios
+    exclude_external: bool = False  # leave external-cause deaths out
+    attenuate_with_age: bool = False  # ASSUMPTIONS["age_attenuation"]
+    phase_in_years: int | None = None  # None: ASSUMPTIONS["phase_in_years"]
+
+
+MAIN = Variant()
 
 
 # --------------------------------------------------------------------------
@@ -208,9 +313,9 @@ class Curve:
     log_rr_serving: float = 0
     serving_g: float = 0
     plateau_x: float = 0  # exp(-1/k) for the plateau shape
+    start_g: float = 0  # intakes below this count as none (f measured from here)
 
-    def f(self, grams) -> np.ndarray:
-        g = np.asarray(grams, dtype=float)
+    def _f(self, g: np.ndarray) -> np.ndarray:
         if self.kind == "running_min_linear":
             return np.interp(g, self.g, self.log_rr)  # flat beyond the last point
         if self.kind == "pchip":
@@ -221,11 +326,18 @@ class Curve:
             return self.log_rr_serving * (1 - x**g) / (1 - x**self.serving_g)
         raise ValueError(self.kind)
 
+    def f(self, grams) -> np.ndarray:
+        g = np.asarray(grams, dtype=float)
+        if self.start_g:
+            s = np.full(g.shape, self.start_g)
+            return self._f(np.maximum(g, s)) - self._f(s)
+        return self._f(g)
+
     def delta_f(self, background: float, delta: float) -> float:
         return float(self.f(background + delta) - self.f(background))
 
 
-def aune_running_min(outcome: str, name: str) -> Curve:
+def aune_running_min(outcome: str, name: str, start_g: float = 0) -> Curve:
     """DESIGN decision 2 main case: Aune's points made nonincreasing by a running
     minimum, linear in log RR between points, flat beyond the last point."""
     g, rr = data.aune_curve(outcome)
@@ -234,6 +346,7 @@ def aune_running_min(outcome: str, name: str) -> Curve:
         kind="running_min_linear",
         g=g,
         log_rr=tuple(np.log(np.minimum.accumulate(rr))),
+        start_g=start_g,
     )
 
 
@@ -261,6 +374,53 @@ def linear_plateau(row: data.EvidenceRow, name: str) -> Curve:
         log_rr_serving=math.log(row.estimate),
         serving_g=serving,
         plateau_x=x,
+    )
+
+
+# --------------------------------------------------------------------------
+# Pooling calibration pairs
+# --------------------------------------------------------------------------
+
+
+def pool_ratios(rows: list[data.EvidenceRow], row_id: str) -> data.EvidenceRow:
+    """DerSimonian-Laird random-effects pool of ratio rows on the log scale,
+    with the Higgins-Thompson-Spiegelhalter prediction interval (t, k - 2 df),
+    returned as a row the model reads like any other."""
+    level = rows[0].ci_level
+    if any(r.ci_level != level for r in rows):
+        raise data.DataIntegrityError(f"{row_id}: pooled rows mix CI levels")
+    y = np.log([r.estimate for r in rows])
+    v = np.array([r.log_se() for r in rows]) ** 2
+    w = 1 / v
+    mu_fixed = np.sum(w * y) / np.sum(w)
+    q = float(np.sum(w * (y - mu_fixed) ** 2))
+    k = len(rows)
+    tau2 = max(0, (q - (k - 1)) / (np.sum(w) - np.sum(w**2) / np.sum(w)))
+    ws = 1 / (v + tau2)
+    mu = float(np.sum(ws * y) / np.sum(ws))
+    se = float(np.sqrt(1 / np.sum(ws)))
+    z = data.z_for(level)
+    tq = float(student_t.ppf(1 - (1 - level) / 2, k - 2))
+    half_pi = tq * math.sqrt(tau2 + se**2)
+    return data.EvidenceRow(
+        id=row_id,
+        kind="calibration_corpus",
+        measure="RRR",
+        unit=None,
+        estimate=math.exp(mu),
+        ci_low=math.exp(mu - z * se),
+        ci_high=math.exp(mu + z * se),
+        ci_level=level,
+        pi_low=math.exp(mu - half_pi),
+        pi_high=math.exp(mu + half_pi),
+        support=None,
+        notes=(
+            f"Random-effects (DerSimonian-Laird) pool of {k} rows: "
+            + ", ".join(r.id for r in rows)
+            + f"; tau2 = {tau2:.4g}, Q = {q:.4g}"
+        ),
+        source={},
+        verified={},
     )
 
 
@@ -304,6 +464,9 @@ class Model:
 
     def __post_init__(self) -> None:
         self.rows = {role: data.row(rid) for role, rid in EVIDENCE_IDS.items()}
+        self.rows["rrr_analog"] = pool_ratios(
+            [data.row(rid) for rid in ANALOG_PAIR_IDS], "pooled_analog_pairs"
+        )
         self.draws = Draws.make(self.n, self.seed)
         sexes = ASSUMPTIONS["grid"]["sex"]
         self.base = {s: Baseline.load(s, self.vintage) for s in sexes}
@@ -312,31 +475,47 @@ class Model:
             "main": aune_running_min("all_cause_mortality", "main"),
             "pchip_as_printed": aune_pchip("all_cause_mortality", "pchip_as_printed"),
             "linear_plateau": linear_plateau(self.rows["rr28_all"], "linear_plateau"),
+            "from_any": aune_running_min(
+                "all_cause_mortality", "from_any", ASSUMPTIONS["any_vs_none_g"]
+            ),
         }
         self.cvd_curve = aune_running_min("cvd_mortality", "cvd_main")
         self.q = self._per_draw_quantities()
 
     # ---- per-draw inputs -------------------------------------------------
 
-    def _lognormal(self, role: str, spread: str = "ci") -> np.ndarray:
+    def _lognormal(
+        self, role: str, spread: str = "ci", column: str | None = None
+    ) -> np.ndarray:
         """ln of a ratio drawn lognormally: from its CI (at the row's ci_level),
-        or from its prediction interval."""
+        or from its prediction interval, using the draw column of ``column``
+        (default: the role's own)."""
         r = self.rows[role]
         sd = r.log_se() if spread == "ci" else r.log_se_pi()
-        return math.log(r.estimate) + sd * self.draws.col(role)
+        return math.log(r.estimate) + sd * self.draws.col(column or role)
 
     def _per_draw_quantities(self) -> dict[str, np.ndarray]:
         q: dict[str, np.ndarray] = {}
         rr = self.rows
-        # curve scale: each draw's per-28 g log RR relative to the point estimate
+        # curve scale: each draw's per-28 g log RR relative to the main point
+        # estimate; alternative per-28 g estimates share the main draw column
         q["ln_rr28_all"] = self._lognormal("rr28_all")
-        q["scale_all"] = q["ln_rr28_all"] / math.log(rr["rr28_all"].estimate)
+        ln_rr28 = math.log(rr["rr28_all"].estimate)
+        for role in ("rr28_all", "rr28_fu10", "rr28_large"):
+            q[f"scale:{role}"] = self._lognormal(role, column="rr28_all") / ln_rr28
         ln_rr28_cvd = self._lognormal("rr28_cvd")
         q["scale_cvd"] = ln_rr28_cvd / math.log(rr["rr28_cvd"].estimate)
-        # calibrated c = ln(RR28 * RRR) / ln(RR28), RRR from its prediction interval
+        # calibrated c: the cohort log RR plus ln RRR, over the cohort log RR,
+        # with RRR from its prediction interval. Anchor 'linear' takes the cohort
+        # log RR as Aune's per-28 g estimate; 'curve' as the main curve's own
+        # value at that dose.
+        serving = rr["rr28_all"].per_grams()
+        ln_curve = q["scale:rr28_all"] * float(self.curves["main"].f(serving))
+        anchors = {"linear": q["ln_rr28_all"], "curve": ln_curve}
         for member, role in CALIBRATION_STRATA.items():
             ln_rrr = self._lognormal(role, spread="pi")
-            q[f"c_{member}"] = 1 + ln_rrr / q["ln_rr28_all"]
+            for anchor, ln_anchor in anchors.items():
+                q[f"c:{member}:{anchor}"] = 1 + ln_rrr / ln_anchor
         # LDL change per gram/day (mg/dL), normal from the CI or from the P value
         tree = rr["ldl_tree"]
         q["ldl_tree_per_g"] = (
@@ -347,23 +526,24 @@ class Model:
             tree_all.estimate + tree_all.se() * self.draws.col("ldl_tree_all_trials")
         ) / tree_all.per_grams()
         peanut = rr["ldl_peanut"]
-        serving = data.row(ASSUMPTIONS["peanut_ldl_serving_row"]).per_grams()
+        serving_ldl = data.row(ASSUMPTIONS["peanut_ldl_serving_row"]).per_grams()
         q["ldl_peanut_per_g"] = (
             peanut.estimate + peanut.se_from_p() * self.draws.col("ldl_peanut")
-        ) / serving
+        ) / serving_ldl
         # CTT log rate ratios per 1 mmol/L LDL reduction
         q["ln_ctt_chd"] = self._lognormal("ctt_chd")
         q["ln_ctt_all"] = self._lognormal("ctt_all")
-        # ALA log RR per g/day
+        # ALA log RR per g/day: random effects, and fixed effect on the same column
         q["ln_rr_ala"] = self._lognormal("ala")
+        q["ln_rr_ala_fixed"] = self._lognormal("ala_fixed", column="ala")
         return q
 
-    def c(self, member: str) -> np.ndarray | float:
+    def c(self, member: str, anchor: str = "linear") -> np.ndarray | float:
         """The causal multiplier for a cohort-curve member (scalar or per draw)."""
         if member == "face_value":
             return 1
         if member in CALIBRATION_STRATA:
-            return self.q[f"c_{member}"]
+            return self.q[f"c:{member}:{anchor}"]
         for c in ASSUMPTIONS["c_dial"]:
             if member == dial_name(c):
                 return c
@@ -386,40 +566,59 @@ class Model:
         member: str,
         delta: float,
         background: float,
-        curve: str = "main",
-        nut_group: str = "tree",
+        v: Variant = MAIN,
         ala_g: float = 0,
+        ala_role: str = "ala",
     ) -> tuple[str, np.ndarray]:
         """(structure, beta): which share of the hazard the multiplier acts on
-        ('all', 'cvd' or 'chd') and each draw's full-effect log multiplier.
+        ('all', 'nonexternal', 'cvd' or 'chd') and each draw's full-effect log
+        multiplier.
 
         ``ala_g`` adds the ALA channel (grams of ALA inside the observed range)
         at the same causal multiplier as the class effect."""
-        if member == "floor_low":
-            return "chd", self.q["ln_ctt_chd"] * self.ldl_mmol_reduction(
-                delta, nut_group
-            )
-        if member == "floor_high":
-            return "all", self.q["ln_ctt_all"] * self.ldl_mmol_reduction(
-                delta, nut_group
-            )
+        if member == "ldl_chd":
+            return "chd", self.q["ln_ctt_chd"] * self.ldl_mmol_reduction(delta, v.ldl)
+        if member == "ldl_all":
+            return "all", self.q["ln_ctt_all"] * self.ldl_mmol_reduction(delta, v.ldl)
         if member == "cvd_only":
             dfc = self.cvd_curve.delta_f(background, delta)
             return "cvd", ASSUMPTIONS["cvd_only_c"] * self.q["scale_cvd"] * dfc
-        df = self.curves[curve].delta_f(background, delta)
-        log_rr = self.q["scale_all"] * df + ala_g * self.q["ln_rr_ala"]
-        return "all", self.c(member) * log_rr
+        df = self.curves[v.curve].delta_f(background, delta)
+        log_rr = self.q[f"scale:{v.rr_role}"] * df
+        if ala_g:
+            ala_key = "ln_rr_ala" if ala_role == "ala" else "ln_rr_ala_fixed"
+            log_rr = log_rr + ala_g * self.q[ala_key]
+        structure = "nonexternal" if v.exclude_external else "all"
+        return structure, self.c(member, v.anchor) * log_rr
 
     # ---- life-table engine -----------------------------------------------
 
     def cause_share(self, sex: str, a0: int, cause: str) -> np.ndarray:
         ages = self.base[sex].ages_from(a0)
+        if cause == "nonexternal":
+            return 1 - np.asarray(self.shares[sex].at_ages(ages, "external"))
         return np.asarray(self.shares[sex].at_ages(ages, cause))
 
+    def age_weight(self, sex: str, a0: int) -> np.ndarray:
+        """ASSUMPTIONS['age_attenuation']: the share of the log relative risk kept
+        at each age a0..omega."""
+        at = ASSUMPTIONS["age_attenuation"]
+        ages = self.base[sex].ages_from(a0)
+        ramp = np.clip((ages - at["from_age"]) / (at["to_age"] - at["from_age"]), 0, 1)
+        return 1 - (1 - at["weight_at_end"]) * ramp
+
     def log_mult(
-        self, sex: str, a0: int, years: int, structure: str, beta: np.ndarray
+        self,
+        sex: str,
+        a0: int,
+        years: int,
+        structure: str,
+        beta: np.ndarray,
+        attenuate: bool = False,
     ) -> np.ndarray:
         phi = phase_in(a0, self.base[sex].omega, years)
+        if attenuate:
+            phi = phi * self.age_weight(sex, a0)
         x = np.multiply.outer(beta, phi)
         if structure == "all":
             return x
@@ -441,20 +640,71 @@ class Model:
         beta: np.ndarray,
         years: int | None = None,
         weights: np.ndarray | None = None,
+        attenuate: bool = False,
     ) -> np.ndarray:
         """Change in (weighted) remaining life expectancy at a0, per draw."""
-        years = ASSUMPTIONS["phase_in_years"] if years is None else years
         beta = np.asarray(beta, dtype=float)
         if not np.any(beta):
             return np.zeros(beta.shape)
+        return self.exact_gain(
+            sex, a0, structure, beta, years, weights, attenuate, interpolate=True
+        )
+
+    def exact_gain(
+        self,
+        sex: str,
+        a0: int,
+        structure: str,
+        beta: np.ndarray,
+        years: int | None = None,
+        weights: np.ndarray | None = None,
+        attenuate: bool = False,
+        interpolate: bool = False,
+    ) -> np.ndarray:
+        """gain() evaluated for every draw, or (``interpolate``) on
+        ASSUMPTIONS['gain_grid_points'] multipliers spanning the draws."""
+        years = ASSUMPTIONS["phase_in_years"] if years is None else years
+        beta = np.asarray(beta, dtype=float)
         base = self.base[sex]
         e0 = self.baseline_le(sex, a0, weights)
-        out = np.empty(beta.shape)
+        points = beta.ravel()
+        if interpolate:
+            lo, hi = float(points.min()), float(points.max())
+            n = ASSUMPTIONS["gain_grid_points"] if hi > lo else 1
+            points = np.linspace(lo, hi, n)
+        out = np.empty(points.shape)
         step = max(1, (1 << 22) // (base.omega - a0 + 1))  # ~4M cells per chunk
-        for i in range(0, beta.size, step):
-            lm = self.log_mult(sex, a0, years, structure, beta[i : i + step])
+        for i in range(0, points.size, step):
+            lm = self.log_mult(
+                sex, a0, years, structure, points[i : i + step], attenuate
+            )
             out[i : i + step] = life_expectancy(base, a0, lm, weights) - e0
-        return out
+        if not interpolate:
+            return out.reshape(beta.shape)
+        if points.size == 1:
+            return np.full(beta.shape, out[0])
+        return np.interp(beta, points, out)
+
+    def variant_gain(
+        self,
+        sex: str,
+        a0: int,
+        member: str,
+        delta: float,
+        background: float,
+        v: Variant = MAIN,
+        **kw,
+    ) -> np.ndarray:
+        """gain() for a member under a Variant."""
+        structure, beta = self.scenario(member, delta, background, v, **kw)
+        return self.gain(
+            sex,
+            a0,
+            structure,
+            beta,
+            years=v.phase_in_years,
+            attenuate=v.attenuate_with_age,
+        )
 
     def discount_weights(self, sex: str, a0: int) -> np.ndarray:
         """Discount factor for person-years at each age a0..omega: mid-year for

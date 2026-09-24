@@ -31,15 +31,18 @@ def test_committed_results_are_current_with_data():
 
 
 def test_le_gain_interface():
-    v = r.le_gain("male", 40, 28, 0, "calibrated", "mean")
+    v = r.le_gain("male", 40, 15, 0, "calibrated", "mean")
     assert isinstance(v, float) and v > 0
-    assert r.le_gain("male", 40, 28.0, 0.0, "calibrated") == v
-    assert r.le_gain_days("male", 40, 28, 0, "calibrated") == v * 365.25
+    assert r.le_gain("male", 40, 15.0, 0.0, "calibrated") == v
+    assert r.le_gain_days("male", 40, 15, 0, "calibrated") == v * 365.25
     for member in (
-        "floor_low",
-        "floor_high",
+        "ldl_chd",
+        "ldl_all",
         "calibrated",
-        "calibrated_all_cause",
+        "calibrated_mortality",
+        "calibrated_protective",
+        "calibrated_analog",
+        "calibrated_diet",
         "face_value",
         "cvd_only",
         "c_0.1",
@@ -56,17 +59,17 @@ def test_le_gain_interface():
 
 def test_verify_catches_tampering(tmp_path):
     obj = json.loads(COMMITTED.read_text(encoding="utf-8"))
-    obj["reference"]["bracket"]["male"]["calibrated"]["mean"] *= 1.01
+    obj["reference"]["scenarios"]["male"]["calibrated"]["mean"] *= 1.01
     bad = tmp_path / "results.json"
     bad.write_text(json.dumps(obj), encoding="utf-8")
-    with pytest.raises(ResultsError, match="reference.bracket.male.calibrated.mean"):
+    with pytest.raises(ResultsError, match="reference.scenarios.male.calibrated.mean"):
         Results(bad).verify()
 
 
 def test_verify_catches_headline_drift(tmp_path):
     obj = json.loads(COMMITTED.read_text(encoding="utf-8"))
-    obj["grid"]["female"]["40"]["28"]["0"]["calibrated"]["mean"] += 0.001
-    obj["reference"]["bracket"]["female"]["calibrated"]["mean"] += 0.001
+    obj["grid"]["female"]["40"]["15"]["0"]["calibrated"]["mean"] += 0.001
+    obj["reference"]["scenarios"]["female"]["calibrated"]["mean"] += 0.001
     bad = tmp_path / "results.json"
     bad.write_text(json.dumps(obj), encoding="utf-8")
     with pytest.raises(ResultsError, match="headline_days.female_calibrated"):

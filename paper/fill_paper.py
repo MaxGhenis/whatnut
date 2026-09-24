@@ -192,11 +192,6 @@ def md_table(header: list[str], rows: list[list[str]], align: str) -> str:
 SEXES = ("female", "male")
 SEX_LABEL = {"female": "Women", "male": "Men"}
 
-# Reference case: a US adult who starts at age 40 from no nuts.
-REF_AGE, REF_BACKGROUND, REF_DELTA = 40, 0, 28
-# The cohort curve reaches its floor at this dose; the paper headlines it.
-HEADLINE_DELTA = 15
-
 NUTS = (
     "walnut",
     "almond",
@@ -209,6 +204,25 @@ NUTS = (
 )
 NUT_LABEL = {n: n for n in NUTS}
 COMPOSITION_NUTS = NUTS + ("brazil_nut",)
+NUMBER_WORDS = ("zero", "one", "two", "three", "four", "five", "six", "seven")
+MONTHS = (
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+)
+# The WAHA trial fed walnuts at 30 to 60 g/day (row rajaram2021_waha_walnut_ldl,
+# exposure); the paper compares its LDL change with the short trials' per-gram
+# effect at the middle of that range.
+WAHA_MID_G = 45
 
 
 def _data():
@@ -234,10 +248,10 @@ def _num(x: float, measure: str | None = "RR") -> str:
     return _grouped(x, _decimals(x))
 
 
-def _within_days(gap_years: float) -> Value:
+def _within_days(gap_days: float) -> Value:
     """'a day' or 'N days': the largest baseline gap, rounded up to whole days."""
-    n = math.ceil(gap_years * DAYS_PER_YEAR)
-    return Value(gap_years, "days_ceil", "a day" if n == 1 else f"{n} days")
+    n = math.ceil(gap_days)
+    return Value(gap_days, "days_ceil", "a day" if n == 1 else f"{n} days")
 
 
 def _decimals(x: float) -> int:
@@ -248,15 +262,27 @@ def _decimals(x: float) -> int:
     return len(frac)
 
 
+def _row_decimals(row) -> int:
+    """One decimal count for a row's estimate and interval (the most any prints)."""
+    xs = [x for x in (row.estimate, row.ci_low, row.ci_high) if x is not None]
+    return max(_decimals(x) for x in xs)
+
+
+def _fmt_row(row, ndigits: int | None = None) -> Callable[[float], str]:
+    if ndigits is not None:
+        return lambda x: _grouped(x, ndigits)
+    if row.measure in RATIO_MEASURES:
+        return lambda x: _num(x, row.measure)
+    nd = _row_decimals(row)
+    return lambda x: _grouped(x, nd)
+
+
 def ev(row_id: str, ndigits: int | None = None) -> Value:
     """An evidence estimate with its interval, e.g. '0.78 (95% CI 0.72 to 0.84)'."""
     r = _row(row_id)
     if r.estimate is None:
         raise FillError(f"evidence row {row_id} has no estimate")
-
-    def f(x):
-        return _grouped(x, ndigits) if ndigits is not None else _num(x, r.measure)
-
+    f = _fmt_row(r, ndigits)
     body = f(r.estimate)
     if r.ci_low is not None and r.ci_high is not None:
         level = int(round((r.ci_level or 0.95) * 100))
@@ -264,17 +290,27 @@ def ev(row_id: str, ndigits: int | None = None) -> Value:
     return Value(_py(r.estimate), "evidence", body)
 
 
-def _cell(r, sex, a0, delta, background, member) -> str:
-    g = {
-        s: days(r.le_gain(sex, a0, delta, background, member, s))
-        for s in ("mean", "p10", "p90")
-    }
-    return f"{g['mean'].text} ({interval(g['p10'], g['p90'])})"
-
-
 def _stat_cell(stats: Mapping) -> str:
     g = {s: days(stats[s]) for s in ("mean", "p10", "p90")}
     return f"{g['mean'].text} ({interval(g['p10'], g['p90'])})"
+
+
+def _range(lo: Value, hi: Value) -> Value:
+    return Value(lo.raw, "range", f"{lo.text} to {hi.text}")
+
+
+def _words(n: int) -> Value:
+    return Value(n, "words", NUMBER_WORDS[n] if 0 <= n < len(NUMBER_WORDS) else str(n))
+
+
+def _date(iso: str) -> str:
+    y, m, d = iso.split("-")
+    return f"{int(d)} {MONTHS[int(m) - 1]} {y}"
+
+
+def _ref(r) -> tuple[int, float, float]:
+    ref = r.reference
+    return ref["a0"], ref["delta"], ref["background"]
 
 
 def _price_extremes(r):
@@ -284,32 +320,39 @@ def _price_extremes(r):
     return cheap, dear, by
 
 
-# ---- abstract -------------------------------------------------------------
+def _label(r, member: str) -> str:
+    return r.meta["scenario_labels"][member]
 
 
-def values_abstract(r) -> dict[str, Value]:
-    a0, b, d = REF_AGE, REF_BACKGROUND, HEADLINE_DELTA
-    lo = days(r.le_gain("male", a0, d, b, "floor_low"))
-    hi = days(r.le_gain("male", a0, d, b, "floor_high"))
-    calac = {
-        s: days(r.le_gain("male", a0, d, b, "calibrated_all_cause", s))
-        for s in ("mean", "p10", "p90")
+# ---- headline numbers (abstract and results) ---------------------------------
+
+
+def values_headline(r) -> dict[str, Value]:
+    a0, d, b = _ref(r)
+    g = {
+        (sex, mem): r.le_gain(sex, a0, d, b, mem)
+        for sex in SEXES
+        for mem in r.meta["main_members"]
     }
-    face_y = r.le_gain("male", a0, d, b, "face_value")
+    face = g[("male", "face_value")]
+    any_left = r["sensitivity"]["rows"]["curve_from_any"]["stats"]["male"]
     cheap, dear, by = _price_extremes(r)
     return {
-        "abs_m40_floor": Value(lo.raw, "days_range", f"{lo.text} to {hi.text}"),
-        "abs_m40_calac": Value(
-            calac["mean"].raw,
-            "days_interval",
-            f"{calac['mean'].text} days (80% interval "
-            f"{interval(calac['p10'], calac['p90'])})",
+        "m40_ldl_range": _range(
+            days(g[("male", "ldl_chd")]), days(g[("male", "ldl_all")])
         ),
-        "abs_m40_face": days(face_y),
-        "abs_m40_face_years": years(face_y, 1),
-        "abs_f40_floor_low": days(r.le_gain("female", a0, d, b, "floor_low")),
-        "abs_f40_face": days(r.le_gain("female", a0, d, b, "face_value")),
-        "abs_price_ratio": number(by[dear]["usd_per_kg"] / by[cheap]["usd_per_kg"], 0),
+        "m40_cal": days(g[("male", "calibrated")]),
+        "m40_calmort": days(g[("male", "calibrated_mortality")]),
+        "m40_face": days(face),
+        "m40_face_years": years(face, 1),
+        "m40_ldl_weeks": number(g[("male", "ldl_all")] * DAYS_PER_YEAR / 7, 0),
+        "f40_ldl_range": _range(
+            days(g[("female", "ldl_chd")]), days(g[("female", "ldl_all")])
+        ),
+        "f40_cal": days(g[("female", "calibrated")]),
+        "f40_face": days(g[("female", "face_value")]),
+        "any_share": pct(1 - any_left["face_value"]["mean"] / face),
+        "price_ratio": number(by[dear]["usd_per_kg"] / by[cheap]["usd_per_kg"], 0),
     }
 
 
@@ -321,6 +364,11 @@ def values_evidence(r) -> dict[str, Value]:
     pts = {p["g"]: p["rr"] for p in data.aune_points("all_cause_mortality")}
     rr_min = min(pts.values())
     g_min = min(g for g, v in pts.items() if v == rr_min)
+    if g_min != r.reference["delta"]:
+        raise FillError(
+            f"the text says the curve bottoms out at the reference dose; it bottoms "
+            f"out at {g_min} g, the reference is {r.reference['delta']} g"
+        )
     bop = data.bop_curve()
     bop_min = min(p["rr"] for p in bop)
     bop_row = _row("ihme_bop_nuts_seeds_ihd")
@@ -328,50 +376,171 @@ def values_evidence(r) -> dict[str, Value]:
     stars = re.search(r"star rating (\d)", bop_row.notes or "", re.I)
     if not stars:
         raise FillError("ihme_bop_nuts_seeds_ihd notes carry no star rating")
+    q2 = re.search(
+        r"Q2 is ([\d.]+) to under ([\d.]+) g/day",
+        _row("luu2015_shanghai_peanut_q2").exposure or "",
+    )
+    if not q2:
+        raise FillError("luu2015_shanghai_peanut_q2 exposure names no Q2 range")
+    rct_notes = " ".join((_row("delgobbo2015_ldl_per28g_rct").notes or "").split())
+    dg = re.search(
+        r"randomized trials fed a median ([\d.]+) g/day for a median ([\d.]+) weeks "
+        r"\(all trials: ([\d.]+) g/day, range [\d-]+, and ([\d.]+) weeks",
+        rct_notes,
+    )
+    if not dg:
+        raise FillError("delgobbo2015_ldl_per28g_rct notes lack the trial medians")
+    pred_pop = _row("predimed2018_nuts_all_cause_death").population or ""
+    fu = re.search(r"median follow-up ([\d.]+) years", pred_pop)
+    if not fu:
+        raise FillError("predimed2018_nuts_all_cause_death names no median follow-up")
+    phase = r.meta["phase_in_years"]
+    pred_years = float(fu.group(1))
+    # hazard ratio averaged over follow-up with a linear phase-in: the curve's
+    # full log RR times the mean phase-in share over the trial's years
+    phased = math.exp(math.log(rr_min) * min(1, pred_years / phase) / 2)
+    ldl_rct = _row("delgobbo2015_ldl_per28g_rct")
+    waha_implied = ldl_rct.estimate / ldl_rct.per_grams() * WAHA_MID_G
     return {
         "ev_aune_allcause": ev("aune2016_allcause_per28g"),
+        "ev_aune_fu_short": ev("aune2016_allcause_fu_under10"),
+        "ev_aune_fu_long": ev("aune2016_allcause_fu10plus"),
+        "ev_aune_large": ev("aune2016_allcause_per28g_excl_small_studies"),
+        "ev_liu2026": ev("liu2026_nutmeta_allcause"),
+        "aune_rr_5g": ratio(pts[5.0]),
         "aune_rr_10g": ratio(pts[10.0]),
         "aune_rr_min": ratio(rr_min),
         "aune_min_g": integer(int(g_min)),
         "aune_rr_28g": ratio(pts[28.0]),
         "bop_rr_flat": ratio(bop_min, 3),
         "bop_flat_g": integer(int(round(bop_flat_g))),
-        "bop_stars": text(
-            {"1": "one", "2": "two", "3": "three", "4": "four", "5": "five"}[
-                stars.group(1)
-            ]
-        ),
+        "bop_stars": text(NUMBER_WORDS[int(stars.group(1))]),
         "ev_golestan": ev("eslamparast2017_golestan"),
         "ev_luu_sccs": ev("luu2015_scc_shanghai"),
         "ev_luu_shanghai": ev("luu2015_shanghai_peanut_q5"),
+        "luu_q2_range": text(f"{q2.group(1)} to {q2.group(2)}"),
+        "ev_luu_shanghai_q2": ev("luu2015_shanghai_peanut_q2"),
+        "ev_luu_pb": ev("luu2015_sccs_peanut_butter_q5"),
         "ev_gf_peanut": ev("guaschferre2017_peanut_cvd"),
         "ev_gf_treenut": ev("guaschferre2017_treenut_cvd"),
         "ev_gf_walnut": ev("guaschferre2017_walnut_cvd"),
+        "ev_wang_salted": ev("wang2025_mr", 2),
+        "delgobbo_dose_rct": text(dg.group(1)),
+        "delgobbo_weeks_rct": text(dg.group(2)),
+        "delgobbo_dose_all": text(dg.group(3)),
+        "delgobbo_weeks_all": text(dg.group(4)),
         "ev_delgobbo_ldl_all": ev("delgobbo2015_ldl_per28g", 1),
         "ev_delgobbo_ldl_rct": ev("delgobbo2015_ldl_per28g_rct", 1),
         "ev_delgobbo_apob_rct": ev("delgobbo2015_apob_per28g_rct", 1),
+        "predimed_nut_g": integer(int(_row("predimed2018_nut_mix").estimate)),
         "ev_predimed_nuts": ev("predimed2018_nuts_major_cvd"),
         "ev_predimed_evoo": ev("predimed2018_evoo_major_cvd"),
+        "ev_predimed_stroke": ev("predimed2018_nuts_stroke"),
+        "ev_predimed_death": ev("predimed2018_nuts_all_cause_death"),
+        "ev_predimed_cvdeath": ev("predimed2018_nuts_cv_death"),
+        "predimed_years": text(fu.group(1)),
+        "predimed_phased_hr": ratio(phased),
+        "ev_gf2013": ev("guaschferre2013_predimed_nut_frequency"),
         "ev_ctt_chd": ev("ctt2010_chd_death_per_mmol"),
         "ev_ctt_allcause": ev("ctt2010_all_cause_per_mmol"),
-        "ev_schw_intake": ev("schwingshackl2021_rrr_intake_vs_intake"),
-        "ev_schw_supp": ev("schwingshackl2021_rrr_supplement_vs_status"),
-        "ev_schw_allcause": ev("schwingshackl2021_rrr_all_cause"),
-        "c_cal_point": ratio(r["calibration"]["calibrated"]["c_point"]),
-        "c_calac_point": pct(r["calibration"]["calibrated_all_cause"]["c_point"]),
+        "ev_silverman": ev("silverman2016_ldl_nonstatin"),
+        "ev_waha": ev("rajaram2021_waha_walnut_ldl", 1),
+        "waha_implied": number(waha_implied, 1),
     }
+
+
+def values_calibration(r) -> dict[str, Value]:
+    cal = r["calibration"]
+    st = cal["strata"]
+    a0, d, b = _ref(r)
+    overall = _row("schwingshackl2021_rrr_overall")
+    analog = st["calibrated_analog"]
+    cs = [x["linear"]["c_point"] for x in st.values()]
+    sens = r["sensitivity"]["calibrations"]
+    return {
+        "ev_schw_overall": ev("schwingshackl2021_rrr_overall"),
+        "schw_overall_pi": text(
+            f"{_num(overall.pi_low, 'RRR')} to {_num(overall.pi_high, 'RRR')}"
+        ),
+        "ev_schw_allcause": ev("schwingshackl2021_rrr_all_cause"),
+        "ev_schw_intake": ev("schwingshackl2021_rrr_intake_vs_intake"),
+        "schw_analog": Value(
+            analog["rrr"],
+            "pooled",
+            f"{_grouped(analog['rrr'], 2)} (95% CI {_grouped(analog['rrr_ci'][0], 2)}"
+            f" to {_grouped(analog['rrr_ci'][1], 2)})",
+        ),
+        "rr28_linear": ratio(cal["anchor_rr"]["linear"]),
+        "rr28_curve": ratio(cal["anchor_rr"]["curve"]),
+        "c_cal_point": pct(st["calibrated"]["linear"]["c_point"]),
+        "c_calmort_point": pct(st["calibrated_mortality"]["linear"]["c_point"]),
+        "c_min_point": pct(min(cs)),
+        "c_max_point": pct(max(cs)),
+        "harm_share_main": pct(st["calibrated"]["linear"]["share_draws_c_below_0"]),
+        "harm_share_mort": pct(
+            st["calibrated_mortality"]["linear"]["share_draws_c_below_0"]
+        ),
+        "m40_calmort_curve": days(
+            sens["calibrated_mortality"]["curve"]["male"]["mean"]
+        ),
+    }
+
+
+CALIBRATION_ROWS = (
+    "calibrated_mortality",
+    "calibrated_protective",
+    "calibrated",
+    "calibrated_analog",
+    "calibrated_diet",
+)
+
+
+def tables_calibration(r) -> dict[str, str]:
+    st = r["calibration"]["strata"]
+    sens = r["sensitivity"]["calibrations"]
+    rows = []
+    for mem in CALIBRATION_ROWS:
+        e = st[mem]
+        n = (
+            len(e["pair_rows"])
+            if "pair_rows" in e
+            else int(re.match(r"(\d+)", _row(e["row"]).population or "").group(1))
+        )
+        lo, hi = (_grouped(x, 2) for x in e["rrr_pi"])
+        pi = f"{_grouped(e['rrr'], 2)} ({lo} to {hi})"
+        rows.append(
+            [
+                _label(r, mem),
+                str(n),
+                pi,
+                pct(e["linear"]["c_point"]).text,
+                _stat_cell(sens[mem]["linear"]["male"]),
+                pct(e["curve"]["c_point"]).text,
+                _stat_cell(sens[mem]["curve"]["male"]),
+            ]
+        )
+    header = [
+        "Calibration",
+        "Pairs",
+        "Ratio (95% prediction interval)",
+        "Share kept, linear anchor",
+        "Days, linear anchor",
+        "Share kept, curve anchor",
+        "Days, curve anchor",
+    ]
+    return {"calibration": md_table(header, rows, "lrrrrrr")}
 
 
 def tables_evidence(r) -> dict[str, str]:
     conv = r.meta["assumptions"]["ldl_mg_dl_per_mmol_l"]
     specs = [
-        ("Tree nuts, randomized trials (class)", "delgobbo2015_ldl_per28g_rct"),
+        ("Tree nuts pooled, randomized trials", "delgobbo2015_ldl_per28g_rct"),
         ("Walnut", "guaschferre2018_walnut_ldl"),
         ("Almond", "leebravatti2019_almond_ldl"),
         ("Pistachio", "hadi2023_pistachio_ldl"),
         ("Pecan", "zhang2026_pecan_ldl"),
         ("Hazelnut", "perna2016_hazelnut_ldl"),
-        ("Macadamia", "jones2023_macadamia_ldl"),
+        ("Macadamia (one trial)", "jones2023_macadamia_ldl"),
         ("Cashew", "jalali2020_cashew_ldl"),
         ("Peanut", "jafariazad2020_peanut_ldl"),
     ]
@@ -400,90 +569,101 @@ def tables_evidence(r) -> dict[str, str]:
 
 
 def values_model(r) -> dict[str, Value]:
-    gaps = [
-        abs(v["model"] - v["published"])
-        for sex in SEXES
-        for v in r["baseline_le"][sex].values()
-    ]
+    data = _data()
     ala_lo, ala_hi = r["ala"]["support_g"]
-    fad = {
-        row["sex"]: row
-        for row in r["fadnes"]["rows"]
-        if row["start_age"] == r["fadnes"]["main_start_age"]
-    }
+    fad = {(row["sex"], row["start_age"]): row for row in r["fadnes"]["rows"]}
+    main_age = r["fadnes"]["main_start_age"]
+    old_age = max(age for _, age in fad)
+    att = r.meta["assumptions"]["age_attenuation"]
+    shares = data.cause_shares("male")
+    ext35 = shares.external[shares.start.index(35)]
+    weights = [
+        w
+        for w in data._read_csv(data.DATA / "composition" / "gram_weights.csv")
+        if w["key"] == "almond" and "whole kernels" in w["description"]
+    ]
+    if len(weights) != 1:
+        raise FillError("gram_weights.csv needs one almond 'whole kernels' weight")
+    kernels = int(re.search(r"\((\d+) whole kernels\)", weights[0]["description"])[1])
+    almond_g = float(weights[0]["grams"]) / kernels
+    any_g = r.meta["assumptions"]["any_vs_none_g"]
     return {
         "phase_in_years": integer(r.meta["phase_in_years"]),
-        "le_max_gap_days": _within_days(max(gaps)),
+        "le_max_gap_days": _within_days(max(r["baseline_le"]["max_gap_days"].values())),
+        "almonds_5g": integer(round(any_g / almond_g)),
+        "ldl_conv": number(r.meta["assumptions"]["ldl_mg_dl_per_mmol_l"], 2),
         "mc_draws": integer(r.meta["n"]),
         "ev_naghshi": ev("naghshi2021_ala_all_cause_per_g"),
+        "ev_naghshi_fixed": ev("naghshi2021_ala_all_cause_per_g_fixed"),
         "ala_lo": number(ala_lo, 2),
         "ala_hi": number(ala_hi, 1),
-        "us_ala": number(_row("wweia_1720_ala_adults").estimate, 2),
+        "us_ala_m": number(_row("wweia_1720_ala_men").estimate, 2),
+        "us_ala_f": number(_row("wweia_1720_ala_women").estimate, 2),
+        "ext_share_m35": pct(ext35),
+        "att_from": integer(att["from_age"]),
+        "att_to": integer(att["to_age"]),
         "fadnes_rr": ratio(r["fadnes"]["inputs"]["hr"]),
-        "repro_m20": years(fad["male"]["ours"], 2),
-        "fadnes_m20": years(fad["male"]["theirs"], 1),
-        "repro_f20": years(fad["female"]["ours"], 2),
-        "fadnes_f20": years(fad["female"]["theirs"], 1),
+        "repro_m20": years(fad[("male", main_age)]["ours"], 2),
+        "fadnes_m20": years(fad[("male", main_age)]["theirs"], 1),
+        "repro_f20": years(fad[("female", main_age)]["ours"], 2),
+        "fadnes_f20": years(fad[("female", main_age)]["theirs"], 1),
+        "repro_f80": years(fad[("female", old_age)]["ours"], 2),
+        "fadnes_f80": years(fad[("female", old_age)]["theirs"], 1),
     }
 
 
 # ---- results -----------------------------------------------------------------
 
 
-MEMBER_ROWS = (
-    ("floor_low", "Randomized floor, coronary deaths"),
-    ("floor_high", "Randomized floor, all deaths"),
-    ("cvd_only", "CVD deaths only, face value"),
-    ("calibrated_all_cause", "Calibrated, all-cause stratum"),
-    ("calibrated_overall", "Calibrated, all 71 pairs"),
-    ("calibrated", "Calibrated, diet stratum (matching)"),
-    ("face_value", "Face value"),
-)
-
-
 def values_results(r) -> dict[str, Value]:
-    a0, b, d15 = REF_AGE, REF_BACKGROUND, HEADLINE_DELTA
+    a0, d, b = _ref(r)
     ages = r.meta["grid_axes"]["a0"]
     step = r.meta["assumptions"]["marginal_step_g"]
-    face15 = r.le_gain("male", a0, d15, b, "face_value")
-    fhigh15 = r.le_gain("male", a0, d15, b, "floor_high")
-    return {
-        "m40_floor_low_15": days(r.le_gain("male", a0, d15, b, "floor_low")),
-        "m40_floor_high_15": days(fhigh15),
-        "m40_face_15": days(face15),
-        "bracket_ratio": number(face15 / fhigh15, 0),
+    dial = r.meta["assumptions"]["c_dial"]
+    face = r.le_gain("male", a0, d, b, "face_value")
+    out = {
+        "dial_lo": number(dial[0], 1),
+        "dial_mid": number(dial[1], 2),
+        "m40_dial_lo": days(r.le_gain("male", a0, d, b, f"c_{dial[0]:g}")),
+        "m40_dial_mid": days(r.le_gain("male", a0, d, b, f"c_{dial[1]:g}")),
         "age_young": integer(min(ages)),
-        "m_young_face": days(r.le_gain("male", min(ages), REF_DELTA, b, "face_value")),
         "age_old": integer(max(ages)),
-        "m_old_face": days(r.le_gain("male", max(ages), REF_DELTA, b, "face_value")),
-        "share_10g": pct(r.le_gain("male", a0, 10, b, "face_value") / face15),
-        "marg_b0": days(r.le_gain("male", a0, step, 0, "face_value")),
-        "marg_b10": days(r.le_gain("male", a0, step, 10, "face_value")),
-        "marg_b20": days(r.le_gain("male", a0, step, 20, "face_value")),
-        "marg_floor_high": days(r.le_gain("male", a0, step, 0, "floor_high")),
+        "share_5g": pct(r.le_gain("male", a0, 5, b, "face_value") / face),
+        "share_10g": pct(r.le_gain("male", a0, 10, b, "face_value") / face),
+        "marg_ldl_chd": days(r.le_gain("male", a0, step, 20, "ldl_chd")),
+        "marg_ldl_all": days(r.le_gain("male", a0, step, 20, "ldl_all")),
         "us_nuts_g": number(
             _row("wweia_1720_nuts_seeds_adults").estimate
             * _row("fped_nut_oz_eq_grams").estimate,
             0,
         ),
     }
+    for tag, mem in (("cal", "calibrated"), ("face", "face_value")):
+        out[f"m_young_{tag}"] = days(r.le_gain("male", min(ages), d, b, mem))
+        out[f"m_old_{tag}"] = days(r.le_gain("male", max(ages), d, b, mem))
+        for bg in (0, 10, 20):
+            out[f"marg_{tag}_b{bg}"] = days(r.le_gain("male", a0, step, bg, mem))
+    return out
 
 
 def tables_results(r) -> dict[str, str]:
-    a0, b = REF_AGE, REF_BACKGROUND
-    header = ["Member of the bracket"] + [
-        f"{SEX_LABEL[sex]}, {d} g" for d in (HEADLINE_DELTA, REF_DELTA) for sex in SEXES
+    a0, _, b = _ref(r)
+    deltas = r.reference["table_deltas"]
+    header = ["Scenario"] + [
+        f"{SEX_LABEL[sex]}, {dd} g" for dd in deltas for sex in SEXES
     ]
     rows = [
-        [label]
+        [_label(r, mem)]
         + [
-            _cell(r, sex, a0, d, b, member)
-            for d in (HEADLINE_DELTA, REF_DELTA)
+            _stat_cell(
+                {s: r.le_gain(sex, a0, dd, b, mem, s) for s in ("mean", "p10", "p90")}
+            )
+            for dd in deltas
             for sex in SEXES
         ]
-        for member, label in MEMBER_ROWS
+        for mem in r.meta["main_members"]
     ]
-    return {"reference": md_table(header, rows, "lrrrr")}
+    return {"reference": md_table(header, rows, "l" + "r" * (len(header) - 1))}
 
 
 def values_which_nut(r) -> dict[str, Value]:
@@ -491,30 +671,15 @@ def values_which_nut(r) -> dict[str, Value]:
     dates = sorted({dt for n in NUTS for dt in by[n]["price_dates"]})
     if len(dates) != 1:
         raise FillError(f"prices span several dates {dates}; say so in the text")
-    y, m, dd = dates[0].split("-")
-    months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ]
-    walnut = r["ala"]["by_background"]
-    avg_key, high_key = (
-        str(x).rstrip("0").rstrip(".") if isinstance(x, float) else str(x)
-        for x in r["ala"]["background_g"]
-    )
-    w_avg = walnut[avg_key]["walnut"]
-    w_high = walnut[high_key]["walnut"]
+    sellers = [by[n]["n_retailers"] for n in NUTS]
+    ala = r["ala"]["by_background"]
+    w_avg, w_high = ala["average"]["walnut"], ala["high"]["walnut"]
+    seeds = w_high["male"]["face_value:ala"]["increment"]["mean"]
+    high_bg = r["ala"]["background_g"]["high"]["male"]
     return {
-        "price_date": text(f"{int(dd)} {months[int(m) - 1]} {y}"),
+        "price_date": text(_date(dates[0])),
+        "sellers_min": _words(min(sellers)),
+        "sellers_max": _words(max(sellers)),
         "cheapest_price": dollars(by[cheap]["usd_per_kg"], 2),
         "cheapest_nut": text(NUT_LABEL[cheap] + "s"),
         "priciest_price": dollars(by[dear]["usd_per_kg"], 2),
@@ -523,70 +688,77 @@ def values_which_nut(r) -> dict[str, Value]:
             by[cheap]["male"]["calibrated"]["usd_per_life_year"], 0
         ),
         "cpl_priciest": dollars(by[dear]["male"]["calibrated"]["usd_per_life_year"], 0),
+        "cpl_cheapest_face": dollars(
+            by[cheap]["male"]["face_value"]["usd_per_life_year"], 0
+        ),
+        "cpl_priciest_face": dollars(
+            by[dear]["male"]["face_value"]["usd_per_life_year"], 0
+        ),
         "walnut_ala": number(w_avg["nut_ala_g"], 2),
-        "walnut_ala_counted": number(w_avg["counted_ala_g"], 2),
-        "ala_premium_avg": days(w_avg["male"]["face_value"]["increment"]["mean"]),
-        "ala_high_bg": number(r["ala"]["background_g"][1], 0),
+        "walnut_ala_counted_m": number(w_avg["male"]["counted_ala_g"], 2),
+        "ala_premium_m": days(w_avg["male"]["face_value:ala"]["increment"]["mean"]),
+        "ala_premium_m_fixed": days(
+            w_avg["male"]["face_value:ala_fixed"]["increment"]["mean"]
+        ),
+        "ala_high_bg": number(high_bg, 0),
         "ala_premium_seeds": Value(
-            w_high["male"]["face_value"]["increment"]["mean"],
+            seeds,
             "days_words",
-            "nothing"
-            if abs(w_high["male"]["face_value"]["increment"]["mean"]) < 1e-9
-            else days(w_high["male"]["face_value"]["increment"]["mean"]).text + " days",
+            "nothing" if abs(seeds) < 1e-9 else days(seeds).text + " days",
         ),
         "ev_abdelhamid": ev("abdelhamid2020_ala_all_cause"),
     }
 
 
 def values_sensitivity(r) -> dict[str, Value]:
-    ref = r["reference"]["bracket"]["male"]
-    face = ref["face_value"]["mean"]
-    pchip = r["curves"]["pchip_as_printed"]["reference"]["male"]["face_value"]["mean"]
-    b2021 = r["baseline_2021"]["reference"]["male"]["face_value"]["mean"]
+    rows = r["sensitivity"]["rows"]
+    main = rows["main"]["stats"]["male"]["face_value"]["mean"]
+
+    def face(row_id: str) -> float:
+        return rows[row_id]["stats"]["male"]["face_value"]["mean"]
+
+    cs = r["sensitivity"]["curves_at_serving"]["curves"]
+    b2021 = face("baseline_2021")
     return {
-        "cvd_only_share": pct(ref["cvd_only"]["mean"] / face),
-        "pchip_cut": pct(1 - pchip / face),
+        "from_any_share": pct(face("curve_from_any") / main),
+        "cvd_only_share": pct(r.le_gain("male", *_ref(r), "cvd_only") / main),
+        "fu10_share": pct(face("rr_fu10") / main),
+        "att_share": pct(face("attenuate_with_age") / main),
+        "plateau_add": pct(face("curve_linear_plateau") / main - 1),
+        "pchip28_face": days(cs["pchip_as_printed"]["male"]["face_value"]["mean"]),
+        "main28_face": days(cs["main"]["male"]["face_value"]["mean"]),
         "baseline_2021_add": Value(
-            b2021 - face, "days_delta", days(b2021 - face).text + " days"
+            b2021 - main, "days_delta", days(b2021 - main).text + " days"
         ),
     }
 
 
+SENSITIVITY_TABLE = (
+    ("main", "Main case"),
+    ("curve_from_any", "Curve measured from 5 g (none to some not causal)"),
+    ("curve_linear_plateau", "Linear per-28 g estimate with a plateau"),
+    ("rr_fu10", "Cohorts followed ten years or more"),
+    ("rr_large", "Without the five smallest studies"),
+    ("exclude_external", "External causes of death left out"),
+    ("attenuate_with_age", "Relative risk halves from 65 to 85"),
+    ("phase_in_0", "No phase-in"),
+    ("phase_in_20", "Phase-in over 20 years"),
+    ("baseline_2021", "2021 life tables"),
+    ("ldl_all_trials", "All 61 LDL trials, randomized or not"),
+)
+SENSITIVITY_COLUMNS = ("face_value", "calibrated", "ldl_all")
+
+
 def tables_sensitivity(r) -> dict[str, str]:
-    ref = r["reference"]["bracket"]["male"]
-    rows = [
-        ["Main case, face value", _stat_cell(ref["face_value"])],
-        ["Calibrated, diet stratum", _stat_cell(ref["calibrated"])],
-        [
-            "Dose curve as printed",
-            _stat_cell(
-                r["curves"]["pchip_as_printed"]["reference"]["male"]["face_value"]
-            ),
-        ],
-        [
-            "Linear per-28 g estimate with plateau",
-            _stat_cell(
-                r["curves"]["linear_plateau"]["reference"]["male"]["face_value"]
-            ),
-        ],
-        ["No phase-in", _stat_cell(r["phase_in"]["0"]["male"]["face_value"])],
-        [
-            "Phase-in over 20 years",
-            _stat_cell(r["phase_in"]["20"]["male"]["face_value"]),
-        ],
-        [
-            "2021 life tables and causes",
-            _stat_cell(r["baseline_2021"]["reference"]["male"]["face_value"]),
-        ],
-        ["CVD deaths only", _stat_cell(ref["cvd_only"])],
-        [
-            "Randomized floor, all deaths, all 61 LDL trials",
-            _stat_cell(r["reference"]["floor_all_trials"]["male"]["floor_high"]),
-        ],
-    ]
-    return {
-        "sensitivity": md_table(["Choice", "Days, mean (80% interval)"], rows, "lr")
-    }
+    rows = []
+    for rid, label in SENSITIVITY_TABLE:
+        st = r["sensitivity"]["rows"][rid]["stats"]["male"]
+        rows.append(
+            [label]
+            + [_stat_cell(st[c]) if c in st else "—" for c in SENSITIVITY_COLUMNS]
+        )
+    header = ["Choice"] + [_label(r, c) for c in SENSITIVITY_COLUMNS]
+    return {"sensitivity": md_table(header, rows, "lrrr")}
 
 
 # ---- practical notes -----------------------------------------------------------
@@ -598,7 +770,7 @@ def values_practical(r) -> dict[str, Value]:
     pufa = {n: comp[n]["pufa_g"] for n in COMPOSITION_NUTS}
     if max(pufa, key=pufa.get) != "walnut":
         raise FillError(
-            "the text says walnuts carry the most PUFA; the data no longer agree"
+            "the text says walnuts have the most PUFA; the data no longer agree"
         )
     kernel = [
         float(w["grams"])
@@ -618,11 +790,23 @@ def values_practical(r) -> dict[str, Value]:
         "efsa_se": integer(int(_row("efsa2023_selenium_ul").estimate)),
         "nasem_se": integer(int(_row("nasem2000_selenium_ul").estimate)),
         "ev_npc": ev("stranges2007_npc_diabetes"),
-        "fda_aflatoxin": integer(int(_row("fda_aflatoxin_action_level").estimate)),
-        "ev_wang_salted": ev("wang2025_mr", 2),
+        "ev_select": ev("lippman2009_select_diabetes"),
         "kcal_walnut": number(comp["walnut"]["energy_kcal"] * grams / 100, 0),
         "kcal_almond": number(comp["almond"]["energy_kcal"] * grams / 100, 0),
+        "discount_pct": pct(r["cost"]["discount_rate"]),
     }
+
+
+def values_flip(r) -> dict[str, Value]:
+    return {
+        "ev_liu2020_change": ev("liu2020_nut_change_cvd"),
+        "ev_liu2020_start": ev("liu2020_nut_start_cvd"),
+    }
+
+
+def values_reproduce(r) -> dict[str, Value]:
+    version = (PAPER / "VERSION").read_text(encoding="utf-8").strip()
+    return {"version": text(version)}
 
 
 def tables_appendix(r) -> dict[str, str]:
@@ -632,32 +816,46 @@ def tables_appendix(r) -> dict[str, str]:
         if row.estimate is None:
             est = "citation only"
         else:
-            est = _num(row.estimate, row.measure)
+            f = _fmt_row(row)
+            est = f(row.estimate)
             if row.ci_low is not None and row.ci_high is not None:
-                est += (
-                    f" ({_num(row.ci_low, row.measure)} to "
-                    f"{_num(row.ci_high, row.measure)})"
-                )
+                est += f" ({f(row.ci_low)} to {f(row.ci_high)})"
+            if row.pi_low is not None and row.pi_high is not None:
+                est += f"; PI {f(row.pi_low)} to {f(row.pi_high)}"
+            if row.ci_low is None and row.pi_low is None:
+                try:
+                    est += f" (P = {_grouped(row.p_value(), 3)})"
+                except Exception:
+                    pass
+        measure = " ".join(x for x in (row.measure, row.unit) if x and x != "value")
         checked = row.verified.get("value_checked_in") or "not stated"
-        rows.append([f"`{rid}`", est, f"[@{row.source['key']}]", checked])
+        rows.append(
+            [f"`{rid}`", measure or "value", est, f"[@{row.source['key']}]", checked]
+        )
     return {
         "evidence": md_table(
-            ["Row", "Estimate (interval)", "Source", "Number checked in"], rows, "lrll"
+            ["Row", "Measure", "Estimate (interval)", "Source", "Number checked in"],
+            rows,
+            "llrll",
         )
     }
 
 
 VALUE_BUILDERS: tuple[Callable[..., dict[str, Value]], ...] = (
-    values_abstract,
+    values_headline,
     values_evidence,
+    values_calibration,
     values_model,
     values_results,
     values_which_nut,
     values_sensitivity,
     values_practical,
+    values_flip,
+    values_reproduce,
 )
 TABLE_BUILDERS: tuple[Callable[..., dict[str, str]], ...] = (
     tables_evidence,
+    tables_calibration,
     tables_results,
     tables_sensitivity,
     tables_appendix,

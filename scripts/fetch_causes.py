@@ -273,6 +273,15 @@ CAUSES = {
     # Not requested by DESIGN.md; kept for a sensitivity on shares of
     # non-COVID deaths (2021 is a pandemic year; 2023 still has COVID deaths).
     "covid": ("ICD-10 U07.1", lambda c: c == "U071"),
+    # External causes (injuries, poisonings including overdoses, suicides,
+    # homicides): for the sensitivity that leaves them out of the multiplier.
+    "external": (
+        "ICD-10 V01-Y89",
+        lambda c: in_range(c, "V01", "V99")
+        or in_range(c, "W00", "W99")
+        or in_range(c, "X00", "X99")
+        or in_range(c, "Y00", "Y89"),
+    ),
 }
 
 
@@ -893,6 +902,8 @@ COLUMNS = [
     "cancer_share",
     "covid_deaths",
     "covid_share",
+    "external_deaths",
+    "external_share",
 ]
 
 
@@ -1074,6 +1085,12 @@ def build(year: int, refresh: bool) -> list[str]:
                 CAUSES["covid"][0]
                 + " (COVID-19); extra column beyond DESIGN.md, kept for "
                 "a sensitivity on shares of non-COVID deaths"
+            ),
+            "external_deaths": (
+                CAUSES["external"][0]
+                + " (external causes of morbidity and mortality: injuries, "
+                "poisonings, suicides, homicides); extra column for the "
+                "sensitivity that applies the cohort multiplier to other deaths only"
             ),
             "shares": "cause deaths / all-cause deaths in the same cell, 6 decimals",
             "age_group_start/end": (

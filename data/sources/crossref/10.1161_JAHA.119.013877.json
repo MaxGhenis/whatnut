@@ -1,0 +1,569 @@
+{
+ "DOI": "10.1161/jaha.119.013877",
+ "ISSN": [
+  "2047-9980"
+ ],
+ "URL": "https://doi.org/10.1161/jaha.119.013877",
+ "abstract": "<jats:sec xml:lang=\"en\">\n                    <jats:title>Background</jats:title>\n                    <jats:p xml:lang=\"en\">\n                      We aim to evaluate the association of within\u2010individual changes in consumption of total and specific types of nuts and the subsequent risk of incident cardiovascular disease (\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      ) in\n                      <jats:styled-content style=\"fixed-case\">US</jats:styled-content>\n                      men and women.\n                    </jats:p>\n                  </jats:sec>\n                  <jats:sec xml:lang=\"en\">\n                    <jats:title>Methods and Results</jats:title>\n                    <jats:p xml:lang=\"en\">\n                      We included 34\u00a0103 men from the HPFS (Health Professionals Follow\u2010Up Study) (1986\u20132012), 77\u00a0815 women from the NHS (Nurses\u2019 Health Study) (1986\u20132012), and 80\u00a0737 women from the NHS\n                      <jats:styled-content style=\"fixed-case\">II</jats:styled-content>\n                      (1991\u20132013). We assessed nut consumption every 4\u00a0years using validated food frequency questionnaires. We used multivariable Cox proportional hazards regression models to examine the association between 4\u2010year changes in nut consumption and risk of confirmed\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      end points in the subsequent 4\u00a0years. Per 0.5\u00a0serving/day increase in total nut consumption was associated with lower risk of\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      (relative risk [RR], 0.92; 95%\n                      <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n                      , 0.86\u20130.98), coronary heart disease (RR, 0.94; 95% CI, 0.89\u20130.99), and stroke (RR, 0.89; 95% CI, 0.83\u20130.95). Compared with individuals who remained nonconsumers in a 4\u2010year interval, those who had higher consumption of total nuts (\u22650.5\u00a0servings/day) had a lower risk of\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      (RR, 0.75; 95% CI, 0.67\u20130.84), coronary heart disease (RR, 0.80; 95% CI, 0.69\u20130.93), and stroke (RR, 0.68; 95% CI, 0.57\u20130.82) in next 4\u00a0years. Individuals who decreased nut consumption by \u22650.50\u00a0servings/day had a higher risk of developing\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      (RR, 1.14; 95% CI, 0.99\u20131.32), coronary heart disease (RR, 1.06; 95% CI, 0.88\u20131.28), and stroke (RR, 1.28; 95% CI, 1.02\u20131.60) when compared with those who maintained their nut consumption.\n                    </jats:p>\n                  </jats:sec>\n                  <jats:sec xml:lang=\"en\">\n                    <jats:title>Conclusions</jats:title>\n                    <jats:p xml:lang=\"en\">\n                      Increasing total consumption of nuts and intake of individual types of nuts (eg, walnuts, other tree nuts, and peanuts) was associated with a subsequent lower risk of\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      . These data support the role of nut intake in the primary prevention of\n                      <jats:styled-content style=\"fixed-case\">CVD</jats:styled-content>\n                      .\n                    </jats:p>\n                  </jats:sec>\n                  <jats:sec xml:lang=\"en\">\n                    <jats:title>Registration</jats:title>\n                    <jats:p xml:lang=\"en\">\n                      <jats:styled-content style=\"fixed-case\">URL</jats:styled-content>\n                      :\n                      <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"uri\" xlink:href=\"http://www.clinicaltrials.gov\">http://www.clini\u200bcaltr\u200bials.gov</jats:ext-link>\n                      . Unique identifiers:\n                      <jats:styled-content style=\"fixed-case\">NCT</jats:styled-content>\n                      00005152 and\n                      <jats:styled-content style=\"fixed-case\">NCT</jats:styled-content>\n                      00005182.\n                    </jats:p>\n                  </jats:sec>",
+ "alternative-id": [
+  "10.1161/JAHA.119.013877"
+ ],
+ "article-number": "e013877",
+ "assertion": [
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Received",
+   "name": "received",
+   "order": 0,
+   "value": "2019-10-02"
+  },
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Accepted",
+   "name": "accepted",
+   "order": 1,
+   "value": "2020-02-07"
+  },
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Published",
+   "name": "published",
+   "order": 2,
+   "value": "2020-04-01"
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    }
+   ],
+   "family": "Liu",
+   "given": "Xiaoran",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    },
+    {
+     "name": "Channing Division of Network Medicine Department of Medicine Brigham and Women\u2019s Hospital and Harvard Medical School Boston MA"
+    }
+   ],
+   "family": "Guasch\u2010Ferr\u00e9",
+   "given": "Marta",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    }
+   ],
+   "family": "Drouin\u2010Chartier",
+   "given": "Jean\u2010Philippe",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    },
+    {
+     "name": "Division of Preventive Medicine Department of Medicine Brigham and Women\u2019s Hospital and Harvard Medical School Boston MA"
+    }
+   ],
+   "family": "Tobias",
+   "given": "Deirdre K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    },
+    {
+     "name": "Channing Division of Network Medicine Department of Medicine Brigham and Women\u2019s Hospital and Harvard Medical School Boston MA"
+    }
+   ],
+   "family": "Bhupathiraju",
+   "given": "Shilpa N.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Preventive Medicine Department of Medicine Brigham and Women\u2019s Hospital and Harvard Medical School Boston MA"
+    }
+   ],
+   "family": "Rexrode",
+   "given": "Kathryn M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    },
+    {
+     "name": "Channing Division of Network Medicine Department of Medicine Brigham and Women\u2019s Hospital and Harvard Medical School Boston MA"
+    }
+   ],
+   "family": "Willett",
+   "given": "Walter C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    },
+    {
+     "name": "Channing Division of Network Medicine Department of Medicine Brigham and Women\u2019s Hospital and Harvard Medical School Boston MA"
+    }
+   ],
+   "family": "Sun",
+   "given": "Qi",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-0412-2748",
+   "affiliation": [
+    {
+     "name": "Department of Nutrition Harvard T.H. Chan School of Public Health Boston MA"
+    }
+   ],
+   "authenticated-orcid": false,
+   "family": "Li",
+   "given": "Yanping",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Journal of the American Heart Association"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "www.ahajournals.org"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    1
+   ]
+  ],
+  "date-time": "2020-04-01T05:00:34Z",
+  "timestamp": 1585717234000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    5,
+    13
+   ]
+  ],
+  "date-time": "2024-05-13T07:26:19Z",
+  "timestamp": 1715585179000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    18
+   ]
+  ],
+  "date-time": "2026-09-18T11:14:43Z",
+  "timestamp": 1789730083663,
+  "version": "4.0.1"
+ },
+ "is-referenced-by-count": 35,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "2047-9980"
+  }
+ ],
+ "issue": "7",
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    9
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "7",
+  "published-print": {
+   "date-parts": [
+    [
+     2020,
+     4,
+     9
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://www.ahajournals.org/doi/full/10.1161/JAHA.119.013877",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "276",
+ "original-title": [],
+ "prefix": "10.1161",
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    9
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    9
+   ]
+  ]
+ },
+ "publisher": "Ovid Technologies (Wolters Kluwer Health)",
+ "reference": [
+  {
+   "DOI": "10.1016/S0140-6736(14)61682-2",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_2_2"
+  },
+  {
+   "DOI": "10.1017/S0007114514003924",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_3_2"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.115.018585",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_4_2"
+  },
+  {
+   "DOI": "10.3390/nu9121311",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_5_2"
+  },
+  {
+   "DOI": "10.1038/ejcn.2013.184",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_6_2"
+  },
+  {
+   "DOI": "10.1186/s12916-016-0730-3",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_7_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076109",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_8_2"
+  },
+  {
+   "DOI": "10.1056/NEJMc1806491",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_9_2"
+  },
+  {
+   "DOI": "10.1001/jama.2016.7491",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_10_2"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a115598",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_11_2"
+  },
+  {
+   "DOI": "10.1016/0140-6736(91)90542-W",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_12_2"
+  },
+  {
+   "article-title": "Cardiovascular survey methods",
+   "author": "Rose GA",
+   "first-page": "178",
+   "journal-title": "Monogr Ser World Health Organ",
+   "key": "e_1_3_2_13_2",
+   "unstructured": "Rose GA, Blackburn H, Gillum RF, Prineas RJ. Cardiovascular survey methods. Monogr Ser World Health Organ. 1982;56:178.",
+   "volume": "56",
+   "year": "1982"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a113804",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_14_2"
+  },
+  {
+   "DOI": "10.1056/NEJM198711193172102",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_15_2"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a116211",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_16_2"
+  },
+  {
+   "DOI": "10.1093/acprof:oso/9780199754038.001.0001",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_17_2"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a114086",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_18_2"
+  },
+  {
+   "DOI": "10.1093/ije/18.4.858",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_19_2"
+  },
+  {
+   "DOI": "10.1007/s11883-010-0132-5",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_20_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1014296",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_21_2"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_22_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1307352",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_23_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076901",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_24_2"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2014.8347",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_25_2"
+  },
+  {
+   "DOI": "10.1093/ije/dyv039",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_26_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1800389",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_27_2"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2017.04.011",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_28_2"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2015.07.021",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_29_2"
+  },
+  {
+   "DOI": "10.3390/nu9111271",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_30_2"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy091",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_31_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_32_2"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_33_2"
+  },
+  {
+   "DOI": "10.1161/HYPERTENSIONAHA.118.12766",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_34_2"
+  },
+  {
+   "DOI": "10.1002/mnfr.201500549",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_35_2"
+  },
+  {
+   "DOI": "10.1080/10408398.2015.1096763",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_36_2"
+  },
+  {
+   "DOI": "10.1007/s00394-017-1513-0",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_37_2"
+  },
+  {
+   "DOI": "10.1038/oby.2007.507",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_38_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.2008.27276",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_39_2"
+  },
+  {
+   "DOI": "10.1016/j.nut.2004.08.018",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_40_2"
+  },
+  {
+   "DOI": "10.1111/j.1365-277X.2009.00983.x",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_41_2"
+  },
+  {
+   "DOI": "10.1038/sj.ijo.0801360",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_42_2"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(18)31788-4",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_43_2"
+  },
+  {
+   "DOI": "10.1073/pnas.1402183111",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_44_2"
+  },
+  {
+   "DOI": "10.1093/ajcn/78.3.660S",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_45_2"
+  },
+  {
+   "DOI": "10.1038/nature13959",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_46_2"
+  },
+  {
+   "DOI": "10.3945/jn.115.214171",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_2_47_2"
+  }
+ ],
+ "reference-count": 46,
+ "references-count": 46,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.ahajournals.org/doi/10.1161/JAHA.119.013877"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "JAHA"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Changes in Nut Consumption and Subsequent Cardiovascular Disease Risk Among US Men and Women: 3 Large Prospective Cohort Studies"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1161/crossmarkpolicy",
+ "volume": "9"
+}

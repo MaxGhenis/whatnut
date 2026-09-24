@@ -1,5 +1,17 @@
 {
  "files": {
+  "10.1001_jama.2008.864.json": {
+   "bytes": 8463,
+   "fetched_at": "2026-09-24T11:51:46Z",
+   "sha256": "c1859119401c4f754c337d3d9b92de01730ccd811569a10415e5589e643ac58e",
+   "url": "https://api.crossref.org/works/10.1001/jama.2008.864"
+  },
+  "10.1001_jama.2016.13985.json": {
+   "bytes": 4873,
+   "fetched_at": "2026-09-24T11:51:43Z",
+   "sha256": "ef42839840064ddff98384b20f6bd455913dfaa9649238c85e7acded2ebde82a",
+   "url": "https://api.crossref.org/works/10.1001/jama.2016.13985"
+  },
   "10.1001_jamainternmed.2014.8347.json": {
    "bytes": 6357,
    "fetched_at": "2026-09-24T02:30:10Z",
@@ -23,6 +35,12 @@
    "fetched_at": "2026-09-24T02:55:31Z",
    "sha256": "0827a52291f76d9feae2e8a19dc2d7507393585bff70d198d0fbddfdd7dee4ad",
    "url": "https://api.crossref.org/works/10.1016/S0140-6736(10)61350-5"
+  },
+  "10.1016_j.acvd.2025.08.010.json": {
+   "bytes": 40936,
+   "fetched_at": "2026-09-24T11:51:43Z",
+   "sha256": "99a244e7e3e4b15061b44cd123d23cc522c010adec4b261a29bf596c92dcdb9c",
+   "url": "https://api.crossref.org/works/10.1016/j.acvd.2025.08.010"
   },
   "10.1016_j.ctim.2020.102387.json": {
    "bytes": 19670,
@@ -84,6 +102,12 @@
    "sha256": "e2f88d6239332dd158a416e3782733137691c49fb7b51fd4e3cdc805e32a524a",
    "url": "https://api.crossref.org/works/10.1089/acm.2011.0443"
   },
+  "10.1093_advances_nmac077.json": {
+   "bytes": 66183,
+   "fetched_at": "2026-09-24T11:51:42Z",
+   "sha256": "968766ee1e74c391e27c19a3eca914552e132da29f42c40e4ab086f464d992ad",
+   "url": "https://api.crossref.org/works/10.1093/advances/nmac077"
+  },
   "10.1093_advances_nmz043.json": {
    "bytes": 20348,
    "fetched_at": "2026-09-24T02:30:12Z",
@@ -95,6 +119,12 @@
    "fetched_at": "2026-09-24T02:30:11Z",
    "sha256": "6361c6b1f10fb75a1e71f4e677f7d4ab5e78acf076e1fd4869485d6aa49ac674",
    "url": "https://api.crossref.org/works/10.1093/ajcn/nqy091"
+  },
+  "10.1093_eurheartj_ehx144.json": {
+   "bytes": 33095,
+   "fetched_at": "2026-09-24T11:51:44Z",
+   "sha256": "9e52acdd487cb0d7729345a00655478d657cccf4b9c0c2fea2d8387003d31686",
+   "url": "https://api.crossref.org/works/10.1093/eurheartj/ehx144"
   },
   "10.1093_ije_dyv039.json": {
    "bytes": 8466,
@@ -126,11 +156,29 @@
    "sha256": "1f75842c4ccf6d3efbc868e668cc184321bdce9d82887ffa2d2da3406079d08d",
    "url": "https://api.crossref.org/works/10.1136/bmj.n2213"
   },
+  "10.1161_CIRCULATIONAHA.121.054051.json": {
+   "bytes": 10517,
+   "fetched_at": "2026-09-24T11:51:44Z",
+   "sha256": "6587ae0ec29eb2374c7f955db9948be8fbdd8c4f387245820da610177097fca8",
+   "url": "https://api.crossref.org/works/10.1161/CIRCULATIONAHA.121.054051"
+  },
   "10.1161_JAHA.115.002543.json": {
    "bytes": 60322,
    "fetched_at": "2026-09-24T02:55:34Z",
    "sha256": "d60a9260c8a1cbd927219ccd0266ce813bde8aa4b005e20c72f3381a968eff3b",
    "url": "https://api.crossref.org/works/10.1161/JAHA.115.002543"
+  },
+  "10.1161_JAHA.119.013877.json": {
+   "bytes": 16245,
+   "fetched_at": "2026-09-24T11:51:45Z",
+   "sha256": "a010acc36e6f073aeb307c82b609b7d1cc36937db298af884b7dc0897ea6827b",
+   "url": "https://api.crossref.org/works/10.1161/JAHA.119.013877"
+  },
+  "10.1186_1741-7015-11-164.json": {
+   "bytes": 27178,
+   "fetched_at": "2026-09-24T11:51:45Z",
+   "sha256": "57bf7e6885e58217ec12becf4ecc605ea850da5f0001f2f982dac8b756fc7a35",
+   "url": "https://api.crossref.org/works/10.1186/1741-7015-11-164"
   },
   "10.1186_s12916-016-0730-3.json": {
    "bytes": 42937,

@@ -6,7 +6,7 @@ How much life does eating nuts buy a US adult? The model answers three questions
 2. How much the next grams add, given what the person already eats.
 3. Whether the choice of nut changes the answer, and what each nut costs per life-year.
 
-Every estimate is bracketed: a randomized floor (LDL lowering in nut trials times the statin-trial slope), the cohort dose-response at face value, and the cohort curve calibrated by the ratio of trial to cohort estimates in paired diet-intake studies (Schwingshackl et al. 2021), which puts it slightly above face value. Read the paper at [maxghenis.com/whatnut](https://www.maxghenis.com/whatnut/). The design and model spec are in [DESIGN.md](DESIGN.md).
+Every estimate comes as a set of scenarios: the LDL pathway (LDL lowering in randomized nut trials times the statin-trial slopes), the cohort dose-response restricted to cardiovascular deaths, the cohort curve calibrated by how trial estimates have compared with cohort estimates across 71 nutrition questions (Schwingshackl et al. 2021), and the cohort dose-response at face value. Read the paper at [maxghenis.com/whatnut](https://www.maxghenis.com/whatnut/). The design and model spec are in [DESIGN.md](DESIGN.md).
 
 ## Regenerate
 

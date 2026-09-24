@@ -1,0 +1,825 @@
+{
+ "DOI": "10.1186/1741-7015-11-164",
+ "ISSN": [
+  "1741-7015"
+ ],
+ "URL": "https://doi.org/10.1186/1741-7015-11-164",
+ "abstract": "<jats:title>Abstract</jats:title><jats:sec><jats:title>Background</jats:title><jats:p>Prospective studies in non-Mediterranean populations have consistently related increasing nut consumption to lower coronary heart disease mortality. A small protective effect on all-cause and cancer mortality has also been suggested. To examine the association between frequency of nut consumption and mortality in individuals at high cardiovascular risk from Spain, a Mediterranean country with a relatively high average nut intake per person.</jats:p></jats:sec><jats:sec><jats:title>Methods</jats:title><jats:p>We evaluated 7,216 men and women aged 55 to 80 years randomized to 1 of 3 interventions (Mediterranean diets supplemented with nuts or olive oil and control diet) in the PREDIMED (\u2018PREvenci\u00f3n con DIeta MEDiterr\u00e1nea\u2019) study. Nut consumption was assessed at baseline and mortality was ascertained by medical records and linkage to the National Death Index. Multivariable-adjusted Cox regression and multivariable analyses with generalized estimating equation models were used to assess the association between yearly repeated measurements of nut consumption and mortality.</jats:p></jats:sec><jats:sec><jats:title>Results</jats:title><jats:p>During a median follow-up of 4.8 years, 323 total deaths, 81 cardiovascular deaths and 130 cancer deaths occurred. Nut consumption was associated with a significantly reduced risk of all-cause mortality (<jats:italic>P</jats:italic>for trend &lt;0.05, all). Compared to non-consumers, subjects consuming nuts &gt;3 servings/week (32% of the cohort) had a 39% lower mortality risk (hazard ratio (HR) 0.61; 95% CI 0.45 to 0.83). A similar protective effect against cardiovascular and cancer mortality was observed. Participants allocated to the Mediterranean diet with nuts group who consumed nuts &gt;3 servings/week at baseline had the lowest total mortality risk (HR 0.37; 95% CI 0.22 to 0.66).</jats:p></jats:sec><jats:sec><jats:title>Conclusions</jats:title><jats:p>Increased frequency of nut consumption was associated with a significantly reduced risk of mortality in a Mediterranean population at high cardiovascular risk.</jats:p><jats:p>Please see related commentary:<jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"http://www.biomedcentral.com/1741-7015/11/165\" ext-link-type=\"uri\">http://www.biomedcentral.com/1741-7015/11/165</jats:ext-link>.</jats:p></jats:sec><jats:sec><jats:title>Trial registration</jats:title><jats:p>Clinicaltrials.gov. International Standard Randomized Controlled Trial Number (ISRCTN):<jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"http://www.controlled-trials.com/ISRCTN35739639\" ext-link-type=\"uri\">35739639</jats:ext-link>. Registration date: 5 October 2005.</jats:p></jats:sec>",
+ "alternative-id": [
+  "812"
+ ],
+ "article-number": "164",
+ "assertion": [
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Received",
+   "name": "received",
+   "order": 1,
+   "value": "22 April 2013"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Accepted",
+   "name": "accepted",
+   "order": 2,
+   "value": "22 May 2013"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "First Online",
+   "name": "first_online",
+   "order": 3,
+   "value": "16 July 2013"
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Guasch-Ferr\u00e9",
+   "given": "Marta",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Bull\u00f3",
+   "given": "M\u00f2nica",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mart\u00ednez-Gonz\u00e1lez",
+   "given": "Miguel \u00c1ngel",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ros",
+   "given": "Emilio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Corella",
+   "given": "Dolores",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Estruch",
+   "given": "Ramon",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fit\u00f3",
+   "given": "Montserrat",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ar\u00f3s",
+   "given": "Fernando",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "W\u00e4rnberg",
+   "given": "Julia",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fiol",
+   "given": "Miquel",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lapetra",
+   "given": "Jos\u00e9",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vinyoles",
+   "given": "Ernest",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lamuela-Ravent\u00f3s",
+   "given": "Rosa Maria",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Serra-Majem",
+   "given": "Llu\u00eds",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pint\u00f3",
+   "given": "Xavier",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ruiz-Guti\u00e9rrez",
+   "given": "Valentina",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Basora",
+   "given": "Josep",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Salas-Salvad\u00f3",
+   "given": "Jordi",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "BMC Medicine"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": [
+   "link.springer.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2013,
+    7,
+    17
+   ]
+  ],
+  "date-time": "2013-07-17T11:19:14Z",
+  "timestamp": 1374059954000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    7,
+    3
+   ]
+  ],
+  "date-time": "2023-07-03T07:30:02Z",
+  "timestamp": 1688369402000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    10
+   ]
+  ],
+  "date-time": "2026-09-10T12:21:18Z",
+  "timestamp": 1789042878844,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 138,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "1741-7015"
+  }
+ ],
+ "issue": "1",
+ "issued": {
+  "date-parts": [
+   [
+    2013,
+    7,
+    16
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2013,
+     12
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "http://www.springer.com/tdm",
+   "content-version": "unspecified",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2013,
+      7,
+      16
+     ]
+    ],
+    "date-time": "2013-07-16T00:00:00Z",
+    "timestamp": 1373932800000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "http://link.springer.com/content/pdf/10.1186/1741-7015-11-164.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://link.springer.com/article/10.1186/1741-7015-11-164/fulltext.html",
+   "content-type": "text/html",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://link.springer.com/content/pdf/10.1186/1741-7015-11-164",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  },
+  {
+   "URL": "https://link.springer.com/content/pdf/10.1186/1741-7015-11-164.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "297",
+ "original-title": [],
+ "prefix": "10.1186",
+ "published": {
+  "date-parts": [
+   [
+    2013,
+    7,
+    16
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2013,
+    7,
+    16
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2013,
+    12
+   ]
+  ]
+ },
+ "publisher": "Springer Science and Business Media LLC",
+ "reference": [
+  {
+   "DOI": "10.1017/BJN20061861",
+   "author": "E Ros",
+   "doi-asserted-by": "publisher",
+   "first-page": "S29",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR1",
+   "unstructured": "Ros E, Mataix J: Fatty acid composition of nuts-implications for cardiovascular health. Br J Nutr. 2006, 96: S29-S35. 10.1017/BJN20061861.",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1017/BJN20061862",
+   "author": "R Segura",
+   "doi-asserted-by": "publisher",
+   "first-page": "S36",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR2",
+   "unstructured": "Segura R, Javierre C, Lizarraga MA, Ros E: Other relevant components of nuts: phytosterols, folate and minerals. Br J Nutr. 2006, 96: S36-S44. 10.1017/BJN20061862.",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1079/BJN20061700",
+   "author": "J Salas-Salvado",
+   "doi-asserted-by": "publisher",
+   "first-page": "S46",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR3",
+   "unstructured": "Salas-Salvado J, Bullo M, Perez-Heras A, Ros E: Dietary fibre, nuts and cardiovascular diseases. Br J Nutr. 2006, 96: S46-S51. 10.1079/BJN20061700.",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1007/s11883-010-0132-5",
+   "author": "E Ros",
+   "doi-asserted-by": "publisher",
+   "first-page": "397",
+   "journal-title": "Curr Atheroscler Rep",
+   "key": "812_CR4",
+   "unstructured": "Ros E, Tapsell LC, Sabate J: Nuts and berries for heart health. Curr Atheroscler Rep. 2010, 12: 397-406. 10.1007/s11883-010-0132-5.",
+   "volume": "12",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3390/nu2070652",
+   "author": "E Ros",
+   "doi-asserted-by": "publisher",
+   "first-page": "652",
+   "journal-title": "Nutrients",
+   "key": "812_CR5",
+   "unstructured": "Ros E: Health benefits of nut consumption. Nutrients. 2010, 2: 652-682. 10.3390/nu2070652.",
+   "volume": "2",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "author": "J Sabate",
+   "doi-asserted-by": "publisher",
+   "first-page": "821",
+   "journal-title": "Arch Intern Med",
+   "key": "812_CR6",
+   "unstructured": "Sabate J, Oda K, Ros E: Nut consumption and blood lipid levels: a pooled analysis of 25 intervention trials. Arch Intern Med. 2010, 170: 821-827. 10.1001/archinternmed.2010.79.",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1001/archinte.162.12.1382",
+   "author": "CM Albert",
+   "doi-asserted-by": "publisher",
+   "first-page": "1382",
+   "journal-title": "Arch Intern Med",
+   "key": "812_CR7",
+   "unstructured": "Albert CM, Gaziano JM, Willett WC, Manson JE: Nut consumption and decreased risk of sudden cardiac death in the Physicians' Health Study. Arch Intern Med. 2002, 162: 1382-1387. 10.1001/archinte.162.12.1382.",
+   "volume": "162",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1017/S0007114510001546",
+   "author": "CW Kendall",
+   "doi-asserted-by": "publisher",
+   "first-page": "465",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR8",
+   "unstructured": "Kendall CW, Josse AR, Esfahani A, Jenkins DJ: Nuts, metabolic syndrome and diabetes. Br J Nutr. 2010, 104: 465-473. 10.1017/S0007114510001546.",
+   "volume": "104",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1001/archinte.168.22.2449",
+   "author": "J Salas-Salvado",
+   "doi-asserted-by": "publisher",
+   "first-page": "2449",
+   "journal-title": "Arch Intern Med",
+   "key": "812_CR9",
+   "unstructured": "Salas-Salvado J, Fernandez-Ballart J, Ros E, Martinez-Gonzalez MA, Fito M, Estruch R, Corella D, Fiol M, Gomez-Gracia E, Aros F, Flores G, Lapetra J, Lamuela-Raventos R, Ruiz-Gutierrez V, Bullo M, Basora J, Covas MI: PREDIMED Study Investigators: effect of a Mediterranean diet supplemented with nuts on metabolic syndrome status: one-year results of the PREDIMED randomized trial. Arch Intern Med. 2008, 168: 2449-2458. 10.1001/archinte.168.22.2449.",
+   "volume": "168",
+   "year": "2008"
+  },
+  {
+   "author": "JL Ellsworth",
+   "first-page": "372",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "812_CR10",
+   "unstructured": "Ellsworth JL, Kushi LH, Folsom AR: Frequent nut intake and risk of death from coronary heart disease and all causes in postmenopausal women: the Iowa Women's Health Study. Nutr Metab Cardiovasc Dis. 2001, 11: 372-377.",
+   "volume": "11",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.3945/ajcn.110.008250",
+   "author": "PA van den Brandt",
+   "doi-asserted-by": "publisher",
+   "first-page": "913",
+   "journal-title": "Am J Clin Nutr",
+   "key": "812_CR11",
+   "unstructured": "van den Brandt PA: The impact of a Mediterranean diet and healthy lifestyle on premature mortality in men and women. Am J Clin Nutr. 2011, 94: 913-920. 10.3945/ajcn.110.008250.",
+   "volume": "94",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/aje/kwq368",
+   "author": "HJ Baer",
+   "doi-asserted-by": "publisher",
+   "first-page": "319",
+   "journal-title": "Am J Epidemiol",
+   "key": "812_CR12",
+   "unstructured": "Baer HJ, Glynn RJ, Hu FB, Hankinson SE, Willett WC, Colditz GA, Stampfer M, Rosner B: Risk factors for mortality in the nurses' health study: a competing risks analysis. Am J Epidemiol. 2011, 173: 319-329. 10.1093/aje/kwq368.",
+   "volume": "173",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1017/BJN20061859",
+   "author": "M Jenab",
+   "doi-asserted-by": "publisher",
+   "first-page": "S12",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR13",
+   "unstructured": "Jenab M, Sabate J, Slimani N, Ferrari P, Mazuir M, Casagrande C, Deharveng G, Tjonneland A, Olsen A, Overvad K, Boutron-Ruault MC, Clavel-Chapelon F, Boeing H, Weikert C, Linseisen J, Rohrmann S, Trichopoulou A, Naska A, Palli D, Sacerdote C, Tumino R, Mattiello A, Pala V, Bueno-de-Mesquita HB, Ocke MC, Peeters PH, Engeset D, Skeie G, Jakszyn P, Ardanaz E, et al: Consumption and portion sizes of tree nuts, peanuts and seeds in the European Prospective Investigation into Cancer and Nutrition (EPIC) cohorts from 10 European countries. Br J Nutr. 2006, 96: S12-S23.",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1093/ije/dyq250",
+   "author": "MA Martinez-Gonzalez",
+   "doi-asserted-by": "publisher",
+   "first-page": "377",
+   "journal-title": "Int J Epidemiol",
+   "key": "812_CR14",
+   "unstructured": "Martinez-Gonzalez MA, Corella D, Salas-Salvado J, Ros E, Covas MI, Fiol M, Warnberg J, Aros F, Ruiz-Gutierrez V, Lamuela-Raventos RM, Lapetra J, Munoz MA, Martinez JA, Saez G, Serra-Majem L, Pinto X, Mitjavila MT, Tur JA, Portillo Mdel P, Estruch R: PREDIMED Study Investigators: cohort profile: design and methods of the PREDIMED study. Int J Epidemiol. 2012, 41: 377-385. 10.1093/ije/dyq250.",
+   "volume": "41",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.2337/dc11-S062",
+   "author": "American Diabetes Association",
+   "doi-asserted-by": "publisher",
+   "first-page": "S62",
+   "journal-title": "Diabetes Care",
+   "key": "812_CR15",
+   "unstructured": "American Diabetes Association: Diagnosis and classification of diabetes mellitus. Diabetes Care. 2011, 34: S62-S69.",
+   "volume": "34",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1200303",
+   "author": "R Estruch",
+   "doi-asserted-by": "publisher",
+   "first-page": "1279",
+   "journal-title": "N Engl J Med",
+   "key": "812_CR16",
+   "unstructured": "Estruch R, Ros E, Salas-Salvado J, Covas MI, Corella D, Aros F, Gomez-Gracia E, Ruiz-Gutierrez V, Fiol M, Lapetra J, Lamuela-Raventos RM, Serra-Majem L, Pinto X, Basora J, Munoz MA, Sorli JV, Martinez JA, Martinez-Gonzalez MA: PREDIMED Study Investigators: primary prevention of cardiovascular disease with a Mediterranean diet. N Engl J Med. 2013, 368: 1279-1290. 10.1056/NEJMoa1200303.",
+   "volume": "368",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1017/S0007114509993837",
+   "author": "JD Fernandez-Ballart",
+   "doi-asserted-by": "publisher",
+   "first-page": "1808",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR17",
+   "unstructured": "Fernandez-Ballart JD, Pinol JL, Zazpe I, Corella D, Carrasco P, Toledo E, Perez-Bauer M, Martinez-Gonzalez MA, Salas-Salvado J, Martin-Moreno JM: Relative validity of a semi-quantitative food-frequency questionnaire in an elderly Mediterranean population of Spain. Br J Nutr. 2010, 103: 1808-1816. 10.1017/S0007114509993837.",
+   "volume": "103",
+   "year": "2010"
+  },
+  {
+   "author": "J Mataix",
+   "edition": "4",
+   "key": "812_CR18",
+   "unstructured": "Mataix J: Tablas de Composici\u00f3n de Alimentos. 2003, Granada, Spain: Universidad de Granada, 4",
+   "volume-title": "Tablas de Composici\u00f3n de Alimentos",
+   "year": "2003"
+  },
+  {
+   "edition": "9",
+   "key": "812_CR19",
+   "unstructured": "Tablas de Composici\u00f3n de Alimentos [Food Composition Tables]. Edited by: Moreiras O, Carvajal A, Cabrera L. 2005, Madrid, Spain: Ediciones Pir\u00e1mide, 9",
+   "volume-title": "Tablas de Composici\u00f3n de Alimentos [Food Composition Tables]",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.3945/jn.110.135566",
+   "author": "H Schr\u00f6der",
+   "doi-asserted-by": "publisher",
+   "first-page": "1140",
+   "journal-title": "J Nutr",
+   "key": "812_CR20",
+   "unstructured": "Schr\u00f6der H, Fito M, Estruch R, Martinez-Gonzalez MA, Corella D, Salas-Salvado J, Lamuela-Raventos R, Ros E, Salaverria I, Fiol M, Lapetra J, Vinyoles E, Gomez-Gracia E, Lahoz C, Serra-Majem L, Pinto X, Ruiz-Gutierrez V, Covas MI: A short screener is valid for assessing Mediterranean diet adherence among older Spanish men and women. J Nutr. 2011, 141: 1140-1145. 10.3945/jn.110.135566.",
+   "volume": "141",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a116966",
+   "author": "R Elosua",
+   "doi-asserted-by": "crossref",
+   "first-page": "1197",
+   "journal-title": "Am J Epidemiol",
+   "key": "812_CR21",
+   "unstructured": "Elosua R, Marrugat J, Molina L, Pons S, Pujol E: Validation of the Minnesota Leisure Time Physical Activity Questionnaire in Spanish men. The MARATHOM Investigators. Am J Epidemiol. 1994, 139: 1197-1209.",
+   "volume": "139",
+   "year": "1994"
+  },
+  {
+   "DOI": "10.1093/acprof:oso/9780195122978.003.13",
+   "author": "WC Willett",
+   "doi-asserted-by": "publisher",
+   "first-page": "321",
+   "key": "812_CR22",
+   "unstructured": "Willett WC: Issues in analysis and presentation of dietary data. Nutritional Epidemiology. 1998, New York, NY: Oxford University Press, 321-345.",
+   "volume-title": "Nutritional Epidemiology",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400190054010",
+   "author": "GE Fraser",
+   "doi-asserted-by": "publisher",
+   "first-page": "1416",
+   "journal-title": "Arch Intern Med",
+   "key": "812_CR23",
+   "unstructured": "Fraser GE, Sabate J, Beeson WL, Strahan TM: A possible protective effect of nut consumption on risk of coronary heart disease. The Adventist Health Study. Arch Intern Med. 1992, 152: 1416-1424. 10.1001/archinte.1992.00400190054010.",
+   "volume": "152",
+   "year": "1992"
+  },
+  {
+   "author": "RJ Prineas",
+   "first-page": "359",
+   "journal-title": "N Engl J Med",
+   "key": "812_CR24",
+   "unstructured": "Prineas RJ, Kushi LH, Folsom AR, Bostick RM, Wu Y: Walnuts and serum lipids. N Engl J Med. 1993, 329: 359.",
+   "volume": "329",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1136/bmj.317.7169.1341",
+   "author": "FB Hu",
+   "doi-asserted-by": "publisher",
+   "first-page": "1341",
+   "journal-title": "BMJ",
+   "key": "812_CR25",
+   "unstructured": "Hu FB, Stampfer MJ, Manson JE, Rimm EB, Colditz GA, Rosner BA, Speizer FE, Hennekens CH, Willett WC: Frequent nut consumption and risk of coronary heart disease in women: prospective cohort study. BMJ. 1998, 317: 1341-1345. 10.1136/bmj.317.7169.1341.",
+   "volume": "317",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.26736Q",
+   "author": "J Sabate",
+   "doi-asserted-by": "publisher",
+   "first-page": "1643S",
+   "journal-title": "Am J Clin Nutr",
+   "key": "812_CR26",
+   "unstructured": "Sabate J, Ang Y: Nuts and health outcomes: new epidemiologic evidence. Am J Clin Nutr. 2009, 89: 1643S-1648S. 10.3945/ajcn.2009.26736Q.",
+   "volume": "89",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1093/jnci/90.21.1637",
+   "author": "JR Hebert",
+   "doi-asserted-by": "publisher",
+   "first-page": "1637",
+   "journal-title": "J Natl Cancer Inst",
+   "key": "812_CR27",
+   "unstructured": "Hebert JR, Hurley TG, Olendzki BC, Teas J, Ma Y, Hampl JS: Nutritional and socioeconomic factors in relation to prostate cancer mortality: a cross-national study. J Natl Cancer Inst. 1998, 90: 1637-1647. 10.1093/jnci/90.21.1637.",
+   "volume": "90",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a009697",
+   "author": "PN Singh",
+   "doi-asserted-by": "publisher",
+   "first-page": "761",
+   "journal-title": "Am J Epidemiol",
+   "key": "812_CR28",
+   "unstructured": "Singh PN, Fraser GE: Dietary risk factors for colon cancer in a low-risk population. Am J Epidemiol. 1998, 148: 761-774. 10.1093/oxfordjournals.aje.a009697.",
+   "volume": "148",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1158/1055-9965.1595.13.10",
+   "author": "M Jenab",
+   "doi-asserted-by": "crossref",
+   "first-page": "1595",
+   "journal-title": "Cancer Epidemiol Biomarkers Prev",
+   "key": "812_CR29",
+   "unstructured": "Jenab M, Ferrari P, Slimani N, Norat T, Casagrande C, Overad K, Olsen A, Stripp C, Tjonneland A, Boutron-Ruault MC, Clavel-Chapelon F, Kesse E, Nieters A, Bergmann M, Boeing H, Naska A, Trichopoulou A, Palli D, Krogh V, Celentano E, Tumino R, Sacerdote C, Bueno-de-Mesquita HB, Ocke MC, Peeters PH, Engeset D, Quiros JR, Gonzalez CA, Martinez C, Chirlaque MD, et al: Association of nut and seed intake with colorectal cancer risk in the European Prospective Investigation into Cancer and Nutrition. Cancer Epidemiol Biomarkers Prev. 2004, 13: 1595-1603.",
+   "volume": "13",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.3748/wjg.v12.i2.222",
+   "author": "CC Yeh",
+   "doi-asserted-by": "publisher",
+   "first-page": "222",
+   "journal-title": "World J Gastroenterol",
+   "key": "812_CR30",
+   "unstructured": "Yeh CC, You SL, Chen CJ, Sung FC: Peanut consumption and reduced risk of colorectal cancer in women: a prospective study in Taiwan. World J Gastroenterol. 2006, 12: 222-227.",
+   "volume": "12",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1207/S15327914NC441_3",
+   "author": "E Petridou",
+   "doi-asserted-by": "publisher",
+   "first-page": "16",
+   "journal-title": "Nutr Cancer",
+   "key": "812_CR31",
+   "unstructured": "Petridou E, Kedikoglou S, Koukoulomatis P, Dessypris N, Trichopoulos D: Diet in relation to endometrial cancer risk: a case\u2013control study in Greece. Nutr Cancer. 2002, 44: 16-22. 10.1207/S15327914NC441_3.",
+   "volume": "44",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1207/S15327914NC3402_8",
+   "author": "MG Jain",
+   "doi-asserted-by": "publisher",
+   "first-page": "173",
+   "journal-title": "Nutr Cancer",
+   "key": "812_CR32",
+   "unstructured": "Jain MG, Hislop GT, Howe GR, Ghadirian P: Plant foods, antioxidants, and prostate cancer risk: findings from case\u2013control studies in Canada. Nutr Cancer. 1999, 34: 173-184. 10.1207/S15327914NC3402_8.",
+   "volume": "34",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1017/BJN20061868",
+   "author": "CA Gonzalez",
+   "doi-asserted-by": "publisher",
+   "first-page": "S87",
+   "journal-title": "Br J Nutr",
+   "key": "812_CR33",
+   "unstructured": "Gonzalez CA, Salas-Salvado J: The potential of nuts in the prevention of cancer. Br J Nutr. 2006, 96: S87-S94. 10.1017/BJN20061868.",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1039/C2FO10152A",
+   "author": "JA Vinson",
+   "doi-asserted-by": "publisher",
+   "first-page": "134",
+   "journal-title": "Food Funct",
+   "key": "812_CR34",
+   "unstructured": "Vinson JA, Cai Y: Nuts, especially walnuts, have both antioxidant quantity and efficacy and exhibit significant potential health benefits. Food Funct. 2012, 3: 134-140. 10.1039/c2fo10152a.",
+   "volume": "3",
+   "year": "2012"
+  },
+  {
+   "author": "P Casas-Agustench",
+   "first-page": "124",
+   "journal-title": "Asia Pac J Clin Nutr",
+   "key": "812_CR35",
+   "unstructured": "Casas-Agustench P, Bullo M, Salas-Salvado J: Nuts, inflammation and insulin resistance. Asia Pac J Clin Nutr. 2010, 19: 124-130.",
+   "volume": "19",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1111/j.1753-4887.2009.00223.x",
+   "author": "P Lopez-Uriarte",
+   "doi-asserted-by": "publisher",
+   "first-page": "497",
+   "journal-title": "Nutr Rev",
+   "key": "812_CR36",
+   "unstructured": "Lopez-Uriarte P, Bullo M, Casas-Agustench P, Babio N, Salas-Salvado J: Nuts and oxidation: a systematic review. Nutr Rev. 2009, 67: 497-508. 10.1111/j.1753-4887.2009.00223.x.",
+   "volume": "67",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2011.01.009",
+   "author": "P Casas-Agustench",
+   "doi-asserted-by": "publisher",
+   "first-page": "S21",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "812_CR37",
+   "unstructured": "Casas-Agustench P, Lopez-Uriarte P, Ros E, Bullo M, Salas-Salvado J: Nuts, hypertension and endothelial function. Nutr Metab Cardiovasc Dis. 2011, 21: S21-S33.",
+   "volume": "21",
+   "year": "2011"
+  }
+ ],
+ "reference-count": 37,
+ "references-count": 37,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://bmcmedicine.biomedcentral.com/articles/10.1186/1741-7015-11-164"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "BMC Med"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+ "volume": "11"
+}

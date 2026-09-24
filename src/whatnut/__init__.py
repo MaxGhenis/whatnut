@@ -5,7 +5,7 @@ Modules:
                and evidence rows from data/evidence.yaml
     lifetable  remaining life expectancy from single-year death probabilities under
                age-specific hazard multipliers
-    model      dose curves, the bracket of causal multipliers, Monte Carlo draws
+    model      dose curves, the scenarios' causal multipliers, Monte Carlo draws
     pipeline   writes results/results.json and paper/figures/*.png
     results    typed accessors over results/results.json
                (``from whatnut.results import r``)
