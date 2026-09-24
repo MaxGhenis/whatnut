@@ -1,0 +1,9 @@
+nut,n_retailers,retailers,min_usd_per_kg,median_usd_per_kg,max_usd_per_kg,nuts_com_usd_per_kg,nuts_com_row_id,walmart_usd_per_kg,walmart_row_id,costco_usd_per_kg,costco_row_id,target_usd_per_kg,target_row_id
+walnut,4,nuts.com;Walmart;Costco;Target,7.34,22.02,26.43,26.43,nuts_com:english-walnut-halves-raw-no-shell:67345546248214,20.70,walmart:939571964,7.34,costco:100119388:warehouse,23.35,target:95045089
+almond,4,nuts.com;Walmart;Costco;Target,10.13,15.27,22.04,22.04,nuts_com:dry-roasted-almonds-unsalted:71121142972438,14.79,walmart:5284690796,10.13,costco:100115268:warehouse,15.75,target:good-gather-raw-whole-almonds-32oz
+pistachio,2,nuts.com;Walmart,35.10,37.38,39.66,39.66,nuts_com:raw-pistachios-no-shell:67345526259734,35.10,walmart:18267370359,,,,
+pecan,3,nuts.com;Walmart;Costco,17.63,24.55,34.30,34.30,nuts_com:georgia-pecans-raw-no-shell:67345523834902,24.55,walmart:327976708,17.63,costco:100115257:warehouse,,
+hazelnut,1,nuts.com,41.87,41.87,41.87,41.87,nuts_com:raw-hazelnuts-filberts-no-shell:67345522262038,,,,,,
+macadamia,2,nuts.com;Walmart,47.09,49.99,52.89,52.89,nuts_com:raw-macadamia-nuts:67345522950166,47.09,walmart:499527722,,,,
+cashew,3,nuts.com;Walmart;Costco,13.48,22.63,26.45,26.45,nuts_com:raw-cashews:71824810803222,22.63,walmart:748653717,13.48,costco:4000043019:warehouse,,
+peanut,2,nuts.com;Walmart,5.69,7.98,10.28,10.28,nuts_com:dry-roasted-peanuts-unsalted:71820035784726,5.69,walmart:10448400,,,,

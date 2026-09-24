@@ -1,0 +1,144 @@
+source:
+  citation: 'Aune D, Keum N, Giovannucci E, et al. Nut consumption and risk of cardiovascular disease,
+    total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis
+    of prospective studies. BMC Medicine 2016;14:207.'
+  doi: 10.1186/s12916-016-0730-3
+  pmid: '27916000'
+  pmcid: PMC5137221
+  files:
+  - raw/aune2016_PMC5137221.xml
+  - raw/aune2016_MOESM1_ESM.pdf
+  checked_on: '2026-09-23'
+what_the_csv_holds: 'Every numeric point of the nonlinear (restricted cubic spline) dose-response for
+  total nuts that the paper reports in numbers: Additional file 1, Supplementary Tables 14 and 15, RR
+  (95% CI) at 0, 5, 10, 15, 20, 25 and 28 g/day versus 0 g/day. All-cause mortality and CVD mortality
+  are the rows the model uses; CHD, stroke, total cancer, respiratory, diabetes and neurodegenerative
+  rows are kept because they come from the same tables. The main-text curves (Figs 2b, 2d, 3b, 3d, 4b)
+  are images only and were not digitized.'
+table_titles_as_printed:
+  S14: Supplementary Table 14. Relative risks from nonlinear dose-response analysis of peanuts and coronary
+    heart ...
+  S15: Supplementary Table 15. Relative risks from nonlinear dose-response analysis of peanuts and mortality
+    from ...
+table_title_discrepancy: 'Both table titles say ''peanuts'', but the tables are the total-nut nonlinear
+  results: (1) the main text cites Table S14 for the total-nut CHD, stroke and CVD curves and Table S15
+  for the total-nut all-cause curve (Results, all-cause and CVD paragraphs); (2) the tables run to 28
+  g/day, while the peanut all-cause spline (Supplementary Figure 41) has an x axis of [0, 5, 10] g/day
+  (tree nuts, Figure 38: [0, 5, 10, 15, 20, 25, 30]); (3) the tables'' P-nonlinearity values do not match
+  the peanut figures (see peanut_figure_p_nonlinearity). The S14 title also lists total cancer and all-cause
+  mortality, which are in S15. Treat the tables as total nuts; the title is a labeling error.'
+peanut_figure_p_nonlinearity:
+  Supplementary Figure 41 (peanuts, all-cause): <0.0001
+  Supplementary Figure 49 (peanuts, respiratory): =0.06
+  Supplementary Figure 55 (peanuts, diabetes): <0.0001
+  Supplementary Figure 61 (peanuts, neurodegenerative): =0.001
+  Supplementary Figure 34 (peanuts, total cancer): =0.10
+p_nonlinearity_in_tables:
+  S14:
+    chd_incidence_or_mortality: <0.0001
+    chd_incidence: '0.04'
+    chd_mortality: <0.0001
+    stroke_incidence_or_mortality: <0.0001
+    stroke_incidence: '0.05'
+    stroke_mortality: '0.18'
+    cvd_incidence_or_mortality: <0.0001
+    cvd_incidence: <0.0001
+    cvd_mortality: <0.0001
+  S15:
+    total_cancer: '0.003'
+    all_cause_mortality: <0.0001
+    respiratory_disease_mortality: '0.10'
+    diabetes_mortality: '0.07'
+    neurodegenerative_disease_mortality: '0.009'
+p_nonlinearity_in_main_text:
+  all_cause_mortality: < 0.0001 (Results, all-cause paragraph)
+  cvd_incidence_or_mortality: 0.001 (Results, CVD paragraph); Table S14 prints < 0.0001
+  chd_incidence_or_mortality: < 0.0001 (Results, CHD paragraph)
+  stroke_incidence_or_mortality: < 0.0001 (Results, stroke paragraph)
+  total_cancer: 0.11 (Results, cancer paragraph); Table S15 prints 0.003
+blank_cells_not_reported:
+- 'cvd_incidence at 25 g/d (Table S14: blank)'
+- 'stroke_mortality at 28 g/d (Table S14: blank)'
+- 'cvd_incidence at 28 g/d (Table S14: blank)'
+- 'respiratory_disease_mortality at 25 g/d (Table S15: -)'
+- 'neurodegenerative_disease_mortality at 25 g/d (Table S15: -)'
+- 'total_cancer at 28 g/d (Table S15: -)'
+- 'respiratory_disease_mortality at 28 g/d (Table S15: -)'
+- 'diabetes_mortality at 28 g/d (Table S15: -)'
+- 'neurodegenerative_disease_mortality at 28 g/d (Table S15: -)'
+text_statements:
+- outcome: all_cause_mortality
+  statement: Nonlinear; steeper risk reduction at lower intakes and no further reduction above 15-20 g/day.
+  locator: Results, 'Nuts and all-cause mortality' paragraph; Fig. 4b; Additional file 1 Table S15
+- outcome: cvd_incidence_or_mortality
+  statement: Nonlinear; risk falls up to about 15 g/day with no further reduction at higher intakes.
+  locator: Results, cardiovascular disease paragraph; Fig. 3b; Additional file 1 Table S14
+- outcome: chd_incidence_or_mortality
+  statement: Nonlinear; only slight further reductions above 15-20 g/day.
+  locator: Results, coronary heart disease paragraph; Fig. 2b; Table S14
+- outcome: stroke_incidence_or_mortality
+  statement: 'Slight J shape: reductions up to about 10-15 g/day, slight positive association at 30 g/day.'
+  locator: Results, stroke paragraph; Fig. 2d; Table S14
+- outcome: total_cancer
+  statement: No evidence of nonlinearity in the Results (P = 0.11), though the Discussion lists cancer
+    among nonlinear outcomes.
+  locator: Results, total cancer paragraph; Discussion, first paragraph
+- outcome: all outcomes
+  statement: Most of the risk reduction occurs up to about 15-20 g/day (5-6 servings a week).
+  locator: Discussion, first paragraph
+- outcome: population attributable fraction
+  statement: The authors took 20 g/day as the optimal intake for attributable-death estimates, citing
+    little further reduction above it.
+  locator: Methods, statistical methods, attributable-risk paragraph
+method: Restricted cubic splines with three knots at the 10th, 50th and 90th percentiles of intake, combined
+  by multivariate meta-analysis; nonlinearity tested by likelihood ratio (Methods, statistical methods).
+  Reference is 0 g/day. One serving = 28 g.
+shape_warning_for_model:
+  all_cause_mortality:
+    min_rr: 0.82
+    min_at_g_per_day:
+    - 15
+    - 20
+    last_point:
+      g_per_day: 28
+      rr: 0.85
+    monotone_nonincreasing: false
+  cvd_mortality:
+    min_rr: 0.8
+    min_at_g_per_day:
+    - 15
+    last_point:
+      g_per_day: 28
+      rr: 0.85
+    monotone_nonincreasing: false
+  cvd_incidence_or_mortality:
+    min_rr: 0.81
+    min_at_g_per_day:
+    - 15
+    last_point:
+      g_per_day: 28
+      rr: 0.86
+    monotone_nonincreasing: false
+  note: 'The published curves are not monotone: RR bottoms out between 15 and 20 g/day and rises toward
+    28 g/day, the last tabulated intake.'
+linear_per_28g_for_context:
+  all_cause_mortality:
+    rr: 0.78
+    ci:
+    - 0.72
+    - 0.84
+    locator: Abstract; Results; Table 1
+  cvd:
+    rr: 0.79
+    ci:
+    - 0.7
+    - 0.88
+    locator: Abstract; Results; Table 1
+us_attributable_fraction_below_20g:
+  chd_pct: 13.3
+  total_cancer_pct: 5.2
+  respiratory_pct: 21.6
+  diabetes_pct: 11.7
+  all_cause_pct: 8.6
+  all_cause_deaths_2013: 227203
+  locator: Additional file 1, Supplementary Table 23, United States row

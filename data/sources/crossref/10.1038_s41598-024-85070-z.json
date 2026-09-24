@@ -1,0 +1,1039 @@
+{
+ "DOI": "10.1038/s41598-024-85070-z",
+ "ISSN": [
+  "2045-2322"
+ ],
+ "URL": "https://doi.org/10.1038/s41598-024-85070-z",
+ "alternative-id": [
+  "85070"
+ ],
+ "article-number": "829",
+ "assertion": [
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Received",
+   "name": "received",
+   "order": 1,
+   "value": "30 September 2024"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Accepted",
+   "name": "accepted",
+   "order": 2,
+   "value": "31 December 2024"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "First Online",
+   "name": "first_online",
+   "order": 3,
+   "value": "4 January 2025"
+  },
+  {
+   "group": {
+    "label": "Declarations",
+    "name": "EthicsHeading"
+   },
+   "name": "Ethics",
+   "order": 1
+  },
+  {
+   "group": {
+    "label": "Competing interests",
+    "name": "EthicsHeading"
+   },
+   "name": "Ethics",
+   "order": 2,
+   "value": "The authors declare no competing interests."
+  },
+  {
+   "group": {
+    "label": "Ethical approval",
+    "name": "EthicsHeading"
+   },
+   "name": "Ethics",
+   "order": 3,
+   "value": "Ethical approval and participant agreement are not necessary because the public summary data has already been approved. All original studies had been authorized by corresponding ethical standards committee."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Wang",
+   "given": "Ruizhe",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Sun",
+   "given": "Jinfang",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Yu",
+   "given": "Xiaojin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Scientific Reports"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": [
+   "link.springer.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    4
+   ]
+  ],
+  "date-time": "2025-01-04T22:17:16Z",
+  "timestamp": 1736029036000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    5
+   ]
+  ],
+  "date-time": "2025-01-05T12:02:59Z",
+  "timestamp": 1736078579000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    5
+   ]
+  ],
+  "date-time": "2025-01-05T12:40:03Z",
+  "timestamp": 1736080803364,
+  "version": "3.32.0"
+ },
+ "is-referenced-by-count": 0,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "2045-2322"
+  }
+ ],
+ "issue": "1",
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    4
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "1",
+  "published-online": {
+   "date-parts": [
+    [
+     2025,
+     12
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://creativecommons.org/licenses/by-nc-nd/4.0",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      1,
+      4
+     ]
+    ],
+    "date-time": "2025-01-04T00:00:00Z",
+    "timestamp": 1735948800000
+   }
+  },
+  {
+   "URL": "https://creativecommons.org/licenses/by-nc-nd/4.0",
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      1,
+      4
+     ]
+    ],
+    "date-time": "2025-01-04T00:00:00Z",
+    "timestamp": 1735948800000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://www.nature.com/articles/s41598-024-85070-z.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://www.nature.com/articles/s41598-024-85070-z",
+   "content-type": "text/html",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://www.nature.com/articles/s41598-024-85070-z.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "297",
+ "original-title": [],
+ "prefix": "10.1038",
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    4
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    4
+   ]
+  ]
+ },
+ "publisher": "Springer Science and Business Media LLC",
+ "reference": [
+  {
+   "DOI": "10.1016/j.jacc.2022.11.005",
+   "author": "M Vaduganathan",
+   "doi-asserted-by": "publisher",
+   "first-page": "2361",
+   "journal-title": "J. Am. Coll. Cardiol.",
+   "key": "85070_CR1",
+   "unstructured": "Vaduganathan, M., Mensah, G. A., Turco, J. V., Fuster, V. & Roth, G. A. The global burden of cardiovascular diseases and risk: A compass for future health. J. Am. Coll. Cardiol. 80, 2361\u20132371 (2022).",
+   "volume": "80",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1161/CIR.0000000000001123",
+   "author": "CW Tsao",
+   "doi-asserted-by": "publisher",
+   "first-page": "e93",
+   "journal-title": "Circulation",
+   "key": "85070_CR2",
+   "unstructured": "Tsao, C. W. et al. Heart Disease and Stroke Statistics\u20142023 update: A report from the American Heart Association. Circulation 147, e93\u2013e621 (2023).",
+   "volume": "147",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1161/CIR.0000000000000756",
+   "author": "VL Roger",
+   "doi-asserted-by": "publisher",
+   "first-page": "e104",
+   "journal-title": "Circulation",
+   "key": "85070_CR3",
+   "unstructured": "Roger, V. L. et al. Recommendations for Cardiovascular Health and Disease Surveillance for 2030 and Beyond: A Policy Statement from the American Heart Association. Circulation 141, e104\u2013e119 (2020).",
+   "volume": "141",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1097/NT.0000000000000512",
+   "author": "LG Snetselaar",
+   "doi-asserted-by": "publisher",
+   "first-page": "287",
+   "journal-title": "Nutr. Today",
+   "key": "85070_CR4",
+   "unstructured": "Snetselaar, L. G., de Jesus, J. M., DeSilva, D. M. & Stoody, E. E. Dietary guidelines for americans, 2020\u20132025. Nutr. Today. 56, 287\u2013295 (2021).",
+   "volume": "56",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "author": "M Guasch-Ferr\u00e9",
+   "doi-asserted-by": "publisher",
+   "first-page": "2519",
+   "journal-title": "J. Am. Coll. Cardiol.",
+   "key": "85070_CR5",
+   "unstructured": "Guasch-Ferr\u00e9, M. et al. Nut consumption and risk of cardiovascular disease. J. Am. Coll. Cardiol. 70, 2519\u20132532 (2017).",
+   "volume": "70",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2021.01.001",
+   "author": "TF Imran",
+   "doi-asserted-by": "publisher",
+   "first-page": "266",
+   "journal-title": "J. Clin. Lipidol.",
+   "key": "85070_CR6",
+   "unstructured": "Imran, T. F. et al. Nut consumption, risk of cardiovascular mortality, and potential mediating mechanisms: The women\u2019s Health Study. J. Clin. Lipidol. 15, 266\u2013274 (2021).",
+   "volume": "15",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1136/heartjnl-2017-312819",
+   "author": "SC Larsson",
+   "doi-asserted-by": "publisher",
+   "first-page": "1615",
+   "journal-title": "Heart",
+   "key": "85070_CR7",
+   "unstructured": "Larsson, S. C., Drca, N., Bj\u00f6rck, M., B\u00e4ck, M. & Wolk, A. Nut consumption and incidence of seven cardiovascular diseases. Heart 104, 1615\u20131620 (2018).",
+   "volume": "104",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2010.03.005",
+   "author": "L Djouss\u00e9",
+   "doi-asserted-by": "publisher",
+   "first-page": "605",
+   "journal-title": "Clin. Nutr.",
+   "key": "85070_CR8",
+   "unstructured": "Djouss\u00e9, L., Gaziano, J. M., Kase, C. S. & Kurth, T. Nut consumption and risk of stroke in US male physicians. Clin. Nutr. 29, 605\u2013609 (2010).",
+   "volume": "29",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1038/ejcn.2014.212",
+   "author": "R di Giuseppe",
+   "doi-asserted-by": "publisher",
+   "first-page": "431",
+   "journal-title": "Eur. J. Clin. Nutr.",
+   "key": "85070_CR9",
+   "unstructured": "di Giuseppe, R. et al. The association between nut consumption and the risk of total and ischemic stroke in a German cohort study. Eur. J. Clin. Nutr. 69, 431\u2013435 (2015).",
+   "volume": "69",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1186/1475-2891-11-17",
+   "author": "O Khawaja",
+   "doi-asserted-by": "publisher",
+   "first-page": "17",
+   "journal-title": "Nutr. J.",
+   "key": "85070_CR10",
+   "unstructured": "Khawaja, O., Gaziano, J. & Djousse, L. Nut consumption and risk of atrial fibrillation in the Physicians\u2019 Health Study. Nutr. J. 11, 17 (2012).",
+   "volume": "11",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1080/09637486.2021.1880554",
+   "author": "D Martini",
+   "doi-asserted-by": "publisher",
+   "first-page": "871",
+   "journal-title": "Int. J. Food Sci. Nutr.",
+   "key": "85070_CR11",
+   "unstructured": "Martini, D. et al. Nut and legume consumption and human health: An umbrella review of observational studies. Int. J. Food Sci. Nutr. 72, 871\u2013878 (2021).",
+   "volume": "72",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/advances/nmac077",
+   "author": "R Balakrishna",
+   "doi-asserted-by": "publisher",
+   "first-page": "2136",
+   "journal-title": "Adv. Nutr.",
+   "key": "85070_CR12",
+   "unstructured": "Balakrishna, R., Bj\u00f8rnerud, T., Bemanian, M., Aune, D. & Fadnes, L. T. Consumption of nuts and seeds and Health outcomes Including Cardiovascular Disease, Diabetes and Metabolic Disease, Cancer, and mortality: An Umbrella Review. Adv. Nutr. 13, 2136\u20132148 (2022).",
+   "volume": "13",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "author": "J Sabat\u00e9",
+   "doi-asserted-by": "publisher",
+   "first-page": "821",
+   "journal-title": "Arch. Intern. Med.",
+   "key": "85070_CR13",
+   "unstructured": "Sabat\u00e9, J., Oda, K. & Ros, E. Nut consumption and blood lipid levels: A pooled analysis of 25 intervention trials. Arch. Intern. Med. 170, 821\u2013827 (2010).",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1186/1475-2891-13-10",
+   "author": "M Wien",
+   "doi-asserted-by": "publisher",
+   "first-page": "10",
+   "journal-title": "Nutr. J.",
+   "key": "85070_CR14",
+   "unstructured": "Wien, M., Oda, K. & Sabat\u00e9, J. A randomized controlled trial to evaluate the effect of incorporating peanuts into an American Diabetes Association meal plan on the nutrient profile of the total diet and cardiometabolic parameters of adults with type 2 diabetes. Nutr. J. 13, 10 (2014).",
+   "volume": "13",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2019.04.014",
+   "author": "N Mohammadifard",
+   "doi-asserted-by": "publisher",
+   "first-page": "972",
+   "journal-title": "Nutr. Metabolism Cardiovasc. Dis.",
+   "key": "85070_CR15",
+   "unstructured": "Mohammadifard, N. et al. Long-term association of nut consumption and cardiometabolic risk factors. Nutr. Metabolism Cardiovasc. Dis. 29, 972\u2013982 (2019).",
+   "volume": "29",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0137178",
+   "author": "Y Sun",
+   "doi-asserted-by": "publisher",
+   "first-page": "e0137178",
+   "journal-title": "PLOS ONE",
+   "key": "85070_CR16",
+   "unstructured": "Sun, Y. et al. Nut Consumption and Cardiovascular Risk in Older Chinese: The Guangzhou Biobank Cohort Study. PLOS ONE. 10, e0137178 (2015).",
+   "volume": "10",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2009.04.013",
+   "author": "EH Mart\u00ednez-Lapiscina",
+   "doi-asserted-by": "publisher",
+   "first-page": "359",
+   "journal-title": "Nutr. Metabolism Cardiovasc. Dis.",
+   "key": "85070_CR17",
+   "unstructured": "Mart\u00ednez-Lapiscina, E. H. et al. Nut consumption and incidence of hypertension: The SUN prospective cohort. Nutr. Metabolism Cardiovasc. Dis. 20, 359\u2013365 (2010).",
+   "volume": "20",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1007/s00394-015-1150-4",
+   "author": "SL Tey",
+   "doi-asserted-by": "publisher",
+   "first-page": "1025",
+   "journal-title": "Eur. J. Nutr.",
+   "key": "85070_CR18",
+   "unstructured": "Tey, S. L., Robinson, T., Gray, A. R., Chisholm, A. W. & Brown, R. C. Do dry roasting, lightly salting nuts affect their cardioprotective properties and acceptability? Eur. J. Nutr. 56, 1025\u20131036 (2017).",
+   "volume": "56",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.069401",
+   "author": "JB Jones",
+   "doi-asserted-by": "publisher",
+   "first-page": "490",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "85070_CR19",
+   "unstructured": "Jones, J. B. et al. A randomized trial on the effects of flavorings on the health benefits of daily peanut consumption123. Am. J. Clin. Nutr. 99, 490\u2013496 (2014).",
+   "volume": "99",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1017/S0007114514003158",
+   "author": "RC Brown",
+   "doi-asserted-by": "publisher",
+   "first-page": "2028",
+   "journal-title": "Br. J. Nutr.",
+   "key": "85070_CR20",
+   "unstructured": "Brown, R. C. et al. Patterns and predictors of nut consumption: Results from the 2008/09 New Zealand Adult Nutrition Survey. Br. J. Nutr. 112, 2028\u20132040 (2014).",
+   "volume": "112",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1093/ije/dyg070",
+   "author": "G Davey Smith",
+   "doi-asserted-by": "publisher",
+   "first-page": "1",
+   "journal-title": "Int. J. Epidemiol.",
+   "key": "85070_CR21",
+   "unstructured": "Davey Smith, G. & Ebrahim, S. Mendelian randomization\u2019: Can genetic epidemiology contribute to understanding environmental determinants of disease?*. Int. J. Epidemiol. 32, 1\u201322 (2003).",
+   "volume": "32",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1146/annurev-genom-083117-021731",
+   "author": "S Burgess",
+   "doi-asserted-by": "publisher",
+   "first-page": "303",
+   "journal-title": "Annu. Rev. Genomics Hum. Genet.",
+   "key": "85070_CR22",
+   "unstructured": "Burgess, S., Foley, C. N. & Zuber, V. Inferring causal relationships between risk factors and outcomes from genome-wide association study Data. Annu. Rev. Genomics Hum. Genet. 19, 303\u2013327 (2018).",
+   "volume": "19",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3390/nu13072218",
+   "author": "S Yuan",
+   "doi-asserted-by": "publisher",
+   "first-page": "2218",
+   "journal-title": "Nutrients",
+   "key": "85070_CR23",
+   "unstructured": "Yuan, S., Carter, P., Mason, A. M., Burgess, S. & Larsson, S. C. Coffee consumption and cardiovascular diseases: A mendelian randomization study. Nutrients 13, 2218 (2021).",
+   "volume": "13",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2019.07.015",
+   "author": "S Yuan",
+   "doi-asserted-by": "publisher",
+   "first-page": "1185",
+   "journal-title": "Nutr. Metabolism Cardiovasc. Dis.",
+   "key": "85070_CR24",
+   "unstructured": "Yuan, S. & Larsson, S. C. No association between coffee consumption and risk of atrial fibrillation: A mendelian randomization study. Nutr. Metabolism Cardiovasc. Dis. 29, 1185\u20131188 (2019).",
+   "volume": "29",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1002/ana.25693",
+   "author": "Y Qian",
+   "doi-asserted-by": "publisher",
+   "first-page": "525",
+   "journal-title": "Ann. Neurol.",
+   "key": "85070_CR25",
+   "unstructured": "Qian, Y. et al. Coffee consumption and risk of stroke: A mendelian randomization study. Ann. Neurol. 87, 525\u2013532 (2020).",
+   "volume": "87",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2020.08.039",
+   "author": "M Wang",
+   "doi-asserted-by": "publisher",
+   "first-page": "1430",
+   "journal-title": "Clin. Nutr.",
+   "key": "85070_CR26",
+   "unstructured": "Wang, M. et al. Higher tea consumption is associated with decreased risk of small vessel stroke. Clin. Nutr. 40, 1430\u20131435 (2021).",
+   "volume": "40",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.3389/fnut.2022.938201",
+   "author": "N Gao",
+   "doi-asserted-by": "publisher",
+   "first-page": "938201",
+   "journal-title": "Front. Nutr.",
+   "key": "85070_CR27",
+   "unstructured": "Gao, N. et al. Causal relationship between tea intake and cardiovascular diseases: A mendelian randomization study. Front. Nutr. 9, 938201 (2022).",
+   "volume": "9",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.3389/fnut.2023.1161175",
+   "author": "J Huang",
+   "doi-asserted-by": "publisher",
+   "first-page": "1161175",
+   "journal-title": "Front. Nutr.",
+   "key": "85070_CR28",
+   "unstructured": "Huang, J., He, Z., Xu, M., Du, J. & Zhao, Y. Socioeconomic status may affect association of vegetable intake with risk of ischemic cardio-cerebral vascular disease: A mendelian randomization study. Front. Nutr. 10, 1161175 (2023).",
+   "volume": "10",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.3389/fcvm.2023.1080252",
+   "author": "Y Zeng",
+   "doi-asserted-by": "publisher",
+   "first-page": "1080252",
+   "journal-title": "Front. Cardiovasc. Med.",
+   "key": "85070_CR29",
+   "unstructured": "Zeng, Y., Cao, S. & Yang, H. Causal associations between dried fruit intake and cardiovascular disease: A mendelian randomization study. Front. Cardiovasc. Med. 10, 1080252 (2023).",
+   "volume": "10",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1093/hmg/ddw197",
+   "author": "RC Richmond",
+   "doi-asserted-by": "publisher",
+   "first-page": "R149",
+   "journal-title": "Hum. Mol. Genet.",
+   "key": "85070_CR30",
+   "unstructured": "Richmond, R. C., Hemani, G., Tilling, K., Davey Smith, G. & Relton, C. L. Challenges and novel approaches for investigating molecular mediation. Hum. Mol. Genet. 25, R149\u2013R156 (2016).",
+   "volume": "25",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1038/s41586-022-05473-8",
+   "author": "MI Kurki",
+   "doi-asserted-by": "publisher",
+   "first-page": "508",
+   "journal-title": "Nature",
+   "key": "85070_CR31",
+   "unstructured": "Kurki, M. I. et al. FinnGen provides genetic insights from a well-phenotyped isolated population. Nature 613, 508\u2013518 (2023).",
+   "volume": "613",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1038/nature14177",
+   "author": "AE Locke",
+   "doi-asserted-by": "publisher",
+   "first-page": "197",
+   "journal-title": "Nature",
+   "key": "85070_CR32",
+   "unstructured": "Locke, A. E. et al. Genetic studies of body mass index yield new insights for obesity biology. Nature 518, 197\u2013206 (2015).",
+   "volume": "518",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1038/nature14132",
+   "author": "D Shungin",
+   "doi-asserted-by": "publisher",
+   "first-page": "187",
+   "journal-title": "Nature",
+   "key": "85070_CR33",
+   "unstructured": "Shungin, D. et al. New genetic loci link adipose and insulin biology to body fat distribution. Nature 518, 187\u2013196 (2015).",
+   "volume": "518",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1038/s41586-021-04064-3",
+   "author": "SE Graham",
+   "doi-asserted-by": "publisher",
+   "first-page": "675",
+   "journal-title": "Nature",
+   "key": "85070_CR34",
+   "unstructured": "Graham, S. E. et al. The power of genetic diversity in genome-wide association studies of lipids. Nature 600, 675\u2013679 (2021).",
+   "volume": "600",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1038/s41588-021-00852-9",
+   "author": "J Chen",
+   "doi-asserted-by": "publisher",
+   "first-page": "840",
+   "journal-title": "Nat. Genet.",
+   "key": "85070_CR35",
+   "unstructured": "Chen, J. et al. The trans-ancestral genomic architecture of glycemic traits. Nat. Genet. 53, 840\u2013860 (2021).",
+   "volume": "53",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1017/S0007114524000436",
+   "author": "Y Che",
+   "doi-asserted-by": "publisher",
+   "first-page": "1873",
+   "journal-title": "Br. J. Nutr.",
+   "key": "85070_CR36",
+   "unstructured": "Che, Y. et al. Dietary factors and the risk of atopic dermatitis: A mendelian randomisation study. Br. J. Nutr. 131, 1873\u20131882 (2024).",
+   "volume": "131",
+   "year": "2024"
+  },
+  {
+   "DOI": "10.1093/bioinformatics/btz469",
+   "author": "MA Kamat",
+   "doi-asserted-by": "publisher",
+   "first-page": "4851",
+   "journal-title": "Bioinformatics",
+   "key": "85070_CR37",
+   "unstructured": "Kamat, M. A. et al. PhenoScanner V2: An expanded tool for searching human genotype\u2013phenotype associations. Bioinformatics 35, 4851\u20134853 (2019).",
+   "volume": "35",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1186/s12863-022-01082-6",
+   "author": "R Feng",
+   "doi-asserted-by": "publisher",
+   "first-page": "69",
+   "journal-title": "BMC Genom Data",
+   "key": "85070_CR38",
+   "unstructured": "Feng, R. et al. Pulmonary embolism and 529 human blood metabolites: Genetic correlation and two-sample mendelian randomization study. BMC Genom Data. 23, 69 (2022).",
+   "volume": "23",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1093/ije/dyr036",
+   "author": "S Burgess",
+   "doi-asserted-by": "publisher",
+   "first-page": "755",
+   "journal-title": "Int. J. Epidemiol.",
+   "key": "85070_CR39",
+   "unstructured": "Burgess, S., Thompson, S. G. & CRP CHD Genetics Collaboration. Avoiding bias from weak instruments in mendelian randomization studies. Int. J. Epidemiol. 40, 755\u2013764 (2011).",
+   "volume": "40",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1038/s41467-020-14389-8",
+   "author": "N Papadimitriou",
+   "doi-asserted-by": "publisher",
+   "first-page": "597",
+   "journal-title": "Nat. Commun.",
+   "key": "85070_CR40",
+   "unstructured": "Papadimitriou, N. et al. Physical activity and risks of breast and colorectal cancer: A mendelian randomisation analysis. Nat. Commun. 11, 597 (2020).",
+   "volume": "11",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1002/gepi.21965",
+   "author": "J Bowden",
+   "doi-asserted-by": "publisher",
+   "first-page": "304",
+   "journal-title": "Genet. Epidemiol.",
+   "key": "85070_CR41",
+   "unstructured": "Bowden, J., Davey Smith, G., Haycock, P. C. & Burgess, S. Consistent estimation in mendelian randomization with some Invalid instruments using a weighted median estimator. Genet. Epidemiol. 40, 304\u2013314 (2016).",
+   "volume": "40",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1097/EDE.0000000000000559",
+   "author": "S Burgess",
+   "doi-asserted-by": "publisher",
+   "first-page": "30",
+   "journal-title": "Epidemiology",
+   "key": "85070_CR42",
+   "unstructured": "Burgess, S., Bowden, J., Fall, T., Ingelsson, E. & Thompson, S. G. Sensitivity analyses for robust causal inference from mendelian randomization analyses with multiple genetic variants. Epidemiology 28, 30 (2017).",
+   "volume": "28",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1007/s10654-017-0255-x",
+   "author": "S Burgess",
+   "doi-asserted-by": "publisher",
+   "first-page": "377",
+   "journal-title": "Eur. J. Epidemiol.",
+   "key": "85070_CR43",
+   "unstructured": "Burgess, S. & Thompson, S. G. Interpreting findings from mendelian randomization using the MR-Egger method. Eur. J. Epidemiol. 32, 377\u2013389 (2017).",
+   "volume": "32",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1093/ije/dyv080",
+   "author": "J Bowden",
+   "doi-asserted-by": "publisher",
+   "first-page": "512",
+   "journal-title": "Int. J. Epidemiol.",
+   "key": "85070_CR44",
+   "unstructured": "Bowden, J., Davey Smith, G. & Burgess, S. Mendelian randomization with invalid instruments: Effect estimation and bias detection through Egger regression. Int. J. Epidemiol. 44, 512\u2013525 (2015).",
+   "volume": "44",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/ije/dyy258",
+   "author": "J Bowden",
+   "doi-asserted-by": "publisher",
+   "first-page": "728",
+   "journal-title": "Int. J. Epidemiol.",
+   "key": "85070_CR45",
+   "unstructured": "Bowden, J. et al. Improving the accuracy of two-sample summary-data mendelian randomization: Moving beyond the NOME assumption. Int. J. Epidemiol. 48, 728\u2013742 (2019).",
+   "volume": "48",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1038/s41588-018-0099-7",
+   "author": "M Verbanck",
+   "doi-asserted-by": "publisher",
+   "first-page": "693",
+   "journal-title": "Nat. Genet.",
+   "key": "85070_CR46",
+   "unstructured": "Verbanck, M., Chen, C. Y., Neale, B. & Do, R. Detection of widespread horizontal pleiotropy in causal relationships inferred from mendelian randomization between complex traits and diseases. Nat. Genet. 50, 693\u2013698 (2018).",
+   "volume": "50",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1146/annurev-publhealth-032315-021402",
+   "author": "TJ VanderWeele",
+   "doi-asserted-by": "publisher",
+   "first-page": "17",
+   "journal-title": "Annu. Rev. Public Health",
+   "key": "85070_CR47",
+   "unstructured": "VanderWeele, T. J., Mediation Analysis: A practitioner\u2019s guide. Annu. Rev. Public Health. 37, 17\u201332 (2016).",
+   "volume": "37",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1136/bmj.l1855",
+   "author": "AR Carter",
+   "doi-asserted-by": "publisher",
+   "first-page": "l1855",
+   "journal-title": "BMJ",
+   "key": "85070_CR48",
+   "unstructured": "Carter, A. R. et al. Understanding the consequences of education inequality on cardiovascular disease: Mendelian randomisation study. BMJ 365, l1855 (2019).",
+   "volume": "365",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1210/clinem/dgab454",
+   "author": "X Wang",
+   "doi-asserted-by": "publisher",
+   "first-page": "e4641",
+   "journal-title": "J. Clin. Endocrinol. Metab.",
+   "key": "85070_CR49",
+   "unstructured": "Wang, X. et al. Genetic support of a causal relationship between Iron Status and Type 2 diabetes: A mendelian randomization study. J. Clin. Endocrinol. Metab. 106, e4641\u2013e4651 (2021).",
+   "volume": "106",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1080/10408398.2017.1392288",
+   "author": "A Bechthold",
+   "doi-asserted-by": "publisher",
+   "first-page": "1071",
+   "journal-title": "Crit. Rev. Food Sci. Nutr.",
+   "key": "85070_CR50",
+   "unstructured": "Bechthold, A. et al. Food groups and risk of coronary heart disease, stroke and heart failure: A systematic review and dose-response meta-analysis of prospective studies. Crit. Rev. Food Sci. Nutr. 59, 1071\u20131090 (2019).",
+   "volume": "59",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.3390/nu11010116",
+   "author": "S Morgillo",
+   "doi-asserted-by": "publisher",
+   "first-page": "116",
+   "journal-title": "Nutrients",
+   "key": "85070_CR51",
+   "unstructured": "Morgillo, S., Hill, A. M. & Coates, A. M. The effects of nut consumption on vascular function. Nutrients 11, 116 (2019).",
+   "volume": "11",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2020.126192",
+   "author": "C Alasalvar",
+   "doi-asserted-by": "publisher",
+   "first-page": "126192",
+   "journal-title": "Food Chem.",
+   "key": "85070_CR52",
+   "unstructured": "Alasalvar, C., Salvad\u00f3, J. S. & Ros, E. Bioactives and health benefits of nuts and dried fruits. Food Chem. 314, 126192 (2020).",
+   "volume": "314",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3390/foods12050942",
+   "author": "B Gon\u00e7alves",
+   "doi-asserted-by": "publisher",
+   "first-page": "942",
+   "journal-title": "Foods",
+   "key": "85070_CR53",
+   "unstructured": "Gon\u00e7alves, B. et al. Composition of nuts and their potential health benefits-an overview. Foods 12, 942 (2023).",
+   "volume": "12",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy091",
+   "author": "M Guasch-Ferr\u00e9",
+   "doi-asserted-by": "publisher",
+   "first-page": "174",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "85070_CR54",
+   "unstructured": "Guasch-Ferr\u00e9, M., Li, J., Hu, F. B., Salas-Salvad\u00f3, J. & Tobias, D. K. Effects of Walnut consumption on blood lipids and other cardiovascular risk factors: An updated meta-analysis and systematic review of controlled trials. Am. J. Clin. Nutr. 108, 174\u2013187 (2018).",
+   "volume": "108",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "author": "LC Del Gobbo",
+   "doi-asserted-by": "publisher",
+   "first-page": "1347",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "85070_CR55",
+   "unstructured": "Del Gobbo, L. C., Falk, M. C., Feldman, R., Lewis, K. & Mozaffarian, D. Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: Systematic review, meta-analysis, and dose-response of 61 controlled intervention trials 123. Am. J. Clin. Nutr. 102, 1347\u20131356 (2015).",
+   "volume": "102",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy236",
+   "author": "AM Tindall",
+   "doi-asserted-by": "publisher",
+   "first-page": "297",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "85070_CR56",
+   "unstructured": "Tindall, A. M., Johnston, E. A., Kris-Etherton, P. M. & Petersen, K. The effect of nuts on markers of glycemic control: A systematic review and meta-analysis of randomized controlled trials. Am. J. Clin. Nutr. 109, 297\u2013314 (2019).",
+   "volume": "109",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.ctim.2020.102395",
+   "author": "Z Fang",
+   "doi-asserted-by": "publisher",
+   "first-page": "102395",
+   "journal-title": "Complement. Ther. Med.",
+   "key": "85070_CR57",
+   "unstructured": "Fang, Z. et al. Effects of walnut intake on anthropometric characteristics: A systematic review and dose-response meta-analysis of randomized controlled trials. Complement. Ther. Med. 50, 102395 (2020).",
+   "volume": "50",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2020.08.009",
+   "author": "SK Park",
+   "doi-asserted-by": "publisher",
+   "first-page": "76",
+   "journal-title": "Nutr. Metabolism Cardiovasc. Dis.",
+   "key": "85070_CR58",
+   "unstructured": "Park, S. K., Oh, C. M., Kang, J. G., Seok, H. S. & Jung, J. Y. The association between left ventricular hypertrophy and consumption of nuts, including peanuts, pine nuts, and almonds. Nutr. Metabolism Cardiovasc. Dis. 31, 76\u201384 (2021).",
+   "volume": "31",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.cofs.2017.03.001",
+   "author": "NG Ta\u015f",
+   "doi-asserted-by": "publisher",
+   "first-page": "103",
+   "journal-title": "Curr. Opin. Food Sci.",
+   "key": "85070_CR59",
+   "unstructured": "Ta\u015f, N. G. & G\u00f6kmen, V. Phenolic compounds in natural and roasted nuts and their skins: A brief review. Curr. Opin. Food Sci. 14, 103\u2013109 (2017).",
+   "volume": "14",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2016.10.065",
+   "author": "W Stuetz",
+   "doi-asserted-by": "publisher",
+   "first-page": "222",
+   "journal-title": "Food Chem.",
+   "key": "85070_CR60",
+   "unstructured": "Stuetz, W., Schl\u00f6rmann, W. & Glei, M. B-vitamins, carotenoids and \u03b1-/\u03b3-tocopherol in raw and roasted nuts. Food Chem. 221, 222\u2013227 (2017).",
+   "volume": "221",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1533/9780857097484.2.173",
+   "doi-asserted-by": "publisher",
+   "key": "85070_CR61",
+   "unstructured": "Perren, R. & Escher, F. E. 8 - Impact of roasting on nut quality. in Improving the Safety and Quality of Nuts (ed. Harris, L. J.) 173\u2013197Woodhead Publishing, 80 High Street, Sawston, Cambridge CB22 3HJ, UK, (2013). https://doi.org/10.1533/9780857097484.2.173"
+  },
+  {
+   "DOI": "10.1002/14651858.CD003177.pub3",
+   "doi-asserted-by": "crossref",
+   "key": "85070_CR62",
+   "unstructured": "Abdelhamid, A. S. et al. Omega-3 fatty acids for the primary and secondary prevention of cardiovascular disease. Cochrane Database Syst Rev CD003177 (2018). (2018)."
+  },
+  {
+   "DOI": "10.1111/1750-3841.14095",
+   "author": "D Lykomitros",
+   "doi-asserted-by": "publisher",
+   "first-page": "1103",
+   "journal-title": "J. Food Sci.",
+   "key": "85070_CR63",
+   "unstructured": "Lykomitros, D., Fogliano, V. & Capuano, E. Drivers of preference and perception of freshness in Roasted Peanuts (Arachis spp.) for European consumers. J. Food Sci. 83, 1103\u20131115 (2018).",
+   "volume": "83",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1056/NEJM200101043440101",
+   "author": "M Sacks Frank",
+   "doi-asserted-by": "publisher",
+   "first-page": "3",
+   "journal-title": "N. Engl. J. Med.",
+   "key": "85070_CR64",
+   "unstructured": "Sacks Frank, M. et al. Effects on blood pressure of reduced Dietary Sodium and the Dietary approaches to stop hypertension (DASH) diet. N. Engl. J. Med. 344, 3\u201310 (2001).",
+   "volume": "344",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1111/j.1365-2621.2010.02492.x",
+   "author": "W Albarrac\u00edn",
+   "doi-asserted-by": "publisher",
+   "first-page": "1329",
+   "journal-title": "Int. J. Food Sci. Technol.",
+   "key": "85070_CR65",
+   "unstructured": "Albarrac\u00edn, W., S\u00e1nchez, I. C., Grau, R. & Barat, J. M. Salt in food processing; usage and reduction: A review. Int. J. Food Sci. Technol. 46, 1329\u20131336 (2011).",
+   "volume": "46",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2020.126529",
+   "author": "S Kumari",
+   "doi-asserted-by": "publisher",
+   "first-page": "126529",
+   "journal-title": "Food Chem.",
+   "key": "85070_CR66",
+   "unstructured": "Kumari, S. et al. Does \u2018activating\u2019 nuts affect nutrient bioavailability? Food Chem. 319, 126529 (2020).",
+   "volume": "319",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3945/ajcn.2010.28674F",
+   "author": "R Hurrell",
+   "doi-asserted-by": "publisher",
+   "first-page": "1461S",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "85070_CR67",
+   "unstructured": "Hurrell, R. & Egli, I. Iron bioavailability and dietary reference values1234. Am. J. Clin. Nutr. 91, 1461S\u20131467S (2010).",
+   "volume": "91",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1177/15648265100312S206",
+   "author": "RS Gibson",
+   "doi-asserted-by": "publisher",
+   "first-page": "134",
+   "journal-title": "Food Nutr. Bull.",
+   "key": "85070_CR68",
+   "unstructured": "Gibson, R. S., Bailey, K. B., Gibbs, M. & Ferguson, E. L. A review of phytate, iron, zinc, and calcium concentrations in plant-based complementary foods used in low-income countries and implications for bioavailability. Food Nutr. Bull. 31, 134\u2013146 (2010).",
+   "volume": "31",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2020.126269",
+   "author": "C Guo",
+   "doi-asserted-by": "publisher",
+   "first-page": "126269",
+   "journal-title": "Food Chem.",
+   "key": "85070_CR69",
+   "unstructured": "Guo, C. et al. Influence of different cooking methods on the nutritional and potentially harmful components of peanuts. Food Chem. 316, 126269 (2020).",
+   "volume": "316",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1038/s43586-021-00092-5",
+   "author": "E Sanderson",
+   "doi-asserted-by": "publisher",
+   "first-page": "6",
+   "journal-title": "Nat. Rev. Methods Primers",
+   "key": "85070_CR70",
+   "unstructured": "Sanderson, E. et al. Mendelian randomization. Nat. Rev. Methods Primers. 2, 6 (2022).",
+   "volume": "2",
+   "year": "2022"
+  }
+ ],
+ "reference-count": 70,
+ "references-count": 70,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.nature.com/articles/s41598-024-85070-z"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Sci Rep"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Mediators of the association between nut consumption and cardiovascular diseases: a two-step mendelian randomization study"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+ "volume": "15"
+}

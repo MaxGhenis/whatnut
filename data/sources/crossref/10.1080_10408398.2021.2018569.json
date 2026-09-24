@@ -1,0 +1,724 @@
+{
+ "DOI": "10.1080/10408398.2021.2018569",
+ "ISSN": [
+  "1040-8398",
+  "1549-7852"
+ ],
+ "URL": "https://doi.org/10.1080/10408398.2021.2018569",
+ "alternative-id": [
+  "10.1080/10408398.2021.2018569"
+ ],
+ "assertion": [
+  {
+   "label": "Peer Review Statement",
+   "name": "peerreview_statement",
+   "order": 1,
+   "value": "The publishing and review policy for this title is described in its Aims & Scope."
+  },
+  {
+   "URL": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=bfsn20",
+   "label": "Aim & Scope",
+   "name": "aims_and_scope_url",
+   "order": 2,
+   "value": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=bfsn20"
+  },
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Published",
+   "name": "published",
+   "order": 3,
+   "value": "2021-12-21"
+  }
+ ],
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-9952-6579",
+   "affiliation": [
+    {
+     "name": "Department of Clinical Nutrition, School of Nutrition and Food Science, Isfahan University of Medical Sciences, Isfahan, Iran"
+    }
+   ],
+   "authenticated-orcid": false,
+   "family": "Hadi",
+   "given": "Amir",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Cancer Research Center, Shahid Beheshti University of Medical Sciences, Tehran, Iran"
+    }
+   ],
+   "family": "Asbaghi",
+   "given": "Omid",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Human Metabolic Research Unit, Division of Nutritional Sciences, Cornell University, Ithaca, New York, USA"
+    }
+   ],
+   "family": "Kazemi",
+   "given": "Maryam",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Metabolic Diseases Research Center, Research Institute for Prevention of on-Communicable Diseases, Qazvin University of Medical Sciences, Qazvin, Iran"
+    }
+   ],
+   "family": "Haghighian",
+   "given": "Hossein Khadem",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Faculty of Biology, University of Belgrade, Belgrade, Serbia"
+    }
+   ],
+   "family": "Pantovic",
+   "given": "Ana",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Cellular and Molecular Nutrition, School of Nutritional Sciences and Dietetics, Tehran University of Medical Sciences, Tehran, Iran"
+    }
+   ],
+   "family": "Ghaedi",
+   "given": "Ehsan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Surgery, Faculty of Medicine, Kerman University of Medical Sciences, Kerman, Iran"
+    }
+   ],
+   "family": "Abolhasani Zadeh",
+   "given": "Firoozeh",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Critical Reviews in Food Science and Nutrition"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "www.tandfonline.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    12,
+    22
+   ]
+  ],
+  "date-time": "2021-12-22T08:24:37Z",
+  "timestamp": 1640161477000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    7,
+    19
+   ]
+  ],
+  "date-time": "2023-07-19T09:13:26Z",
+  "timestamp": 1689758006000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    17
+   ]
+  ],
+  "date-time": "2026-04-17T08:11:22Z",
+  "timestamp": 1776413482094,
+  "version": "3.51.2"
+ },
+ "is-referenced-by-count": 14,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "1040-8398"
+  },
+  {
+   "type": "electronic",
+   "value": "1549-7852"
+  }
+ ],
+ "issue": "21",
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    12,
+    21
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "21",
+  "published-print": {
+   "date-parts": [
+    [
+     2023,
+     8,
+     18
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://www.tandfonline.com/doi/pdf/10.1080/10408398.2021.2018569",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "301",
+ "original-title": [],
+ "page": "5358-5371",
+ "prefix": "10.1080",
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    12,
+    21
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    12,
+    21
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2023,
+    8,
+    18
+   ]
+  ]
+ },
+ "publisher": "Informa UK Limited",
+ "reference": [
+  {
+   "DOI": "10.1016/j.cjca.2014.04.022",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0001"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1614362",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0002"
+  },
+  {
+   "DOI": "10.1038/ijir.2010.33",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0003"
+  },
+  {
+   "DOI": "10.1089/met.2017.0003",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0004"
+  },
+  {
+   "DOI": "10.1186/s12916-016-0730-3",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0005"
+  },
+  {
+   "DOI": "10.1017/S0007114511002649",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0006"
+  },
+  {
+   "DOI": "10.3945/ajcn.2008.27276",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0007"
+  },
+  {
+   "DOI": "10.1146/annurev.publhealth.23.100901.140555",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0008"
+  },
+  {
+   "DOI": "10.1534/genetics.119.302452",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0009"
+  },
+  {
+   "author": "Carol E.",
+   "first-page": "142",
+   "journal-title": "Asia Pacific Journal of Clinical Nutrition",
+   "key": "CIT0010",
+   "volume": "19",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3390/nu11040767",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0011"
+  },
+  {
+   "DOI": "10.1186/s12937-016-0142-4",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0012"
+  },
+  {
+   "DOI": "10.7326/M13-1788",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0013"
+  },
+  {
+   "DOI": "10.3390/ijms11020458",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0014"
+  },
+  {
+   "DOI": "10.1080/07315724.2013.791194",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0015"
+  },
+  {
+   "DOI": "10.7326/0003-4819-145-5-200609050-00006",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0016"
+  },
+  {
+   "DOI": "10.3390/nu9121311",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0017"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0018"
+  },
+  {
+   "DOI": "10.1136/openhrt-2018-000871",
+   "doi-asserted-by": "crossref",
+   "key": "CIT0019",
+   "unstructured": "DiNicolantonio, J. J., and J. H. O\u2019Keefe. 2018. Effects of dietary fats on blood lipids: A review of direct comparison trials. Open Heart 5 (2):e000871."
+  },
+  {
+   "DOI": "10.1111/j.1753-4887.2011.00467.x",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0020"
+  },
+  {
+   "DOI": "10.1080/07315724.1999.10718856",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0021"
+  },
+  {
+   "DOI": "10.1136/bmj.315.7109.629",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0022"
+  },
+  {
+   "DOI": "10.1007/s11894-013-0370-0",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0023"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0024"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400190054010",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0025"
+  },
+  {
+   "DOI": "10.1007/s00394-017-1513-0",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0026"
+  },
+  {
+   "DOI": "10.1093/ajcn/88.3.651",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0027"
+  },
+  {
+   "DOI": "10.1080/07315724.2019.1605313",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0028"
+  },
+  {
+   "DOI": "10.1002/ptr.6319",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0029"
+  },
+  {
+   "DOI": "10.17219/acem/62453",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0030"
+  },
+  {
+   "DOI": "10.1017/BJN20061866",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0031"
+  },
+  {
+   "DOI": "10.3945/ajcn.114.099515",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0032"
+  },
+  {
+   "DOI": "10.1093/jn/119.4.529",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0033"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0034"
+  },
+  {
+   "DOI": "10.1016/j.nut.2013.08.005",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0035"
+  },
+  {
+   "author": "G\u00fcnalan E.",
+   "first-page": "220",
+   "journal-title": "Journal of the Turkish German Gynecological Association",
+   "key": "CIT0036",
+   "volume": "19",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1161/ATVBAHA.114.303374",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0037"
+  },
+  {
+   "DOI": "10.2337/dc14-1431",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0038"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2015.01.013",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0039"
+  },
+  {
+   "DOI": "10.1136/bmj.d5928",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0040"
+  },
+  {
+   "DOI": "10.1136/bmj.327.7414.557",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0041"
+  },
+  {
+   "DOI": "10.3390/nu10010088",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0042"
+  },
+  {
+   "DOI": "10.1017/S0007114514001561",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0043"
+  },
+  {
+   "DOI": "10.1016/j.nut.2014.10.019",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0044"
+  },
+  {
+   "DOI": "10.3945/jn.109.117366",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0045"
+  },
+  {
+   "DOI": "10.1093/advances/nmaa092",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0046"
+  },
+  {
+   "DOI": "10.3390/nu12071953",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0047"
+  },
+  {
+   "DOI": "10.3390/nu10101387",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0048"
+  },
+  {
+   "DOI": "10.1002/sim.6525",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0049"
+  },
+  {
+   "DOI": "10.3390/nu10121935",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0050"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2005.08.004",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0051"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0069930",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0052"
+  },
+  {
+   "DOI": "10.1080/10408398.2015.1096763",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0053"
+  },
+  {
+   "DOI": "10.1080/07315724.2010.10719834",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0054"
+  },
+  {
+   "DOI": "10.1289/ehp.83523",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0055"
+  },
+  {
+   "DOI": "10.1177/1559827613479910",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0056"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1809944",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0057"
+  },
+  {
+   "DOI": "10.1017/S0007114515004316",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0058"
+  },
+  {
+   "DOI": "10.1007/s10654-018-0473-x",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0059"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2013-004660",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0060"
+  },
+  {
+   "DOI": "10.1001/jama.2017.0947",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0061"
+  },
+  {
+   "DOI": "10.7326/0003-4819-151-4-200908180-00135",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0062"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0113725",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0063"
+  },
+  {
+   "DOI": "10.1007/s11745-006-3001-9",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0064"
+  },
+  {
+   "DOI": "10.1900/RDS.2014.11.190",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0065"
+  },
+  {
+   "DOI": "10.1016/S0021-9150(99)00116-1",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0066"
+  },
+  {
+   "DOI": "10.1017/BJN20061867",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0067"
+  },
+  {
+   "DOI": "10.1161/CIR.0000000000000574",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0068"
+  },
+  {
+   "DOI": "10.3390/nu2070652",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0069"
+  },
+  {
+   "DOI": "10.1017/BJN20061861",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0070"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0071"
+  },
+  {
+   "DOI": "10.1016/j.nut.2009.05.023",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0072"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2015.07.021",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0073"
+  },
+  {
+   "DOI": "10.1016/j.atherosclerosis.2018.05.051",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0074"
+  },
+  {
+   "DOI": "10.1080/07315724.2007.10719595",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0075"
+  },
+  {
+   "DOI": "10.1080/14786419.2017.1408093",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0076"
+  },
+  {
+   "DOI": "10.1021/jf050496+",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0077"
+  },
+  {
+   "DOI": "10.1016/j.nut.2012.01.004",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0078"
+  },
+  {
+   "DOI": "10.1186/1475-2891-11-20",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0079"
+  },
+  {
+   "DOI": "10.1186/1475-2891-13-72",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0080"
+  },
+  {
+   "DOI": "10.1093/jn/134.9.2314",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0081"
+  },
+  {
+   "DOI": "10.1161/HYPERTENSIONAHA.111.182147",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0082"
+  },
+  {
+   "author": "Wilson T.",
+   "first-page": "1",
+   "issue": "1",
+   "journal-title": "Journal of Food and Nutrition Sciences",
+   "key": "CIT0083",
+   "volume": "1",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehi442",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0084"
+  }
+ ],
+ "reference-count": 84,
+ "references-count": 84,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.tandfonline.com/doi/full/10.1080/10408398.2021.2018569"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Critical Reviews in Food Science and Nutrition"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Consumption of pistachio nuts positively affects lipid profiles: A systematic review and meta-analysis of randomized controlled trials"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1080/tandf_crossmark_01",
+ "volume": "63"
+}

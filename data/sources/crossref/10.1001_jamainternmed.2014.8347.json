@@ -1,0 +1,308 @@
+{
+ "DOI": "10.1001/jamainternmed.2014.8347",
+ "ISSN": [
+  "2168-6106"
+ ],
+ "URL": "https://doi.org/10.1001/jamainternmed.2014.8347",
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "Division of Epidemiology, Department of Medicine, Vanderbilt Epidemiology Center, Vanderbilt University School of Medicine, Nashville, Tennessee2Vanderbilt-Ingram Cancer Center, Vanderbilt University School of Medicine, Nashville, Tennessee"
+    }
+   ],
+   "family": "Luu",
+   "given": "Hung N.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Epidemiology, Department of Medicine, Vanderbilt Epidemiology Center, Vanderbilt University School of Medicine, Nashville, Tennessee2Vanderbilt-Ingram Cancer Center, Vanderbilt University School of Medicine, Nashville, Tennessee3International"
+    }
+   ],
+   "family": "Blot",
+   "given": "William J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Epidemiology, Shanghai Cancer Institute, Xuhui, Shanghai, China"
+    }
+   ],
+   "family": "Xiang",
+   "given": "Yong-Bing",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Epidemiology, Department of Medicine, Vanderbilt Epidemiology Center, Vanderbilt University School of Medicine, Nashville, Tennessee2Vanderbilt-Ingram Cancer Center, Vanderbilt University School of Medicine, Nashville, Tennessee"
+    }
+   ],
+   "family": "Cai",
+   "given": "Hui",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Internal Medicine, Meharry Medical College, Nashville, Tennessee"
+    }
+   ],
+   "family": "Hargreaves",
+   "given": "Margaret K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Epidemiology, Shanghai Cancer Institute, Xuhui, Shanghai, China"
+    }
+   ],
+   "family": "Li",
+   "given": "Honglan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Epidemiology, Department of Medicine, Vanderbilt Epidemiology Center, Vanderbilt University School of Medicine, Nashville, Tennessee2Vanderbilt-Ingram Cancer Center, Vanderbilt University School of Medicine, Nashville, Tennessee"
+    }
+   ],
+   "family": "Yang",
+   "given": "Gong",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Epidemiology, Harvard School of Public Health, Harvard University, Boston, Massachusetts"
+    }
+   ],
+   "family": "Signorello",
+   "given": "Lisa",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Epidemiology, Shanghai Cancer Institute, Xuhui, Shanghai, China"
+    }
+   ],
+   "family": "Gao",
+   "given": "Yu-Tang",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Epidemiology, Department of Medicine, Vanderbilt Epidemiology Center, Vanderbilt University School of Medicine, Nashville, Tennessee2Vanderbilt-Ingram Cancer Center, Vanderbilt University School of Medicine, Nashville, Tennessee"
+    }
+   ],
+   "family": "Zheng",
+   "given": "Wei",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Epidemiology, Department of Medicine, Vanderbilt Epidemiology Center, Vanderbilt University School of Medicine, Nashville, Tennessee2Vanderbilt-Ingram Cancer Center, Vanderbilt University School of Medicine, Nashville, Tennessee"
+    }
+   ],
+   "family": "Shu",
+   "given": "Xiao-Ou",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "JAMA Internal Medicine"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    3,
+    2
+   ]
+  ],
+  "date-time": "2015-03-02T13:01:12Z",
+  "timestamp": 1425301272000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2016,
+    12,
+    16
+   ]
+  ],
+  "date-time": "2016-12-16T22:12:34Z",
+  "timestamp": 1481926354000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    18
+   ]
+  ],
+  "date-time": "2026-09-18T11:14:43Z",
+  "timestamp": 1789730083510,
+  "version": "4.0.1"
+ },
+ "is-referenced-by-count": 92,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "2168-6106"
+  }
+ ],
+ "issue": "5",
+ "issued": {
+  "date-parts": [
+   [
+    2015,
+    5,
+    1
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "5",
+  "published-print": {
+   "date-parts": [
+    [
+     2015,
+     5,
+     1
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2173094",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "10",
+ "original-title": [],
+ "page": "755",
+ "prefix": "10.1001",
+ "published": {
+  "date-parts": [
+   [
+    2015,
+    5,
+    1
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2015,
+    5,
+    1
+   ]
+  ]
+ },
+ "publisher": "American Medical Association (AMA)",
+ "reference-count": 0,
+ "references-count": 0,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "http://archinte.jamanetwork.com/article.aspx?doi=10.1001/jamainternmed.2014.8347"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "JAMA Intern Med"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Prospective Evaluation of the Association of Nut/Peanut Consumption With Total and Cause-Specific Mortality"
+ ],
+ "type": "journal-article",
+ "volume": "175"
+}

@@ -1,0 +1,67 @@
+source: IHME Burden of Proof visualization API, https://vizhub.healthdata.org/burden-of-proof/
+fetched:
+  raw/ihme_bop/comparison.json: '2026-09-24T02:41:32+00:00'
+  raw/ihme_bop/fixed_effect_data_r114_c493.json: '2026-09-24T02:41:29+00:00'
+  raw/ihme_bop/metadata_cause.json: '2026-09-24T02:41:32+00:00'
+  raw/ihme_bop/metadata_data_type.json: '2026-09-24T02:41:32+00:00'
+  raw/ihme_bop/metadata_risk.json: '2026-09-24T02:41:32+00:00'
+  raw/ihme_bop/output_data_r114_c493.json: '2026-09-24T02:41:29+00:00'
+  raw/ihme_bop/risk_cause_metadata_r114_c493.json: '2026-09-24T02:41:28+00:00'
+  raw/ihme_bop/study_citations_r114_c493.json: '2026-09-24T02:41:30+00:00'
+  raw/ihme_bop/study_data_r114_c493.json: '2026-09-24T02:41:29+00:00'
+  raw/ihme_bop/study_data_range_r114_c493.json: '2026-09-24T02:41:30+00:00'
+pair:
+  rei_id: 114
+  rei_name: Diet low in nuts and seeds
+  rei_name_short: Low nuts and seeds
+  revised_name: Nuts and seeds consumption
+  cause_id: 493
+  cause_name: Ischemic heart disease
+exposure_includes_seeds: true
+exposure_includes_seeds_basis: The risk factor is named 'Diet low in nuts and seeds' (revised name 'Nuts
+  and seeds consumption') in /comparison and /metadata/risk. The API gives no further exposure definition.
+stratum:
+  sex: Both
+  age_group: All Ages
+  location: Global
+  category: ungrouped
+star_rating: 2
+ros: 0.105213938228705
+star_rating_bands: 'Front end text (burden-of-proof main JS bundle): 1 star = negative ROS; 2 stars =
+  ROS 0-0.14 (average excess risk 0-15%).'
+ros_definition: 'Front end text: ROS is the mean log RR of the Burden of Proof risk function between the
+  15th and 85th percentiles of exposure in the data.'
+exposure_range:
+  p15_g_per_day: 0
+  p85_g_per_day: 23.49125
+  basis: risk_lower/risk_upper from /risk_cause_metadata, drawn as the '15th percentile' and '85th percentile'
+    bounds by the front end
+ui_definitions:
+  outer: output_data lower/upper; the front end labels this 'Fixed & random effects uncertainty' (includes
+    between-study heterogeneity).
+  inner: fixed_effect_data lower/upper; labeled 'Fixed effects uncertainty'. Its lower/upper fields are
+    ordered by log value sign, so the csv takes min and max.
+grid:
+  points: 100
+  min: 0
+  max: 100
+curve_summary:
+  min_rr_mean: 0.7571
+  rr_mean_within_0.001_of_min_from_g_per_day: 8.08
+  rr_at_grid_point_nearest_p85:
+    exposure_g_per_day: 23.2323
+    rr_mean: 0.7571
+    rr_inner_low: 0.7148
+    rr_inner_high: 0.8019
+    rr_outer_low: 0.6278
+    rr_outer_high: 0.9129
+  note: Computed from the csv. The mean curve falls to its floor within the first 10 g/day and is flat
+    from there to 100 g/day, well past the 85th percentile of exposure.
+input_data:
+  observations: 70
+  studies: 13
+  outliers: 6
+  collection_methods:
+  - prospective cohort
+  - randomized control trial
+  max_exposure_upper_g_per_day: 100

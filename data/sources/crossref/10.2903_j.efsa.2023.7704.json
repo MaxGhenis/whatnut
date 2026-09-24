@@ -1,0 +1,3932 @@
+{
+ "DOI": "10.2903/j.efsa.2023.7704",
+ "ISSN": [
+  "1831-4732",
+  "1831-4732"
+ ],
+ "URL": "https://doi.org/10.2903/j.efsa.2023.7704",
+ "abstract": "<jats:p>Abstract Following a request from the European Commission, the EFSA Panel\u00a0on Nutrition, Novel Foods and Food Allergens (NDA) was asked to deliver a scientific opinion on the tolerable upper intake level (UL) for selenium. Systematic reviews of the literature were conducted to identify evidence regarding excess selenium intake and clinical effects and potential biomarkers of effect, risk of chronic diseases and impaired neuropsychological development in humans. Alopecia, as an early observable feature and a well\u2010established adverse effect of excess selenium exposure, is selected as the critical endpoint on which to base a UL for selenium. A lowest\u2010observed\u2010adverse\u2010effect\u2010level (LOAEL) of 330\u00a0\u03bcg/day is identified from a large randomised controlled trial in humans (the Selenium and Vitamin E Cancer Prevention Trial (SELECT)), to which an uncertainty factor of 1.3 is applied. A UL of 255\u00a0\u03bcg/day is established for adult men and women (including pregnant and lactating women). ULs for children are derived from the UL for adults using allometric scaling (body weight0.75). Based on available intake data, adult consumers are unlikely to exceed the UL, except for regular users of food supplements containing high daily doses of selenium or regular consumers of Brazil nuts. No risk has been reported with the current levels of selenium intake in European countries from food (excluding food supplements) in toddlers and children, and selenium intake arising from the natural content of foods does not raise reasons for concern. Selenium\u2010containing supplements in toddlers and children should be used with caution, based on individual needs.</jats:p>",
+ "author": [
+  {
+   "affiliation": [],
+   "name": "EFSA Panel\u00a0on Nutrition, Novel Foods and Food Allergens (NDA)",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Turck",
+   "given": "Dominique",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bohn",
+   "given": "Torsten",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Castenmiller",
+   "given": "Jacqueline",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "de Henauw",
+   "given": "Stefaan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Hirsch\u2010Ernst",
+   "given": "Karen\u2010Ildico",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Knutsen",
+   "given": "Helle Katrine",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Maciuk",
+   "given": "Alexandre",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mangelsdorf",
+   "given": "Inge",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "McArdle",
+   "given": "Harry J",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pel\u00e1ez",
+   "given": "Carmen",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pentieva",
+   "given": "Kristina",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Siani",
+   "given": "Alfonso",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Thies",
+   "given": "Frank",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Tsabouri",
+   "given": "Sophia",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vinceti",
+   "given": "Marco",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Aggett",
+   "given": "Peter",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Crous Bou",
+   "given": "Marta",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cubadda",
+   "given": "Francesco",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ciccolallo",
+   "given": "Laura",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "de Sesmaisons Lecarr\u00e9",
+   "given": "Agn\u00e8s",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fabiani",
+   "given": "Lucia",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Titz",
+   "given": "Ariane",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Naska",
+   "given": "Androniki",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "EFSA Journal"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2023,
+    1,
+    20
+   ]
+  ],
+  "date-time": "2023-01-20T07:54:46Z",
+  "timestamp": 1674201286000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    7
+   ]
+  ],
+  "date-time": "2026-07-07T12:43:28Z",
+  "timestamp": 1783428208000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    22
+   ]
+  ],
+  "date-time": "2026-09-22T03:39:14Z",
+  "timestamp": 1790048354300,
+  "version": "4.0.1"
+ },
+ "is-referenced-by-count": 94,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "1831-4732"
+  },
+  {
+   "type": "electronic",
+   "value": "1831-4732"
+  }
+ ],
+ "issue": "1",
+ "issued": {
+  "date-parts": [
+   [
+    2023,
+    1
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "1"
+ },
+ "link": [
+  {
+   "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.2903/j.efsa.2023.7704",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://onlinelibrary.wiley.com/wol1/doi/10.2903/j.efsa.2023.7704/fullpdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "311",
+ "original-title": [],
+ "prefix": "10.2903",
+ "published": {
+  "date-parts": [
+   [
+    2023,
+    1
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2023,
+    1
+   ]
+  ]
+ },
+ "publisher": "Wiley",
+ "reference": [
+  {
+   "author": "AECOSAN (Agencia Espa\u00f1ola de Consumo, Seguridad Alimentaria y Nutrici\u00f3n)",
+   "first-page": "258",
+   "key": "10.2903/j.efsa.2023.7704_ref1",
+   "volume-title": "Estudio ENALIA 2012\u20132014: Encuesta Nacional de consumo de Alimentos en poblaci\u00f3n Infantil y Adolescente",
+   "year": "2017"
+  },
+  {
+   "author": "AFSSA (Agence fran\u00e7aise de s\u00e9curit\u00e9 sanitaire des aliments)",
+   "first-page": "225",
+   "key": "10.2903/j.efsa.2023.7704_ref2",
+   "volume-title": "\u00c9tude individuelle nationale des consommations alimentaires 2 (INCA 2) 2006\u20132007 (version 2)",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1373/clinchem.2005.055301",
+   "article-title": "Selenium and mortality in the elderly: results from the EVA study",
+   "author": "Akbaraly",
+   "doi-asserted-by": "crossref",
+   "first-page": "2117",
+   "journal-title": "Clinical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref3",
+   "volume": "51",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1007/s00128-006-1045-4",
+   "article-title": "Determination of selenium concentration in serum and toenail as an indicator of\u00a0selenium status",
+   "author": "Al\u2010Saleh",
+   "doi-asserted-by": "crossref",
+   "first-page": "155",
+   "journal-title": "Bulletin of Environmental Contamination and Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref4",
+   "volume": "77",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.3109/15563650.2011.641560",
+   "article-title": "Case series of selenium toxicity from a nutritional supplement",
+   "author": "Aldosary",
+   "doi-asserted-by": "crossref",
+   "first-page": "57",
+   "journal-title": "Clinical Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref5",
+   "volume": "50",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1038/ejcn.2015.92",
+   "article-title": "Relatively high mortality risk in elderly Swedish subjects with low selenium status",
+   "author": "Alehagen",
+   "doi-asserted-by": "crossref",
+   "first-page": "91",
+   "journal-title": "European Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref6",
+   "volume": "70",
+   "year": "2016"
+  },
+  {
+   "author": "Nordberg",
+   "first-page": "729",
+   "key": "10.2903/j.efsa.2023.7704_ref7",
+   "volume-title": "Handbook on the Toxicology of Metals",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1093/ajcn/53.1.120",
+   "article-title": "Selenium metabolism and platelet glutathione peroxidase activity in healthy Finnish men: effects of selenium yeast, selenite, and selenate",
+   "author": "Alfthan",
+   "doi-asserted-by": "crossref",
+   "first-page": "120",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref8",
+   "volume": "53",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1016/S0946-672X(96)80015-0",
+   "article-title": "Reference values for serum selenium in various areas evaluated according to the TRACY protocol",
+   "author": "Alfthan",
+   "doi-asserted-by": "crossref",
+   "first-page": "77",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref9",
+   "volume": "10",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1111/1753-0407.12041",
+   "article-title": "Selenium supplementation has no effect on serum glucose levels in men at high risk of prostate cancer",
+   "author": "Algotar",
+   "doi-asserted-by": "crossref",
+   "first-page": "465",
+   "journal-title": "Journal of Diabetes",
+   "key": "10.2903/j.efsa.2023.7704_ref10",
+   "volume": "5",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1002/pros.22573",
+   "article-title": "Phase 3 clinical trial investigating the effect of selenium supplementation in men at high\u2010risk for prostate cancer",
+   "author": "Algotar",
+   "doi-asserted-by": "crossref",
+   "first-page": "328",
+   "journal-title": "Prostate",
+   "key": "10.2903/j.efsa.2023.7704_ref11",
+   "volume": "73",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.3945/ajcn.2008.26205",
+   "article-title": "Plasma selenium concentration and prostate cancer risk: results from the European Prospective Investigation into Cancer and Nutrition (EPIC)",
+   "author": "Allen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1567",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref12",
+   "volume": "88",
+   "year": "2008"
+  },
+  {
+   "author": "Amcoff",
+   "first-page": "180",
+   "key": "10.2903/j.efsa.2023.7704_ref13",
+   "volume-title": "Riksmaten \u2013 vuxna 2010\u201311. Livsmedels\u2010 och n\u00e4ringsintag bland vuxna i Sverige. Resultat fr\u00e5n matvaneunders\u00f6kning utf\u00f6rd 2010\u201311",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2017.08.042",
+   "article-title": "Selenium status during pregnancy: Influential factors and effects on neuropsychological development among Spanish infants",
+   "author": "Amor\u00f3s",
+   "doi-asserted-by": "crossref",
+   "first-page": "741",
+   "journal-title": "Science of the Total Environment",
+   "key": "10.2903/j.efsa.2023.7704_ref14",
+   "volume": "610\u2013611",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.envres.2018.06.002",
+   "article-title": "Maternal selenium status and neuropsychological development in Spanish preschool children",
+   "author": "Amor\u00f3s",
+   "doi-asserted-by": "crossref",
+   "first-page": "215",
+   "journal-title": "Environmental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref15",
+   "volume": "166",
+   "year": "2018"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref16",
+   "unstructured": "Anses (Agence nationale de s\u00e9curit\u00e9 sanitaire de l'alimentation, de l'environnement et du travail) , 2017. \u00c9tude individuelle nationale des consommations alimentaires 3 (INCA 3). 564 pp."
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref17",
+   "unstructured": "Anses (Agence nationale de s\u00e9curit\u00e9 sanitaire de l'alimentation, de l'environnement et du travail) , online, 2020. Table\u00a0de composition nutritionnelle des aliments Ciqual. Available online: https://ciqual.anses.fr/ [Accessed: 3\u00a0August 2020]"
+  },
+  {
+   "DOI": "10.1079/BJN20051528",
+   "article-title": "Serum selenium determinants in French adults: The SU.VI.M.AX study",
+   "author": "Arnund",
+   "doi-asserted-by": "crossref",
+   "first-page": "313",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref18",
+   "volume": "95",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1001/archdermatol.2009.176",
+   "article-title": "Antioxidant supplementation and risk of incident melanomas: results of a large prospective cohort study",
+   "author": "Asgari",
+   "doi-asserted-by": "crossref",
+   "first-page": "879",
+   "journal-title": "Archives of Dermatology",
+   "key": "10.2903/j.efsa.2023.7704_ref19",
+   "volume": "145",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27230F",
+   "article-title": "Methods of assessment of selenium status in humans: a systematic review",
+   "author": "Ashton",
+   "doi-asserted-by": "crossref",
+   "first-page": "2025S",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref20",
+   "volume": "89",
+   "year": "2009"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref21",
+   "unstructured": "Astrup H, Myhre JB, Andersen LF, Kristiansen AL and Institute of Public Health, University of Oslo , 2020. Sm\u00e5barnskost 3. Landsomfattende unders\u00f8kelse av kostholdet blant 2\u2010\u00e5ringer i Norge. Oslo, Norway"
+  },
+  {
+   "author": "ATSDR (Agency for Toxic Substances and Disease Registry)",
+   "key": "10.2903/j.efsa.2023.7704_ref22",
+   "volume-title": "Toxicological profile for selenium",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1039/c2mt20085f",
+   "article-title": "Identification of selenosugars and other low\u2010molecular weight selenium metabolites in high\u2010selenium cereal crops",
+   "author": "Aureli",
+   "doi-asserted-by": "crossref",
+   "first-page": "968",
+   "journal-title": "Metallomics",
+   "key": "10.2903/j.efsa.2023.7704_ref23",
+   "volume": "4",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1017/S0007114510003053",
+   "article-title": "Redox\u2010modulatory vitamins and minerals that prospectively predict mortality in older British people: the National Diet and Nutrition Survey of people aged 65\u2009years and over",
+   "author": "Bates",
+   "doi-asserted-by": "crossref",
+   "first-page": "123",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref24",
+   "volume": "105",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/jn/116.9.1701",
+   "article-title": "Deposition of dietary organic and inorganic selenium in rat erythrocyte proteins",
+   "author": "Beilstein",
+   "doi-asserted-by": "crossref",
+   "first-page": "1701",
+   "journal-title": "Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref25",
+   "volume": "116",
+   "year": "1986"
+  },
+  {
+   "DOI": "10.1007/s00216-008-1883-5",
+   "article-title": "Determination of selenocysteine and selenomethionine in edible animal tissues by 2D size\u2010exclusion reversed\u2010phase HPLC\u2010ICP MS following carbamidomethylation and proteolytic extraction",
+   "author": "Bierla",
+   "doi-asserted-by": "crossref",
+   "first-page": "1789",
+   "journal-title": "Analytical and Bioanalytical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref26",
+   "volume": "390",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.3390/ijms19020543",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref27",
+   "unstructured": "Bierla K, Lobinski R and Szpunar J, 2018. Determination of proteinaceous selenocysteine in selenized yeast. International Journal of Molecular Sciences, 19. https://doi.org/10.3390/ijms19020543"
+  },
+  {
+   "DOI": "10.1016/j.aca.2008.06.052",
+   "article-title": "Specific determination of selenoaminoacids in whole milk by 2D size\u2010exclusion\u2010ion\u2010paring reversed phase high\u2010performance liquid chromatography\u2010inductively coupled plasma mass spectrometry (HPLC\u2010ICP MS)",
+   "author": "Bierla",
+   "doi-asserted-by": "crossref",
+   "first-page": "195",
+   "journal-title": "Analytica Chimica Acta",
+   "key": "10.2903/j.efsa.2023.7704_ref28",
+   "volume": "624",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.trac.2012.08.006",
+   "article-title": "Comprehensive speciation of selenium in selenium\u2010rich yeast",
+   "author": "Bierla",
+   "doi-asserted-by": "crossref",
+   "first-page": "122",
+   "journal-title": "Trends in Analytical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref29",
+   "volume": "41",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/S0946-672X(96)80027-7",
+   "article-title": "Influence of high dietary selenium intake on the thyroid hormone level in human serum",
+   "author": "Br\u00e4tter",
+   "doi-asserted-by": "crossref",
+   "first-page": "163",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref30",
+   "volume": "10",
+   "year": "1996"
+  },
+  {
+   "article-title": "Selenium status of children living in seleniferous areas of Venezuela",
+   "author": "Br\u00e4tter",
+   "first-page": "269",
+   "journal-title": "Journal of Trace Elements and Electrolytes in Health and Disease",
+   "key": "10.2903/j.efsa.2023.7704_ref31",
+   "volume": "5",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1016/j.freeradbiomed.2018.09.026",
+   "article-title": "Selenium and selenoproteins in (redox) signaling, diseases, and animal models \u2013 200 year anniversary issue",
+   "author": "Brigelius\u2010Flohe",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Free Radical Biology and Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref32",
+   "volume": "127",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1042/cs0980593",
+   "article-title": "Effects of organic and inorganic selenium supplementation on selenoenzyme activity in blood lymphocytes, granulocytes, platelets and erythrocytes",
+   "author": "Brown",
+   "doi-asserted-by": "crossref",
+   "first-page": "593",
+   "journal-title": "Clinical Science",
+   "key": "10.2903/j.efsa.2023.7704_ref33",
+   "volume": "98",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1016/j.envpol.2019.01.129",
+   "article-title": "Changes in blood pressure associated with lead, manganese, and selenium in a Bangladeshi cohort",
+   "author": "Bulka",
+   "doi-asserted-by": "crossref",
+   "first-page": "28",
+   "journal-title": "Environmental Pollution",
+   "key": "10.2903/j.efsa.2023.7704_ref34",
+   "volume": "248",
+   "year": "2019"
+  },
+  {
+   "author": "Bulotait\u0117",
+   "first-page": "25",
+   "key": "10.2903/j.efsa.2023.7704_ref35",
+   "volume-title": "Suaugusi\u0173 ir pagyvenusi\u0173 Lietuvos gyventoj\u0173 faktin\u0117s mitybos, mitybos ir fizinio aktyvumo \u012fpro\u010di\u0173 bei \u017eini\u0173 apie mityb\u0105 ir fizin\u012f aktyvum\u0105 tyrimas (2019/2020 m.) \u2013 IV dalis \u2013 Suaugusi\u0173 ir pagyvenusi\u0173 Lietuvos gyventoj\u0173 faktin\u0117s mitybos tyrimo ataskaita",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1146/annurev-nutr-071714-034250",
+   "article-title": "Regulation of selenium metabolism and transport",
+   "author": "Burk",
+   "doi-asserted-by": "crossref",
+   "first-page": "109",
+   "journal-title": "Annual Review of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref36",
+   "volume": "35",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-05-0950",
+   "article-title": "Effects of chemical form of selenium on plasma biomarkers in a high\u2010dose human supplementation trial",
+   "author": "Burk",
+   "doi-asserted-by": "crossref",
+   "first-page": "804",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref37",
+   "volume": "15",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1007/s00394-021-02494-3",
+   "article-title": "Trace element profile and incidence of type 2 diabetes, cardiovascular disease and colorectal cancer: results from the EPIC\u2010Potsdam cohort study",
+   "author": "Cabral",
+   "doi-asserted-by": "crossref",
+   "first-page": "3267",
+   "journal-title": "European Journal of Nutrition.",
+   "key": "10.2903/j.efsa.2023.7704_ref38",
+   "volume": "60",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.envres.2019.108856",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref39",
+   "unstructured": "Calamandrei G, Ricceri L, Meccia E, Tartaglione AM, Horvat M, Tratnik JS, Mazej D, \u0160piri\u0107 Z, Prpi\u0107 I, Vla\u0161i\u0107\u2010Cicvari\u0107 I, Neubauer D, Kodri\u010d J, Stropnik S, Janasik B, Kura\u015b R, Mirabella F, Pola\u0144ska K and Chiarotti F, 2020. Pregnancy exposome and child psychomotor development in three European birth cohorts. Environmental Research, 181, 108856. https://doi.org/10.1016/j.envres.2019.108856"
+  },
+  {
+   "DOI": "10.1016/j.foodres.2017.08.036",
+   "article-title": "Brazil nuts: Nutritional composition, health benefits and safety aspects",
+   "author": "Cardoso",
+   "doi-asserted-by": "crossref",
+   "first-page": "9",
+   "journal-title": "Food Research International",
+   "key": "10.2903/j.efsa.2023.7704_ref40",
+   "volume": "100",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1186/s12937-015-0036-x",
+   "article-title": "Intake of partially defatted Brazil nut flour reduces serum cholesterol in hypercholesterolemic patients \u2013 a randomized controlled trial",
+   "author": "Carvalho",
+   "doi-asserted-by": "crossref",
+   "first-page": "59",
+   "journal-title": "Nutrition Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref41",
+   "volume": "14",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.ijheh.2020.113604",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref42",
+   "unstructured": "Castriotta L, Rosolen V, Biggeri A, Ronfani L, Catelan D, Mariuz M, Bin M, Brumatti LV, Horvat M and Barbone F, 2020. The role of mercury, selenium and the Se\u2010Hg antagonism on cognitive neurodevelopment: A 40\u2010month follow\u2010up of the Italian mother\u2010child PHIME cohort. International Journal of Hygiene and Environmental Health, 230, 113604. https://doi.org/10.1016/j.ijheh.2020.113604"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2019.134541",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref43",
+   "unstructured": "Chawla R, Filippini T, Loomba R, Cilloni S, Dhillon KS and Vinceti M, 2020. Exposure to a high selenium environment in Punjab, India: Biomarkers and health conditions. Science of the Total Environment, 719, 134541. https://doi.org/10.1016/j.scitotenv.2019.134541"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2021.151848",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref44",
+   "unstructured": "Cheng Z, Li Y, Young JL, Cheng N, Yang C, Papandonatos GD, Kelsey KT, Wise JP Sr, Shi K, Zheng T, Liu S and Bai Y, 2022. Long\u2010term association of serum selenium levels and the diabetes risk: Findings from a case\u2010control study nested in the prospective Jinchang Cohort. Science of the Total Environment, 818, 151848. https://doi.org/10.1016/j.scitotenv.2021.151848"
+  },
+  {
+   "DOI": "10.1001/jama.1996.03540240035027",
+   "article-title": "Effects of selenium supplementation for cancer prevention in patients with carcinoma of the skin. A randomized controlled trial. Nutritional Prevention of Cancer Study Group",
+   "author": "Clark",
+   "doi-asserted-by": "crossref",
+   "first-page": "1957",
+   "journal-title": "The Journal of the American Medical Association",
+   "key": "10.2903/j.efsa.2023.7704_ref45",
+   "volume": "276",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a114999",
+   "article-title": "Serum levels of selenium and retinol and the subsequent risk of cancer",
+   "author": "Coates",
+   "doi-asserted-by": "crossref",
+   "first-page": "515",
+   "journal-title": "American Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref46",
+   "volume": "128",
+   "year": "1988"
+  },
+  {
+   "DOI": "10.1079/BJN2000280",
+   "article-title": "Selenium in global food systems",
+   "author": "Combs",
+   "doi-asserted-by": "crossref",
+   "first-page": "517",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref47",
+   "volume": "85",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.3390/nu7042209",
+   "article-title": "Biomarkers of selenium status",
+   "author": "Combs",
+   "doi-asserted-by": "crossref",
+   "first-page": "2209",
+   "journal-title": "Nutrients",
+   "key": "10.2903/j.efsa.2023.7704_ref48",
+   "volume": "7",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1017/S0007114511004715",
+   "article-title": "Differential responses to selenomethionine supplementation by sex and genotype in healthy adults",
+   "author": "Combs",
+   "doi-asserted-by": "crossref",
+   "first-page": "1514",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref49",
+   "volume": "107",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1177/0962280218773122",
+   "article-title": "One\u2010stage dose\u2010response meta\u2010analysis for aggregated data",
+   "author": "Crippa",
+   "doi-asserted-by": "crossref",
+   "first-page": "1579",
+   "journal-title": "Statistical Methods in Medical Research",
+   "key": "10.2903/j.efsa.2023.7704_ref50",
+   "volume": "28",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1021/jf903004a",
+   "article-title": "Changes in selenium speciation associated with increasing tissue concentrations of selenium in wheat grain",
+   "author": "Cubadda",
+   "doi-asserted-by": "crossref",
+   "first-page": "2295",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref51",
+   "volume": "58",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1002/bdr2.1148",
+   "article-title": "Chronic exposure to high doses of selenium in the first trimester of pregnancy: case report and brief literature review",
+   "author": "D'Oria",
+   "doi-asserted-by": "crossref",
+   "first-page": "372",
+   "journal-title": "Birth Defects Res",
+   "key": "10.2903/j.efsa.2023.7704_ref52",
+   "volume": "110",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1021/jf9811976",
+   "article-title": "Enhanced organically bound selenium yeast production by fed\u2010batch fermentation",
+   "author": "Demirci",
+   "doi-asserted-by": "crossref",
+   "first-page": "2496",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref53",
+   "volume": "47",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1016/j.envint.2017.12.035",
+   "article-title": "Selenium distribution in the Chinese environment and its relationship with human health: a review",
+   "author": "Dinh",
+   "doi-asserted-by": "crossref",
+   "first-page": "294",
+   "journal-title": "Environment International",
+   "key": "10.2903/j.efsa.2023.7704_ref54",
+   "volume": "112",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1097/EE9.0000000000000106",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref55",
+   "unstructured": "Doherty BT, Romano ME, Gui J, Punshon T, Jackson BP, Karagas MR and Korrick SA, 2020. Periconceptional and prenatal exposure to metal mixtures in relation to behavioral development at 3\u2009years of age. Environmental Epidemiology, 4, e0106. https://doi.org/10.1097/EE9.0000000000000106"
+  },
+  {
+   "article-title": "Subacute selenium toxicity from a nutritional supplement",
+   "author": "Dosary",
+   "first-page": "745",
+   "journal-title": "Clinical Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref56",
+   "volume": "47",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1046/j.1464-410X.2003.04167.x",
+   "article-title": "Selenium supplementation, baseline plasma selenium status and incidence of prostate cancer: an analysis of the complete treatment period of the Nutritional Prevention of Cancer Trial",
+   "author": "Duffield\u2010Lillico",
+   "doi-asserted-by": "crossref",
+   "first-page": "608",
+   "journal-title": "British Journal of Urology International",
+   "key": "10.2903/j.efsa.2023.7704_ref57",
+   "volume": "91",
+   "year": "2003"
+  },
+  {
+   "article-title": "Baseline characteristics and the effect of selenium supplementation on cancer incidence in a randomized clinical trial: a summary report of the Nutritional Prevention of Cancer Trial",
+   "author": "Duffield\u2010Lillico",
+   "first-page": "630",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref58",
+   "volume": "11",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1093/jnci/djg061",
+   "article-title": "Selenium supplementation and secondary prevention of nonmelanoma skin cancer in a randomized trial",
+   "author": "Duffield\u2010Lillico",
+   "doi-asserted-by": "crossref",
+   "first-page": "1477",
+   "journal-title": "Journal of the National Cancer Institute",
+   "key": "10.2903/j.efsa.2023.7704_ref59",
+   "volume": "95",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1017/S0007114599001282",
+   "article-title": "A comparison of methods of assessment of dietary selenium intakes in Otago, New Zealand",
+   "author": "Duffield",
+   "doi-asserted-by": "crossref",
+   "first-page": "131",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref60",
+   "volume": "82",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1093/ajcn/70.5.896",
+   "article-title": "An estimation of selenium requirements for New Zealanders",
+   "author": "Duffield",
+   "doi-asserted-by": "crossref",
+   "first-page": "896",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref61",
+   "volume": "70",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1016/j.atherosclerosis.2010.07.008",
+   "article-title": "The association of low selenium and renal insufficiency with coronary heart disease and all\u2010cause mortality: NHANES III follow\u2010up study",
+   "author": "Eaton",
+   "doi-asserted-by": "crossref",
+   "first-page": "689",
+   "journal-title": "Atherosclerosis",
+   "key": "10.2903/j.efsa.2023.7704_ref62",
+   "volume": "212",
+   "year": "2010"
+  },
+  {
+   "article-title": "Application of systematic review methodology to food and feed safety assessments to support decision making",
+   "author": "EFSA (European Food Safety Authority)",
+   "first-page": "90",
+   "issue": "6",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref63",
+   "volume": "8",
+   "year": "2010"
+  },
+  {
+   "article-title": "Scientific report on principles and process for dealing with data and evidence in scientific assessments",
+   "author": "EFSA (European Food Safety Authority)",
+   "first-page": "35",
+   "issue": "5",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref64",
+   "volume": "13",
+   "year": "2015"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref65",
+   "unstructured": "EFSA (European Food Safety Authority) , 2020. Draft framework for protocol development for EFSA's scientific assessments. EFSA supporting publication 2020;17(4):EN\u20101843, 46 pp. https://doi.org/10.2903/sp.efsa.2020.EN-1843"
+  },
+  {
+   "DOI": "10.2903/sp.efsa.2022.e200801",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref66",
+   "unstructured": "EFSA (European Food Safety Authority) , 2022. Protocol for the intake assessments performed in the context of the revision of Tolerable Upper Intake Levels for selected nutrients. EFSA supporting publication 2022:e200801. https://doi.org/10.2903/sp.efsa.2022.e200801"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2008.766",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref67",
+   "unstructured": "EFSA AFC Panel\u00a0(EFSA Panel\u00a0on Food Additives, Flavourings, Processing Aids and Materials in Contact with Food) , 2008. Selenium\u2010enriched yeast as source for selenium added for nutritional purposes in foods for particular nutritional uses and foods (including food supplements) for the general population. EFSA Journal 2008;6(7):766, 42 pp. https://doi.org/10.2903/j.efsa.2008.766"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2009.1147",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref68",
+   "unstructured": "EFSA ANS Panel\u00a0(EFSA Panel\u00a0on Food Additives and Nutrient Sources added to Food) , 2009a. Chromium(III)\u2010, iron(II)\u2010 and selenium\u2010humic acid/fulvic acid chelate and supplemented humifulvate added for nutritional purposes to food supplements EFSA Journal 2009;7(6):1147, 36 pp. https://doi.org/10.2903/j.efsa.2009.1147"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2009.1082",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref69",
+   "unstructured": "EFSA ANS Panel\u00a0(EFSA Panel\u00a0on Food Additives and Nutrient Sources added to Food) , 2009b. L\u2010selenomethionine as a source of selenium added for nutritional purposes to food supplements. EFSA Journal 2009;7(7):1082, 38 pp. https://doi.org/10.2903/j.efsa.2009.1082"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2009.1067",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref70",
+   "unstructured": "EFSA ANS Panel\u00a0(EFSA Panel\u00a0on Food Additives and Nutrient Sources added to Food) , 2009c. Se\u2010methyl\u2010L\u2010selenocysteine added as a source of selenium for nutritional purposes to food supplements. EFSA Journal 2009;7:1067, 23 pp. https://doi.org/10.2903/j.efsa.2009.1067"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2009.1009",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref71",
+   "unstructured": "EFSA ANS Panel\u00a0(EFSA Panel\u00a0on Food Additives and Nutrient Sources added to Food) , 2009d. Selenious acid as a source of selenium added for nutritional purposes to food supplements. EFSA Journal 2009;7(4):1009, 17 pp. https://doi.org/10.2903/j.efsa.2009.1009"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2013.3046",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref72",
+   "unstructured": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed) , 2013a. Scientific Opinion on safety and efficacy of hydroxy\u2010analogue of selenomethionine as feed additive for all species. EFSA Journal 2013;11(1):3046, 30 pp. https://doi.org/10.2903/j.efsa.2013.3046"
+  },
+  {
+   "article-title": "Scientific Opinion on the safety and efficacy of L\u2010selenomethionine as feed additive for all animal species",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "18",
+   "issue": "5",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref73",
+   "volume": "11",
+   "year": "2013"
+  },
+  {
+   "article-title": "Scientific Opinion on the safety and efficacy of selenium compounds (E8) as feed additives for all animal species: sodium selenite (coated granulated preparation), based on a dossier submitted by Doxal Italia S.p.A",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "27",
+   "issue": "11",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref74",
+   "volume": "13",
+   "year": "2015"
+  },
+  {
+   "article-title": "Safety and efficacy of selenium\u2010enriched yeast (Saccharomyces cerevisiae NCYC R397) for all animal species",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "10",
+   "issue": "11",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref75",
+   "volume": "14",
+   "year": "2016"
+  },
+  {
+   "article-title": "Safety and efficacy of selenium compounds (E8) as feed additives for all animal species: sodium selenite, based on a dossier submitted by Retorte GmbH Selenium Chemicals and Metals",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "26",
+   "issue": "2",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref76",
+   "volume": "14",
+   "year": "2016"
+  },
+  {
+   "article-title": "Safety and efficacy of selenium compounds (E8) as feed additives for all animal species: sodium selenite, based on a dossier submitted by Todini and Co SpA",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "24",
+   "issue": "3",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref77",
+   "volume": "14",
+   "year": "2016"
+  },
+  {
+   "article-title": "Assessment of the application for renewal of authorisation of selenomethionine produced by Saccharomyces cerevisiae CNCM I\u20103060 (selenised yeast inactivated) for all animal species",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "14",
+   "issue": "7",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref78",
+   "volume": "16",
+   "year": "2018"
+  },
+  {
+   "article-title": "Safety and efficacy of Zinc\u2010L\u2010Selenomethionine as feedadditive for all animal species",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "18",
+   "issue": "3",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref79",
+   "volume": "16",
+   "year": "2018"
+  },
+  {
+   "article-title": "Assessment of the application for renewal of authorisation of selenomethionine produced by Saccharomyces cerevisiae NCYC R397 for all animal species",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "16",
+   "issue": "1",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref80",
+   "volume": "17",
+   "year": "2019"
+  },
+  {
+   "article-title": "Safety and efficacy of sodium selenate as feed additive forruminants",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "20",
+   "issue": "7",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref81",
+   "volume": "17",
+   "year": "2019"
+  },
+  {
+   "article-title": "Safety and efficacy of the feed additive consisting of selenium\u2010enriched yeast (Saccharomyces cerevisiae CNCM I\u20103060) for all animal species (Alltech Ireland)",
+   "author": "EFSA FEEDAP Panel\u00a0(EFSA Panel\u00a0on Additives and Products or Substances used in Animal Feed)",
+   "first-page": "10",
+   "issue": "12",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref82",
+   "volume": "19",
+   "year": "2021"
+  },
+  {
+   "article-title": "Scientific Opinion on Dietary Reference Values for selenium",
+   "author": "EFSA NDA Panel\u00a0(EFSA Panel\u00a0on Dietetic Products, Nutrition and Allergies)",
+   "first-page": "67",
+   "issue": "10",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref83",
+   "volume": "12",
+   "year": "2014"
+  },
+  {
+   "article-title": "Guidance for establishing and applying tolerable upper intake levels for vitamins and essential minerals",
+   "author": "EFSA NDA Panel\u00a0(EFSA Panel\u00a0on Nutrition, Novel Foods and Food Allergens)",
+   "first-page": "27",
+   "issue": "1",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref84",
+   "volume": "20",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2011.2372",
+   "article-title": "Statistical significance and biological relevance",
+   "author": "EFSA Scientific Committee",
+   "doi-asserted-by": "crossref",
+   "first-page": "17",
+   "issue": "9",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref85",
+   "volume": "9",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2017.4970",
+   "article-title": "Guidance on the assessment of the biological relevance of data in scientific assessments",
+   "author": "EFSA Scientific Committee",
+   "doi-asserted-by": "crossref",
+   "first-page": "73",
+   "issue": "8",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref86",
+   "volume": "15",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2017.4849",
+   "article-title": "Guidance on the risk assessment of substances present in food intended forinfants below 16\u2009weeks of age",
+   "author": "EFSA Scientific Committee",
+   "doi-asserted-by": "crossref",
+   "first-page": "58",
+   "issue": "5",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref87",
+   "volume": "15",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2017.4971",
+   "article-title": "Guidance on the use of the weight of evidence approach in scientific assessments",
+   "author": "EFSA Scientific Committee",
+   "doi-asserted-by": "crossref",
+   "first-page": "69",
+   "issue": "8",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref88",
+   "volume": "15",
+   "year": "2017"
+  },
+  {
+   "article-title": "Guidance on uncertainty analysis in scientific assessments",
+   "author": "EFSA Scientific Committee",
+   "first-page": "39",
+   "issue": "1",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref89",
+   "volume": "16",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.2903/j.efsa.2020.6221",
+   "article-title": "Draft for internal testing Scientific Committee guidance on appraising and integrating evidence from epidemiological studies for use in EFSA's scientific assessments",
+   "author": "EFSA Scientific Committee",
+   "doi-asserted-by": "crossref",
+   "first-page": "83",
+   "issue": "8",
+   "journal-title": "EFSA Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref90",
+   "volume": "18",
+   "year": "2020"
+  },
+  {
+   "author": "EVM (Expert Group on Vitamins and Minerals)",
+   "first-page": "360",
+   "key": "10.2903/j.efsa.2023.7704_ref91",
+   "volume-title": "Safe upper levels for vitamins and minerals",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1177/000456328902600113",
+   "article-title": "The effect of supplementation with selenium and vitamin\u2010E in psoriasis",
+   "author": "Fairris",
+   "doi-asserted-by": "crossref",
+   "first-page": "83",
+   "journal-title": "Annals of Clinical Biochemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref92",
+   "volume": "26",
+   "year": "1989"
+  },
+  {
+   "DOI": "10.1089/ars.2010.3275",
+   "article-title": "Selenium in human health and disease",
+   "author": "Fairweather\u2010Tait",
+   "doi-asserted-by": "crossref",
+   "first-page": "1337",
+   "journal-title": "Antioxidants and Redox Signalling",
+   "key": "10.2903/j.efsa.2023.7704_ref93",
+   "volume": "14",
+   "year": "2011"
+  },
+  {
+   "article-title": "Principles and Methods for the Risk Assessment of Chemicals in Food",
+   "author": "FAO/WHO (Food and Agriculture Organization of the United Nations/World Health Organization)",
+   "first-page": "R41",
+   "journal-title": "Environmental Health Criteria",
+   "key": "10.2903/j.efsa.2023.7704_ref94",
+   "volume": "240",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3892/mmr.2017.6388",
+   "article-title": "Toenail selenium as an indicator of environmental exposure: A cross\u2010sectional study",
+   "author": "Filippini",
+   "doi-asserted-by": "crossref",
+   "first-page": "3405",
+   "journal-title": "Molecular Medicine Reports",
+   "key": "10.2903/j.efsa.2023.7704_ref95",
+   "volume": "15",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.fct.2018.03.048",
+   "article-title": "Diet composition and serum levels of selenium species: a cross\u2010sectional study",
+   "author": "Filippini",
+   "doi-asserted-by": "crossref",
+   "first-page": "482",
+   "journal-title": "Food and Chemical Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref96",
+   "volume": "115",
+   "year": "2018"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref97",
+   "unstructured": "Finnish Institute for Health and Welfare , online, 2022. Fineli, National Food Composition Database. Available online: https://fineli.fi [Accessed: 3 August 2022]."
+  },
+  {
+   "DOI": "10.1017/S0043933907001742",
+   "article-title": "Producing specialist poultry products to meet human nutrition requirements: selenium enriched eggs",
+   "author": "Fisinin",
+   "doi-asserted-by": "crossref",
+   "first-page": "85",
+   "journal-title": "World's Poultry Science Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref98",
+   "volume": "64",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1007/978-94-007-4375-5",
+   "author": "Selinus",
+   "doi-asserted-by": "crossref",
+   "first-page": "375",
+   "key": "10.2903/j.efsa.2023.7704_ref99",
+   "volume-title": "Essentials of Medical Geology",
+   "year": "2013"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref100",
+   "unstructured": "FSA (Food Safety Authority of Ireland) , 2016. Report on a Total Diet Study carried out by the Food Safety Authority of Ireland in the period 2012\u20132014. Monitoring and Surveillance Series, 129 pp."
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref101",
+   "unstructured": "FSCJ (Food Safety Commission of Japan) , 2012. Selenium in beverages: Risk assessment report. 5 pp."
+  },
+  {
+   "DOI": "10.1021/acs.chemrestox.0c00254",
+   "article-title": "Production of a urinary selenium metabolite, trimethylselenonium, by thiopurine S\u2010methyltransferase and indolethylamine N\u2010methyltransferase",
+   "author": "Fukumoto",
+   "doi-asserted-by": "crossref",
+   "first-page": "2467",
+   "journal-title": "Chemical Research in Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref102",
+   "volume": "33",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.redox.2017.04.022",
+   "article-title": "A gene\u2010environment interaction analysis of plasma selenium with prevalent and incident diabetes: the Hortega study",
+   "author": "Galan\u2010Chilet",
+   "doi-asserted-by": "crossref",
+   "first-page": "798",
+   "journal-title": "Redox Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref103",
+   "volume": "12",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/S0271-5317(84)80030-5",
+   "article-title": "Selenium levels in new growth hair and in whole blood during ingestion of a selenium supplement for six weeks",
+   "author": "Gallagher",
+   "doi-asserted-by": "crossref",
+   "first-page": "577",
+   "journal-title": "Nutrition Research",
+   "key": "10.2903/j.efsa.2023.7704_ref104",
+   "volume": "4",
+   "year": "1984"
+  },
+  {
+   "DOI": "10.1111/dme.12429",
+   "article-title": "Serum selenium in relation to measures of glucose metabolism and incidence of type 2 diabetes in an older Swedish population",
+   "author": "Gao",
+   "doi-asserted-by": "crossref",
+   "first-page": "787",
+   "journal-title": "Diabetic Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref105",
+   "volume": "31",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.redox.2020.101819",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref106",
+   "unstructured": "Garc\u00eda\u2010Esquinas E, Carrasco\u2010Rios M, Ortol\u00e1 R, Sotos Prieto M, P\u00e9rez\u2010G\u00f3mez B, Guti\u00e9rrez\u2010Gonz\u00e1lez E, Banegas JR, Queipo R, Olmedo P, Gil F, Tellez\u2010Plaza M, Navas\u2010Acien A, Pastor\u2010Barriuso R and Rodr\u00edguez\u2010Artalejo F, 2021. Selenium and impaired physical function in US and Spanish older adults. Redox Biology, 38, 101819. https://doi.org/10.1016/j.redox.2020.101819"
+  },
+  {
+   "DOI": "10.1080/00140130701237667",
+   "article-title": "An epidemiological appraisal instrument \u2010 a tool for evaluation of epidemiological studies",
+   "author": "Genaidy",
+   "doi-asserted-by": "crossref",
+   "first-page": "920",
+   "journal-title": "Ergonomics",
+   "key": "10.2903/j.efsa.2023.7704_ref107",
+   "volume": "50",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1093/jnci/djt186",
+   "article-title": "Advanced prostate cancer risk in relation to toenail selenium levels",
+   "author": "Geybels",
+   "doi-asserted-by": "crossref",
+   "first-page": "1394",
+   "journal-title": "Journal of the National Cancer Institute",
+   "key": "10.2903/j.efsa.2023.7704_ref108",
+   "volume": "105",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1007/s12603-018-1021-9",
+   "article-title": "Selenium concentrations and mortality among community\u2010dwelling older adults: results from IlSIRENTE study",
+   "author": "Giovannini",
+   "doi-asserted-by": "crossref",
+   "first-page": "608",
+   "journal-title": "Journal of Nutrition, Health and Aging",
+   "key": "10.2903/j.efsa.2023.7704_ref109",
+   "volume": "22",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1017/S0007114507691958",
+   "article-title": "Homocysteine increases the risk of mortality in elderly individuals",
+   "author": "Gonz\u00e1lez",
+   "doi-asserted-by": "crossref",
+   "first-page": "1138",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref110",
+   "volume": "97",
+   "year": "2007"
+  },
+  {
+   "article-title": "Predictors of serum selenium in cigarette smokers and the lack of association with lung and prostate cancer risk",
+   "author": "Goodman",
+   "first-page": "1069",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref111",
+   "volume": "10",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1186/1471-2407-11-431",
+   "article-title": "Serum levels of selenium and smoking habits at age 50 influence long term prostate cancer risk; a 34 year ULSAM follow\u2010up",
+   "author": "Grundmark",
+   "doi-asserted-by": "crossref",
+   "first-page": "431",
+   "journal-title": "BMC Cancer",
+   "key": "10.2903/j.efsa.2023.7704_ref112",
+   "volume": "11",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1007/s12011-019-01771-x",
+   "article-title": "From selenium absorption to selenoprotein degradation",
+   "author": "Ha",
+   "doi-asserted-by": "crossref",
+   "first-page": "26",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref113",
+   "volume": "192",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2021.126801",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref114",
+   "unstructured": "Hadrup N and Ravn\u2010Haren G, 2021. Absorption, distribution, metabolism and excretion (ADME) of oral selenium from organic and inorganic sources: A review. Journal of Trace Elements in Medicine and Biology, 67, 126801. https://doi.org/10.1016/j.jtemb.2021.126801"
+  },
+  {
+   "DOI": "10.1016/S0946-672X(96)80006-X",
+   "article-title": "Determination of selenium in the serum of healthy Swiss adults and correlation to dietary intake",
+   "author": "Haldimann",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref115",
+   "volume": "10",
+   "year": "1996"
+  },
+  {
+   "author": "Hansen",
+   "first-page": "63",
+   "key": "10.2903/j.efsa.2023.7704_ref116",
+   "volume-title": "UNGKOST 3. Landsomfattende kostholdsunders\u00f8kelse blant 4\u2010\u00e5ringer i Norge, 2016",
+   "year": "2017"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref117",
+   "unstructured": "Hansen LB, Myhre JB, Johansen AMW, Paulsen MM and Andersen LF, 2016. UNGKOST 3. Landsomfattende kostholdsunders\u00f8kelse blant elever i 4. \u2010og 8. klasse i Norge, 2015. University of Oslo, Norwegian Food Safety Authority, Norwegian Directorate of Health, National Institute of Public Health, 92 pp."
+  },
+  {
+   "DOI": "10.1210/en.2009-0708",
+   "article-title": "beta\u2010Cell\u2010specific overexpression of glutathione peroxidase preserves intranuclear MafA and reverses diabetes in db/db mice",
+   "author": "Harmon",
+   "doi-asserted-by": "crossref",
+   "first-page": "4855",
+   "journal-title": "Endocrinology",
+   "key": "10.2903/j.efsa.2023.7704_ref118",
+   "volume": "150",
+   "year": "2009"
+  },
+  {
+   "article-title": "The association between baseline vitamin E, selenium, and prostate cancer in the alpha\u2010tocopherol, beta\u2010carotene cancer prevention study",
+   "author": "Hartman",
+   "first-page": "335",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref119",
+   "volume": "7",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1093/jn/133.11.3443",
+   "article-title": "Dietary selenium intake modulates thyroid hormone and energy metabolism in men",
+   "author": "Hawkes",
+   "doi-asserted-by": "crossref",
+   "first-page": "3443",
+   "journal-title": "Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref120",
+   "volume": "133",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2007.11.005",
+   "article-title": "High\u2010selenium yeast supplementation in free\u2010living North American men: no effect on thyroid hormone metabolism or body composition",
+   "author": "Hawkes",
+   "doi-asserted-by": "crossref",
+   "first-page": "131",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref121",
+   "volume": "22",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1385/BTER:81:3:189",
+   "article-title": "The effects of dietary selenium on the immune system in healthy men",
+   "author": "Hawkes",
+   "doi-asserted-by": "crossref",
+   "first-page": "189",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref122",
+   "volume": "81",
+   "year": "2001"
+  },
+  {
+   "article-title": "Effects of short\u2010term supplementation with selenised yeast on milk production and composition of lactating cows",
+   "author": "Heard",
+   "first-page": "199",
+   "journal-title": "Australian Journal of Dairy Technology",
+   "key": "10.2903/j.efsa.2023.7704_ref123",
+   "volume": "59",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1016/j.ejca.2007.09.005",
+   "article-title": "Intake of antioxidant nutrients and the risk of skin cancer",
+   "author": "Heinen",
+   "doi-asserted-by": "crossref",
+   "first-page": "2707",
+   "journal-title": "European Journal of Cancer",
+   "key": "10.2903/j.efsa.2023.7704_ref124",
+   "volume": "43",
+   "year": "2007"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref125",
+   "unstructured": "Helldan A, Raulio S, Kosola M, Tapanainen H, Ovaskainen M\u2010L, Virtanen S and National Institute for Health and Welfare , 2013. The National FINDIET 2012 Survey. Helsinki, Finland, 187 pp."
+  },
+  {
+   "DOI": "10.1093/jnci/92.24.2018",
+   "article-title": "Association between alpha\u2010tocopherol, gamma\u2010tocopherol, selenium, and subsequent prostate cancer",
+   "author": "Helzlsouer",
+   "doi-asserted-by": "crossref",
+   "first-page": "2018",
+   "journal-title": "Journal of the National Cancer Institute",
+   "key": "10.2903/j.efsa.2023.7704_ref126",
+   "volume": "92",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1007/s00394-015-0840-2",
+   "article-title": "Dietary total antioxidant capacity and mortality in the PREDIMED study",
+   "author": "Henr\u00edquez\u2010S\u00e1nchez",
+   "doi-asserted-by": "crossref",
+   "first-page": "227",
+   "journal-title": "European Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref127",
+   "volume": "55",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1074/jbc.RA119.008219",
+   "article-title": "A cysteinyl\u2010tRNA synthetase variant confers resistance against selenite toxicity and decreases selenocysteine misincorporation",
+   "author": "Hoffman",
+   "doi-asserted-by": "crossref",
+   "first-page": "12855",
+   "journal-title": "Journal of Biological Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref128",
+   "volume": "294",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1017/S1368980010001175",
+   "article-title": "Dietary habits and nutrient intake of Finnish adolesceents",
+   "author": "Hoppu",
+   "doi-asserted-by": "crossref",
+   "first-page": "965",
+   "journal-title": "Public Health Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref129",
+   "volume": "13",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3390/ijms18102209",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref130",
+   "unstructured": "Hosnedlova B, Kepinska M, Skalickova S, Fernandez C, Ruttkay\u2010Nedecky B, Malevu TD, Sochor J, Baron M, Melcova M, Zidkova J and Kizek R, 2017. A summary of new findings on the biological effects of selenium in\u00a0selected animal species \u2013 a critical review. International Journal of Molecular Sciences, 18. https://doi.org/10.3390/ijms18102209"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2016.01.002",
+   "article-title": "Effects of selenium supplementation on glucose homeostasis and free androgen index in women with polycystic ovary syndrome: A randomized, double blinded, placebo controlled clinical trial",
+   "author": "Hosseinzadeh",
+   "doi-asserted-by": "crossref",
+   "first-page": "56",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref131",
+   "volume": "34",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1186/s12940-020-00685-9",
+   "article-title": "Prenatal metal mixtures and child blood pressure in the Rhea mother\u2010child cohort in Greece",
+   "author": "Howe",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Environmental Health",
+   "key": "10.2903/j.efsa.2023.7704_ref132",
+   "volume": "20",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a115623",
+   "article-title": "Predictors of selenium concentration in human toenails",
+   "author": "Hunter",
+   "doi-asserted-by": "crossref",
+   "first-page": "114",
+   "journal-title": "American Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref133",
+   "volume": "132",
+   "year": "1990"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.28169",
+   "article-title": "Establishing optimal selenium status: results of a randomized, double\u2010blind, placebo\u2010controlled trial",
+   "author": "Hurst",
+   "doi-asserted-by": "crossref",
+   "first-page": "923",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref134",
+   "volume": "91",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1080/10408398.2012.742861",
+   "article-title": "EURRECA\u2010estimating selenium requirements for deriving dietary reference values",
+   "author": "Hurst",
+   "doi-asserted-by": "crossref",
+   "first-page": "1077",
+   "journal-title": "Critical Reviews in Food Science and Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref135",
+   "volume": "53",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.3390/nu11071457",
+   "article-title": "Selenium and health: an update on the situation in the Middle East and North Africa",
+   "author": "Ibrahim",
+   "doi-asserted-by": "crossref",
+   "first-page": "1457",
+   "journal-title": "Nutrients",
+   "key": "10.2903/j.efsa.2023.7704_ref136",
+   "volume": "11",
+   "year": "2019"
+  },
+  {
+   "author": "IOM (Institute of Medicine)",
+   "first-page": "531",
+   "key": "10.2903/j.efsa.2023.7704_ref137",
+   "volume-title": "Dietary Reference Intakes for Vitamin C, Vitamin E, Selenium, and Carotenoids",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.3389/fnut.2021.633703",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref138",
+   "unstructured": "Isobe Y, Asakura H, Tsujiguchi H, Kannon T, Takayama H, Takeshita Y, Ishii K\u2010a, Kanamori T, Hara A, Yamashita T, Tajima A, Kaneko S, Nakamura H and Takamura T, 2021. Alcohol intake is associated with elevated serum levels of selenium and selenoprotein P in humans. Frontiers in Nutrition, 8. https://doi.org/10.3389/fnut.2021.633703"
+  },
+  {
+   "article-title": "Selenium and human health: witnessing a copernican revolution?",
+   "author": "Jablonska",
+   "first-page": "328",
+   "journal-title": "Journal of Environmental Science and Health. Part C, Environmental Carcinogenesis & Ecotoxicology Reviews",
+   "key": "10.2903/j.efsa.2023.7704_ref139",
+   "volume": "33",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1136/bmjdrc-2018-000613",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref140",
+   "unstructured": "Jacobs ET, Lance P, Mandarino LJ, Ellis NA, Chow HHS, Foote J, Martinez JA, Hsu CHP, Batai K, Saboda K and Thompson PA, 2019. Selenium supplementation and insulin resistance in a randomized, clinical trial. British Medical Journal Open Diabetes Research & Care, 7, e000613. https://doi.org/10.1136/bmjdrc-2018-000613"
+  },
+  {
+   "DOI": "10.1007/s00204-014-1380-x",
+   "article-title": "Human metabolism and renal excretion of selenium compounds after oral ingestion of sodium selenate dependent on trimethylselenium ion (TMSe) status",
+   "author": "J\u00e4ger",
+   "doi-asserted-by": "crossref",
+   "first-page": "149",
+   "journal-title": "Archives of Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref141",
+   "volume": "90",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1007/s00204-015-1548-z",
+   "article-title": "Human metabolism and renal excretion of selenium compounds after oral ingestion of sodium selenite and selenized yeast dependent on the trimethylselenium ion (TMSe) status",
+   "author": "J\u00e4ger",
+   "doi-asserted-by": "crossref",
+   "first-page": "1069",
+   "journal-title": "Archives of Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref142",
+   "volume": "90",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1111/cen.12699",
+   "article-title": "Metabolic response to selenium supplementation in women with polycystic ovary syndrome: a randomized, double\u2010blind, placebo\u2010controlled trial",
+   "author": "Jamilian",
+   "doi-asserted-by": "crossref",
+   "first-page": "885",
+   "journal-title": "Clinical Endocrinology",
+   "key": "10.2903/j.efsa.2023.7704_ref143",
+   "volume": "82",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1017/S000711459900149X",
+   "article-title": "Quantitative significance of measuring trimethylselenonium in urine for assessing chronically high intakes of selenium in human subjects",
+   "author": "Janghorbani",
+   "doi-asserted-by": "crossref",
+   "first-page": "291",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref144",
+   "volume": "82",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1080/19440049.2010.506603",
+   "article-title": "Estimation of selenium intake in Switzerland in relation to selected food groups",
+   "author": "Jenny\u2010Burri",
+   "doi-asserted-by": "crossref",
+   "first-page": "1516",
+   "journal-title": "Food Additives and Contaminants",
+   "key": "10.2903/j.efsa.2023.7704_ref145",
+   "volume": "27",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1186/s12864-020-07101-z",
+   "article-title": "The algal selenoproteomes",
+   "author": "Jiang",
+   "doi-asserted-by": "crossref",
+   "first-page": "699",
+   "journal-title": "BMC Genomics",
+   "key": "10.2903/j.efsa.2023.7704_ref146",
+   "volume": "21",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1017/S0029665109991807",
+   "article-title": "Symposium on 'geographical and geological influences on nutrition': factors controlling the distribution of selenium in the environment and their impact on health and nutrition",
+   "author": "Johnson",
+   "doi-asserted-by": "crossref",
+   "first-page": "119",
+   "journal-title": "Proceedings of the Nutrition Society",
+   "key": "10.2903/j.efsa.2023.7704_ref147",
+   "volume": "69",
+   "year": "2010"
+  },
+  {
+   "article-title": "Risk of squamous cell carcinoma of the skin in relation to plasma selenium, alpha\u2010tocopherol, beta\u2010carotene, and retinol: a nested case\u2010control study",
+   "author": "Karagas",
+   "first-page": "25",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref148",
+   "volume": "6",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1017/S0007114515003852",
+   "article-title": "The favourable effects of long\u2010term selenium supplementation on regression of cervical tissues and metabolic profiles of patients with cervical intraepithelial neoplasia: a randomised, double\u2010blind, placebo\u2010controlled trial (Publication with Expression of Concern. See vol. 127, pg. 152, 2022)",
+   "author": "Karamali",
+   "doi-asserted-by": "crossref",
+   "first-page": "2039",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref149",
+   "volume": "114",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1200/JCO.2013.49.2173",
+   "article-title": "Randomized, double\u2010blind, placebo\u2010controlled, phase III chemoprevention trial of selenium supplementation in\u00a0patients with resected stage I non\u2010small\u2010cell lung cancer: ECOG 5597",
+   "author": "Karp",
+   "doi-asserted-by": "crossref",
+   "first-page": "4179",
+   "journal-title": "Journal of Clinical Oncology",
+   "key": "10.2903/j.efsa.2023.7704_ref150",
+   "volume": "31",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1039/d0mt00040j",
+   "article-title": "Identification and determination of selenocysteine, selenosugar, and other selenometabolites in Turkey liver",
+   "author": "Katarzyna",
+   "doi-asserted-by": "crossref",
+   "first-page": "758",
+   "journal-title": "Metallomics",
+   "key": "10.2903/j.efsa.2023.7704_ref151",
+   "volume": "12",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/ije/30.5.1119",
+   "article-title": "Education, lifestyle factors and mortality from cardiovascular disease and cancer. A 25\u2010year follow\u2010up of Swedish 50\u2010year\u2010old men",
+   "author": "Kilander",
+   "doi-asserted-by": "crossref",
+   "first-page": "1119",
+   "journal-title": "International Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref152",
+   "volume": "30",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1007/s10654-016-0151-9",
+   "article-title": "Impact of prenatal exposure to cadmium on cognitive development at preschool age and the importance of selenium and iodine",
+   "author": "Kippler",
+   "doi-asserted-by": "crossref",
+   "first-page": "1123",
+   "journal-title": "European Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref153",
+   "volume": "31",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1001/jama.2011.1437",
+   "article-title": "Vitamin E and the risk of prostate cancer: the Selenium and Vitamin E Cancer Prevention Trial (SELECT)",
+   "author": "Klein",
+   "doi-asserted-by": "crossref",
+   "first-page": "1549",
+   "journal-title": "The Journal of the American Medical Association",
+   "key": "10.2903/j.efsa.2023.7704_ref154",
+   "volume": "306",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/jnci/82.10.864",
+   "article-title": "Serum selenium and subsequent risk of cancer among Finnish men and women",
+   "author": "Knekt",
+   "doi-asserted-by": "crossref",
+   "first-page": "864",
+   "journal-title": "Journal of the National Cancer Institute",
+   "key": "10.2903/j.efsa.2023.7704_ref155",
+   "volume": "82",
+   "year": "1990"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a116097",
+   "article-title": "Serum micronutrients and risk of cancers of low incidence in Finland",
+   "author": "Knekt",
+   "doi-asserted-by": "crossref",
+   "first-page": "356",
+   "journal-title": "American Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref156",
+   "volume": "134",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1016/S0009-9120(01)00271-5",
+   "article-title": "Effects of tobacco smoking on plasma selenium, zinc, copper and iron concentrations and related antioxidative enzyme activities",
+   "author": "Kocyigit",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "journal-title": "Clinical Biochemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref157",
+   "volume": "34",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1385/BTER:76:2:97",
+   "article-title": "Concentrations of selected trace elements in human milk and in infant formulas determined by magnetic sector field inductively coupled plasma\u2010mass spectrometry",
+   "author": "Krachler",
+   "doi-asserted-by": "crossref",
+   "first-page": "97",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref158",
+   "volume": "76",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1007/s00216-005-0001-1",
+   "article-title": "GC\u2010ICP\u2010MS determination of dimethylselenide in human breath after ingestion of (77)Se\u2010enriched selenite: monitoring of in\u2010vivo methylation of selenium",
+   "author": "Kremer",
+   "doi-asserted-by": "crossref",
+   "first-page": "509",
+   "journal-title": "Analytical and Bioanalytical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref159",
+   "volume": "383",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1093/aje/kwq148",
+   "article-title": "Diet, supplement use, and prostate cancer risk: results from the prostate cancer prevention trial",
+   "author": "Kristal",
+   "doi-asserted-by": "crossref",
+   "first-page": "566",
+   "journal-title": "American Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref160",
+   "volume": "172",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1093/jnci/djt456",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref161",
+   "unstructured": "Kristal AR, Darke AK, Morris JS, Tangen CM, Goodman PJ, Thompson IM, Meyskens FL Jr, Goodman GE, Minasian LM, Parnes HL, Lippman SM and Klein EA, 2014. Baseline selenium status and effects of selenium and vitamin e supplementation on prostate cancer risk. Journal of the National Cancer Institute, 106, djt456. https://doi.org/10.1093/jnci/djt456"
+  },
+  {
+   "article-title": "Association of antioxidant supplement use and dementia in the Prevention of Alzheimer's Disease by Vitamin E and Selenium Trial (PREADViSE)",
+   "author": "Kryscio",
+   "first-page": "567",
+   "journal-title": "The Journal of the American Medical Association Neurology",
+   "key": "10.2903/j.efsa.2023.7704_ref162",
+   "volume": "74",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.114157",
+   "article-title": "Selenium metabolism to the trimethylselenonium ion (TMSe) varies markedly because of polymorphisms in the indolethylamine N\u2010methyltransferase gene",
+   "author": "Kuehnelt",
+   "doi-asserted-by": "crossref",
+   "first-page": "1406",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref163",
+   "volume": "102",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.taap.2007.01.005",
+   "article-title": "Selenium metabolites in urine of cancer patients receiving L\u2010selenomethionine at high doses",
+   "author": "Kuehnelt",
+   "doi-asserted-by": "crossref",
+   "first-page": "211",
+   "journal-title": "Toxicology and Applied Pharmacology",
+   "key": "10.2903/j.efsa.2023.7704_ref164",
+   "volume": "220",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1007/s00216-005-0007-8",
+   "article-title": "Selenium metabolites in human urine after ingestion of selenite, L\u2010selenomethionine, or DL\u2010selenomethionine: a quantitative case study by HPLC/ICPMS",
+   "author": "Kuehnelt",
+   "doi-asserted-by": "crossref",
+   "first-page": "235",
+   "journal-title": "Analytical and Bioanalytical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref165",
+   "volume": "383",
+   "year": "2005"
+  },
+  {
+   "author": "Kukk",
+   "key": "10.2903/j.efsa.2023.7704_ref166",
+   "volume-title": "Intake of Selected Micronutrients by the Estonian Population",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1097/EDE.0000000000000962",
+   "article-title": "Prenatal metal concentrations and childhood cardiometabolic risk using Bayesian kernel machine regression to assess mixture and interaction effects",
+   "author": "Kupsco",
+   "doi-asserted-by": "crossref",
+   "first-page": "263",
+   "journal-title": "Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref167",
+   "volume": "30",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1152/physrev.00039.2013",
+   "article-title": "Selenoproteins: molecular pathways and physiological roles",
+   "author": "Labunskyy",
+   "doi-asserted-by": "crossref",
+   "first-page": "739",
+   "journal-title": "Physiological Reviews",
+   "key": "10.2903/j.efsa.2023.7704_ref168",
+   "volume": "94",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0167013",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref169",
+   "unstructured": "Lajin B and Francesconi KA, 2016. The association between the urinary excretion of trimethylselenonium and trimethylsulfonium in humans. PLoS One, 11, e0167013. https://doi.org/10.1371/journal.pone.0167013"
+  },
+  {
+   "DOI": "10.1039/C6MT00051G",
+   "article-title": "Exploring the urinary selenometabolome following a multi\u2010phase selenite administration regimen in humans",
+   "author": "Lajin",
+   "doi-asserted-by": "crossref",
+   "first-page": "774",
+   "journal-title": "Metallomics",
+   "key": "10.2903/j.efsa.2023.7704_ref170",
+   "volume": "8",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2016.06.008",
+   "article-title": "Investigating the intra\u2010individual variability in the human metabolic profile of urinary selenium",
+   "author": "Lajin",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref171",
+   "volume": "37",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.3390/antiox8100463",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref172",
+   "unstructured": "Larvie DY, Doherty JL, Donati GL and Armah SM, 2019. Relationship between selenium and hematological markers in young adults with normal weight or overweight/obesity. Antioxidants, 8. https://doi.org/10.3390/antiox8100463"
+  },
+  {
+   "DOI": "10.1007/BF03324762",
+   "article-title": "Low plasma selenium concentrations and mortality among older community\u2010dwelling adults: the InCHIANTI Study",
+   "author": "Lauretani",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "journal-title": "Aging Clinical and Experimental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref173",
+   "volume": "20",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2018.05.394",
+   "article-title": "Selenium analysis in waters. Part 2: Speciation methods",
+   "author": "LeBlanc",
+   "doi-asserted-by": "crossref",
+   "first-page": "1635",
+   "journal-title": "Science of the Total Environment",
+   "key": "10.2903/j.efsa.2023.7704_ref174",
+   "volume": "640\u2013641",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.envint.2011.07.005",
+   "article-title": "No evidence of selenosis from a selenium\u2010rich diet in the Brazilian Amazon",
+   "author": "Lemire",
+   "doi-asserted-by": "crossref",
+   "first-page": "128",
+   "journal-title": "Environ Int",
+   "key": "10.2903/j.efsa.2023.7704_ref175",
+   "volume": "40",
+   "year": "2012"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref176",
+   "unstructured": "Lemming EW, Moraeus L, Sipinen JP and Lindroos AK, 2018. Riksmaten ungdom 2016\u201017 \u2013 Del 2 \u2013 N\u00e4ringsintag och n\u00e4ringsstatus bland ungdomar i Sverige. Livsmedelverkets rapportserie nr 23/2018, Uppsala, Sweden, 79 pp."
+  },
+  {
+   "DOI": "10.1093/ajcn/37.6.887",
+   "article-title": "Bioavailability of selenium to Finnish men as assessed by platelet glutathione peroxidase activity and other blood parameters",
+   "author": "Levander",
+   "doi-asserted-by": "crossref",
+   "first-page": "887",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref177",
+   "volume": "37",
+   "year": "1983"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2020.139403",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref178",
+   "unstructured": "Li C, Xia W, Jiang Y, Liu W, Zhang B, Xu S and Li Y, 2020a. Low level prenatal exposure to a mixture of Sr, Se and Mn and neurocognitive development of 2\u2010year\u2010old children. Science of the Total Environment, 735, 139403. https://doi.org/10.1016/j.scitotenv.2020.139403"
+  },
+  {
+   "DOI": "10.1093/jnci/djh125",
+   "article-title": "A prospective study of plasma selenium levels and prostate cancer risk",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "696",
+   "journal-title": "Journal of the National Cancer Institute",
+   "key": "10.2903/j.efsa.2023.7704_ref179",
+   "volume": "96",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1080/00325481.2019.1701864",
+   "article-title": "Gender difference in the association of serum selenium with all\u2010cause and cardiovascular mortality",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "148",
+   "journal-title": "Postgraduate Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref180",
+   "volume": "132",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3390/plants8080289",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref181",
+   "unstructured": "Lima LW, Stonehouse GC, Walters C, El Mehdawi AF, Fakra SC and Pilon\u2010Smits EAH, 2019. Selenium accumulation, speciation and localization in Brazil Nuts (Bertholletia excelsa H.B.K.). Plants\u2010Basel, 8. https://doi.org/10.3390/plants8080289"
+  },
+  {
+   "DOI": "10.1007/s00216-010-3544-8",
+   "article-title": "Determination of selenomethionine, selenocysteine, and inorganic selenium in eggs by HPLC\u2010inductively coupled plasma mass spectrometry",
+   "author": "Lipiec",
+   "doi-asserted-by": "crossref",
+   "first-page": "731",
+   "journal-title": "Analytical and Bioanalytical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref182",
+   "volume": "397",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1001/jama.2008.864",
+   "article-title": "Effect of selenium and vitamin E on risk of prostate cancer and other cancers: the Selenium and Vitamin E Cancer Prevention Trial (SELECT)",
+   "author": "Lippman",
+   "doi-asserted-by": "crossref",
+   "first-page": "39",
+   "journal-title": "The Journal of the American Medical Association",
+   "key": "10.2903/j.efsa.2023.7704_ref183",
+   "volume": "301",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1136/jech.37.3.213",
+   "article-title": "Effect of smoking, alcohol, and other factors on the selenium status of a healthy population",
+   "author": "Lloyd",
+   "doi-asserted-by": "crossref",
+   "first-page": "213",
+   "journal-title": "Journal of Epidemiology and Community Health",
+   "key": "10.2903/j.efsa.2023.7704_ref184",
+   "volume": "37",
+   "year": "1983"
+  },
+  {
+   "DOI": "10.1016/j.cmet.2009.08.009",
+   "article-title": "Reactive oxygen species enhance insulin sensitivity",
+   "author": "Loh",
+   "doi-asserted-by": "crossref",
+   "first-page": "260",
+   "journal-title": "Cell Metabolism",
+   "key": "10.2903/j.efsa.2023.7704_ref185",
+   "volume": "10",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1093/ajcn/57.3.408",
+   "article-title": "A 1\u2010y trial of the effect of high\u2010selenium bread on selenium concentrations in blood and toenails",
+   "author": "Longnecker",
+   "doi-asserted-by": "crossref",
+   "first-page": "408",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref186",
+   "volume": "57",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1097/00001648-199607000-00008",
+   "article-title": "Use of selenium concentration in whole blood, serum, toenails, or urine as a surrogate measure of selenium intake",
+   "author": "Longnecker",
+   "doi-asserted-by": "crossref",
+   "first-page": "384",
+   "journal-title": "Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref187",
+   "volume": "7",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1093/ajcn/53.5.1288",
+   "article-title": "Selenium in diet, blood, and toenails in relation to human health in a seleniferous area",
+   "author": "Longnecker",
+   "doi-asserted-by": "crossref",
+   "first-page": "1288",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref188",
+   "volume": "53",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2019.135347",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref189",
+   "unstructured": "Loomba R, Filippini T, Chawla R, Chaudhary R, Cilloni S, Datt C, Singh S, Dhillon KS and Vinceti M, 2020. Exposure to a high selenium environment in Punjab, India: effects on blood chemistry. Science of the Total Environment, 716, 135347. https://doi.org/10.1016/j.scitotenv.2019.135347"
+  },
+  {
+   "DOI": "10.1007/s00128-020-03094-3",
+   "article-title": "Advances in research on the toxicological effects of selenium",
+   "author": "Lv",
+   "doi-asserted-by": "crossref",
+   "first-page": "715",
+   "journal-title": "Bulletin of Environmental Contamination and Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref190",
+   "volume": "106",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2009.495",
+   "article-title": "Acute selenium toxicity associated with a dietary supplement",
+   "author": "MacFarquhar",
+   "doi-asserted-by": "crossref",
+   "first-page": "256",
+   "journal-title": "Archives of Internal Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref191",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3390/nu5061937",
+   "article-title": "The relationship between selenoprotein P and glucose metabolism in experimental studies",
+   "author": "Mao",
+   "doi-asserted-by": "crossref",
+   "first-page": "1937",
+   "journal-title": "Nutrients",
+   "key": "10.2903/j.efsa.2023.7704_ref192",
+   "volume": "5",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1158/1940-6207.CAPR-10-0343",
+   "article-title": "Phase III trial of selenium to prevent prostate cancer in men with high\u2010grade prostatic intraepithelial neoplasia: SWOG S9917",
+   "author": "Marshall",
+   "doi-asserted-by": "crossref",
+   "first-page": "1761",
+   "journal-title": "Cancer Prevention Research",
+   "key": "10.2903/j.efsa.2023.7704_ref193",
+   "volume": "4",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1016/j.nut.2015.05.005",
+   "article-title": "Selenium status in preschool children receiving a Brazil nut\u2010enriched diet",
+   "author": "Martens",
+   "doi-asserted-by": "crossref",
+   "first-page": "1339",
+   "journal-title": "Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref194",
+   "volume": "31",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/ajcn/49.5.854",
+   "article-title": "Experimental selenium restriction in healthy adult humans \u2013 Changes in selenium metabolism studied with stable\u2010isotope methodology",
+   "author": "Martin",
+   "doi-asserted-by": "crossref",
+   "first-page": "854",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref195",
+   "volume": "49",
+   "year": "1989"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-19-0214",
+   "article-title": "A prospective study of toenail trace element levels and risk of skin cancer",
+   "author": "Matthews",
+   "doi-asserted-by": "crossref",
+   "first-page": "1534",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref196",
+   "volume": "28",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1073/pnas.0308096101",
+   "article-title": "Development of insulin resistance and obesity in mice overexpressing cellular glutathione peroxidase",
+   "author": "McClung",
+   "doi-asserted-by": "crossref",
+   "first-page": "8852",
+   "journal-title": "Proceedings of the National Academy of Sciences of the United States of America",
+   "key": "10.2903/j.efsa.2023.7704_ref197",
+   "volume": "101",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.3390/molecules18033292",
+   "article-title": "Selenium in the environment, metabolism and involvement in body functions",
+   "author": "Mehdi",
+   "doi-asserted-by": "crossref",
+   "first-page": "3292",
+   "journal-title": "Molecules",
+   "key": "10.2903/j.efsa.2023.7704_ref198",
+   "volume": "18",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1096/fj.07-8166com",
+   "article-title": "Genetic polymorphisms in the human selenoprotein P gene determine the response of selenoprotein markers to selenium supplementation in a gender\u2010specific manner (the SELGEN study)",
+   "author": "Meplan",
+   "doi-asserted-by": "crossref",
+   "first-page": "3063",
+   "journal-title": "FASEB Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref199",
+   "volume": "21",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1007/s12011-016-0911-0",
+   "article-title": "Clinical and metabolic response to selenium supplementation in pregnant women at risk for intrauterine growth restriction: Randomized, double\u2010blind, placebo\u2010controlled trial",
+   "author": "Mesdaghinia",
+   "doi-asserted-by": "crossref",
+   "first-page": "14",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref200",
+   "volume": "178",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.envres.2012.08.010",
+   "article-title": "Mercury, arsenic and selenium exposure levels in relation to fish consumption in the Mediterranean area",
+   "author": "Miklavcic",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "journal-title": "Environmental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref201",
+   "volume": "120",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1080/07315724.1983.10719930",
+   "article-title": "Red blood cell and serum selenium concentrations as influenced by age and selected diseases",
+   "author": "Miller",
+   "doi-asserted-by": "crossref",
+   "first-page": "331",
+   "journal-title": "Journal of the American College of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref202",
+   "volume": "2",
+   "year": "1983"
+  },
+  {
+   "DOI": "10.3390/nu7053536",
+   "article-title": "Redox\u2010active selenium compounds\u2010From toxicity and cell death to cancer treatment",
+   "author": "Misra",
+   "doi-asserted-by": "crossref",
+   "first-page": "3536",
+   "journal-title": "Nutrients",
+   "key": "10.2903/j.efsa.2023.7704_ref203",
+   "volume": "7",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.cmet.2010.09.015",
+   "article-title": "A liver\u2010derived secretory protein, selenoprotein P, causes insulin resistance",
+   "author": "Misu",
+   "doi-asserted-by": "crossref",
+   "first-page": "483",
+   "journal-title": "Cell Metabolism",
+   "key": "10.2903/j.efsa.2023.7704_ref204",
+   "volume": "12",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1017/S136898001900449X",
+   "article-title": "Micronutrient intakes and their food sources among Greek children and adolescents",
+   "author": "Mitsopoulou",
+   "doi-asserted-by": "crossref",
+   "first-page": "2314",
+   "journal-title": "Public Health Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref205",
+   "volume": "23",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1111/jhn.12840",
+   "article-title": "Micronutrient dietary intakes and their food sources in adults: the Hellenic National Nutrition and Health Survey (HNNHS)",
+   "author": "Mitsopoulou",
+   "doi-asserted-by": "crossref",
+   "first-page": "616",
+   "journal-title": "Journal of Human Nutrition and Dietetics",
+   "key": "10.2903/j.efsa.2023.7704_ref206",
+   "volume": "34",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.envres.2019.108529",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref207",
+   "unstructured": "Mo\u010deni\u0107 I, Koli\u0107 I, Ni\u0161evi\u0107 JR, Belan\u010di\u0107 A, Tratnik JS, Mazej D, Falnoga I, Vla\u0161i\u0107\u2010Cicvari\u0107 I, \u0160timac T, \u0160piri\u0107 Z, Horvat M and Prpi\u0107 I, 2019. Prenatal selenium status, neonatal cerebellum measures and child neurodevelopment at the age of 18 months. Environmental Research, 176, 108529. https://doi.org/10.1016/j.envres.2019.108529"
+  },
+  {
+   "article-title": "Improving selenium status in plant nutrition and quality",
+   "author": "Mora",
+   "first-page": "486",
+   "journal-title": "Journal of Soil Science and Plant Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref208",
+   "volume": "15",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.3390/nu5041024",
+   "article-title": "Selenium toxicity from a misformulated dietary supplement, adverse health effects, and the temporal response in the nail biologic monitor",
+   "author": "Morris",
+   "doi-asserted-by": "crossref",
+   "first-page": "1024",
+   "journal-title": "Nutrients",
+   "key": "10.2903/j.efsa.2023.7704_ref209",
+   "volume": "5",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1007/BF02988944",
+   "article-title": "Dietary selenium in humans toenails as an indicator",
+   "author": "Morris",
+   "doi-asserted-by": "crossref",
+   "first-page": "529",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref210",
+   "volume": "5",
+   "year": "1983"
+  },
+  {
+   "DOI": "10.1080/02841860802403721",
+   "article-title": "Whole blood selenium levels (WBSL) in patients with prostate cancer (PC), benign prostatic hyperplasia (BPH) and healthy male inhabitants (HMI) and prostatic tissue selenium levels (PTSL) in patients with PC and BPH",
+   "author": "Muecke",
+   "doi-asserted-by": "crossref",
+   "first-page": "452",
+   "journal-title": "Acta Oncologica",
+   "key": "10.2903/j.efsa.2023.7704_ref211",
+   "volume": "48",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1177/1534735418807971",
+   "article-title": "Whole blood selenium levels and selenium supplementation in patients treated in a family doctor practice in Gol\u00dfen (state of Brandenburg, Germany): A laboratory study",
+   "author": "Muecke",
+   "doi-asserted-by": "crossref",
+   "first-page": "1132",
+   "journal-title": "Integrative Cancer Therapies",
+   "key": "10.2903/j.efsa.2023.7704_ref212",
+   "volume": "17",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3390/nu12030676",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref213",
+   "unstructured": "Muller SM, Dawczynski C, Wiest J, Lorkowski S, Kipp AP and Schwerdtle T, 2020. Functional biomarkers for the selenium status in a human nutritional intervention study. Nutrients, 12. https://doi.org/10.3390/nu12030676"
+  },
+  {
+   "DOI": "10.1093/clinchem/48.3.555",
+   "article-title": "Age\u2010related reference values for serum selenium concentrations in infants and children",
+   "author": "Muntau",
+   "doi-asserted-by": "crossref",
+   "first-page": "555",
+   "journal-title": "Clinical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref214",
+   "volume": "48",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/j.scitotenv.2020.144329",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref215",
+   "unstructured": "Naderi M, Puar P, Zonouzi\u2010Marand M, Chivers DP, Niyogi S and Kwong RWM, 2021. A comprehensive review on the\u00a0neuropathophysiology of selenium. Science of the Total Environment, 767, 144329. https://doi.org/10.1016/j.scitotenv.2020.144329"
+  },
+  {
+   "DOI": "10.1007/s12011-010-8831-x",
+   "article-title": "Frequent consumption of selenium\u2010enriched chicken meat by adults causes weight loss and maintains their antioxidant status",
+   "author": "Navas\u2010Carretero",
+   "doi-asserted-by": "crossref",
+   "first-page": "8",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref216",
+   "volume": "143",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehl479",
+   "article-title": "Blood pressure and blood selenium: a cross\u2010sectional and longitudinal population study",
+   "author": "Nawrot",
+   "doi-asserted-by": "crossref",
+   "first-page": "628",
+   "journal-title": "European Heart Journal",
+   "key": "10.2903/j.efsa.2023.7704_ref217",
+   "volume": "28",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/S0946-672X(11)80013-1",
+   "article-title": "Human selenium supplementation as assessed by changes in blood selenium concentration and\u00a0glutathione peroxidase activity",
+   "author": "Neve",
+   "doi-asserted-by": "crossref",
+   "first-page": "65",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref218",
+   "volume": "9",
+   "year": "1995"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref219",
+   "unstructured": "NHMRC (National Health and Medical Research Council. Government of Australia and New Zealand) , 2006. Nutrient reference values for Australia and New Zealand. 8 pp. Available online: https://www.nrv.gov.au/nutrients/selenium"
+  },
+  {
+   "DOI": "10.1093/clinchem/44.8.1764",
+   "article-title": "Changes in the concentrations of plasma selenium and selenoproteins after minor elective surgery: further evidence for a negative acute phase response?",
+   "author": "Nichol",
+   "doi-asserted-by": "crossref",
+   "first-page": "1764",
+   "journal-title": "Clinical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref220",
+   "volume": "44",
+   "year": "1998"
+  },
+  {
+   "article-title": "Selenium intoxication \u2013 New York",
+   "author": "No authors listed",
+   "first-page": "157",
+   "journal-title": "Morbidity and Mortality Weekly Report",
+   "key": "10.2903/j.efsa.2023.7704_ref221",
+   "volume": "33",
+   "year": "1984"
+  },
+  {
+   "DOI": "10.1016/j.ijheh.2014.04.005",
+   "article-title": "Study of selenium intake and disposition in various matrices based on mathematical algorithms derived from pooled biomonitoring data",
+   "author": "Noisel",
+   "doi-asserted-by": "crossref",
+   "first-page": "796",
+   "journal-title": "International Journal of Hygiene and Environmental Health",
+   "key": "10.2903/j.efsa.2023.7704_ref222",
+   "volume": "217",
+   "year": "2014"
+  },
+  {
+   "article-title": "Serum selenium and subsequent risk of prostate cancer",
+   "author": "Nomura",
+   "first-page": "883",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref223",
+   "volume": "9",
+   "year": "2000"
+  },
+  {
+   "article-title": "Evaluating selenium poisoning",
+   "author": "Nuttall",
+   "first-page": "409",
+   "journal-title": "Annals of Clinical Laboratory Science",
+   "key": "10.2903/j.efsa.2023.7704_ref224",
+   "volume": "36",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0110886",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref225",
+   "unstructured": "O'Grady TJ, Kitahara CM, DiRienzo AG and Gates MA, 2014. The association between selenium and other micronutrients and thyroid cancer incidence in the NIH\u2010AARP Diet and Health Study. PLoS One, 9, e110886. https://doi.org/10.1371/journal.pone.0110886"
+  },
+  {
+   "DOI": "10.1177/030098589603300117",
+   "article-title": "Selenium\u2010induced \u201cblind staggers\u201d and related myths. A commentary on the extent of historical livestock losses attributed to selenosis on western US rangelands",
+   "author": "O'Toole",
+   "doi-asserted-by": "crossref",
+   "first-page": "104",
+   "journal-title": "Veterinary Pathology",
+   "key": "10.2903/j.efsa.2023.7704_ref226",
+   "volume": "33",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1177/104063879500700312",
+   "article-title": "Pathology of experimentally\u2010induced chronic selenosis (alkali disease) in yearling\u00a0cattle",
+   "author": "O'Toole",
+   "doi-asserted-by": "crossref",
+   "first-page": "364",
+   "journal-title": "Journal of Veterinary Diagnostic Investigation",
+   "key": "10.2903/j.efsa.2023.7704_ref227",
+   "volume": "7",
+   "year": "1995"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref228",
+   "unstructured": "OHAT\u2010NTP (Office of Health Assessment and Translation\u2010Division of the National Toxicology Program) , 2015. OHAT risk of bias rating tool for human and animal studies. 37 pp. Available online: https://ntp.niehs.nih.gov/ntp/ohat/pubs/riskofbiastool_508.pdf"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref229",
+   "unstructured": "OHAT\u2010NTP (Office of Health Assessment and Translation\u2010Division of the National Toxicology Program) , 2019. Handbook for conducting a literature\u2010based health assessment using OHAT approach for systematic review and evidence integration. Available online: https://ntp.niehs.nih.gov/ntp/ohat/pubs/handbookjan2015_508.pdf"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref230",
+   "unstructured": "Oldfield J, 2002. Selenium World Atlas, Selenium\u2010tellurium development association. 59 pp."
+  },
+  {
+   "DOI": "10.1042/cs0890637",
+   "article-title": "Low selenium status in the elderly influences thyroid hormones",
+   "author": "Olivieri",
+   "doi-asserted-by": "crossref",
+   "first-page": "637",
+   "journal-title": "Clinical Science",
+   "key": "10.2903/j.efsa.2023.7704_ref231",
+   "volume": "89",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.1038/s41598-018-35067-2",
+   "article-title": "Serum selenoprotein P, but not selenium, predicts future hyperglycemia in a general Japanese population",
+   "author": "Oo",
+   "doi-asserted-by": "crossref",
+   "first-page": "16727",
+   "journal-title": "Scientific Reports",
+   "key": "10.2903/j.efsa.2023.7704_ref232",
+   "volume": "8",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/aje/kwr265",
+   "article-title": "Meta\u2010analysis for linear and nonlinear dose\u2010response relations: examples, an evaluation of approximations, and software",
+   "author": "Orsini",
+   "doi-asserted-by": "crossref",
+   "first-page": "66",
+   "journal-title": "American Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref233",
+   "volume": "175",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1007/BF02917201",
+   "article-title": "The renal excretion of selenium",
+   "author": "Oster",
+   "doi-asserted-by": "crossref",
+   "first-page": "119",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref234",
+   "volume": "24",
+   "year": "1990"
+  },
+  {
+   "DOI": "10.1002/ijc.33267",
+   "article-title": "Toenail selenium, plasma selenoprotein P and risk of advanced prostate cancer: a nested case\u2010control study",
+   "author": "Outzen",
+   "doi-asserted-by": "crossref",
+   "first-page": "876",
+   "journal-title": "International Journal of Cancer",
+   "key": "10.2903/j.efsa.2023.7704_ref235",
+   "volume": "148",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1021/jf072434k",
+   "article-title": "Selenium and aflatoxin levels in raw Brazil nuts from the Amazon basin",
+   "author": "Pacheco",
+   "doi-asserted-by": "crossref",
+   "first-page": "11087",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref236",
+   "volume": "55",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.2337/dc11-2136",
+   "article-title": "Toenail selenium and incidence of type 2 diabetes in U.S. men and women",
+   "author": "Park",
+   "doi-asserted-by": "crossref",
+   "first-page": "1544",
+   "journal-title": "Diabetes Care",
+   "key": "10.2903/j.efsa.2023.7704_ref237",
+   "volume": "35",
+   "year": "2012"
+  },
+  {
+   "article-title": "Racial/ethnic differences in lifestyle\u2010related factors and prostate cancer risk: the Multiethnic Cohort Study",
+   "author": "Park",
+   "first-page": "1507",
+   "journal-title": "Cancer Causes and Control",
+   "key": "10.2903/j.efsa.2023.7704_ref238",
+   "volume": "26",
+   "year": "2015"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref239",
+   "unstructured": "Paulsen MM, Myhre JB, Andersen LF and Kristiansen AL, Folkehelseinstituttet og Universitetet i Oslo , 2020. Spedkost 3. Landsomfattende unders\u00f8kelse av kostholdet blant spedbarn i Norge, 12 m\u00e5neder\" [Spedkost 3. Nationwide dietary survey among infants in Norway, age 12 months]. Rapport 2020, Oslo."
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref240",
+   "unstructured": "Pedersen AN, Christensen T, Matthiessen J, Knudsen VK, Rosenlund\u2010S\u00f8rensen M, Biltoft\u2010Jensen A, Hinsch HJ, Ygil KH, K\u00f8rup K, Saxholt E, Trolle E, S\u00f8ndergaard AB, Fag S and DTU F\u00f8devareinstituttet , 2015. Danskernes kostvaner 2011\u20132013. Hovedresultater. 208 pp."
+  },
+  {
+   "DOI": "10.1207/S15327914NC3601_4",
+   "article-title": "Selenoprotein P in plasma in relation to cancer morbidity in middle\u2010aged Swedish men",
+   "author": "Persson\u2010Moschos",
+   "doi-asserted-by": "crossref",
+   "first-page": "19",
+   "journal-title": "Nutrition and Cancer",
+   "key": "10.2903/j.efsa.2023.7704_ref241",
+   "volume": "36",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1002/ana.25932",
+   "article-title": "Blood metal levels and amyotrophic lateral sclerosis risk: a prospective cohort",
+   "author": "Peters",
+   "doi-asserted-by": "crossref",
+   "first-page": "125",
+   "journal-title": "Annals of Neurology",
+   "key": "10.2903/j.efsa.2023.7704_ref242",
+   "volume": "89",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/ajcn/85.1.209",
+   "article-title": "Serum selenium and risk of prostate cancer \u2013 a nested case\u2010control study",
+   "author": "Peters",
+   "doi-asserted-by": "crossref",
+   "first-page": "209",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref243",
+   "volume": "85",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2012.01.001",
+   "article-title": "Selenium levels in men with liver disease in Hungary",
+   "author": "Petrovski",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref244",
+   "volume": "26",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1038/srep44761",
+   "article-title": "Exposure to selenomethionine causes selenocysteine misincorporation and protein aggregation in Saccharomyces cerevisiae",
+   "author": "Plateau",
+   "doi-asserted-by": "crossref",
+   "first-page": "44761",
+   "journal-title": "Scientific Reports",
+   "key": "10.2903/j.efsa.2023.7704_ref245",
+   "volume": "7",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1007/s12011-011-9204-9",
+   "article-title": "Impact of intensive physical activity on selenium status",
+   "author": "Pograjc",
+   "doi-asserted-by": "crossref",
+   "first-page": "291",
+   "journal-title": "Biological Trace Element Research",
+   "key": "10.2903/j.efsa.2023.7704_ref246",
+   "volume": "145",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/j.envres.2017.06.037",
+   "article-title": "Micronutrients during pregnancy and child psychomotor development: opposite effects of zinc and selenium",
+   "author": "Polanska",
+   "doi-asserted-by": "crossref",
+   "first-page": "583",
+   "journal-title": "Environmental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref247",
+   "volume": "158",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1038/pr.2016.32",
+   "article-title": "Selenium status during pregnancy and child psychomotor development\u2010Polish Mother and Child Cohort study",
+   "author": "Polanska",
+   "doi-asserted-by": "crossref",
+   "first-page": "863",
+   "journal-title": "Pediatric Research",
+   "key": "10.2903/j.efsa.2023.7704_ref248",
+   "volume": "79",
+   "year": "2016"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref249",
+   "unstructured": "Public Health England , online, 2021. Composition of Foods Integrated Dataset\u2019 (CoFID). Available online: https://quadram.ac.uk/UKfoodcomposition [Accessed: 3rd August 2021]."
+  },
+  {
+   "DOI": "10.1093/jn/136.1.172",
+   "article-title": "Low serum selenium and total carotenoids predict mortality among older women living in the community: the women's health and aging studies",
+   "author": "Ray",
+   "doi-asserted-by": "crossref",
+   "first-page": "172",
+   "journal-title": "Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref250",
+   "volume": "136",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1017/S0007114518001253",
+   "article-title": "Selenium supplementation lowers insulin resistance and markers of cardio\u2010metabolic risk in patients with congestive heart failure: a randomised, double\u2010blind, placebo\u2010controlled trial (Publication with Expression of Concern. See vol. 127, pg. 157, 2022)",
+   "author": "Raygan",
+   "doi-asserted-by": "crossref",
+   "first-page": "33",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref251",
+   "volume": "120",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(11)61452-9",
+   "article-title": "Selenium and human health",
+   "author": "Rayman",
+   "doi-asserted-by": "crossref",
+   "first-page": "1256",
+   "journal-title": "Lancet",
+   "key": "10.2903/j.efsa.2023.7704_ref252",
+   "volume": "379",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1007/s42000-019-00125-5",
+   "article-title": "Selenium intake, status, and health: a complex relationship",
+   "author": "Rayman",
+   "doi-asserted-by": "crossref",
+   "first-page": "9",
+   "journal-title": "Hormones",
+   "key": "10.2903/j.efsa.2023.7704_ref253",
+   "volume": "19",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0045269",
+   "article-title": "A randomized trial of selenium supplementation and risk of type\u20102 diabetes, as assessed by plasma adiponectin",
+   "author": "Rayman",
+   "doi-asserted-by": "crossref",
+   "first-page": "e45269",
+   "journal-title": "PLoS One",
+   "key": "10.2903/j.efsa.2023.7704_ref254",
+   "volume": "7",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1017/S0007114508922522",
+   "article-title": "Food\u2010chain selenium and human health: spotlight on speciation",
+   "author": "Rayman",
+   "doi-asserted-by": "crossref",
+   "first-page": "238",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref255",
+   "volume": "100",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1093/ajcn/87.2.370",
+   "article-title": "Randomized controlled trial of the effect of selenium supplementation on thyroid function in the elderly in the United Kingdom",
+   "author": "Rayman",
+   "doi-asserted-by": "crossref",
+   "first-page": "370",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref256",
+   "volume": "87",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.freeradbiomed.2018.02.015",
+   "article-title": "Effect of long\u2010term selenium supplementation on mortality: Results from a multiple\u2010dose, randomised controlled trial",
+   "author": "Rayman",
+   "doi-asserted-by": "crossref",
+   "first-page": "46",
+   "journal-title": "Free Radical Biology and Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref257",
+   "volume": "127",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1111/jdv.14241",
+   "article-title": "Haemorrhagic onychomadesis: a cutaneous clue to chronic selenosis \u2013 case series",
+   "author": "Razmi",
+   "doi-asserted-by": "crossref",
+   "first-page": "e425",
+   "journal-title": "Journal of the European Academy of Dermatology and Venereology",
+   "key": "10.2903/j.efsa.2023.7704_ref258",
+   "volume": "31",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1079/BJN19790107",
+   "article-title": "Relation between erythrocyte selenium concentrations and glutathione peroxidase (EC 1.11.1.9) activities of New Zealand residents and visitors to New Zealand",
+   "author": "Rea",
+   "doi-asserted-by": "crossref",
+   "first-page": "201",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref259",
+   "volume": "42",
+   "year": "1979"
+  },
+  {
+   "DOI": "10.1080/01635580701684856",
+   "article-title": "The nutritional prevention of cancer: 400 mcg per day selenium treatment",
+   "author": "Reid",
+   "doi-asserted-by": "crossref",
+   "first-page": "155",
+   "journal-title": "Nutrition and Cancer",
+   "key": "10.2903/j.efsa.2023.7704_ref260",
+   "volume": "60",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2004.03.004",
+   "article-title": "A report of high\u2010dose selenium supplementation: response and toxicities",
+   "author": "Reid",
+   "doi-asserted-by": "crossref",
+   "first-page": "69",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref261",
+   "volume": "18",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1158/1940-6207.CAPR-14-0042",
+   "article-title": "Comparative effects of two different forms of selenium on oxidative stress biomarkers in healthy men: a randomized clinical trial",
+   "author": "Richie",
+   "doi-asserted-by": "crossref",
+   "first-page": "796",
+   "journal-title": "Cancer Prevention Research",
+   "key": "10.2903/j.efsa.2023.7704_ref262",
+   "volume": "7",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1079/BJN19970056",
+   "article-title": "Long\u2010term supplementation with selenate and selenomethionine: urinary excretion by New Zealand women",
+   "author": "Robinson",
+   "doi-asserted-by": "crossref",
+   "first-page": "551",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref263",
+   "volume": "77",
+   "year": "1997"
+  },
+  {
+   "article-title": "Urinary selenium status of healthy people",
+   "author": "Rodriguez Rodriguez",
+   "first-page": "127",
+   "journal-title": "European Journal of Clinical Chemistry and Clinical Biochemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref264",
+   "volume": "33",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.2903/sp.efsa.2013.EN-355",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref265",
+   "unstructured": "Roe MA, Bell S, Oseredczuk M, Christensen T, Westenbrink S, Pakkala H, Presser K, Finglas PM and Consortium E, 2013. Updated food composition database for nutrient intake. EFSA supporting publication. https://doi.org/10.2903/sp.efsa.2013.EN-355"
+  },
+  {
+   "DOI": "10.1016/S0016-5085(03)00395-0",
+   "article-title": "Relation of elevated serum alanine aminotransferase activity with iron and antioxidant levels in the United States",
+   "author": "Ruhl",
+   "doi-asserted-by": "crossref",
+   "first-page": "1821",
+   "journal-title": "Gastroenterology",
+   "key": "10.2903/j.efsa.2023.7704_ref266",
+   "volume": "124",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.3164/jcbn.19-31",
+   "article-title": "Selenoprotein P as an in\u00a0vivo redox regulator: disorders related to its deficiency and excess",
+   "author": "Saito",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Journal of Clinical Biochemistry and Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref267",
+   "volume": "66",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3389/fnut.2021.685517",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref268",
+   "unstructured": "Saito Y, 2021. Selenium transport mechanism via selenoprotein P\u2010Its physiological role and related diseases. Frontiers in Nutrition, 8, 685517. https://doi.org/10.3389/fnut.2021.685517"
+  },
+  {
+   "DOI": "10.1093/clinchem/39.10.2040",
+   "article-title": "Urinary selenium concentrations",
+   "author": "Sanz Alaejos",
+   "doi-asserted-by": "crossref",
+   "first-page": "2040",
+   "journal-title": "Clinical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref269",
+   "volume": "39",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1016/j.annepidem.2005.02.011",
+   "article-title": "Toenail and plasma levels as biomarkers of selenium exposure",
+   "author": "Satia",
+   "doi-asserted-by": "crossref",
+   "first-page": "53",
+   "journal-title": "Annals of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref270",
+   "volume": "16",
+   "year": "2006"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref271",
+   "unstructured": "SCF (Scientific Committee for Food) , 1993. Nutrient and energy intakes for the European Community. Reports of the Scientific Committee for Food, 31st Series. 248 pp."
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref272",
+   "unstructured": "SCF (Scientific Committee on Food) , 2000a. Opinion of the Scientific Committee on Food on the Tolerable Upper Intake Level of selenium. 18 pp."
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref273",
+   "unstructured": "SCF (Scientific Committee on Food) , 2000b. Guidelines of the Scientific Committee on Food for the development of tolerable upper intake levels for vitamins and minerals. Available online: https://www.efsa.europa.eu/sites/default/files/efsa_rep/blobserver_assets/ndatolerableuil.pdf"
+  },
+  {
+   "DOI": "10.1016/j.freeradbiomed.2022.08.022",
+   "article-title": "Selenoprotein P \u2013 Selenium transport protein, enzyme and biomarker of selenium status",
+   "author": "Schomburg",
+   "doi-asserted-by": "crossref",
+   "first-page": "150",
+   "journal-title": "Free Radical Biology and Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref274",
+   "volume": "191",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.3390/nu11081852",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref275",
+   "unstructured": "Schomburg L, Orho\u2010Melander M, Struck J, Bergmann A and Melander O, 2019. Selenoprotein\u2010P deficiency predicts cardiovascular disease and death. Nutrients, 11. https://doi.org/10.3390/nu11081852"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0139244",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref276",
+   "unstructured": "Schwab S, Zierer A, Heier M, Fischer B, Huth C, Baumert J, Meisinger C, Peters A and Thorand B, 2015. Intake of vitamin and mineral supplements and longitudinal association with HbA1c levels in the general non\u2010diabetic population\u2010Results from the MONICA/KORA S3/F3 study. PLoS One, 10, e0139244. https://doi.org/10.1371/journal.pone.0139244"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2018.02.005",
+   "article-title": "Selenium and selenium species in feeds and muscle tissue of Atlantic salmon",
+   "author": "Sele",
+   "doi-asserted-by": "crossref",
+   "first-page": "124",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref277",
+   "volume": "47",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.4103/0974-7753.111206",
+   "article-title": "Paradise nut paradox: alopecia due to selenosis from a nutritional therapy",
+   "author": "Senthilkumaran",
+   "doi-asserted-by": "crossref",
+   "first-page": "283",
+   "journal-title": "International Journal of Trichology",
+   "key": "10.2903/j.efsa.2023.7704_ref278",
+   "volume": "4",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/S0899-9007(03)00165-5",
+   "article-title": "Soluble tumor necrosis factor\u2010alpha receptor type 1 during selenium supplementation in psoriasis patients",
+   "author": "Serwin",
+   "doi-asserted-by": "crossref",
+   "first-page": "847",
+   "journal-title": "Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref279",
+   "volume": "19",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1080/00039896.1975.10666686",
+   "article-title": "Geographic distribution of selenium in human milk",
+   "author": "Shearer",
+   "doi-asserted-by": "crossref",
+   "first-page": "230",
+   "journal-title": "Archives of Environmental Health",
+   "key": "10.2903/j.efsa.2023.7704_ref280",
+   "volume": "30",
+   "year": "1975"
+  },
+  {
+   "DOI": "10.1177/000456329903600302",
+   "article-title": "Measurement of selenium in clinical specimens",
+   "author": "Sheehan",
+   "doi-asserted-by": "crossref",
+   "first-page": "301",
+   "issue": "Pt 3",
+   "journal-title": "Annals of Clinical Biochemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref281",
+   "volume": "36",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1289/EHP1691",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref282",
+   "unstructured": "Skr\u00f6der H, Kippler M, Tofail F and Vahter M, 2017. Early\u2010life selenium status and cognitive function at 5 and 10\u2009years of age in Bangladeshi children. Environmental Health Perspectives, 125, 117003. https://doi.org/10.1289/EHP1691"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2014.09.020",
+   "article-title": "Selenium status in pregnancy influences children's cognitive function at 1.5\u2009years of age",
+   "author": "Skr\u00f6der",
+   "doi-asserted-by": "crossref",
+   "first-page": "923",
+   "journal-title": "Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref283",
+   "volume": "34",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.envres.2005.12.001",
+   "article-title": "Validity of human nails as a biomarker of arsenic and selenium exposure: a review",
+   "author": "Slotnick",
+   "doi-asserted-by": "crossref",
+   "first-page": "125",
+   "journal-title": "Environmental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref284",
+   "volume": "102",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1002/hep.22526",
+   "article-title": "Selenoprotein P expression is controlled through interaction of the coactivator PGC\u20101alpha with FoxO1a and hepatocyte nuclear factor 4alpha transcription factors",
+   "author": "Speckmann",
+   "doi-asserted-by": "crossref",
+   "first-page": "1998",
+   "journal-title": "Hepatology",
+   "key": "10.2903/j.efsa.2023.7704_ref285",
+   "volume": "48",
+   "year": "2008"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref286",
+   "unstructured": "St\u00e1tn\u00ed zdravotn\u00ed \u00fastav , 2021. Syst\u00e9m monitorov\u00e1n\u00ed zdravotn\u00edho stavu obyvatelstva \u010cR ve vztahu k \u017eivotn\u00edmu prost\u0159ed\u00ed, Subsyst\u00e9m IV, Zdravotn\u00ed d\u016fsledky z\u00e1t\u011b\u017ee lidsk\u00e9ho organismu cizorod\u00fdmi l\u00e1tkami z potravinov\u00fdch \u0159et\u011bzc\u016f, diet\u00e1rn\u00ed expozice. Prague, Czech Republic, 51 pp."
+  },
+  {
+   "DOI": "10.1016/j.clnu.2013.01.005",
+   "article-title": "Erythrocyte selenium concentration as a marker of selenium status",
+   "author": "Stefanowicz",
+   "doi-asserted-by": "crossref",
+   "first-page": "837",
+   "journal-title": "Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref287",
+   "volume": "32",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1016/j.freeradbiomed.2013.07.016",
+   "article-title": "Interference of selenium and selenoproteins with the insulin\u2010regulated carbohydrate and lipid metabolism",
+   "author": "Steinbrenner",
+   "doi-asserted-by": "crossref",
+   "first-page": "1538",
+   "journal-title": "Free Radical Biology and Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref288",
+   "volume": "65",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1016/j.redox.2022.102236",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref289",
+   "unstructured": "Steinbrenner H, Duntas LH and Rayman MP, 2022. The role of selenium in type\u20102 diabetes mellitus and its metabolic comorbidities. Redox Biology, 50, 102236. https://doi.org/10.1016/j.redox.2022.102236"
+  },
+  {
+   "DOI": "10.3390/nu7031494",
+   "article-title": "A review of dietary selenium intake and selenium status in Europe and the Middle East",
+   "author": "Stoffaneller",
+   "doi-asserted-by": "crossref",
+   "first-page": "1494",
+   "journal-title": "Nutrients",
+   "key": "10.2903/j.efsa.2023.7704_ref290",
+   "volume": "7",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.3389/fnut.2021.733951",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref291",
+   "unstructured": "Stos K, Wozniak A, Rychlik E, Ziolkowska I, Glowala A and Oltarzewski M, 2021. Assessment of food supplement consumption in Polish population of adults. Frontiers in Nutrition, 8. https://doi.org/10.3389/fnut.2021.733951"
+  },
+  {
+   "DOI": "10.7326/0003-4819-147-4-200708210-00175",
+   "article-title": "Effects of long\u2010term selenium supplementation on the incidence of type 2 diabetes: a randomized trial",
+   "author": "Stranges",
+   "doi-asserted-by": "crossref",
+   "first-page": "217",
+   "journal-title": "Annals of Internal Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref292",
+   "volume": "147",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1111/dom.13549",
+   "article-title": "Effect of selenium supplementation on changes in HbA1c: results from a multiple\u2010dose, randomized controlled trial",
+   "author": "Stranges",
+   "doi-asserted-by": "crossref",
+   "first-page": "541",
+   "journal-title": "Diabetes, Obesity and Metabolism",
+   "key": "10.2903/j.efsa.2023.7704_ref293",
+   "volume": "21",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1186/1471-2458-10-564",
+   "article-title": "A prospective\u00a0study of dietary selenium intake and risk of type 2 diabetes",
+   "author": "Stranges",
+   "doi-asserted-by": "crossref",
+   "first-page": "564",
+   "journal-title": "BMC Public Health",
+   "key": "10.2903/j.efsa.2023.7704_ref294",
+   "volume": "10",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1007/s12603-016-0700-7",
+   "article-title": "Longitudinal association between selenium levels and hypertension in a rural elderly Chinese cohort",
+   "author": "Su",
+   "doi-asserted-by": "crossref",
+   "first-page": "983",
+   "journal-title": "Journal of Nutrition, Health and Aging",
+   "key": "10.2903/j.efsa.2023.7704_ref295",
+   "volume": "20",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1017/S1368980016001130",
+   "article-title": "Dietary selenium intake and mortality in two population\u2010based cohort studies of 133 957 Chinese men and women",
+   "author": "Sun",
+   "doi-asserted-by": "crossref",
+   "first-page": "2991",
+   "journal-title": "Public Health Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref296",
+   "volume": "19",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/0003-2697(87)90169-2",
+   "article-title": "Excretion of trimethylselenonium ion in human urine",
+   "author": "Sun",
+   "doi-asserted-by": "crossref",
+   "first-page": "304",
+   "journal-title": "Analytical Biochemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref297",
+   "volume": "167",
+   "year": "1987"
+  },
+  {
+   "author": "Shils",
+   "first-page": "225",
+   "key": "10.2903/j.efsa.2023.7704_ref298",
+   "volume-title": "Modern Nutrition in Health and Disease",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.7326/0003-4819-148-12-200806170-00015",
+   "article-title": "Selenium toxicity: a case of selenosis caused by a nutritional supplement",
+   "author": "Sutter",
+   "doi-asserted-by": "crossref",
+   "first-page": "970",
+   "journal-title": "Annals of Internal Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref299",
+   "volume": "148",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.bbagen.2007.03.007",
+   "article-title": "Selenocysteine \u03b2\u2010lyase and methylselenol demethylase in the metabolism of Se\u2010methylated selenocompounds into selenide",
+   "author": "Suzuki",
+   "doi-asserted-by": "crossref",
+   "first-page": "1053",
+   "journal-title": "Biochimica et Biophysica Acta (BBA) \u2013 General Subjects",
+   "key": "10.2903/j.efsa.2023.7704_ref300",
+   "volume": "1770",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1093/ajcn/52.5.858",
+   "article-title": "Selenium intake, age, gender, and smoking in relation to indices of selenium status of adults residing in a seleniferous area",
+   "author": "Swanson",
+   "doi-asserted-by": "crossref",
+   "first-page": "858",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref301",
+   "volume": "52",
+   "year": "1990"
+  },
+  {
+   "DOI": "10.1007/s00394-018-1875-y",
+   "article-title": "Selenium and large artery structure and function: a 10\u2010year prospective study",
+   "author": "Swart",
+   "doi-asserted-by": "crossref",
+   "first-page": "3313",
+   "journal-title": "European Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref302",
+   "volume": "58",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2018.11.034",
+   "article-title": "Probiotic and selenium co\u2010supplementation, and the effects on clinical, metabolic and genetic status in Alzheimer's disease: a randomized, double\u2010blind, controlled trial",
+   "author": "Tamtaji",
+   "doi-asserted-by": "crossref",
+   "first-page": "2569",
+   "journal-title": "Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref303",
+   "volume": "38",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1620/tjem.242.1",
+   "article-title": "Psychomotor ability in children prenatally exposed to methylmercury: the 18\u2010month follow\u2010up of Tohoku study of child development",
+   "author": "Tatsuta",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Tohoku Journal of Experimental Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref304",
+   "volume": "242",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1249/00005768-199503000-00015",
+   "article-title": "Selenium and training effects on the glutathione system and aerobic performance",
+   "author": "Tessier",
+   "doi-asserted-by": "crossref",
+   "first-page": "390",
+   "journal-title": "Medicine and Science in Sports and Exercise",
+   "key": "10.2903/j.efsa.2023.7704_ref305",
+   "volume": "27",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2011.07.102",
+   "article-title": "Current knowledge in species\u2010related bioavailability of selenium in food",
+   "author": "Thiry",
+   "doi-asserted-by": "crossref",
+   "first-page": "767",
+   "journal-title": "Food Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref306",
+   "volume": "130",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1093/jnci/djw152",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref307",
+   "unstructured": "Thompson PA, Ashbeck EL, Roe DJ, Fales L, Buckmeier J, Wang F, Bhattacharyya A, Hsu CH, Chow HH, Ahnen DJ, Boland CR, Heigh RI, Fay DE, Hamilton SR, Jacobs ET, Martinez ME, Alberts DS and Lance P, 2016. Selenium supplementation for prevention of colorectal adenomas and risk of associated type 2 diabetes. Journal of the National Cancer Institute, 108. https://doi.org/10.1093/jnci/djw152"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.28190",
+   "article-title": "Selenium and iodine supplementation: effect on thyroid function of older New Zealanders",
+   "author": "Thomson",
+   "doi-asserted-by": "crossref",
+   "first-page": "1038",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref308",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1079/BJN20051564",
+   "article-title": "The effect of selenium on thyroid status in a population with marginal selenium and iodine status",
+   "author": "Thomson",
+   "doi-asserted-by": "crossref",
+   "first-page": "962",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref309",
+   "volume": "94",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1093/ajcn/36.1.24",
+   "article-title": "Effect of prolonged supplementation with daily supplements of selenomethionine and sodium selenite on glutathione peroxidase activity in blood of New Zealand residents",
+   "author": "Thomson",
+   "doi-asserted-by": "crossref",
+   "first-page": "24",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref310",
+   "volume": "36",
+   "year": "1982"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref311",
+   "unstructured": "Totland TH, Meln\u00e6s BK, Lundberg\u2010Hall\u00e9n N, Helland\u2010Kigen KM, Lund\u2010Blix NA, Myhre JB, Wetting Johansen AM, L\u00f8ken EB, Andersen LF and Universitetet i Oslo, Mattilsynet og Helsedirektoratet , 2012. Norkost 3 En landsomfattende kostholdsunders\u00f8kelse blant menn og kvinner i Norge i alderen 18\u201370 \u00e5r, 2010\u201311. Oslo, Norway."
+  },
+  {
+   "DOI": "10.1021/es062073+",
+   "article-title": "Selenomethionine biotransformation and incorporation into proteins along a simulated terrestrial food chain",
+   "author": "Unrine",
+   "doi-asserted-by": "crossref",
+   "first-page": "3601",
+   "journal-title": "Environmental Science and Technology",
+   "key": "10.2903/j.efsa.2023.7704_ref312",
+   "volume": "41",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/0009-8981(91)90203-O",
+   "article-title": "Effects of selenium supplementation on blood and urine selenium levels and liver function in patients with primary biliary cirrhosis",
+   "author": "V\u00e4lim\u00e4ki",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "journal-title": "Clinica Chimica Acta",
+   "key": "10.2903/j.efsa.2023.7704_ref313",
+   "volume": "196",
+   "year": "1991"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref314",
+   "unstructured": "Valsta L, Kaartinen N, Tapanainen H, M\u00e4nnist\u00f6 S and S\u00e4\u00e4ksj\u00e4rvi K, 2018. Ravitsemus Suomessa \u2013 FinRavinto 2017 \u2010tutkimus (Nutrition in Finland \u2013 The National FinDiet 2017 Survey). THL Raportti 12/2018, Helsinki, Finland. 311 pp."
+  },
+  {
+   "DOI": "10.2903/sp.efsa.2012.EN-255",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref315",
+   "unstructured": "van Buuren S, Sch\u00f6nbeck Y and van Dommelen P, 2012. Collection, collation and analysis of data in relation toreference heights and reference weights for female and male children and adolescents (0\u201318\u2009years) in the EU,as well as in relation to the age of onset of puberty and the age at which different stages of puberty arereached in adolescents in the EU. Project developed on the procurement project CT/EFSA/NDA/2010/01. EFSA supporting publication 2012:EN\u2010255, 59 pp."
+  },
+  {
+   "article-title": "Predictors of toenail selenium levels in men and women",
+   "author": "van den Brandt",
+   "first-page": "107",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref316",
+   "volume": "2",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-08-1211",
+   "article-title": "Serum antioxidants and skin cancer risk: an 8\u2010year community\u2010based follow\u2010up study",
+   "author": "van der Pols",
+   "doi-asserted-by": "crossref",
+   "first-page": "1167",
+   "journal-title": "Cancer Epidemiology, Biomarkers and Prevention",
+   "key": "10.2903/j.efsa.2023.7704_ref317",
+   "volume": "18",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1017/S0029665120003067",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref318",
+   "unstructured": "van Rossum CTM, Buurma\u2010Rethans EJM, Dinnissen CS, Beukers MH, Brants HAM, Dekkers ALM and Ock\u00e9 MC, 2020. The diet of the Dutch. Results of the Dutch National Food Consumption Survey 2012\u20132016. National Institute for Public Health and the Environment, RIVM report, 2020\u20100083, 388 pp."
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref319",
+   "unstructured": "van Rossum CTM, Fransen HP, Verkaik\u2010Kloosterman J, Buurma\u2010Rethans EJM and Ocke M, 2011. Dutch National Food Consumption Survey 2007\u20132010: diet of children and adults aged 7 to 69\u2009years. National Institute for Public Health and the Environment, RIVM report number: 350050006/2011, 148 pp."
+  },
+  {
+   "DOI": "10.3390/nu9050486",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref320",
+   "unstructured": "Varsi K, Bolann B, Torsvik I, Rosvold Eik TC, H\u00f8l PJ and Bj\u00f8rke\u2010Monsen AL, 2017. Impact of maternal selenium status on infant outcome during the first 6 months of life. Nutrients, 9. https://doi.org/10.3390/nu9050486"
+  },
+  {
+   "DOI": "10.1016/j.envres.2016.06.009",
+   "article-title": "Long\u2010term mortality patterns in a residential cohort exposed to inorganic selenium in drinking water",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "348",
+   "journal-title": "Environmental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref321",
+   "volume": "150",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2021.02.016",
+   "article-title": "Dietary selenium intake and risk of hospitalization for type 2 diabetes in the Moli\u2010sani study cohort",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "1738",
+   "journal-title": "Nutrition, Metabolism and Cardiovascular Diseases",
+   "key": "10.2903/j.efsa.2023.7704_ref322",
+   "volume": "31",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1007/978-3-319-41283-2",
+   "author": "Hatfield",
+   "doi-asserted-by": "crossref",
+   "first-page": "365",
+   "key": "10.2903/j.efsa.2023.7704_ref323",
+   "volume-title": "Selenium",
+   "year": "2016b"
+  },
+  {
+   "DOI": "10.1186/s13195-017-0323-1",
+   "article-title": "A selenium species in cerebrospinal fluid predicts conversion to Alzheimer's dementia in persons with mild cognitive impairment",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "100",
+   "journal-title": "Alzheimer's Research and Therapy",
+   "key": "10.2903/j.efsa.2023.7704_ref324",
+   "volume": "9",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1177/030089161209800302",
+   "article-title": "A case\u2010control study of the risk of cutaneous melanoma associated with three selenium exposure indicators",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "287",
+   "journal-title": "Tumori",
+   "key": "10.2903/j.efsa.2023.7704_ref325",
+   "volume": "98",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.3892/mmr.2017.6377",
+   "article-title": "Health risk assessment of environmental selenium: emerging evidence and challenges",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "3323",
+   "journal-title": "Molecular Medicine Reports",
+   "key": "10.2903/j.efsa.2023.7704_ref326",
+   "volume": "15",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.envres.2022.113092",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref327",
+   "unstructured": "Vinceti M, Filippini T, Jablonska E, Saito Y and Wise LA, 2022. Safety of selenium exposure and limitations of selenoprotein maximization: Molecular and epidemiologic perspectives. Environmental Research, 211, 113092. https://doi.org/10.1016/j.envres.2022.113092"
+  },
+  {
+   "DOI": "10.1016/j.envres.2019.108742",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref328",
+   "unstructured": "Vinceti M, Filippini T, Malagoli C, Violi F, Mandrioli J, Consonni D, Rothman KJ and Wise LA, 2019. Amyotrophic lateral sclerosis incidence following exposure to inorganic selenium in drinking water: A long\u2010term follow\u2010up. Environmental Research, 179, 108742. https://doi.org/10.1016/j.envres.2019.108742"
+  },
+  {
+   "DOI": "10.1007/s10654-018-0422-8",
+   "article-title": "Selenium exposure and the risk of type 2 diabetes: a systematic review and meta\u2010analysis",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "789",
+   "journal-title": "European Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref329",
+   "volume": "33",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1007/s40572-018-0213-0",
+   "article-title": "Environmental selenium and human health: an update",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "464",
+   "journal-title": "Current Environmental Health Reports",
+   "key": "10.2903/j.efsa.2023.7704_ref330",
+   "volume": "5",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2015.02.001",
+   "article-title": "Selenium speciation in human serum and its implications for epidemiologic research: a cross\u2010sectional study",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref331",
+   "volume": "31",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2014.07.017",
+   "article-title": "Toenail selenium and risk of type 2 diabetes: the ORDET cohort study",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "145",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref332",
+   "volume": "29",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.toxlet.2013.11.016",
+   "article-title": "Selenium neurotoxicity in\u00a0humans: bridging laboratory and epidemiologic studies",
+   "author": "Vinceti",
+   "doi-asserted-by": "crossref",
+   "first-page": "295",
+   "journal-title": "Toxicology Letters",
+   "key": "10.2903/j.efsa.2023.7704_ref333",
+   "volume": "230",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a114099",
+   "article-title": "Serum selenium and the risk of coronary heart disease and stroke",
+   "author": "Virtamo",
+   "doi-asserted-by": "crossref",
+   "first-page": "276",
+   "journal-title": "American Journal of Epidemiology",
+   "key": "10.2903/j.efsa.2023.7704_ref334",
+   "volume": "122",
+   "year": "1985"
+  },
+  {
+   "article-title": "Predictors of adipose tissue tocopherol and toenail selenium levels in nine countries: the EURAMIC study. European Multicentre Case\u2010Control Study on Antioxidants, Myocardial Infarction, and Cancer of the Breast",
+   "author": "Virtanen",
+   "first-page": "599",
+   "journal-title": "European Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref335",
+   "volume": "50",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1111/jcmm.12214",
+   "article-title": "Selenium induces a multi\u2010targeted cell death process in addition to ROS formation",
+   "author": "Wallenberg",
+   "doi-asserted-by": "crossref",
+   "first-page": "671",
+   "journal-title": "Journal of Cellular and Molecular Medicine",
+   "key": "10.2903/j.efsa.2023.7704_ref336",
+   "volume": "18",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.envres.2021.111190",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref337",
+   "unstructured": "Wang X, Seo YA and Park SK, 2021. Serum selenium and non\u2010alcoholic fatty liver disease (NAFLD) in U.S. adults: National Health and Nutrition Examination Survey (NHANES) 2011\u20132016. Environmental Research, 197, 111190. https://doi.org/10.1016/j.envres.2021.111190"
+  },
+  {
+   "DOI": "10.1089/ars.2010.3302",
+   "article-title": "Knockouts of SOD1 and GPX1 exert different impacts on murine islet function and pancreatic integrity",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "391",
+   "journal-title": "Antioxidants and Redox Signalling",
+   "key": "10.2903/j.efsa.2023.7704_ref338",
+   "volume": "14",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1007/s00216-020-02988-9",
+   "article-title": "Systematic study of the selenium fractionation in human plasma from a cancer prevention trial using HPLC hyphenated to ICP\u2010MS and ESI\u2010MS/MS",
+   "author": "Ward\u2010Deitrich",
+   "doi-asserted-by": "crossref",
+   "first-page": "331",
+   "journal-title": "Analytical and Bioanalytical Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref339",
+   "volume": "413",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1079/BJN19880076",
+   "article-title": "Effect of dietary methionine on tissue selenium and glutathione peroxidase (EC 1.11.1.9) activity in rats given selenomethionine",
+   "author": "Waschulewski",
+   "doi-asserted-by": "crossref",
+   "first-page": "57",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref340",
+   "volume": "60",
+   "year": "1988"
+  },
+  {
+   "DOI": "10.1093/jn/118.3.367",
+   "article-title": "Effect of dietary methionine on utilization of tissue selenium from dietary\u00a0selenomethionine for glutathione peroxidase in the rat",
+   "author": "Waschulewski",
+   "doi-asserted-by": "crossref",
+   "first-page": "367",
+   "journal-title": "Journal of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref341",
+   "volume": "118",
+   "year": "1988"
+  },
+  {
+   "DOI": "10.1007/BF03160980",
+   "article-title": "What is the origin of these nail changes in an otherwise healthy young patient?",
+   "author": "Webb",
+   "doi-asserted-by": "crossref",
+   "first-page": "39",
+   "issue": "31",
+   "journal-title": "Journal of Medical Toxicology",
+   "key": "10.2903/j.efsa.2023.7704_ref342",
+   "volume": "5",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1093/ajcn/79.1.80",
+   "article-title": "Prospective study of serum selenium concentrations and esophageal and gastric cardia cancer, heart disease, stroke, and total death",
+   "author": "Wei",
+   "doi-asserted-by": "crossref",
+   "first-page": "80",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref343",
+   "volume": "79",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1016/j.bbagen.2018.05.006",
+   "article-title": "Selenium metabolism in plants",
+   "author": "White",
+   "doi-asserted-by": "crossref",
+   "first-page": "2333",
+   "journal-title": "Biochimica et Biophysica Acta (BBA) \u2013 General Subjects",
+   "key": "10.2903/j.efsa.2023.7704_ref344",
+   "volume": "1862",
+   "year": "2018"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref345",
+   "unstructured": "WHO (World Health Organization) , 2011. Selenium in drinking\u2010water \u2013 background document for development of WHO Guidelines for drinking\u2010water quality. WHO/HSE/WSH/10.01/14. 14 pp."
+  },
+  {
+   "DOI": "10.1111/j.1651-2227.2006.tb02378.x",
+   "article-title": "WHO Child Growth Standards based on length/height,\u00a0weight and age",
+   "author": "WHO Multicentre Growth Reference Study Group",
+   "doi-asserted-by": "crossref",
+   "first-page": "76",
+   "journal-title": "Acta Paediatrica Supplement",
+   "key": "10.2903/j.efsa.2023.7704_ref346",
+   "volume": "450",
+   "year": "2006"
+  },
+  {
+   "key": "10.2903/j.efsa.2023.7704_ref347",
+   "unstructured": "WHO/FAO (World Health Organization/Food and Agriculture Organization of the United Nations) , 2004. Vitamin and mineral requirements in human nutrition: report of a Joint FAO/WHO Expert Consultation. Bangkok, Thailand, 21\u201330 September 1998. 341 pp."
+  },
+  {
+   "article-title": "Biomarkers and risk assessment: concepts and principles",
+   "author": "WHO/IPCS (World Health Organization/International Programme on Chemical Safety)",
+   "first-page": "86",
+   "journal-title": "Environmental Health Criteria",
+   "key": "10.2903/j.efsa.2023.7704_ref348",
+   "volume": "155",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1093/ajcn/65.4.1220S",
+   "article-title": "Adjustment for total energy intake in epidemiologic studies",
+   "author": "Willett",
+   "doi-asserted-by": "crossref",
+   "first-page": "1220S",
+   "journal-title": "The American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref349",
+   "volume": "65",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1530/EJE-15-0069",
+   "article-title": "Does selenium supplementation affect thyroid function? Results from a randomized, controlled, double\u2010blinded trial in a Danish population",
+   "author": "Winther",
+   "doi-asserted-by": "crossref",
+   "first-page": "657",
+   "journal-title": "European Journal of Endocrinology",
+   "key": "10.2903/j.efsa.2023.7704_ref350",
+   "volume": "172",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1080/07315724.2019.1613271",
+   "article-title": "Association between dietary selenium intake and the prevalence of nonalcoholic fatty liver disease: a cross\u2010sectional study",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "103",
+   "journal-title": "Journal of the American College of Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref351",
+   "volume": "39",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/ajcn/81.4.829",
+   "article-title": "Effectiveness of selenium supplements in a low\u2010selenium area of China",
+   "author": "Xia",
+   "doi-asserted-by": "crossref",
+   "first-page": "829",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref352",
+   "volume": "81",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.3945/ajcn.2010.29642",
+   "article-title": "Optimization of selenoprotein P and other plasma selenium biomarkers for the assessment of the selenium nutritional requirement: a placebo\u2010controlled, double\u2010blind study of selenomethionine supplementation in selenium\u2010deficient Chinese subjects",
+   "author": "Xia",
+   "doi-asserted-by": "crossref",
+   "first-page": "525",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.2903/j.efsa.2023.7704_ref353",
+   "volume": "92",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1016/j.envres.2011.01.016",
+   "article-title": "Distribution of toenail selenium levels in young adult Caucasians and African Americans in the United States: the CARDIA Trace Element Study",
+   "author": "Xun",
+   "doi-asserted-by": "crossref",
+   "first-page": "514",
+   "journal-title": "Environmental Research",
+   "key": "10.2903/j.efsa.2023.7704_ref354",
+   "volume": "111",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1074/jbc.C110.106377",
+   "article-title": "Identification of a novel selenium\u2010containing compound, selenoneine, as the predominant chemical form of organic selenium in the blood of bluefin tuna",
+   "author": "Yamashita",
+   "doi-asserted-by": "crossref",
+   "first-page": "18134",
+   "journal-title": "Journal of Biological Chemistry",
+   "key": "10.2903/j.efsa.2023.7704_ref355",
+   "volume": "285",
+   "year": "2010"
+  },
+  {
+   "article-title": "Studies of safe maximal daily dietary Se\u2010intake in a seleniferous area in China. Part II: Relation between Se\u2010intake and the manifestation of clinical signs and certain biochemical alterations in blood and urine",
+   "author": "Yang",
+   "first-page": "123",
+   "journal-title": "Journal of Trace Elements and Electrolytes in Health and Disease",
+   "key": "10.2903/j.efsa.2023.7704_ref356",
+   "volume": "3",
+   "year": "1989"
+  },
+  {
+   "article-title": "Further observations on the human maximum safe dietary selenium intake in a seleniferous area of China",
+   "author": "Yang",
+   "first-page": "159",
+   "journal-title": "Journal of Trace Elements and Electrolytes in Health and Disease",
+   "key": "10.2903/j.efsa.2023.7704_ref357",
+   "volume": "8",
+   "year": "1994"
+  },
+  {
+   "article-title": "Studies of safe maximal daily dietary selenium intake in a seleniferous area in China. Part I. Selenium intake and tissue selenium levels of the inhabitants",
+   "author": "Yang",
+   "first-page": "77",
+   "journal-title": "Journal of Trace Elements and Electrolytes in Health and Disease",
+   "key": "10.2903/j.efsa.2023.7704_ref358",
+   "volume": "3",
+   "year": "1989"
+  },
+  {
+   "author": "Combs",
+   "first-page": "589",
+   "key": "10.2903/j.efsa.2023.7704_ref359",
+   "volume-title": "Selenium in Biology and Medicine (Part B)",
+   "year": "1987"
+  },
+  {
+   "DOI": "10.1038/srep37288",
+   "doi-asserted-by": "crossref",
+   "key": "10.2903/j.efsa.2023.7704_ref360",
+   "unstructured": "Yang Z, Yan C, Liu G, Niu Y, Zhang W, Lu S, Li X, Zhang H, Ning G, Fan J, Qin L and Su Q, 2016. Plasma selenium levels and nonalcoholic fatty liver disease in Chinese adults: a cross\u2010sectional analysis. Scientific Reports, 6, 37288. https://doi.org/10.1038/srep37288"
+  },
+  {
+   "DOI": "10.1093/jnci/90.16.1219",
+   "article-title": "Study of prediagnostic selenium level in toenails and the risk of advanced prostate cancer",
+   "author": "Yoshizawa",
+   "doi-asserted-by": "crossref",
+   "first-page": "1219",
+   "journal-title": "Journal of the National Cancer Institute",
+   "key": "10.2903/j.efsa.2023.7704_ref361",
+   "volume": "90",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1159/000485749",
+   "article-title": "Alopecia and associated toxic agents: a systematic review",
+   "author": "Yu",
+   "doi-asserted-by": "crossref",
+   "first-page": "245",
+   "journal-title": "Skin Appendage Disorders",
+   "key": "10.2903/j.efsa.2023.7704_ref362",
+   "volume": "4",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.envpol.2018.01.046",
+   "article-title": "Associations of multiple plasma metals with incident type 2 diabetes in\u00a0Chinese adults: the Dongfeng\u2010Tongji Cohort",
+   "author": "Yuan",
+   "doi-asserted-by": "crossref",
+   "first-page": "917",
+   "journal-title": "Environmental Pollution",
+   "key": "10.2903/j.efsa.2023.7704_ref363",
+   "volume": "237",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1002/jcp.30175",
+   "article-title": "Endoplasmic reticulum stress and oxidative stress drive endothelial dysfunction induced by high selenium",
+   "author": "Zachariah",
+   "doi-asserted-by": "crossref",
+   "first-page": "4348",
+   "journal-title": "Journal of Cellular Physiology",
+   "key": "10.2903/j.efsa.2023.7704_ref364",
+   "volume": "236",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.jtemb.2019.07.003",
+   "article-title": "Plasma selenium levels and risk of new\u2010onset diabetes in hypertensive adults",
+   "author": "Zhang",
+   "doi-asserted-by": "crossref",
+   "first-page": "6",
+   "journal-title": "Journal of Trace Elements in Medicine and Biology",
+   "key": "10.2903/j.efsa.2023.7704_ref365",
+   "volume": "56",
+   "year": "2019"
+  }
+ ],
+ "reference-count": 365,
+ "references-count": 365,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "http://doi.wiley.com/10.2903/j.efsa.2023.7704"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "EFS2",
+  "EFSA Journal"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Scientific opinion on the tolerable upper intake level for selenium"
+ ],
+ "type": "journal-article",
+ "volume": "21"
+}

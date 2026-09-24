@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>What nut? How much life eating nuts buys | Max Ghenis</title>
+<meta name="description" content="Working paper: how many days of life a US adult gains from eating nuts every day, how much the answer depends on what they already eat, and whether the choice of nut matters.">
+<link rel="canonical" href="https://www.maxghenis.com/whatnut/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Max Ghenis">
+<meta property="og:title" content="What nut? How much life eating nuts buys">
+<meta property="og:description" content="Working paper: how many days of life a US adult gains from eating nuts every day, how much the answer depends on what they already eat, and whether the choice of nut matters.">
+<meta property="og:url" content="https://www.maxghenis.com/whatnut/">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Max Ghenis">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f172a'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='15' fill='%23f59e0b'%3EMG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+  /* Tokens follow maxghenis.com (cream, ink, amber). The manuscript inside the
+     iframe renders light only, so its sheet stays white in both themes. */
+  :root {
+    --bg: #fefdf8;
+    --grid: rgba(15, 23, 42, 0.025);
+    --ink: #0f172a;
+    --ink-soft: #334155;
+    --muted: #64748b;
+    --rule: rgba(15, 23, 42, 0.1);
+    --accent: #b45309;
+    --accent-line: #f59e0b;
+    --accent-wash: rgba(245, 158, 11, 0.12);
+    --header-bg: rgba(254, 253, 248, 0.88);
+    --sheet-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 12px 32px -12px rgba(15, 23, 42, 0.18);
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --grid: rgba(248, 250, 252, 0.03);
+      --ink: #f1f5f9;
+      --ink-soft: #cbd5e1;
+      --muted: #94a3b8;
+      --rule: rgba(248, 250, 252, 0.14);
+      --accent: #fbbf24;
+      --accent-line: #f59e0b;
+      --accent-wash: rgba(251, 191, 36, 0.12);
+      --header-bg: rgba(15, 23, 42, 0.88);
+      --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -16px rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 3px; border-radius: 3px; }
+
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+  /* Site shell */
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--header-bg);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .site-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+  .wordmark {
+    font-family: var(--serif); font-weight: 700; font-size: 1.25rem;
+    letter-spacing: -0.02em; text-decoration: none;
+  }
+  .site-link {
+    font-size: 0.95rem; font-weight: 500; color: var(--ink-soft);
+    text-decoration: none; padding: 6px 12px; border-radius: 8px;
+  }
+  .site-link:hover { color: var(--ink); background: var(--accent-wash); }
+
+  /* Paper header */
+  .paper-head { padding: 40px 0 8px; max-width: 70ch; }
+  .kicker { margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--accent); }
+  h1 {
+    margin: 6px 0 14px;
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); line-height: 1.12; letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .paper-desc { margin: 0; color: var(--ink-soft); }
+  .paper-tag {
+    display: inline-block; margin: 16px 0 0; padding: 3px 12px;
+    border: 1px solid var(--rule); border-radius: 999px;
+    font-size: 0.85rem; color: var(--muted); background: var(--bg);
+  }
+
+  /* Actions */
+  .paper-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 20px; }
+  .paper-actions a {
+    display: inline-block; padding: 8px 16px; border-radius: 8px;
+    border: 1px solid var(--rule); background: var(--bg);
+    font-size: 0.95rem; font-weight: 600; text-decoration: none; color: var(--ink);
+  }
+  .paper-actions a:hover { border-color: var(--accent-line); }
+  .paper-actions a.primary { border-color: var(--accent-line); box-shadow: inset 0 -2px 0 var(--accent-line); }
+
+  /* The manuscript: a white sheet on the graph paper */
+  .paper-frame-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: var(--sheet-shadow);
+    overflow: hidden;
+  }
+  .paper-frame-card iframe {
+    display: block; width: 100%; border: 0; background: #fff;
+    height: calc(100vh - 16rem); min-height: 720px;
+  }
+
+  .paper-foot { margin: 16px 0 48px; font-size: 0.9rem; color: var(--muted); }
+  .paper-foot a { color: var(--muted); }
+  .paper-foot a:hover { color: var(--ink); }
+
+  .site-footer { border-top: 1px solid var(--rule); padding: 20px 0 32px; font-size: 0.9rem; color: var(--muted); }
+  .site-footer p { margin: 0; }
+  .site-footer a { color: var(--muted); }
+  .site-footer a:hover { color: var(--ink); }
+</style>
+</head>
+<body id="top">
+<header class="site-header">
+  <nav class="wrap site-nav" aria-label="Site">
+    <a class="wordmark" href="https://www.maxghenis.com">Max Ghenis</a>
+    <a class="site-link" href="https://www.maxghenis.com/projects">Projects</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <header class="paper-head">
+    <p class="kicker">Working paper</p>
+    <h1>What nut? How much life eating nuts buys</h1>
+    <!-- Description: one paragraph, finalized with headline numbers from paper/values.json. -->
+    <p class="paper-desc">
+      How many days of remaining life a US adult gains by eating nuts every
+      day, by age, sex and dose; how much the next handful adds given what
+      they already eat; and whether the choice of nut changes the answer, and
+      what each nut costs per life-year. Each estimate is bracketed, from the
+      randomized cholesterol floor to the face value of the cohort evidence.
+      This page embeds revision 1 of the manuscript.
+    </p>
+    <p class="paper-tag">Revision 1 · 2026-09-23 · Max Ghenis</p>
+  </header>
+
+  <nav class="paper-actions" aria-label="Paper actions">
+    <a class="primary" href="web/index.html?v=r1-20260923">Open standalone HTML</a>
+    <a href="https://github.com/MaxGhenis/whatnut">Code and data</a>
+  </nav>
+
+  <div class="paper-frame-card">
+    <iframe src="web/index.html?v=r1-20260923"
+            title="What nut? How much life eating nuts buys (embedded manuscript)"
+            loading="lazy"
+            sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            referrerpolicy="same-origin"></iframe>
+  </div>
+
+  <p class="paper-foot">
+    <a href="#top">↑ Back to top</a> ·
+    <a href="web/index.html?v=r1-20260923">Open the manuscript on its own page</a>
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><a href="https://www.maxghenis.com">maxghenis.com</a> · <a href="https://www.maxghenis.com/projects">Projects</a> · <a href="https://github.com/MaxGhenis/whatnut">Source on GitHub</a></p>
+  </div>
+</footer>
+</body>
+</html>

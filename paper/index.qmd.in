@@ -1,0 +1,29 @@
+---
+title: "What nut? How much life eating nuts buys"
+author:
+  - name: Max Ghenis
+    email: max@maxghenis.com
+    url: https://www.maxghenis.com
+date: 2026-09-23
+abstract: |
+  Placeholder template that exercises the fill and render machinery. The
+  manuscript replaces it.
+---
+
+# Placeholder {#sec-placeholder}
+
+In the calibrated case, a 40-year-old US man who starts eating 28 g of nuts a
+day gains {{ref_male_calibrated_mean_days}} days of remaining life expectancy,
+averaged over {{mc_draws}} Monte Carlo draws. The cohort dose-response curve
+comes from a meta-analysis of prospective studies [@aune2016nut]. From the
+starting age, the hazard at age $a$ is multiplied by
+
+$$
+M(a) = \exp\bigl(\varphi(a)\, c\, [f(B + \Delta) - f(B)]\bigr).
+$$ {#eq-multiplier}
+
+{{table:reference_bracket}}
+
+: Days of remaining life expectancy gained from eating 28 g of nuts a day from age 40, mean and 80% interval. {#tbl-reference-bracket}
+
+![Days of remaining life expectancy gained at age 40, by grams of nuts a day.](figures/days_by_dose.png){#fig-days-by-dose}

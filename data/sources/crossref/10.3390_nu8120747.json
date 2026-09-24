@@ -1,0 +1,710 @@
+{
+ "DOI": "10.3390/nu8120747",
+ "ISSN": [
+  "2072-6643"
+ ],
+ "URL": "https://doi.org/10.3390/nu8120747",
+ "abstract": "<jats:p>Hazelnuts are rich in monounsaturated fatty acids and antioxidant bioactive substances: their consumption has been associated with a decreased risk of cardiovascular disease events. A systematic review and a meta-analysis was performed to combine the results from several trials and to estimate the pooled (overall) effect of hazelnuts on blood lipids and body weight outcomes. Specifically, a Bayesian random effect meta-analysis of mean differences of \u0394-changes from baseline across treatment (MD\u0394) (i.e., hazelnut-enriched diet vs. control diet) has been conducted. Nine studies representing 425 participants were included in the analysis. The intervention diet lasted 28\u201384 days with a dosage of hazelnuts ranging from 29 to 69 g/day. Out of nine studies, three randomized studies have been meta-analyzed showing a significant reduction in low-density lipoprotein (LDL) cholesterol (pooled MD\u0394 = \u22120.150 mmol/L; 95% highest posterior density interval (95%HPD) = \u22120.308; \u22120.003) in favor of a hazelnut-enriched diet. Total cholesterol showed a marked trend toward a decrease (pooled MD\u0394 = \u22120.127 mmol/L; 95%HPD = \u22120.284; 0.014) and high-density lipoprotein (HDL) cholesterol remained substantially stable (pooled MD\u0394 = 0.002 mmol/L; 95%HPD = \u22120.140; 0.147). No effects on triglycerides (pooled MD\u0394 = 0.045 mmol/L; 95%HPD = \u22120.195; 0.269) and body mass index (BMI) (pooled MD\u0394 = 0.062 kg/m2; 95%HPD = \u22120.293; 0.469) were found. Hazelnut-enriched diet is associated with a decrease of LDL and total cholesterol, while HDL cholesterol, triglycerides and BMI remain substantially unchanged.</jats:p>",
+ "alternative-id": [
+  "nu8120747"
+ ],
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-2720-1473",
+   "affiliation": [
+    {
+     "name": "Department of Public Health, Experimental and Forensic Medicine, Endocrinology and Nutrition Unit, University of Pavia, Azienda di Servizi alla Persona di Pavia, Pavia 27100, Italy"
+    }
+   ],
+   "authenticated-orcid": false,
+   "family": "Perna",
+   "given": "Simone",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Gastroenterology, Policlinico di Monza, Monza 20097, Italy"
+    }
+   ],
+   "family": "Giacosa",
+   "given": "Attilio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Biomedical Sciences for Health, Division of General Surgery, IRCCS Policlinico San Donato, University of Milan, Milan 20097, Italy"
+    }
+   ],
+   "family": "Bonitta",
+   "given": "Gianluca",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Public Health, Experimental and Forensic Medicine, Endocrinology and Nutrition Unit, University of Pavia, Azienda di Servizi alla Persona di Pavia, Pavia 27100, Italy"
+    }
+   ],
+   "family": "Bologna",
+   "given": "Chiara",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Public Health, Experimental and Forensic Medicine, Endocrinology and Nutrition Unit, University of Pavia, Azienda di Servizi alla Persona di Pavia, Pavia 27100, Italy"
+    }
+   ],
+   "family": "Isu",
+   "given": "Antonio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Public Health, Experimental and Forensic Medicine, Biostatistics and Clinical Epidemiology Unit, University of Pavia, Pavia 27100, Italy"
+    }
+   ],
+   "family": "Guido",
+   "given": "Davide",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-8336-4851",
+   "affiliation": [
+    {
+     "name": "Department of Public Health, Experimental and Forensic Medicine, Endocrinology and Nutrition Unit, University of Pavia, Azienda di Servizi alla Persona di Pavia, Pavia 27100, Italy"
+    }
+   ],
+   "authenticated-orcid": false,
+   "family": "Rondanelli",
+   "given": "Mariangela",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Nutrients"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    25
+   ]
+  ],
+  "date-time": "2016-11-25T08:18:15Z",
+  "timestamp": 1480061895000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    11
+   ]
+  ],
+  "date-time": "2025-10-11T19:27:24Z",
+  "timestamp": 1760210844000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    12
+   ]
+  ],
+  "date-time": "2026-09-12T19:04:38Z",
+  "timestamp": 1789239878325,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 55,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "2072-6643"
+  }
+ ],
+ "issue": "12",
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    25
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "12",
+  "published-online": {
+   "date-parts": [
+    [
+     2016,
+     12
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://creativecommons.org/licenses/by/4.0/",
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      11,
+      25
+     ]
+    ],
+    "date-time": "2016-11-25T00:00:00Z",
+    "timestamp": 1480032000000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://www.mdpi.com/2072-6643/8/12/747/pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "1968",
+ "original-title": [],
+ "page": "747",
+ "prefix": "10.3390",
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    25
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    25
+   ]
+  ]
+ },
+ "publisher": "MDPI AG",
+ "reference": [
+  {
+   "DOI": "10.1017/BJN20061865",
+   "article-title": "Nuts and coronary heart disease: An epidemiological perspective",
+   "author": "Kelly",
+   "doi-asserted-by": "crossref",
+   "first-page": "S61",
+   "journal-title": "Br. J. Nutr.",
+   "key": "ref_1",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1093/jn/135.9.2082",
+   "article-title": "A systematic review of the effects of nuts on blood lipid profiles in humans",
+   "author": "Oosthuizen",
+   "doi-asserted-by": "crossref",
+   "first-page": "2082",
+   "journal-title": "J. Nutr.",
+   "key": "ref_2",
+   "volume": "135",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.17660/ActaHortic.1997.445.41",
+   "article-title": "Nutritional composition of hazelnut and its effects on glucose and lipid metabolism. In Proceedings of the fourth international symposium on hazelnut",
+   "author": "Alphan",
+   "doi-asserted-by": "crossref",
+   "first-page": "305",
+   "journal-title": "Acta Hortic.",
+   "key": "ref_3",
+   "volume": "445",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1016/S0009-8981(99)00066-2",
+   "article-title": "Hazelnut supplementation enhances plasma antioxidant potential and lowers plasma cholesterol levels",
+   "author": "Durak",
+   "doi-asserted-by": "crossref",
+   "first-page": "113",
+   "journal-title": "Clin. Chim. Acta",
+   "key": "ref_4",
+   "volume": "284",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1038/sj.ejcn.1602518",
+   "article-title": "Effects of hazelnut-enriched diet on plasma cholesterol and lipoprotein profiles in hypercholesterolemic adult men",
+   "author": "Mercanligil",
+   "doi-asserted-by": "crossref",
+   "first-page": "212",
+   "journal-title": "Eur. J. Clin. Nutr.",
+   "key": "ref_5",
+   "volume": "61",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1038/ejcn.2010.200",
+   "article-title": "Effects of different forms of hazelnuts on blood lipids and \u03b1-tocopherol concentrations in mildly hypercholesterolemic individuals",
+   "author": "Tey",
+   "doi-asserted-by": "crossref",
+   "first-page": "117",
+   "journal-title": "Eur. J. Clin. Nutr.",
+   "key": "ref_6",
+   "volume": "65",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1155/2011/357350",
+   "article-title": "Nuts improve diet quality compared to other energy-dense snacks while maintaining bodyweight",
+   "author": "Tey",
+   "doi-asserted-by": "crossref",
+   "first-page": "350",
+   "journal-title": "J. Nutr. Metab.",
+   "key": "ref_7",
+   "volume": "2011",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3945/jn.113.174714",
+   "article-title": "The dose of hazelnuts influences acceptance and diet quality but not inflammatory markers and body composition in overweight and obese individuals",
+   "author": "Tey",
+   "doi-asserted-by": "crossref",
+   "first-page": "1254",
+   "journal-title": "J. Nutr.",
+   "key": "ref_8",
+   "volume": "143",
+   "year": "2013"
+  },
+  {
+   "article-title": "The effect of regular hazelnut consumption on cardiovascular risk factors and acceptance in M\u0101ori and European",
+   "author": "Tey",
+   "first-page": "39",
+   "journal-title": "J. Nutr.",
+   "key": "ref_9",
+   "volume": "2",
+   "year": "2015"
+  },
+  {
+   "article-title": "Hazelnut consumption decreases the susceptibility of LDL to oxidation, plasma oxidized LDL level and increases the ratio of large/small LDL in normolipidemic healthy subjects",
+   "author": "Orem",
+   "first-page": "28",
+   "journal-title": "Anadolu. Kardiyol. Derg.",
+   "key": "ref_10",
+   "volume": "10",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1021/jf021239x",
+   "article-title": "Turkish Tombul hazelnut (Corylus avellana L.). 2. Lipid characteristics and oxidative stability",
+   "author": "Alasalvar",
+   "doi-asserted-by": "crossref",
+   "first-page": "3797",
+   "journal-title": "J. Agric. Food. Chem.",
+   "key": "ref_11",
+   "volume": "51",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1021/jf0212385",
+   "article-title": "Turkish Tombul hazelnut (Corylus avellana L.). 1. Compositional characteristics",
+   "author": "Alasalvar",
+   "doi-asserted-by": "crossref",
+   "first-page": "3790",
+   "journal-title": "J. Agric. Food. Chem.",
+   "key": "ref_12",
+   "volume": "51",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1161/01.CIR.95.4.1062",
+   "article-title": "Oxidative modification of LDL and atherogenesis",
+   "author": "Steinberg",
+   "doi-asserted-by": "crossref",
+   "first-page": "1062",
+   "journal-title": "Circulation",
+   "key": "ref_13",
+   "volume": "95",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1111/j.1365-2621.2000.tb15993.x",
+   "article-title": "Antioxidant activity of nontocopherol hazelnut (Corylus spp.) phenolics",
+   "author": "Yurttas",
+   "doi-asserted-by": "crossref",
+   "first-page": "276",
+   "journal-title": "J. Food. Sci.",
+   "key": "ref_14",
+   "volume": "65",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.7326/0003-4819-151-4-200908180-00135",
+   "article-title": "Preferred reporting items for systematic reviews and meta-analyses: The PRISMA statement",
+   "author": "Moher",
+   "doi-asserted-by": "crossref",
+   "first-page": "264",
+   "journal-title": "Ann. Intern. Med.",
+   "key": "ref_15",
+   "volume": "151",
+   "year": "2009"
+  },
+  {
+   "key": "ref_16",
+   "unstructured": "National Library of Medicine, Bethesda, MD, USA. Available online: http://www.pubmed.com."
+  },
+  {
+   "key": "ref_17",
+   "unstructured": "Scopus. Available online: http://www.scopus.com."
+  },
+  {
+   "key": "ref_18",
+   "unstructured": "Thomson Reuters. Available online: http://www.thomsonreuters.com."
+  },
+  {
+   "key": "ref_19",
+   "unstructured": "Google Scholar. Available online: http://www.scholar.google.com."
+  },
+  {
+   "DOI": "10.1136/bmj.d5928",
+   "article-title": "The Cochrane Collaboration\u2019s tool for assessing risk of bias in randomised trials",
+   "author": "Higgins",
+   "doi-asserted-by": "crossref",
+   "first-page": "d5928",
+   "journal-title": "BMJ",
+   "key": "ref_20",
+   "volume": "343",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1094/PHYTO-03-10-0070",
+   "article-title": "A Bayesian approach to meta-analysis of plant pathology studies",
+   "author": "Mila",
+   "doi-asserted-by": "crossref",
+   "first-page": "42",
+   "journal-title": "Phytopathology",
+   "key": "ref_21",
+   "volume": "101",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1177/096228020101000404",
+   "article-title": "Bayesian methods in meta-analysis and evidence synthesis",
+   "author": "Sutton",
+   "doi-asserted-by": "crossref",
+   "first-page": "277",
+   "journal-title": "Stat. Methods Med. Res.",
+   "key": "ref_22",
+   "volume": "10",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1111/j.1467-985X.2008.00552.x",
+   "article-title": "A re-evaluation of random-effects meta-analysis",
+   "author": "Higgins",
+   "doi-asserted-by": "crossref",
+   "first-page": "137",
+   "journal-title": "J. R. Stat. Soc. Ser. A Stat. Soc.",
+   "key": "ref_23",
+   "volume": "172",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1080/07350015.1987.10509600",
+   "article-title": "Bayesian Estimation and Prediction for the Beta-Binomial Model",
+   "author": "Lee",
+   "doi-asserted-by": "crossref",
+   "first-page": "357",
+   "journal-title": "J. Bus. Econ. Stat.",
+   "key": "ref_24",
+   "volume": "5",
+   "year": "1987"
+  },
+  {
+   "DOI": "10.1080/00949659908811950",
+   "article-title": "A note on Bayesian estimation and prediction for the beta-binomial model",
+   "author": "Lee",
+   "doi-asserted-by": "crossref",
+   "first-page": "73",
+   "journal-title": "J. Stat. Comput. Simul.",
+   "key": "ref_25",
+   "volume": "63",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1002/sim.2423",
+   "article-title": "Meta-analysis of heterogeneously reported trials assessing change from baseline",
+   "author": "Abrams",
+   "doi-asserted-by": "crossref",
+   "first-page": "3823",
+   "journal-title": "Stat. Med.",
+   "key": "ref_26",
+   "volume": "24",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.18637/jss.v021.i11",
+   "article-title": "boa: An R Package for MCMC Output Convergence Assessment and Posterior Inference",
+   "author": "Smith",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "J. Stat. Softw.",
+   "key": "ref_27",
+   "volume": "21",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0079203",
+   "doi-asserted-by": "crossref",
+   "key": "ref_28",
+   "unstructured": "Liu, G.C., Sui, G.Y., Liu, G.Y., Zheng, Y., Deng, Y., Gao, Y.-Y., and Wang, L. (2013). A Bayesian meta-analysis on prevalence of hepatitis B virus infection among Chinese volunteer blood donors. PLoS ONE, 8."
+  },
+  {
+   "DOI": "10.1002/sim.2112",
+   "article-title": "How vague is vague? A simulation study of the impact of the use of vague prior distributions in MCMC using WinBUGS",
+   "author": "Lambert",
+   "doi-asserted-by": "crossref",
+   "first-page": "2401",
+   "journal-title": "Stat. Med.",
+   "key": "ref_29",
+   "volume": "24",
+   "year": "2005"
+  },
+  {
+   "key": "ref_30",
+   "unstructured": "Plummer, M. (2003, January 20\u201322). JAGS: A program for analysis of Bayesian graphical models using Gibbs sampling. Proceedings of the 3rd International Workshop on Distributed Statistical Computing, Vienna, Austria."
+  },
+  {
+   "key": "ref_31",
+   "unstructured": "R Core Team R: A Language and Environment for Statistical Computing, R Foundation for Statistical Computing. Available online: http://www.R-project.org/."
+  },
+  {
+   "key": "ref_32",
+   "unstructured": "Su, Y.S., and Yajima, M. R2jags: Using R to Run \u201cJAGS\u201d. Available online: http://CRAN.R-project.org/package=R2jags."
+  },
+  {
+   "article-title": "CODA: Convergence Diagnosis and Output Analysis for MCMC",
+   "author": "Plummer",
+   "first-page": "7",
+   "journal-title": "R. News",
+   "key": "ref_33",
+   "volume": "6",
+   "year": "2006"
+  },
+  {
+   "key": "ref_34",
+   "unstructured": "Centre for Evidence-Based Medicine Levels of Evidence. New Levels of Evidence Table. Available online: http://www.cebm.net/index.aspx?o=5653."
+  },
+  {
+   "article-title": "Effects of hazelnuts consumption on fasting blood sugar and lipoproteins in patients with type 2 diabetes",
+   "author": "Damavandi",
+   "first-page": "314",
+   "journal-title": "J. Res. Med. Sci.",
+   "key": "ref_35",
+   "volume": "18",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2012.10.005",
+   "article-title": "Hazelnut-enriched diet improves cardiovascular risk biomarkers beyond a lipid-lowering effect in hypercholesterolemic subjects",
+   "author": "Orem",
+   "doi-asserted-by": "crossref",
+   "first-page": "123",
+   "journal-title": "J. Clin. Lipidol.",
+   "key": "ref_36",
+   "volume": "7",
+   "year": "2013"
+  },
+  {
+   "key": "ref_37",
+   "unstructured": "US Department of Agriculture, Agricultural Research Service USDA Nutrient Database for Standard Reference, Release 17, Available online: http://www.nal.usda.gov./fnic/foodcomp."
+  },
+  {
+   "key": "ref_38",
+   "unstructured": "Gebhardt, S.E., Lemar, L.E., Haytowitz, D.B., Pehrsson, PR., Lemar, L.E., Holcomb, G.T., Stup, M.A., Thomas, R.G., Exler, J., and Showell, B.A. USDA National Nutrient Database for Standard Reference, Release 21."
+  },
+  {
+   "key": "ref_39",
+   "unstructured": "US Department of Agriculture, Agricultural Research Service USDA Nutrient Database for Standard Reference Release 28, Available online: http://www.nal.usda.gov./fnic/foodcomp."
+  },
+  {
+   "DOI": "10.1017/S1368980009990504",
+   "article-title": "The Mediterranean diet as a nutrition education, health promotion and disease prevention tool",
+   "author": "Piscopo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1648",
+   "journal-title": "Public. Health. Nutr.",
+   "key": "ref_40",
+   "volume": "12",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1161/01.ATV.12.8.911",
+   "article-title": "Effect of dietary fatty acids on serum lipids and lipoproteins. A meta-analysis of 27 trials",
+   "author": "Mensink",
+   "doi-asserted-by": "crossref",
+   "first-page": "911",
+   "journal-title": "Arterioscler. Thromb.",
+   "key": "ref_41",
+   "volume": "12",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1093/ajcn/57.6.875",
+   "article-title": "Dietary fat and serum lipids: An evaluation of the experimental data",
+   "author": "Hegsted",
+   "doi-asserted-by": "crossref",
+   "first-page": "875",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_42",
+   "volume": "57",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1093/ajcn/69.1.30",
+   "article-title": "Cholesterol-lowering effects of dietary fiber: A meta-analysis",
+   "author": "Brown",
+   "doi-asserted-by": "crossref",
+   "first-page": "30",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_43",
+   "volume": "69",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2014.06.072",
+   "article-title": "The intake of a hazelnut skin extract improves the plasma lipid profile and reduces the lithocholic/deoxycholic bile acid faecal ratio, a risk factor for colon cancer, in hamsters fed a high-fat diet",
+   "author": "Caimari",
+   "doi-asserted-by": "crossref",
+   "first-page": "138",
+   "journal-title": "Food. Chem.",
+   "key": "ref_44",
+   "volume": "15",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/jn/135.9.2082",
+   "article-title": "A Systematic Review of the Effects of Nuts on Blood Lipid Profiles in Humans",
+   "author": "Oosthuizen",
+   "doi-asserted-by": "crossref",
+   "first-page": "2082",
+   "journal-title": "J. Nutr.",
+   "key": "ref_45",
+   "volume": "135",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27457",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: A meta-analysis and systematic review",
+   "author": "Banel",
+   "doi-asserted-by": "crossref",
+   "first-page": "56",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_46",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1177/0962280213500185",
+   "article-title": "A Bayesian Network meta-analysis for binary outcome: How to do it",
+   "author": "Greco",
+   "doi-asserted-by": "crossref",
+   "first-page": "1757",
+   "journal-title": "Stat. Methods Med. Res.",
+   "key": "ref_47",
+   "volume": "25",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1079/BJN20051567",
+   "article-title": "Does regular walnut consumption lead to weight gain?",
+   "author": "Siapco",
+   "doi-asserted-by": "crossref",
+   "first-page": "859",
+   "journal-title": "Br. J. Nutr.",
+   "key": "ref_48",
+   "volume": "94",
+   "year": "2005"
+  }
+ ],
+ "reference-count": 48,
+ "references-count": 48,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.mdpi.com/2072-6643/8/12/747"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Nutrients"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Effects of Hazelnut Consumption on Blood Lipids and Body Weight: A Systematic Review and Bayesian Meta-Analysis"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.3390/mdpi_crossmark_policy",
+ "volume": "8"
+}

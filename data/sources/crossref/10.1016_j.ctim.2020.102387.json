@@ -1,0 +1,756 @@
+{
+ "DOI": "10.1016/j.ctim.2020.102387",
+ "ISSN": [
+  "0965-2299"
+ ],
+ "URL": "https://doi.org/10.1016/j.ctim.2020.102387",
+ "alternative-id": [
+  "S0965229919320539"
+ ],
+ "article-number": "102387",
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "The effects of cashew nut intake on lipid profile and blood pressure: A systematic review and meta-analysis of randomized controlled trials"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "Complementary Therapies in Medicine"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1016/j.ctim.2020.102387"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "\u00a9 2020 Elsevier Ltd."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Jalali",
+   "given": "Mohammad",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Karamizadeh",
+   "given": "Malihe",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ferns",
+   "given": "Gordon A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Zare",
+   "given": "Morteza",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Moosavian",
+   "given": "Seyedeh Parisa",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Akbarzadeh",
+   "given": "Marzieh",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Complementary Therapies in Medicine"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "clinicalkey.com",
+   "clinicalkey.com.au",
+   "clinicalkey.es",
+   "clinicalkey.fr",
+   "clinicalkey.jp",
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    3,
+    28
+   ]
+  ],
+  "date-time": "2020-03-28T11:32:14Z",
+  "timestamp": 1585395134000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    18
+   ]
+  ],
+  "date-time": "2025-10-18T17:13:31Z",
+  "timestamp": 1760807611000
+ },
+ "funder": [
+  {
+   "DOI": "10.13039/501100004320",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004320",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Shiraz University of Medical Sciences"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    8,
+    19
+   ]
+  ],
+  "date-time": "2026-08-19T18:23:44Z",
+  "timestamp": 1787163824115,
+  "version": "build-2736575974"
+ },
+ "is-referenced-by-count": 32,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0965-2299"
+  }
+ ],
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    5
+   ]
+  ]
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  },
+  {
+   "URL": "https://www.elsevier.com/legal/tdmrep-license",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-017",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-037",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-012",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-029",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-004",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2020-05-01T00:00:00Z",
+    "timestamp": 1588291200000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0965229919320539?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0965229919320539?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "102387",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    5
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    5
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1093/ajcn/nqy242",
+   "article-title": "Consumption of cashew nuts does not influence blood lipids or other markers of cardiovascular disease in humans: A randomized controlled trial",
+   "author": "Baer",
+   "doi-asserted-by": "crossref",
+   "first-page": "269",
+   "issue": "2",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0005",
+   "volume": "109",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1186/s12916-019-1480-9",
+   "article-title": "Prevention and management of CVD in LMICs: Why do ethnicity, culture, and context matter?",
+   "author": "Anand",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "issue": "1",
+   "journal-title": "BMC Med",
+   "key": "10.1016/j.ctim.2020.102387_bib0010",
+   "volume": "18",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1007/s11892-019-1161-2",
+   "article-title": "Global updates on cardiovascular disease mortality trends and attribution of traditional risk factors",
+   "author": "Jagannathan",
+   "doi-asserted-by": "crossref",
+   "first-page": "44",
+   "issue": "7",
+   "journal-title": "Curr Diab Rep",
+   "key": "10.1016/j.ctim.2020.102387_bib0015",
+   "volume": "19",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1186/s12889-019-8070-9",
+   "article-title": "Associations between dietary patterns and 10-year cardiovascular disease risk score levels among Chinese coal miners--a cross-sectional study",
+   "author": "Sun",
+   "doi-asserted-by": "crossref",
+   "first-page": "1704",
+   "issue": "1",
+   "journal-title": "BMC Public Health",
+   "key": "10.1016/j.ctim.2020.102387_bib0020",
+   "volume": "19",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1097/HCO.0000000000000523",
+   "article-title": "New diet trials and cardiovascular risk",
+   "author": "Garcia-Rios",
+   "doi-asserted-by": "crossref",
+   "first-page": "423",
+   "issue": "4",
+   "journal-title": "Curr Opin Cardiol",
+   "key": "10.1016/j.ctim.2020.102387_bib0025",
+   "volume": "33",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/jn/nxx001",
+   "article-title": "Cashew nut consumption increases HDL cholesterol and reduces systolic blood pressure in asian indians with type 2 diabetes: A 12-Week randomized controlled trial",
+   "author": "Mohan",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "issue": "1",
+   "journal-title": "J Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0030",
+   "volume": "148",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1097/01.mbc.0000174966.86549.27",
+   "article-title": "Clustering of haemostatic variables and the effect of high cashew and walnut diets on these variables in metabolic syndrome patients",
+   "author": "Pieters",
+   "doi-asserted-by": "crossref",
+   "first-page": "429",
+   "issue": "6",
+   "journal-title": "Blood Coagul Fibrinolysis",
+   "key": "10.1016/j.ctim.2020.102387_bib0035",
+   "volume": "16",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "article-title": "Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: Systematic review, meta-analysis, and dose-response of 61 controlled intervention trials",
+   "author": "Del Gobbo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1347",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0040",
+   "volume": "102",
+   "year": "2015"
+  },
+  {
+   "author": "McGuire",
+   "first-page": "202",
+   "key": "10.1016/j.ctim.2020.102387_bib0045",
+   "series-title": "Scientific report of the 2015 dietary guidelines advisory committee",
+   "year": "2016"
+  },
+  {
+   "author": "Committee, U.S.D.G.A",
+   "key": "10.1016/j.ctim.2020.102387_bib0050",
+   "series-title": "Dietary guidelines for Americans, 2010",
+   "year": "2010"
+  },
+  {
+   "author": "Ternus",
+   "first-page": "62",
+   "key": "10.1016/j.ctim.2020.102387_bib0055",
+   "series-title": "Qualified health claim for nuts and heart disease prevention: Development of consumer-friendly language",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/j.jep.2016.02.034",
+   "article-title": "Medicinal plants used in the traditional management of diabetes and its sequelae in Central America: A review",
+   "author": "Giovannini",
+   "doi-asserted-by": "crossref",
+   "first-page": "58",
+   "journal-title": "J Ethnopharmacol",
+   "key": "10.1016/j.ctim.2020.102387_bib0060",
+   "volume": "184",
+   "year": "2016"
+  },
+  {
+   "article-title": "Cashew apple juice improves physical fitness and oxidative stress status in the middle-aged and elderly volunteers",
+   "author": "Kaewbutra",
+   "first-page": "S161",
+   "issue": "Suppl 5",
+   "journal-title": "J Med Assoc Thai",
+   "key": "10.1016/j.ctim.2020.102387_bib0065",
+   "volume": "99",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.3945/ajcn.116.150037",
+   "article-title": "Cashew consumption reduces total and LDL cholesterol: A randomized, crossover, controlled-feeding trial",
+   "author": "Mah",
+   "doi-asserted-by": "crossref",
+   "first-page": "1070",
+   "issue": "5",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0070",
+   "volume": "105",
+   "year": "2017"
+  },
+  {
+   "author": "Moher",
+   "first-page": "264",
+   "key": "10.1016/j.ctim.2020.102387_bib0075",
+   "series-title": "Preferred reporting items for systematic reviews and meta-analyses: The PRISMA statement",
+   "year": "2009"
+  },
+  {
+   "author": "Follmann",
+   "first-page": "769",
+   "key": "10.1016/j.ctim.2020.102387_bib0080",
+   "series-title": "Variance imputation for overviews of clinical trials with continuous response",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1186/1471-2288-14-135",
+   "article-title": "Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range",
+   "author": "Wan",
+   "doi-asserted-by": "crossref",
+   "first-page": "135",
+   "issue": "1",
+   "journal-title": "BMC Med Res Methodol",
+   "key": "10.1016/j.ctim.2020.102387_bib0085",
+   "volume": "14",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1136/bmj.h1435",
+   "article-title": "Meta-analyses: What is heterogeneity?",
+   "author": "Sedgwick",
+   "doi-asserted-by": "crossref",
+   "first-page": "h1435",
+   "journal-title": "BMJ",
+   "key": "10.1016/j.ctim.2020.102387_bib0090",
+   "volume": "350",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1136/bmj.327.7414.557",
+   "article-title": "Measuring inconsistency in meta-analyses",
+   "author": "Higgins",
+   "doi-asserted-by": "crossref",
+   "first-page": "557",
+   "issue": "7414",
+   "journal-title": "BMJ",
+   "key": "10.1016/j.ctim.2020.102387_bib0095",
+   "volume": "327",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1136/bmj.315.7109.629",
+   "article-title": "Bias in meta-analysis detected by a simple, graphical test",
+   "author": "Egger",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "issue": "7109",
+   "journal-title": "BMJ",
+   "key": "10.1016/j.ctim.2020.102387_bib0100",
+   "volume": "315",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1017/S0007114507682944",
+   "article-title": "Effects of a high walnut and high cashew nut diet on selected markers of the metabolic syndrome: A controlled feeding trial",
+   "author": "Mukuddem-Petersen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1144",
+   "issue": "6",
+   "journal-title": "Br J Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0105",
+   "volume": "97",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.3945/jn.108.095125",
+   "article-title": "Continuous dose-response relationship of the LDL-cholesterol-lowering effect of phytosterol intake",
+   "author": "Demonty",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "issue": "2",
+   "journal-title": "J Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0110",
+   "volume": "139",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/j.jada.2009.02.014",
+   "article-title": "Almonds have a neutral effect on serum lipid profiles: A meta-analysis of randomized trials",
+   "author": "Phung",
+   "doi-asserted-by": "crossref",
+   "first-page": "865",
+   "issue": "5",
+   "journal-title": "J Am Diet Assoc",
+   "key": "10.1016/j.ctim.2020.102387_bib0115",
+   "volume": "109",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27457",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: A meta-analysis and systematic review",
+   "author": "Banel",
+   "doi-asserted-by": "crossref",
+   "first-page": "56",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0120",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1186/s12937-015-0052-x",
+   "article-title": "Tree Nut consumption is associated with better adiposity measures and cardiovascular and metabolic syndrome health risk factors in U.S. Adults: NHANES 2005-2010",
+   "author": "O\u2019Neil",
+   "doi-asserted-by": "crossref",
+   "first-page": "64",
+   "issue": "1",
+   "journal-title": "Nutr J",
+   "key": "10.1016/j.ctim.2020.102387_bib0125",
+   "volume": "14",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/ajcn/61.5.1129",
+   "article-title": "Plasma cholesterol-predictive equations demonstrate that stearic acid is neutral and monounsaturated fatty acids are hypocholesterolemic",
+   "author": "Yu",
+   "doi-asserted-by": "crossref",
+   "first-page": "1129",
+   "issue": "5",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0130",
+   "volume": "61",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "article-title": "Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: Systematic review, meta-analysis, and dose-response of 61 controlled intervention trials",
+   "author": "Del Gobbo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1347",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0135",
+   "volume": "102",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1001/archinte.160.6.837",
+   "article-title": "Olive oil and reduced need for antihypertensive medications",
+   "author": "Ferrara",
+   "doi-asserted-by": "crossref",
+   "first-page": "837",
+   "issue": "6",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1016/j.ctim.2020.102387_bib0140",
+   "volume": "160",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1093/ajcn/68.3.552",
+   "article-title": "Effect of long-term olive oil dietary intervention on postprandial triacylglycerol and factor VII metabolism",
+   "author": "Roche",
+   "doi-asserted-by": "crossref",
+   "first-page": "552",
+   "issue": "3",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0145",
+   "volume": "68",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1001/jama.294.19.2455",
+   "article-title": "Effects of protein, monounsaturated fat, and carbohydrate intake on blood pressure and serum lipids: Results of the OmniHeart randomized trial",
+   "author": "Appel",
+   "doi-asserted-by": "crossref",
+   "first-page": "2455",
+   "issue": "19",
+   "journal-title": "JAMA",
+   "key": "10.1016/j.ctim.2020.102387_bib0150",
+   "volume": "294",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1016/j.amjhyper.2005.12.014",
+   "article-title": "Modulation of baroreflex sensitivity by walnuts versus cashew nuts in subjects with metabolic syndrome",
+   "author": "Schutte",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "issue": "6",
+   "journal-title": "Am J Hypertens",
+   "key": "10.1016/j.ctim.2020.102387_bib0155",
+   "volume": "19",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1111/j.1440-1681.2006.04316.x",
+   "article-title": "Amino acids, arginase and nitric oxide in vascular health",
+   "author": "Huynh",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Clin Exp Pharmacol Physiol",
+   "key": "10.1016/j.ctim.2020.102387_bib0160",
+   "volume": "33",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1159/000331214",
+   "article-title": "Effects of monounsaturated fatty acids on glycaemic control in patients with abnormal glucose metabolism: A systematic review and meta-analysis",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "290",
+   "issue": "4",
+   "journal-title": "Ann Nutr Metab",
+   "key": "10.1016/j.ctim.2020.102387_bib0165",
+   "volume": "58",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/ajcn/65.5.1590S",
+   "article-title": "Design criteria for studies examining individual fatty acid effects on cardiovascular disease risk factors: human and animal studies",
+   "author": "Kris-Etherton",
+   "doi-asserted-by": "crossref",
+   "first-page": "1590S",
+   "issue": "5 Suppl",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.ctim.2020.102387_bib0170",
+   "volume": "65",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1002/ptr.6638",
+   "article-title": "The effects of ginger supplementation on markers of inflammatory and oxidative stress: a systematic review and meta-analysis of clinical trials",
+   "author": "Jalali",
+   "doi-asserted-by": "crossref",
+   "journal-title": "Phytother Res",
+   "key": "10.1016/j.ctim.2020.102387_bib0175",
+   "year": "2020"
+  }
+ ],
+ "reference-count": 35,
+ "references-count": 35,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0965229919320539"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Complementary Therapies in Medicine"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "special_numbering": "C",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "The effects of cashew nut intake on lipid profile and blood pressure: A systematic review and meta-analysis of randomized controlled trials"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "50"
+}

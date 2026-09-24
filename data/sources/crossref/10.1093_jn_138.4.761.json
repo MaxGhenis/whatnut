@@ -1,0 +1,661 @@
+{
+ "DOI": "10.1093/jn/138.4.761",
+ "ISSN": [
+  "0022-3166"
+ ],
+ "URL": "https://doi.org/10.1093/jn/138.4.761",
+ "alternative-id": [
+  "S002231662209650X"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "A Macadamia Nut-Rich Diet Reduces Total and LDL-Cholesterol in Mildly Hypercholesterolemic Men and Women"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "The Journal of Nutrition"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1093/jn/138.4.761"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "Copyright \u00a9 2008 American Society for Nutrition. Published by Elsevier Inc. All rights reserved."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Griel",
+   "given": "Amy E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Cao",
+   "given": "Yumei",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bagshaw",
+   "given": "Deborah D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cifelli",
+   "given": "Amy M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Holub",
+   "given": "Bruce",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Kris-Etherton",
+   "given": "Penny M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "The Journal of Nutrition"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    1,
+    17
+   ]
+  ],
+  "date-time": "2018-01-17T07:54:42Z",
+  "timestamp": 1516175682000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    6,
+    12
+   ]
+  ],
+  "date-time": "2023-06-12T20:23:59Z",
+  "timestamp": 1686601439000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    1
+   ]
+  ],
+  "date-time": "2026-09-01T20:25:40Z",
+  "timestamp": 1788294340913,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 129,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0022-3166"
+  }
+ ],
+ "issue": "4",
+ "issued": {
+  "date-parts": [
+   [
+    2008,
+    4
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "4",
+  "published-print": {
+   "date-parts": [
+    [
+     2008,
+     4
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2008,
+      4,
+      1
+     ]
+    ],
+    "date-time": "2008-04-01T00:00:00Z",
+    "timestamp": 1207008000000
+   }
+  },
+  {
+   "URL": "http://www.elsevier.com/open-access/userlicense/1.0/",
+   "content-version": "vor",
+   "delay-in-days": 5426,
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      8
+     ]
+    ],
+    "date-time": "2023-02-08T00:00:00Z",
+    "timestamp": 1675814400000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S002231662209650X?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S002231662209650X?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://academic.oup.com/jn/article-pdf/138/4/761/23905399/761.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "761-767",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2008,
+    4
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2008,
+    4
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1136/bmj.308.6925.367",
+   "article-title": "By how much and how quickly does reduction in serum cholesterol concentration lower risk of ischaemic heart disease?",
+   "author": "Law",
+   "doi-asserted-by": "crossref",
+   "first-page": "367",
+   "journal-title": "BMJ.",
+   "key": "10.1093/jn/138.4.761_bib1",
+   "volume": "308",
+   "year": "1994"
+  },
+  {
+   "DOI": "10.1161/01.CIR.102.16.1893",
+   "article-title": "Effect of pravastatin on coronary disease events in subgroups defined by coronary risk factors: the Prospective Pravastatin Pooling Project",
+   "author": "Sacks",
+   "doi-asserted-by": "crossref",
+   "first-page": "1893",
+   "journal-title": "Circulation.",
+   "key": "10.1093/jn/138.4.761_bib2",
+   "volume": "102",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1056/NEJM199908053410604",
+   "article-title": "Gemfibrozil for the secondary prevention of coronary heart disease in men with low levels of high-density lipoprotein cholesterol. Veterans Affairs High-Density Lipoprotein Cholesterol Intervention Trial Study Group",
+   "author": "Rubins",
+   "doi-asserted-by": "crossref",
+   "first-page": "410",
+   "journal-title": "N Engl J Med.",
+   "key": "10.1093/jn/138.4.761_bib3",
+   "volume": "341",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1001/jama.285.19.2486",
+   "doi-asserted-by": "crossref",
+   "key": "10.1093/jn/138.4.761_bib4",
+   "unstructured": "National Cholesterol and Education Program. Executive Summary of the Third Report of the National Cholesterol Education Program (NCEP) Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel III); 2001 May 16"
+  },
+  {
+   "DOI": "10.1056/NEJM199811053391902",
+   "article-title": "Prevention of cardiovascular events and death with pravastatin in patients with coronary heart disease and a broad range of initial cholesterol levels.",
+   "doi-asserted-by": "crossref",
+   "first-page": "1349",
+   "journal-title": "N Engl J Med.",
+   "key": "10.1093/jn/138.4.761_bib5",
+   "volume": "339",
+   "year": "1998"
+  },
+  {
+   "article-title": "Randomised trial of cholesterol lowering in 4444 patients with coronary heart disease: the Scandinavian Simvastatin Survival Study (4S)",
+   "first-page": "1383",
+   "journal-title": "Lancet.",
+   "key": "10.1093/jn/138.4.761_bib6",
+   "volume": "344",
+   "year": "1994"
+  },
+  {
+   "DOI": "10.1056/NEJM199610033351401",
+   "article-title": "The effect of pravastatin on coronary events after myocardial infarction in patients with average cholesterol levels. Cholesterol and Recurrent Events Trial investigators",
+   "author": "Sacks",
+   "doi-asserted-by": "crossref",
+   "first-page": "1001",
+   "journal-title": "N Engl J Med.",
+   "key": "10.1093/jn/138.4.761_bib7",
+   "volume": "335",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1161/01.CIR.79.1.8",
+   "article-title": "High-density lipoprotein cholesterol and cardiovascular disease. Four prospective American studies",
+   "author": "Gordon",
+   "doi-asserted-by": "crossref",
+   "first-page": "8",
+   "journal-title": "Circulation.",
+   "key": "10.1093/jn/138.4.761_bib8",
+   "volume": "79",
+   "year": "1989"
+  },
+  {
+   "DOI": "10.1097/00043798-199604000-00014",
+   "article-title": "Plasma triglyceride level is a risk factor for cardiovascular disease independent of high-density lipoprotein cholesterol level: a meta-analysis of population-based prospective studies",
+   "author": "Hokanson",
+   "doi-asserted-by": "crossref",
+   "first-page": "213",
+   "journal-title": "J Cardiovasc Risk.",
+   "key": "10.1093/jn/138.4.761_bib9",
+   "volume": "3",
+   "year": "1996"
+  },
+  {
+   "journal-title": "Dietary Guidelines Advisory Committee report",
+   "key": "10.1093/jn/138.4.761_bib10",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.106.176158",
+   "article-title": "Diet and lifestyle recommendations revision 2006: a scientific statement from the American Heart Association Nutrition Committee",
+   "author": "Lichtenstein",
+   "doi-asserted-by": "crossref",
+   "first-page": "82",
+   "journal-title": "Circulation.",
+   "key": "10.1093/jn/138.4.761_bib11",
+   "volume": "114",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1007/s11883-999-0033-7",
+   "article-title": "Nut consumption and risk of coronary heart disease: a review of epidemiologic evidence",
+   "author": "Hu",
+   "doi-asserted-by": "crossref",
+   "first-page": "204",
+   "journal-title": "Curr Atheroscler Rep.",
+   "key": "10.1093/jn/138.4.761_bib12",
+   "volume": "1",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1001/archinte.162.12.1382",
+   "article-title": "Nut consumption and decreased risk of sudden cardiac death in the Physicians\u2019 Health Study",
+   "author": "Albert",
+   "doi-asserted-by": "crossref",
+   "first-page": "1382",
+   "journal-title": "Arch Intern Med.",
+   "key": "10.1093/jn/138.4.761_bib13",
+   "volume": "162",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1111/j.1753-4887.2001.tb06996.x",
+   "article-title": "The effects of nuts on coronary heart disease risk",
+   "author": "Kris-Etherton",
+   "doi-asserted-by": "crossref",
+   "first-page": "103",
+   "journal-title": "Nutr Rev.",
+   "key": "10.1093/jn/138.4.761_bib14",
+   "volume": "59",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1017/BJN20061866",
+   "article-title": "Tree nuts and the lipid profile: a review of clinical studies",
+   "author": "Griel",
+   "doi-asserted-by": "crossref",
+   "first-page": "68",
+   "issue": "Suppl 2",
+   "journal-title": "Br J Nutr.",
+   "key": "10.1093/jn/138.4.761_bib15",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)41179-4",
+   "article-title": "Effects of increasing dietary palmitoleic acid compared with palmitic and oleic acids on plasma lipids of hypercholesterolemic men",
+   "author": "Nestel",
+   "doi-asserted-by": "crossref",
+   "first-page": "656",
+   "journal-title": "J Lipid Res.",
+   "key": "10.1093/jn/138.4.761_bib16",
+   "volume": "35",
+   "year": "1994"
+  },
+  {
+   "key": "10.1093/jn/138.4.761_bib17",
+   "unstructured": "International Tree Nut Council Nutrition Research and Education Foundation. Macadamia Resources. [accessed 2008 Feb 19]. Available from: http://www.nuthealth.org/nut.php3?nut=macadamia"
+  },
+  {
+   "DOI": "10.1093/jn/133.4.1060",
+   "article-title": "Macadamia nut consumption lowers plasma total and LDL cholesterol levels in hypercholesterolemic men",
+   "author": "Garg",
+   "doi-asserted-by": "crossref",
+   "first-page": "1060",
+   "journal-title": "J Nutr.",
+   "key": "10.1093/jn/138.4.761_bib18",
+   "volume": "133",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1001/archinte.160.8.1154",
+   "article-title": "Serum lipid effects of a high-monounsaturated fat diet based on macadamia nuts",
+   "author": "Curb",
+   "doi-asserted-by": "crossref",
+   "first-page": "1154",
+   "journal-title": "Arch Intern Med.",
+   "key": "10.1093/jn/138.4.761_bib19",
+   "volume": "160",
+   "year": "2000"
+  },
+  {
+   "article-title": "Effects of a macadamia nut enriched diet on serum lipids and lipoproteins compared to a low fat diet",
+   "author": "Colquhoun",
+   "first-page": "216",
+   "journal-title": "Food Aust.",
+   "key": "10.1093/jn/138.4.761_bib20",
+   "volume": "48",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1111/j.1440-1681.2004.04121.x",
+   "article-title": "Serum lipid effects of a monounsaturated (palmitoleic) fatty acid-rich diet based on macadamia nuts in healthy, young Japanese women",
+   "author": "Hiraoka-Yamamoto",
+   "doi-asserted-by": "crossref",
+   "first-page": "S37",
+   "issue": "Suppl 2",
+   "journal-title": "Clin Exp Pharmacol Physiol.",
+   "key": "10.1093/jn/138.4.761_bib21",
+   "volume": "31",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1194/jlr.D500022-JLR200",
+   "article-title": "A simplified and efficient method for the analysis of fatty acid methyl esters suitable for large clinical studies",
+   "author": "Masood",
+   "doi-asserted-by": "crossref",
+   "first-page": "2299",
+   "journal-title": "J Lipid Res.",
+   "key": "10.1093/jn/138.4.761_bib22",
+   "volume": "46",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)41577-9",
+   "article-title": "A comprehensive evaluation of the heparin-manganese precipitation procedure for estimating high density lipoprotein cholesterol",
+   "author": "Warnick",
+   "doi-asserted-by": "crossref",
+   "first-page": "65",
+   "journal-title": "J Lipid Res.",
+   "key": "10.1093/jn/138.4.761_bib23",
+   "volume": "19",
+   "year": "1978"
+  },
+  {
+   "DOI": "10.1093/clinchem/18.6.499",
+   "article-title": "Estimation of the concentration of low-density lipoprotein cholesterol in plasma, without use of the preparative ultracentrifuge",
+   "author": "Friedewald",
+   "doi-asserted-by": "crossref",
+   "first-page": "499",
+   "journal-title": "Clin Chem.",
+   "key": "10.1093/jn/138.4.761_bib24",
+   "volume": "18",
+   "year": "1972"
+  },
+  {
+   "DOI": "10.1093/ajcn/70.3.504s",
+   "article-title": "Nuts and their bioactive constituents: effects on serum lipids and other factors that affect disease risk",
+   "author": "Kris-Etherton",
+   "doi-asserted-by": "crossref",
+   "first-page": "S504",
+   "journal-title": "Am J Clin Nutr.",
+   "key": "10.1093/jn/138.4.761_bib25",
+   "volume": "70",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1161/01.ATV.12.8.911",
+   "article-title": "Effect of dietary fatty acids on serum lipids and lipoproteins. A meta-analysis of 27 trials",
+   "author": "Mensink",
+   "doi-asserted-by": "crossref",
+   "first-page": "911",
+   "journal-title": "Arterioscler Thromb.",
+   "key": "10.1093/jn/138.4.761_bib26",
+   "volume": "12",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1002/clc.4960221504",
+   "article-title": "Nut consumption, lipids, and risk of a coronary event",
+   "author": "Fraser",
+   "doi-asserted-by": "crossref",
+   "first-page": "III11",
+   "journal-title": "Clin Cardiol.",
+   "key": "10.1093/jn/138.4.761_bib27",
+   "volume": "22",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1001/archinte.161.11.1413",
+   "article-title": "Non-high-density lipoprotein cholesterol level as a predictor of cardiovascular disease mortality",
+   "author": "Cui",
+   "doi-asserted-by": "crossref",
+   "first-page": "1413",
+   "journal-title": "Arch Intern Med.",
+   "key": "10.1093/jn/138.4.761_bib28",
+   "volume": "161",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.2337/diacare.26.1.16",
+   "article-title": "Non-HDL cholesterol as a predictor of cardiovascular disease in type 2 diabetes: the strong heart study",
+   "author": "Lu",
+   "doi-asserted-by": "crossref",
+   "first-page": "16",
+   "journal-title": "Diabetes Care.",
+   "key": "10.1093/jn/138.4.761_bib29",
+   "volume": "26",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1093/ajcn/57.6.875",
+   "article-title": "Dietary fat and serum lipids: an evaluation of the experimental data",
+   "author": "Hegsted",
+   "doi-asserted-by": "crossref",
+   "first-page": "875",
+   "journal-title": "Am J Clin Nutr.",
+   "key": "10.1093/jn/138.4.761_bib30",
+   "volume": "57",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1136/bmj.314.7074.112",
+   "article-title": "Dietary lipids and blood cholesterol: quantitative meta-analysis of metabolic ward studies",
+   "author": "Clarke",
+   "doi-asserted-by": "crossref",
+   "first-page": "112",
+   "journal-title": "BMJ.",
+   "key": "10.1093/jn/138.4.761_bib31",
+   "volume": "314",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1056/NEJM199108083250601",
+   "article-title": "A prospective study of cholesterol, apolipoproteins, and the risk of myocardial infarction",
+   "author": "Stampfer",
+   "doi-asserted-by": "crossref",
+   "first-page": "373",
+   "journal-title": "N Engl J Med.",
+   "key": "10.1093/jn/138.4.761_bib32",
+   "volume": "325",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1194/jlr.M200189-JLR200",
+   "article-title": "Relationship between stearoyl-CoA desaturase activity and plasma triglycerides in human and mouse hypertriglyceridemia",
+   "author": "Attie",
+   "doi-asserted-by": "crossref",
+   "first-page": "1899",
+   "journal-title": "J Lipid Res.",
+   "key": "10.1093/jn/138.4.761_bib33",
+   "volume": "43",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1074/jbc.M005488200",
+   "article-title": "The biosynthesis of hepatic cholesterol esters and triglycerides is impaired in mice with a disruption of the gene for stearoyl-CoA desaturase 1",
+   "author": "Miyazaki",
+   "doi-asserted-by": "crossref",
+   "first-page": "3012",
+   "journal-title": "J Biol Chem.",
+   "key": "10.1093/jn/138.4.761_bib34",
+   "volume": "275",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)31589-3",
+   "article-title": "A lipogenic diet in mice with a disruption of the stearoyl-CoA desaturase 1 gene reveals a stringent requirement of endogenous monounsaturated fatty acids for triglyceride synthesis",
+   "author": "Miyazaki",
+   "doi-asserted-by": "crossref",
+   "first-page": "1018",
+   "journal-title": "J Lipid Res.",
+   "key": "10.1093/jn/138.4.761_bib35",
+   "volume": "42",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1093/ajcn/78.3.647S",
+   "article-title": "Nut consumption and body weight",
+   "author": "Sabate",
+   "doi-asserted-by": "crossref",
+   "first-page": "S647",
+   "journal-title": "Am J Clin Nutr.",
+   "key": "10.1093/jn/138.4.761_bib36",
+   "volume": "78",
+   "year": "2003"
+  }
+ ],
+ "reference-count": 36,
+ "references-count": 36,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S002231662209650X"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "The Journal of Nutrition"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "A Macadamia Nut-Rich Diet Reduces Total and LDL-Cholesterol in Mildly Hypercholesterolemic Men and Women"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "138"
+}

@@ -1,0 +1,690 @@
+{
+ "DOI": "10.1080/10408398.2018.1558395",
+ "ISSN": [
+  "1040-8398",
+  "1549-7852"
+ ],
+ "URL": "https://doi.org/10.1080/10408398.2018.1558395",
+ "alternative-id": [
+  "10.1080/10408398.2018.1558395"
+ ],
+ "assertion": [
+  {
+   "label": "Peer Review Statement",
+   "name": "peerreview_statement",
+   "order": 1,
+   "value": "The publishing and review policy for this title is described in its Aims & Scope."
+  },
+  {
+   "URL": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=bfsn20",
+   "label": "Aim & Scope",
+   "name": "aims_and_scope_url",
+   "order": 2,
+   "value": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=bfsn20"
+  },
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Published",
+   "name": "published",
+   "order": 3,
+   "value": "2019-01-13"
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "Department of Community Nutrition, School of Nutritional Sciences and Dietetics, Tehran University of Medical Sciences, Tehran, Iran;"
+    }
+   ],
+   "family": "Jafari Azad",
+   "given": "Banafsheh",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Community Nutrition, School of Nutritional Sciences and Dietetics, Tehran University of Medical Sciences, Tehran, Iran;"
+    }
+   ],
+   "family": "Daneshzad",
+   "given": "Elnaz",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Community Nutrition, School of Nutritional Sciences and Dietetics, Tehran University of Medical Sciences, Tehran, Iran;"
+    },
+    {
+     "name": "Diabetes Research Center, Endocrinology and Metabolism Clinical Sciences Institute, Tehran University of Medical Sciences, Tehran, Iran"
+    }
+   ],
+   "family": "Azadbakht",
+   "given": "Leila",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Critical Reviews in Food Science and Nutrition"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "www.tandfonline.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    1,
+    13
+   ]
+  ],
+  "date-time": "2019-01-13T15:29:27Z",
+  "timestamp": 1547393367000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2020,
+    11,
+    22
+   ]
+  ],
+  "date-time": "2020-11-22T11:28:36Z",
+  "timestamp": 1606044516000
+ },
+ "funder": [
+  {
+   "award": [
+    "97-03-161-40425"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "97-03-161-40425"
+     ]
+    }
+   ],
+   "name": "Tehran University of Medical Sciences"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    5
+   ]
+  ],
+  "date-time": "2026-07-05T10:56:06Z",
+  "timestamp": 1783248966533,
+  "version": "3.54.6"
+ },
+ "is-referenced-by-count": 42,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "1040-8398"
+  },
+  {
+   "type": "electronic",
+   "value": "1549-7852"
+  }
+ ],
+ "issue": "7",
+ "issued": {
+  "date-parts": [
+   [
+    2019,
+    1,
+    13
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "7",
+  "published-print": {
+   "date-parts": [
+    [
+     2020,
+     4,
+     11
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://www.tandfonline.com/doi/pdf/10.1080/10408398.2018.1558395",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "301",
+ "original-title": [],
+ "page": "1123-1140",
+ "prefix": "10.1080",
+ "published": {
+  "date-parts": [
+   [
+    2019,
+    1,
+    13
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2019,
+    1,
+    13
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    11
+   ]
+  ]
+ },
+ "publisher": "Informa UK Limited",
+ "reference": [
+  {
+   "author": "Akuamoah-Boateng L.",
+   "first-page": "185",
+   "issue": "2",
+   "journal-title": "Journal of Applied Research",
+   "key": "CIT0001",
+   "volume": "7",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1080/07315724.2003.10719286",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0002"
+  },
+  {
+   "DOI": "10.1038/sj.ijo.0802050",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0003"
+  },
+  {
+   "DOI": "10.1002/oby.20746",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0004"
+  },
+  {
+   "DOI": "10.1016/j.diabet.2016.09.008",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0005"
+  },
+  {
+   "DOI": "10.3390/nu7095343",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0006"
+  },
+  {
+   "DOI": "10.1080/1028415X.2016.1204744",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0007"
+  },
+  {
+   "DOI": "10.1038/ejcn.2014.126",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0008"
+  },
+  {
+   "DOI": "10.1017/S095442241100014X",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0009"
+  },
+  {
+   "DOI": "10.1080/00365510902912754",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0010"
+  },
+  {
+   "DOI": "10.1016/j.nut.2006.03.012",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0012"
+  },
+  {
+   "DOI": "10.3390/nu9121311",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0013"
+  },
+  {
+   "author": "Dineshkumar B.",
+   "first-page": "1389",
+   "journal-title": "Journal of Clinical and Diagnostic Research",
+   "key": "CIT0014",
+   "volume": "3",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1093/ajcn/80.3.604",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0015"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0016"
+  },
+  {
+   "DOI": "10.1186/s12937-015-0107-z",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0017"
+  },
+  {
+   "DOI": "10.1017/S1368980009992837",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0018"
+  },
+  {
+   "author": "Good D.",
+   "first-page": "32",
+   "issue": "1",
+   "journal-title": "The Ochsner Journal",
+   "key": "CIT0019",
+   "volume": "9",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.4162/nrp.2015.9.3.249",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0020"
+  },
+  {
+   "DOI": "10.1093/jn/131.6.1758",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0021"
+  },
+  {
+   "DOI": "10.3109/09637489509012562",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0022"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.116.023712",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0023"
+  },
+  {
+   "DOI": "10.3390/nu9070673",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0024"
+  },
+  {
+   "author": "Higgins J. P.",
+   "first-page": "33",
+   "journal-title": "The Cochrane Collaboration",
+   "key": "CIT0025",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1108/00346650510625566",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0026"
+  },
+  {
+   "DOI": "10.3390/nu10111565",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0027"
+  },
+  {
+   "DOI": "10.1016/j.jnutbio.2009.01.009",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0028"
+  },
+  {
+   "DOI": "10.1186/1475-2891-12-35",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0029"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.069401",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0030"
+  },
+  {
+   "author": "Kang H.-I.",
+   "first-page": "384",
+   "issue": "3",
+   "journal-title": "Korean Journal of Food Preservation",
+   "key": "CIT0031",
+   "volume": "17",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.4162/nrp.2014.8.2.158",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0032"
+  },
+  {
+   "DOI": "10.3390/nu9111271",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0033"
+  },
+  {
+   "DOI": "10.1093/ajcn/70.6.1009",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0034"
+  },
+  {
+   "DOI": "10.1001/archinte.165.2.193",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0035"
+  },
+  {
+   "author": "Lairon D",
+   "first-page": "125",
+   "journal-title": "European Journal of Clinical Nutrition",
+   "key": "CIT0036",
+   "volume": "50",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1080/07315724.2018.1519404",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0037"
+  },
+  {
+   "DOI": "10.1002/jsfa.3335",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0038"
+  },
+  {
+   "DOI": "10.1166/jbmb.2017.1666",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0039"
+  },
+  {
+   "DOI": "10.1016/0024-3205(95)00263-6",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0040"
+  },
+  {
+   "DOI": "10.3945/jn.116.246785",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0041"
+  },
+  {
+   "DOI": "10.1080/09637480701198067",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0042"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.107.717033",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0043"
+  },
+  {
+   "DOI": "10.1017/S0007114510000590",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0044"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0175149",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0045"
+  },
+  {
+   "author": "Mohammadi M.",
+   "first-page": "42",
+   "issue": "2",
+   "journal-title": "Journal of Ardabil University of Medical Sciences",
+   "key": "CIT0046",
+   "volume": "2",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.7326/0003-4819-151-4-200908180-00135",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0047"
+  },
+  {
+   "DOI": "10.1002/oby.20825",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0049"
+  },
+  {
+   "DOI": "10.1111/jhn.12284",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0050"
+  },
+  {
+   "DOI": "10.1038/oby.2007.14",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0051"
+  },
+  {
+   "DOI": "10.1093/jn/135.9.2082",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0052"
+  },
+  {
+   "DOI": "10.1080/07315724.2017.1280713",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0053"
+  },
+  {
+   "DOI": "10.1007/s11745-997-0088-y",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0054"
+  },
+  {
+   "author": "O'Neil C. E.",
+   "first-page": "142",
+   "issue": "1",
+   "journal-title": "Asia Pacific Journal of Clinical Nutrition",
+   "key": "CIT0055",
+   "volume": "19",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1093/ajcn/79.2.204",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0056"
+  },
+  {
+   "DOI": "10.1007/s11883-002-0049-8",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0057"
+  },
+  {
+   "DOI": "10.3109/10641968109037166",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0058"
+  },
+  {
+   "DOI": "10.1007/BF02536619",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0059"
+  },
+  {
+   "author": "Reis C.",
+   "first-page": "745",
+   "issue": "4",
+   "journal-title": "Nutricion Hospitalaria",
+   "key": "CIT0060",
+   "volume": "26",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1017/S0007114512004217",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0061"
+  },
+  {
+   "DOI": "10.3390/nu2070652",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0062"
+  },
+  {
+   "DOI": "10.3945/an.113.005389",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0063"
+  },
+  {
+   "DOI": "10.1093/ajcn/78.3.647S",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0064"
+  },
+  {
+   "author": "Sales R. L.",
+   "first-page": "216",
+   "issue": "3",
+   "journal-title": "Journal of Applied Research",
+   "key": "CIT0065",
+   "volume": "8",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.cccn.2004.12.009",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0066"
+  },
+  {
+   "DOI": "10.2174/1381612822666161010121356",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0067"
+  },
+  {
+   "DOI": "10.3109/14756366.2015.1103236",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0068"
+  },
+  {
+   "DOI": "10.1093/ajcn/72.1.82",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0069"
+  },
+  {
+   "DOI": "10.1146/annurev.nutr.24.012003.132446",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0070"
+  },
+  {
+   "DOI": "10.1080/07315724.1992.12098233",
+   "author": "Spiller G. A.",
+   "doi-asserted-by": "crossref",
+   "first-page": "126",
+   "issue": "2",
+   "journal-title": "Journal of the American College of Nutrition",
+   "key": "CIT0071",
+   "volume": "11",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1038/sj.ijo.0803735",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0072"
+  },
+  {
+   "DOI": "10.1021/jf400691q",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0073"
+  },
+  {
+   "DOI": "10.1021/jf0606959",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0074"
+  },
+  {
+   "author": "Vigne J",
+   "first-page": "351",
+   "issue": "4",
+   "journal-title": "Annals Hygiene Lang Franc",
+   "key": "CIT0075",
+   "volume": "10",
+   "year": "1974"
+  },
+  {
+   "DOI": "10.1515/jcim-2017-0097",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0076"
+  },
+  {
+   "DOI": "10.1021/jf048804b",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0077"
+  },
+  {
+   "DOI": "10.1016/j.amjmed.2014.10.014",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0078"
+  },
+  {
+   "DOI": "10.1186/1475-2891-13-10",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0079"
+  },
+  {
+   "author": "Xu G.",
+   "first-page": "249",
+   "issue": "4",
+   "journal-title": "Acta Nutrimenta Sinica",
+   "key": "CIT0080",
+   "volume": "26",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1093/jn/127.3.509S",
+   "doi-asserted-by": "publisher",
+   "key": "CIT0081"
+  }
+ ],
+ "reference-count": 79,
+ "references-count": 79,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.tandfonline.com/doi/full/10.1080/10408398.2018.1558395"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Critical Reviews in Food Science and Nutrition"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Peanut and cardiovascular disease risk factors: A systematic review and meta-analysis"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1080/tandf_crossmark_01",
+ "volume": "60"
+}

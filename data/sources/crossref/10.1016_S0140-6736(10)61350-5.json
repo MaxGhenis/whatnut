@@ -1,0 +1,802 @@
+{
+ "DOI": "10.1016/s0140-6736(10)61350-5",
+ "ISSN": [
+  "0140-6736"
+ ],
+ "URL": "https://doi.org/10.1016/s0140-6736(10)61350-5",
+ "alternative-id": [
+  "S0140673610613505"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170\u2008000 participants in 26 randomised trials"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "The Lancet"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1016/S0140-6736(10)61350-5"
+  },
+  {
+   "label": "CrossRef DOI link to the associated document",
+   "name": "associatedlink",
+   "value": "https://doi.org/10.1016/S0140-6736(10)61545-0"
+  },
+  {
+   "label": "CrossRef DOI link to the associated document",
+   "name": "associatedlink",
+   "value": "https://doi.org/10.1016/S0140-6736(10)60310-8"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "Copyright \u00a9 2010 Elsevier Ltd."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Cholesterol Treatment Trialists' (CTT) Collaboration",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  }
+ ],
+ "container-title": [
+  "The Lancet"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "clinicalkey.fr",
+   "clinicalkey.jp",
+   "clinicalkey.com.au",
+   "clinicalkey.es",
+   "clinicalkey.com",
+   "em-consulte.com",
+   "thelancet.com",
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2010,
+    11,
+    9
+   ]
+  ],
+  "date-time": "2010-11-09T04:38:56Z",
+  "timestamp": 1289277536000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    4,
+    5
+   ]
+  ],
+  "date-time": "2024-04-05T15:22:58Z",
+  "timestamp": 1712330578000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    23
+   ]
+  ],
+  "date-time": "2026-09-23T00:13:16Z",
+  "timestamp": 1790122396657,
+  "version": "4.0.1"
+ },
+ "is-referenced-by-count": 5699,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0140-6736"
+  }
+ ],
+ "issue": "9753",
+ "issued": {
+  "date-parts": [
+   [
+    2010,
+    11
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "9753",
+  "published-print": {
+   "date-parts": [
+    [
+     2010,
+     11
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2010-11-01T00:00:00Z",
+    "timestamp": 1288569600000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-017",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2010-11-01T00:00:00Z",
+    "timestamp": 1288569600000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-037",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2010-11-01T00:00:00Z",
+    "timestamp": 1288569600000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-012",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2010-11-01T00:00:00Z",
+    "timestamp": 1288569600000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-029",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2010-11-01T00:00:00Z",
+    "timestamp": 1288569600000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-004",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2010-11-01T00:00:00Z",
+    "timestamp": 1288569600000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0140673610613505?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0140673610613505?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "1670-1681",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2010,
+    11
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2010,
+    11
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1016/S0140-6736(05)67394-1",
+   "article-title": "Efficacy and safety of cholesterol-lowering treatment: prospective meta-analysis of data from 90\u2008056 participants in 14 randomised trials of statins",
+   "doi-asserted-by": "crossref",
+   "first-page": "1267",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib1",
+   "volume": "366",
+   "year": "2005"
+  },
+  {
+   "article-title": "Randomised trial of cholesterol lowering in 4444 patients with coronary heart disease: the Scandinavian Simvastatin Survival Study (4S)",
+   "first-page": "1383",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib2",
+   "volume": "344",
+   "year": "1994"
+  },
+  {
+   "DOI": "10.1056/NEJM199511163332001",
+   "article-title": "Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia",
+   "author": "Shepherd",
+   "doi-asserted-by": "crossref",
+   "first-page": "1301",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib3",
+   "volume": "333",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.1056/NEJM199610033351401",
+   "article-title": "The effect of pravastatin on coronary events after myocardial infarction in patients with average cholesterol levels. Cholesterol and Recurrent Events Trial investigators",
+   "author": "Sacks",
+   "doi-asserted-by": "crossref",
+   "first-page": "1001",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib4",
+   "volume": "335",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1056/NEJM199701163360301",
+   "article-title": "The effect of aggressive lowering of low-density lipoprotein cholesterol levels and low-dose anticoagulation on obstructive changes in saphenous-vein coronary-artery bypass grafts",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib5",
+   "volume": "336",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1001/jama.279.20.1615",
+   "article-title": "Primary prevention of acute coronary events with lovastatin in men and women with average cholesterol levels: results of AFCAPS/TexCAPS",
+   "author": "Downs",
+   "doi-asserted-by": "crossref",
+   "first-page": "1615",
+   "journal-title": "JAMA",
+   "key": "10.1016/S0140-6736(10)61350-5_bib6",
+   "volume": "279",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1056/NEJM199811053391902",
+   "article-title": "Prevention of cardiovascular events and death with pravastatin in patients with coronary heart disease and a broad range of initial cholesterol levels",
+   "doi-asserted-by": "crossref",
+   "first-page": "1349",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib7",
+   "volume": "339",
+   "year": "1998"
+  },
+  {
+   "article-title": "Results of the low dose (20 mg) pravastatin GISSI Prevenzione trial in 4271 patients with recent myocardial infarction: do stopped trials contribute to overall knowledge?",
+   "first-page": "810",
+   "journal-title": "Ital Heart J",
+   "key": "10.1016/S0140-6736(10)61350-5_bib8",
+   "volume": "1",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1001/jama.287.24.3215",
+   "article-title": "Fluvastatin for prevention of cardiac events following successful first percutaneous coronary intervention",
+   "author": "Serruys",
+   "doi-asserted-by": "crossref",
+   "first-page": "3215",
+   "journal-title": "JAMA",
+   "key": "10.1016/S0140-6736(10)61350-5_bib9",
+   "volume": "287",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(02)09327-3",
+   "article-title": "MRC/BHF Heart Protection Study of cholesterol lowering with simvastatin in 20\u2008536 high-risk individuals: a randomised placebo-controlled trial",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib10",
+   "volume": "360",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(02)11600-X",
+   "article-title": "Pravastatin in elderly individuals at risk of vascular disease (PROSPER): a randomised controlled trial",
+   "author": "Shepherd",
+   "doi-asserted-by": "crossref",
+   "first-page": "1623",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib11",
+   "volume": "360",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1001/jama.288.23.2998",
+   "article-title": "Major outcomes in moderately hypercholesterolemic, hypertensive patients randomized to pravastatin vs usual care",
+   "doi-asserted-by": "crossref",
+   "first-page": "2998",
+   "journal-title": "JAMA",
+   "key": "10.1016/S0140-6736(10)61350-5_bib12",
+   "volume": "288",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(03)12948-0",
+   "author": "Sever",
+   "doi-asserted-by": "crossref",
+   "first-page": "1149",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib13",
+   "volume": "361",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(03)13638-0",
+   "article-title": "Effect of fluvastatin on cardiac outcomes in renal transplant recipients: a multicentre, randomised, placebo-controlled trial",
+   "author": "Holdaas",
+   "doi-asserted-by": "crossref",
+   "first-page": "2024",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib14",
+   "volume": "361",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(04)16895-5",
+   "article-title": "Primary prevention of cardiovascular disease with atorvastatin in type 2 diabetes in the Collaborative Atorvastatin Diabetes Study (CARDS): multicentre randomised placebo-controlled trial",
+   "author": "Colhoun",
+   "doi-asserted-by": "crossref",
+   "first-page": "685",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib15",
+   "volume": "364",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.2337/diacare.16.2.434",
+   "article-title": "Diabetes, other risk factors, and 12-yr cardiovascular mortality for men screened in the Multiple Risk Factor Intervention Trial",
+   "author": "Stamler",
+   "doi-asserted-by": "crossref",
+   "first-page": "434",
+   "journal-title": "Diabetes Care",
+   "key": "10.1016/S0140-6736(10)61350-5_bib16",
+   "volume": "16",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1136/bmj.303.6797.276",
+   "article-title": "Serum cholesterol concentration and coronary heart disease in population with low cholesterol concentrations",
+   "author": "Chen",
+   "doi-asserted-by": "crossref",
+   "first-page": "276",
+   "journal-title": "BMJ",
+   "key": "10.1016/S0140-6736(10)61350-5_bib17",
+   "volume": "303",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(07)61778-4",
+   "article-title": "Blood cholesterol and vascular mortality by age, sex, and blood pressure: a meta-analysis of individual data from 61 prospective studies with 55\u2008000 vascular deaths",
+   "doi-asserted-by": "crossref",
+   "first-page": "1829",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib18",
+   "volume": "370",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/S0002-9149(96)00742-4",
+   "article-title": "The efficacy and six-week tolerability of simvastatin 80 and 160 mg/day",
+   "author": "Davidson",
+   "doi-asserted-by": "crossref",
+   "first-page": "38",
+   "journal-title": "Am J Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib19",
+   "volume": "79",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.2165/00002018-199614010-00003",
+   "article-title": "Benefits and risks of HMG-CoA reductase inhibitors in the prevention of coronary heart disease: a reappraisal",
+   "author": "Pedersen",
+   "doi-asserted-by": "crossref",
+   "first-page": "11",
+   "journal-title": "Drug Saf",
+   "key": "10.1016/S0140-6736(10)61350-5_bib20",
+   "volume": "14",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1001/jama.292.11.1307",
+   "article-title": "Early intensive vs a delayed conservative simvastatin strategy in patients with acute coronary syndromes: phase Z of the A to Z trial",
+   "author": "de Lemos",
+   "doi-asserted-by": "crossref",
+   "first-page": "1307",
+   "journal-title": "JAMA",
+   "key": "10.1016/S0140-6736(10)61350-5_bib23",
+   "volume": "292",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1056/NEJMoa040583",
+   "article-title": "Intensive versus moderate lipid lowering with statins after acute coronary syndromes",
+   "author": "Cannon",
+   "doi-asserted-by": "crossref",
+   "first-page": "1495",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib24",
+   "volume": "350",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1001/jama.294.19.2437",
+   "article-title": "High-dose atorvastatin vs usual-dose simvastatin for secondary prevention after myocardial infarction: the IDEAL study: a randomized controlled trial",
+   "author": "Pedersen",
+   "doi-asserted-by": "crossref",
+   "first-page": "2437",
+   "journal-title": "JAMA",
+   "key": "10.1016/S0140-6736(10)61350-5_bib25",
+   "volume": "294",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1056/NEJMoa050461",
+   "article-title": "Intensive lipid lowering with atorvastatin in patients with stable coronary disease",
+   "author": "LaRosa",
+   "doi-asserted-by": "crossref",
+   "first-page": "1425",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib26",
+   "volume": "352",
+   "year": "2005"
+  },
+  {
+   "article-title": "Intensive lowering of LDL cholesterol with 80 mg versus 20 mg simvastatin daily in 12\u2008064 survivors of myocardial infarction: a double-blind randomised trial",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib27",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2006.04.070",
+   "article-title": "Meta-analysis of cardiovascular outcomes trials comparing intensive versus moderate statin therapy",
+   "author": "Cannon",
+   "doi-asserted-by": "crossref",
+   "first-page": "438",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib28",
+   "volume": "48",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1056/NEJMoa043545",
+   "article-title": "Atorvastatin in patients with type 2 diabetes mellitus undergoing hemodialysis",
+   "author": "Wanner",
+   "doi-asserted-by": "crossref",
+   "first-page": "238",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib29",
+   "volume": "353",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1056/NEJMoa0810177",
+   "article-title": "Rosuvastatin and cardiovascular events in patients undergoing hemodialysis",
+   "author": "Fellstrom",
+   "doi-asserted-by": "crossref",
+   "first-page": "1395",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib30",
+   "volume": "360",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(08)61240-4",
+   "article-title": "Effect of rosuvastatin in patients with chronic heart failure (the GISSI-HF trial): a randomised, double-blind, placebo-controlled trial",
+   "doi-asserted-by": "crossref",
+   "first-page": "1231",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib31",
+   "volume": "372",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1056/NEJMoa0706201",
+   "article-title": "Rosuvastatin in older patients with systolic heart failure",
+   "author": "Kjekshus",
+   "doi-asserted-by": "crossref",
+   "first-page": "2248",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib32",
+   "volume": "357",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1056/NEJMoa061894",
+   "article-title": "High-dose atorvastatin after stroke or transient ischemic attack",
+   "doi-asserted-by": "crossref",
+   "first-page": "549",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib33",
+   "volume": "355",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2007.02.073",
+   "article-title": "Effect of the magnitude of lipid-lowering on risk of elevated liver enzymes, rhabdomyolysis, and cancer: insights from large randomized statin trials",
+   "author": "Alsheikh-Ali",
+   "doi-asserted-by": "crossref",
+   "first-page": "409",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib34",
+   "volume": "50",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2008.08.001",
+   "article-title": "Low LDL-C levels and cancer: reassuring but still not definitive",
+   "author": "Ben-Yehuda",
+   "doi-asserted-by": "crossref",
+   "first-page": "1150",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib35",
+   "volume": "52",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/S0002-9149(99)80744-9",
+   "article-title": "Protocol for a prospective collaborative overview of all current and planned randomized trials of cholesterol treatment regimens. Cholesterol Treatment Trialists' (CTT) Collaboration",
+   "doi-asserted-by": "crossref",
+   "first-page": "1130",
+   "journal-title": "Am J Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib36",
+   "volume": "75",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(06)69472-5",
+   "article-title": "Primary prevention of cardiovascular disease with pravastatin in Japan (MEGA Study): a prospective randomised controlled trial",
+   "author": "Nakamura",
+   "doi-asserted-by": "crossref",
+   "first-page": "1155",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib37",
+   "volume": "368",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1056/NEJMoa0807646",
+   "article-title": "Rosuvastatin to prevent vascular events in men and women with elevated C-reactive protein",
+   "author": "Ridker",
+   "doi-asserted-by": "crossref",
+   "first-page": "2195",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib38",
+   "volume": "359",
+   "year": "2008"
+  },
+  {
+   "article-title": "Clinical outcomes in managed-care patients with coronary heart disease treated aggressively in lipid-lowering disease management clinics: the alliance study",
+   "author": "Koren",
+   "first-page": "1772",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib39",
+   "volume": "44",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.2337/dc05-2415",
+   "article-title": "Efficacy and safety of atorvastatin in the prevention of cardiovascular end points in subjects with type 2 diabetes: the Atorvastatin Study for Prevention of Coronary Heart Disease Endpoints in non-insulin-dependent diabetes mellitus (ASPEN)",
+   "author": "Knopp",
+   "doi-asserted-by": "crossref",
+   "first-page": "1478",
+   "journal-title": "Diabetes Care",
+   "key": "10.1016/S0140-6736(10)61350-5_bib40",
+   "volume": "29",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1185/030079902125000787",
+   "article-title": "Treatment with atorvastatin to the National Cholesterol Education Program goal versus \u2018usual\u2019 care in secondary coronary heart disease prevention. The GREek Atorvastatin and Coronary-heart-disease Evaluation (GREACE) study",
+   "author": "Athyros",
+   "doi-asserted-by": "crossref",
+   "first-page": "220",
+   "journal-title": "Curr Med Res Opin",
+   "key": "10.1016/S0140-6736(10)61350-5_bib41",
+   "volume": "18",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(10)60713-1",
+   "article-title": "HDL cholesterol and residual risk of first cardiovascular events after treatment with potent statin therapy: an analysis from the JUPITER trial",
+   "author": "Ridker",
+   "doi-asserted-by": "crossref",
+   "first-page": "333",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib42",
+   "volume": "376",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1056/NEJM198904063201405",
+   "article-title": "Serum cholesterol levels and six-year mortality from stroke in 350,977 men screened for the Multiple Risk Factor Intervention Trial",
+   "author": "Iso",
+   "doi-asserted-by": "crossref",
+   "first-page": "904",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/S0140-6736(10)61350-5_bib43",
+   "volume": "320",
+   "year": "1989"
+  },
+  {
+   "DOI": "10.1212/01.wnl.0000258538.06950.a1",
+   "article-title": "Low LDL cholesterol, statins, and brain hemorrhage: should we worry?",
+   "author": "Goldstein",
+   "doi-asserted-by": "crossref",
+   "first-page": "719",
+   "journal-title": "Neurology",
+   "key": "10.1016/S0140-6736(10)61350-5_bib44",
+   "volume": "68",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2004.07.001",
+   "article-title": "Implications of recent trials for the National Cholesterol Education Program Adult Treatment Panel III Guidelines",
+   "author": "Grundy",
+   "doi-asserted-by": "crossref",
+   "first-page": "720",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib45",
+   "volume": "44",
+   "year": "2004"
+  },
+  {
+   "key": "10.1016/S0140-6736(10)61350-5_bib46",
+   "series-title": "Lipid modification: cardiovascular risk assessment and the modification of blood lipids for the primary and secondary prevention of cardiovascular disease",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(07)60716-8",
+   "article-title": "The safety of statins in clinical practice",
+   "author": "Armitage",
+   "doi-asserted-by": "crossref",
+   "first-page": "1781",
+   "journal-title": "Lancet",
+   "key": "10.1016/S0140-6736(10)61350-5_bib47",
+   "volume": "370",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2007.01.067",
+   "article-title": "Safety of aggressive lipid management",
+   "author": "Davidson",
+   "doi-asserted-by": "crossref",
+   "first-page": "1753",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/S0140-6736(10)61350-5_bib48",
+   "volume": "49",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.3310/hta13340",
+   "article-title": "Early high-dose lipid-lowering therapy to avoid cardiac events: a systematic review and economic evaluation",
+   "author": "Ara",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Health Technol Assess",
+   "key": "10.1016/S0140-6736(10)61350-5_bib49",
+   "volume": "13",
+   "year": "2009"
+  }
+ ],
+ "reference-count": 47,
+ "references-count": 47,
+ "relation": {
+  "has-review": [
+   {
+    "asserted-by": "object",
+    "id": "10.3410/f.7710960.8032057",
+    "id-type": "doi"
+   },
+   {
+    "asserted-by": "object",
+    "id": "10.3410/f.7710960.793490978",
+    "id-type": "doi"
+   }
+  ]
+ },
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0140673610613505"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "The Lancet"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170\u2008000 participants in 26 randomised trials"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "376"
+}

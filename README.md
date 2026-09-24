@@ -1,109 +1,42 @@
-# What Nut?
+# What nut?
 
-Skeptical evidence-synthesis model of the mortality benefit from nut consumption.
+How much life does eating nuts buy a US adult? The model answers three questions, by age and sex:
 
-## Overview
+1. How many days of remaining life expectancy come from eating an extra Δ grams of nuts a day, for good.
+2. How much the next grams add, given what the person already eats.
+3. Whether the choice of nut changes the answer, and what each nut costs per life-year.
 
-This package estimates the plausible lifetime health benefit of different nuts using a food-specific version of the newer Optiqal framing: explicit bias/confounding shrinkage, pathway-level effects, lifecycle integration, and transparent uncertainty propagation.
+Every estimate is bracketed: a randomized floor (LDL lowering in nut trials times the statin-trial slope), the cohort dose-response at face value, and the cohort curve calibrated by the ratio of trial to cohort estimates in paired diet-intake studies (Schwingshackl et al. 2021), which puts it slightly above face value. Read the paper at [maxghenis.com/whatnut](https://www.maxghenis.com/whatnut/). The design and model spec are in [DESIGN.md](DESIGN.md).
 
-## Key features
-
-- **Evidence-traced claims**: Every health claim links to primary sources (meta-analyses, RCTs, cohort studies)
-- **Skeptical by construction**: Strong shrinkage for residual confounding and weak non-CVD pathways
-- **Monte Carlo uncertainty propagation**: 10,000 samples with explicit `P(benefit)` and `P(harm)`
-- **Hierarchical nutrient model**: Effects derived from nutrient composition, not just nut-level associations
-- **Tiered publication-bias shrinkage**: Nut-specific residuals are pulled toward the null by evidence tier (strong/moderate/limited)
-- **HR-centered aggregation**: Jensen-corrected so E[RR] matches the exponent of the mean log-RR
-- **Separate discounting**: 0% health discounting, 3% cost discounting
-
-## Installation
+## Regenerate
 
 ```bash
-# Install from GitHub (not yet on PyPI)
-pip install git+https://github.com/MaxGhenis/whatnut.git
-
-# Or clone and install locally
-git clone https://github.com/MaxGhenis/whatnut.git
-cd whatnut
-pip install -e .
+uv pip install -e ".[dev]"
+python -m whatnut.pipeline        # results/results.json and paper/figures/*.png
+python scripts/build_bib.py       # paper/references.bib from data/evidence.yaml
+python paper/render_paper.py      # fill paper/index.qmd, render with Quarto, stage public/whatnut/web/
+python -m http.server -d public   # preview at http://localhost:8000/whatnut/
 ```
 
-**Requirements**: Python >=3.10
+Quarto 1.9.x must be on PATH. The render runs no code: `render_paper.py` builds a PDF too when `xelatex` is installed.
 
-## Usage
+## The manuscript is generated
 
-### Quick start: use paper results (recommended)
-```python
-from whatnut.results import r
+`paper/index.qmd` is written by `paper/fill_paper.py` from the template `paper/index.qmd.in` and `results/results.json`. Never edit it by hand. Edit the prose in the template, where every number is a `{{placeholder}}` (or a `{{table:name}}` line) that `fill_paper.py` formats from the results; it fails on any unfilled placeholder or unused value, and `paper/values.json` records each printed number beside its unrounded source. Bump `paper/VERSION` (`rN-YYYYMMDD`) for each revision; the render stamps it into the wrapper page at `public/whatnut/index.html`.
 
-# Get exact values from the paper
-print(f"Walnuts: {r.walnut.life_years_fmt} life years")   # Output: 0.15
-print(f"Walnuts: {r.walnut.qaly} QALYs")                  # Output: 0.10
-print(f"Peanuts: {r.peanut.icer_fmt}/QALY")               # Output: $103,938/QALY
-print(f"Life years range: {r.life_years_range}")          # Output: 0.03-0.15
-```
+## Evidence
 
-### Run analysis (advanced)
-```python
-from whatnut.pipeline import run_analysis
+Each effect size the model uses is a row in `data/evidence.yaml` with its source, locator and verification (schema in DESIGN.md); model code holds no effect-size literals. Crossref records for every DOI are cached in `data/sources/crossref/`, and the other inputs (life tables, cause-of-death shares, composition, prices, dose-response curves) live in the other `data/` folders with a `MANIFEST.json` of URLs and hashes.
 
-results = run_analysis(n_samples=10_000, seed=42)
-for nid, na in results.nuts.items():
-    print(f"{nid}: {na.life_years_mean:.2f} life years, QALY={na.qaly_mean:.2f}")
-```
-
-**Note on metrics**:
-- **Life years** (0.03-0.15) are the primary metric — the model's expected increase in lifespan under skeptical assumptions
-- **QALYs** (0.02-0.10) weight those life years by age-specific quality of life with 0% health discounting
-- **ICERs** discount costs at 3% annually using the same survival curve as benefits
-
-## Key finding
-
-> **Under skeptical assumptions, daily nut consumption yields about 0.03-0.15 additional life years** (0.4-1.8 months). Walnuts rank highest due to ALA omega-3 content, but the absolute gains are modest and uncertainty remains material for several nut types.
-
-## Documentation
-
-Full methodology, figures, and an interactive tour of the model are at
-[maxghenis.com/whatnut](https://maxghenis.com/whatnut). The paper is built
-with [Quarto](https://quarto.org) from `docs/index.qmd` and
-`docs/appendix.qmd`.
-
-## Reproducibility
-
-**Requirements**: Python >=3.10
-
-### Run tests
-```bash
-pip install -e ".[dev]"
-python -m pytest tests/ -v
-```
-
-### Generate results
-All paper values are generated from code and stored in `src/whatnut/data/results.json`:
-```bash
-python -m whatnut.pipeline --generate
-```
-
-**Runtime**: ~30 seconds (pure numpy, no external inference library)
-**Reproducibility**: Same seed (42) produces identical results across platforms.
-
-### Build the paper
-Requires [Quarto](https://quarto.org/docs/get-started/) installed and the
-`[docs]` extras for the Jupyter kernel:
+## Checks
 
 ```bash
-pip install -e ".[docs]"
-quarto render docs/                 # HTML + figures into docs/_build/
-quarto render docs/ --to pdf        # PDF (needs LaTeX: MacTeX, TeX Live, etc.)
-quarto preview docs/                # live reload during edits
+python -m pytest                              # model, reproduction and paper tests
+python paper/fill_paper.py --check            # committed manuscript matches template + results
+python scripts/build_bib.py --check           # bibliography matches the evidence
+python scripts/check_citations.py --offline   # DOIs, titles, first authors vs Crossref (drop --offline to query live)
 ```
 
-### Data sources
-All data are from public sources:
-- Nutrient data: [USDA FoodData Central](https://fdc.nal.usda.gov/) (2024) - see `src/whatnut/data/nuts.yaml` for FDC IDs
-- Mortality data: [CDC NVSS Life Tables](https://www.cdc.gov/nchs/products/life_tables.htm) (2021)
-- Meta-analysis estimates: Published literature (see `docs/references.bib`)
+CI runs all four; Vercel renders the committed `paper/index.qmd` (no Python) and serves the wrapper at `/whatnut/` with the manuscript at `/whatnut/web/`.
 
-## License
-
-MIT
+MIT license.

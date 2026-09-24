@@ -1,0 +1,3261 @@
+{
+ "DOI": "10.1161/jaha.115.002543",
+ "ISSN": [
+  "2047-9980"
+ ],
+ "URL": "https://doi.org/10.1161/jaha.115.002543",
+ "abstract": "<jats:sec xml:lang=\"en\">\n            <jats:title>Background</jats:title>\n            <jats:p xml:lang=\"en\">\n              Epidemiological evidence suggests a cardioprotective role of \u03b1\u2010linolenic acid (\n              <jats:styled-content style=\"fixed-case\">ALA</jats:styled-content>\n              ), a plant\u2010derived \u03c9\u20103 fatty acid. It is unclear whether\n              <jats:styled-content style=\"fixed-case\">ALA</jats:styled-content>\n              is beneficial in a background of high marine \u03c9\u20103 fatty acids (long\u2010chain n\u20103 polyunsaturated fatty acids) intake. In persons at high cardiovascular risk from Spain, a country in which fish consumption is customarily high, we investigated whether meeting the International Society for the Study of Fatty Acids and Lipids recommendation for dietary\n              <jats:styled-content style=\"fixed-case\">ALA</jats:styled-content>\n              (0.7% of total energy) at baseline was related to all\u2010cause and cardiovascular disease mortality. We also examined the effect of meeting the society's recommendation for long\u2010chain n\u20103 polyunsaturated fatty acids (\u2265500\u00a0mg/day).\n            </jats:p>\n          </jats:sec>\n          <jats:sec xml:lang=\"en\">\n            <jats:title>Methods and Results</jats:title>\n            <jats:p xml:lang=\"en\">\n              We longitudinally evaluated 7202 participants in the\n              <jats:styled-content style=\"fixed-case\">PRE</jats:styled-content>\n              venci\u00f3n con\n              <jats:styled-content style=\"fixed-case\">DI</jats:styled-content>\n              eta\n              <jats:styled-content style=\"fixed-case\">MED</jats:styled-content>\n              iterr\u00e1nea (\n              <jats:styled-content style=\"fixed-case\">PREDIMED</jats:styled-content>\n              ) trial. Multivariable\u2010adjusted Cox regression models were fitted to estimate hazard ratios.\n              <jats:styled-content style=\"fixed-case\">ALA</jats:styled-content>\n              intake correlated to walnut consumption (\n              <jats:italic>r</jats:italic>\n              =0.94). During a 5.9\u2010y follow\u2010up, 431 deaths occurred (104 cardiovascular disease, 55 coronary heart disease, 32 sudden cardiac death, 25 stroke). The hazard ratios for meeting\n              <jats:styled-content style=\"fixed-case\">ALA</jats:styled-content>\n              recommendation (n=1615, 22.4%) were 0.72 (95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.56\u20130.92) for all\u2010cause mortality and 0.95 (95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.58\u20131.57) for fatal cardiovascular disease. The hazard ratios for meeting the recommendation for long\u2010chain n\u20103 polyunsaturated fatty acids (n=5452, 75.7%) were 0.84 (95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.67\u20131.05) for all\u2010cause mortality, 0.61 (95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.39\u20130.96) for fatal cardiovascular disease, 0.54 (95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.29\u20130.99) for fatal coronary heart disease, and 0.49 (95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.22\u20131.01) for sudden cardiac death. The highest reduction in all\u2010cause mortality occurred in participants meeting both recommendations (hazard ratio 0.63 [95%\n              <jats:styled-content style=\"fixed-case\">CI</jats:styled-content>\n              0.45\u20130.87]).\n            </jats:p>\n          </jats:sec>\n          <jats:sec xml:lang=\"en\">\n            <jats:title>Conclusions</jats:title>\n            <jats:p xml:lang=\"en\">\n              In participants without prior cardiovascular disease and high fish consumption, dietary\n              <jats:styled-content style=\"fixed-case\">ALA</jats:styled-content>\n              , supplied mainly by walnuts and olive oil, relates inversely to all\u2010cause mortality, whereas protection from cardiac mortality is limited to fish\u2010derived long\u2010chain n\u20103 polyunsaturated fatty acids.\n            </jats:p>\n          </jats:sec>\n          <jats:sec xml:lang=\"en\">\n            <jats:title>Clinical Trial Registration</jats:title>\n            <jats:p xml:lang=\"en\">\n              <jats:styled-content style=\"fixed-case\">URL</jats:styled-content>\n              :\n              <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"uri\" xlink:href=\"http://www.Controlled-trials.com/\">http://www.Controlled-trials.com/</jats:ext-link>\n              . Unique identifier:\n              <jats:styled-content style=\"fixed-case\">ISRCTN</jats:styled-content>\n              35739639.\n            </jats:p>\n          </jats:sec>",
+ "alternative-id": [
+  "10.1161/JAHA.115.002543"
+ ],
+ "article-number": "e002543",
+ "assertion": [
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Received",
+   "name": "received",
+   "order": 0,
+   "value": "2015-08-10"
+  },
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Accepted",
+   "name": "accepted",
+   "order": 1,
+   "value": "2015-11-10"
+  },
+  {
+   "group": {
+    "label": "Publication History",
+    "name": "publication_history"
+   },
+   "label": "Published",
+   "name": "published",
+   "order": 2,
+   "value": "2016-01-26"
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "Ciber Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (CIBERobn), Instituto de Salud Carlos III (ISCIII), Madrid, Spain"
+    },
+    {
+     "name": "Lipid Clinic, Department of Endocrinology and Nutrition, Institut d'Investigacions Biom\u00e8diques August Pi i Sunyer, Hospital Clinic, Barcelona, Spain"
+    }
+   ],
+   "family": "Sala\u2010Vila",
+   "given": "Aleix",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Human Nutrition Unit, Biochemistry Biotechnology Department, Faculty of Medicine and Health Sciences, Universitat Rovira i Virgili, and Hospital Universitari de Sant Joan de Reus, IISPV, Reus, Spain"
+    }
+   ],
+   "family": "Guasch\u2010Ferr\u00e9",
+   "given": "Marta",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Departments of Nutrition and Epidemiology, Harvard School of Public Health, Boston, MA"
+    }
+   ],
+   "family": "Hu",
+   "given": "Frank B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Preventive Medicine and Public Health, University of Navarra, Pamplona, Spain"
+    }
+   ],
+   "family": "S\u00e1nchez\u2010Tainta",
+   "given": "Ana",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Human Nutrition Unit, Biochemistry Biotechnology Department, Faculty of Medicine and Health Sciences, Universitat Rovira i Virgili, and Hospital Universitari de Sant Joan de Reus, IISPV, Reus, Spain"
+    }
+   ],
+   "family": "Bull\u00f3",
+   "given": "M\u00f2nica",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Lipid Clinic, Department of Endocrinology and Nutrition, Institut d'Investigacions Biom\u00e8diques August Pi i Sunyer, Hospital Clinic, Barcelona, Spain"
+    }
+   ],
+   "family": "Serra\u2010Mir",
+   "given": "Merc\u00e8",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition and Food Science, School of Pharmacy, XaRTA, INSA, University of Barcelona, Spain"
+    }
+   ],
+   "family": "L\u00f3pez\u2010Sabater",
+   "given": "Carmen",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Preventive Medicine, University of Valencia, Spain"
+    }
+   ],
+   "family": "Sorl\u00ed",
+   "given": "Jose V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Cardiology, University Hospital of Alava, Vitoria, Spain"
+    }
+   ],
+   "family": "Ar\u00f3s",
+   "given": "Fernando",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Institute of Health Sciences, Instituto de Investigaci\u00f3n Sanitaria de Palma, Palma de Mallorca, Spain"
+    }
+   ],
+   "family": "Fiol",
+   "given": "Miquel",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Cardiovascular Risk and Nutrition Research Group, Institut Hospital del Mar d'Investigacions M\u00e8diques (IMIM), Barcelona Biomedical Research Park, Barcelona, Spain"
+    }
+   ],
+   "family": "Mu\u00f1oz",
+   "given": "Miguel A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Research Institute of Biomedical and Health Sciences, University of Las Palmas de Gran Canaria, Las Palmas, Spain"
+    }
+   ],
+   "family": "Serra\u2010Majem",
+   "given": "Luis",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition and Food Sciences, Physiology and Toxicology, University of Navarra, Pamplona, Spain"
+    }
+   ],
+   "family": "Mart\u00ednez",
+   "given": "J. Alfredo",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Preventive Medicine, University of Valencia, Spain"
+    }
+   ],
+   "family": "Corella",
+   "given": "Dolores",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Cardiovascular Risk and Nutrition Research Group, Institut Hospital del Mar d'Investigacions M\u00e8diques (IMIM), Barcelona Biomedical Research Park, Barcelona, Spain"
+    }
+   ],
+   "family": "Fit\u00f3",
+   "given": "Montserrat",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Human Nutrition Unit, Biochemistry Biotechnology Department, Faculty of Medicine and Health Sciences, Universitat Rovira i Virgili, and Hospital Universitari de Sant Joan de Reus, IISPV, Reus, Spain"
+    }
+   ],
+   "family": "Salas\u2010Salvad\u00f3",
+   "given": "Jordi",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Preventive Medicine and Public Health, University of Navarra, Pamplona, Spain"
+    }
+   ],
+   "family": "Mart\u00ednez\u2010Gonz\u00e1lez",
+   "given": "Miguel A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Internal Medicine, Institut d'Investigacions Biom\u00e8diques August Pi i Sunyer, Hospital Clinic, Barcelona, Spain"
+    }
+   ],
+   "family": "Estruch",
+   "given": "Ram\u00f3n",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Lipid Clinic, Department of Endocrinology and Nutrition, Institut d'Investigacions Biom\u00e8diques August Pi i Sunyer, Hospital Clinic, Barcelona, Spain"
+    }
+   ],
+   "family": "Ros",
+   "given": "Emilio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "name": "the PREDIMED Investigators",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "P\u00e9rez\u2010Heras",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vi\u00f1as",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Casas",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "de Santamar\u00eda",
+   "given": "L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Romero",
+   "given": "S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sacanella",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Chiva",
+   "given": "G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Valderas",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Arranz",
+   "given": "S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Baena",
+   "given": "J.M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Oller",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Amat",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Duaso",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda",
+   "given": "Y.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Iglesias",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sim\u00f3n",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Quinzavos",
+   "given": "Ll.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Parra",
+   "given": "Ll.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Liroz",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Benavent",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Clos",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pla",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Amor\u00f3s",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bonet",
+   "given": "M.T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Martin",
+   "given": "M.T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "S\u00e1nchez",
+   "given": "M.S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Altirriba",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Manzano",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Alt\u00e9s",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cof\u00e1n",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Valls\u2010Pedret",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Dom\u00e9nech",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gilabert",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bargall\u00f3",
+   "given": "N.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gonz\u00e1lez",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Molina",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "M\u00e1rquez",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Babio",
+   "given": "N.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sorli",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda Rosell\u00f3",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Diaz\u2010L\u00f3pez A",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Martin",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Tort",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Isach",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Costa",
+   "given": "B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cabr\u00e9",
+   "given": "J.J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fern\u00e1ndez\u2010Ballart",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ibarrola\u2010Jurado",
+   "given": "N.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Alegret",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mart\u00ednez",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mill\u00e1n",
+   "given": "S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pi\u00f1ol",
+   "given": "J.L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Basora",
+   "given": "T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Hern\u00e1ndez",
+   "given": "J.M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Toledo",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Buil\u2010Cosiales",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ruiz\u2010Canela",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sanjuli\u00e1n",
+   "given": "B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "D\u00edez\u2010Espino",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Extremera\u2010Urabayen",
+   "given": "V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda\u2010Arellano",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Zazpe",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Basterra\u2010Gortari",
+   "given": "F.J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Go\u00f1i",
+   "given": "E",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Razquin",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Serrano\u2010Mart\u00ednez",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bes\u2010Rastrollo",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gea",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mart\u00ednez\u2010Lapiscina",
+   "given": "E.H.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Nu\u00f1ez\u2010C\u00f3rdoba",
+   "given": "J.M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Arroyo\u2010Azpa",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda\u2010P\u00e9rez",
+   "given": "L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Villanueva\u2010Teller\u00eda",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cort\u00e9s\u2010Ugalde",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sagredo\u2010Arce",
+   "given": "T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda de la Noceda\u2010Montoy",
+   "given": "M\u00aa D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vigata\u2010L\u00f3pez",
+   "given": "M\u00aa D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Arceiz\u2010Campo",
+   "given": "M\u00aa T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Urtasun\u2010Samper",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gueto\u2010Rubio",
+   "given": "M\u00aa V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Churio\u2010Beraza",
+   "given": "B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lamuela\u2010Ravent\u00f3s",
+   "given": "Rosa M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Castellote\u2010Bargallo",
+   "given": "A.I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Medina\u2010Rem\u00f3n",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Tresserra\u2010Rimbau",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Carrasco",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ortega\u2010 Azor\u00edn",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Asensio",
+   "given": "E.M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Osma",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Barrag\u00e1n",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Franc\u00e9s",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Guill\u00e9n",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gonz\u00e1lez",
+   "given": "J.I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Saiz",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Portol\u00e9s",
+   "given": "O.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gim\u00e9nez",
+   "given": "F.J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Coltell",
+   "given": "O.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Guillem\u2010Saiz",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Quiles",
+   "given": "L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pascual",
+   "given": "V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Riera",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pages",
+   "given": "M.A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Godoy",
+   "given": "D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Carratal\u00e1\u2010Calvo",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mart\u00edn\u2010Rillo",
+   "given": "M.J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Llopis\u2010Osorio",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ruiz\u2010 Baixauli",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bertol\u00edn\u2010Mu\u00f1oz",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Salaverr\u00eda",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "del Hierro",
+   "given": "T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Algorta",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Francisco",
+   "given": "S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Alonso",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "San Vicente",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sanz",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Felipe",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Alonso G\u00f3mez",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Loma\u2010Osorio",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda\u2010Valdueza",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mo\u00f1ino",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Proenza",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Prieto",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Frontera",
+   "given": "G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ginard",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fiol",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Jover",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Covas",
+   "given": "M.I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Tello",
+   "given": "S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vila",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Schr\u00f6der",
+   "given": "H.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "De la Torre",
+   "given": "R",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mu\u00f1oz\u2010Aguayo",
+   "given": "D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Elos\u00faa",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Marrugat",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ferrer",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "\u00c1lvarez\u2010P\u00e9rez",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "D\u00edazBen\u00edtez",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bautista\u2010Casta\u00f1o",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Maldonado\u2010D\u00edaz",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "S\u00e1nchez\u2010Villegas",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Castro",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Henr\u00edquez",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ruano",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ortiz",
+   "given": "A. P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sarmiendo de la Fe",
+   "given": "F",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sim\u00f3n\u2010Garc\u00eda",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Falc\u00f3n\u2010Sanabria",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mac\u00edas\u2010Guti\u00e9rrez",
+   "given": "B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Santana\u2010Santana",
+   "given": "A.J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gomez\u2010Gracia",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fern\u00e1ndez\u2010Crehuet",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ben\u00edtez Pont",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bianchi Alba",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "W\u00e4rnberg",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "G\u00f3mez\u2010Huelgas",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mart\u00ednez\u2010Gonz\u00e1lez",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Velasco Garc\u00eda",
+   "given": "V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "de Diego Salas",
+   "given": "J",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Baca Osorio",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gil Zarzosa",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "S\u00e1nchez Luque",
+   "given": "J.J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vargas L\u00f3pez",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ruiz\u2010Gutierrez",
+   "given": "V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Jurado Ruiz",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Montero Romero",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda Garc\u00eda",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lapetra",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Leal",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mart\u00ednez",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Santos",
+   "given": "J.M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ortega\u2010Calvo",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Rom\u00e1n",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Jos\u00e9 Garc\u00eda",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Iglesias",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Corchado",
+   "given": "Y.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mayoral",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lama",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pint\u00f3",
+   "given": "X.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "de la Cruz",
+   "given": "E",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Galera",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Soler",
+   "given": "Y.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Trias",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sarasa",
+   "given": "I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Padres",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Figueras",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Solanich",
+   "given": "X.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Pujol",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Corbella",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cabezas",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vinyoles",
+   "given": "E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Rovira",
+   "given": "M.A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Garc\u00eda",
+   "given": "L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Flores",
+   "given": "G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Verd\u00fa",
+   "given": "J.M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Baby",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ramos",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mengual",
+   "given": "L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Roura",
+   "given": "P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Yuste",
+   "given": "M.C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Guarner",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Rovira",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Santamar\u00eda",
+   "given": "M.I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mata",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "de Juan",
+   "given": "C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Brau",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Marti",
+   "given": "A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mitjavila",
+   "given": "M.T.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Portillo",
+   "given": "M.P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "S\u00e1ez",
+   "given": "G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Tur",
+   "given": "J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Journal of the American Heart Association"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "www.ahajournals.org"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    1,
+    27
+   ]
+  ],
+  "date-time": "2016-01-27T01:28:15Z",
+  "timestamp": 1453858095000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    5,
+    13
+   ]
+  ],
+  "date-time": "2024-05-13T10:49:09Z",
+  "timestamp": 1715597349000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    1,
+    18
+   ]
+  ],
+  "date-time": "2026-01-18T14:45:57Z",
+  "timestamp": 1768747557032,
+  "version": "3.49.0"
+ },
+ "is-referenced-by-count": 60,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "2047-9980"
+  }
+ ],
+ "issue": "1",
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    1,
+    13
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2016,
+     1,
+     13
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://www.ahajournals.org/doi/full/10.1161/JAHA.115.002543",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "276",
+ "original-title": [],
+ "prefix": "10.1161",
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    1,
+    13
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    1,
+    13
+   ]
+  ]
+ },
+ "publisher": "Ovid Technologies (Wolters Kluwer Health)",
+ "reference": [
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.110.968735",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_2_2"
+  },
+  {
+   "DOI": "10.1056/NEJMra1008153",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_3_2"
+  },
+  {
+   "DOI": "10.1161/01.ATV.0000057393.97337.AE",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_4_2"
+  },
+  {
+   "DOI": "10.1016/j.plefa.2006.05.013",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_5_2"
+  },
+  {
+   "DOI": "10.1016/j.plipres.2009.07.002",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_6_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.112.044040",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_7_2"
+  },
+  {
+   "DOI": "10.1079/PHN2002404",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_8_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.2008.26834",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_9_2"
+  },
+  {
+   "DOI": "10.1136/bmj.g2272",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_10_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1200303",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_11_2"
+  },
+  {
+   "DOI": "10.1093/ije/dyq250",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_12_2"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a116966",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_13_2"
+  },
+  {
+   "DOI": "10.1017/S0007114509993837",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_14_2"
+  },
+  {
+   "DOI": "10.3945/jn.110.135566",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_15_2"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2006.09.020",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_16_2"
+  },
+  {
+   "key": "e_1_3_4_17_2",
+   "unstructured": "ISSFAL Intake of PUFA in Healthy Adults http://www.issfal.org/statements/pufa-recommendations/statement-3. Accessed December 30 2015."
+  },
+  {
+   "DOI": "10.1016/S0140-6736(14)61682-2",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_18_2"
+  },
+  {
+   "DOI": "10.1001/jama.296.15.1885",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_19_2"
+  },
+  {
+   "DOI": "10.1001/2012.jama.11374",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_20_2"
+  },
+  {
+   "DOI": "10.1097/MCO.0b013e32835bf380",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_21_2"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2011.06.063",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_22_2"
+  },
+  {
+   "DOI": "10.1007/s00421-014-2876-z",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_23_2"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehu299",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_24_2"
+  },
+  {
+   "DOI": "10.1161/01.cir.0000441139.02102.80",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_25_2"
+  },
+  {
+   "DOI": "10.1157/13126043",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_26_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.071514",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_27_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.071555",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_28_2"
+  },
+  {
+   "DOI": "10.1161/01.CIR.99.6.779",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_29_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1003603",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_30_2"
+  },
+  {
+   "DOI": "10.1161/01.CIR.0000152099.87287.83",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_31_2"
+  },
+  {
+   "DOI": "10.1093/ajcn/69.5.890",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_32_2"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.105.572008",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_33_2"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehq501",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_34_2"
+  },
+  {
+   "DOI": "10.1194/jlr.M005058",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_35_2"
+  },
+  {
+   "DOI": "10.1177/2047487313517576",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_36_2"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.112.001119",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_37_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1307352",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_38_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.114.099515",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_39_2"
+  },
+  {
+   "DOI": "10.1186/1741-7015-11-164",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_40_2"
+  },
+  {
+   "DOI": "10.1186/1741-7015-12-78",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_4_41_2"
+  }
+ ],
+ "reference-count": 40,
+ "references-count": 40,
+ "relation": {
+  "correction": [
+   {
+    "asserted-by": "object",
+    "id": "10.1161/JAHA.116.002077",
+    "id-type": "doi"
+   }
+  ]
+ },
+ "resource": {
+  "primary": {
+   "URL": "https://www.ahajournals.org/doi/10.1161/JAHA.115.002543"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "JAHA"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Dietary \u03b1\u2010Linolenic Acid, Marine \u03c9\u20103 Fatty Acids, and Mortality in a Population With High Fish Consumption: Findings From the PREvenci\u00f3n con DIeta MEDiterr\u00e1nea (PREDIMED) Study"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1161/crossmarkpolicy",
+ "updated-by": [
+  {
+   "DOI": "10.1161/jaha.116.002077",
+   "label": "Correction",
+   "source": "publisher",
+   "type": "correction",
+   "updated": {
+    "date-parts": [
+     [
+      2016,
+      2,
+      12
+     ]
+    ],
+    "date-time": "2016-02-12T00:00:00Z",
+    "timestamp": 1455235200000
+   }
+  }
+ ],
+ "volume": "5"
+}

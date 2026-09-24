@@ -1,0 +1,696 @@
+{
+ "DOI": "10.1136/bmj.n2213",
+ "ISSN": [
+  "1756-1833"
+ ],
+ "URL": "https://doi.org/10.1136/bmj.n2213",
+ "abstract": "<jats:title>Abstract</jats:title><jats:sec><jats:title>Objective</jats:title><jats:p>To examine the associations between dietary intake and tissue biomarkers of alpha linolenic acid (ALA) and risk of mortality from all causes, cardiovascular disease (CVD), and cancer.</jats:p></jats:sec><jats:sec><jats:title>Design</jats:title><jats:p>Systematic review and meta-analysis of prospective cohort studies.</jats:p></jats:sec><jats:sec><jats:title>Data sources</jats:title><jats:p>PubMed, Scopus, ISI Web of Science, and Google Scholar to 30 April 2021.</jats:p></jats:sec><jats:sec><jats:title>Study selection</jats:title><jats:p>Prospective cohort studies that reported the risk estimates for death from all causes, CVD, and cancer.</jats:p></jats:sec><jats:sec><jats:title>Data synthesis</jats:title><jats:p>Summary relative risks and 95% confidence intervals were calculated for the highest versus lowest categories of ALA intake using random effects and fixed effects models. Linear and non-linear dose-response analyses were conducted to assess the dose-response associations between ALA intake and mortality.</jats:p></jats:sec><jats:sec><jats:title>Results</jats:title><jats:p>41 articles from prospective cohort studies were included in this systematic review and meta-analysis, totalling 1\u2009197\u2009564 participants. During follow-up ranging from two to 32 years, 198\u2009113 deaths from all causes, 62\u2009773 from CVD, and 65\u2009954 from cancer were recorded. High intake of ALA compared with low intake was significantly associated with a lower risk of deaths from all causes (pooled relative risk 0.90, 95% confidence interval 0.83 to 0.97, I<jats:sup>2</jats:sup>=77.8%, 15 studies), CVD (0.92, 0.86 to 0.99, I<jats:sup>2</jats:sup>=48.2%, n=16), and coronary heart disease (CHD) (0.89, 0.81 to 0.97, I<jats:sup>2</jats:sup>=5.6%, n=9), and a slightly higher risk of cancer mortality (1.06, 1.02 to 1.11, I<jats:sup>2</jats:sup>=3.8%, n=10). In the dose-response analysis, a 1 g/day increase in ALA intake (equivalent to one tablespoon of canola oil or 0.5 ounces of walnut) was associated with a 5% lower risk of all cause (0.95, 0.91 to 0.99, I<jats:sup>2</jats:sup>=76.2%, n=12) and CVD mortality (0.95, 0.91 to 0.98, I<jats:sup>2</jats:sup>=30.7%, n=14). The pooled relative risks for the highest compared with lowest tissue levels of ALA indicated a significant inverse association with all cause mortality (0.95, 0.90 to 0.99, I<jats:sup>2</jats:sup>=8.2%, n=26). Also, based on the dose-response analysis, each 1 standard deviation increment in blood concentrations of ALA was associated with a lower risk of CHD mortality (0.92, 0.86 to 0.98, I<jats:sup>2</jats:sup>=37.1%, n=14).</jats:p></jats:sec><jats:sec><jats:title>Conclusions</jats:title><jats:p>The findings show that dietary ALA intake is associated with a reduced risk of mortality from all causes, CVD, and CHD, and a slightly higher risk of cancer mortality, whereas higher blood levels of ALA are associated with a reduced risk of all cause and CHD mortality only.</jats:p></jats:sec><jats:sec><jats:title>Systematic review registration</jats:title><jats:p>PROSPERO CRD42021229487.</jats:p></jats:sec>",
+ "alternative-id": [
+  "10.1136/bmj.n2213"
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Naghshi",
+   "given": "Sina",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Aune",
+   "given": "Dagfinn",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Beyene",
+   "given": "Joseph",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mobarak",
+   "given": "Sara",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Asadi",
+   "given": "Masoomeh",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-1029-1652",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Sadeghi",
+   "given": "Omid",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "BMJ"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "bmj.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    14
+   ]
+  ],
+  "date-time": "2021-10-14T01:36:14Z",
+  "timestamp": 1634175374000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    3,
+    8
+   ]
+  ],
+  "date-time": "2023-03-08T12:38:36Z",
+  "timestamp": 1678279116000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    15
+   ]
+  ],
+  "date-time": "2026-09-15T17:53:16Z",
+  "timestamp": 1789494796100,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 133,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "1756-1833"
+  }
+ ],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    13
+   ]
+  ]
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "http://creativecommons.org/licenses/by-nc/4.0/",
+   "content-version": "unspecified",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      10,
+      13
+     ]
+    ],
+    "date-time": "2021-10-13T00:00:00Z",
+    "timestamp": 1634083200000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "http://data.bmj.org/tdm/10.1136/bmj.n2213",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://syndication.highwire.org/content/doi/10.1136/bmj.n2213",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "239",
+ "original-title": [],
+ "page": "n2213",
+ "prefix": "10.1136",
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    13
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    13
+   ]
+  ]
+ },
+ "publisher": "BMJ",
+ "reference": [
+  {
+   "DOI": "10.1038/nrcardio.2017.154",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.1"
+  },
+  {
+   "DOI": "10.1016/j.phrs.2016.09.040",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.2"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(14)60648-6",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.3"
+  },
+  {
+   "DOI": "10.1016/j.fitote.2017.09.015",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.4"
+  },
+  {
+   "DOI": "10.1080/17512433.2017.1333902",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.5"
+  },
+  {
+   "DOI": "10.1177/1534735416656052",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.6"
+  },
+  {
+   "DOI": "10.3945/an.114.006940",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.7"
+  },
+  {
+   "DOI": "10.1194/jlr.R055095",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.8"
+  },
+  {
+   "DOI": "10.3390/nu11122974",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.9"
+  },
+  {
+   "DOI": "10.1146/annurev-food-111317-095850",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.10"
+  },
+  {
+   "DOI": "10.1080/10408398.2013.828678",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.11"
+  },
+  {
+   "DOI": "10.1186/1476-511X-13-196",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.12"
+  },
+  {
+   "article-title": "Does alpha-linolenic acid intake reduce the risk of coronary heart disease? A review of the evidence",
+   "author": "Mozaffarian",
+   "first-page": "24",
+   "journal-title": "Altern Ther Health Med",
+   "key": "2023030804355048000_375.oct13_9.n2213.13",
+   "volume": "11",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.127019",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.14"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0059408",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.15"
+  },
+  {
+   "DOI": "10.1159/000419291",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.16"
+  },
+  {
+   "DOI": "10.1093/aje/kwr520",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.17"
+  },
+  {
+   "DOI": "10.1093/ajcn/78.1.65",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.18"
+  },
+  {
+   "DOI": "10.1097/00001648-200007000-00013",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.19"
+  },
+  {
+   "DOI": "10.1017/S0007114514001925",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.20"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2016.12.013",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.21"
+  },
+  {
+   "DOI": "10.1136/bmj.l4009",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.22"
+  },
+  {
+   "DOI": "10.1002/cncr.29329",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.23"
+  },
+  {
+   "DOI": "10.1177/2047487313517576",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.24"
+  },
+  {
+   "DOI": "10.1001/archinte.165.2.193",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.25"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2019.02.030",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.26"
+  },
+  {
+   "DOI": "10.1093/ajcn/88.3.722",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.27"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.115.015607",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.28"
+  },
+  {
+   "DOI": "10.1093/ajcn/74.4.457",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.29"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a009047",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.30"
+  },
+  {
+   "DOI": "10.1161/CIRCOUTCOMES.109.896159",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.31"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2013.6536",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.32"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a009710",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.33"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2016.2417",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.34"
+  },
+  {
+   "DOI": "10.1093/ajcn/88.1.203",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.35"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2018.02.019",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.36"
+  },
+  {
+   "DOI": "10.1161/CIRCRESAHA.118.314038",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.37"
+  },
+  {
+   "DOI": "10.1161/JAHA.115.002543",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.38"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2016.09.006",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.39"
+  },
+  {
+   "DOI": "10.3945/ajcn.110.009977",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.40"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2016.2925",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.41"
+  },
+  {
+   "DOI": "10.1017/S000711451400138X",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.42"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.105.572008",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.43"
+  },
+  {
+   "DOI": "10.1136/bmj.313.7049.84",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.44"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-12-1196-T",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.45"
+  },
+  {
+   "DOI": "10.1016/j.amepre.2016.07.020",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.46"
+  },
+  {
+   "DOI": "10.1001/jamacardio.2016.2259",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.47"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2018.02.010",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.48"
+  },
+  {
+   "DOI": "10.1016/j.atherosclerosis.2016.06.049",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.49"
+  },
+  {
+   "DOI": "10.1016/j.nut.2019.110610",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.50"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2020.08.073",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.51"
+  },
+  {
+   "DOI": "10.1016/j.ijcard.2012.09.076",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.52"
+  },
+  {
+   "DOI": "10.1002/ijc.32233",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.53"
+  },
+  {
+   "DOI": "10.1038/s41467-021-22370-2",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.54"
+  },
+  {
+   "DOI": "10.1017/S0007114517003294",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.55"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.26736E",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.56"
+  },
+  {
+   "DOI": "10.1093/jn/134.4.919",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.57"
+  },
+  {
+   "DOI": "10.1136/bmj.g7647",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.58"
+  },
+  {
+   "DOI": "10.1186/s13643-018-0915-2",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.59"
+  },
+  {
+   "DOI": "10.1001/jama.279.18.1477",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.60"
+  },
+  {
+   "DOI": "10.1016/j.cct.2015.09.002",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.61"
+  },
+  {
+   "article-title": "Fixed-effect versus random-effects models",
+   "author": "Borenstein",
+   "first-page": "85",
+   "journal-title": "Introduction to Meta-analysis",
+   "key": "2023030804355048000_375.oct13_9.n2213.62",
+   "volume": "77",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(10)60484-9",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.63"
+  },
+  {
+   "DOI": "10.1002/ijc.29210",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.64"
+  },
+  {
+   "DOI": "10.1136/bmj.327.7414.557",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.65"
+  },
+  {
+   "DOI": "10.1186/1471-2288-14-70",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.66"
+  },
+  {
+   "DOI": "10.1002/pros.24027",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.67"
+  },
+  {
+   "key": "2023030804355048000_375.oct13_9.n2213.68"
+  },
+  {
+   "DOI": "10.1177/1536867X0600600103",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.69"
+  },
+  {
+   "DOI": "10.1093/ndt/gfs132",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.70"
+  },
+  {
+   "DOI": "10.1161/JAHA.120.017401",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.71"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2008.11.013",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.72"
+  },
+  {
+   "DOI": "10.1158/1055-9965.EPI-18-0940",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.73"
+  },
+  {
+   "DOI": "10.1093/aje/kwh307",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.74"
+  },
+  {
+   "DOI": "10.3181/00379727-200-43413",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.75"
+  },
+  {
+   "DOI": "10.1093/ije/30.5.1119",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.76"
+  },
+  {
+   "DOI": "10.1093/ajcn/69.5.890",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.77"
+  },
+  {
+   "DOI": "10.1002/ijc.31247",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.78"
+  },
+  {
+   "DOI": "10.1093/ajcn/80.1.204",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.79"
+  },
+  {
+   "DOI": "10.1093/ajcn/77.2.319",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.80"
+  },
+  {
+   "DOI": "10.3945/ajcn.112.044040",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.81"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2020.03.028",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.82"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqz349",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.83"
+  },
+  {
+   "DOI": "10.3181/0711-MR-311",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.84"
+  },
+  {
+   "DOI": "10.1002/14651858.CD003177.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.85"
+  },
+  {
+   "DOI": "10.1016/j.lfs.2018.04.049",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.86"
+  },
+  {
+   "DOI": "10.1055/s-0038-1642387",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.87"
+  },
+  {
+   "DOI": "10.1038/sj.ejcn.1602408",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.88"
+  },
+  {
+   "DOI": "10.1038/s41416-020-0761-6",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.89"
+  },
+  {
+   "DOI": "10.1097/MCO.0000000000000439",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.90"
+  },
+  {
+   "DOI": "10.1186/s12916-016-0730-3",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.91"
+  },
+  {
+   "DOI": "10.1186/1741-7015-11-164",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.92"
+  },
+  {
+   "DOI": "10.1016/S0002-8223(02)90346-9",
+   "doi-asserted-by": "publisher",
+   "key": "2023030804355048000_375.oct13_9.n2213.93"
+  }
+ ],
+ "reference-count": 93,
+ "references-count": 93,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.bmj.com/lookup/doi/10.1136/bmj.n2213"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "BMJ"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Dietary intake and biomarkers of alpha linolenic acid and risk of all cause, cardiovascular, and cancer mortality: systematic review and dose-response meta-analysis of cohort studies"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1136/crossmarkpolicy"
+}

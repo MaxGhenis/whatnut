@@ -1,0 +1,1311 @@
+{
+ "DOI": "10.1038/s41591-022-01973-2",
+ "ISSN": [
+  "1078-8956",
+  "1546-170X"
+ ],
+ "URL": "https://doi.org/10.1038/s41591-022-01973-2",
+ "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Exposure to risks throughout life results in a wide variety of outcomes. Objectively judging the relative impact of these risks on personal and population health is fundamental to individual survival and societal prosperity. Existing mechanisms to quantify and rank the magnitude of these myriad effects and the uncertainty in their estimation are largely subjective, leaving room for interpretation that can fuel academic controversy and add to confusion when communicating risk. We present a new suite of meta-analyses\u2014termed the Burden of Proof studies\u2014designed specifically to help evaluate these methodological issues objectively and quantitatively. Through this data-driven approach that complements existing systems, including GRADE and Cochrane Reviews, we aim to aggregate evidence across multiple studies and enable a quantitative comparison of risk\u2013outcome pairs. We introduce the burden of proof risk function (BPRF), which estimates the level of risk closest to the null hypothesis that is consistent with available data. Here we illustrate the BPRF methodology for the evaluation of four exemplar risk\u2013outcome pairs: smoking and lung cancer, systolic blood pressure and ischemic heart disease, vegetable consumption and ischemic heart disease, and unprocessed red meat consumption and ischemic heart disease. The strength of evidence for each relationship is assessed by computing and summarizing the BPRF, and then translating the summary to a simple star rating. The Burden of Proof methodology provides a consistent way to understand, evaluate and summarize evidence of risk across different risk\u2013outcome pairs, and informs risk analysis conducted as part of the Global Burden of Diseases, Injuries, and Risk Factors Study.</jats:p>",
+ "alternative-id": [
+  "1973"
+ ],
+ "assertion": [
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Received",
+   "name": "received",
+   "order": 1,
+   "value": "11 October 2021"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Accepted",
+   "name": "accepted",
+   "order": 2,
+   "value": "28 July 2022"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "First Online",
+   "name": "first_online",
+   "order": 3,
+   "value": "10 October 2022"
+  },
+  {
+   "group": {
+    "label": "Competing interests",
+    "name": "EthicsHeading"
+   },
+   "name": "Ethics",
+   "order": 1,
+   "value": "The authors declare no competing interests."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Zheng",
+   "given": "Peng",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Afshin",
+   "given": "Ashkan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Biryukov",
+   "given": "Stan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bisignano",
+   "given": "Catherine",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-9103-9343",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Brauer",
+   "given": "Michael",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Bryazka",
+   "given": "Dana",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Burkart",
+   "given": "Katrin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cercy",
+   "given": "Kelly M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Cornaby",
+   "given": "Leslie",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-0289-7814",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Dai",
+   "given": "Xiaochen",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Dirac",
+   "given": "M. Ashworth",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Estep",
+   "given": "Kara",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fay",
+   "given": "Kairsten A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Feldman",
+   "given": "Rachel",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ferrari",
+   "given": "Alize J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-8992-591X",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Gakidou",
+   "given": "Emmanuela",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Gil",
+   "given": "Gabriela Fernanda",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Griswold",
+   "given": "Max",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-0611-7272",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Hay",
+   "given": "Simon I.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "He",
+   "given": "Jiawei",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Irvine",
+   "given": "Caleb M. S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-4299-9348",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Kassebaum",
+   "given": "Nicholas J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-2690-3198",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "LeGrand",
+   "given": "Kate E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lescinsky",
+   "given": "Haley",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lim",
+   "given": "Stephen S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-2145-6528",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Lo",
+   "given": "Justin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mullany",
+   "given": "Erin C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Ong",
+   "given": "Kanyin Liane",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Rao",
+   "given": "Puja C.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-0098-9563",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Razo",
+   "given": "Christian",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Reitsma",
+   "given": "Marissa B.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Roth",
+   "given": "Gregory A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Santomauro",
+   "given": "Damian F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sorensen",
+   "given": "Reed J. D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Srinivasan",
+   "given": "Vinay",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-2209-8478",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Stanaway",
+   "given": "Jeffrey D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vollset",
+   "given": "Stein Emil",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Vos",
+   "given": "Theo",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Wang",
+   "given": "Nelson",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-4310-1632",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Welgan",
+   "given": "Catherine A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Wozniak",
+   "given": "Sarah S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Aravkin",
+   "given": "Aleksandr Y.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-4930-9450",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Murray",
+   "given": "Christopher J. L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Nature Medicine"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": [
+   "link.springer.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2022,
+    10,
+    10
+   ]
+  ],
+  "date-time": "2022-10-10T12:04:06Z",
+  "timestamp": 1665403446000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    10,
+    5
+   ]
+  ],
+  "date-time": "2024-10-05T10:13:05Z",
+  "timestamp": 1728123185000
+ },
+ "funder": [
+  {
+   "DOI": "10.13039/100000865",
+   "award": [
+    "OPP1152504"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "OPP1152504"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100000865",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Bill and Melinda Gates Foundation"
+  },
+  {
+   "DOI": "10.13039/100007500",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100007500",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Bloomberg Family Foundation"
+  },
+  {
+   "DOI": "10.13039/501100001782",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100001782",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "University of Melbourne"
+  },
+  {
+   "DOI": "10.13039/100010230",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100010230",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Department of Health, Queensland"
+  },
+  {
+   "DOI": "10.13039/501100000925",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100000925",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Department of Health | National Health and Medical Research Council"
+  },
+  {
+   "DOI": "10.13039/501100002141",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100002141",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Public Health England"
+  },
+  {
+   "DOI": "10.13039/100007737",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100007737",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "St. Jude Children\u2019s Research Hospital"
+  },
+  {
+   "DOI": "10.13039/100000025",
+   "award": [
+    "R01MH110163"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "R01MH110163"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100000025",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "U.S. Department of Health & Human Services | NIH | National Institute of Mental Health"
+  },
+  {
+   "name": "the Norwegian Institute of Public Health; the Cardiovascular Medical Research and Education Fund; the National Institute on Ageing of the NIH"
+  },
+  {
+   "name": "The funders for this study are listed in full under Christopher JL Murray"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    23
+   ]
+  ],
+  "date-time": "2026-09-23T11:29:28Z",
+  "timestamp": 1790162968087,
+  "version": "4.1.0"
+ },
+ "is-referenced-by-count": 118,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "1078-8956"
+  },
+  {
+   "type": "electronic",
+   "value": "1546-170X"
+  }
+ ],
+ "issue": "10",
+ "issued": {
+  "date-parts": [
+   [
+    2022,
+    10
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "10",
+  "published-print": {
+   "date-parts": [
+    [
+     2022,
+     10
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://creativecommons.org/licenses/by/4.0",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      10,
+      1
+     ]
+    ],
+    "date-time": "2022-10-01T00:00:00Z",
+    "timestamp": 1664582400000
+   }
+  },
+  {
+   "URL": "https://creativecommons.org/licenses/by/4.0",
+   "content-version": "vor",
+   "delay-in-days": 9,
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      10,
+      10
+     ]
+    ],
+    "date-time": "2022-10-10T00:00:00Z",
+    "timestamp": 1665360000000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://www.nature.com/articles/s41591-022-01973-2.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://www.nature.com/articles/s41591-022-01973-2",
+   "content-type": "text/html",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://www.nature.com/articles/s41591-022-01973-2.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "297",
+ "original-title": [],
+ "page": "2038-2044",
+ "prefix": "10.1038",
+ "published": {
+  "date-parts": [
+   [
+    2022,
+    10
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2022,
+    10,
+    10
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2022,
+    10
+   ]
+  ]
+ },
+ "publisher": "Springer Science and Business Media LLC",
+ "reference": [
+  {
+   "DOI": "10.1016/S0140-6736(20)30752-2",
+   "author": "CJL Murray",
+   "doi-asserted-by": "publisher",
+   "first-page": "1223",
+   "journal-title": "Lancet",
+   "key": "1973_CR1",
+   "unstructured": "Murray, C. J. L. et al. Global burden of 87 risk factors in 204 countries and territories, 1990\u20132019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet 396, 1223\u20131249 (2020).",
+   "volume": "396",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(96)07495-8",
+   "author": "CJ Murray",
+   "doi-asserted-by": "publisher",
+   "first-page": "1436",
+   "journal-title": "Lancet",
+   "key": "1973_CR2",
+   "unstructured": "Murray, C. J. & Lopez, A. D. Global mortality, disability, and the contribution of risk factors: Global Burden of Disease Study. Lancet 349, 1436\u20131442 (1997).",
+   "volume": "349",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1186/1478-7954-1-1",
+   "author": "CJ Murray",
+   "doi-asserted-by": "publisher",
+   "journal-title": "Popul. Health Metr.",
+   "key": "1973_CR3",
+   "unstructured": "Murray, C. J., Ezzati, M., Lopez, A. D., Rodgers, A. & Vander Hoorn, S. Comparative quantification of health risks: conceptual framework and methodological issues. Popul. Health Metr. 1, 1 (2003).",
+   "volume": "1",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.106.618603",
+   "author": "K Stanley",
+   "doi-asserted-by": "publisher",
+   "first-page": "1819",
+   "journal-title": "Circulation",
+   "key": "1973_CR4",
+   "unstructured": "Stanley, K. Evaluation of randomized controlled trials. Circulation 115, 1819\u20131822 (2007).",
+   "volume": "115",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.socscimed.2017.12.005",
+   "author": "A Deaton",
+   "doi-asserted-by": "publisher",
+   "first-page": "2",
+   "journal-title": "Soc. Sci. Med.",
+   "key": "1973_CR5",
+   "unstructured": "Deaton, A. & Cartwright, N. Understanding and misunderstanding randomized controlled trials. Soc. Sci. Med. 210, 2\u201321 (2018).",
+   "volume": "210",
+   "year": "2018"
+  },
+  {
+   "key": "1973_CR6",
+   "unstructured": "Tenny, S., Kerndt, C. C. & Hoffman, M. R. Case control studies. StatPearls https://www.statpearls.com/ArticleLibrary/viewarticle/18989 (2021)."
+  },
+  {
+   "DOI": "10.1016/0895-4356(94)00132-A",
+   "author": "E Chouinard",
+   "doi-asserted-by": "publisher",
+   "first-page": "245",
+   "journal-title": "J. Clin. Epidemiol.",
+   "key": "1973_CR7",
+   "unstructured": "Chouinard, E. & Walter, S. Recall bias in case-control studies: an empirical analysis and theoretical framework. J. Clin. Epidemiol. 48, 245\u2013254 (1995).",
+   "volume": "48",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.1258/jrsm.2008.08k033",
+   "author": "MB Bracken",
+   "doi-asserted-by": "publisher",
+   "first-page": "120",
+   "journal-title": "J. R. Soc. Med.",
+   "key": "1973_CR8",
+   "unstructured": "Bracken, M. B. Why animal studies are often poor predictors of human reactions to exposure. J. R. Soc. Med. 102, 120\u2013122 (2009).",
+   "volume": "102",
+   "year": "2009"
+  },
+  {
+   "key": "1973_CR9",
+   "unstructured": "Hernan, M. A. & Robins, J. M. Causal Inference: What If (CRC, 2023)."
+  },
+  {
+   "DOI": "10.18637/jss.v036.i03",
+   "author": "W Viechtbauer",
+   "doi-asserted-by": "publisher",
+   "first-page": "1",
+   "journal-title": "J. Stat. Softw.",
+   "key": "1973_CR10",
+   "unstructured": "Viechtbauer, W. Conducting meta-analyses in R with the metafor package. J. Stat. Softw. 36, 1\u201348 (2010).",
+   "volume": "36",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1093/aje/kwr265",
+   "author": "N Orsini",
+   "doi-asserted-by": "publisher",
+   "first-page": "66",
+   "journal-title": "Am. J. Epidemiol.",
+   "key": "1973_CR11",
+   "unstructured": "Orsini, N., Li, R., Wolk, A., Khudyakov, P. & Spiegelman, D. Meta-analysis for linear and nonlinear dose-response relations: examples, an evaluation of approximations, and software. Am. J. Epidemiol. 175, 66\u201373 (2012).",
+   "volume": "175",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.109.924977",
+   "author": "R Micha",
+   "doi-asserted-by": "publisher",
+   "first-page": "2271",
+   "journal-title": "Circulation",
+   "key": "1973_CR12",
+   "unstructured": "Micha, R., Wallace, S. K. & Mozaffarian, D. Red and processed meat consumption and risk of incident coronary heart disease, stroke, and diabetes mellitus: a systematic review and meta-analysis. Circulation 121, 2271\u20132283 (2010).",
+   "volume": "121",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1136/bmj.39343.408449.80",
+   "author": "JPA Ioannidis",
+   "doi-asserted-by": "publisher",
+   "first-page": "914",
+   "journal-title": "Brit. Med. J.",
+   "key": "1973_CR13",
+   "unstructured": "Ioannidis, J. P. A., Patsopoulos, N. A. & Evangelou, E. Uncertainty in heterogeneity estimates in meta-analyses. Brit. Med. J. 335, 914\u2013916 (2007).",
+   "volume": "335",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1111/risa.12865",
+   "author": "SH Moolgavkar",
+   "doi-asserted-by": "publisher",
+   "first-page": "777",
+   "journal-title": "Risk Anal.",
+   "key": "1973_CR14",
+   "unstructured": "Moolgavkar, S. H., Chang, E. T., Watson, H. N. & Lau, E. C. An assessment of the Cox proportional hazards regression model for epidemiologic studies. Risk Anal. 38, 777\u2013794 (2018).",
+   "volume": "38",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1001/jama.2012.113905",
+   "author": "KM Flegal",
+   "doi-asserted-by": "publisher",
+   "first-page": "71",
+   "journal-title": "JAMA",
+   "key": "1973_CR15",
+   "unstructured": "Flegal, K. M., Kit, B. K., Orpana, H. & Graubard, B. I. Association of all-cause mortality with overweight and obesity using standard body mass index categories: a systematic review and meta-analysis. JAMA 309, 71\u201382 (2013).",
+   "volume": "309",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1001/jama.2018.11025",
+   "author": "JP Ioannidis",
+   "doi-asserted-by": "publisher",
+   "first-page": "969",
+   "journal-title": "JAMA",
+   "key": "1973_CR16",
+   "unstructured": "Ioannidis, J. P. The challenge of reforming nutritional epidemiologic research. JAMA 320, 969\u2013970 (2018).",
+   "volume": "320",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.envres.2019.108924",
+   "author": "CA Pope III",
+   "doi-asserted-by": "publisher",
+   "first-page": "108924",
+   "journal-title": "Environ. Res.",
+   "key": "1973_CR17",
+   "unstructured": "Pope, C. A. III, Coleman, N., Pond, Z. A. & Burnett, R. T. Fine particulate air pollution and human mortality: 25+ years of cohort studies. Environ. Res. 183, 108924 (2020).",
+   "volume": "183",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.7326/M19-1621",
+   "author": "BC Johnston",
+   "doi-asserted-by": "publisher",
+   "first-page": "756",
+   "journal-title": "Ann. Intern. Med.",
+   "key": "1973_CR18",
+   "unstructured": "Johnston, B. C. et al. Unprocessed red meat and processed meat consumption: dietary guideline recommendations from the Nutritional Recommendations (NutriRECS) Consortium. Ann. Intern. Med. 171, 756\u2013764 (2019).",
+   "volume": "171",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1002/9781119536604",
+   "doi-asserted-by": "crossref",
+   "key": "1973_CR19",
+   "unstructured": "Higgins, J. P. et al. Cochrane Handbook for Systematic Reviews of Interventions (Wiley, 2019)."
+  },
+  {
+   "key": "1973_CR20",
+   "unstructured": "Siemieniuk, R. & Guyatt, G. What is GRADE? BMJ Best Practice https://bestpractice.bmj.com/info/us/toolkit/learn-ebm/what-is-grade/ (2021)."
+  },
+  {
+   "key": "1973_CR21",
+   "unstructured": "Sch\u00fcnemann, H., Bro\u017cek, J., Guyatt, G. & Oxman, A. (eds) GRADE Handbook (The GRADE Working Group, 2013)."
+  },
+  {
+   "DOI": "10.1016/j.csda.2009.05.001",
+   "author": "Q Liu",
+   "doi-asserted-by": "publisher",
+   "first-page": "4157",
+   "journal-title": "Comput. Stat. Data Anal.",
+   "key": "1973_CR22",
+   "unstructured": "Liu, Q., Cook, N. R., Bergstr\u00f6m, A. & Hsieh, C.-C. A two-stage hierarchical regression model for meta-analysis of epidemiologic nonlinear dose\u2013response data. Comput. Stat. Data Anal. 53, 4157\u20134167 (2009).",
+   "volume": "53",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1177/0962280218773122",
+   "author": "A Crippa",
+   "doi-asserted-by": "publisher",
+   "first-page": "1579",
+   "journal-title": "Stat. Methods Med. Res.",
+   "key": "1973_CR23",
+   "unstructured": "Crippa, A., Discacciati, A., Bottai, M., Spiegelman, D. & Orsini, N. One-stage dose\u2013response meta-analysis for aggregated data. Stat. Methods Med. Res. 28, 1579\u20131596 (2019).",
+   "volume": "28",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.18637/jss.v072.c01",
+   "author": "A Crippa",
+   "doi-asserted-by": "publisher",
+   "first-page": "1",
+   "journal-title": "J. Stat. Softw.",
+   "key": "1973_CR24",
+   "unstructured": "Crippa, A. & Orsini, N. Multivariate dose-response meta-analysis: the dosresmeta R package. J. Stat. Softw. 72, 1\u201315 (2016).",
+   "volume": "72",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1038/s41591-022-01978-x",
+   "author": "X Dai",
+   "doi-asserted-by": "publisher",
+   "journal-title": "Nat. Med.",
+   "key": "1973_CR25",
+   "unstructured": "Dai, X. et al. Health effects associated with smoking: a Burden of Proof study. Nat. Med. https://doi.org/10.1038/s41591-022-01978-x (2022).",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1038/s41591-022-01974-1",
+   "author": "C Razo",
+   "doi-asserted-by": "publisher",
+   "journal-title": "Nat. Med.",
+   "key": "1973_CR26",
+   "unstructured": "Razo, C. et al. Effects of elevated systolic blood pressure on ischemic heart disease: a Burden of Proof study. Nat. Med. https://doi.org/10.1038/s41591-022-01974-1 (2022).",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1038/s41591-022-01970-5",
+   "author": "JD Stanaway",
+   "doi-asserted-by": "publisher",
+   "journal-title": "Nat. Med.",
+   "key": "1973_CR27",
+   "unstructured": "Stanaway, J. D. et al. Health effects associated with vegetable consumption: a Burden of Proof study. Nat. Med. https://doi.org/10.1038/s41591-022-01970-5 (2022).",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1038/s41591-022-01968-z",
+   "author": "H Lescinsky",
+   "doi-asserted-by": "publisher",
+   "journal-title": "Nat. Med.",
+   "key": "1973_CR28",
+   "unstructured": "Lescinsky, H. et al. Health effects associated with unprocessed red meat: a Burden of Proof study. Nat. Med. https://doi.org/10.1038/s41591-022-01968-z (2022).",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1080/10618600.2020.1868303",
+   "doi-asserted-by": "crossref",
+   "key": "1973_CR29",
+   "unstructured": "Zheng, P., Barber, R., Sorensen, R. J., Murray, C. J. & Aravkin, A. Y. Trimmed constrained mixed effects models: formulations and algorithms. J. Comput. Graph. Stat. 30, 544\u2013556 (2021)."
+  },
+  {
+   "key": "1973_CR30",
+   "unstructured": "Zheng, P. limetr: linear mixed effects model with trimming. GitHub https://github.com/zhengp0/limetr (2020)."
+  },
+  {
+   "key": "1973_CR31",
+   "unstructured": "Zheng, P. xspline: advanced spline tools. GitHub https://github.com/zhengp0/xspline (2021)."
+  },
+  {
+   "DOI": "10.1016/S0140-6736(16)30388-9",
+   "doi-asserted-by": "crossref",
+   "key": "1973_CR32",
+   "unstructured": "Stevens, G. A. et al. Guidelines for accurate and transparent health estimates reporting: the GATHER statement. Lancet 388, e19\u2013e23 (2016)."
+  },
+  {
+   "key": "1973_CR33",
+   "unstructured": "de Boor, C. A Practical Guide to Splines (Springer, 2001)."
+  },
+  {
+   "key": "1973_CR34",
+   "unstructured": "Rousseeuw, P. J. & Leroy, A. M. Robust Regression and Outlier Detection Vol. 589 (Wiley, 2005)."
+  },
+  {
+   "DOI": "10.1080/01621459.1984.10477105",
+   "author": "PJ Rousseeuw",
+   "doi-asserted-by": "publisher",
+   "first-page": "871",
+   "journal-title": "J. Am. Stat. Assoc.",
+   "key": "1973_CR35",
+   "unstructured": "Rousseeuw, P. J. Least median of squares regression. J. Am. Stat. Assoc. 79, 871\u2013880 (1984).",
+   "volume": "79",
+   "year": "1984"
+  },
+  {
+   "key": "1973_CR36",
+   "unstructured": "Huber, P. J. Robust Statistics (Wiley, 2004)."
+  },
+  {
+   "DOI": "10.1007/978-94-009-5438-0_20",
+   "doi-asserted-by": "crossref",
+   "key": "1973_CR37",
+   "unstructured": "Rousseeuw, P. Multivariate estimation with high breakdown point. In Mathematical Statistics and Applications: Proc. 4th Pannonian Symposium on Mathematical Statistics Vol. B (eds Grossman, W. et al.) 283\u2013297 (Reidel Publishing Company, 1985)."
+  },
+  {
+   "DOI": "10.1287/moor.2019.0992",
+   "author": "A Aravkin",
+   "doi-asserted-by": "publisher",
+   "first-page": "292",
+   "journal-title": "Math. Oper. Res.",
+   "key": "1973_CR38",
+   "unstructured": "Aravkin, A. & Davis, D. Trimmed statistical estimation via variance reduction. Math. Oper. Res. 45, 292\u2013322 (2020).",
+   "volume": "45",
+   "year": "2020"
+  },
+  {
+   "key": "1973_CR39",
+   "unstructured": "Motzkin, T. S., Raiffa, H., Thompson, G. L. & Thrall, R. M. in Contributions to the Theory of Games (AM-28) Vol. 2 (eds Kuhn, H. W. & Tucker, A. W.) Ch. 3 (Princeton Univ. Press, 2016)."
+  },
+  {
+   "DOI": "10.1016/j.jclinepi.2010.07.017",
+   "author": "GH Guyatt",
+   "doi-asserted-by": "publisher",
+   "first-page": "407",
+   "journal-title": "J. Clin. Epidemiol.",
+   "key": "1973_CR40",
+   "unstructured": "Guyatt, G. H. et al. GRADE guidelines: 4. Rating the quality of evidence\u2014study limitations (risk of bias). J. Clin. Epidemiol. 64, 407\u2013415 (2011).",
+   "volume": "64",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1214/009053604000000067",
+   "author": "B Efron",
+   "doi-asserted-by": "publisher",
+   "first-page": "407",
+   "journal-title": "Ann. Stat.",
+   "key": "1973_CR41",
+   "unstructured": "Efron, B., Hastie, T., Johnstone, I. & Tibshirani, R. Least angle regression. Ann. Stat. 32, 407\u2013499 (2004).",
+   "volume": "32",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1111/j.2517-6161.1996.tb02080.x",
+   "author": "R Tibshirani",
+   "doi-asserted-by": "crossref",
+   "first-page": "267",
+   "journal-title": "J. R. Stat. Soc. Ser. B",
+   "key": "1973_CR42",
+   "unstructured": "Tibshirani, R. Regression shrinkage and selection via the lasso. J. R. Stat. Soc. Ser. B 58, 267\u2013288 (1996).",
+   "volume": "58",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0069930",
+   "author": "E Kontopantelis",
+   "doi-asserted-by": "publisher",
+   "first-page": "e69930",
+   "journal-title": "PLoS ONE",
+   "key": "1973_CR43",
+   "unstructured": "Kontopantelis, E., Springate, D. A. & Reeves, D. A re-analysis of the Cochrane Library data: the dangers of unobserved heterogeneity in meta-analyses. PLoS ONE 8, e69930 (2013).",
+   "volume": "8",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1002/(SICI)1097-0258(19970415)16:7<753::AID-SIM494>3.0.CO;2-G",
+   "author": "BJ Biggerstaff",
+   "doi-asserted-by": "publisher",
+   "first-page": "753",
+   "journal-title": "Stat. Med.",
+   "key": "1973_CR44",
+   "unstructured": "Biggerstaff, B. J. & Tweedie, R. L. Incorporating variability in estimates of heterogeneity in the random effects model in meta-analysis. Stat. Med. 16, 753\u2013768 (1997).",
+   "volume": "16",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1002/sim.1186",
+   "author": "JP Higgins",
+   "doi-asserted-by": "publisher",
+   "first-page": "1539",
+   "journal-title": "Stat. Med.",
+   "key": "1973_CR45",
+   "unstructured": "Higgins, J. P. & Thompson, S. G. Quantifying heterogeneity in a meta-analysis. Stat. Med. 21, 1539\u20131558 (2002).",
+   "volume": "21",
+   "year": "2002"
+  },
+  {
+   "key": "1973_CR46",
+   "unstructured": "Sterne, J. A. & Egger, M. in Publication Bias in Meta-analysis: Prevention, Assessment and Adjustments (eds Rothstein, H. et al.) Ch. 6 (Wiley, 2005)."
+  },
+  {
+   "DOI": "10.1136/bmj.315.7109.629",
+   "author": "M Egger",
+   "doi-asserted-by": "publisher",
+   "first-page": "629",
+   "journal-title": "Brit. Med. J.",
+   "key": "1973_CR47",
+   "unstructured": "Egger, M., Smith, G. D., Schneider, M. & Minder, C. Bias in meta-analysis detected by a simple, graphical test. Brit. Med. J. 315, 629\u2013634 (1997).",
+   "volume": "315",
+   "year": "1997"
+  }
+ ],
+ "reference-count": 47,
+ "references-count": 47,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.nature.com/articles/s41591-022-01973-2"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Nat Med"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "The Burden of Proof studies: assessing the evidence of risk"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+ "volume": "28"
+}

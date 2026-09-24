@@ -1,0 +1,552 @@
+{
+ "DOI": "10.1017/jns.2023.39",
+ "ISSN": [
+  "2048-6790"
+ ],
+ "URL": "https://doi.org/10.1017/jns.2023.39",
+ "abstract": "<jats:title>Abstract</jats:title>\n\t  <jats:p>We sought to examine the effects of daily consumption of macadamia nuts on body weight and composition, plasma lipids and glycaemic parameters in a free-living environment in overweight and obese adults at elevated cardiometabolic risk. Utilising a randomised cross-over design, thirty-five adults with abdominal obesity consumed their usual diet plus macadamia nuts (~15 % of daily calories) for 8 weeks (intervention) and their usual diet without nuts for 8 weeks (control), with a 2-week washout. Body composition was determined by bioelectrical impedance; dietary intake was assessed with 24-h dietary recalls. Consumption of macadamia nuts led to increased total fat and MUFA intake while SFA intake was unaltered. With mixed model regression analysis, no significant changes in mean weight, BMI, waist circumference, percent body fat or glycaemic parameters, and non-significant reductions in plasma total cholesterol of 2\u22c51 % (\u22124\u22c53 mg/dl; 95 % CI \u221214\u22c58, 6\u22c51) and low-density lipoprotein (LDL-C) of 4 % (\u22124\u22c57 mg/dl; 95 % CI \u221214\u22c53, 4\u22c58) were observed. Cholesterol-lowering effects were modified by adiposity: greater lipid lowering occurred in those with overweight <jats:italic>v.</jats:italic> obesity, and in those with less than the median percent body fat. Daily consumption of macadamia nuts does not lead to gains in weight or body fat under free-living conditions in overweight or obese adults; non-significant cholesterol lowering occurred without altering saturated fat intake of similar magnitude to cholesterol lowering seen with other nuts.</jats:p>\n\t  <jats:p>Clinical Trial Registry Number and Website: NCT03801837 <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"https://clinicaltrials.gov/ct2/show/NCT03801837?term=macadamia+nut&amp;draw=2&amp;rank=1\">https://clinicaltrials.gov/ct2/show/NCT03801837?term = macadamia + nut&amp;draw = 2&amp;rank = 1</jats:ext-link></jats:p>",
+ "alternative-id": [
+  "S2048679023000393"
+ ],
+ "article-number": "e55",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-8336-5341",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Jones",
+   "given": "Julie L.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Sabat\u00e9",
+   "given": "Joan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-3972-5194",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Heskey",
+   "given": "Celine",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Oda",
+   "given": "Keiji",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-4955-7622",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Miles",
+   "given": "Fayth",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-6367-4406",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Rajaram",
+   "given": "Sujatha",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Journal of Nutritional Science"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2023,
+    5,
+    8
+   ]
+  ],
+  "date-time": "2023-05-08T09:42:43Z",
+  "timestamp": 1683538963000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    5,
+    8
+   ]
+  ],
+  "date-time": "2023-05-08T09:42:56Z",
+  "timestamp": 1683538976000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    8,
+    27
+   ]
+  ],
+  "date-time": "2026-08-27T02:44:21Z",
+  "timestamp": 1787798661585,
+  "version": "build-2784847793"
+ },
+ "is-referenced-by-count": 9,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "2048-6790"
+  }
+ ],
+ "issued": {
+  "date-parts": [
+   [
+    2023
+   ]
+  ]
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "http://creativecommons.org/licenses/by/4.0/",
+   "content-version": "unspecified",
+   "delay-in-days": 127,
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      5,
+      8
+     ]
+    ],
+    "date-time": "2023-05-08T00:00:00Z",
+    "timestamp": 1683504000000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S2048679023000393",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "56",
+ "original-title": [],
+ "prefix": "10.1017",
+ "published": {
+  "date-parts": [
+   [
+    2023
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2023,
+    5,
+    8
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2023
+   ]
+  ]
+ },
+ "publisher": "Cambridge University Press (CUP)",
+ "reference": [
+  {
+   "DOI": "10.1016/S0021-9258(18)64849-5",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref41"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)41345-8",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref42"
+  },
+  {
+   "DOI": "10.1161/CIRCRESAHA.118.314316",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref2"
+  },
+  {
+   "article-title": "The DPC cirrus IMMULITE automated immunoassay system",
+   "author": "Babson",
+   "first-page": "83",
+   "journal-title": "J Clin Immunoassay",
+   "key": "S2048679023000393_ref40",
+   "volume": "14",
+   "year": "1991"
+  },
+  {
+   "DOI": "10.1080/09637480410001725175",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref19"
+  },
+  {
+   "DOI": "10.1093/jn/138.4.761",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref25"
+  },
+  {
+   "key": "S2048679023000393_ref31",
+   "unstructured": "31. Academy of Nutrition and Dietetics Evidence Analysis Library \u201cIn overweight or obese adults, which predictive equation for estimating resting metabolic rate should be used?\u201d Published 2014. https://www.andeal.org/template.cfm?template=guide_summary&key=4341 (accessed December 9, 2019)."
+  },
+  {
+   "DOI": "10.1186/1476-511X-7-10",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref50"
+  },
+  {
+   "DOI": "10.1093/cdn/nzy069",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref47"
+  },
+  {
+   "DOI": "10.1186/1472-6823-13-47",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref58"
+  },
+  {
+   "DOI": "10.3945/ajcn.110.003970",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref22"
+  },
+  {
+   "DOI": "10.12944/CRNFSJ.3.1.01",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref15"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref14"
+  },
+  {
+   "DOI": "10.1016/j.vph.2012.05.003",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref57"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy091",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref52"
+  },
+  {
+   "DOI": "10.1186/s12916-016-0730-3",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref6"
+  },
+  {
+   "DOI": "10.2337/diacare.27.6.1487",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref46"
+  },
+  {
+   "DOI": "10.1093/jn/128.7.1144",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref17"
+  },
+  {
+   "DOI": "10.3945/an.115.011130",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref20"
+  },
+  {
+   "DOI": "10.1016/j.pcad.2013.10.016",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref30"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1800389",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref5"
+  },
+  {
+   "DOI": "10.1093/clinchem/18.6.499",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref38"
+  },
+  {
+   "DOI": "10.1093/ajcn/82.5.957",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref16"
+  },
+  {
+   "DOI": "10.1038/sj.ijo.0801993",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref48"
+  },
+  {
+   "key": "S2048679023000393_ref32",
+   "unstructured": "32. Rapid Assessment of Physical Activity (RAPA). University of Washington Health Promotion Research Center. https://depts.washington.edu/hprc/resources/products-tools/rapa/"
+  },
+  {
+   "DOI": "10.1093/jn/133.4.1060",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref27"
+  },
+  {
+   "DOI": "10.1111/obr.13330",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref13"
+  },
+  {
+   "DOI": "10.1161/JAHA.113.000764",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref44"
+  },
+  {
+   "article-title": "Effects of a macadamia nut enriched diet on serum lipids and lipoproteins compared to a low-fat diet",
+   "author": "Colquhoun",
+   "first-page": "216",
+   "journal-title": "Food Australia",
+   "key": "S2048679023000393_ref29",
+   "volume": "48",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1017/S0007114514003924",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref4"
+  },
+  {
+   "DOI": "10.1097/MOL.0000000000000375",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref24"
+  },
+  {
+   "key": "S2048679023000393_ref18",
+   "unstructured": "18. USDA National Nutrient Database for Standard Reference Legacy Release, April 2018. https://ndb.nal.usda.gov/ndb/search/list?home=true"
+  },
+  {
+   "DOI": "10.1016/j.cmet.2007.11.013",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref60"
+  },
+  {
+   "article-title": "Dietary fatty acids and CD36-mediated cholesterol homeostasis: potential mechanisms",
+   "author": "Ulug",
+   "first-page": "1",
+   "journal-title": "Nutr Res Rev",
+   "key": "S2048679023000393_ref56",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1177/000456326900600108",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref35"
+  },
+  {
+   "author": "Pagana",
+   "first-page": "571",
+   "key": "S2048679023000393_ref39",
+   "volume-title": "Mosby's Diagnostic and Laboratory Test Reference",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1001/archinte.160.8.1154",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref28"
+  },
+  {
+   "DOI": "10.1111/j.1440-1681.2004.04121.x",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref26"
+  },
+  {
+   "author": "Stein",
+   "first-page": "117",
+   "key": "S2048679023000393_ref37",
+   "volume-title": "Clinical Methods of Enzymatic Analysis",
+   "year": "1965"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref11"
+  },
+  {
+   "DOI": "10.1017/S0007114514000750",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref54"
+  },
+  {
+   "DOI": "10.1194/jlr.D007534",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref43"
+  },
+  {
+   "DOI": "10.1038/oby.2007.507",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref8"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400190054010",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref3"
+  },
+  {
+   "DOI": "10.3402/fnr.v52i0.1811",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref55"
+  },
+  {
+   "DOI": "10.3390/nu5041218",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref23"
+  },
+  {
+   "DOI": "10.3945/ajcn.2008.27276",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref9"
+  },
+  {
+   "DOI": "10.1161/01.ATV.0000032134.92180.41",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref59"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1014296",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref10"
+  },
+  {
+   "DOI": "10.3390/nu11010033",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref49"
+  },
+  {
+   "DOI": "10.1016/j.cell.2008.07.048",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref21"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref1"
+  },
+  {
+   "DOI": "10.1177/1479164111430243",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref61"
+  },
+  {
+   "DOI": "10.1093/advances/nmz043",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref51"
+  },
+  {
+   "DOI": "10.1503/cmaj.140764",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref12"
+  },
+  {
+   "DOI": "10.1093/clinchem/19.5.476",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref36"
+  },
+  {
+   "DOI": "10.1093/clinchem/20.4.470",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref33"
+  },
+  {
+   "article-title": "Enzymatic determination of total cholesterol in serum",
+   "author": "Rieschlau",
+   "first-page": "403",
+   "journal-title": "Klin Chem Klin Biochem",
+   "key": "S2048679023000393_ref34",
+   "volume": "12",
+   "year": "1974"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(10)61350-5",
+   "article-title": "Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170,000 participants in 26 randomised trials",
+   "author": "Baigent",
+   "doi-asserted-by": "crossref",
+   "first-page": "1670",
+   "journal-title": "Lancet",
+   "key": "S2048679023000393_ref53",
+   "volume": "376",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "doi-asserted-by": "publisher",
+   "key": "S2048679023000393_ref7"
+  },
+  {
+   "key": "S2048679023000393_ref45",
+   "unstructured": "45. The Homeostasis Assessment 2 (HOMA2) Calculator. https://www.dtu.ox.ac.uk/homacalculator/ (accessed July 2021)."
+  }
+ ],
+ "reference-count": 61,
+ "references-count": 61,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.cambridge.org/core/product/identifier/S2048679023000393/type/journal_article"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "J Nutr Sci"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Macadamia nut effects on cardiometabolic risk factors: a randomised trial"
+ ],
+ "type": "journal-article",
+ "volume": "12"
+}

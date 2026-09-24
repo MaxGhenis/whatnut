@@ -1,0 +1,70 @@
+{
+  "source": "Arias E, Xu JQ, Kochanek KD. United States life tables, 2021. National Vital Statistics Reports; vol 72 no 12. Hyattsville, MD: National Center for Health Statistics. 2023. doi:10.15620/cdc:132418",
+  "year": 2021,
+  "role": "archived sensitivity; 2021 was a COVID-19 peak year, so the 2023 tables in data/life_tables/ are the baseline",
+  "generated_by": "scripts/fetch_life_tables.py",
+  "columns": {
+    "age": "exact age x at start of interval; 100 = '100 and older'",
+    "qx": "probability of dying between ages x and x + 1",
+    "lx": "number surviving to age x (radix 100,000)",
+    "dx": "number dying between ages x and x + 1",
+    "Lx": "person-years lived between ages x and x + 1",
+    "Tx": "total person-years lived above age x",
+    "ex": "expectation of life at age x"
+  },
+  "notes": "CSV values are the spreadsheet cell values unchanged (the report prints them rounded). Every printed row of Tables 1-3 was checked against these values rounded to the printed precision, and e(0) against Table A.",
+  "files": {
+    "female.csv": {
+      "sha256": "19c556b7553830c2d59cf47f134d9e887c8eef090f4ac47963eef5f5571c494c",
+      "bytes": 9803,
+      "derived_from": [
+        "raw/Table03.xlsx"
+      ],
+      "generated_by": "scripts/fetch_life_tables.py"
+    },
+    "male.csv": {
+      "sha256": "f3e59dbd5d16e561cd5aad6be245b74bac31bfdb5481418c7477539d37f69b1e",
+      "bytes": 9867,
+      "derived_from": [
+        "raw/Table02.xlsx"
+      ],
+      "generated_by": "scripts/fetch_life_tables.py"
+    },
+    "raw/Table01.xlsx": {
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/NVSR/72-12/Table01.xlsx",
+      "sha256": "7ae5169a8f754c3803188f1e845872dad123caf6ddd4ea624f794196a4edc186",
+      "bytes": 20764,
+      "fetched_at": "2026-09-24T02:28:00+00:00",
+      "last_modified": "Wed, 23 Aug 2023 16:48:00 GMT"
+    },
+    "raw/Table02.xlsx": {
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/NVSR/72-12/Table02.xlsx",
+      "sha256": "7da17d79c395e230a7c72bb43f844635671af4a0db726629d19a8eede59ca13e",
+      "bytes": 20792,
+      "fetched_at": "2026-09-24T02:28:00+00:00",
+      "last_modified": "Wed, 23 Aug 2023 16:47:28 GMT"
+    },
+    "raw/Table03.xlsx": {
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/NVSR/72-12/Table03.xlsx",
+      "sha256": "e681e11c6927f11b864b3330fef4ddcdc784bcdab15bb0f9c7169c2465e87fda",
+      "bytes": 20833,
+      "fetched_at": "2026-09-24T02:28:00+00:00",
+      "last_modified": "Mon, 21 Aug 2023 20:42:12 GMT"
+    },
+    "raw/nvsr72-12.pdf": {
+      "url": "https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-12.pdf",
+      "sha256": "f8aa394521fce65bfa6aa7a31516ab8b5247d6c918810597be27881ea5ee5875",
+      "bytes": 1820633,
+      "fetched_at": "2026-09-24T02:28:00+00:00",
+      "last_modified": "Tue, 07 May 2024 07:02:34 GMT"
+    },
+    "total.csv": {
+      "sha256": "60b4ca334373daa120fb7fb848e96678f2d9f531a4de132bccc8094ac4c76ae9",
+      "bytes": 9825,
+      "derived_from": [
+        "raw/Table01.xlsx"
+      ],
+      "generated_by": "scripts/fetch_life_tables.py"
+    }
+  }
+}

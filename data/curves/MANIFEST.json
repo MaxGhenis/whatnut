@@ -1,0 +1,287 @@
+{
+  "files": {
+    "aune2016_nonlinear.csv": {
+      "sha256": "ad73927d194dd8d14a3879252b2a05c33efdffadc64f51ba9e78af3719040523",
+      "bytes": 9719,
+      "derived_from": [
+        "raw/aune2016_MOESM1_ESM.pdf"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "aune2016_nonlinear_notes.yaml": {
+      "sha256": "ce150bc522f0a30bacc7ac021eca9eb1abd209b7bca24283d1ec1a7c09098bd3",
+      "bytes": 6606,
+      "derived_from": [
+        "raw/aune2016_PMC5137221.xml",
+        "raw/aune2016_MOESM1_ESM.pdf"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "fadnes2022_targets.yaml": {
+      "sha256": "746156d875f589bf8badcd328689f19913a1fce194abedb8b831cb27e1e8f688",
+      "bytes": 11740,
+      "derived_from": [
+        "raw/fadnes2022_PMC8824353.xml",
+        "raw/fadnes2022_correction_PMC8956181.xml",
+        "raw/fadnes2022_s003.pdf",
+        "raw/fadnes2022_s004.pdf",
+        "raw/fadnes2022_s005.pdf",
+        "raw/fadnes2022_s006.pdf",
+        "raw/fadnes2022_s012.png",
+        "raw/fadnes2022_s013.png",
+        "raw/fadnes2022_s014.png",
+        "raw/fadnes2022_s015.png",
+        "raw/fadnes2022_s016.png",
+        "raw/fadnes2022_s017.png",
+        "raw/fadnes2022_s018.png",
+        "raw/fadnes2022_s019.png",
+        "raw/johansson2020_PMC7360045.xml"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "ihme_bop_nuts_seeds_ihd.csv": {
+      "sha256": "d31ad75911615ebb85198bc73daa02ddbd2439954621322754e365943c5f7819",
+      "bytes": 16957,
+      "derived_from": [
+        "raw/ihme_bop/output_data_r114_c493.json",
+        "raw/ihme_bop/fixed_effect_data_r114_c493.json",
+        "raw/ihme_bop/risk_cause_metadata_r114_c493.json",
+        "raw/ihme_bop/comparison.json"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "ihme_bop_nuts_seeds_ihd_notes.yaml": {
+      "sha256": "35dbe13d4685bafc97e90bd3e428105d15ed4061bc13f9534e2d6929f9581a3b",
+      "bytes": 2847,
+      "derived_from": [
+        "raw/ihme_bop/comparison.json",
+        "raw/ihme_bop/fixed_effect_data_r114_c493.json",
+        "raw/ihme_bop/metadata_cause.json",
+        "raw/ihme_bop/metadata_data_type.json",
+        "raw/ihme_bop/metadata_risk.json",
+        "raw/ihme_bop/output_data_r114_c493.json",
+        "raw/ihme_bop/risk_cause_metadata_r114_c493.json",
+        "raw/ihme_bop/study_citations_r114_c493.json",
+        "raw/ihme_bop/study_data_r114_c493.json",
+        "raw/ihme_bop/study_data_range_r114_c493.json"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "raw/aune2016_MOESM1_ESM.pdf": {
+      "url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs12916-016-0730-3/MediaObjects/12916_2016_730_MOESM1_ESM.pdf",
+      "sha256": "78ab5d89e2025830672c2f2557a39045438fa4a402a97055f896f7d669250a13",
+      "bytes": 1622259,
+      "fetched_at": "2026-09-24T02:41:23+00:00",
+      "description": "Aune 2016 Additional file 1 (supplementary figures and tables)"
+    },
+    "raw/aune2016_MOESM1_ESM.txt": {
+      "sha256": "5ba9958f99014e82e8b4a3f79729d4cb9cab897cdeaf527bd0f7f980e9da51fc",
+      "bytes": 145564,
+      "derived_from": [
+        "raw/aune2016_MOESM1_ESM.pdf"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "raw/aune2016_PMC5137221.txt": {
+      "sha256": "f62d0f4f9bbdf3f521be4d46dbfa3033df43e954247e1cc4092113d6212a9b35",
+      "bytes": 68257,
+      "derived_from": [
+        "raw/aune2016_PMC5137221.xml"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "raw/aune2016_PMC5137221.xml": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5137221/fullTextXML",
+      "sha256": "fa3477e3a63190e072a63b49f4b507d2e5b9859ddac30fbe5ab64cdde768c68d",
+      "bytes": 168871,
+      "fetched_at": "2026-09-24T02:41:23+00:00",
+      "description": "Aune 2016 full text, JATS XML"
+    },
+    "raw/fadnes2022_PMC8824353.txt": {
+      "sha256": "8edc53d5cb28a55effb917e462dc6ebbb74f853ecec3b545de638b36d78a4398",
+      "bytes": 101785,
+      "derived_from": [
+        "raw/fadnes2022_PMC8824353.xml"
+      ],
+      "generated_by": "scripts/fetch_curves.py"
+    },
+    "raw/fadnes2022_PMC8824353.xml": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8824353/fullTextXML",
+      "sha256": "af109b76cc6c28ff5f4081feecfb526370a7468d32526704616c142b8dd7c71d",
+      "bytes": 179975,
+      "fetched_at": "2026-09-24T02:41:24+00:00",
+      "description": "Fadnes 2022 full text, JATS XML"
+    },
+    "raw/fadnes2022_correction_PMC8956181.xml": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8956181/fullTextXML",
+      "sha256": "470d25aad2e71f4654d1f2131c4a58f4b22463569ecdbe5fe4a2e728ef22e7e8",
+      "bytes": 5491,
+      "fetched_at": "2026-09-24T02:41:24+00:00",
+      "description": "Fadnes 2022 correction notice (funding statement only)"
+    },
+    "raw/fadnes2022_s003.pdf": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s003",
+      "sha256": "4dd33b94ea24e4e17cb871d7547264616261ba35bfcfb12d8276af963b73eb70",
+      "bytes": 89056,
+      "fetched_at": "2026-09-24T02:41:24+00:00",
+      "description": "Fadnes S3 Text: US and Norway intakes"
+    },
+    "raw/fadnes2022_s004.pdf": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s004",
+      "sha256": "626b10870c3a1ff4c4f3a162715a79583d96003cf33b41234c916ccc5e47608e",
+      "bytes": 215191,
+      "fetched_at": "2026-09-24T02:41:25+00:00",
+      "description": "Fadnes S1 Table: hazard ratios by food group"
+    },
+    "raw/fadnes2022_s005.pdf": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s005",
+      "sha256": "ebd3c537d61464a9cf141b2076cee094f42f19a0d30c5fbe914ebfb8da8c8af6",
+      "bytes": 132214,
+      "fetched_at": "2026-09-24T02:41:25+00:00",
+      "description": "Fadnes S2 Table: LE gain by food group, US, ages 20 and 60"
+    },
+    "raw/fadnes2022_s006.pdf": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s006",
+      "sha256": "346b2b7b5ca908d89a77877c9a3199645309955c003dd104faf63d2ba3738e20",
+      "bytes": 206555,
+      "fetched_at": "2026-09-24T02:41:25+00:00",
+      "description": "Fadnes S3 Table: time-to-full-effect sensitivity"
+    },
+    "raw/fadnes2022_s012.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s012",
+      "sha256": "81e889288e9ca992a49fd44bf8a56ec19576a47a1fccf7d41cbb15e3e993b099",
+      "bytes": 108611,
+      "fetched_at": "2026-09-24T02:41:25+00:00",
+      "description": "Fadnes S6 Fig: US females age 20 forest plot"
+    },
+    "raw/fadnes2022_s013.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s013",
+      "sha256": "1b3f2cff751a6dd2107e565f4057d37ed5ded04fdd3063537cd5917cc22ed1fe",
+      "bytes": 109617,
+      "fetched_at": "2026-09-24T02:41:26+00:00",
+      "description": "Fadnes S7 Fig: US males age 20 forest plot"
+    },
+    "raw/fadnes2022_s014.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s014",
+      "sha256": "1ef8b3c0a88a943c4cdd3f96f1660162c6aa3ceb124f5840cc0885e9a41c5ad7",
+      "bytes": 108032,
+      "fetched_at": "2026-09-24T02:41:26+00:00",
+      "description": "Fadnes S8 Fig: US females age 40 forest plot"
+    },
+    "raw/fadnes2022_s015.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s015",
+      "sha256": "d7187132ad316b296dfa5843fd3980a85f5ba3bbcd6ee77a1c790c3528cb9f7c",
+      "bytes": 108850,
+      "fetched_at": "2026-09-24T02:41:26+00:00",
+      "description": "Fadnes S9 Fig: US males age 40 forest plot"
+    },
+    "raw/fadnes2022_s016.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s016",
+      "sha256": "d98209488a25c2fb46a1cf45a77a98130e0d5e7862682a4068bc364d4df46043",
+      "bytes": 108133,
+      "fetched_at": "2026-09-24T02:41:27+00:00",
+      "description": "Fadnes S10 Fig: US females age 60 forest plot"
+    },
+    "raw/fadnes2022_s017.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s017",
+      "sha256": "12ba0ba9b0a8dc3ab491f29f21636958b5825adf15d6f84d48c09681650c9184",
+      "bytes": 107822,
+      "fetched_at": "2026-09-24T02:41:27+00:00",
+      "description": "Fadnes S11 Fig: US males age 60 forest plot"
+    },
+    "raw/fadnes2022_s018.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s018",
+      "sha256": "179eb0755df0cf9910c0c94f140858630a355e8637427417aefddd615107e4e8",
+      "bytes": 106474,
+      "fetched_at": "2026-09-24T02:41:27+00:00",
+      "description": "Fadnes S12 Fig: US females age 80 forest plot"
+    },
+    "raw/fadnes2022_s019.png": {
+      "url": "https://journals.plos.org/plosmedicine/article/file?type=supplementary&id=10.1371/journal.pmed.1003889.s019",
+      "sha256": "374a81a7c3a9111e8e4fd81d37a95a565c036fa90a4b51b29fd9d193eeac2aa7",
+      "bytes": 106498,
+      "fetched_at": "2026-09-24T02:41:27+00:00",
+      "description": "Fadnes S13 Fig: US males age 80 forest plot"
+    },
+    "raw/ihme_bop/comparison.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/comparison",
+      "sha256": "9205b6b1df918c94b9ee91bbcf495ac74cebb946f8ba9a131b2cecbc2d3989a8",
+      "bytes": 44179,
+      "fetched_at": "2026-09-24T02:41:32+00:00",
+      "description": "BoP comparison table (names, star ratings, scores)",
+      "replaced_sha256": "4b388b467e33ecbd6215c8d3fa3028575cdc7081f277cbb1ba842ce7cba899af"
+    },
+    "raw/ihme_bop/fixed_effect_data_r114_c493.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/fixed_effect_data?risk=114&cause=493",
+      "sha256": "05886bef2e5202f12c9e12d1d8f5750c33c9e629f807efc6f49a8e048d1d197d",
+      "bytes": 29489,
+      "fetched_at": "2026-09-24T02:41:29+00:00",
+      "description": "BoP risk curve, fixed effects UI"
+    },
+    "raw/ihme_bop/metadata_cause.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/metadata/cause",
+      "sha256": "e383182c700517e0b759e44cbabfbc124331585552d304ce3c16b17293fd2b3a",
+      "bytes": 89104,
+      "fetched_at": "2026-09-24T02:41:32+00:00",
+      "description": "BoP cause hierarchy"
+    },
+    "raw/ihme_bop/metadata_data_type.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/metadata/data_type",
+      "sha256": "59aaabc9c517f131408ea8a1c6796f6d3a461b42abc2bcd6ef7f23cdd0f4baee",
+      "bytes": 1038,
+      "fetched_at": "2026-09-24T02:41:32+00:00",
+      "description": "BoP evidence data types"
+    },
+    "raw/ihme_bop/metadata_risk.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/metadata/risk",
+      "sha256": "b8e24b58856a6bcb32a247afa8bf8440f26f22bb673088aad1c561e3fda91825",
+      "bytes": 11108,
+      "fetched_at": "2026-09-24T02:41:32+00:00",
+      "description": "BoP risk hierarchy"
+    },
+    "raw/ihme_bop/output_data_r114_c493.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/output_data?risk=114&cause=493",
+      "sha256": "42ebc5627a2694c98d1f48813afcb1095c8d937242a978f8cdb09cfcb25bc1d4",
+      "bytes": 36703,
+      "fetched_at": "2026-09-24T02:41:29+00:00",
+      "description": "BoP risk curve, fixed & random effects UI"
+    },
+    "raw/ihme_bop/risk_cause_metadata_r114_c493.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/risk_cause_metadata?risk=114&cause=493",
+      "sha256": "919e53708cb138fd5ac1cf4fa03a97f3e89ab52b53f97ac1ab7e39abe128ecea",
+      "bytes": 222,
+      "fetched_at": "2026-09-24T02:41:28+00:00",
+      "description": "BoP pair metadata"
+    },
+    "raw/ihme_bop/study_citations_r114_c493.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/study_citations?risk=114&cause=493",
+      "sha256": "50f4f30084b65d4f7aba2611dc171caf61dcb056fc5c74555a34e61ddfa74222",
+      "bytes": 3459,
+      "fetched_at": "2026-09-24T02:41:30+00:00",
+      "description": "BoP study citations"
+    },
+    "raw/ihme_bop/study_data_r114_c493.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/study_data?risk=114&cause=493&evidence_data_type_id=1",
+      "sha256": "cbf3d2d8e272ccc0d03eb77c4ba8fa25dd679fec54f41b6072cf4719b29bd92c",
+      "bytes": 48250,
+      "fetched_at": "2026-09-24T02:41:29+00:00",
+      "description": "BoP input study data"
+    },
+    "raw/ihme_bop/study_data_range_r114_c493.json": {
+      "url": "https://vizhub.healthdata.org/burden-of-proof/api/v1/study_data_range?risk=114&cause=493",
+      "sha256": "a23ae1dcc404cb3f56ed141cd5ab74b10b9093b66343e351e87b38f67cf29329",
+      "bytes": 235,
+      "fetched_at": "2026-09-24T02:41:30+00:00",
+      "description": "BoP study data range"
+    },
+    "raw/johansson2020_PMC7360045.xml": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7360045/fullTextXML",
+      "sha256": "766f9f38bdfa516966dee2bfd1af61e1d7727eb51634987c28155d80e7f2b755",
+      "bytes": 237032,
+      "fetched_at": "2026-09-24T02:41:28+00:00",
+      "description": "Johansson 2020 HAAD (life-table method cited by Fadnes as ref 13), JATS XML"
+    }
+  },
+  "source": "Aune 2016 (BMC Med 14:207), IHME Burden of Proof API (rei 114 x cause 493), Fadnes 2022 (PLoS Med 19:e1003889) and Johansson 2020 (PLoS One 15:e0235955)",
+  "generated_by": "scripts/fetch_curves.py"
+}

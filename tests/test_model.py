@@ -1,354 +1,152 @@
-"""Tests for the forward Monte Carlo model module.
+"""Dose curves, draws and the bracket, checked against the evidence rows."""
 
-Covers sample_model output shapes, RR distribution sanity checks,
-reproducibility with seeds, and summarize_rr output structure.
-Uses n_samples=100 for speed.
-"""
+from __future__ import annotations
+
+import math
 
 import numpy as np
 import pytest
 
-from whatnut.config import NUT_IDS, PATHWAYS, NUTRIENTS
-from whatnut.model import ModelSamples, sample_model, summarize_rr
-
-
-N_FAST = 100  # Small sample count for fast tests
-
-
-# ---------------------------------------------------------------------------
-# Fixtures
-# ---------------------------------------------------------------------------
+from whatnut import data
+from whatnut.model import ASSUMPTIONS, DRAW_COLUMNS, Draws, Model
+from whatnut.pipeline import ala_counted
 
 
 @pytest.fixture(scope="module")
-def samples_default() -> ModelSamples:
-    """Samples with default nut IDs and fast sample count."""
-    return sample_model(n_samples=N_FAST, seed=42)
-
-
-@pytest.fixture(scope="module")
-def samples_subset() -> ModelSamples:
-    """Samples with a subset of nuts."""
-    return sample_model(n_samples=N_FAST, seed=42, nut_ids=["walnut", "almond"])
-
-
-# ---------------------------------------------------------------------------
-# Output shape and structure
-# ---------------------------------------------------------------------------
-
-
-class TestSampleModelShapes:
-    """sample_model should return correctly shaped arrays."""
-
-    def test_returns_model_samples(self, samples_default):
-        assert isinstance(samples_default, ModelSamples)
-
-    def test_rr_dict_has_all_pathways(self, samples_default):
-        for pathway in PATHWAYS:
-            assert pathway in samples_default.rr
-
-    def test_rr_shape_default(self, samples_default):
-        for pathway in PATHWAYS:
-            arr = samples_default.rr[pathway]
-            assert arr.shape == (N_FAST, len(NUT_IDS)), (
-                f"Expected ({N_FAST}, {len(NUT_IDS)}), got {arr.shape}"
-            )
-
-    def test_rr_shape_subset(self, samples_subset):
-        for pathway in PATHWAYS:
-            arr = samples_subset.rr[pathway]
-            assert arr.shape == (N_FAST, 2)
-
-    def test_nut_ids_preserved(self, samples_default):
-        assert samples_default.nut_ids == list(NUT_IDS)
-
-    def test_nut_ids_subset(self, samples_subset):
-        assert samples_subset.nut_ids == ["walnut", "almond"]
-
-    def test_n_samples_attribute(self, samples_default):
-        assert samples_default.n_samples == N_FAST
-
-    def test_causal_fraction_shape(self, samples_default):
-        assert samples_default.causal_fraction.shape == (N_FAST,)
-
-
-# ---------------------------------------------------------------------------
-# RR distribution sanity
-# ---------------------------------------------------------------------------
-
-
-class TestRRDistributions:
-    """Sampled RRs should be physiologically sensible."""
-
-    def test_all_rrs_positive(self, samples_default):
-        """Relative risks must be positive (exp of log-RR)."""
-        for pathway in PATHWAYS:
-            assert np.all(samples_default.rr[pathway] > 0)
-
-    def test_mean_rr_in_sensible_range(self, samples_default):
-        """Mean RR for each pathway/nut should be in [0.5, 1.2]."""
-        for pathway in PATHWAYS:
-            for j, nut_id in enumerate(samples_default.nut_ids):
-                mean_rr = np.mean(samples_default.rr[pathway][:, j])
-                assert 0.5 <= mean_rr <= 1.2, (
-                    f"{pathway}/{nut_id}: mean RR = {mean_rr:.4f} outside [0.5, 1.2]"
-                )
-
-    def test_rr_has_variance(self, samples_default):
-        """Each RR distribution should show non-zero variance."""
-        for pathway in PATHWAYS:
-            for j in range(len(samples_default.nut_ids)):
-                std = np.std(samples_default.rr[pathway][:, j])
-                assert std > 0, f"Zero variance for pathway {pathway}, nut index {j}"
-
-    def test_causal_fraction_in_zero_one(self, samples_default):
-        """Causal fraction samples should be in (0, 1)."""
-        cf = samples_default.causal_fraction
-        assert np.all(cf > 0)
-        assert np.all(cf < 1)
-
-    def test_causal_fraction_mean_near_half(self, samples_default):
-        """With default skeptical prior, mean should be near 0.2."""
-        mean_cf = np.mean(samples_default.causal_fraction)
-        assert mean_cf == pytest.approx(0.2, abs=0.08)
-
-    def test_walnut_cvd_rr_tends_low(self):
-        """Walnuts (high ALA) should have lower CVD RR than peanuts (no ALA)."""
-        samples = sample_model(n_samples=500, seed=42)
-        walnut_idx = samples.nut_ids.index("walnut")
-        peanut_idx = samples.nut_ids.index("peanut")
-        walnut_cvd_mean = np.mean(samples.rr["cvd"][:, walnut_idx])
-        peanut_cvd_mean = np.mean(samples.rr["cvd"][:, peanut_idx])
-        # Both should be < 1, walnut likely lower (more protective)
-        assert walnut_cvd_mean < 1.0
-        assert peanut_cvd_mean < 1.0
-
-
-# ---------------------------------------------------------------------------
-# Reproducibility
-# ---------------------------------------------------------------------------
-
-
-class TestReproducibility:
-    """Same seed should produce identical results."""
-
-    def test_same_seed_same_output(self):
-        s1 = sample_model(n_samples=N_FAST, seed=99)
-        s2 = sample_model(n_samples=N_FAST, seed=99)
-        for pathway in PATHWAYS:
-            np.testing.assert_array_equal(s1.rr[pathway], s2.rr[pathway])
-        np.testing.assert_array_equal(s1.causal_fraction, s2.causal_fraction)
-
-    def test_different_seed_different_output(self):
-        s1 = sample_model(n_samples=N_FAST, seed=1)
-        s2 = sample_model(n_samples=N_FAST, seed=2)
-        # At least one pathway should differ
-        any_diff = False
-        for pathway in PATHWAYS:
-            if not np.array_equal(s1.rr[pathway], s2.rr[pathway]):
-                any_diff = True
-                break
-        assert any_diff, "Different seeds produced identical output"
-
-
-# ---------------------------------------------------------------------------
-# Confounding overrides
-# ---------------------------------------------------------------------------
-
-
-class TestConfoundingOverrides:
-    """Custom confounding priors should change causal fractions."""
-
-    def test_high_alpha_shifts_mean_up(self):
-        """Beta(8, 2) should have mean ~0.8."""
-        s = sample_model(
-            n_samples=N_FAST,
-            seed=42,
-            confounding_alpha=8.0,
-            confounding_beta=2.0,
-        )
-        mean_cf = np.mean(s.causal_fraction)
-        assert mean_cf > 0.6
-
-    def test_low_alpha_shifts_mean_down(self):
-        """Beta(1, 5) should have mean ~0.17."""
-        s = sample_model(
-            n_samples=N_FAST,
-            seed=42,
-            confounding_alpha=1.0,
-            confounding_beta=5.0,
-        )
-        mean_cf = np.mean(s.causal_fraction)
-        assert mean_cf < 0.4
-
-    def test_confounding_reduces_effect_magnitudes(self):
-        """Lower causal fraction should push RRs closer to 1.0 (less extreme)."""
-        # High causal fraction (most of observed effect is causal)
-        s_high = sample_model(
-            n_samples=500,
-            seed=42,
-            confounding_alpha=9.0,
-            confounding_beta=1.0,
-        )
-        # Low causal fraction (much of observed effect is confounding)
-        s_low = sample_model(
-            n_samples=500,
-            seed=42,
-            confounding_alpha=1.0,
-            confounding_beta=9.0,
-        )
-        # For any pathway, the deviation of mean RR from 1.0 should be smaller
-        # with lower causal fraction
-        for pathway in PATHWAYS:
-            deviation_high = np.abs(np.mean(s_high.rr[pathway]) - 1.0)
-            deviation_low = np.abs(np.mean(s_low.rr[pathway]) - 1.0)
-            assert deviation_low < deviation_high, (
-                f"{pathway}: low confounding deviation ({deviation_low:.4f}) should be "
-                f"less than high confounding deviation ({deviation_high:.4f})"
-            )
-
-
-# ---------------------------------------------------------------------------
-# summarize_rr
-# ---------------------------------------------------------------------------
-
-
-class TestSummarizeRR:
-    """summarize_rr should return nested dict with correct structure."""
-
-    @pytest.fixture
-    def summary(self, samples_default) -> dict:
-        return summarize_rr(samples_default)
-
-    def test_has_all_pathways(self, summary):
-        for pathway in PATHWAYS:
-            assert pathway in summary
-
-    def test_has_all_nuts_per_pathway(self, summary):
-        for pathway in PATHWAYS:
-            for nut_id in NUT_IDS:
-                assert nut_id in summary[pathway]
-
-    def test_summary_keys(self, summary):
-        expected_keys = {"mean", "median", "ci_lower", "ci_upper"}
-        for pathway in PATHWAYS:
-            for nut_id in NUT_IDS:
-                actual_keys = set(summary[pathway][nut_id].keys())
-                assert actual_keys == expected_keys
-
-    def test_ci_lower_less_than_upper(self, summary):
-        for pathway in PATHWAYS:
-            for nut_id in NUT_IDS:
-                s = summary[pathway][nut_id]
-                assert s["ci_lower"] < s["ci_upper"]
-
-    def test_mean_between_ci(self, summary):
-        for pathway in PATHWAYS:
-            for nut_id in NUT_IDS:
-                s = summary[pathway][nut_id]
-                assert s["ci_lower"] <= s["mean"] <= s["ci_upper"]
-
-    def test_all_values_are_floats(self, summary):
-        for pathway in PATHWAYS:
-            for nut_id in NUT_IDS:
-                for key, val in summary[pathway][nut_id].items():
-                    assert isinstance(val, float), f"{pathway}/{nut_id}/{key} is {type(val)}"
-
-
-# ---------------------------------------------------------------------------
-# Pathway adjustments (Issue 2)
-# ---------------------------------------------------------------------------
-
-
-class TestPathwayAdjustments:
-    """Pathway adjustments from nuts.yaml should modify model output."""
-
-    def test_walnut_cvd_adjusted_more_than_almond(self):
-        """Walnut CVD adjustment (1.25) > almond (1.00), so walnut CVD RR
-        should be lower (more protective) relative to nutrient predictions."""
-        samples = sample_model(n_samples=1000, seed=42)
-        walnut_idx = samples.nut_ids.index("walnut")
-        almond_idx = samples.nut_ids.index("almond")
-        # Walnut has stronger CVD adjustment (1.25 > 1.00)
-        # So walnut CVD effect should be amplified
-        walnut_cvd = np.mean(samples.rr["cvd"][:, walnut_idx])
-        almond_cvd = np.mean(samples.rr["cvd"][:, almond_idx])
-        # Walnut has 2.5g ALA + 1.25 adj, almond has 0g ALA + 1.00 adj
-        # Walnut should have lower CVD RR
-        assert walnut_cvd < almond_cvd, (
-            f"Walnut CVD RR ({walnut_cvd:.4f}) should be < almond ({almond_cvd:.4f}) "
-            "due to pathway adjustment"
-        )
-
-    def test_cashew_adjustment_dampens_effect(self):
-        """Cashew CVD adjustment (0.95) should dampen CVD effect."""
-        from whatnut.config import get_nut
-        cashew = get_nut("cashew")
-        adj = cashew.pathway_adjustments["cvd"]
-        assert adj.mean < 1.0, "Cashew CVD adjustment should be < 1.0"
-
-
-# ---------------------------------------------------------------------------
-# Optiqal-style layers: tiered pub-bias shrinkage and HR-centering
-# ---------------------------------------------------------------------------
-
-
-class TestStudyQualityShrinkage:
-    """Evidence-tier shrinkage should pull nut residuals toward a=1.0."""
-
-    def test_shrinkage_config_loads(self):
-        from whatnut.config import get_study_quality_shrinkage
-
-        s = get_study_quality_shrinkage()
-        assert 0 < s.strong < s.moderate < s.limited < 1
-        assert s.retention("strong") > s.retention("moderate") > s.retention("limited")
-
-    def test_limited_evidence_shrinks_more_than_strong(self):
-        """Under shrinkage, a 'strong' nut with a=1.10 retains more of its
-        edge than a 'limited' nut with the same nominal a."""
-        from whatnut.config import get_study_quality_shrinkage
-
-        s = get_study_quality_shrinkage()
-        strong_shrunk = 1.0 + (1.10 - 1.0) * s.retention("strong")
-        limited_shrunk = 1.0 + (1.10 - 1.0) * s.retention("limited")
-        assert strong_shrunk > limited_shrunk > 1.0
-
-    def test_model_applies_shrinkage(self):
-        """A synthetic walnut with identical priors but a limited-tier
-        evidence flag should produce weaker CVD protection than the real
-        'strong'-tier walnut. Exercised via sample_model path."""
-        # Sample with tiered shrinkage on; the real walnut is 'strong',
-        # so its shrunk adjustment is smaller than its nominal 1.10 but
-        # still > 1.0.
-        samples = sample_model(n_samples=2000, seed=42)
-        walnut_idx = samples.nut_ids.index("walnut")
-        walnut_rr_cvd = np.mean(samples.rr["cvd"][:, walnut_idx])
-        # The final CVD RR for walnut should still be < 1 (protective)
-        # but materially weaker than the untilted prior would imply.
-        assert walnut_rr_cvd < 1.0
-
-
-class TestHRCentering:
-    """hr_centered=True applies a Jensen shift reducing mean log-RR."""
-
-    def test_hr_centering_reduces_mean_log_rr(self):
-        """With HR-centering on, the mean sampled RR should be very slightly
-        more protective than without (because log_RR is shifted down by
-        variance/2 before confounding)."""
-        on = sample_model(n_samples=5000, seed=42, hr_centered=True)
-        off = sample_model(n_samples=5000, seed=42, hr_centered=False)
-        walnut_idx = on.nut_ids.index("walnut")
-        # Centered mean RR should be at least as small (protective) as
-        # uncentered. The gap is small (<0.3pp) but directionally pinned.
-        on_mean = np.mean(on.rr["cvd"][:, walnut_idx])
-        off_mean = np.mean(off.rr["cvd"][:, walnut_idx])
-        assert on_mean <= off_mean + 1e-6
-
-    def test_hr_centering_preserves_rr_sanity(self):
-        """HR-centered samples must still fall in a plausible RR range."""
-        samples = sample_model(n_samples=500, seed=42, hr_centered=True)
-        for pathway in PATHWAYS:
-            for j in range(samples.rr[pathway].shape[1]):
-                rr = samples.rr[pathway][:, j]
-                assert np.all(rr > 0.3)
-                assert np.all(rr < 1.8)
+def m():
+    return Model(n=4000)
+
+
+def test_main_curve_is_running_minimum_of_aune_s15(m):
+    g, rr = data.aune_curve("all_cause_mortality")
+    f = m.curves["main"].f
+    running = np.minimum.accumulate(rr)
+    assert np.allclose(np.exp(f(g)), running)
+    # nonincreasing everywhere, flat beyond the last point
+    fine = f(np.linspace(0, 60, 601))
+    assert np.all(np.diff(fine) <= 0)
+    assert f(60) == f(g[-1])
+    assert f(0) == 0
+
+
+def test_pchip_sensitivity_keeps_the_printed_uptick(m):
+    g, rr = data.aune_curve("all_cause_mortality")
+    f = m.curves["pchip_as_printed"].f
+    assert np.allclose(np.exp(f(g)), rr)
+    assert f(28) > f(20)  # RR 0.85 at 28 g above 0.82 at 20 g, as printed
+
+
+def test_linear_plateau_sensitivity(m):
+    row = m.rows["rr28_all"]
+    f = m.curves["linear_plateau"].f
+    assert math.exp(f(row.per_grams())) == pytest.approx(row.estimate)
+    share = f(ASSUMPTIONS["plateau_dose_g"]) / f(row.per_grams())
+    assert share == pytest.approx(ASSUMPTIONS["plateau_share"])
+
+
+def test_cvd_curve_is_s14_mortality(m):
+    g, rr = data.aune_curve("cvd_mortality")
+    assert np.allclose(np.exp(m.cvd_curve.f(g)), np.minimum.accumulate(rr))
+
+
+def test_draws_are_one_seeded_matrix():
+    a, b = Draws.make(100, 7), Draws.make(100, 7)
+    assert a.z.shape == (100, len(DRAW_COLUMNS))
+    assert np.array_equal(a.z, b.z)
+    assert not np.array_equal(a.z, Draws.make(100, 8).z)
+
+
+def test_common_random_numbers_across_scenarios(m):
+    """Face value and calibrated share the RR28 draw, so c_cal is exactly the
+    ratio of their log multipliers, draw by draw."""
+    _, face = m.scenario("face_value", 28, 0)
+    _, cal = m.scenario("calibrated", 28, 0)
+    assert np.allclose(cal / face, m.q["c_calibrated"])
+
+
+def test_calibrated_multiplier_formula(m):
+    """DESIGN decision 3: c_cal = ln(RR28 x RRR) / ln(RR28); above 1 for the
+    intake-v-intake stratum (RRR 0.98)."""
+    rr = m.rows["rr28_all"].estimate
+    rrr = m.rows["rrr_intake"].estimate
+    c_point = math.log(rr * rrr) / math.log(rr)
+    assert c_point > 1
+    assert np.median(m.q["c_calibrated"]) == pytest.approx(c_point, rel=0.02)
+    rrr_all = m.rows["rrr_all_cause"].estimate
+    assert math.log(rr * rrr_all) / math.log(rr) < 1
+
+
+def test_lognormal_draws_match_row_intervals(m):
+    """Each ratio's draws reproduce its CI at the row's own ci_level (the CTT
+    CHD-death row is a 99% CI)."""
+    for role, key in (
+        ("ctt_chd", "ln_ctt_chd"),
+        ("ctt_all", "ln_ctt_all"),
+        ("ala", "ln_rr_ala"),
+    ):
+        row = m.rows[role]
+        lo, hi = np.quantile(m.q[key], [(1 - row.ci_level) / 2, (1 + row.ci_level) / 2])
+        assert math.exp(lo) == pytest.approx(row.ci_low, abs=0.01)
+        assert math.exp(hi) == pytest.approx(row.ci_high, abs=0.01)
+    assert m.rows["ctt_chd"].ci_level == 0.99
+    assert data.z_for(0.99) == pytest.approx(2.5758, abs=1e-4)
+
+
+def test_peanut_ldl_se_from_p_value(m):
+    row = m.rows["ldl_peanut"]
+    assert row.ci_low is None and row.p_value() == 0.472
+    z = abs(row.estimate) / row.se_from_p()
+    assert 2 * (1 - __import__("scipy").stats.norm.cdf(z)) == pytest.approx(0.472)
+
+
+def test_floor_is_linear_in_dose_and_ignores_background(m):
+    _, b10 = m.scenario("floor_high", 10, 0)
+    _, b20 = m.scenario("floor_high", 20, 0)
+    _, b20bg = m.scenario("floor_high", 20, 20)
+    assert np.allclose(b20, 2 * b10)
+    assert np.array_equal(b20, b20bg)
+    # 28.4 g/day of tree nuts lowers LDL by Del Gobbo's estimate, in mmol/L
+    row = m.rows["ldl_tree"]
+    red = m.ldl_mmol_reduction(row.per_grams(), "tree")
+    assert np.mean(red) == pytest.approx(
+        -row.estimate / ASSUMPTIONS["ldl_mg_dl_per_mmol_l"], rel=0.01
+    )
+
+
+def test_per_draw_gain_monotone_in_dose(m):
+    prev = np.zeros(m.n)
+    for delta in (5, 10, 15, 20, 28, 40):
+        s, beta = m.scenario("face_value", delta, 0)
+        g = m.gain("female", 50, s, beta)
+        assert np.all(g >= prev - 1e-12)
+        prev = g
+
+
+def test_zero_effect_gives_zero_gain(m):
+    assert np.all(m.gain("male", 40, "all", np.zeros(5)) == 0)
+    s, beta = m.scenario("face_value", 10, 28)  # beyond the plateau
+    assert np.all(m.gain("male", 40, s, beta) == 0)
+
+
+def test_cause_restricted_multiplier(m):
+    """h' = h (1 - p + p RR): the CVD-only member equals an all-cause multiplier
+    of 1 - p + p RR at every age."""
+    beta = np.array([math.log(0.8)])
+    lm = m.log_mult("male", 60, 0, "cvd", beta)
+    p = m.cause_share("male", 60, "cvd")
+    assert np.allclose(np.exp(lm[0]), 1 - p + p * 0.8)
+
+
+def test_ala_counted_inside_support():
+    lo, hi = ASSUMPTIONS["ala_support_g"]
+    assert ala_counted(0, 0.2) == 0  # below the observed range
+    assert ala_counted(0, 1) == pytest.approx(1 - lo)
+    assert ala_counted(2, 2.54) == pytest.approx(hi - 2)
+    assert ala_counted(5, 2.54) == 0
+
+
+def test_discount_weights(m):
+    w = m.discount_weights("female", 40)
+    r = ASSUMPTIONS["discount_rate"]
+    assert w[0] == pytest.approx((1 + r) ** -0.5)
+    assert np.all(np.diff(w) < 0)

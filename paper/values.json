@@ -1,0 +1,12 @@
+{
+  "mc_draws": {
+    "kind": "integer",
+    "raw": 20000,
+    "text": "20,000"
+  },
+  "ref_male_calibrated_mean_days": {
+    "kind": "days",
+    "raw": 2.14366,
+    "text": "783"
+  }
+}

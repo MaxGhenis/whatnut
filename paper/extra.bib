@@ -1,0 +1,8 @@
+% References the paper cites that are not evidence rows in data/evidence.yaml.
+% scripts/build_bib.py appends these entries verbatim to paper/references.bib;
+% a key here must not repeat an evidence source key.
+%
+% Prefer adding a source as an evidence row (it then gets a verified Crossref
+% record under data/sources/crossref/). An entry here that carries a doi field
+% is checked by scripts/check_citations.py too, and --offline needs its record
+% cached in data/sources/crossref/.

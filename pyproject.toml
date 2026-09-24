@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "whatnut"
-version = "0.2.0"
-description = "Monte Carlo analysis of life expectancy from nut consumption"
+version = "0.3.0"
+description = "How much life eating nuts buys a US adult: a small, fully sourced life-table model"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
@@ -26,26 +26,19 @@ dependencies = [
     "scipy>=1.10",
     "pandas>=2.0",
     "matplotlib>=3.7",
-    "seaborn>=0.12",
     "pyyaml>=6.0",
-    "pypdf>=6.10.2",
     "openpyxl>=3.1.5",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
-    "pytest-cov>=4.0",
-    "black>=23.0",
     "ruff>=0.1",
-    "mypy>=1.0",
 ]
-docs = [
-    "ipykernel>=6.0",
-    "jupyter>=1.0",
-]
-all = [
-    "whatnut[dev,docs]",
+# scripts/fetch_*.py (rebuilding data/ from the sources)
+fetch = [
+    "requests>=2.31",
+    "pypdf>=6.10.2",
 ]
 
 [project.urls]
@@ -57,13 +50,10 @@ packages = ["src/whatnut"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-v --cov=whatnut --cov-report=term-missing"
+addopts = "-ra"
 
 [tool.ruff]
 line-length = 88
-select = ["E", "F", "I", "UP"]
 
-[tool.mypy]
-python_version = "3.10"
-warn_return_any = true
-warn_unused_ignores = true
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

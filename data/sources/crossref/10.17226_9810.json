@@ -1,0 +1,171 @@
+{
+ "DOI": "10.17226/9810",
+ "ISBN": [
+  "9780309069359"
+ ],
+ "URL": "https://doi.org/10.17226/9810",
+ "author": [
+  {
+   "affiliation": [],
+   "name": "Panel on Dietary Antioxidants and Related Compounds",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "name": "Subcommittee on Upper Reference Levels of Nutrients",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "name": "Subcommittee on Interpretation and Uses of Dietary Reference Intakes",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "name": "Standing Committee on the Scientific Evaluation of Dietary Reference Intakes",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "name": "Food and Nutrition Board",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "name": "Institute of Medicine",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    10,
+    24
+   ]
+  ],
+  "date-time": "2015-10-24T14:36:56Z",
+  "timestamp": 1445697416000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    12,
+    9
+   ]
+  ],
+  "date-time": "2025-12-09T15:28:07Z",
+  "timestamp": 1765294087000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    17
+   ]
+  ],
+  "date-time": "2026-09-17T14:28:36Z",
+  "timestamp": 1789655316420,
+  "version": "4.0.1"
+ },
+ "is-referenced-by-count": 221,
+ "isbn-type": [
+  {
+   "type": "print",
+   "value": "9780309069359"
+  }
+ ],
+ "issued": {
+  "date-parts": [
+   [
+    2000,
+    7,
+    27
+   ]
+  ]
+ },
+ "member": "6987",
+ "original-title": [],
+ "prefix": "10.17226",
+ "published": {
+  "date-parts": [
+   [
+    2000,
+    7,
+    27
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2000,
+    7,
+    27
+   ]
+  ]
+ },
+ "publisher": "National Academies Press",
+ "publisher-location": "Washington, D.C.",
+ "reference-count": 0,
+ "references-count": 0,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.nationalacademies.org/publications/9810"
+  }
+ },
+ "score": 1,
+ "short-container-title": [],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Dietary Reference Intakes for Vitamin C, Vitamin E, Selenium, and Carotenoids"
+ ],
+ "type": "edited-book"
+}

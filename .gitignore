@@ -44,7 +44,32 @@ htmlcov/
 Thumbs.db
 .vercel
 
-# Vercel + docs build artifacts
-public/
-docs/exports/
-docs/_build/
+# Vercel output: only the wrapper page is committed; the manuscript render
+# under public/whatnut/web/ is rebuilt by paper/render_paper.py and on Vercel.
+/public/*
+!/public/whatnut/
+/public/whatnut/*
+!/public/whatnut/index.html
+
+# Quarto build output (paper/index.qmd itself is generated AND committed)
+paper/_build/
+paper/.quarto/
+paper/index_files/
+paper/index.tex
+paper/*.log
+
+# Third-party source documents are re-fetchable and pinned by sha256 in each
+# folder's MANIFEST.json; the repo keeps manifests, Crossref metadata and the
+# parsed tables the pipeline reads, not the documents themselves.
+data/**/raw/*.pdf
+data/**/raw/*.html
+data/**/raw/*.htm
+data/**/raw/*.xml
+data/**/raw/*.txt
+data/**/raw/*.zip
+data/**/raw/*.gz
+data/**/raw/*.png
+data/sources/crossref/texts/
+data/sources/crossref/primary/
+data/prices/raw/
+_build/
