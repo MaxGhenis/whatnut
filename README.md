@@ -11,14 +11,16 @@ Every estimate is bracketed: a randomized floor (LDL lowering in nut trials time
 ## Regenerate
 
 ```bash
-uv pip install -e ".[dev]"
-python -m whatnut.pipeline        # results/results.json and paper/figures/*.png
-python scripts/build_bib.py       # paper/references.bib from data/evidence.yaml
-python paper/render_paper.py      # fill paper/index.qmd, render with Quarto, stage public/whatnut/web/
-python -m http.server -d public   # preview at http://localhost:8000/whatnut/
+uv sync --locked --extra dev                # the environment in uv.lock
+uv run python -m whatnut.pipeline           # results/results.json and paper/figures/*.png
+uv run python scripts/build_bib.py          # paper/references.bib from data/evidence.yaml
+uv run python paper/render_paper.py         # fill paper/index.qmd, render HTML and PDF, stage public/whatnut/web/
+uv run python -m http.server -d public      # preview at http://localhost:8000/whatnut/
 ```
 
-Quarto 1.9.x must be on PATH. The render runs no code: `render_paper.py` builds a PDF too when `xelatex` is installed.
+`results/results.json` regenerates byte for byte across platforms and Python versions (a test checks it); the PNGs match byte for byte only with the locked matplotlib on the same operating system and CPU architecture.
+
+Quarto 1.9.x must be on PATH, and nothing else: the PDF is typeset with Typst, which ships inside Quarto. The render runs no code.
 
 ## The manuscript is generated
 
@@ -31,12 +33,12 @@ Each effect size the model uses is a row in `data/evidence.yaml` with its source
 ## Checks
 
 ```bash
-python -m pytest                              # model, reproduction and paper tests
-python paper/fill_paper.py --check            # committed manuscript matches template + results
-python scripts/build_bib.py --check           # bibliography matches the evidence
-python scripts/check_citations.py --offline   # DOIs, titles, first authors vs Crossref (drop --offline to query live)
+uv run python -m pytest                              # model, reproduction and paper tests
+uv run python paper/fill_paper.py --check            # committed manuscript matches template + results
+uv run python scripts/build_bib.py --check           # bibliography matches the evidence
+uv run python scripts/check_citations.py --offline   # DOIs, titles, first authors vs Crossref (drop --offline to query live)
 ```
 
-CI runs all four; Vercel renders the committed `paper/index.qmd` (no Python) and serves the wrapper at `/whatnut/` with the manuscript at `/whatnut/web/`.
+CI runs all four, with the tests on Python 3.10, 3.12 and 3.14, then renders the paper and checks the render. Vercel renders the committed `paper/index.qmd` to HTML and PDF with Quarto alone (no Python) and serves the wrapper at `/whatnut/`, the manuscript at `/whatnut/web/` and the PDF at `/whatnut/web/index.pdf`.
 
 MIT license.

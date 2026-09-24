@@ -14,13 +14,16 @@ from whatnut.lifetable import Baseline, baseline_ex, life_expectancy, phase_in
 @pytest.mark.parametrize("sex", SEXES)
 def test_baseline_reproduces_published_ex_at_every_age(sex):
     """DESIGN decision 5: mid-year convention with the table's own e_omega
-    reproduces e_x within 0.01 years at every age."""
+    reproduces e_x within a day at every age, as the paper says."""
     base = Baseline.load(sex)
     ours = baseline_ex(base)
     gap = np.abs(ours - base.ex_published)
     worst = int(np.argmax(gap))
-    print(f"{sex}: max |e_x - published| = {gap.max():.5f} years at age {worst}")
-    assert gap.max() < 0.01
+    print(
+        f"{sex}: max |e_x - published| = {gap.max():.5f} years "
+        f"({gap.max() * 365.25:.2f} days) at age {worst}"
+    )
+    assert gap.max() < 1 / 365.25
 
 
 def _loop_le(base: Baseline, a0: int, mult: list[float]) -> float:

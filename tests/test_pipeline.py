@@ -107,7 +107,7 @@ def test_marginal_value_nonincreasing_in_background():
 
 def test_bracket_ordering():
     """floor_low <= floor_high everywhere; the floor sits below face value (c = 1)
-    from zero background. (From 20 g/day the cohort curve is flat, so face value is
+    from zero background. (From 15 g/day the cohort curve is flat, so face value is
     zero while the linear LDL floor is not; see DESIGN, Deviations.)"""
     res, _ = fresh_run("a")
     for sex, a0, d, bg in itertools.product(
