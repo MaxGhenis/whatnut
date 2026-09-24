@@ -264,3 +264,28 @@ def test_vercel_config():
         assert len(cmd) <= 256, (
             "Vercel caps build and install commands at 256 characters"
         )
+
+
+def test_wrapper_numbers_match_the_paper():
+    """Every number in the wrapper's description is a data-value span whose text
+    equals paper/values.json, so the page cannot drift from the manuscript."""
+    import json
+    import re
+
+    html = (ROOT / "public" / "whatnut" / "index.html").read_text(encoding="utf-8")
+    values = json.loads((ROOT / "paper" / "values.json").read_text(encoding="utf-8"))
+    spans = re.findall(r'<span data-value="([a-z][a-z0-9_]*)">(.*?)</span>', html, re.S)
+    assert spans, "the wrapper description carries no data-value numbers"
+    for name, shown in spans:
+        assert name in values, f"{name} is not in paper/values.json"
+        assert shown == values[name]["text"], (
+            f"{name}: wrapper {shown!r} vs paper {values[name]['text']!r}"
+        )
+    desc = re.search(r'<p class="paper-desc">(.*?)</p>', html, re.S).group(1)
+    bare = re.sub(r'<span data-value="[a-z0-9_]+">.*?</span>', "", desc, flags=re.S)
+    # The reference case's inputs (the age and the amount) are the question,
+    # not results, and the manuscript states them in plain text too.
+    revision = re.search(r"revision \d+", bare).group(0)
+    for fixed in ("40-year-old", "15 grams", revision):
+        bare = bare.replace(fixed, "")
+    assert not re.findall(r"\d", bare), "untagged digit in the description"

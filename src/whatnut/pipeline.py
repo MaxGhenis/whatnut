@@ -456,7 +456,18 @@ def figure_data(sc: Scenarios) -> dict:
         cols = [fn(x) for x in xs]
         return {s: [c[s] for c in cols] for s in STAT_NAMES}
 
+    m = sc.m
+    max_g = ASSUMPTIONS["figure_dose_max_g"]
     return {
+        "dose_curves": {
+            "grams": list(grams),
+            "curves": {
+                name: [math.exp(float(curve.f(g))) for g in grams]
+                for name, curve in m.curves.items()
+            },
+            "aune_points": data.aune_points("all_cause_mortality"),
+            "bop": [p for p in data.bop_curve() if p["g"] <= max_g],
+        },
         "days_by_dose": {
             "a0": a0,
             "grams": list(grams),
@@ -643,12 +654,15 @@ STYLE = {
     "interval_80_width": 3.2,
     "interval_95_width": 1.0,
     "row_offset": 0.17,
+    "errorbar_width": 1.2,
+    "rr_axis_top": 1.02,
 }
 
 SEX_COLOR = {"female": "blue", "male": "orange"}
 SEX_LABEL = {"female": "Women", "male": "Men"}
 
 FIGURE_FILES = (
+    "dose_curves.png",
     "days_by_dose.png",
     "days_by_age.png",
     "marginal_by_background.png",
@@ -711,6 +725,68 @@ def _thousands(ax, axis: str = "y") -> None:
 
 def _save(fig, path: Path) -> None:
     fig.savefig(path, dpi=STYLE["dpi"], metadata={"Software": None})
+
+
+def fig_dose_curves(res: dict, path: Path, plt) -> None:
+    s, fd = STYLE, res["figures"]["dose_curves"]
+    g = fd["grams"]
+    fig, ax = plt.subplots(
+        figsize=(s["width_in"], s["height_in"]), layout="constrained"
+    )
+    bop = fd["bop"]
+    ax.fill_between(
+        [p["g"] for p in bop],
+        [p["lo"] for p in bop],
+        [p["hi"] for p in bop],
+        color=s["aqua"],
+        alpha=s["band_alpha"],
+        linewidth=0,
+    )
+    ax.plot(
+        [p["g"] for p in bop],
+        [p["rr"] for p in bop],
+        color=s["aqua"],
+        lw=s["line_width"],
+        label="IHME: nuts and seeds, heart disease",
+    )
+    ax.plot(
+        g,
+        fd["curves"]["linear_plateau"],
+        color=s["ink_muted"],
+        lw=s["line_width"],
+        linestyle=(0, (4, 3)),
+        label="Linear per-28 g, with plateau",
+    )
+    ax.plot(
+        g,
+        fd["curves"]["main"],
+        color=s["blue"],
+        lw=s["line_width"],
+        label="Model: Aune curve held at minimum",
+    )
+    pts = [p for p in fd["aune_points"] if p["lo"] is not None]
+    ax.errorbar(
+        [p["g"] for p in pts],
+        [p["rr"] for p in pts],
+        yerr=[
+            [p["rr"] - p["lo"] for p in pts],
+            [p["hi"] - p["rr"] for p in pts],
+        ],
+        fmt="o",
+        color=s["orange"],
+        markersize=s["marker_size"],
+        elinewidth=s["errorbar_width"],
+        capsize=0,
+        label="Aune 2016 points, 95% CI",
+    )
+    ax.axhline(1, color=s["axis"], lw=s["hairline"])
+    ax.set_xlim(g[0], g[-1])
+    ax.set_ylim(top=s["rr_axis_top"])
+    ax.set_xlabel("Nuts eaten (g/day)")
+    ax.set_ylabel("Relative risk vs no nuts")
+    fig.legend(loc="outside lower center", ncols=2)
+    _save(fig, path)
+    plt.close(fig)
 
 
 def fig_days_by_dose(res: dict, path: Path, plt) -> None:
@@ -995,7 +1071,14 @@ def fig_cost(res: dict, path: Path, plt) -> None:
 def write_figures(res: dict, figures_dir: Path = FIGURES) -> list[Path]:
     plt = _plt()
     figures_dir.mkdir(parents=True, exist_ok=True)
-    makers = (fig_days_by_dose, fig_days_by_age, fig_marginal, fig_bracket, fig_cost)
+    makers = (
+        fig_dose_curves,
+        fig_days_by_dose,
+        fig_days_by_age,
+        fig_marginal,
+        fig_bracket,
+        fig_cost,
+    )
     paths = []
     for name, maker in zip(FIGURE_FILES, makers):
         p = figures_dir / name

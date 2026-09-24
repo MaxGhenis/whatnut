@@ -18,6 +18,7 @@ python paper/render_paper.py --pdf      # require the PDF
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
 import subprocess
@@ -70,6 +71,22 @@ def stamp_wrapper(html: str, version: str, revision: int, date: str) -> str:
             "revision pills; expected at least 2 and exactly 1"
         )
     return out
+
+
+VALUE_SPAN_RE = re.compile(
+    r'(<span data-value="([a-z][a-z0-9_]*)">)(.*?)(</span>)', re.S
+)
+
+
+def fill_wrapper_values(html: str, values: dict) -> str:
+    """Set every <span data-value="name"> in the wrapper to values.json's text,
+    so the wrapper's numbers are the paper's numbers."""
+    missing = sorted({m.group(2) for m in VALUE_SPAN_RE.finditer(html)} - set(values))
+    if missing:
+        raise RenderError(f"wrapper names values not in paper/values.json: {missing}")
+    return VALUE_SPAN_RE.sub(
+        lambda m: m.group(1) + values[m.group(2)]["text"] + m.group(4), html
+    )
 
 
 def assert_clean_qmd(qmd_path: Path) -> None:
@@ -167,6 +184,8 @@ def main(argv: list[str] | None = None) -> int:
         version, revision, date = read_version()
         wrapper = WRAPPER.read_text(encoding="utf-8")
         stamped = stamp_wrapper(wrapper, version, revision, date)
+        values = json.loads(fill_paper.OUT_VALUES.read_text(encoding="utf-8"))
+        stamped = fill_wrapper_values(stamped, values)
         if stamped != wrapper:
             WRAPPER.write_text(stamped, encoding="utf-8")
             print(f"stamped {version} into {WRAPPER.relative_to(ROOT)}")

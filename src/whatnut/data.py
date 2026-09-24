@@ -346,6 +346,39 @@ def aune_curve(outcome: str) -> tuple[tuple[float, ...], tuple[float, ...]]:
     return tuple(g), tuple(rr)
 
 
+def aune_points(outcome: str) -> list[dict[str, float | None]]:
+    """Aune 2016's printed nonlinear points for ``outcome`` with their 95% CIs
+    (the reference category has none)."""
+    return [
+        {
+            "g": float(r["intake_g_per_day"]),
+            "rr": float(r["rr"]),
+            "lo": _float(r["ci_low"]),
+            "hi": _float(r["ci_high"]),
+        }
+        for r in sorted(
+            _read_csv(DATA / "curves" / "aune2016_nonlinear.csv"),
+            key=lambda r: float(r["intake_g_per_day"]),
+        )
+        if r["outcome"] == outcome and r["rr"] != ""
+    ]
+
+
+def bop_curve() -> list[dict[str, float]]:
+    """IHME Burden of Proof mean RR and outer (fixed plus random effects)
+    uncertainty interval for a diet low in nuts and seeds and ischemic heart
+    disease, on the API's exposure grid."""
+    return [
+        {
+            "g": float(r["exposure_g_per_day"]),
+            "rr": float(r["rr_mean"]),
+            "lo": float(r["rr_outer_low"]),
+            "hi": float(r["rr_outer_high"]),
+        }
+        for r in _read_csv(DATA / "curves" / "ihme_bop_nuts_seeds_ihd.csv")
+    ]
+
+
 def fadnes_targets() -> dict:
     path = checked_path(DATA / "curves" / "fadnes2022_targets.yaml")
     return yaml.safe_load(path.read_text(encoding="utf-8"))

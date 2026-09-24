@@ -1,12 +1,437 @@
 {
+  "abs_f40_face": {
+    "kind": "days",
+    "raw": 1.84691,
+    "text": "675"
+  },
+  "abs_f40_floor_low": {
+    "kind": "days",
+    "raw": 0.0109751,
+    "text": "4"
+  },
+  "abs_m40_calac": {
+    "kind": "days_interval",
+    "raw": 0.7303,
+    "text": "267 days (80% interval −88 to 621)"
+  },
+  "abs_m40_face": {
+    "kind": "days",
+    "raw": 1.9796,
+    "text": "723"
+  },
+  "abs_m40_face_years": {
+    "kind": "years:1",
+    "raw": 1.9796,
+    "text": "2.0"
+  },
+  "abs_m40_floor": {
+    "kind": "days_range",
+    "raw": 0.0176887,
+    "text": "6 to 22"
+  },
+  "abs_price_ratio": {
+    "kind": "number:0",
+    "raw": 6.264411027568922,
+    "text": "6"
+  },
+  "age_old": {
+    "kind": "integer",
+    "raw": 70,
+    "text": "70"
+  },
+  "age_young": {
+    "kind": "integer",
+    "raw": 30,
+    "text": "30"
+  },
+  "ala_hi": {
+    "kind": "number:1",
+    "raw": 3.0,
+    "text": "3.0"
+  },
+  "ala_high_bg": {
+    "kind": "number:0",
+    "raw": 5,
+    "text": "5"
+  },
+  "ala_lo": {
+    "kind": "number:2",
+    "raw": 0.35,
+    "text": "0.35"
+  },
+  "ala_premium_avg": {
+    "kind": "days",
+    "raw": 0.548543,
+    "text": "200"
+  },
+  "ala_premium_seeds": {
+    "kind": "days_words",
+    "raw": 0.0,
+    "text": "nothing"
+  },
+  "aune_min_g": {
+    "kind": "integer",
+    "raw": 15,
+    "text": "15"
+  },
+  "aune_rr_10g": {
+    "kind": "ratio:2",
+    "raw": 0.84,
+    "text": "0.84"
+  },
+  "aune_rr_28g": {
+    "kind": "ratio:2",
+    "raw": 0.85,
+    "text": "0.85"
+  },
+  "aune_rr_min": {
+    "kind": "ratio:2",
+    "raw": 0.82,
+    "text": "0.82"
+  },
+  "baseline_2021_add": {
+    "kind": "days_delta",
+    "raw": 0.05661000000000005,
+    "text": "21 days"
+  },
+  "bop_flat_g": {
+    "kind": "integer",
+    "raw": 8,
+    "text": "8"
+  },
+  "bop_rr_flat": {
+    "kind": "ratio:3",
+    "raw": 0.757073462688748,
+    "text": "0.757"
+  },
+  "bop_stars": {
+    "kind": "text",
+    "raw": "two",
+    "text": "two"
+  },
+  "bracket_ratio": {
+    "kind": "number:0",
+    "raw": 32.8968359478862,
+    "text": "33"
+  },
+  "brazil_se_per_nut": {
+    "kind": "number:0",
+    "raw": 96.0,
+    "text": "96"
+  },
+  "c_cal_point": {
+    "kind": "ratio:2",
+    "raw": 1.08131,
+    "text": "1.08"
+  },
+  "c_calac_point": {
+    "kind": "pct:0",
+    "raw": 0.368096,
+    "text": "37%"
+  },
+  "cheapest_nut": {
+    "kind": "text",
+    "raw": "peanuts",
+    "text": "peanuts"
+  },
+  "cheapest_price": {
+    "kind": "dollars:2",
+    "raw": 7.98,
+    "text": "$7.98"
+  },
+  "chia_milled": {
+    "kind": "integer",
+    "raw": 58,
+    "text": "58"
+  },
+  "cpl_cheapest": {
+    "kind": "dollars:0",
+    "raw": 2739.62,
+    "text": "$2,740"
+  },
+  "cpl_priciest": {
+    "kind": "dollars:0",
+    "raw": 17162.1,
+    "text": "$17,162"
+  },
+  "cvd_only_share": {
+    "kind": "pct:0",
+    "raw": 0.3221044655485957,
+    "text": "32%"
+  },
+  "efsa_se": {
+    "kind": "integer",
+    "raw": 255,
+    "text": "255"
+  },
+  "ev_abdelhamid": {
+    "kind": "evidence",
+    "raw": 1.01,
+    "text": "1.01 (95% CI 0.84 to 1.20)"
+  },
+  "ev_aune_allcause": {
+    "kind": "evidence",
+    "raw": 0.78,
+    "text": "0.78 (95% CI 0.72 to 0.84)"
+  },
+  "ev_ctt_allcause": {
+    "kind": "evidence",
+    "raw": 0.9,
+    "text": "0.90 (95% CI 0.87 to 0.93)"
+  },
+  "ev_ctt_chd": {
+    "kind": "evidence",
+    "raw": 0.8,
+    "text": "0.80 (99% CI 0.74 to 0.87)"
+  },
+  "ev_delgobbo_apob_rct": {
+    "kind": "evidence",
+    "raw": -4.2,
+    "text": "−4.2 (95% CI −5.7 to −2.6)"
+  },
+  "ev_delgobbo_ldl_all": {
+    "kind": "evidence",
+    "raw": -4.8,
+    "text": "−4.8 (95% CI −5.5 to −4.2)"
+  },
+  "ev_delgobbo_ldl_rct": {
+    "kind": "evidence",
+    "raw": -4.2,
+    "text": "−4.2 (95% CI −5.0 to −3.4)"
+  },
+  "ev_gf_peanut": {
+    "kind": "evidence",
+    "raw": 0.87,
+    "text": "0.87 (95% CI 0.82 to 0.93)"
+  },
+  "ev_gf_treenut": {
+    "kind": "evidence",
+    "raw": 0.85,
+    "text": "0.85 (95% CI 0.79 to 0.91)"
+  },
+  "ev_gf_walnut": {
+    "kind": "evidence",
+    "raw": 0.81,
+    "text": "0.81 (95% CI 0.71 to 0.92)"
+  },
+  "ev_golestan": {
+    "kind": "evidence",
+    "raw": 0.71,
+    "text": "0.71 (95% CI 0.58 to 0.86)"
+  },
+  "ev_luu_sccs": {
+    "kind": "evidence",
+    "raw": 0.79,
+    "text": "0.79 (95% CI 0.73 to 0.86)"
+  },
+  "ev_luu_shanghai": {
+    "kind": "evidence",
+    "raw": 0.83,
+    "text": "0.83 (95% CI 0.77 to 0.88)"
+  },
+  "ev_naghshi": {
+    "kind": "evidence",
+    "raw": 0.95,
+    "text": "0.95 (95% CI 0.91 to 0.99)"
+  },
+  "ev_npc": {
+    "kind": "evidence",
+    "raw": 1.55,
+    "text": "1.55 (95% CI 1.03 to 2.33)"
+  },
+  "ev_predimed_evoo": {
+    "kind": "evidence",
+    "raw": 0.69,
+    "text": "0.69 (95% CI 0.53 to 0.91)"
+  },
+  "ev_predimed_nuts": {
+    "kind": "evidence",
+    "raw": 0.72,
+    "text": "0.72 (95% CI 0.54 to 0.95)"
+  },
+  "ev_schw_allcause": {
+    "kind": "evidence",
+    "raw": 1.17,
+    "text": "1.17 (95% CI 1.11 to 1.23)"
+  },
+  "ev_schw_intake": {
+    "kind": "evidence",
+    "raw": 0.98,
+    "text": "0.98 (95% CI 0.93 to 1.04)"
+  },
+  "ev_schw_supp": {
+    "kind": "evidence",
+    "raw": 1.29,
+    "text": "1.29 (95% CI 1.17 to 1.42)"
+  },
+  "ev_wang_salted": {
+    "kind": "evidence",
+    "raw": 1.4866,
+    "text": "1.49 (95% CI 1.05 to 2.11)"
+  },
+  "fadnes_f20": {
+    "kind": "years:1",
+    "raw": 1.7,
+    "text": "1.7"
+  },
+  "fadnes_m20": {
+    "kind": "years:1",
+    "raw": 2.0,
+    "text": "2.0"
+  },
+  "fadnes_rr": {
+    "kind": "ratio:2",
+    "raw": 0.84,
+    "text": "0.84"
+  },
+  "fda_aflatoxin": {
+    "kind": "integer",
+    "raw": 20,
+    "text": "20"
+  },
+  "flax_days": {
+    "kind": "integer",
+    "raw": 128,
+    "text": "128"
+  },
+  "kcal_almond": {
+    "kind": "number:0",
+    "raw": 162.12,
+    "text": "162"
+  },
+  "kcal_walnut": {
+    "kind": "number:0",
+    "raw": 183.12,
+    "text": "183"
+  },
+  "le_max_gap_days": {
+    "kind": "days_ceil",
+    "raw": 0.0021999999999877673,
+    "text": "a day"
+  },
+  "m40_face_15": {
+    "kind": "days",
+    "raw": 1.9796,
+    "text": "723"
+  },
+  "m40_floor_high_15": {
+    "kind": "days",
+    "raw": 0.060176,
+    "text": "22"
+  },
+  "m40_floor_low_15": {
+    "kind": "days",
+    "raw": 0.0176887,
+    "text": "6"
+  },
+  "m_old_face": {
+    "kind": "days",
+    "raw": 1.06069,
+    "text": "387"
+  },
+  "m_young_face": {
+    "kind": "days",
+    "raw": 2.15076,
+    "text": "786"
+  },
+  "marg_b0": {
+    "kind": "days",
+    "raw": 1.73876,
+    "text": "635"
+  },
+  "marg_b10": {
+    "kind": "days",
+    "raw": 0.239949,
+    "text": "88"
+  },
+  "marg_b20": {
+    "kind": "days",
+    "raw": 0.0,
+    "text": "0"
+  },
+  "marg_floor_high": {
+    "kind": "days",
+    "raw": 0.0401165,
+    "text": "15"
+  },
   "mc_draws": {
     "kind": "integer",
     "raw": 20000,
     "text": "20,000"
   },
-  "ref_male_calibrated_mean_days": {
-    "kind": "days",
-    "raw": 2.14366,
-    "text": "783"
+  "nasem_se": {
+    "kind": "integer",
+    "raw": 400,
+    "text": "400"
+  },
+  "pchip_cut": {
+    "kind": "pct:0",
+    "raw": 0.1813851283087492,
+    "text": "18%"
+  },
+  "phase_in_years": {
+    "kind": "integer",
+    "raw": 10,
+    "text": "10"
+  },
+  "price_date": {
+    "kind": "text",
+    "raw": "23 September 2026",
+    "text": "23 September 2026"
+  },
+  "priciest_nut": {
+    "kind": "text",
+    "raw": "macadamias",
+    "text": "macadamias"
+  },
+  "priciest_price": {
+    "kind": "dollars:2",
+    "raw": 49.99,
+    "text": "$49.99"
+  },
+  "repro_f20": {
+    "kind": "years:2",
+    "raw": 1.77836,
+    "text": "1.78"
+  },
+  "repro_m20": {
+    "kind": "years:2",
+    "raw": 2.02007,
+    "text": "2.02"
+  },
+  "roast_mda": {
+    "kind": "integer",
+    "raw": 17,
+    "text": "17"
+  },
+  "share_10g": {
+    "kind": "pct:0",
+    "raw": 0.8783390583956355,
+    "text": "88%"
+  },
+  "us_ala": {
+    "kind": "number:2",
+    "raw": 1.93,
+    "text": "1.93"
+  },
+  "us_nuts_g": {
+    "kind": "number:0",
+    "raw": 11.907,
+    "text": "12"
+  },
+  "walnut_ala": {
+    "kind": "number:2",
+    "raw": 2.5424,
+    "text": "2.54"
+  },
+  "walnut_ala_counted": {
+    "kind": "number:2",
+    "raw": 1.07,
+    "text": "1.07"
+  },
+  "walnut_pufa": {
+    "kind": "number:0",
+    "raw": 47.2,
+    "text": "47"
   }
 }
