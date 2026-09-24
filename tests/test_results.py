@@ -6,11 +6,42 @@ import json
 
 import pytest
 
-from tests.helpers import ROOT
+from tests.helpers import ROOT, fresh_run
 from whatnut import data
 from whatnut.results import Results, ResultsError, r
 
 COMMITTED = ROOT / "results" / "results.json"
+
+
+def _leaf_diffs(a, b, path="") -> list[str]:
+    """Paths where two parsed JSON trees differ, for a readable failure."""
+    if isinstance(a, dict) and isinstance(b, dict):
+        out = [f"{path}.{k}: only one side" for k in sorted(set(a) ^ set(b))]
+        for k in sorted(set(a) & set(b)):
+            out += _leaf_diffs(a[k], b[k], f"{path}.{k}")
+        return out
+    if isinstance(a, list) and isinstance(b, list) and len(a) == len(b):
+        return [
+            d
+            for i, (x, y) in enumerate(zip(a, b))
+            for d in _leaf_diffs(x, y, f"{path}[{i}]")
+        ]
+    return [] if a == b else [f"{path}: committed {a!r}, fresh {b!r}"]
+
+
+def test_committed_results_regenerate_byte_identically():
+    """A fresh pipeline run reproduces results/results.json byte for byte (the
+    figures are not compared: PNG bytes depend on matplotlib and the CPU)."""
+    _, out = fresh_run("a")
+    fresh = (out / "results.json").read_bytes()
+    committed = COMMITTED.read_bytes()
+    if fresh != committed:
+        diffs = _leaf_diffs(json.loads(committed), json.loads(fresh))
+        pytest.fail(
+            f"results.json differs from a fresh run in {len(diffs)} places "
+            "(rerun python -m whatnut.pipeline if the change is intended):\n  "
+            + "\n  ".join(diffs[:10] or ["formatting only"])
+        )
 
 
 def test_committed_results_verify():

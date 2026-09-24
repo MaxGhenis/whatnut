@@ -17,6 +17,9 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+# Every job installs exactly uv.lock (`--locked` fails if the lock is stale) and
+# runs inside that environment.
+
 jobs:
   test:
     if: github.event_name != 'schedule'
@@ -24,68 +27,66 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12"]
+        # pyproject.toml: requires-python >= 3.10. The lock resolves numpy 2.2 and
+        # scipy 1.15 below Python 3.11 and numpy 2.3 and scipy 1.16 from 3.11, so
+        # this covers both resolutions and both ends of the range.
+        python-version: ["3.10", "3.12", "3.14"]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
       - uses: astral-sh/setup-uv@v6
       - name: Install
-        run: uv pip install --system -e ".[dev]"
+        run: uv sync --locked --extra dev --python ${{ matrix.python-version }}
       - name: Test
-        run: python -m pytest tests/
+        run: uv run --locked python -m pytest tests/
 
   citations-offline:
     if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - uses: astral-sh/setup-uv@v6
       - name: Install
-        run: uv pip install --system pyyaml
+        run: uv sync --locked --python 3.12
       - name: Check DOIs against the cached Crossref records
-        run: python scripts/check_citations.py --offline
+        run: uv run --locked python scripts/check_citations.py --offline
 
   citations-online:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - uses: astral-sh/setup-uv@v6
       - name: Install
-        run: uv pip install --system pyyaml
+        run: uv sync --locked --python 3.12
       - name: Check DOIs against api.crossref.org
-        run: python scripts/check_citations.py
+        run: uv run --locked python scripts/check_citations.py
 
   paper:
     if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - uses: astral-sh/setup-uv@v6
       - name: Install
-        run: uv pip install --system -e .
+        run: uv sync --locked --extra dev --python 3.12
       - name: Manuscript matches template and results
-        run: python paper/fill_paper.py --check
+        run: uv run --locked python paper/fill_paper.py --check
       - name: Bibliography matches evidence
-        run: python scripts/build_bib.py --check
+        run: uv run --locked python scripts/build_bib.py --check
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: "1.9.37"
-      - name: Render (fill, no-kernel checks, quarto render --to html, stage under public/)
-        run: python paper/render_paper.py --no-pdf
+      - name: Render (fill, no-kernel checks, quarto render --to html and --to typst, stage under public/)
+        run: uv run --locked python paper/render_paper.py
       - name: Render left the committed files unchanged
-        run: git diff --exit-code -- paper/ public/whatnut/index.html
+        run: |
+          git diff --exit-code -- paper/ public/whatnut/index.html
+          untracked="$(git status --porcelain --untracked-files=all -- paper/ public/)"
+          if [ -n "$untracked" ]; then echo "render left files git does not ignore:"; echo "$untracked"; exit 1; fi
+      - name: Rendered site honors the embed contract (PDF, new-tab links, table boxes)
+        env:
+          WHATNUT_REQUIRE_RENDER: "1"
+        run: uv run --locked python -m pytest tests/test_embed.py
       - uses: actions/upload-artifact@v4
         with:
           name: whatnut-site

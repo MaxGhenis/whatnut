@@ -20,6 +20,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
     "numpy>=1.24",
@@ -43,7 +45,7 @@ fetch = [
 
 [project.urls]
 Homepage = "https://github.com/MaxGhenis/whatnut"
-Documentation = "https://maxghenis.github.io/whatnut"
+Documentation = "https://www.maxghenis.com/whatnut/"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/whatnut"]
