@@ -5,14 +5,27 @@
 # results/results.json and every figure into paper/figures/, fill_paper.py
 # writes them into index.qmd, and Quarto only typesets. No kernel, no Jupyter.
 #
-#   python paper/render_paper.py          # fill, check, render, copy to public/whatnut/web/
-#   quarto render paper --to html         # what Vercel and CI run on the committed index.qmd
+# Two builds produce the same _build/ (index.html, its figures, and index.pdf):
+#
+#   python paper/render_paper.py
+#       local and CI: fill index.qmd from the template and results, check it,
+#       stamp the wrapper, render HTML then the Typst PDF, copy _build/ to
+#       public/whatnut/web/
+#   quarto render paper --to html --no-execute
+#   quarto render paper --to typst --no-execute
+#       Vercel (vercel.json buildCommand, no Python): the same two renders of
+#       the committed index.qmd, then the same copy. Quarto 1.9 rejects
+#       `--to html,typst`, hence two calls; the typst render keeps index.html.
 
 project:
   type: default
   output-dir: _build
   render:
     - index.qmd
+  # Writes target="_blank" rel="noopener" into the HTML's external links, which
+  # the sandboxed iframe at /whatnut/ needs (see the script). Quarto runs it
+  # with its bundled Deno after every render, including Vercel's.
+  post-render: external_links.ts
 
 execute:
   enabled: false
@@ -39,20 +52,38 @@ format:
     # would show as raw TeX there. MathML needs no script in any current browser.
     html-math-method: mathml
     anchor-sections: true
-    link-external-newwindow: true
-    # No 'Other formats' links: Vercel builds HTML only, so index.pdf may not exist.
+    # External links open in a new tab. Quarto's own link-external-newwindow
+    # sets target="_blank" from JavaScript, which the sandboxed iframe never
+    # runs, so external_links.ts (the project's post-render script, above)
+    # writes the attributes into the HTML instead.
+    link-external-newwindow: false
+    # No 'Other formats' links: the wrapper at /whatnut/ carries its own
+    # "Download PDF" action.
     format-links: false
     link-external-icon: false
     code-copy: false
     smooth-scroll: false
-  # PDF is optional: render_paper.py builds it only when a TeX engine is on
-  # PATH. CI and Vercel render HTML only (`--to html`).
-  pdf:
-    documentclass: article
-    pdf-engine: xelatex
-    papersize: letter
-    geometry:
-      - margin=1in
+  # The PDF: Typst ships inside Quarto, so the quarto-only Vercel build makes
+  # it too (no TeX). Pandoc's citeproc formats the references, as in the HTML.
+  typst:
+    citeproc: true
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
     fontsize: 11pt
-    colorlinks: true
     toc: false
+    # Typst sizes table columns to their content. The pipe tables' dash widths
+    # (kept in the HTML as <colgroup> percentages) would wrap numbers and
+    # citations onto two lines at the PDF's measure.
+    tbl-colwidths: false
+    # The HTML titles the bibliography in its appendix; the PDF needs a heading.
+    reference-section-title: References
+    # Tables: ragged-right cells, slightly smaller type, and a line break
+    # allowed after each underscore so the appendix's long row ids stay inside
+    # their column.
+    include-in-header:
+      text: |
+        #show table.cell: set par(justify: false)
+        #show table: set text(size: 0.9em)
+        #show table.cell: it => { show "_": "_" + sym.zws; it }
