@@ -72,5 +72,10 @@ data/**/raw/*.gz
 data/**/raw/*.png
 data/sources/crossref/texts/
 data/sources/crossref/primary/
-data/prices/raw/
+# Retail prices are the exception: a price is one day's reading, and a later
+# fetch reads that day's price, so the captures in data/prices/raw/ cannot be
+# fetched again. The small JSON captures (nuts.com product JSON; the Walmart,
+# Costco and Target browser records) are committed; the large Walmart page
+# HTML is not.
+data/prices/raw/walmart/*.html.gz
 _build/

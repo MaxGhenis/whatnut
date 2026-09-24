@@ -1,0 +1,13 @@
+{
+ "what": "Target.com search-results listing for 'good and gather walnuts' read on 2026-09-23 (US Eastern) in an in-app browser session (page text; store Columbia Heights, Washington DC, store_id 2259, chosen by target.com from the visitor IP). Opening a product page then brought up a 'press and hold' human-verification challenge, which was not attempted, so no further Target pages were read. Scripted requests to Target's product search API returned a PerimeterX block (HTTP 435). Only the listing lines below were transcribed, with price text as shown.",
+ "read_at_utc": "2026-09-24T02:58Z (approximate; read between the Costco captures and the blocked Target product page)",
+ "listing_url": "https://www.target.com/s?searchTerm=good+and+gather+walnuts",
+ "store": {"store_id": "2259", "name": "Columbia Heights", "address": "3100 14th St NW, Washington DC", "source": "redsky nearby_stores_v1 for place 20001 (curl, HTTP 200) and the listing's stock lines"},
+ "items": [
+  {"title": "Good & Gather Shelled Walnuts - 16oz", "url": "https://www.target.com/p/shelled-walnuts-16oz-good-38-gather-8482/-/A-95045089", "tcin": "95045089", "price_text": "$10.59 When purchased online", "unit_price_text": null, "stock_text": "Pickup ready tomorrow; Delivery as soon as 8am tomorrow", "product_page_text_before_challenge": "In stock at Columbia Heights; Ingredients: Walnuts.; label Sodium 0mg"},
+  {"title": "Good & Gather Chopped Walnuts - 16oz", "url": "https://www.target.com/p/chopped-walnuts-16oz-good-38-gather-8482/-/A-95045088", "tcin": "95045088", "price_text": "$10.59 When purchased online", "unit_price_text": null, "stock_text": "Pickup ready tomorrow"},
+  {"title": "Good & Gather Raw Whole Almonds - 32oz", "url": null, "tcin": null, "price_text": "$14.29", "unit_price_text": "$0.45/ounce", "stock_text": "Only 3 left at Columbia Heights"},
+  {"title": "Good & Gather Raw Whole Almonds - 10.5oz", "url": "https://www.target.com/p/raw-whole-almonds-10-5oz-good-38-gather-8482/-/A-78099044", "tcin": "78099044", "price_text": "$5.79", "unit_price_text": "$0.55/ounce", "stock_text": "Only 7 left at Columbia Heights"},
+  {"title": "Good & Gather Lightly Salted Dry Roasted Peanuts - 16oz", "url": "https://www.target.com/p/lightly-salted-dry-roasted-peanuts-16oz-good-38-gather-8482/-/A-78100370", "tcin": "78100370", "price_text": "$2.99", "unit_price_text": "$0.19/ounce", "stock_text": "Pickup ready tomorrow"}
+ ]
+}
