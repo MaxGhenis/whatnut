@@ -178,9 +178,12 @@ class EvidenceRow:
         return float(m.group(1))
 
     def count(self) -> int:
-        """The group size in ``population``, written '(n = 2,118' (the schema has
-        no field for it)."""
-        m = re.search(r"\(n = (\d{1,3}(?:,\d{3})*|\d+)\b", self.population or "")
+        """The group size in ``population``, written '(n = 2,118' or '(n = 2118'
+        (the schema has no field for it). A number that goes on past the match
+        ('2,1180', '12,34', '2118.5', '2 118') is refused, not read in part."""
+        m = re.search(
+            r"\(n = (\d{1,3}(?:,\d{3})+|\d+)(?![\d,.]|\s\d)", self.population or ""
+        )
         if not m:
             raise DataIntegrityError(
                 f"evidence row {self.id}: no '(n = N' in population"

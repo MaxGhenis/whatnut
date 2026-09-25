@@ -250,6 +250,21 @@ def test_group_size_reads_back(n, grouped):
     assert row.count() == n
 
 
+@given(st.integers(1000, 10**7), st.sampled_from(["drop", "add", "decimal", "space"]))
+def test_malformed_group_size_is_refused(n, how):
+    """A count that goes on past a well-formed number is refused, never read in
+    part: '2,11', '2,1180', '2118.5', '2 118'."""
+    written = {
+        "drop": f"{n:,}"[:-1],
+        "add": f"{n:,}0",
+        "decimal": f"{n}.5",
+        "space": f"{n:,}".replace(",", " "),
+    }[how]
+    row = _row("r", population=f"participants (n = {written} of 7,216)")
+    with pytest.raises(data.DataIntegrityError, match="no '\\(n = N'"):
+        row.count()
+
+
 # --------------------------------------------------------------------------
 # Rounding in the fill (cost per life-year to $100, and fixed decimals)
 # --------------------------------------------------------------------------
