@@ -601,6 +601,171 @@
     value_checked_in: "full text"
     checked_on: "2026-09-23"
 
+# Aune et al. 2016, other causes of death per 28 g/day (added 2026-09-25 for the
+# paper's argument about confounding (section "How much of the association is
+# causal"); not read by the model)
+
+- id: aune2016_infectious_per28g_mortality
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment"
+  outcome: "Infectious disease mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.25
+  ci_low: 0.07
+  ci_high: 0.85
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "Two cohort studies; 397 deaths among 118,962 participants (Table 1)"
+  notes: >-
+    Random-effects linear dose-response per serving (28 g/day), n = 2. Heterogeneity: Table 1 and the Results
+    text print I2 = 0%, P heterogeneity = 0.74; the abstract prints I2 = 54% for this estimate. High versus low
+    intake 0.79 (0.56-1.11), I2 = 0%. The same abstract sentence gives neurodegenerative disease mortality per
+    28 g/day, 0.65 (0.40-1.08), I2 = 5.9%, n = 3 (Table 1; not a row). The authors note (Discussion) that few
+    studies reported these less common causes of death and that selective reporting cannot be entirely
+    excluded.
+  source:
+    key: aune2016nut
+    doi: "10.1186/s12916-016-0730-3"
+    pmid: "27916000"
+    pmcid: "PMC5137221"
+    first_author: "Aune"
+    authors: "Aune D, Keum N, Giovannucci E, Fadnes LT, Boffetta P, Greenwood DC, Tonstad S, Vatten LJ, Riboli E, Norat T"
+    title: "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies"
+    journal: "BMC Medicine"
+    year: 2016
+    volume: "14"
+    issue: "1"
+    pages: "207"
+  locator: "Abstract (Results); Results, 'Nuts and other causes of mortality'; Table 1 (Infectious disease mortality, dose-response columns); Fig. 6; Discussion (limitations)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: aune2016_kidney_per28g_mortality
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment"
+  outcome: "Kidney disease mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.27
+  ci_low: 0.04
+  ci_high: 1.91
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "Two cohort studies; 367 deaths among 118,962 participants (Table 1)"
+  notes: >-
+    Random-effects linear dose-response per serving (28 g/day), n = 2; I2 = 61% (Table 1: 61.0), P heterogeneity =
+    0.11. The interval crosses 1. High versus low intake 0.69 (0.38-1.25), I2 = 69%. The authors note (Discussion)
+    that few studies reported these less common causes of death and that selective reporting cannot be entirely
+    excluded.
+  source:
+    key: aune2016nut
+    doi: "10.1186/s12916-016-0730-3"
+    pmid: "27916000"
+    pmcid: "PMC5137221"
+    first_author: "Aune"
+    authors: "Aune D, Keum N, Giovannucci E, Fadnes LT, Boffetta P, Greenwood DC, Tonstad S, Vatten LJ, Riboli E, Norat T"
+    title: "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies"
+    journal: "BMC Medicine"
+    year: 2016
+    volume: "14"
+    issue: "1"
+    pages: "207"
+  locator: "Abstract (Results); Results, 'Nuts and other causes of mortality'; Table 1 (Kidney disease mortality, dose-response columns); Fig. 6; Discussion (limitations)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: aune2016_respiratory_per28g_mortality
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment"
+  outcome: "Respiratory disease mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.48
+  ci_low: 0.26
+  ci_high: 0.89
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "Three cohort studies; 2,551 deaths among 130,987 participants (Table 1; the Results text says 122,164)"
+  notes: >-
+    Random-effects linear dose-response per serving (28 g/day), n = 3; I2 = 61% (Table 1: 60.8), P heterogeneity =
+    0.08. High versus low intake 0.76 (0.61-0.94), I2 = 54%. The authors note (Discussion) that few studies
+    reported these less common causes of death and that selective reporting cannot be entirely excluded.
+  source:
+    key: aune2016nut
+    doi: "10.1186/s12916-016-0730-3"
+    pmid: "27916000"
+    pmcid: "PMC5137221"
+    first_author: "Aune"
+    authors: "Aune D, Keum N, Giovannucci E, Fadnes LT, Boffetta P, Greenwood DC, Tonstad S, Vatten LJ, Riboli E, Norat T"
+    title: "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies"
+    journal: "BMC Medicine"
+    year: 2016
+    volume: "14"
+    issue: "1"
+    pages: "207"
+  locator: "Abstract (Results); Results, 'Nuts and other causes of mortality'; Table 1 (Respiratory disease mortality, dose-response columns); Fig. 5; Discussion (limitations)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: aune2016_diabetes_per28g_mortality
+  kind: cohort_meta_dose_response
+  exposure: "Total nuts (tree nuts and peanuts), per 28 g/day increment"
+  outcome: "Diabetes mortality"
+  measure: RR
+  unit: "per 28 g/day"
+  estimate: 0.61
+  ci_low: 0.43
+  ci_high: 0.88
+  ci_level: 0.95
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "Four cohort studies; 800 deaths among 202,751 participants (Table 1; the Results text says 193,928)"
+  notes: >-
+    Random-effects linear dose-response per serving (28 g/day), n = 4; I2 = 0%, P heterogeneity = 0.76. High versus
+    low intake 0.68 (0.52-0.90), I2 = 0%. The authors suggest nuts may lower cardiometabolic risk factors and
+    complications among people with diabetes (Discussion), and note that few studies reported these less common
+    causes of death and that selective reporting cannot be entirely excluded.
+  source:
+    key: aune2016nut
+    doi: "10.1186/s12916-016-0730-3"
+    pmid: "27916000"
+    pmcid: "PMC5137221"
+    first_author: "Aune"
+    authors: "Aune D, Keum N, Giovannucci E, Fadnes LT, Boffetta P, Greenwood DC, Tonstad S, Vatten LJ, Riboli E, Norat T"
+    title: "Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies"
+    journal: "BMC Medicine"
+    year: 2016
+    volume: "14"
+    issue: "1"
+    pages: "207"
+  locator: "Abstract (Results); Results, 'Nuts and other causes of mortality'; Table 1 (Diabetes mortality, dose-response columns); Fig. 5; Discussion"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
 # --- Del Gobbo et al. 2015, tree nut trials and blood lipids ---
 
 - id: delgobbo2015_ldl_per28g
@@ -621,6 +786,8 @@
     Fixed-effects inverse-variance weighted mean difference, each trial dose-standardized to 28.4 g/day; all 61 trials
     (randomized and nonrandomized). Randomized trials only: see delgobbo2015_ldl_per28g_rct (-4.2); nonrandomized trials
     -6.0 (-7.1, -4.9); P interaction 0.01. Heterogeneity at least moderate (RCT I2 38.2%, nonrandomized I2 62.9%).
+    In 14 trials participants were advised to keep total energy constant; in 47, nuts were given on top of a
+    common background diet (Results, 'Study characteristics').
     Nut type: no significant differences by nut type, with few trials for some types (Results, 'Heterogeneity');
     abstract says heterogeneity by nut type was not significant; Discussion names dose, not nut type, as the major
     determinant. The per-type P values are in Supplemental Table 2, which was not retrieved (not in PMC; Europe PMC
@@ -1943,6 +2110,250 @@
     first_author_matches: true
     value_checked_in: "full text"
     checked_on: "2026-09-24"
+
+# Guasch-Ferré et al. 2013: PREDIMED nut intake at baseline and its change by arm, for the
+# check of PREDIMED's contrast against the cohort curve (pipeline predimed_check)
+
+- id: guaschferre2013_predimed_baseline_nuts_never
+  kind: reference_value
+  exposure: "Baseline nut consumption never or almost never (food frequency questionnaire; 1 serving = 28 g)"
+  outcome: "Mean total nut intake at baseline"
+  measure: value
+  unit: "g/day"
+  estimate: 0
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED participants in the nut-frequency analysis who ate nuts never or almost never at baseline (n = 2,118 of 7,216)"
+  notes: >-
+    Table 1 ('Nuts, g/day' row) of the nut-frequency analysis: baseline food frequency questionnaire, one serving =
+    28 g, all three trial arms pooled. The group size in population is the Table 1 column heading; the pipeline's
+    PREDIMED check (results.json predimed_check) reads it from there, so keep the form '(n = N'. The never group is
+    recorded as 0 g/day.
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Table 1 (column 'Never (n = 2,118)', row 'Nuts, g/day'); Methods, 'Statistical analyses' (the three categories)"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: guaschferre2013_predimed_baseline_nuts_1to3
+  kind: reference_value
+  exposure: "Baseline nut consumption 1 to 3 servings/week (food frequency questionnaire; 1 serving = 28 g)"
+  outcome: "Mean total nut intake at baseline"
+  measure: value
+  unit: "g/day"
+  estimate: 4.9
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED participants in the nut-frequency analysis who ate 1 to 3 servings of nuts a week at baseline (n = 2,803 of 7,216)"
+  notes: >-
+    Table 1 ('Nuts, g/day' row) of the nut-frequency analysis: baseline food frequency questionnaire, one serving =
+    28 g, all three trial arms pooled. The group size in population is the Table 1 column heading; the pipeline's
+    PREDIMED check (results.json predimed_check) reads it from there, so keep the form '(n = N'. Mean 4.9 +/- 2.3
+    g/day (SD).
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Table 1 (column '1 to 3 servings/week (n = 2,803)', row 'Nuts, g/day')"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: guaschferre2013_predimed_baseline_nuts_over3
+  kind: reference_value
+  exposure: "Baseline nut consumption more than 3 servings/week (food frequency questionnaire; 1 serving = 28 g)"
+  outcome: "Mean total nut intake at baseline"
+  measure: value
+  unit: "g/day"
+  estimate: 25.7
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED participants in the nut-frequency analysis who ate more than 3 servings of nuts a week at baseline (n = 2,295 of 7,216)"
+  notes: >-
+    Table 1 ('Nuts, g/day' row) of the nut-frequency analysis: baseline food frequency questionnaire, one serving =
+    28 g, all three trial arms pooled. The group size in population is the Table 1 column heading; the pipeline's
+    PREDIMED check (results.json predimed_check) reads it from there, so keep the form '(n = N'. Mean 25.7 +/- 14.4
+    g/day (SD).
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Table 1 (column '>3 servings/week (n = 2,295)', row 'Nuts, g/day')"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: guaschferre2013_predimed_nut_change_nut_arm
+  kind: reference_value
+  exposure: "PREDIMED arm: Mediterranean diet supplemented with nuts"
+  outcome: "Change in total nut intake during the trial"
+  measure: value
+  unit: "g/day"
+  estimate: 15.95
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED participants in the nut-frequency analysis (7,216 in all three arms)"
+  notes: >-
+    Results, paragraph after Table 1: change in total nut consumption +15.95 +/- 21.10 g/day (mean +/- SD) in this
+    arm. The sentence does not say over what period; the analysis used yearly repeated food frequency questionnaires
+    (Abstract). Arms: nuts +15.95, olive oil -0.80, control -3.12 g/day. Original PREDIMED data, before the 2018
+    reanalysis of randomization departures.
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Results, paragraph after Table 1 ('Changes in total nut consumption')"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: guaschferre2013_predimed_nut_change_olive_oil_arm
+  kind: reference_value
+  exposure: "PREDIMED arm: Mediterranean diet supplemented with extra-virgin olive oil"
+  outcome: "Change in total nut intake during the trial"
+  measure: value
+  unit: "g/day"
+  estimate: -0.80
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED participants in the nut-frequency analysis (7,216 in all three arms)"
+  notes: >-
+    Results, paragraph after Table 1: change in total nut consumption -0.80 +/- 16.31 g/day (mean +/- SD) in this
+    arm. The sentence does not say over what period; the analysis used yearly repeated food frequency questionnaires
+    (Abstract). Arms: nuts +15.95, olive oil -0.80, control -3.12 g/day. Original PREDIMED data, before the 2018
+    reanalysis of randomization departures.
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Results, paragraph after Table 1 ('Changes in total nut consumption')"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
+- id: guaschferre2013_predimed_nut_change_control_arm
+  kind: reference_value
+  exposure: "PREDIMED arm: control diet (advice on a low-fat diet)"
+  outcome: "Change in total nut intake during the trial"
+  measure: value
+  unit: "g/day"
+  estimate: -3.12
+  ci_low: null
+  ci_high: null
+  ci_level: null
+  pi_low: null
+  pi_high: null
+  support: null
+  population: "PREDIMED participants in the nut-frequency analysis (7,216 in all three arms)"
+  notes: >-
+    Results, paragraph after Table 1: change in total nut consumption -3.12 +/- 13.85 g/day (mean +/- SD) in this
+    arm. The sentence does not say over what period; the analysis used yearly repeated food frequency questionnaires
+    (Abstract). Arms: nuts +15.95, olive oil -0.80, control -3.12 g/day. Original PREDIMED data, before the 2018
+    reanalysis of randomization departures.
+  source:
+    key: guaschferre2013predimed
+    doi: "10.1186/1741-7015-11-164"
+    pmid: "23866098"
+    pmcid: "PMC3738153"
+    first_author: "Guasch-Ferré"
+    authors: "Guasch-Ferré M, Bulló M, Martínez-González MÁ, Ros E, Corella D, Estruch R, Fitó M, Arós F, Wärnberg J, Fiol M, Lapetra J, Vinyoles E, Lamuela-Raventós RM, Serra-Majem L, Pintó X, Ruiz-Gutiérrez V, Basora J, Salas-Salvadó J; PREDIMED study group"
+    title: "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial"
+    journal: "BMC Medicine"
+    year: 2013
+    volume: "11"
+    issue: "1"
+    pages: "164"
+  locator: "Results, paragraph after Table 1 ('Changes in total nut consumption')"
+  verified:
+    doi_resolves: true
+    title_matches: true
+    first_author_matches: true
+    value_checked_in: "full text"
+    checked_on: "2026-09-25"
+
 
 # --- Naghshi et al. 2021, dietary ALA and mortality, cohort dose-response ---
 
