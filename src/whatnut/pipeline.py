@@ -829,6 +829,9 @@ STYLE = {
     "interval_80_width": 3.2,
     "interval_95_width": 1.0,
     "row_offset": 0.17,
+    # gap between side-by-side panels (fraction of the figure), wide enough that
+    # the left panel's last x tick label and the right panel's first stay apart
+    "panel_wspace": 0.05,
     "errorbar_width": 1.2,
     "rr_axis_top": 1.02,
 }
@@ -972,6 +975,7 @@ def _scenario_panels(fd: dict, xs: list, xlabel: str, path: Path, plt) -> None:
     fig, axes = plt.subplots(
         1, 2, figsize=(s["width_in"], s["height_in"]), sharey=True, layout="constrained"
     )
+    fig.get_layout_engine().set(wspace=s["panel_wspace"])
     for ax, sex in zip(axes, SEXES):
         d = fd[sex]
         ax.fill_between(
