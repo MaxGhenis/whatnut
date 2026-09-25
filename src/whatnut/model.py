@@ -436,7 +436,12 @@ class Pool:
 
 def pool_stats(rows: list[data.EvidenceRow], label: str = "pool") -> Pool:
     """DerSimonian-Laird random-effects pool of ratio rows on the log scale,
-    with the Higgins-Thompson-Spiegelhalter prediction interval (t, k - 2 df)."""
+    with the Higgins-Thompson-Spiegelhalter prediction interval (t, k - 2 df,
+    so it needs three or more rows)."""
+    if len(rows) < 3:
+        raise data.DataIntegrityError(
+            f"{label}: a prediction interval needs 3 or more rows, got {len(rows)}"
+        )
     level = rows[0].ci_level
     if any(r.ci_level != level for r in rows):
         raise data.DataIntegrityError(f"{label}: pooled rows mix CI levels")
