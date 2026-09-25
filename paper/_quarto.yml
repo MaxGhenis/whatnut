@@ -81,9 +81,13 @@ format:
     reference-section-title: References
     # Tables: ragged-right cells, slightly smaller type, and a line break
     # allowed after each underscore so the appendix's long row ids stay inside
-    # their column.
+    # their column. Quarto wraps each captioned table in a figure, and a Typst
+    # figure does not break across pages by default, so a table longer than a
+    # page (the appendix) overprinted its last rows at the page foot; the
+    # figure show rule lets table floats break.
     include-in-header:
       text: |
+        #show figure.where(kind: "quarto-float-tbl"): set block(breakable: true)
         #show table.cell: set par(justify: false)
         #show table: set text(size: 0.9em)
         #show table.cell: it => { show "_": "_" + sym.zws; it }
