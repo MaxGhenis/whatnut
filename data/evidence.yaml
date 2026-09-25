@@ -814,13 +814,13 @@
     volume: "102"
     issue: "6"
     pages: "1347-1356"
-  locator: "Abstract (Results); Results, 'Main outcomes', 'Dose-responses', 'Heterogeneity'; Table 2; Figure 2 and 3 legends"
+  locator: "Abstract (Results); Results, 'Study characteristics', 'Main outcomes', 'Dose-responses', 'Heterogeneity'; Table 2; Figure 2 and 3 legends"
   verified:
     doi_resolves: true
     title_matches: true
     first_author_matches: true
     value_checked_in: "full text"
-    checked_on: "2026-09-23"
+    checked_on: "2026-09-25"
 
 - id: delgobbo2015_ldl_per28g_rct
   kind: rct_mediator
