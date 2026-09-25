@@ -921,7 +921,7 @@ def fig_dose_curves(res: dict, path: Path, plt) -> None:
         [p["rr"] for p in bop],
         color=s["aqua"],
         lw=s["line_width"],
-        label="IHME: nuts and seeds, heart disease",
+        label="IHME: nuts and seeds, ischemic heart disease",
     )
     ax.plot(
         g,
@@ -929,14 +929,14 @@ def fig_dose_curves(res: dict, path: Path, plt) -> None:
         color=s["ink_muted"],
         lw=s["line_width"],
         linestyle=(0, (4, 3)),
-        label="Linear per-28 g, with plateau",
+        label="Smooth curve through per-28 g estimate",
     )
     ax.plot(
         g,
         fd["curves"]["main"],
         color=s["blue"],
         lw=s["line_width"],
-        label="Model: Aune curve held at minimum",
+        label="Model's curve (Aune, held at its minimum)",
     )
     pts = [p for p in fd["aune_points"] if p["lo"] is not None]
     ax.errorbar(
@@ -965,7 +965,8 @@ def fig_dose_curves(res: dict, path: Path, plt) -> None:
 
 def _scenario_panels(fd: dict, xs: list, xlabel: str, path: Path, plt) -> None:
     """Women and men side by side: the LDL-pathway range (coronary to all
-    deaths, means), the main calibration's 80% interval and mean, and face value."""
+    deaths, means), the main calibration's 80% interval and mean, and face value
+    in ink (orange and blue mean the sexes in the other figures)."""
     s = STYLE
     fig, axes = plt.subplots(
         1, 2, figsize=(s["width_in"], s["height_in"]), sharey=True, layout="constrained"
@@ -1000,7 +1001,7 @@ def _scenario_panels(fd: dict, xs: list, xlabel: str, path: Path, plt) -> None:
         ax.plot(
             xs,
             _days(d["face_value"]["mean"]),
-            color=s["orange"],
+            color=s["ink"],
             lw=s["line_width"],
             label=SCENARIO_LABEL["face_value"],
         )
@@ -1036,14 +1037,10 @@ def fig_days_by_age(res: dict, path: Path, plt) -> None:
 
 
 def fig_marginal(res: dict, path: Path, plt) -> None:
+    """The step (fd['step_g'] grams) is in the caption; the panel label names only
+    the axis, so the two panels' labels fit side by side."""
     fd = res["figures"]["marginal_by_background"]
-    _scenario_panels(
-        fd,
-        fd["backgrounds"],
-        f"Nuts already eaten (g/day), before adding {fd['step_g']} g/day",
-        path,
-        plt,
-    )
+    _scenario_panels(fd, fd["backgrounds"], "Grams already eaten a day", path, plt)
 
 
 def fig_scenarios(res: dict, path: Path, plt) -> None:
