@@ -837,7 +837,7 @@ def tables_results(r) -> dict[str, str]:
 CPL_DIGITS = -2
 
 
-def _flax_ala_g(r) -> float:
+def _flax_ala_g() -> float:
     """Grams of ALA in one tablespoon of ground flaxseed: the USDA portion weight
     times ALA per composition basis."""
     data = _data()
@@ -848,11 +848,8 @@ def _flax_ala_g(r) -> float:
     ]
     if len(weights) != 1:
         raise FillError("gram_weights.csv needs one flaxseed '1.0 tbsp, ground' weight")
-    return (
-        weights[0]
-        * data.composition()["flaxseed"]["ala_g"]
-        / (data.composition_basis_g())
-    )
+    ala_per_gram = data.composition()["flaxseed"]["ala_g"] / data.composition_basis_g()
+    return weights[0] * ala_per_gram
 
 
 def values_which_nut(r) -> dict[str, Value]:
@@ -874,7 +871,7 @@ def values_which_nut(r) -> dict[str, Value]:
     ldl_cheap = min(tree, key=lambda n: by[n]["male"]["ldl_all"]["usd_per_life_year"])
     # the flax sentence: a tablespoon of ground flax and the average man's ALA
     # pass the top of the range the ALA cohorts observed
-    flax = _flax_ala_g(r)
+    flax = _flax_ala_g()
     ala_top = r["ala"]["support_g"][1]
     if not flax + r["ala"]["background_g"]["average"]["male"] > ala_top:
         raise FillError(
