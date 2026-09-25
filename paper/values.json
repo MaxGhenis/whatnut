@@ -29,10 +29,25 @@
     "raw": 0.430583,
     "text": "157"
   },
+  "ala_premium_m_cal": {
+    "kind": "days",
+    "raw": 0.275956,
+    "text": "101"
+  },
+  "ala_premium_m_cal_fixed": {
+    "kind": "days",
+    "raw": 0.0539291,
+    "text": "20"
+  },
   "ala_premium_m_fixed": {
     "kind": "days",
     "raw": 0.0842175,
     "text": "31"
+  },
+  "ala_premium_m_int": {
+    "kind": "range",
+    "raw": 0.198599,
+    "text": "73 to 242"
   },
   "ala_premium_seeds": {
     "kind": "days_words",
@@ -91,8 +106,8 @@
   },
   "baseline_2021_add": {
     "kind": "days_delta",
-    "raw": 0.05667,
-    "text": "21 days"
+    "raw": 20,
+    "text": "20 days"
   },
   "bop_flat_g": {
     "kind": "integer",
@@ -109,6 +124,21 @@
     "raw": "two",
     "text": "two"
   },
+  "brazil_kernels_efsa": {
+    "kind": "words",
+    "raw": 3,
+    "text": "Three"
+  },
+  "brazil_se_hi_kernel": {
+    "kind": "number:0",
+    "raw": 137.0,
+    "text": "137"
+  },
+  "brazil_se_lo_kernel": {
+    "kind": "number:0",
+    "raw": 6.800000000000001,
+    "text": "7"
+  },
   "brazil_se_per_nut": {
     "kind": "number:0",
     "raw": 96.0,
@@ -119,10 +149,20 @@
     "raw": 0.653155,
     "text": "65%"
   },
+  "c_cal_point_curve": {
+    "kind": "pct:0",
+    "raw": 0.565748,
+    "text": "57%"
+  },
   "c_calmort_point": {
     "kind": "pct:0",
     "raw": 0.368096,
     "text": "37%"
+  },
+  "c_calmort_point_curve": {
+    "kind": "pct:0",
+    "raw": 0.208854,
+    "text": "21%"
   },
   "c_max_point": {
     "kind": "pct:0",
@@ -150,24 +190,39 @@
     "text": "58"
   },
   "cpl_cheapest": {
-    "kind": "dollars:0",
+    "kind": "dollars:-2",
     "raw": 2421.06,
-    "text": "$2,421"
+    "text": "$2,400"
   },
   "cpl_cheapest_face": {
-    "kind": "dollars:0",
+    "kind": "dollars:-2",
     "raw": 1580.05,
-    "text": "$1,580"
+    "text": "$1,600"
+  },
+  "cpl_ldl_cheapest": {
+    "kind": "dollars:-2",
+    "raw": 94536.2,
+    "text": "$94,500"
+  },
+  "cpl_ldl_cheapest_nut": {
+    "kind": "text",
+    "raw": "almonds",
+    "text": "almonds"
+  },
+  "cpl_ldl_priciest": {
+    "kind": "dollars:-2",
+    "raw": 309487.0,
+    "text": "$309,500"
   },
   "cpl_priciest": {
-    "kind": "dollars:0",
+    "kind": "dollars:-2",
     "raw": 15166.5,
-    "text": "$15,167"
+    "text": "$15,200"
   },
   "cpl_priciest_face": {
-    "kind": "dollars:0",
+    "kind": "dollars:-2",
     "raw": 9898.08,
-    "text": "$9,898"
+    "text": "$9,900"
   },
   "cvd_only_share": {
     "kind": "pct:0",
@@ -224,6 +279,16 @@
     "raw": 0.78,
     "text": "0.78 (95% CI 0.72 to 0.84)"
   },
+  "ev_aune_cvd_mort": {
+    "kind": "evidence",
+    "raw": 0.76,
+    "text": "0.76 (95% CI 0.67 to 0.86)"
+  },
+  "ev_aune_diab": {
+    "kind": "evidence",
+    "raw": 0.61,
+    "text": "0.61 (95% CI 0.43 to 0.88)"
+  },
   "ev_aune_fu_long": {
     "kind": "evidence",
     "raw": 0.84,
@@ -234,10 +299,25 @@
     "raw": 0.61,
     "text": "0.61 (95% CI 0.49 to 0.76)"
   },
+  "ev_aune_infect": {
+    "kind": "evidence",
+    "raw": 0.25,
+    "text": "0.25 (95% CI 0.07 to 0.85)"
+  },
+  "ev_aune_kidney": {
+    "kind": "evidence",
+    "raw": 0.27,
+    "text": "0.27 (95% CI 0.04 to 1.91)"
+  },
   "ev_aune_large": {
     "kind": "evidence",
     "raw": 0.8,
     "text": "0.80 (95% CI 0.74 to 0.87)"
+  },
+  "ev_aune_resp": {
+    "kind": "evidence",
+    "raw": 0.48,
+    "text": "0.48 (95% CI 0.26 to 0.89)"
   },
   "ev_ctt_allcause": {
     "kind": "evidence",
@@ -379,15 +459,20 @@
     "raw": 1.09,
     "text": "1.09 (95% CI 1.04 to 1.14)"
   },
+  "ev_schw_protective": {
+    "kind": "evidence",
+    "raw": 1.12,
+    "text": "1.12 (95% CI 1.07 to 1.17)"
+  },
+  "ev_schw_supp": {
+    "kind": "evidence",
+    "raw": 1.29,
+    "text": "1.29 (95% CI 1.17 to 1.42)"
+  },
   "ev_select": {
     "kind": "evidence",
     "raw": 1.07,
     "text": "1.07 (99% CI 0.94 to 1.22)"
-  },
-  "ev_silverman": {
-    "kind": "evidence",
-    "raw": 0.75,
-    "text": "0.75 (95% CI 0.66 to 0.86)"
   },
   "ev_waha": {
     "kind": "evidence",
@@ -399,6 +484,11 @@
     "raw": 1.4866,
     "text": "1.49 (95% CI 1.05 to 2.11)"
   },
+  "ext_share_kept": {
+    "kind": "pct:0",
+    "raw": 0.8893694330196059,
+    "text": "89%"
+  },
   "ext_share_m35": {
     "kind": "pct:0",
     "raw": 0.542871,
@@ -409,6 +499,11 @@
     "raw": 1.2018,
     "text": "439"
   },
+  "f40_cal_int": {
+    "kind": "range",
+    "raw": -0.288263,
+    "text": "−105 to 985"
+  },
   "f40_face": {
     "kind": "days",
     "raw": 1.84873,
@@ -418,6 +513,11 @@
     "kind": "range",
     "raw": 0.0109612,
     "text": "4 to 21"
+  },
+  "face_pct_15": {
+    "kind": "pct:0",
+    "raw": 0.18000000000000005,
+    "text": "18%"
   },
   "fadnes_f20": {
     "kind": "years:1",
@@ -474,10 +574,35 @@
     "raw": 183.12,
     "text": "183"
   },
+  "ldl_all_pct_15": {
+    "kind": "pct:1",
+    "raw": 0.00602579209715115,
+    "text": "0.6%"
+  },
+  "ldl_chd_pct_15": {
+    "kind": "pct:1",
+    "raw": 0.012719080466901178,
+    "text": "1.3%"
+  },
   "ldl_conv": {
     "kind": "number:2",
     "raw": 38.67,
     "text": "38.67"
+  },
+  "ldl_mmol_15": {
+    "kind": "number:2",
+    "raw": 0.057365137293895266,
+    "text": "0.06"
+  },
+  "ldl_mmol_per28": {
+    "kind": "number:2",
+    "raw": 0.10861132660977502,
+    "text": "0.11"
+  },
+  "ldl_rct_point": {
+    "kind": "evidence",
+    "raw": 4.2,
+    "text": "4.2"
   },
   "le_max_gap_days": {
     "kind": "days_ceil",
@@ -494,6 +619,16 @@
     "raw": 1.28802,
     "text": "470"
   },
+  "m40_cal_int": {
+    "kind": "range",
+    "raw": -0.308764,
+    "text": "−113 to 1,056"
+  },
+  "m40_cal_range": {
+    "kind": "range",
+    "raw": 0.728186,
+    "text": "266 to 782"
+  },
   "m40_calmort": {
     "kind": "days",
     "raw": 0.728186,
@@ -503,6 +638,11 @@
     "kind": "days",
     "raw": 0.41299,
     "text": "151"
+  },
+  "m40_cvd": {
+    "kind": "days",
+    "raw": 0.636658,
+    "text": "233"
   },
   "m40_dial_lo": {
     "kind": "days",
@@ -529,10 +669,10 @@
     "raw": 0.0176663,
     "text": "6 to 22"
   },
-  "m40_ldl_weeks": {
-    "kind": "number:0",
-    "raw": 3.1415778642857144,
-    "text": "3"
+  "m40_ldl_weeks_range": {
+    "kind": "range",
+    "raw": 0.9218022964285714,
+    "text": "1 to 3"
   },
   "m_old_cal": {
     "kind": "days",
@@ -604,6 +744,11 @@
     "raw": 20000,
     "text": "20,000"
   },
+  "my_flax_ala": {
+    "kind": "number:1",
+    "raw": 1.5959999999999999,
+    "text": "1.6"
+  },
   "nasem_se": {
     "kind": "integer",
     "raw": 400,
@@ -624,6 +769,31 @@
     "raw": 0.12712270697181505,
     "text": "13%"
   },
+  "predimed_base_g": {
+    "kind": "number:0",
+    "raw": 10.0771,
+    "text": "10"
+  },
+  "predimed_ctl_change": {
+    "kind": "number:0",
+    "raw": 3.12,
+    "text": "3"
+  },
+  "predimed_eaters_pct": {
+    "kind": "pct:0",
+    "raw": 0.706486,
+    "text": "71%"
+  },
+  "predimed_full_hr": {
+    "kind": "ratio:2",
+    "raw": 0.887612,
+    "text": "0.89"
+  },
+  "predimed_nut_change": {
+    "kind": "number:0",
+    "raw": 15.95,
+    "text": "16"
+  },
   "predimed_nut_g": {
     "kind": "integer",
     "raw": 30,
@@ -631,12 +801,12 @@
   },
   "predimed_phased_hr": {
     "kind": "ratio:2",
-    "raw": 0.9534882039887792,
-    "text": "0.95"
+    "raw": 0.971793,
+    "text": "0.97"
   },
   "predimed_years": {
-    "kind": "text",
-    "raw": "4.8",
+    "kind": "number:1",
+    "raw": 4.8,
     "text": "4.8"
   },
   "price_date": {
@@ -694,6 +864,26 @@
     "raw": 1.07138,
     "text": "1.07 (95% CI 0.98 to 1.18)"
   },
+  "schw_intake_core": {
+    "kind": "pooled",
+    "raw": 0.972917,
+    "text": "0.97 (95% CI 0.92 to 1.03)"
+  },
+  "schw_intake_core_n": {
+    "kind": "integer",
+    "raw": 15,
+    "text": "15"
+  },
+  "schw_intake_prot": {
+    "kind": "pooled",
+    "raw": 0.997215,
+    "text": "1.00 (95% CI 0.93 to 1.07)"
+  },
+  "schw_intake_prot_n": {
+    "kind": "integer",
+    "raw": 19,
+    "text": "19"
+  },
   "schw_overall_pi": {
     "kind": "text",
     "raw": "0.81 to 1.46",
@@ -736,8 +926,13 @@
   },
   "version": {
     "kind": "text",
-    "raw": "r1-20260923",
-    "text": "r1-20260923"
+    "raw": "r2-20260924",
+    "text": "r2-20260924"
+  },
+  "version_date": {
+    "kind": "text",
+    "raw": "2026-09-24",
+    "text": "2026-09-24"
   },
   "waha_implied": {
     "kind": "number:1",

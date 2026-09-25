@@ -193,6 +193,7 @@ def calibration(m: Model) -> dict:
             "row": r.id,
             "rrr": r.estimate,
             "rrr_ci": [r.ci_low, r.ci_high],
+            "rrr_ci_level": r.ci_level,
             "rrr_pi": [r.pi_low, r.pi_high],
         }
         if role == "rrr_analog":

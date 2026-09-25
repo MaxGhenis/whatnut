@@ -398,14 +398,19 @@ def test_vercel_redirects():
         assert destination not in redirects, f"{source} -> {destination} chains"
 
 
-def test_template_date_matches_version():
-    """The manuscript's front-matter date is the date in paper/VERSION."""
+def test_manuscript_date_matches_version():
+    """The filled manuscript's front-matter date is the date in paper/VERSION:
+    the template writes {{version_date}}, which fill_paper takes from VERSION."""
     template = (PAPER / "index.qmd.in").read_text(encoding="utf-8")
-    front = template.split("---", 2)[1]
+    assert re.search(r"^date: \{\{version_date\}\}$", template, re.M), (
+        "the template's date should be the {{version_date}} placeholder"
+    )
+    filled = (PAPER / "index.qmd").read_text(encoding="utf-8")
+    front = filled.split("---", 2)[1]
     date = yaml.safe_load(front)["date"]
     m = re.fullmatch(r"r\d+-(\d{4})(\d{2})(\d{2})", VERSION)
     assert str(date) == "-".join(m.groups()), (
-        f"index.qmd.in date {date} differs from paper/VERSION {VERSION}"
+        f"index.qmd date {date} differs from paper/VERSION {VERSION}"
     )
 
 

@@ -86,7 +86,8 @@ def _py(x: float | int) -> float | int:
 
 
 def _decimal(x: float | int, ndigits: int) -> Decimal:
-    """Round half away from zero (not Python's round-half-to-even)."""
+    """Round half away from zero (not Python's round-half-to-even). A negative
+    ``ndigits`` rounds to tens (-1), hundreds (-2) and so on."""
     x = _py(x)
     quantum = Decimal(1).scaleb(-ndigits)
     return Decimal(repr(x) if isinstance(x, float) else x).quantize(
@@ -95,9 +96,10 @@ def _decimal(x: float | int, ndigits: int) -> Decimal:
 
 
 def _grouped(x: float | int, ndigits: int, prefix: str = "", suffix: str = "") -> str:
-    """Fixed decimals, thousands separators, typographic minus; never prints -0."""
+    """Fixed decimals, thousands separators, typographic minus; never prints -0.
+    A negative ``ndigits`` rounds to that power of ten and prints no decimals."""
     d = _decimal(x, ndigits)
-    body = f"{prefix}{abs(d):,.{ndigits}f}{suffix}"
+    body = f"{prefix}{abs(d):,.{max(ndigits, 0)}f}{suffix}"
     return MINUS + body if d < 0 else body
 
 
@@ -126,6 +128,7 @@ def years(x: float, ndigits: int = 2) -> Value:
 
 
 def dollars(x: float, ndigits: int = 0) -> Value:
+    """US dollars; ndigits=-2 rounds to the nearest $100 (cost per life-year)."""
     return Value(_py(x), f"dollars:{ndigits}", _grouped(x, ndigits, prefix="$"))
 
 
@@ -314,10 +317,26 @@ def _ref(r) -> tuple[int, float, float]:
 
 
 def _price_extremes(r):
+    """(cheapest nut, priciest nut, cost.by_nut). The text names them: the
+    abstract compares macadamias with peanuts, and the Which nut section says
+    peanuts come out cheapest and macadamias cost the most per life-year."""
     by = r["cost"]["by_nut"]
     cheap = min(NUTS, key=lambda n: by[n]["usd_per_kg"])
     dear = max(NUTS, key=lambda n: by[n]["usd_per_kg"])
+    if (cheap, dear) != ("peanut", "macadamia"):
+        raise FillError(
+            f"the text names peanuts as the cheapest nut and macadamias as the "
+            f"priciest; the prices say {cheap} and {dear}"
+        )
     return cheap, dear, by
+
+
+def _interval_days(r, sex: str, member: str, a0, d, b) -> str:
+    """'p10 to p90' of a grid cell, in days."""
+    return interval(
+        days(r.le_gain(sex, a0, d, b, member, "p10")),
+        days(r.le_gain(sex, a0, d, b, member, "p90")),
+    )
 
 
 def _label(r, member: str) -> str:
@@ -337,19 +356,37 @@ def values_headline(r) -> dict[str, Value]:
     face = g[("male", "face_value")]
     any_left = r["sensitivity"]["rows"]["curve_from_any"]["stats"]["male"]
     cheap, dear, by = _price_extremes(r)
+    # the five calibrations (linear anchor), men: which comparisons count
+    cal = sorted(r.le_gain("male", a0, d, b, mem) for mem in r["calibration"]["strata"])
+    cal_int = {
+        sex: Value(
+            r.le_gain(sex, a0, d, b, "calibrated", "p10"),
+            "range",
+            _interval_days(r, sex, "calibrated", a0, d, b),
+        )
+        for sex in SEXES
+    }
+    weeks = {
+        mem: number(g[("male", mem)] * DAYS_PER_YEAR / 7, 0)
+        for mem in ("ldl_chd", "ldl_all")
+    }
     return {
         "m40_ldl_range": _range(
             days(g[("male", "ldl_chd")]), days(g[("male", "ldl_all")])
         ),
         "m40_cal": days(g[("male", "calibrated")]),
+        "m40_cal_int": cal_int["male"],
+        "m40_cal_range": _range(days(cal[0]), days(cal[-1])),
         "m40_calmort": days(g[("male", "calibrated_mortality")]),
+        "m40_cvd": days(g[("male", "cvd_only")]),
         "m40_face": days(face),
         "m40_face_years": years(face, 1),
-        "m40_ldl_weeks": number(g[("male", "ldl_all")] * DAYS_PER_YEAR / 7, 0),
+        "m40_ldl_weeks_range": _range(weeks["ldl_chd"], weeks["ldl_all"]),
         "f40_ldl_range": _range(
             days(g[("female", "ldl_chd")]), days(g[("female", "ldl_all")])
         ),
         "f40_cal": days(g[("female", "calibrated")]),
+        "f40_cal_int": cal_int["female"],
         "f40_face": days(g[("female", "face_value")]),
         "any_share": pct(1 - any_left["face_value"]["mean"] / face),
         "price_ratio": number(by[dear]["usd_per_kg"] / by[cheap]["usd_per_kg"], 0),
@@ -390,15 +427,6 @@ def values_evidence(r) -> dict[str, Value]:
     )
     if not dg:
         raise FillError("delgobbo2015_ldl_per28g_rct notes lack the trial medians")
-    pred_pop = _row("predimed2018_nuts_all_cause_death").population or ""
-    fu = re.search(r"median follow-up ([\d.]+) years", pred_pop)
-    if not fu:
-        raise FillError("predimed2018_nuts_all_cause_death names no median follow-up")
-    phase = r.meta["phase_in_years"]
-    pred_years = float(fu.group(1))
-    # hazard ratio averaged over follow-up with a linear phase-in: the curve's
-    # full log RR times the mean phase-in share over the trial's years
-    phased = math.exp(math.log(rr_min) * min(1, pred_years / phase) / 2)
     ldl_rct = _row("delgobbo2015_ldl_per28g_rct")
     waha_implied = ldl_rct.estimate / ldl_rct.per_grams() * WAHA_MID_G
     return {
@@ -438,42 +466,157 @@ def values_evidence(r) -> dict[str, Value]:
         "ev_predimed_stroke": ev("predimed2018_nuts_stroke"),
         "ev_predimed_death": ev("predimed2018_nuts_all_cause_death"),
         "ev_predimed_cvdeath": ev("predimed2018_nuts_cv_death"),
-        "predimed_years": text(fu.group(1)),
-        "predimed_phased_hr": ratio(phased),
+        **_predimed_values(r),
         "ev_gf2013": ev("guaschferre2013_predimed_nut_frequency"),
         "ev_ctt_chd": ev("ctt2010_chd_death_per_mmol"),
         "ev_ctt_allcause": ev("ctt2010_all_cause_per_mmol"),
-        "ev_silverman": ev("silverman2016_ldl_nonstatin"),
         "ev_waha": ev("rajaram2021_waha_walnut_ldl", 1),
         "waha_implied": number(waha_implied, 1),
+        **_ldl_arithmetic(r),
+        **_other_causes(),
     }
+
+
+def _predimed_values(r) -> dict[str, Value]:
+    """PREDIMED's contrast on the cohort curve (results.json predimed_check). The
+    text says the nut arm's intake rose and the control arm's fell (printed as
+    magnitudes), and that both implied hazard ratios lie inside the trial's
+    interval for death."""
+    pc = r["predimed_check"]
+    nut, ctl = pc["change_g"]["nuts"], pc["change_g"]["control"]
+    if not nut > 0 > ctl:
+        raise FillError(
+            f"the text says the nut arm's intake rose and the control arm's fell; "
+            f"the rows say {nut:+} and {ctl:+} g/day"
+        )
+    lo, hi = pc["trial_ci"]
+    for name in ("full_hr", "phased_hr"):
+        if not lo < pc[name] < hi:
+            raise FillError(
+                f"the text says the curve's {name} {pc[name]} lies inside PREDIMED's "
+                f"interval for death, {lo} to {hi}"
+            )
+    return {
+        "predimed_eaters_pct": pct(pc["eaters_share"]),
+        "predimed_base_g": number(pc["mean_baseline_g"], 0),
+        "predimed_nut_change": number(nut, 0),
+        "predimed_ctl_change": number(-ctl, 0),
+        "predimed_full_hr": ratio(pc["full_hr"]),
+        "predimed_phased_hr": ratio(pc["phased_hr"]),
+        "predimed_years": number(pc["follow_up_years"], 1),
+    }
+
+
+def _ldl_arithmetic(r) -> dict[str, Value]:
+    """The LDL pathway at the point estimates, at the reference dose: Del Gobbo's
+    randomized per-serving change in mmol/L, the reduction at the reference dose,
+    and the hazard reductions the CTT slopes give it, beside the main curve's."""
+    row = _row("delgobbo2015_ldl_per28g_rct")
+    conv = r.meta["assumptions"]["ldl_mg_dl_per_mmol_l"]
+    delta = r.reference["delta"]
+    if row.estimate >= 0:
+        raise FillError("the text says the nut trials lowered LDL")
+    per_serving = -row.estimate / conv
+    at_delta = -row.estimate / row.per_grams() * delta / conv
+    lowered = {
+        mem: 1 - math.exp(math.log(_row(rid).estimate) * at_delta)
+        for mem, rid in (
+            ("ldl_all", "ctt2010_all_cause_per_mmol"),
+            ("ldl_chd", "ctt2010_chd_death_per_mmol"),
+        )
+    }
+    face_rr = r["curves"]["main"]["rr_by_gram"][f"{delta:g}"]
+    return {
+        "ldl_rct_point": Value(
+            -row.estimate, "evidence", _num(-row.estimate, row.measure)
+        ),
+        "ldl_mmol_per28": number(per_serving, 2),
+        "ldl_mmol_15": number(at_delta, 2),
+        "ldl_all_pct_15": pct(lowered["ldl_all"], 1),
+        "ldl_chd_pct_15": pct(lowered["ldl_chd"], 1),
+        "face_pct_15": pct(1 - face_rr),
+    }
+
+
+# Aune 2016's per-serving estimates for causes nuts have no known route to, and
+# for cardiovascular death, the cause the lipid mechanism would most affect.
+OTHER_CAUSE_ROWS = {
+    "ev_aune_infect": "aune2016_infectious_per28g_mortality",
+    "ev_aune_kidney": "aune2016_kidney_per28g_mortality",
+    "ev_aune_resp": "aune2016_respiratory_per28g_mortality",
+    "ev_aune_diab": "aune2016_diabetes_per28g_mortality",
+}
+
+
+def _other_causes() -> dict[str, Value]:
+    """The Limitations say the associations with deaths from infections and
+    kidney disease are stronger than with cardiovascular death."""
+    cvd = _row("aune2016_cvd_per28g_mortality")
+    for name in ("ev_aune_infect", "ev_aune_kidney"):
+        if not _row(OTHER_CAUSE_ROWS[name]).estimate < cvd.estimate:
+            raise FillError(f"{name} is no stronger than cardiovascular death")
+    return {
+        **{name: ev(rid) for name, rid in OTHER_CAUSE_ROWS.items()},
+        "ev_aune_cvd_mort": ev(cvd.id),
+    }
+
+
+def _pooled(estimate: float, ci: list[float], level: float) -> Value:
+    """A pool computed here, e.g. '0.97 (95% CI 0.92 to 1.03)'."""
+    lo, hi = (_grouped(x, 2) for x in ci)
+    pct_level = int(round(level * 100))
+    return Value(
+        estimate, "pooled", f"{_grouped(estimate, 2)} ({pct_level}% CI {lo} to {hi})"
+    )
 
 
 def values_calibration(r) -> dict[str, Value]:
     cal = r["calibration"]
     st = cal["strata"]
-    a0, d, b = _ref(r)
     overall = _row("schwingshackl2021_rrr_overall")
     analog = st["calibrated_analog"]
     cs = [x["linear"]["c_point"] for x in st.values()]
     sens = r["sensitivity"]["calibrations"]
+    subsets = cal["intake_subsets"]
+    # what the prose asserts about these numbers
+    if analog["tau2"] != 0:
+        raise FillError(
+            f"the text says the six nearest pairs show no variation beyond chance; "
+            f"tau2 is {analog['tau2']}"
+        )
+    if st["calibrated_diet"]["linear"]["c_point"] < 1:
+        raise FillError("the text says the diet pairs alone would keep all of it")
+    for mem in ("calibrated", "calibrated_mortality"):
+        if not st[mem]["linear"]["share_draws_c_below_0"] > 0:
+            raise FillError(f"the text says {mem}'s prediction interval can reverse")
     return {
         "ev_schw_overall": ev("schwingshackl2021_rrr_overall"),
         "schw_overall_pi": text(
             f"{_num(overall.pi_low, 'RRR')} to {_num(overall.pi_high, 'RRR')}"
         ),
+        "ev_schw_protective": ev("schwingshackl2021_rrr_overall_cohort_rr_below_1"),
         "ev_schw_allcause": ev("schwingshackl2021_rrr_all_cause"),
         "ev_schw_intake": ev("schwingshackl2021_rrr_intake_vs_intake"),
-        "schw_analog": Value(
-            analog["rrr"],
-            "pooled",
-            f"{_grouped(analog['rrr'], 2)} (95% CI {_grouped(analog['rrr_ci'][0], 2)}"
-            f" to {_grouped(analog['rrr_ci'][1], 2)})",
+        "ev_schw_supp": ev("schwingshackl2021_rrr_supplement_vs_status"),
+        "schw_intake_core_n": integer(subsets["core"]["k"]),
+        "schw_intake_core": _pooled(
+            subsets["core"]["estimate"],
+            subsets["core"]["ci"],
+            subsets["core"]["level"],
         ),
+        "schw_intake_prot_n": integer(subsets["protective"]["k"]),
+        "schw_intake_prot": _pooled(
+            subsets["protective"]["estimate"],
+            subsets["protective"]["ci"],
+            subsets["protective"]["level"],
+        ),
+        "schw_analog": _pooled(analog["rrr"], analog["rrr_ci"], analog["rrr_ci_level"]),
         "rr28_linear": ratio(cal["anchor_rr"]["linear"]),
         "rr28_curve": ratio(cal["anchor_rr"]["curve"]),
         "c_cal_point": pct(st["calibrated"]["linear"]["c_point"]),
         "c_calmort_point": pct(st["calibrated_mortality"]["linear"]["c_point"]),
+        "c_cal_point_curve": pct(st["calibrated"]["curve"]["c_point"]),
+        "c_calmort_point_curve": pct(st["calibrated_mortality"]["curve"]["c_point"]),
         "c_min_point": pct(min(cs)),
         "c_max_point": pct(max(cs)),
         "harm_share_main": pct(st["calibrated"]["linear"]["share_draws_c_below_0"]),
@@ -493,6 +636,25 @@ CALIBRATION_ROWS = (
     "calibrated_analog",
     "calibrated_diet",
 )
+
+
+TWO_MEANS_RE = re.compile(
+    r"after the \w[\w ]*? diet ([\d.]+) \+/- [\d.]+ (mmol/L) vs ([\d.]+) \+/- [\d.]+ "
+    r"after the [\w ]+? diet \(P ([<=]) ([\d.]+)\)"
+)
+
+
+def _two_means(row) -> str:
+    """'3.14 vs 3.44 mmol/L (P < 0.05)' from a row whose notes give each arm's
+    mean and the P value but whose source prints no difference."""
+    m = TWO_MEANS_RE.search(" ".join((row.notes or "").split()))
+    if not m:
+        raise FillError(
+            f"{row.id}: notes give no 'after the X diet a +/- s mmol/L vs b'"
+        )
+    ours, unit, theirs, rel, p = m.groups()
+    a, b = (_num(float(x), row.measure) for x in (ours, theirs))
+    return f"{a} vs {b} {unit} (P {rel} {_num(float(p), row.measure)})"
 
 
 def tables_calibration(r) -> dict[str, str]:
@@ -540,13 +702,18 @@ def tables_evidence(r) -> dict[str, str]:
         ("Pistachio", "hadi2023_pistachio_ldl"),
         ("Pecan", "zhang2026_pecan_ldl"),
         ("Hazelnut", "perna2016_hazelnut_ldl"),
-        ("Macadamia (one trial)", "jones2023_macadamia_ldl"),
+        ("Macadamia, controlled feeding", "griel2008_macadamia_ldl"),
+        ("Macadamia, free-living trial", "jones2023_macadamia_ldl"),
         ("Cashew", "jalali2020_cashew_ldl"),
-        ("Peanut", "jafariazad2020_peanut_ldl"),
+        ("Peanut and peanut products", "jafariazad2020_peanut_ldl"),
     ]
     rows = []
     for label, rid in specs:
         row = _row(rid)
+        if row.estimate is None:
+            # two arms' means and a P value, no difference printed (Griel 2008)
+            rows.append([label, _two_means(row), f"[@{row.source['key']}]"])
+            continue
         scale = conv if (row.unit or "").startswith("mmol/L") else 1.0
         est = row.estimate * scale
         if row.ci_low is not None and row.ci_high is not None:
@@ -666,6 +833,28 @@ def tables_results(r) -> dict[str, str]:
     return {"reference": md_table(header, rows, "l" + "r" * (len(header) - 1))}
 
 
+# Cost per life-year is printed to the nearest $100.
+CPL_DIGITS = -2
+
+
+def _flax_ala_g(r) -> float:
+    """Grams of ALA in one tablespoon of ground flaxseed: the USDA portion weight
+    times ALA per composition basis."""
+    data = _data()
+    weights = [
+        float(w["grams"])
+        for w in data._read_csv(data.DATA / "composition" / "gram_weights.csv")
+        if w["key"] == "flaxseed" and w["description"] == "1.0 tbsp, ground"
+    ]
+    if len(weights) != 1:
+        raise FillError("gram_weights.csv needs one flaxseed '1.0 tbsp, ground' weight")
+    return (
+        weights[0]
+        * data.composition()["flaxseed"]["ala_g"]
+        / (data.composition_basis_g())
+    )
+
+
 def values_which_nut(r) -> dict[str, Value]:
     cheap, dear, by = _price_extremes(r)
     dates = sorted({dt for n in NUTS for dt in by[n]["price_dates"]})
@@ -676,6 +865,27 @@ def values_which_nut(r) -> dict[str, Value]:
     w_avg, w_high = ala["average"]["walnut"], ala["high"]["walnut"]
     seeds = w_high["male"]["face_value:ala"]["increment"]["mean"]
     high_bg = r["ala"]["background_g"]["high"]["male"]
+    # the LDL pathway, all deaths: tree nuts only, because peanuts' LDL estimate
+    # is not significant (the text names the cheapest tree nut and the priciest)
+    excluded = set(r.meta["assumptions"]["tree_nuts_exclude"])
+    if dear in excluded:
+        raise FillError(f"the priciest nut, {dear}, is not a tree nut")
+    tree = [n for n in NUTS if n not in excluded]
+    ldl_cheap = min(tree, key=lambda n: by[n]["male"]["ldl_all"]["usd_per_life_year"])
+    # the flax sentence: a tablespoon of ground flax and the average man's ALA
+    # pass the top of the range the ALA cohorts observed
+    flax = _flax_ala_g(r)
+    ala_top = r["ala"]["support_g"][1]
+    if not flax + r["ala"]["background_g"]["average"]["male"] > ala_top:
+        raise FillError(
+            f"the text says a tablespoon of ground flax ({flax:.2f} g ALA) plus the "
+            f"average man's ALA passes {ala_top} g; it does not"
+        )
+    increments = w_avg["male"]
+
+    def cpl(nut: str, member: str) -> Value:
+        return dollars(by[nut]["male"][member]["usd_per_life_year"], CPL_DIGITS)
+
     return {
         "price_date": text(_date(dates[0])),
         "sellers_min": _words(min(sellers)),
@@ -684,21 +894,31 @@ def values_which_nut(r) -> dict[str, Value]:
         "cheapest_nut": text(NUT_LABEL[cheap] + "s"),
         "priciest_price": dollars(by[dear]["usd_per_kg"], 2),
         "priciest_nut": text(NUT_LABEL[dear] + "s"),
-        "cpl_cheapest": dollars(
-            by[cheap]["male"]["calibrated"]["usd_per_life_year"], 0
-        ),
-        "cpl_priciest": dollars(by[dear]["male"]["calibrated"]["usd_per_life_year"], 0),
-        "cpl_cheapest_face": dollars(
-            by[cheap]["male"]["face_value"]["usd_per_life_year"], 0
-        ),
-        "cpl_priciest_face": dollars(
-            by[dear]["male"]["face_value"]["usd_per_life_year"], 0
-        ),
+        "cpl_cheapest": cpl(cheap, "calibrated"),
+        "cpl_priciest": cpl(dear, "calibrated"),
+        "cpl_cheapest_face": cpl(cheap, "face_value"),
+        "cpl_priciest_face": cpl(dear, "face_value"),
+        "cpl_ldl_cheapest": cpl(ldl_cheap, "ldl_all"),
+        "cpl_ldl_cheapest_nut": text(NUT_LABEL[ldl_cheap] + "s"),
+        "cpl_ldl_priciest": cpl(dear, "ldl_all"),
+        "my_flax_ala": number(flax, 1),
         "walnut_ala": number(w_avg["nut_ala_g"], 2),
         "walnut_ala_counted_m": number(w_avg["male"]["counted_ala_g"], 2),
-        "ala_premium_m": days(w_avg["male"]["face_value:ala"]["increment"]["mean"]),
+        "ala_premium_m": days(increments["face_value:ala"]["increment"]["mean"]),
+        "ala_premium_m_int": Value(
+            increments["face_value:ala"]["increment"]["p10"],
+            "range",
+            interval(
+                days(increments["face_value:ala"]["increment"]["p10"]),
+                days(increments["face_value:ala"]["increment"]["p90"]),
+            ),
+        ),
         "ala_premium_m_fixed": days(
-            w_avg["male"]["face_value:ala_fixed"]["increment"]["mean"]
+            increments["face_value:ala_fixed"]["increment"]["mean"]
+        ),
+        "ala_premium_m_cal": days(increments["calibrated:ala"]["increment"]["mean"]),
+        "ala_premium_m_cal_fixed": days(
+            increments["calibrated:ala_fixed"]["increment"]["mean"]
         ),
         "ala_high_bg": number(high_bg, 0),
         "ala_premium_seeds": Value(
@@ -717,30 +937,50 @@ def values_sensitivity(r) -> dict[str, Value]:
     def face(row_id: str) -> float:
         return rows[row_id]["stats"]["male"]["face_value"]["mean"]
 
+    # the text: of the choices in the table, measuring the curve from 5 g moves
+    # the face-value answer most
+    moves = {
+        rid: abs(face(rid) / main - 1)
+        for rid, row in rows.items()
+        if rid != "main" and "face_value" in row["stats"]["male"]
+    }
+    if max(moves, key=moves.get) != "curve_from_any":
+        raise FillError(
+            f"the text says the curve from 5 g moves the answer most; "
+            f"{max(moves, key=moves.get)} moves it more"
+        )
     cs = r["sensitivity"]["curves_at_serving"]["curves"]
     b2021 = face("baseline_2021")
+    # the difference of the two cells as the table prints them (whole days)
+    shown = {k: _decimal(x * DAYS_PER_YEAR, 0) for k, x in (("b", b2021), ("m", main))}
+    add = int(shown["b"] - shown["m"])
     return {
         "from_any_share": pct(face("curve_from_any") / main),
         "cvd_only_share": pct(r.le_gain("male", *_ref(r), "cvd_only") / main),
         "fu10_share": pct(face("rr_fu10") / main),
+        "ext_share_kept": pct(face("exclude_external") / main),
         "att_share": pct(face("attenuate_with_age") / main),
         "plateau_add": pct(face("curve_linear_plateau") / main - 1),
         "pchip28_face": days(cs["pchip_as_printed"]["male"]["face_value"]["mean"]),
         "main28_face": days(cs["main"]["male"]["face_value"]["mean"]),
         "baseline_2021_add": Value(
-            b2021 - main, "days_delta", days(b2021 - main).text + " days"
+            add, "days_delta", f"{_grouped(add, 0)} day" + ("" if add == 1 else "s")
         ),
     }
 
 
 SENSITIVITY_TABLE = (
-    ("main", "Main case"),
+    ("main", "Default choices"),
     ("curve_from_any", "Curve measured from 5 g (none to some not causal)"),
-    ("curve_linear_plateau", "Linear per-28 g estimate with a plateau"),
+    ("curve_linear_plateau", "Smooth curve through the per-28 g estimate"),
     ("rr_fu10", "Cohorts followed ten years or more"),
     ("rr_large", "Without the five smallest studies"),
     ("exclude_external", "External causes of death left out"),
-    ("attenuate_with_age", "Relative risk halves from 65 to 85"),
+    # the ages come from ASSUMPTIONS["age_attenuation"] (tables_sensitivity)
+    (
+        "attenuate_with_age",
+        "Log relative risk falls to half from {from_age} to {to_age}",
+    ),
     ("phase_in_0", "No phase-in"),
     ("phase_in_20", "Phase-in over 20 years"),
     ("baseline_2021", "2021 life tables"),
@@ -750,8 +990,12 @@ SENSITIVITY_COLUMNS = ("face_value", "calibrated", "ldl_all")
 
 
 def tables_sensitivity(r) -> dict[str, str]:
+    att = r.meta["assumptions"]["age_attenuation"]
+    if att["weight_at_end"] * 2 != 1:
+        raise FillError("the attenuation label says the log relative risk halves")
     rows = []
-    for rid, label in SENSITIVITY_TABLE:
+    for rid, template in SENSITIVITY_TABLE:
+        label = template.format(**att)
         st = r["sensitivity"]["rows"][rid]["stats"]["male"]
         rows.append(
             [label]
@@ -779,7 +1023,21 @@ def values_practical(r) -> dict[str, Value]:
     ]
     if len(kernel) != 1:
         raise FillError("gram_weights.csv needs exactly one Brazil nut kernel weight")
-    se = _row("fdc_brazil_nut_selenium").estimate * kernel[0] / 100
+    se_row = _row("fdc_brazil_nut_selenium")
+    se_range = re.fullmatch(
+        r"Range ([\d,]+) to ([\d,]+) ug/100 g", se_row.support or ""
+    )
+    if not se_range or se_row.unit != "ug per 100 g":
+        raise FillError("fdc_brazil_nut_selenium needs 'Range a to b ug/100 g' support")
+    se_lo, se_hi = (float(x.replace(",", "")) for x in se_range.groups())
+    per_kernel = kernel[0] / 100  # the row is per 100 g
+    se = se_row.estimate * per_kernel
+    if round(se_hi / se_lo) != 20:
+        raise FillError(
+            f"the text says USDA's samples range twentyfold: {se_lo}-{se_hi}"
+        )
+    efsa = _row("efsa2023_selenium_ul").estimate
+    kernels_over = math.floor(efsa / se) + 1  # the fewest average kernels above it
     grams = 28
     return {
         "walnut_pufa": number(pufa["walnut"], 0),
@@ -787,7 +1045,13 @@ def values_practical(r) -> dict[str, Value]:
         "roast_mda": integer(int(_row("schlormann2015_roasting").estimate)),
         "chia_milled": integer(int(_row("nieman2012_chia_milled_vs_whole").estimate)),
         "brazil_se_per_nut": number(se, 0),
-        "efsa_se": integer(int(_row("efsa2023_selenium_ul").estimate)),
+        "brazil_se_lo_kernel": number(se_lo * per_kernel, 0),
+        "brazil_se_hi_kernel": number(se_hi * per_kernel, 0),
+        # begins a sentence, so a capitalized word
+        "brazil_kernels_efsa": Value(
+            kernels_over, "words", _words(kernels_over).text.capitalize()
+        ),
+        "efsa_se": integer(int(efsa)),
         "nasem_se": integer(int(_row("nasem2000_selenium_ul").estimate)),
         "ev_npc": ev("stranges2007_npc_diabetes"),
         "ev_select": ev("lippman2009_select_diabetes"),
@@ -804,37 +1068,84 @@ def values_flip(r) -> dict[str, Value]:
     }
 
 
+VERSION_RE = re.compile(r"r(\d+)-(\d{4})(\d{2})(\d{2})")
+
+
 def values_reproduce(r) -> dict[str, Value]:
+    """The revision tag (paper/VERSION, rN-YYYYMMDD) and its date, which is the
+    manuscript's front-matter date."""
     version = (PAPER / "VERSION").read_text(encoding="utf-8").strip()
-    return {"version": text(version)}
+    m = VERSION_RE.fullmatch(version)
+    if not m:
+        raise FillError(f"paper/VERSION is {version!r}; expected rN-YYYYMMDD")
+    return {
+        "version": text(version),
+        "version_date": text(f"{m.group(2)}-{m.group(3)}-{m.group(4)}"),
+    }
+
+
+# How the appendix names each row's measure.
+MEASURE_LABEL = {
+    "mean_difference": "Mean difference",
+    "RRR": "Ratio of risk ratios",
+    "RR": "RR",
+    "HR": "HR",
+    "OR": "OR",
+    "value": "Value",
+}
+
+
+def _appendix_estimate(row) -> str:
+    """Estimate, interval and prediction interval as the source printed them; an
+    interval at a level other than 95% says its level; a row with a P value and no
+    interval gives the P value with the decimals the LDL table uses."""
+    if row.estimate is None:
+        return "citation only"
+    f = _fmt_row(row)
+    est = f(row.estimate)
+    if row.ci_low is not None and row.ci_high is not None:
+        level = int(round(row.ci_level * 100))
+        label = "" if level == APPENDIX_CI_PCT else f"{level}% CI "
+        est += f" ({label}{f(row.ci_low)} to {f(row.ci_high)})"
+    if row.pi_low is not None and row.pi_high is not None:
+        est += f"; prediction interval {f(row.pi_low)} to {f(row.pi_high)}"
+    if row.ci_low is None and row.pi_low is None and "P = " in (row.notes or ""):
+        est += f" (P = {_grouped(row.p_value(), 2)})"
+    return est
+
+
+# Intervals in the appendix are 95% unless the cell says otherwise.
+APPENDIX_CI_PCT = 95
 
 
 def tables_appendix(r) -> dict[str, str]:
     rows = []
     for rid in sorted(r.meta["evidence_rows"]):
         row = _row(rid)
-        if row.estimate is None:
-            est = "citation only"
-        else:
-            f = _fmt_row(row)
-            est = f(row.estimate)
-            if row.ci_low is not None and row.ci_high is not None:
-                est += f" ({f(row.ci_low)} to {f(row.ci_high)})"
-            if row.pi_low is not None and row.pi_high is not None:
-                est += f"; PI {f(row.pi_low)} to {f(row.pi_high)}"
-            if row.ci_low is None and row.pi_low is None:
-                try:
-                    est += f" (P = {_grouped(row.p_value(), 3)})"
-                except Exception:
-                    pass
-        measure = " ".join(x for x in (row.measure, row.unit) if x and x != "value")
+        if row.measure not in MEASURE_LABEL:
+            raise FillError(f"{rid}: no appendix label for measure {row.measure!r}")
+        measure = MEASURE_LABEL[row.measure]
+        if row.unit:
+            measure += f", {row.unit}"
         checked = row.verified.get("value_checked_in") or "not stated"
         rows.append(
-            [f"`{rid}`", measure or "value", est, f"[@{row.source['key']}]", checked]
+            [
+                f"`{rid}`",
+                measure,
+                _appendix_estimate(row),
+                f"[@{row.source['key']}]",
+                checked,
+            ]
         )
     return {
         "evidence": md_table(
-            ["Row", "Measure", "Estimate (interval)", "Source", "Number checked in"],
+            [
+                "Row",
+                "Measure",
+                f"Estimate ({APPENDIX_CI_PCT}% CI unless noted)",
+                "Source",
+                "Checked against",
+            ],
             rows,
             "llrll",
         )

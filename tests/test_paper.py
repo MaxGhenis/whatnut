@@ -207,6 +207,12 @@ def test_formatters():
     assert f.dollars(1234.5).text == "$1,235"
     assert f.dollars(-5).text == f"{MINUS}$5"
     assert f.dollars(12.345, 2).text == "$12.35"
+    # cost per life-year: nearest $100, half up
+    assert f.dollars(2421.06, -2).text == "$2,400"
+    assert f.dollars(2450, -2).text == "$2,500"
+    assert f.dollars(309487.0, -2).text == "$309,500"
+    assert f.dollars(-49.9, -2).text == "$0"
+    assert f.number(1234.5, -1).text == "1,230"
     assert f.pct(0.1234).text == "12%"
     assert f.pct(0.1234, 1).text == "12.3%"
     assert f.integer(20000).text == "20,000"
@@ -561,3 +567,131 @@ def test_check_citations_offline_pass_and_fail(tmp_path, capsys):
     empty.mkdir()
     assert check_citations.run(True, ev, bib, empty) == 1
     assert "no cached Crossref record" in capsys.readouterr().out
+
+
+# --------------------------------------------------------------------------
+# Values the round-2 text asserts things about
+# --------------------------------------------------------------------------
+
+
+def _values() -> dict:
+    return json.loads((PAPER / "values.json").read_text(encoding="utf-8"))
+
+
+def test_version_date_comes_from_version():
+    version = (PAPER / "VERSION").read_text(encoding="utf-8").strip()
+    m = re.fullmatch(r"r\d+-(\d{4})(\d{2})(\d{2})", version)
+    assert _values()["version_date"]["text"] == "-".join(m.groups())
+    assert f"\ndate: {'-'.join(m.groups())}\n" in (PAPER / "index.qmd").read_text(
+        encoding="utf-8"
+    )
+
+
+def test_cost_per_life_year_prints_to_the_nearest_hundred():
+    values = _values()
+    cpl = {k: v for k, v in values.items() if k.startswith("cpl_") and "nut" not in k}
+    assert len(cpl) == 6
+    for name, v in cpl.items():
+        assert v["kind"] == "dollars:-2" and v["text"].endswith("00"), name
+        assert abs(float(v["text"].strip("$").replace(",", "")) - v["raw"]) <= 50
+
+
+def test_two_means_cell_is_read_from_the_row():
+    row = fill_paper._row("griel2008_macadamia_ldl")
+    assert row.estimate is None
+    assert fill_paper._two_means(row) == "3.14 vs 3.44 mmol/L (P < 0.05)"
+    blank = type(row)(**{**row.__dict__, "notes": "no means here"})
+    with pytest.raises(FillError):
+        fill_paper._two_means(blank)
+
+
+def test_appendix_labels_every_measure_and_level():
+    import yaml
+
+    rows = yaml.safe_load((ROOT / "data" / "evidence.yaml").read_text("utf-8"))
+    assert {r["measure"] for r in rows} <= set(fill_paper.MEASURE_LABEL)
+    ctt = fill_paper._row("ctt2010_chd_death_per_mmol")
+    assert ctt.ci_level == 0.99
+    assert fill_paper._appendix_estimate(ctt) == "0.80 (99% CI 0.74 to 0.87)"
+    overall = fill_paper._row("schwingshackl2021_rrr_overall")
+    assert fill_paper._appendix_estimate(overall) == (
+        "1.09 (1.04 to 1.14); prediction interval 0.81 to 1.46"
+    )
+    peanut = fill_paper._row("jafariazad2020_peanut_ldl")
+    assert fill_paper._appendix_estimate(peanut) == f"{MINUS}3.31 (P = 0.47)"
+    qmd = (PAPER / "index.qmd").read_text(encoding="utf-8")
+    appendix = qmd[qmd.index("# Appendix") :]
+    assert "| Checked against |" in appendix and " PI " not in appendix
+    for raw in ("mean_difference", "| RRR", "| value"):
+        assert raw not in appendix, raw
+
+
+def test_ldl_arithmetic_matches_the_model():
+    """Differential check: the point-estimate arithmetic the text prints (LDL
+    lowered at 15 g, the CTT slopes' hazard reductions) agrees with the model's
+    per-draw LDL pathway, whose mean log multiplier is the product of the two
+    independent draws' means."""
+    import numpy as np
+
+    from whatnut.model import ASSUMPTIONS, Model
+
+    values = _values()
+    m = Model(n=20_000)
+    delta = ASSUMPTIONS["reference"]["delta"]
+    assert np.mean(m.ldl_mmol_reduction(delta, "tree")) == pytest.approx(
+        values["ldl_mmol_15"]["raw"], rel=0.01
+    )
+    for member, name in (("ldl_all", "ldl_all_pct_15"), ("ldl_chd", "ldl_chd_pct_15")):
+        _, beta = m.scenario(member, delta, 0)
+        assert 1 - np.exp(np.mean(beta)) == pytest.approx(values[name]["raw"], rel=0.02)
+    assert values["face_pct_15"]["raw"] == pytest.approx(
+        1 - np.exp(float(m.curves["main"].f(delta)))
+    )
+
+
+def _fake_predimed(**over) -> dict:
+    pc = {
+        "change_g": {"nuts": 15.95, "control": -3.12},
+        "trial_ci": [0.86, 1.47],
+        "full_hr": 0.89,
+        "phased_hr": 0.97,
+        "eaters_share": 0.71,
+        "mean_baseline_g": 10.1,
+        "follow_up_years": 4.8,
+    }
+    pc.update(over)
+    return {"predimed_check": pc}
+
+
+def test_predimed_values_guard_the_prose():
+    ok = fill_paper._predimed_values(_fake_predimed())
+    assert (ok["predimed_nut_change"].text, ok["predimed_ctl_change"].text) == (
+        "16",
+        "3",
+    )
+    with pytest.raises(FillError, match="inside PREDIMED's interval"):
+        fill_paper._predimed_values(_fake_predimed(full_hr=0.82))
+    with pytest.raises(FillError, match="rose"):
+        fill_paper._predimed_values(_fake_predimed(change_g={"nuts": 1, "control": 1}))
+
+
+def test_filled_values_the_brief_names():
+    """Spot values of the round-2 placeholders, as the committed paper prints
+    them (they move only with the evidence or the model)."""
+    v = {k: x["text"] for k, x in _values().items()}
+    assert v["schw_intake_core_n"] == "15" and v["schw_intake_prot_n"] == "19"
+    assert v["schw_intake_core"].startswith("0.97 (95% CI ")
+    assert v["schw_intake_prot"].startswith("1.00 (95% CI ")
+    assert v["predimed_full_hr"] == "0.89" and v["predimed_phased_hr"] == "0.97"
+    assert v["predimed_eaters_pct"] == "71%" and v["predimed_base_g"] == "10"
+    assert v["ldl_rct_point"] == "4.2" and v["ldl_mmol_per28"] == "0.11"
+    assert (v["ldl_all_pct_15"], v["ldl_chd_pct_15"], v["face_pct_15"]) == (
+        "0.6%",
+        "1.3%",
+        "18%",
+    )
+    assert v["my_flax_ala"] == "1.6"
+    assert (v["brazil_se_lo_kernel"], v["brazil_se_hi_kernel"]) == ("7", "137")
+    assert v["brazil_kernels_efsa"] == "Three"
+    assert v["cpl_ldl_cheapest_nut"] == "almonds"
+    assert v["m40_ldl_weeks_range"] == "1 to 3"
