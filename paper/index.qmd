@@ -219,8 +219,8 @@ A pipeline computes every model result in this paper from the evidence rows in @
 | `ctt2010_chd_death_per_mmol`                      | RR, per 1.0 mmol/L LDL-C reduction    | 0.80 (99% CI 0.74 to 0.87)                            | [@ctt2010ldl]                 | full text       |
 | `delgobbo2015_ldl_per28g`                         | Mean difference, mg/dL per 28.4 g/day | −4.8 (−5.5 to −4.2)                                   | [@delgobbo2015nuts]           | full text       |
 | `delgobbo2015_ldl_per28g_rct`                     | Mean difference, mg/dL per 28.4 g/day | −4.2 (−5.0 to −3.4)                                   | [@delgobbo2015nuts]           | full text       |
-| `fadnes2022_us_men_25g`                           | Value, years                          | 2.0 (1.7 to 2.3)                                      | [@fadnes2022food]             | full text       |
-| `fadnes2022_us_women_25g`                         | Value, years                          | 1.7 (1.5 to 2.0)                                      | [@fadnes2022food]             | full text       |
+| `fadnes2022_us_men_25g`                           | Value, years                          | 2.0 (95% UI 1.7 to 2.3)                               | [@fadnes2022food]             | full text       |
+| `fadnes2022_us_women_25g`                         | Value, years                          | 1.7 (95% UI 1.5 to 2.0)                               | [@fadnes2022food]             | full text       |
 | `guaschferre2013_predimed_baseline_nuts_1to3`     | Value, g/day                          | 4.9                                                   | [@guaschferre2013predimed]    | full text       |
 | `guaschferre2013_predimed_baseline_nuts_never`    | Value, g/day                          | 0                                                     | [@guaschferre2013predimed]    | full text       |
 | `guaschferre2013_predimed_baseline_nuts_over3`    | Value, g/day                          | 25.7                                                  | [@guaschferre2013predimed]    | full text       |

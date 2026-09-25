@@ -700,6 +700,58 @@ def test_predimed_values_guard_the_prose():
         fill_paper._predimed_values(_fake_predimed(change_g={"nuts": 1, "control": 1}))
 
 
+def _tampered(edit):
+    """The committed results with ``edit`` applied to a copy of their data."""
+    import copy
+
+    from whatnut.results import Results
+
+    path = ROOT / "results" / "results.json"
+    d = copy.deepcopy(Results(path=path).data)
+    edit(d)
+    res = Results(path=path)
+    res.__dict__["data"] = d  # the cached_property's slot
+    return res
+
+
+def test_guards_on_what_the_text_asserts():
+    """The sensitivity paragraph says the 2021 tables add days, and the calibration
+    paragraph that the intake subsets show no ratio above 1 while supplement
+    comparisons do; the fill refuses results that would make either false."""
+    fill_paper.values_sensitivity(_tampered(lambda d: None))
+    fill_paper.values_calibration(_tampered(lambda d: None))
+
+    def fewer_days(d):
+        rows = d["sensitivity"]["rows"]
+        main = rows["main"]["stats"]["male"]["face_value"]["mean"]
+        rows["baseline_2021"]["stats"]["male"]["face_value"]["mean"] = main - 0.01
+
+    with pytest.raises(FillError, match="add days"):
+        fill_paper.values_sensitivity(_tampered(fewer_days))
+
+    def core_above_one(d):
+        d["calibration"]["intake_subsets"]["core"]["ci"] = [1.08, 1.22]
+
+    with pytest.raises(FillError, match="no ratio above 1"):
+        fill_paper.values_calibration(_tampered(core_above_one))
+
+
+def test_interval_names_and_p_values():
+    """An interval says what it is when it is not a 95% CI, and a P value never
+    prints as 0.00."""
+    fadnes = fill_paper._row("fadnes2022_us_men_25g")
+    assert fill_paper._interval_name(fadnes) == "UI"
+    assert fill_paper._appendix_estimate(fadnes) == "2.0 (95% UI 1.7 to 2.3)"
+    hazelnut = fill_paper._row("perna2016_hazelnut_ldl")
+    assert fill_paper._interval_name(hazelnut) == "credible"
+    assert fill_paper._interval_name(fill_paper._row("aune2016_allcause_per28g")) == (
+        "CI"
+    )
+    assert fill_paper._p_clause(0.472) == "P = 0.47"
+    assert fill_paper._p_clause(0.0034) == "P = 0.003"
+    assert fill_paper._p_clause(0.0004) == "P < 0.001"
+
+
 def test_filled_values_the_brief_names():
     """Spot values of the round-2 placeholders, as the committed paper prints
     them (they move only with the evidence or the model)."""

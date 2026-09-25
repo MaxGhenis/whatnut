@@ -280,6 +280,32 @@ def _fmt_row(row, ndigits: int | None = None) -> Callable[[float], str]:
     return lambda x: _grouped(x, nd)
 
 
+# What a row's interval is, by what its notes call it (the schema records only the
+# level): a Bayesian highest-posterior-density interval, or an uncertainty
+# interval (Fadnes 2022, IHME). Otherwise a confidence interval.
+INTERVAL_NAMES = (
+    ("highest posterior", "credible"),
+    ("HPD", "credible"),
+    ("uncertainty interval", "UI"),
+)
+
+
+def _interval_name(row) -> str:
+    notes = row.notes or ""
+    for marker, name in INTERVAL_NAMES:
+        if marker in notes:
+            return name
+    return "CI"
+
+
+def _p_clause(p: float) -> str:
+    """'P = 0.47': two decimals, three below 0.01, and 'P < 0.001' below that, so a
+    small P never prints as 0.00."""
+    if p < 0.001:
+        return "P < 0.001"
+    return f"P = {_grouped(p, 2 if p >= 0.01 else 3)}"
+
+
 def ev(row_id: str, ndigits: int | None = None) -> Value:
     """An evidence estimate with its interval, e.g. '0.78 (95% CI 0.72 to 0.84)'."""
     r = _row(row_id)
@@ -289,7 +315,7 @@ def ev(row_id: str, ndigits: int | None = None) -> Value:
     body = f(r.estimate)
     if r.ci_low is not None and r.ci_high is not None:
         level = int(round((r.ci_level or 0.95) * 100))
-        body += f" ({level}% CI {f(r.ci_low)} to {f(r.ci_high)})"
+        body += f" ({level}% {_interval_name(r)} {f(r.ci_low)} to {f(r.ci_high)})"
     return Value(_py(r.estimate), "evidence", body)
 
 
@@ -589,6 +615,17 @@ def values_calibration(r) -> dict[str, Value]:
     for mem in ("calibrated", "calibrated_mortality"):
         if not st[mem]["linear"]["share_draws_c_below_0"] > 0:
             raise FillError(f"the text says {mem}'s prediction interval can reverse")
+    # "So the ratios above 1 come from supplement comparisons": neither intake
+    # subset is above 1, and the supplement-v-status stratum is
+    for name in ("core", "protective"):
+        if not subsets[name]["ci"][0] < 1:
+            raise FillError(
+                f"the text says the {name} intake pairs show no ratio above 1; "
+                f"their pool's CI is {subsets[name]['ci']}"
+            )
+    supp = _row("schwingshackl2021_rrr_supplement_vs_status")
+    if not supp.ci_low > 1:
+        raise FillError("the text says supplement-v-status pairs give a ratio above 1")
     return {
         "ev_schw_overall": ev("schwingshackl2021_rrr_overall"),
         "schw_overall_pi": text(
@@ -718,16 +755,11 @@ def tables_evidence(r) -> dict[str, str]:
         est = row.estimate * scale
         if row.ci_low is not None and row.ci_high is not None:
             level = int(round((row.ci_level or 0.95) * 100))
-            kind = (
-                "95% credible"
-                if "HPD" in (row.notes or "")
-                or "highest posterior" in (row.notes or "")
-                else f"{level}% CI"
-            )
+            kind = f"{level}% {_interval_name(row)}"
             lo, hi = _grouped(row.ci_low * scale, 1), _grouped(row.ci_high * scale, 1)
             cell = f"{_grouped(est, 1)} ({kind} {lo} to {hi})"
         else:
-            cell = f"{_grouped(est, 1)} (P = {_grouped(row.p_value(), 2)})"
+            cell = f"{_grouped(est, 1)} ({_p_clause(row.p_value())})"
         rows.append([label, cell, f"[@{row.source['key']}]"])
     return {"nut_ldl": md_table(["Nut", "LDL change, mg/dL", "Source"], rows, "lrl")}
 
@@ -951,6 +983,10 @@ def values_sensitivity(r) -> dict[str, Value]:
     # the difference of the two cells as the table prints them (whole days)
     shown = {k: _decimal(x * DAYS_PER_YEAR, 0) for k, x in (("b", b2021), ("m", main))}
     add = int(shown["b"] - shown["m"])
+    if add <= 0:
+        raise FillError(
+            f"the text says the 2021 life tables add days; the table shows {add:+}"
+        )
     return {
         "from_any_share": pct(face("curve_from_any") / main),
         "cvd_only_share": pct(r.le_gain("male", *_ref(r), "cvd_only") / main),
@@ -1094,20 +1130,23 @@ MEASURE_LABEL = {
 
 def _appendix_estimate(row) -> str:
     """Estimate, interval and prediction interval as the source printed them; an
-    interval at a level other than 95% says its level; a row with a P value and no
-    interval gives the P value with the decimals the LDL table uses."""
+    interval that is not a 95% confidence interval says what it is (99% CI, 95%
+    UI); a row with a P value and no interval gives the P value as the LDL table
+    does."""
     if row.estimate is None:
         return "citation only"
     f = _fmt_row(row)
     est = f(row.estimate)
     if row.ci_low is not None and row.ci_high is not None:
         level = int(round(row.ci_level * 100))
-        label = "" if level == APPENDIX_CI_PCT else f"{level}% CI "
+        name = _interval_name(row)
+        plain = level == APPENDIX_CI_PCT and name == "CI"
+        label = "" if plain else f"{level}% {name} "
         est += f" ({label}{f(row.ci_low)} to {f(row.ci_high)})"
     if row.pi_low is not None and row.pi_high is not None:
         est += f"; prediction interval {f(row.pi_low)} to {f(row.pi_high)}"
     if row.ci_low is None and row.pi_low is None and "P = " in (row.notes or ""):
-        est += f" (P = {_grouped(row.p_value(), 2)})"
+        est += f" ({_p_clause(row.p_value())})"
     return est
 
 
