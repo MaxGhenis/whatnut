@@ -3,7 +3,9 @@
 
 One BibLaTeX entry per distinct ``source.key`` in the evidence rows, with
 authors, title, journal, year, volume, number (issue), pages, DOI, PMID and
-PMCID. Entries are sorted by key, and the output is byte-deterministic.
+PMCID; a source cited by URL (no DOI) also gets ``urldate``, the latest
+``verified.checked_on`` among the rows citing it. Entries are sorted by key, and
+the output is byte-deterministic.
 paper/extra.bib holds references the paper cites that are not evidence rows;
 its entries are appended verbatim after the generated block.
 
@@ -118,6 +120,24 @@ def load_sources(evidence_path: Path = EVIDENCE) -> dict[str, dict]:
 
 def _canon(v):
     return None if v in (None, "") else str(v).strip()
+
+
+def url_dates(evidence_path: Path = EVIDENCE) -> dict[str, str]:
+    """source.key -> the latest verified.checked_on (YYYY-MM-DD) among the rows
+    citing that key, for sources with a URL and no DOI (BibLaTeX urldate)."""
+    rows = yaml.safe_load(evidence_path.read_text(encoding="utf-8")) or []
+    dates: dict[str, str] = {}
+    for row in rows:
+        src = row.get("source") or {}
+        checked = (row.get("verified") or {}).get("checked_on")
+        if not src.get("url") or _norm_doi(src.get("doi")) or not checked:
+            continue
+        checked = str(checked)
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", checked):
+            raise BibError(f"row {row.get('id')}: checked_on {checked!r} is not a date")
+        key = src["key"]
+        dates[key] = max(dates.get(key, checked), checked)
+    return dates
 
 
 # --------------------------------------------------------------------------
@@ -258,7 +278,12 @@ CONTAINER_FIELD = {
 }
 
 
-def entry(key: str, src: dict, cr_types: dict[str, str] | None = None) -> str:
+def entry(
+    key: str,
+    src: dict,
+    cr_types: dict[str, str] | None = None,
+    urldate: str | None = None,
+) -> str:
     fields: list[tuple[str, str]] = []
     etype = entry_type(key, src, cr_types or {})
     fields.append(("author", bib_authors(src.get("authors"), src.get("first_author"))))
@@ -286,6 +311,8 @@ def entry(key: str, src: dict, cr_types: dict[str, str] | None = None) -> str:
         fields.append(("pmcid", str(src["pmcid"])))
     if src.get("url") and not doi:
         fields.append(("url", str(src["url"])))
+        if urldate:
+            fields.append(("urldate", urldate))
     width = max(len(name) for name, _ in fields)
     body = ",\n".join(f"  {name.ljust(width)} = {{{value}}}" for name, value in fields)
     return f"@{etype}{{{key},\n{body},\n}}\n"
@@ -310,9 +337,10 @@ def build(
 ) -> str:
     sources = load_sources(evidence_path)
     cr_types = crossref_types(cache_dir)
+    accessed = url_dates(evidence_path)
     parts = [HEADER]
     for key in sorted(sources):
-        parts.append("\n" + entry(key, sources[key], cr_types))
+        parts.append("\n" + entry(key, sources[key], cr_types, accessed.get(key)))
     if extra_path.exists():
         extra = extra_path.read_text(encoding="utf-8")
         keys = bib_keys(extra)

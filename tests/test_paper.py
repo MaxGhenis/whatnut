@@ -413,6 +413,31 @@ def test_build_bib_dedupes_and_is_deterministic(tmp_path):
     )
 
 
+def test_build_bib_urldate_for_sources_cited_by_url(tmp_path):
+    """A source with a URL and no DOI gets urldate, the latest checked_on among
+    its rows; a source with a DOI gets none."""
+    web = {
+        "key": "usda2024fdc",
+        "title": "FoodData Central",
+        "authors": "US Department of Agriculture",
+        "year": 2024,
+        "url": "https://fdc.nal.usda.gov/",
+    }
+    rows = [
+        {"id": "r1", "source": SOURCE, "verified": {"checked_on": "2026-09-20"}},
+        {"id": "r2", "source": web, "verified": {"checked_on": "2026-09-23"}},
+        {"id": "r3", "source": dict(web), "verified": {"checked_on": "2026-09-24"}},
+    ]
+    bib = build_bib.build(_evidence(tmp_path, rows), tmp_path / "none.bib", tmp_path)
+    fdc = bib[bib.index("{usda2024fdc,") :]
+    assert "  url     = {https://fdc.nal.usda.gov/},\n" in fdc
+    assert "  urldate = {2026-09-24},\n" in fdc
+    assert bib.count("urldate") == 1
+    committed = (PAPER / "references.bib").read_text(encoding="utf-8")
+    for entry in committed.split("\n@")[1:]:
+        assert ("url " in entry and "doi " not in entry) == ("urldate" in entry)
+
+
 def test_build_bib_rejects_conflicting_rows(tmp_path):
     rows = [
         {"id": "r1", "source": SOURCE},
