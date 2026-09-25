@@ -24,7 +24,7 @@ Quarto 1.9.x must be on PATH, and nothing else: the PDF is typeset with Typst, w
 
 ## The manuscript is generated
 
-`paper/index.qmd` is written by `paper/fill_paper.py` from the template `paper/index.qmd.in` and `results/results.json`. Never edit it by hand. Edit the prose in the template, where every number is a `{{placeholder}}` (or a `{{table:name}}` line) that `fill_paper.py` formats from the results; it fails on any unfilled placeholder or unused value, and `paper/values.json` records each printed number beside its unrounded source. Bump `paper/VERSION` (`rN-YYYYMMDD`) for each revision; the render stamps it into the wrapper page at `public/whatnut/index.html`.
+`paper/index.qmd` is written by `paper/fill_paper.py` from the template `paper/index.qmd.in` and `results/results.json`. Never edit it by hand. Edit the prose in the template, where every number is a `{{placeholder}}` (or a `{{table:name}}` line) that `fill_paper.py` formats from the results; it fails on any unfilled placeholder or unused value, and `paper/values.json` records each printed number beside its unrounded source. Bump `paper/VERSION` (`rN-YYYYMMDD`) for each revision; it is the manuscript's date, and the render stamps it into the wrapper page at `public/whatnut/index.html`. The manuscript links its code at `tree/<version>`: on each push to master, `.github/workflows/tag.yml` creates that tag at the pushed commit if it does not exist (an existing tag is never moved).
 
 ## Evidence
 

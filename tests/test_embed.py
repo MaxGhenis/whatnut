@@ -571,3 +571,26 @@ def test_rendered_tables_scroll_in_their_own_box():
         re.S,
     )
     assert len(floats) == html.count("<table"), "a table outside figure > div"
+
+
+def test_release_workflow_tags_the_paper_version():
+    """The manuscript's code link is tree/<paper/VERSION>. A workflow creates that
+    tag on each push to master when it is missing, so the link resolves on
+    deploy; it reads the version from paper/VERSION and never moves a tag."""
+    path = ROOT / ".github" / "workflows" / "tag.yml"
+    assert path.exists(), "the tagging workflow is missing"
+    wf = yaml.safe_load(path.read_text(encoding="utf-8"))
+    on = wf.get("on", wf.get(True))  # YAML 1.1 reads the key `on` as true
+    assert on == {"push": {"branches": ["master"]}}
+    assert wf["permissions"] == {"contents": "write"}
+    steps = [step for job in wf["jobs"].values() for step in job["steps"]]
+    script = "\n".join(step.get("run", "") for step in steps)
+    assert any(step.get("uses", "").startswith("actions/checkout@") for step in steps)
+    assert "paper/VERSION" in script
+    assert re.search(r"git ls-remote --exit-code --tags origin", script)
+    assert 'git tag "$version" "$GITHUB_SHA"' in script
+    assert 'git push origin "refs/tags/$version"' in script
+    assert "--force" not in script and " -f " not in script
+    # the manuscript links the same tag the workflow creates
+    qmd = (PAPER / "index.qmd").read_text(encoding="utf-8")
+    assert f"github.com/MaxGhenis/whatnut/tree/{VERSION})" in qmd
