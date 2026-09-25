@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import itertools
 import json
+import math
 
+import numpy as np
 import pytest
 
 from tests.helpers import fresh_run
-from whatnut.model import ASSUMPTIONS, MEMBERS
-from whatnut.pipeline import FIGURE_FILES
+from whatnut import data
+from whatnut.model import ASSUMPTIONS, EVIDENCE_IDS, MEMBERS, Model
+from whatnut.pipeline import FIGURE_FILES, mean_phase_in_share
 
 GRID = ASSUMPTIONS["grid"]
 SEXES = GRID["sex"]
@@ -180,6 +183,16 @@ def test_sensitivities_move_the_expected_way():
             "attenuate_with_age",
         ):
             assert 0 < rows[rid]["stats"][sex]["face_value"]["mean"] < main, rid
+        # leaving out external causes shrinks the all-deaths LDL pathway too
+        ldl = rows["main"]["stats"][sex]["ldl_all"]["mean"]
+        assert 0 < rows["exclude_external"]["stats"][sex]["ldl_all"]["mean"] < ldl
+        # a rescaled curve's calibration keeps a smaller share of a weaker
+        # association (c measured against the row's own per-28 g estimate)
+        for rid in ("rr_fu10", "rr_large"):
+            st = rows[rid]["stats"][sex]
+            kept = st["calibrated"]["mean"] / st["face_value"]["mean"]
+            main_st = rows["main"]["stats"][sex]
+            assert kept < main_st["calibrated"]["mean"] / main_st["face_value"]["mean"]
         assert rows["curve_linear_plateau"]["stats"][sex]["face_value"]["mean"] > main
         # the printed curve and the running minimum agree up to 15 g
         for col in ("face_value", "calibrated"):
@@ -242,3 +255,52 @@ def test_figures_written():
         p = out / "figures" / name
         assert p.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
         assert b"Software" not in p.read_bytes()[:4096]
+
+
+def test_mean_phase_in_share_integrates_the_ramp():
+    """The mean of min(t / T, 1) over [0, T_f], against a fine Riemann sum, on
+    both sides of T and with no phase-in."""
+    for follow_up in (0.5, 4.8, 10, 12, 30):
+        for phase in (5, 10, 20):
+            t = (np.arange(200_000) + 0.5) / 200_000 * follow_up
+            want = float(np.mean(np.minimum(t / phase, 1)))
+            got = mean_phase_in_share(follow_up, phase)
+            assert got == pytest.approx(want, abs=1e-6), (follow_up, phase)
+    assert mean_phase_in_share(4.8, 0) == 1
+
+
+def test_predimed_check():
+    """PREDIMED's contrast on the main curve: group sizes and intakes from
+    Guasch-Ferre 2013, the curve's log RR per group, and HRs that sit inside the
+    trial's interval for death."""
+    res, _ = fresh_run("a")
+    pc = res["predimed_check"]
+    rows = {role: data.row(rid) for role, rid in EVIDENCE_IDS.items()}
+    sizes = [g["n"] for g in pc["groups"]]
+    assert sizes == [2118, 2803, 2295] and pc["n"] == sum(sizes) == 7216
+    assert [g["baseline_g"] for g in pc["groups"]] == [0, 4.9, 25.7]
+    assert pc["change_g"] == {"nuts": 15.95, "control": -3.12}
+    assert pc["eaters_share"] == pytest.approx((2803 + 2295) / 7216, rel=1e-5)
+    assert pc["mean_baseline_g"] == pytest.approx(
+        (4.9 * 2803 + 25.7 * 2295) / 7216, rel=1e-5
+    )
+    m = Model(n=10)
+    f = m.curves["main"].f
+    for g in pc["groups"]:
+        b = g["baseline_g"]
+        want = float(f(b + 15.95) - f(max(0, b - 3.12)))
+        assert g["log_hr"] == pytest.approx(want, rel=1e-5, abs=1e-12)
+    # past the curve's minimum both arms sit on the flat part
+    assert pc["groups"][-1]["log_hr"] == 0
+    mean_log = sum(g["n"] * g["log_hr"] for g in pc["groups"]) / pc["n"]
+    assert pc["full_hr"] == pytest.approx(math.exp(mean_log), rel=1e-5)
+    assert pc["follow_up_years"] == 4.8
+    assert pc["mean_phase_in_share"] == pytest.approx(4.8 / 20)
+    assert pc["phased_hr"] == pytest.approx(
+        math.exp(mean_log * pc["mean_phase_in_share"]), rel=1e-5
+    )
+    lo, hi = pc["trial_ci"]
+    assert (lo, hi) == (rows["predimed_death"].ci_low, rows["predimed_death"].ci_high)
+    assert lo < pc["full_hr"] < pc["phased_hr"] < 1 < hi
+    # smaller than no nuts to the curve's minimum, the contrast the first draft used
+    assert pc["full_hr"] > math.exp(float(f(ASSUMPTIONS["reference"]["delta"])))

@@ -49,7 +49,7 @@ ASSUMPTIONS = {
     # each draw's gain depends on the draw only through its scalar log
     # multiplier, so the engine evaluates the life table on this many evenly
     # spaced multipliers spanning the draws and interpolates linearly (tests
-    # check the error against exact evaluation is under 0.01 day)
+    # check the error against exact evaluation is under 0.001 day)
     "gain_grid_points": 1025,
     # --- intervention ---
     # linear phase-in to full effect: Fadnes et al. 2022's 10 years (DESIGN
@@ -88,6 +88,11 @@ ASSUMPTIONS = {
     "ala_support_g": [0.35, 3.0],
     # second background scenario: a seed-heavy diet
     "ala_background_high_g": 5,
+    # --- calibration: subsets of Schwingshackl 2021's 23 intake-v-intake pairs
+    # (data/calibration/; DESIGN decision 3, revised). 'core' drops the pairs
+    # whose topic or outcome names these words (pregnancy outcomes, colorectal
+    # cancer and adenoma); 'protective' keeps pairs whose cohort RR is below 1.
+    "intake_pairs_core_exclude": {"topic": ["pregnancy"], "outcome": ["colorectal"]},
     # --- outputs (DESIGN "Outputs") ---
     "grid": {
         "sex": ["female", "male"],
@@ -147,7 +152,22 @@ EVIDENCE_IDS = {
     "baseline_deaths": "nchs_mortality_2023",
     "fadnes_female": "fadnes2022_us_women_25g",
     "fadnes_male": "fadnes2022_us_men_25g",
+    # the check of PREDIMED's contrast against the main curve
+    # (pipeline.predimed_check): baseline intake groups, each arm's change, and
+    # the trial's all-cause hazard ratio and median follow-up
+    "predimed_baseline_never": "guaschferre2013_predimed_baseline_nuts_never",
+    "predimed_baseline_1to3": "guaschferre2013_predimed_baseline_nuts_1to3",
+    "predimed_baseline_over3": "guaschferre2013_predimed_baseline_nuts_over3",
+    "predimed_change_nuts": "guaschferre2013_predimed_nut_change_nut_arm",
+    "predimed_change_control": "guaschferre2013_predimed_nut_change_control_arm",
+    "predimed_death": "predimed2018_nuts_all_cause_death",
 }
+
+PREDIMED_BASELINE_ROLES = (
+    "predimed_baseline_never",
+    "predimed_baseline_1to3",
+    "predimed_baseline_over3",
+)
 
 # The Schwingshackl pairs nearest to nuts (DESIGN decision 13): the three ALA
 # and three Mediterranean-diet intake pairs, pooled here by random effects.
@@ -188,6 +208,10 @@ CALIBRATION_STRATA = {
 }
 
 CALIBRATION_ANCHORS = ("linear", "curve")
+
+# The per-28 g estimates a Variant can scale the curve by (Variant.rr_role). Each
+# calibration's c is computed against the estimate that scales the curve.
+RR_ROLES = ("rr28_all", "rr28_fu10", "rr28_large")
 
 
 def dial_name(c: float) -> str:
@@ -289,7 +313,8 @@ class Variant:
     rr_role: str = "rr28_all"  # the per-28 g estimate that scales the curve
     anchor: str = "linear"  # calibration anchor (CALIBRATION_ANCHORS)
     ldl: str = "tree"  # LDL input of the LDL-pathway scenarios
-    exclude_external: bool = False  # leave external-cause deaths out
+    # leave external-cause deaths out (cohort-curve scenarios and ldl_all)
+    exclude_external: bool = False
     attenuate_with_age: bool = False  # ASSUMPTIONS["age_attenuation"]
     phase_in_years: int | None = None  # None: ASSUMPTIONS["phase_in_years"]
 
@@ -382,46 +407,122 @@ def linear_plateau(row: data.EvidenceRow, name: str) -> Curve:
 # --------------------------------------------------------------------------
 
 
-def pool_ratios(rows: list[data.EvidenceRow], row_id: str) -> data.EvidenceRow:
+@dataclass(frozen=True)
+class Pool:
+    """A DerSimonian-Laird random-effects pool of k ratios on the log scale."""
+
+    k: int
+    mu: float  # pooled ln ratio
+    se: float  # its standard error
+    tau2: float  # between-row variance of ln ratio (0 when Q <= k - 1)
+    q: float  # Cochran's Q
+    level: float  # CI and prediction-interval level (the rows' ci_level)
+    half_pi: float  # half-width of the prediction interval on the log scale
+
+    def summary(self) -> dict[str, float | int | list[float]]:
+        """Estimate, CI and prediction interval on the ratio scale, with k, tau2
+        and Q, for results.json."""
+        z = data.z_for(self.level)
+        return {
+            "estimate": math.exp(self.mu),
+            "ci": [math.exp(self.mu - z * self.se), math.exp(self.mu + z * self.se)],
+            "pi": [math.exp(self.mu - self.half_pi), math.exp(self.mu + self.half_pi)],
+            "level": self.level,
+            "k": self.k,
+            "tau2": self.tau2,
+            "q": self.q,
+        }
+
+
+def pool_stats(rows: list[data.EvidenceRow], label: str = "pool") -> Pool:
     """DerSimonian-Laird random-effects pool of ratio rows on the log scale,
-    with the Higgins-Thompson-Spiegelhalter prediction interval (t, k - 2 df),
-    returned as a row the model reads like any other."""
+    with the Higgins-Thompson-Spiegelhalter prediction interval (t, k - 2 df)."""
     level = rows[0].ci_level
     if any(r.ci_level != level for r in rows):
-        raise data.DataIntegrityError(f"{row_id}: pooled rows mix CI levels")
+        raise data.DataIntegrityError(f"{label}: pooled rows mix CI levels")
     y = np.log([r.estimate for r in rows])
     v = np.array([r.log_se() for r in rows]) ** 2
     w = 1 / v
     mu_fixed = np.sum(w * y) / np.sum(w)
     q = float(np.sum(w * (y - mu_fixed) ** 2))
     k = len(rows)
-    tau2 = max(0, (q - (k - 1)) / (np.sum(w) - np.sum(w**2) / np.sum(w)))
+    tau2 = float(max(0, (q - (k - 1)) / (np.sum(w) - np.sum(w**2) / np.sum(w))))
     ws = 1 / (v + tau2)
     mu = float(np.sum(ws * y) / np.sum(ws))
     se = float(np.sqrt(1 / np.sum(ws)))
-    z = data.z_for(level)
     tq = float(student_t.ppf(1 - (1 - level) / 2, k - 2))
     half_pi = tq * math.sqrt(tau2 + se**2)
+    return Pool(k=k, mu=mu, se=se, tau2=tau2, q=q, level=level, half_pi=half_pi)
+
+
+def pool_ratios(rows: list[data.EvidenceRow], row_id: str) -> data.EvidenceRow:
+    """pool_stats returned as a row the model reads like any other."""
+    p = pool_stats(rows, row_id)
+    s = p.summary()
     return data.EvidenceRow(
         id=row_id,
         kind="calibration_corpus",
         measure="RRR",
         unit=None,
-        estimate=math.exp(mu),
-        ci_low=math.exp(mu - z * se),
-        ci_high=math.exp(mu + z * se),
-        ci_level=level,
-        pi_low=math.exp(mu - half_pi),
-        pi_high=math.exp(mu + half_pi),
+        estimate=s["estimate"],
+        ci_low=s["ci"][0],
+        ci_high=s["ci"][1],
+        ci_level=p.level,
+        pi_low=s["pi"][0],
+        pi_high=s["pi"][1],
         support=None,
         notes=(
-            f"Random-effects (DerSimonian-Laird) pool of {k} rows: "
+            f"Random-effects (DerSimonian-Laird) pool of {p.k} rows: "
             + ", ".join(r.id for r in rows)
-            + f"; tau2 = {tau2:.4g}, Q = {q:.4g}"
+            + f"; tau2 = {p.tau2:.4g}, Q = {p.q:.4g}"
         ),
         source={},
         verified={},
     )
+
+
+def intake_pair_subsets() -> dict[str, list[data.EvidenceRow]]:
+    """Schwingshackl 2021's 23 intake-v-intake pairs (data/calibration/) as ratio
+    rows ``intake_pair_<line>``, in the subsets the paper pools: all 23, the
+    'core' pairs without pregnancy or colorectal outcomes
+    (ASSUMPTIONS['intake_pairs_core_exclude']), and the pairs whose cohort RR was
+    below 1. The rows take the CI level of the published intake stratum."""
+    level = data.row(EVIDENCE_IDS["rrr_intake"]).ci_level
+    drop = ASSUMPTIONS["intake_pairs_core_exclude"]
+    pairs = data.intake_pairs()
+    rows = [
+        data.EvidenceRow(
+            id=f"intake_pair_{i}",
+            kind="calibration_corpus",
+            measure="RRR",
+            unit=None,
+            estimate=p["rrr"],
+            ci_low=p["ci_low"],
+            ci_high=p["ci_high"],
+            ci_level=level,
+            pi_low=None,
+            pi_high=None,
+            support=None,
+            notes=None,
+            source={},
+            verified={},
+            exposure=p["topic"],
+            outcome=p["outcome"],
+        )
+        for i, p in enumerate(pairs, start=1)
+    ]
+
+    def core(p: dict) -> bool:
+        return not any(
+            word in p[field].lower() for field, words in drop.items() for word in words
+        )
+
+    keep = {
+        "all": [True for _ in pairs],
+        "core": [core(p) for p in pairs],
+        "protective": [p["cohort_rr"] < 1 for p in pairs],
+    }
+    return {name: [r for r, k in zip(rows, flags) if k] for name, flags in keep.items()}
 
 
 # --------------------------------------------------------------------------
@@ -499,23 +600,29 @@ class Model:
         rr = self.rows
         # curve scale: each draw's per-28 g log RR relative to the main point
         # estimate; alternative per-28 g estimates share the main draw column
-        q["ln_rr28_all"] = self._lognormal("rr28_all")
         ln_rr28 = math.log(rr["rr28_all"].estimate)
-        for role in ("rr28_all", "rr28_fu10", "rr28_large"):
-            q[f"scale:{role}"] = self._lognormal(role, column="rr28_all") / ln_rr28
+        for role in RR_ROLES:
+            q[f"ln_rr28:{role}"] = self._lognormal(role, column="rr28_all")
+            q[f"scale:{role}"] = q[f"ln_rr28:{role}"] / ln_rr28
         ln_rr28_cvd = self._lognormal("rr28_cvd")
         q["scale_cvd"] = ln_rr28_cvd / math.log(rr["rr28_cvd"].estimate)
         # calibrated c: the cohort log RR plus ln RRR, over the cohort log RR,
-        # with RRR from its prediction interval. Anchor 'linear' takes the cohort
-        # log RR as Aune's per-28 g estimate; 'curve' as the main curve's own
-        # value at that dose.
+        # with RRR from its prediction interval, against the per-28 g estimate
+        # that scales the curve (rr_role). Anchor 'linear' takes the cohort log
+        # RR as that per-28 g estimate; 'curve' as the main curve, scaled by the
+        # same draw, at that dose.
         serving = rr["rr28_all"].per_grams()
-        ln_curve = q["scale:rr28_all"] * float(self.curves["main"].f(serving))
-        anchors = {"linear": q["ln_rr28_all"], "curve": ln_curve}
+        f_serving = float(self.curves["main"].f(serving))
         for member, role in CALIBRATION_STRATA.items():
             ln_rrr = self._lognormal(role, spread="pi")
-            for anchor, ln_anchor in anchors.items():
-                q[f"c:{member}:{anchor}"] = 1 + ln_rrr / ln_anchor
+            q[f"ln_rrr:{member}"] = ln_rrr
+            for rr_role in RR_ROLES:
+                anchors = {
+                    "linear": q[f"ln_rr28:{rr_role}"],
+                    "curve": q[f"scale:{rr_role}"] * f_serving,
+                }
+                for anchor, ln_anchor in anchors.items():
+                    q[f"c:{member}:{anchor}:{rr_role}"] = 1 + ln_rrr / ln_anchor
         # LDL change per gram/day (mg/dL), normal from the CI or from the P value
         tree = rr["ldl_tree"]
         q["ldl_tree_per_g"] = (
@@ -538,12 +645,16 @@ class Model:
         q["ln_rr_ala_fixed"] = self._lognormal("ala_fixed", column="ala")
         return q
 
-    def c(self, member: str, anchor: str = "linear") -> np.ndarray | float:
-        """The causal multiplier for a cohort-curve member (scalar or per draw)."""
+    def c(
+        self, member: str, anchor: str = "linear", rr_role: str = "rr28_all"
+    ) -> np.ndarray | float:
+        """The causal multiplier for a cohort-curve member (scalar or per draw).
+        A calibration's c is measured against the per-28 g estimate ``rr_role``
+        that scales the curve (DESIGN decision 12, revised)."""
         if member == "face_value":
             return 1
         if member in CALIBRATION_STRATA:
-            return self.q[f"c:{member}:{anchor}"]
+            return self.q[f"c:{member}:{anchor}:{rr_role}"]
         for c in ASSUMPTIONS["c_dial"]:
             if member == dial_name(c):
                 return c
@@ -579,7 +690,9 @@ class Model:
         if member == "ldl_chd":
             return "chd", self.q["ln_ctt_chd"] * self.ldl_mmol_reduction(delta, v.ldl)
         if member == "ldl_all":
-            return "all", self.q["ln_ctt_all"] * self.ldl_mmol_reduction(delta, v.ldl)
+            structure = "nonexternal" if v.exclude_external else "all"
+            beta = self.q["ln_ctt_all"] * self.ldl_mmol_reduction(delta, v.ldl)
+            return structure, beta
         if member == "cvd_only":
             dfc = self.cvd_curve.delta_f(background, delta)
             return "cvd", ASSUMPTIONS["cvd_only_c"] * self.q["scale_cvd"] * dfc
@@ -589,7 +702,7 @@ class Model:
             ala_key = "ln_rr_ala" if ala_role == "ala" else "ln_rr_ala_fixed"
             log_rr = log_rr + ala_g * self.q[ala_key]
         structure = "nonexternal" if v.exclude_external else "all"
-        return structure, self.c(member, v.anchor) * log_rr
+        return structure, self.c(member, v.anchor, v.rr_role) * log_rr
 
     # ---- life-table engine -----------------------------------------------
 

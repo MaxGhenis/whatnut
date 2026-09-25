@@ -11,8 +11,11 @@ read_from: >-
   figure by at most 0.009.
 checked_on: "2026-09-24"
 used_by: >-
-  tests/test_model.py only: pooling the 23 pairs with whatnut.model.pool_ratios reproduces
-  the published intake-v-intake stratum (row schwingshackl2021_rrr_intake_vs_intake), which
-  checks both the readings and the pooling code. The six pairs the model pools (the ALA and
-  Mediterranean-diet pairs) are evidence rows schwingshackl2021_pair_*, and a test checks
-  they equal their lines here.
+  The pipeline (whatnut.data.intake_pairs, checked against data/calibration/MANIFEST.json)
+  pools three sets of these pairs with whatnut.model.pool_stats into results.json
+  calibration.intake_subsets: all 23, which reproduces the published intake-v-intake
+  stratum (row schwingshackl2021_rrr_intake_vs_intake; a test checks it, which checks both
+  the readings and the pooling code); the 15 without pregnancy or colorectal outcomes; and
+  the 19 whose cohort RR is below 1. The six pairs the model pools as the nearest-pairs
+  calibration (the ALA and Mediterranean-diet pairs) are evidence rows
+  schwingshackl2021_pair_*, and a test checks they equal their lines here.

@@ -177,6 +177,16 @@ class EvidenceRow:
             raise DataIntegrityError(f"evidence row {self.id}: no 'P = x' in notes")
         return float(m.group(1))
 
+    def count(self) -> int:
+        """The group size in ``population``, written '(n = 2,118' (the schema has
+        no field for it)."""
+        m = re.search(r"\(n = (\d{1,3}(?:,\d{3})*|\d+)\b", self.population or "")
+        if not m:
+            raise DataIntegrityError(
+                f"evidence row {self.id}: no '(n = N' in population"
+            )
+        return int(m.group(1).replace(",", ""))
+
     def per_grams(self) -> float:
         """The dose the row's effect is expressed per, parsed from ``unit``
         (e.g. 'per 28 g/day', 'mg/dL per 28.4 g/day')."""
@@ -384,6 +394,18 @@ def bop_curve() -> list[dict[str, float]]:
             "hi": float(r["rr_outer_high"]),
         }
         for r in _read_csv(DATA / "curves" / "ihme_bop_nuts_seeds_ihd.csv")
+    ]
+
+
+def intake_pairs() -> list[dict[str, float | str]]:
+    """Schwingshackl 2021's 23 intake-v-intake pairs, read from Supplementary
+    Figure 9 and Table 5 (data/calibration/schwingshackl2021_intake_pairs.csv), in
+    the figure's order: topic, outcome, ratio of risk ratios with its 95% CI, and
+    the cohort and trial relative risks."""
+    numeric = ("rrr", "ci_low", "ci_high", "cohort_rr", "rct_rr")
+    return [
+        {k: (float(v) if k in numeric else v) for k, v in r.items()}
+        for r in _read_csv(DATA / "calibration" / "schwingshackl2021_intake_pairs.csv")
     ]
 
 

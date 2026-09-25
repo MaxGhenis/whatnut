@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sys
 import time
 from collections.abc import Callable
@@ -30,11 +31,15 @@ from whatnut.model import (
     MAIN_MEMBERS,
     MEMBER_DESCRIPTIONS,
     MEMBERS,
+    PREDIMED_BASELINE_ROLES,
+    RR_ROLES,
     SCENARIO_LABEL,
     STAT_NAMES,
     Model,
     Variant,
     dial_name,
+    intake_pair_subsets,
+    pool_stats,
     summarize,
 )
 
@@ -83,7 +88,8 @@ class Scenarios:
         m = self.m
         member = _alias(member)
         if member in LDL_MEMBERS:
-            what: tuple = (delta, v.ldl)
+            # exclude_external reaches ldl_all only (ldl_chd acts on CHD deaths)
+            what: tuple = (delta, v.ldl, member == "ldl_all" and v.exclude_external)
         elif member == "cvd_only":
             what = (m.cvd_curve.delta_f(background, delta),)
         else:
@@ -163,7 +169,9 @@ def marginal(grid_out: dict) -> dict:
 def calibration(m: Model) -> dict:
     """Each stratum's ratio, and the share of the association it keeps (c) under
     both anchors: Aune's linear per-28 g estimate and the main curve's own value
-    at 28 g."""
+    at 28 g; the linear-anchor share against each per-28 g estimate a
+    sensitivity rescales the curve to; and pools of subsets of the 23
+    intake-v-intake pairs."""
     rr28 = m.rows["rr28_all"]
     serving = rr28.per_grams()
     rr_curve = math.exp(float(m.curves["main"].f(serving)))
@@ -172,6 +180,10 @@ def calibration(m: Model) -> dict:
         "rr28_row": rr28.id,
         "serving_g": serving,
         "anchor_rr": anchors,
+        "rr_roles": {
+            role: {"row": m.rows[role].id, "rr28": m.rows[role].estimate}
+            for role in RR_ROLES
+        },
         "formula": "c = ln(RR_anchor * RRR) / ln(RR_anchor), per draw",
         "strata": {},
     }
@@ -184,17 +196,39 @@ def calibration(m: Model) -> dict:
             "rrr_pi": [r.pi_low, r.pi_high],
         }
         if role == "rrr_analog":
+            pool = pool_stats([data.row(rid) for rid in ANALOG_PAIR_IDS], r.id)
             entry["pair_rows"] = list(ANALOG_PAIR_IDS)
+            entry["tau2"] = pool.tau2
+            entry["q"] = pool.q
         for anchor in CALIBRATION_ANCHORS:
             a = anchors[anchor]
-            c = m.q[f"c:{member}:{anchor}"]
+            c = m.c(member, anchor)
             entry[anchor] = {
                 "c_point": math.log(a * r.estimate) / math.log(a),
                 "c_draws": summarize(c),
                 "share_draws_c_above_1": float(np.mean(c > 1)),
                 "share_draws_c_below_0": float(np.mean(c < 0)),
             }
+        entry["linear"]["c_point_by_rr_role"] = {
+            rr_role: math.log(m.rows[rr_role].estimate * r.estimate)
+            / math.log(m.rows[rr_role].estimate)
+            for rr_role in RR_ROLES
+        }
         out["strata"][member] = entry
+    subsets = intake_pair_subsets()
+    out["intake_subsets"] = {
+        name: {
+            **pool_stats(rows, f"intake_{name}").summary(),
+            "pairs": [int(r.id.rsplit("_", 1)[1]) for r in rows],
+        }
+        for name, rows in subsets.items()
+    }
+    out["intake_subsets_note"] = (
+        "Pools of Schwingshackl 2021's 23 intake-v-intake pairs "
+        "(data/calibration/schwingshackl2021_intake_pairs.csv; 'pairs' are its line "
+        "numbers): all; core, without pregnancy or colorectal outcomes; protective, "
+        "cohort RR below 1"
+    )
     return out
 
 
@@ -234,7 +268,7 @@ SENSITIVITY_ROWS = (
     (
         "exclude_external",
         Variant(exclude_external=True),
-        {"face_value": "face_value", "calibrated": "calibrated"},
+        {"face_value": "face_value", "calibrated": "calibrated", "ldl_all": "ldl_all"},
     ),
     (
         "attenuate_with_age",
@@ -461,6 +495,62 @@ def cost(m: Model) -> dict:
     }
 
 
+def mean_phase_in_share(follow_up: float, phase: float) -> float:
+    """Mean of the linear phase-in min(t / T, 1) over t in [0, T_f]: T_f / 2T if
+    T_f <= T, else 1 - T / 2T_f (1 with no phase-in)."""
+    if phase <= 0:
+        return 1
+    if follow_up <= phase:
+        return follow_up / (2 * phase)
+    return 1 - phase / (2 * follow_up)
+
+
+def predimed_check(m: Model) -> dict:
+    """PREDIMED's contrast on the main curve at face value (c = 1): each baseline
+    intake group b gets log HR f(b + nut-arm change) - f(max(0, b + control-arm
+    change)); the full-effect HR is exp of their size-weighted mean, and the
+    phased HR scales it by the mean phase-in share over the trial's median
+    follow-up (mean_phase_in_share)."""
+    f = m.curves["main"].f
+    groups = [m.rows[role] for role in PREDIMED_BASELINE_ROLES]
+    nut, ctl = m.rows["predimed_change_nuts"], m.rows["predimed_change_control"]
+    trial = m.rows["predimed_death"]
+    fu = re.search(r"median follow-up ([\d.]+) years", trial.population or "")
+    if not fu:
+        raise data.DataIntegrityError(f"{trial.id}: no median follow-up in population")
+    follow_up = float(fu.group(1))
+    phase = ASSUMPTIONS["phase_in_years"]
+    share = mean_phase_in_share(follow_up, phase)
+    sizes = [g.count() for g in groups]
+    total = sum(sizes)
+    log_hr = [
+        float(f(g.estimate + nut.estimate) - f(max(0, g.estimate + ctl.estimate)))
+        for g in groups
+    ]
+    mean_log_hr = sum(n * x for n, x in zip(sizes, log_hr)) / total
+    return {
+        "groups": [
+            {"row": g.id, "baseline_g": g.estimate, "n": n, "log_hr": x}
+            for g, n, x in zip(groups, sizes, log_hr)
+        ],
+        "n": total,
+        "eaters_share": sum(n for g, n in zip(groups, sizes) if g.estimate > 0) / total,
+        "mean_baseline_g": sum(n * g.estimate for g, n in zip(groups, sizes)) / total,
+        "change_rows": {"nuts": nut.id, "control": ctl.id},
+        "change_g": {"nuts": nut.estimate, "control": ctl.estimate},
+        "curve": "main",
+        "c": 1,
+        "full_hr": math.exp(mean_log_hr),
+        "follow_up_years": follow_up,
+        "phase_in_years": phase,
+        "mean_phase_in_share": share,
+        "phased_hr": math.exp(mean_log_hr * share),
+        "trial_row": trial.id,
+        "trial_hr": trial.estimate,
+        "trial_ci": [trial.ci_low, trial.ci_high],
+    }
+
+
 def fadnes(m: Model, m2021: Model | None) -> dict:
     t = data.fadnes_targets()
     hr = t["relative_risk"]["hr_at_optimal_25g"]
@@ -684,6 +774,7 @@ def compute(n: int | None = None, seed: int | None = None) -> dict:
     out["curves"] = curves(m)
     out["ala"] = ala(m)
     out["cost"] = cost(m)
+    out["predimed_check"] = predimed_check(m)
     out["fadnes"] = fadnes(m, m2021)
     out["baseline_le"] = baseline_le(m)
     out["figures"] = figure_data(sc)

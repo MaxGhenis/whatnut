@@ -7,7 +7,13 @@ import yaml
 
 from tests.helpers import ROOT, fresh_run
 from whatnut import data
-from whatnut.model import ANALOG_PAIR_IDS, ASSUMPTIONS, DRAW_COLUMNS, EVIDENCE_IDS
+from whatnut.model import (
+    ANALOG_PAIR_IDS,
+    ASSUMPTIONS,
+    DRAW_COLUMNS,
+    EVIDENCE_IDS,
+    PREDIMED_BASELINE_ROLES,
+)
 
 ROWS = {
     r["id"]: r for r in yaml.safe_load((ROOT / "data" / "evidence.yaml").read_text())
@@ -22,6 +28,10 @@ EFFECT_IDS = {
         "ala_fixed",
         "ala_background_female",
         "ala_background_male",
+        *PREDIMED_BASELINE_ROLES,
+        "predimed_change_nuts",
+        "predimed_change_control",
+        "predimed_death",
     )
     if role in EVIDENCE_IDS
 } | set(ANALOG_PAIR_IDS)
@@ -91,6 +101,7 @@ def test_data_files_recorded_with_current_hashes():
         "data/evidence.yaml",
         "data/life_tables/male.csv",
         "data/causes/cause_shares.csv",
+        "data/calibration/schwingshackl2021_intake_pairs.csv",
     ):
         assert rel in files
     for rel, digest in files.items():
