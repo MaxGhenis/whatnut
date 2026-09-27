@@ -1,0 +1,37 @@
+name: Tag the paper version
+
+# The manuscript links its code at github.com/MaxGhenis/whatnut/tree/<paper/VERSION>.
+# On every push to master, create that tag at the pushed commit if it does not
+# exist yet, so the link resolves once the revision is deployed. An existing tag
+# is never moved: bump paper/VERSION for a new revision.
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tag-paper-version
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create and push the tag named in paper/VERSION
+        run: |
+          version="$(tr -d '[:space:]' < paper/VERSION)"
+          if ! printf '%s' "$version" | grep -Eq '^r[0-9]+-[0-9]{8}$'; then
+            echo "paper/VERSION is '$version'; expected rN-YYYYMMDD" >&2
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/$version" > /dev/null; then
+            echo "tag $version already exists; leaving it where it is"
+            exit 0
+          fi
+          git tag "$version" "$GITHUB_SHA"
+          git push origin "refs/tags/$version"
+          echo "created tag $version at $GITHUB_SHA"

@@ -1,0 +1,1367 @@
+key,fdc_id,number,name,unit,value,derivation_code,derivation,data_points
+walnut,170187,203,Protein,g,15.2,A,Analytical,7
+walnut,170187,204,Total lipid (fat),g,65.2,A,Analytical,7
+walnut,170187,205,"Carbohydrate, by difference",g,13.7,NC,Calculated,0
+walnut,170187,207,Ash,g,1.78,A,Analytical,7
+walnut,170187,208,Energy,kcal,654.0,NC,Calculated,0
+walnut,170187,209,Starch,g,0.06,A,Analytical,7
+walnut,170187,210,Sucrose,g,2.43,A,Analytical,7
+walnut,170187,211,Glucose,g,0.08,A,Analytical,7
+walnut,170187,212,Fructose,g,0.09,A,Analytical,7
+walnut,170187,213,Lactose,g,0.0,A,Analytical,7
+walnut,170187,214,Maltose,g,0.0,A,Analytical,7
+walnut,170187,221,"Alcohol, ethyl",g,0.0,,,0
+walnut,170187,255,Water,g,4.07,A,Analytical,7
+walnut,170187,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,268,Energy,kJ,2740.0,NC,Calculated,0
+walnut,170187,269,Total Sugars,g,2.61,A,Analytical,7
+walnut,170187,291,"Fiber, total dietary",g,6.7,A,Analytical,7
+walnut,170187,301,"Calcium, Ca",mg,98.0,A,Analytical,7
+walnut,170187,303,"Iron, Fe",mg,2.91,A,Analytical,7
+walnut,170187,304,"Magnesium, Mg",mg,158.0,A,Analytical,7
+walnut,170187,305,"Phosphorus, P",mg,346.0,A,Analytical,7
+walnut,170187,306,"Potassium, K",mg,441.0,A,Analytical,7
+walnut,170187,307,"Sodium, Na",mg,2.0,A,Analytical,7
+walnut,170187,309,"Zinc, Zn",mg,3.09,A,Analytical,7
+walnut,170187,312,"Copper, Cu",mg,1.59,A,Analytical,7
+walnut,170187,315,"Manganese, Mn",mg,3.41,A,Analytical,7
+walnut,170187,317,"Selenium, Se",µg,4.9,A,Analytical,6
+walnut,170187,318,"Vitamin A, IU",IU,20.0,A,Analytical,6
+walnut,170187,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,320,"Vitamin A, RAE",µg,1.0,A,Analytical,6
+walnut,170187,321,"Carotene, beta",µg,12.0,A,Analytical,6
+walnut,170187,322,"Carotene, alpha",µg,0.0,A,Analytical,6
+walnut,170187,323,Vitamin E (alpha-tocopherol),mg,0.7,A,Analytical,13
+walnut,170187,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,334,"Cryptoxanthin, beta",µg,0.0,A,Analytical,3
+walnut,170187,337,Lycopene,µg,0.0,A,Analytical,3
+walnut,170187,338,Lutein + zeaxanthin,µg,9.0,A,Analytical,3
+walnut,170187,341,"Tocopherol, beta",mg,0.15,A,Analytical,13
+walnut,170187,342,"Tocopherol, gamma",mg,20.8,A,Analytical,13
+walnut,170187,343,"Tocopherol, delta",mg,1.89,A,Analytical,13
+walnut,170187,401,"Vitamin C, total ascorbic acid",mg,1.3,A,Analytical,7
+walnut,170187,404,Thiamin,mg,0.341,A,Analytical,7
+walnut,170187,405,Riboflavin,mg,0.15,A,Analytical,7
+walnut,170187,406,Niacin,mg,1.12,A,Analytical,8
+walnut,170187,410,Pantothenic acid,mg,0.57,A,Analytical,7
+walnut,170187,415,Vitamin B-6,mg,0.537,A,Analytical,7
+walnut,170187,417,"Folate, total",µg,98.0,A,Analytical,7
+walnut,170187,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,421,"Choline, total",mg,39.2,,,0
+walnut,170187,429,Vitamin K (Dihydrophylloquinone),µg,0.0,A,Analytical,8
+walnut,170187,430,Vitamin K (phylloquinone),µg,2.7,A,Analytical,8
+walnut,170187,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,432,"Folate, food",µg,98.0,A,Analytical,7
+walnut,170187,435,"Folate, DFE",µg,98.0,NC,Calculated,0
+walnut,170187,454,Betaine,mg,0.3,A,Analytical,5
+walnut,170187,501,Tryptophan,g,0.17,A,Analytical,0
+walnut,170187,502,Threonine,g,0.596,A,Analytical,0
+walnut,170187,503,Isoleucine,g,0.625,A,Analytical,0
+walnut,170187,504,Leucine,g,1.17,A,Analytical,0
+walnut,170187,505,Lysine,g,0.424,A,Analytical,0
+walnut,170187,506,Methionine,g,0.236,A,Analytical,0
+walnut,170187,507,Cystine,g,0.208,A,Analytical,0
+walnut,170187,508,Phenylalanine,g,0.711,A,Analytical,0
+walnut,170187,509,Tyrosine,g,0.406,A,Analytical,0
+walnut,170187,510,Valine,g,0.753,A,Analytical,0
+walnut,170187,511,Arginine,g,2.28,A,Analytical,0
+walnut,170187,512,Histidine,g,0.391,A,Analytical,0
+walnut,170187,513,Alanine,g,0.696,A,Analytical,0
+walnut,170187,514,Aspartic acid,g,1.83,A,Analytical,0
+walnut,170187,515,Glutamic acid,g,2.82,A,Analytical,0
+walnut,170187,516,Glycine,g,0.816,A,Analytical,0
+walnut,170187,517,Proline,g,0.706,A,Analytical,0
+walnut,170187,518,Serine,g,0.934,A,Analytical,0
+walnut,170187,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,606,"Fatty acids, total saturated",g,6.13,NC,Calculated,0
+walnut,170187,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,609,SFA 8:0,g,0.0,A,Analytical,7
+walnut,170187,610,SFA 10:0,g,0.0,A,Analytical,7
+walnut,170187,611,SFA 12:0,g,0.0,A,Analytical,7
+walnut,170187,612,SFA 14:0,g,0.0,A,Analytical,7
+walnut,170187,613,SFA 16:0,g,4.4,A,Analytical,7
+walnut,170187,614,SFA 18:0,g,1.66,A,Analytical,7
+walnut,170187,615,SFA 20:0,g,0.063,A,Analytical,7
+walnut,170187,617,MUFA 18:1,g,8.8,A,Analytical,7
+walnut,170187,618,PUFA 18:2,g,38.1,A,Analytical,7
+walnut,170187,619,PUFA 18:3,g,9.08,A,Analytical,7
+walnut,170187,620,PUFA 20:4,g,0.0,A,Analytical,7
+walnut,170187,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,7
+walnut,170187,624,SFA 22:0,g,0.0,A,Analytical,7
+walnut,170187,625,MUFA 14:1,g,0.0,A,Analytical,7
+walnut,170187,626,MUFA 16:1,g,0.0,A,Analytical,7
+walnut,170187,627,PUFA 18:4,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+walnut,170187,628,MUFA 20:1,g,0.134,A,Analytical,7
+walnut,170187,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,7
+walnut,170187,630,MUFA 22:1,g,0.0,A,Analytical,7
+walnut,170187,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,7
+walnut,170187,638,Stigmasterol,mg,0.0,A,Analytical,4
+walnut,170187,639,Campesterol,mg,5.0,A,Analytical,4
+walnut,170187,641,Beta-sitosterol,mg,87.0,A,Analytical,4
+walnut,170187,645,"Fatty acids, total monounsaturated",g,8.93,NC,Calculated,0
+walnut,170187,646,"Fatty acids, total polyunsaturated",g,47.2,NC,Calculated,0
+walnut,170187,652,SFA 15:0,g,0.0,A,Analytical,7
+walnut,170187,653,SFA 17:0,g,0.0,A,Analytical,7
+walnut,170187,654,SFA 24:0,g,0.0,A,Analytical,7
+walnut,170187,671,MUFA 24:1 c,g,0.0,A,Analytical,7
+walnut,170187,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,7
+walnut,170187,689,PUFA 20:3,g,0.0,A,Analytical,7
+walnut,170187,696,SFA 13:0,g,0.0,A,Analytical,7
+almond,170567,203,Protein,g,21.2,A,Analytical,91
+almond,170567,204,Total lipid (fat),g,49.9,A,Analytical,90
+almond,170567,205,"Carbohydrate, by difference",g,21.6,NC,Calculated,0
+almond,170567,207,Ash,g,2.97,A,Analytical,90
+almond,170567,208,Energy,kcal,579.0,NC,Calculated,0
+almond,170567,209,Starch,g,0.72,A,Analytical,4
+almond,170567,210,Sucrose,g,3.95,A,Analytical,93
+almond,170567,211,Glucose,g,0.17,A,Analytical,93
+almond,170567,212,Fructose,g,0.11,A,Analytical,93
+almond,170567,213,Lactose,g,0.0,A,Analytical,93
+almond,170567,214,Maltose,g,0.04,A,Analytical,93
+almond,170567,221,"Alcohol, ethyl",g,0.0,,,0
+almond,170567,255,Water,g,4.41,A,Analytical,90
+almond,170567,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,268,Energy,kJ,2420.0,NC,Calculated,0
+almond,170567,269,Total Sugars,g,4.35,,,0
+almond,170567,287,Galactose,g,0.07,A,Analytical,88
+almond,170567,291,"Fiber, total dietary",g,12.5,A,Analytical,89
+almond,170567,301,"Calcium, Ca",mg,269.0,A,Analytical,89
+almond,170567,303,"Iron, Fe",mg,3.71,A,Analytical,89
+almond,170567,304,"Magnesium, Mg",mg,270.0,A,Analytical,88
+almond,170567,305,"Phosphorus, P",mg,481.0,A,Analytical,88
+almond,170567,306,"Potassium, K",mg,733.0,A,Analytical,88
+almond,170567,307,"Sodium, Na",mg,1.0,A,Analytical,85
+almond,170567,309,"Zinc, Zn",mg,3.12,A,Analytical,86
+almond,170567,312,"Copper, Cu",mg,1.03,A,Analytical,86
+almond,170567,315,"Manganese, Mn",mg,2.18,A,Analytical,88
+almond,170567,317,"Selenium, Se",µg,4.1,A,Analytical,26
+almond,170567,318,"Vitamin A, IU",IU,2.0,,,0
+almond,170567,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,320,"Vitamin A, RAE",µg,0.0,,,0
+almond,170567,321,"Carotene, beta",µg,1.0,A,Analytical,26
+almond,170567,322,"Carotene, alpha",µg,0.0,A,Analytical,9
+almond,170567,323,Vitamin E (alpha-tocopherol),mg,25.6,A,Analytical,90
+almond,170567,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,334,"Cryptoxanthin, beta",µg,0.0,A,Analytical,8
+almond,170567,337,Lycopene,µg,0.0,A,Analytical,8
+almond,170567,338,Lutein + zeaxanthin,µg,1.0,A,Analytical,8
+almond,170567,341,"Tocopherol, beta",mg,0.23,A,Analytical,90
+almond,170567,342,"Tocopherol, gamma",mg,0.64,A,Analytical,90
+almond,170567,343,"Tocopherol, delta",mg,0.07,A,Analytical,88
+almond,170567,401,"Vitamin C, total ascorbic acid",mg,0.0,A,Analytical,49
+almond,170567,404,Thiamin,mg,0.205,A,Analytical,85
+almond,170567,405,Riboflavin,mg,1.14,A,Analytical,88
+almond,170567,406,Niacin,mg,3.62,A,Analytical,88
+almond,170567,410,Pantothenic acid,mg,0.471,A,Analytical,88
+almond,170567,415,Vitamin B-6,mg,0.137,A,Analytical,47
+almond,170567,417,"Folate, total",µg,44.0,A,Analytical,41
+almond,170567,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,421,"Choline, total",mg,52.1,,,0
+almond,170567,429,Vitamin K (Dihydrophylloquinone),µg,0.0,A,Analytical,8
+almond,170567,430,Vitamin K (phylloquinone),µg,0.0,A,Analytical,8
+almond,170567,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,432,"Folate, food",µg,44.0,A,Analytical,41
+almond,170567,435,"Folate, DFE",µg,44.0,NC,Calculated,0
+almond,170567,454,Betaine,mg,0.5,A,Analytical,5
+almond,170567,501,Tryptophan,g,0.211,A,Analytical,0
+almond,170567,502,Threonine,g,0.601,A,Analytical,0
+almond,170567,503,Isoleucine,g,0.751,A,Analytical,0
+almond,170567,504,Leucine,g,1.47,A,Analytical,0
+almond,170567,505,Lysine,g,0.568,A,Analytical,0
+almond,170567,506,Methionine,g,0.157,A,Analytical,0
+almond,170567,507,Cystine,g,0.215,A,Analytical,0
+almond,170567,508,Phenylalanine,g,1.13,A,Analytical,0
+almond,170567,509,Tyrosine,g,0.45,A,Analytical,0
+almond,170567,510,Valine,g,0.855,A,Analytical,0
+almond,170567,511,Arginine,g,2.46,A,Analytical,0
+almond,170567,512,Histidine,g,0.539,A,Analytical,0
+almond,170567,513,Alanine,g,0.999,A,Analytical,0
+almond,170567,514,Aspartic acid,g,2.64,A,Analytical,0
+almond,170567,515,Glutamic acid,g,6.21,A,Analytical,0
+almond,170567,516,Glycine,g,1.43,A,Analytical,0
+almond,170567,517,Proline,g,0.969,A,Analytical,0
+almond,170567,518,Serine,g,0.912,A,Analytical,0
+almond,170567,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,601,Cholesterol,mg,0.0,A,Analytical,2
+almond,170567,605,"Fatty acids, total trans",g,0.015,NC,Calculated,0
+almond,170567,606,"Fatty acids, total saturated",g,3.8,NC,Calculated,0
+almond,170567,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond,170567,609,SFA 8:0,g,0.0,A,Analytical,4
+almond,170567,610,SFA 10:0,g,0.0,A,Analytical,68
+almond,170567,611,SFA 12:0,g,0.0,A,Analytical,67
+almond,170567,612,SFA 14:0,g,0.003,A,Analytical,90
+almond,170567,613,SFA 16:0,g,3.08,A,Analytical,90
+almond,170567,614,SFA 18:0,g,0.704,A,Analytical,90
+almond,170567,615,SFA 20:0,g,0.007,A,Analytical,90
+almond,170567,617,MUFA 18:1,g,31.3,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,90
+almond,170567,618,PUFA 18:2,g,12.3,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,90
+almond,170567,619,PUFA 18:3,g,0.003,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,90
+almond,170567,620,PUFA 20:4,g,0.0,A,Analytical,4
+almond,170567,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,4
+almond,170567,624,SFA 22:0,g,0.001,A,Analytical,82
+almond,170567,625,MUFA 14:1,g,0.0,A,Analytical,71
+almond,170567,626,MUFA 16:1,g,0.239,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,90
+almond,170567,627,PUFA 18:4,g,0.0,A,Analytical,1
+almond,170567,628,MUFA 20:1,g,0.005,A,Analytical,85
+almond,170567,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,4
+almond,170567,630,MUFA 22:1,g,0.0,A,Analytical,4
+almond,170567,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,4
+almond,170567,638,Stigmasterol,mg,4.0,A,Analytical,82
+almond,170567,639,Campesterol,mg,5.0,A,Analytical,82
+almond,170567,641,Beta-sitosterol,mg,130.0,A,Analytical,68
+almond,170567,645,"Fatty acids, total monounsaturated",g,31.6,NC,Calculated,0
+almond,170567,646,"Fatty acids, total polyunsaturated",g,12.3,NC,Calculated,0
+almond,170567,652,SFA 15:0,g,0.0,A,Analytical,76
+almond,170567,653,SFA 17:0,g,0.004,A,Analytical,88
+almond,170567,654,SFA 24:0,g,0.0,A,Analytical,4
+almond,170567,662,TFA 16:1 t,g,0.012,A,Analytical,28
+almond,170567,663,TFA 18:1 t,g,0.0,A,Analytical,47
+almond,170567,665,TFA 18:2 t not further defined,g,0.003,A,Analytical,58
+almond,170567,670,PUFA 18:2 CLAs,g,0.002,A,Analytical,7
+almond,170567,671,MUFA 24:1 c,g,0.0,A,Analytical,4
+almond,170567,672,"PUFA 20:2 n-6 c,c",g,0.002,A,Analytical,80
+almond,170567,673,MUFA 16:1 c,g,0.227,A,Analytical,28
+almond,170567,674,MUFA 18:1 c,g,31.3,A,Analytical,33
+almond,170567,675,"PUFA 18:2 n-6 c,c",g,12.3,A,Analytical,61
+almond,170567,685,"PUFA 18:3 n-6 c,c,c",g,0.0,A,Analytical,67
+almond,170567,687,MUFA 17:1,g,0.013,A,Analytical,84
+almond,170567,689,PUFA 20:3,g,0.0,A,Analytical,56
+almond,170567,693,"Fatty acids, total trans-monoenoic",g,0.012,NC,Calculated,0
+almond,170567,695,"Fatty acids, total trans-polyenoic",g,0.003,NC,Calculated,0
+almond,170567,696,SFA 13:0,g,0.0,A,Analytical,4
+almond,170567,697,MUFA 15:1,g,0.0,A,Analytical,66
+almond,170567,851,"PUFA 18:3 n-3 c,c,c (ALA)",g,0.003,A,Analytical,67
+almond_blanched,170568,203,Protein,g,21.4,A,Analytical,12
+almond_blanched,170568,204,Total lipid (fat),g,52.5,A,Analytical,11
+almond_blanched,170568,205,"Carbohydrate, by difference",g,18.7,NC,Calculated,0
+almond_blanched,170568,207,Ash,g,2.91,A,Analytical,11
+almond_blanched,170568,208,Energy,kcal,590.0,NC,Calculated,0
+almond_blanched,170568,209,Starch,g,1.0,A,Analytical,3
+almond_blanched,170568,210,Sucrose,g,4.46,A,Analytical,8
+almond_blanched,170568,211,Glucose,g,0.03,A,Analytical,8
+almond_blanched,170568,212,Fructose,g,0.0,A,Analytical,8
+almond_blanched,170568,213,Lactose,g,0.0,A,Analytical,3
+almond_blanched,170568,214,Maltose,g,0.14,A,Analytical,3
+almond_blanched,170568,221,"Alcohol, ethyl",g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,255,Water,g,4.51,A,Analytical,11
+almond_blanched,170568,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,268,Energy,kJ,2470.0,NC,Calculated,0
+almond_blanched,170568,269,Total Sugars,g,4.63,,,0
+almond_blanched,170568,287,Galactose,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,291,"Fiber, total dietary",g,9.9,A,Analytical,8
+almond_blanched,170568,301,"Calcium, Ca",mg,236.0,A,Analytical,8
+almond_blanched,170568,303,"Iron, Fe",mg,3.28,A,Analytical,8
+almond_blanched,170568,304,"Magnesium, Mg",mg,268.0,A,Analytical,8
+almond_blanched,170568,305,"Phosphorus, P",mg,481.0,A,Analytical,8
+almond_blanched,170568,306,"Potassium, K",mg,659.0,A,Analytical,8
+almond_blanched,170568,307,"Sodium, Na",mg,19.0,A,Analytical,8
+almond_blanched,170568,309,"Zinc, Zn",mg,2.97,A,Analytical,7
+almond_blanched,170568,312,"Copper, Cu",mg,1.03,A,Analytical,7
+almond_blanched,170568,315,"Manganese, Mn",mg,1.84,A,Analytical,8
+almond_blanched,170568,317,"Selenium, Se",µg,3.2,A,Analytical,5
+almond_blanched,170568,318,"Vitamin A, IU",IU,7.0,,,0
+almond_blanched,170568,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,320,"Vitamin A, RAE",µg,0.0,,,0
+almond_blanched,170568,321,"Carotene, beta",µg,4.0,A,Analytical,1
+almond_blanched,170568,322,"Carotene, alpha",µg,0.0,A,Analytical,1
+almond_blanched,170568,323,Vitamin E (alpha-tocopherol),mg,23.8,A,Analytical,10
+almond_blanched,170568,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,334,"Cryptoxanthin, beta",µg,0.0,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+almond_blanched,170568,337,Lycopene,µg,0.0,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+almond_blanched,170568,338,Lutein + zeaxanthin,µg,1.0,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+almond_blanched,170568,341,"Tocopherol, beta",mg,0.35,A,Analytical,11
+almond_blanched,170568,342,"Tocopherol, gamma",mg,0.66,A,Analytical,11
+almond_blanched,170568,343,"Tocopherol, delta",mg,0.2,A,Analytical,11
+almond_blanched,170568,401,"Vitamin C, total ascorbic acid",mg,0.0,A,Analytical,3
+almond_blanched,170568,404,Thiamin,mg,0.191,A,Analytical,7
+almond_blanched,170568,405,Riboflavin,mg,0.711,A,Analytical,8
+almond_blanched,170568,406,Niacin,mg,3.5,A,Analytical,8
+almond_blanched,170568,410,Pantothenic acid,mg,0.314,A,Analytical,8
+almond_blanched,170568,415,Vitamin B-6,mg,0.115,A,Analytical,7
+almond_blanched,170568,417,"Folate, total",µg,49.0,A,Analytical,7
+almond_blanched,170568,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,421,"Choline, total",mg,52.1,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+almond_blanched,170568,430,Vitamin K (phylloquinone),µg,0.0,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+almond_blanched,170568,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,432,"Folate, food",µg,49.0,A,Analytical,7
+almond_blanched,170568,435,"Folate, DFE",µg,49.0,NC,Calculated,0
+almond_blanched,170568,501,Tryptophan,g,0.193,A,Analytical,0
+almond_blanched,170568,502,Threonine,g,0.682,A,Analytical,0
+almond_blanched,170568,503,Isoleucine,g,0.696,A,Analytical,0
+almond_blanched,170568,504,Leucine,g,1.48,A,Analytical,0
+almond_blanched,170568,505,Lysine,g,0.605,A,Analytical,0
+almond_blanched,170568,506,Methionine,g,0.19,A,Analytical,0
+almond_blanched,170568,507,Cystine,g,0.284,A,Analytical,0
+almond_blanched,170568,508,Phenylalanine,g,1.16,A,Analytical,0
+almond_blanched,170568,509,Tyrosine,g,0.533,A,Analytical,0
+almond_blanched,170568,510,Valine,g,0.805,A,Analytical,0
+almond_blanched,170568,511,Arginine,g,2.48,A,Analytical,0
+almond_blanched,170568,512,Histidine,g,0.596,A,Analytical,0
+almond_blanched,170568,513,Alanine,g,1.01,A,Analytical,0
+almond_blanched,170568,514,Aspartic acid,g,2.75,A,Analytical,0
+almond_blanched,170568,515,Glutamic acid,g,5.21,A,Analytical,0
+almond_blanched,170568,516,Glycine,g,1.48,A,Analytical,0
+almond_blanched,170568,517,Proline,g,0.975,A,Analytical,0
+almond_blanched,170568,518,Serine,g,1.01,A,Analytical,0
+almond_blanched,170568,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,605,"Fatty acids, total trans",g,0.019,A,Analytical,4
+almond_blanched,170568,606,"Fatty acids, total saturated",g,3.95,NC,Calculated,0
+almond_blanched,170568,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,609,SFA 8:0,g,0.0,A,Analytical,3
+almond_blanched,170568,610,SFA 10:0,g,0.0,A,Analytical,3
+almond_blanched,170568,611,SFA 12:0,g,0.0,A,Analytical,3
+almond_blanched,170568,612,SFA 14:0,g,0.0,A,Analytical,3
+almond_blanched,170568,613,SFA 16:0,g,3.27,A,Analytical,11
+almond_blanched,170568,614,SFA 18:0,g,0.666,A,Analytical,11
+almond_blanched,170568,615,SFA 20:0,g,0.0,A,Analytical,3
+almond_blanched,170568,617,MUFA 18:1,g,33.1,A,Analytical,11
+almond_blanched,170568,618,PUFA 18:2,g,12.4,A,Analytical,11
+almond_blanched,170568,619,PUFA 18:3,g,0.004,A,Analytical,11
+almond_blanched,170568,620,PUFA 20:4,g,0.0,A,Analytical,3
+almond_blanched,170568,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,3
+almond_blanched,170568,624,SFA 22:0,g,0.0,A,Analytical,3
+almond_blanched,170568,625,MUFA 14:1,g,0.0,A,Analytical,3
+almond_blanched,170568,626,MUFA 16:1,g,0.243,A,Analytical,11
+almond_blanched,170568,627,PUFA 18:4,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+almond_blanched,170568,628,MUFA 20:1,g,0.0,A,Analytical,3
+almond_blanched,170568,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,3
+almond_blanched,170568,630,MUFA 22:1,g,0.0,A,Analytical,3
+almond_blanched,170568,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,3
+almond_blanched,170568,636,Phytosterols,mg,114.0,,,0
+almond_blanched,170568,638,Stigmasterol,mg,1.0,A,Analytical,5
+almond_blanched,170568,639,Campesterol,mg,4.0,A,Analytical,5
+almond_blanched,170568,641,Beta-sitosterol,mg,109.0,A,Analytical,5
+almond_blanched,170568,645,"Fatty acids, total monounsaturated",g,33.4,NC,Calculated,0
+almond_blanched,170568,646,"Fatty acids, total polyunsaturated",g,12.4,NC,Calculated,0
+almond_blanched,170568,652,SFA 15:0,g,0.0,A,Analytical,3
+almond_blanched,170568,653,SFA 17:0,g,0.014,A,Analytical,7
+almond_blanched,170568,654,SFA 24:0,g,0.0,A,Analytical,3
+almond_blanched,170568,671,MUFA 24:1 c,g,0.0,A,Analytical,3
+almond_blanched,170568,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,3
+almond_blanched,170568,687,MUFA 17:1,g,0.059,A,Analytical,4
+almond_blanched,170568,689,PUFA 20:3,g,0.0,A,Analytical,3
+almond_blanched,170568,696,SFA 13:0,g,0.0,A,Analytical,3
+almond_blanched,170568,697,MUFA 15:1,g,0.0,A,Analytical,6
+pistachio,170184,203,Protein,g,20.2,A,Analytical,11
+pistachio,170184,204,Total lipid (fat),g,45.3,A,Analytical,10
+pistachio,170184,205,"Carbohydrate, by difference",g,27.2,NC,Calculated,0
+pistachio,170184,207,Ash,g,2.99,A,Analytical,10
+pistachio,170184,208,Energy,kcal,560.0,NC,Calculated,0
+pistachio,170184,209,Starch,g,1.67,A,Analytical,1
+pistachio,170184,210,Sucrose,g,6.87,A,Analytical,9
+pistachio,170184,211,Glucose,g,0.32,A,Analytical,9
+pistachio,170184,212,Fructose,g,0.24,A,Analytical,9
+pistachio,170184,213,Lactose,g,0.0,A,Analytical,9
+pistachio,170184,214,Maltose,g,0.17,A,Analytical,9
+pistachio,170184,221,"Alcohol, ethyl",g,0.0,,,0
+pistachio,170184,255,Water,g,4.37,A,Analytical,10
+pistachio,170184,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,268,Energy,kJ,2340.0,NC,Calculated,0
+pistachio,170184,269,Total Sugars,g,7.66,A,Analytical,9
+pistachio,170184,291,"Fiber, total dietary",g,10.6,A,Analytical,10
+pistachio,170184,301,"Calcium, Ca",mg,105.0,A,Analytical,9
+pistachio,170184,303,"Iron, Fe",mg,3.92,A,Analytical,9
+pistachio,170184,304,"Magnesium, Mg",mg,121.0,A,Analytical,1
+pistachio,170184,305,"Phosphorus, P",mg,490.0,A,Analytical,1
+pistachio,170184,306,"Potassium, K",mg,1020.0,A,Analytical,8
+pistachio,170184,307,"Sodium, Na",mg,1.0,A,Analytical,2
+pistachio,170184,309,"Zinc, Zn",mg,2.2,A,Analytical,1
+pistachio,170184,312,"Copper, Cu",mg,1.3,A,Analytical,1
+pistachio,170184,313,"Fluoride, F",µg,3.4,A,Analytical,1
+pistachio,170184,315,"Manganese, Mn",mg,1.2,A,Analytical,1
+pistachio,170184,317,"Selenium, Se",µg,7.0,A,Analytical,1
+pistachio,170184,318,"Vitamin A, IU",IU,516.0,,,0
+pistachio,170184,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,320,"Vitamin A, RAE",µg,26.0,,,0
+pistachio,170184,321,"Carotene, beta",µg,305.0,A,Analytical,4
+pistachio,170184,322,"Carotene, alpha",µg,10.0,A,Analytical,3
+pistachio,170184,323,Vitamin E (alpha-tocopherol),mg,2.86,A,Analytical,2
+pistachio,170184,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,334,"Cryptoxanthin, beta",µg,0.0,A,Analytical,1
+pistachio,170184,338,Lutein + zeaxanthin,µg,2900.0,A,Analytical,2
+pistachio,170184,341,"Tocopherol, beta",mg,0.0,A,Analytical,1
+pistachio,170184,342,"Tocopherol, gamma",mg,20.4,A,Analytical,2
+pistachio,170184,343,"Tocopherol, delta",mg,0.8,A,Analytical,1
+pistachio,170184,346,"Tocotrienol, gamma",mg,1.67,A,Analytical,1
+pistachio,170184,401,"Vitamin C, total ascorbic acid",mg,5.6,A,Analytical,2
+pistachio,170184,404,Thiamin,mg,0.87,A,Analytical,1
+pistachio,170184,405,Riboflavin,mg,0.16,A,Analytical,1
+pistachio,170184,406,Niacin,mg,1.3,A,Analytical,1
+pistachio,170184,410,Pantothenic acid,mg,0.52,A,Analytical,1
+pistachio,170184,415,Vitamin B-6,mg,1.7,A,Analytical,1
+pistachio,170184,417,"Folate, total",µg,51.0,A,Analytical,1
+pistachio,170184,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,432,"Folate, food",µg,51.0,A,Analytical,1
+pistachio,170184,435,"Folate, DFE",µg,51.0,NC,Calculated,0
+pistachio,170184,501,Tryptophan,g,0.251,A,Analytical,0
+pistachio,170184,502,Threonine,g,0.684,A,Analytical,0
+pistachio,170184,503,Isoleucine,g,0.917,A,Analytical,0
+pistachio,170184,504,Leucine,g,1.6,A,Analytical,0
+pistachio,170184,505,Lysine,g,1.14,A,Analytical,0
+pistachio,170184,506,Methionine,g,0.36,A,Analytical,0
+pistachio,170184,507,Cystine,g,0.292,A,Analytical,0
+pistachio,170184,508,Phenylalanine,g,1.09,A,Analytical,0
+pistachio,170184,509,Tyrosine,g,0.509,A,Analytical,0
+pistachio,170184,510,Valine,g,1.25,A,Analytical,0
+pistachio,170184,511,Arginine,g,2.13,A,Analytical,0
+pistachio,170184,512,Histidine,g,0.512,A,Analytical,0
+pistachio,170184,513,Alanine,g,0.973,A,Analytical,0
+pistachio,170184,514,Aspartic acid,g,1.88,A,Analytical,0
+pistachio,170184,515,Glutamic acid,g,4.3,A,Analytical,0
+pistachio,170184,516,Glycine,g,1.01,A,Analytical,0
+pistachio,170184,517,Proline,g,0.938,A,Analytical,0
+pistachio,170184,518,Serine,g,1.28,A,Analytical,0
+pistachio,170184,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,605,"Fatty acids, total trans",g,0.0,A,Analytical,1
+pistachio,170184,606,"Fatty acids, total saturated",g,5.91,NC,Calculated,0
+pistachio,170184,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,608,SFA 6:0,g,0.012,A,Analytical,1
+pistachio,170184,609,SFA 8:0,g,0.0,A,Analytical,2
+pistachio,170184,610,SFA 10:0,g,0.004,A,Analytical,2
+pistachio,170184,611,SFA 12:0,g,0.0,A,Analytical,2
+pistachio,170184,612,SFA 14:0,g,0.019,A,Analytical,2
+pistachio,170184,613,SFA 16:0,g,5.26,A,Analytical,2
+pistachio,170184,614,SFA 18:0,g,0.478,A,Analytical,2
+pistachio,170184,615,SFA 20:0,g,0.046,A,Analytical,2
+pistachio,170184,617,MUFA 18:1,g,22.7,A,Analytical,2
+pistachio,170184,618,PUFA 18:2,g,14.1,A,Analytical,2
+pistachio,170184,619,PUFA 18:3,g,0.289,A,Analytical,3
+pistachio,170184,620,PUFA 20:4,g,0.0,A,Analytical,1
+pistachio,170184,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,1
+pistachio,170184,624,SFA 22:0,g,0.04,A,Analytical,2
+pistachio,170184,625,MUFA 14:1,g,0.0,A,Analytical,2
+pistachio,170184,626,MUFA 16:1,g,0.495,A,Analytical,2
+pistachio,170184,627,PUFA 18:4,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pistachio,170184,628,MUFA 20:1,g,0.089,A,Analytical,2
+pistachio,170184,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,1
+pistachio,170184,630,MUFA 22:1,g,0.0,A,Analytical,2
+pistachio,170184,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,1
+pistachio,170184,636,Phytosterols,mg,214.0,,,1
+pistachio,170184,638,Stigmasterol,mg,5.0,A,Analytical,1
+pistachio,170184,639,Campesterol,mg,10.0,A,Analytical,1
+pistachio,170184,641,Beta-sitosterol,mg,198.0,A,Analytical,1
+pistachio,170184,645,"Fatty acids, total monounsaturated",g,23.3,NC,Calculated,0
+pistachio,170184,646,"Fatty acids, total polyunsaturated",g,14.4,NC,Calculated,0
+pistachio,170184,652,SFA 15:0,g,0.0,A,Analytical,2
+pistachio,170184,653,SFA 17:0,g,0.009,A,Analytical,2
+pistachio,170184,654,SFA 24:0,g,0.0,A,Analytical,2
+pistachio,170184,671,MUFA 24:1 c,g,0.0,A,Analytical,1
+pistachio,170184,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,1
+pistachio,170184,675,"PUFA 18:2 n-6 c,c",g,14.1,A,Analytical,1
+pistachio,170184,689,PUFA 20:3,g,0.0,A,Analytical,1
+pistachio,170184,696,SFA 13:0,g,0.0,A,Analytical,1
+pecan,170182,203,Protein,g,9.17,A,Analytical,3
+pecan,170182,204,Total lipid (fat),g,72.0,A,Analytical,3
+pecan,170182,205,"Carbohydrate, by difference",g,13.9,NC,Calculated,0
+pecan,170182,207,Ash,g,1.49,A,Analytical,3
+pecan,170182,208,Energy,kcal,691.0,NC,Calculated,0
+pecan,170182,209,Starch,g,0.46,A,Analytical,3
+pecan,170182,210,Sucrose,g,3.9,A,Analytical,3
+pecan,170182,211,Glucose,g,0.04,A,Analytical,3
+pecan,170182,212,Fructose,g,0.04,A,Analytical,3
+pecan,170182,213,Lactose,g,0.0,A,Analytical,3
+pecan,170182,214,Maltose,g,0.0,A,Analytical,3
+pecan,170182,221,"Alcohol, ethyl",g,0.0,,,0
+pecan,170182,255,Water,g,3.52,A,Analytical,3
+pecan,170182,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,268,Energy,kJ,2890.0,NC,Calculated,0
+pecan,170182,269,Total Sugars,g,3.97,A,Analytical,3
+pecan,170182,291,"Fiber, total dietary",g,9.6,A,Analytical,3
+pecan,170182,301,"Calcium, Ca",mg,70.0,A,Analytical,3
+pecan,170182,303,"Iron, Fe",mg,2.53,A,Analytical,3
+pecan,170182,304,"Magnesium, Mg",mg,121.0,A,Analytical,3
+pecan,170182,305,"Phosphorus, P",mg,277.0,A,Analytical,3
+pecan,170182,306,"Potassium, K",mg,410.0,A,Analytical,3
+pecan,170182,307,"Sodium, Na",mg,0.0,A,Analytical,3
+pecan,170182,309,"Zinc, Zn",mg,4.53,A,Analytical,3
+pecan,170182,312,"Copper, Cu",mg,1.2,A,Analytical,3
+pecan,170182,313,"Fluoride, F",µg,10.0,A,Analytical,9
+pecan,170182,315,"Manganese, Mn",mg,4.5,A,Analytical,3
+pecan,170182,317,"Selenium, Se",µg,3.8,A,Analytical,9
+pecan,170182,318,"Vitamin A, IU",IU,56.0,,,0
+pecan,170182,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,320,"Vitamin A, RAE",µg,3.0,,,0
+pecan,170182,321,"Carotene, beta",µg,29.0,A,Analytical,9
+pecan,170182,322,"Carotene, alpha",µg,0.0,A,Analytical,9
+pecan,170182,323,Vitamin E (alpha-tocopherol),mg,1.4,A,Analytical,9
+pecan,170182,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,334,"Cryptoxanthin, beta",µg,9.0,A,Analytical,8
+pecan,170182,337,Lycopene,µg,0.0,A,Analytical,8
+pecan,170182,338,Lutein + zeaxanthin,µg,17.0,A,Analytical,8
+pecan,170182,341,"Tocopherol, beta",mg,0.39,A,Analytical,9
+pecan,170182,342,"Tocopherol, gamma",mg,24.4,A,Analytical,9
+pecan,170182,343,"Tocopherol, delta",mg,0.47,A,Analytical,9
+pecan,170182,401,"Vitamin C, total ascorbic acid",mg,1.1,A,Analytical,3
+pecan,170182,404,Thiamin,mg,0.66,A,Analytical,3
+pecan,170182,405,Riboflavin,mg,0.13,A,Analytical,3
+pecan,170182,406,Niacin,mg,1.17,A,Analytical,3
+pecan,170182,410,Pantothenic acid,mg,0.863,A,Analytical,3
+pecan,170182,415,Vitamin B-6,mg,0.21,A,Analytical,3
+pecan,170182,417,"Folate, total",µg,22.0,A,Analytical,3
+pecan,170182,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,421,"Choline, total",mg,40.5,,,0
+pecan,170182,429,Vitamin K (Dihydrophylloquinone),µg,0.0,A,Analytical,8
+pecan,170182,430,Vitamin K (phylloquinone),µg,3.5,A,Analytical,8
+pecan,170182,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,432,"Folate, food",µg,22.0,A,Analytical,3
+pecan,170182,435,"Folate, DFE",µg,22.0,NC,Calculated,0
+pecan,170182,454,Betaine,mg,0.7,A,Analytical,5
+pecan,170182,501,Tryptophan,g,0.093,A,Analytical,0
+pecan,170182,502,Threonine,g,0.306,A,Analytical,0
+pecan,170182,503,Isoleucine,g,0.336,A,Analytical,0
+pecan,170182,504,Leucine,g,0.598,A,Analytical,0
+pecan,170182,505,Lysine,g,0.287,A,Analytical,0
+pecan,170182,506,Methionine,g,0.183,A,Analytical,0
+pecan,170182,507,Cystine,g,0.152,A,Analytical,0
+pecan,170182,508,Phenylalanine,g,0.426,A,Analytical,0
+pecan,170182,509,Tyrosine,g,0.215,A,Analytical,0
+pecan,170182,510,Valine,g,0.411,A,Analytical,0
+pecan,170182,511,Arginine,g,1.18,A,Analytical,0
+pecan,170182,512,Histidine,g,0.262,A,Analytical,0
+pecan,170182,513,Alanine,g,0.397,A,Analytical,0
+pecan,170182,514,Aspartic acid,g,0.929,A,Analytical,0
+pecan,170182,515,Glutamic acid,g,1.83,A,Analytical,0
+pecan,170182,516,Glycine,g,0.453,A,Analytical,0
+pecan,170182,517,Proline,g,0.363,A,Analytical,0
+pecan,170182,518,Serine,g,0.474,A,Analytical,0
+pecan,170182,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,606,"Fatty acids, total saturated",g,6.18,NC,Calculated,0
+pecan,170182,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+pecan,170182,609,SFA 8:0,g,0.0,A,Analytical,3
+pecan,170182,610,SFA 10:0,g,0.0,A,Analytical,3
+pecan,170182,611,SFA 12:0,g,0.0,A,Analytical,3
+pecan,170182,612,SFA 14:0,g,0.0,A,Analytical,3
+pecan,170182,613,SFA 16:0,g,4.37,A,Analytical,3
+pecan,170182,614,SFA 18:0,g,1.74,A,Analytical,3
+pecan,170182,615,SFA 20:0,g,0.069,A,Analytical,3
+pecan,170182,617,MUFA 18:1,g,40.6,A,Analytical,3
+pecan,170182,618,PUFA 18:2,g,20.6,A,Analytical,3
+pecan,170182,619,PUFA 18:3,g,0.986,A,Analytical,3
+pecan,170182,620,PUFA 20:4,g,0.0,A,Analytical,3
+pecan,170182,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,3
+pecan,170182,624,SFA 22:0,g,0.0,A,Analytical,3
+pecan,170182,625,MUFA 14:1,g,0.0,A,Analytical,3
+pecan,170182,626,MUFA 16:1,g,0.0,A,Analytical,3
+pecan,170182,627,PUFA 18:4,g,0.0,,,0
+pecan,170182,628,MUFA 20:1,g,0.207,A,Analytical,3
+pecan,170182,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,3
+pecan,170182,630,MUFA 22:1,g,0.0,A,Analytical,3
+pecan,170182,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,3
+pecan,170182,638,Stigmasterol,mg,3.0,A,Analytical,3
+pecan,170182,639,Campesterol,mg,6.0,A,Analytical,3
+pecan,170182,641,Beta-sitosterol,mg,117.0,A,Analytical,3
+pecan,170182,645,"Fatty acids, total monounsaturated",g,40.8,NC,Calculated,0
+pecan,170182,646,"Fatty acids, total polyunsaturated",g,21.6,NC,Calculated,0
+pecan,170182,652,SFA 15:0,g,0.0,A,Analytical,3
+pecan,170182,653,SFA 17:0,g,0.0,A,Analytical,3
+pecan,170182,654,SFA 24:0,g,0.0,A,Analytical,3
+pecan,170182,671,MUFA 24:1 c,g,0.0,A,Analytical,3
+pecan,170182,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,3
+pecan,170182,689,PUFA 20:3,g,0.0,A,Analytical,3
+pecan,170182,696,SFA 13:0,g,0.0,A,Analytical,3
+macadamia,170178,203,Protein,g,7.91,A,Analytical,3
+macadamia,170178,204,Total lipid (fat),g,75.8,A,Analytical,3
+macadamia,170178,205,"Carbohydrate, by difference",g,13.8,NC,Calculated,0
+macadamia,170178,207,Ash,g,1.14,A,Analytical,3
+macadamia,170178,208,Energy,kcal,718.0,NC,Calculated,0
+macadamia,170178,209,Starch,g,1.05,A,Analytical,3
+macadamia,170178,210,Sucrose,g,4.43,A,Analytical,3
+macadamia,170178,211,Glucose,g,0.07,A,Analytical,3
+macadamia,170178,212,Fructose,g,0.07,A,Analytical,3
+macadamia,170178,213,Lactose,g,0.0,A,Analytical,3
+macadamia,170178,214,Maltose,g,0.0,A,Analytical,3
+macadamia,170178,221,"Alcohol, ethyl",g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,255,Water,g,1.36,A,Analytical,3
+macadamia,170178,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,268,Energy,kJ,3000.0,NC,Calculated,0
+macadamia,170178,269,Total Sugars,g,4.57,A,Analytical,3
+macadamia,170178,291,"Fiber, total dietary",g,8.6,A,Analytical,3
+macadamia,170178,301,"Calcium, Ca",mg,85.0,A,Analytical,3
+macadamia,170178,303,"Iron, Fe",mg,3.69,A,Analytical,3
+macadamia,170178,304,"Magnesium, Mg",mg,130.0,A,Analytical,3
+macadamia,170178,305,"Phosphorus, P",mg,188.0,A,Analytical,3
+macadamia,170178,306,"Potassium, K",mg,368.0,A,Analytical,3
+macadamia,170178,307,"Sodium, Na",mg,5.0,A,Analytical,3
+macadamia,170178,309,"Zinc, Zn",mg,1.3,A,Analytical,3
+macadamia,170178,312,"Copper, Cu",mg,0.756,A,Analytical,3
+macadamia,170178,315,"Manganese, Mn",mg,4.13,A,Analytical,3
+macadamia,170178,317,"Selenium, Se",µg,3.6,A,Analytical,1
+macadamia,170178,318,"Vitamin A, IU",IU,0.0,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+macadamia,170178,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,320,"Vitamin A, RAE",µg,0.0,BFZN,Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used,0
+macadamia,170178,323,Vitamin E (alpha-tocopherol),mg,0.54,A,Analytical,3
+macadamia,170178,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,341,"Tocopherol, beta",mg,0.0,A,Analytical,3
+macadamia,170178,342,"Tocopherol, gamma",mg,0.0,A,Analytical,3
+macadamia,170178,343,"Tocopherol, delta",mg,0.0,A,Analytical,3
+macadamia,170178,401,"Vitamin C, total ascorbic acid",mg,1.2,A,Analytical,3
+macadamia,170178,404,Thiamin,mg,1.2,A,Analytical,3
+macadamia,170178,405,Riboflavin,mg,0.162,A,Analytical,3
+macadamia,170178,406,Niacin,mg,2.47,A,Analytical,3
+macadamia,170178,410,Pantothenic acid,mg,0.758,A,Analytical,3
+macadamia,170178,415,Vitamin B-6,mg,0.275,A,Analytical,3
+macadamia,170178,417,"Folate, total",µg,11.0,A,Analytical,3
+macadamia,170178,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,432,"Folate, food",µg,11.0,A,Analytical,3
+macadamia,170178,435,"Folate, DFE",µg,11.0,NC,Calculated,0
+macadamia,170178,501,Tryptophan,g,0.067,A,Analytical,0
+macadamia,170178,502,Threonine,g,0.37,A,Analytical,0
+macadamia,170178,503,Isoleucine,g,0.314,A,Analytical,0
+macadamia,170178,504,Leucine,g,0.602,A,Analytical,0
+macadamia,170178,505,Lysine,g,0.018,A,Analytical,0
+macadamia,170178,506,Methionine,g,0.023,A,Analytical,0
+macadamia,170178,507,Cystine,g,0.006,A,Analytical,0
+macadamia,170178,508,Phenylalanine,g,0.665,A,Analytical,0
+macadamia,170178,509,Tyrosine,g,0.511,A,Analytical,0
+macadamia,170178,510,Valine,g,0.363,A,Analytical,0
+macadamia,170178,511,Arginine,g,1.4,A,Analytical,0
+macadamia,170178,512,Histidine,g,0.195,A,Analytical,0
+macadamia,170178,513,Alanine,g,0.388,A,Analytical,0
+macadamia,170178,514,Aspartic acid,g,1.1,A,Analytical,0
+macadamia,170178,515,Glutamic acid,g,2.27,A,Analytical,0
+macadamia,170178,516,Glycine,g,0.454,A,Analytical,0
+macadamia,170178,517,Proline,g,0.468,A,Analytical,0
+macadamia,170178,518,Serine,g,0.419,A,Analytical,0
+macadamia,170178,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,606,"Fatty acids, total saturated",g,12.1,NC,Calculated,0
+macadamia,170178,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,609,SFA 8:0,g,0.0,A,Analytical,3
+macadamia,170178,610,SFA 10:0,g,0.0,A,Analytical,3
+macadamia,170178,611,SFA 12:0,g,0.076,A,Analytical,3
+macadamia,170178,612,SFA 14:0,g,0.659,A,Analytical,3
+macadamia,170178,613,SFA 16:0,g,6.04,A,Analytical,3
+macadamia,170178,614,SFA 18:0,g,2.33,A,Analytical,3
+macadamia,170178,615,SFA 20:0,g,1.94,A,Analytical,3
+macadamia,170178,617,MUFA 18:1,g,43.8,A,Analytical,3
+macadamia,170178,618,PUFA 18:2,g,1.3,A,Analytical,3
+macadamia,170178,619,PUFA 18:3,g,0.206,A,Analytical,3
+macadamia,170178,620,PUFA 20:4,g,0.0,A,Analytical,3
+macadamia,170178,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,3
+macadamia,170178,624,SFA 22:0,g,0.616,A,Analytical,3
+macadamia,170178,625,MUFA 14:1,g,0.0,A,Analytical,3
+macadamia,170178,626,MUFA 16:1,g,13.0,A,Analytical,3
+macadamia,170178,627,PUFA 18:4,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+macadamia,170178,628,MUFA 20:1,g,1.89,A,Analytical,3
+macadamia,170178,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,3
+macadamia,170178,630,MUFA 22:1,g,0.233,A,Analytical,3
+macadamia,170178,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,3
+macadamia,170178,636,Phytosterols,mg,116.0,A,Analytical,1
+macadamia,170178,638,Stigmasterol,mg,0.0,A,Analytical,1
+macadamia,170178,639,Campesterol,mg,8.0,A,Analytical,1
+macadamia,170178,641,Beta-sitosterol,mg,108.0,A,Analytical,1
+macadamia,170178,645,"Fatty acids, total monounsaturated",g,58.9,NC,Calculated,0
+macadamia,170178,646,"Fatty acids, total polyunsaturated",g,1.5,NC,Calculated,0
+macadamia,170178,652,SFA 15:0,g,0.0,A,Analytical,3
+macadamia,170178,653,SFA 17:0,g,0.124,A,Analytical,3
+macadamia,170178,654,SFA 24:0,g,0.281,A,Analytical,3
+macadamia,170178,671,MUFA 24:1 c,g,0.018,A,Analytical,3
+macadamia,170178,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,3
+macadamia,170178,689,PUFA 20:3,g,0.0,A,Analytical,3
+macadamia,170178,696,SFA 13:0,g,0.0,A,Analytical,3
+hazelnut,170581,203,Protein,g,15.0,A,Analytical,4
+hazelnut,170581,204,Total lipid (fat),g,60.8,A,Analytical,4
+hazelnut,170581,205,"Carbohydrate, by difference",g,16.7,NC,Calculated,0
+hazelnut,170581,207,Ash,g,2.29,A,Analytical,4
+hazelnut,170581,208,Energy,kcal,628.0,NC,Calculated,0
+hazelnut,170581,209,Starch,g,0.48,A,Analytical,4
+hazelnut,170581,210,Sucrose,g,4.2,A,Analytical,4
+hazelnut,170581,211,Glucose,g,0.07,A,Analytical,4
+hazelnut,170581,212,Fructose,g,0.07,A,Analytical,4
+hazelnut,170581,213,Lactose,g,0.0,A,Analytical,4
+hazelnut,170581,214,Maltose,g,0.0,A,Analytical,4
+hazelnut,170581,221,"Alcohol, ethyl",g,0.0,,,0
+hazelnut,170581,255,Water,g,5.31,A,Analytical,4
+hazelnut,170581,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,268,Energy,kJ,2630.0,NC,Calculated,0
+hazelnut,170581,269,Total Sugars,g,4.34,A,Analytical,4
+hazelnut,170581,291,"Fiber, total dietary",g,9.7,A,Analytical,4
+hazelnut,170581,301,"Calcium, Ca",mg,114.0,A,Analytical,4
+hazelnut,170581,303,"Iron, Fe",mg,4.7,A,Analytical,4
+hazelnut,170581,304,"Magnesium, Mg",mg,163.0,A,Analytical,4
+hazelnut,170581,305,"Phosphorus, P",mg,290.0,A,Analytical,4
+hazelnut,170581,306,"Potassium, K",mg,680.0,A,Analytical,4
+hazelnut,170581,307,"Sodium, Na",mg,0.0,A,Analytical,4
+hazelnut,170581,309,"Zinc, Zn",mg,2.45,A,Analytical,4
+hazelnut,170581,312,"Copper, Cu",mg,1.72,A,Analytical,4
+hazelnut,170581,315,"Manganese, Mn",mg,6.18,A,Analytical,4
+hazelnut,170581,317,"Selenium, Se",µg,2.4,A,Analytical,8
+hazelnut,170581,318,"Vitamin A, IU",IU,20.0,,,0
+hazelnut,170581,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,320,"Vitamin A, RAE",µg,1.0,,,0
+hazelnut,170581,321,"Carotene, beta",µg,11.0,A,Analytical,5
+hazelnut,170581,322,"Carotene, alpha",µg,3.0,A,Analytical,5
+hazelnut,170581,323,Vitamin E (alpha-tocopherol),mg,15.0,A,Analytical,4
+hazelnut,170581,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,334,"Cryptoxanthin, beta",µg,0.0,A,Analytical,4
+hazelnut,170581,337,Lycopene,µg,0.0,A,Analytical,4
+hazelnut,170581,338,Lutein + zeaxanthin,µg,92.0,A,Analytical,4
+hazelnut,170581,341,"Tocopherol, beta",mg,0.33,A,Analytical,4
+hazelnut,170581,342,"Tocopherol, gamma",mg,0.0,A,Analytical,4
+hazelnut,170581,343,"Tocopherol, delta",mg,0.0,A,Analytical,4
+hazelnut,170581,401,"Vitamin C, total ascorbic acid",mg,6.3,A,Analytical,4
+hazelnut,170581,404,Thiamin,mg,0.643,A,Analytical,4
+hazelnut,170581,405,Riboflavin,mg,0.113,A,Analytical,4
+hazelnut,170581,406,Niacin,mg,1.8,A,Analytical,4
+hazelnut,170581,410,Pantothenic acid,mg,0.918,A,Analytical,4
+hazelnut,170581,415,Vitamin B-6,mg,0.563,A,Analytical,4
+hazelnut,170581,417,"Folate, total",µg,113.0,A,Analytical,4
+hazelnut,170581,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,421,"Choline, total",mg,45.6,,,0
+hazelnut,170581,429,Vitamin K (Dihydrophylloquinone),µg,0.0,A,Analytical,8
+hazelnut,170581,430,Vitamin K (phylloquinone),µg,14.2,A,Analytical,8
+hazelnut,170581,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,432,"Folate, food",µg,113.0,A,Analytical,4
+hazelnut,170581,435,"Folate, DFE",µg,113.0,NC,Calculated,0
+hazelnut,170581,454,Betaine,mg,0.4,A,Analytical,5
+hazelnut,170581,501,Tryptophan,g,0.193,A,Analytical,0
+hazelnut,170581,502,Threonine,g,0.497,A,Analytical,0
+hazelnut,170581,503,Isoleucine,g,0.545,A,Analytical,0
+hazelnut,170581,504,Leucine,g,1.06,A,Analytical,0
+hazelnut,170581,505,Lysine,g,0.42,A,Analytical,0
+hazelnut,170581,506,Methionine,g,0.221,A,Analytical,0
+hazelnut,170581,507,Cystine,g,0.277,A,Analytical,0
+hazelnut,170581,508,Phenylalanine,g,0.663,A,Analytical,0
+hazelnut,170581,509,Tyrosine,g,0.362,A,Analytical,0
+hazelnut,170581,510,Valine,g,0.701,A,Analytical,0
+hazelnut,170581,511,Arginine,g,2.21,A,Analytical,0
+hazelnut,170581,512,Histidine,g,0.432,A,Analytical,0
+hazelnut,170581,513,Alanine,g,0.73,A,Analytical,0
+hazelnut,170581,514,Aspartic acid,g,1.68,A,Analytical,0
+hazelnut,170581,515,Glutamic acid,g,3.71,A,Analytical,0
+hazelnut,170581,516,Glycine,g,0.724,A,Analytical,0
+hazelnut,170581,517,Proline,g,0.561,A,Analytical,0
+hazelnut,170581,518,Serine,g,0.735,A,Analytical,0
+hazelnut,170581,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,606,"Fatty acids, total saturated",g,4.46,NC,Calculated,0
+hazelnut,170581,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,609,SFA 8:0,g,0.0,A,Analytical,4
+hazelnut,170581,610,SFA 10:0,g,0.0,A,Analytical,4
+hazelnut,170581,611,SFA 12:0,g,0.0,A,Analytical,4
+hazelnut,170581,612,SFA 14:0,g,0.0,A,Analytical,4
+hazelnut,170581,613,SFA 16:0,g,3.1,A,Analytical,4
+hazelnut,170581,614,SFA 18:0,g,1.26,A,Analytical,4
+hazelnut,170581,615,SFA 20:0,g,0.102,A,Analytical,4
+hazelnut,170581,617,MUFA 18:1,g,45.4,A,Analytical,4
+hazelnut,170581,618,PUFA 18:2,g,7.83,A,Analytical,4
+hazelnut,170581,619,PUFA 18:3,g,0.087,A,Analytical,4
+hazelnut,170581,620,PUFA 20:4,g,0.0,A,Analytical,4
+hazelnut,170581,621,PUFA 22:6 n-3 (DHA),g,0.0,A,Analytical,4
+hazelnut,170581,624,SFA 22:0,g,0.0,A,Analytical,4
+hazelnut,170581,625,MUFA 14:1,g,0.0,A,Analytical,4
+hazelnut,170581,626,MUFA 16:1,g,0.116,A,Analytical,4
+hazelnut,170581,627,PUFA 18:4,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+hazelnut,170581,628,MUFA 20:1,g,0.131,A,Analytical,4
+hazelnut,170581,629,PUFA 20:5 n-3 (EPA),g,0.0,A,Analytical,4
+hazelnut,170581,630,MUFA 22:1,g,0.0,A,Analytical,4
+hazelnut,170581,631,PUFA 22:5 n-3 (DPA),g,0.0,A,Analytical,4
+hazelnut,170581,638,Stigmasterol,mg,1.0,A,Analytical,4
+hazelnut,170581,639,Campesterol,mg,7.0,A,Analytical,4
+hazelnut,170581,641,Beta-sitosterol,mg,102.0,A,Analytical,4
+hazelnut,170581,645,"Fatty acids, total monounsaturated",g,45.7,NC,Calculated,0
+hazelnut,170581,646,"Fatty acids, total polyunsaturated",g,7.92,NC,Calculated,0
+hazelnut,170581,652,SFA 15:0,g,0.0,A,Analytical,4
+hazelnut,170581,653,SFA 17:0,g,0.0,A,Analytical,4
+hazelnut,170581,654,SFA 24:0,g,0.0,A,Analytical,4
+hazelnut,170581,671,MUFA 24:1 c,g,0.0,A,Analytical,4
+hazelnut,170581,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,4
+hazelnut,170581,689,PUFA 20:3,g,0.0,A,Analytical,4
+hazelnut,170581,696,SFA 13:0,g,0.0,A,Analytical,4
+cashew,170162,203,Protein,g,18.2,A,Analytical,2
+cashew,170162,204,Total lipid (fat),g,43.8,O,Other procedure used from imputing,0
+cashew,170162,205,"Carbohydrate, by difference",g,30.2,NC,Calculated,0
+cashew,170162,207,Ash,g,2.54,A,Analytical,2
+cashew,170162,208,Energy,kcal,553.0,NC,Calculated,0
+cashew,170162,209,Starch,g,23.5,A,Analytical,2
+cashew,170162,210,Sucrose,g,5.81,A,Analytical,2
+cashew,170162,211,Glucose,g,0.05,A,Analytical,2
+cashew,170162,212,Fructose,g,0.05,A,Analytical,2
+cashew,170162,213,Lactose,g,0.0,A,Analytical,2
+cashew,170162,214,Maltose,g,0.0,A,Analytical,2
+cashew,170162,255,Water,g,5.2,A,Analytical,2
+cashew,170162,268,Energy,kJ,2310.0,NC,Calculated,0
+cashew,170162,269,Total Sugars,g,5.91,A,Analytical,2
+cashew,170162,287,Galactose,g,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,291,"Fiber, total dietary",g,3.3,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,301,"Calcium, Ca",mg,37.0,A,Analytical,2
+cashew,170162,303,"Iron, Fe",mg,6.68,A,Analytical,2
+cashew,170162,304,"Magnesium, Mg",mg,292.0,A,Analytical,2
+cashew,170162,305,"Phosphorus, P",mg,593.0,A,Analytical,2
+cashew,170162,306,"Potassium, K",mg,660.0,A,Analytical,2
+cashew,170162,307,"Sodium, Na",mg,12.0,A,Analytical,2
+cashew,170162,309,"Zinc, Zn",mg,5.78,A,Analytical,2
+cashew,170162,312,"Copper, Cu",mg,2.2,A,Analytical,2
+cashew,170162,315,"Manganese, Mn",mg,1.66,A,Analytical,2
+cashew,170162,317,"Selenium, Se",µg,19.9,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,318,"Vitamin A, IU",IU,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+cashew,170162,320,"Vitamin A, RAE",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,321,"Carotene, beta",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,322,"Carotene, alpha",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,323,Vitamin E (alpha-tocopherol),mg,0.9,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+cashew,170162,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+cashew,170162,334,"Cryptoxanthin, beta",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,337,Lycopene,µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,338,Lutein + zeaxanthin,µg,22.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,341,"Tocopherol, beta",mg,0.03,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,342,"Tocopherol, gamma",mg,5.31,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,343,"Tocopherol, delta",mg,0.36,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,344,"Tocotrienol, alpha",mg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,345,"Tocotrienol, beta",mg,0.1,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,346,"Tocotrienol, gamma",mg,0.2,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,347,"Tocotrienol, delta",mg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,401,"Vitamin C, total ascorbic acid",mg,0.5,A,Analytical,2
+cashew,170162,404,Thiamin,mg,0.423,A,Analytical,2
+cashew,170162,405,Riboflavin,mg,0.058,A,Analytical,2
+cashew,170162,406,Niacin,mg,1.06,A,Analytical,2
+cashew,170162,410,Pantothenic acid,mg,0.864,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,415,Vitamin B-6,mg,0.417,A,Analytical,2
+cashew,170162,417,"Folate, total",µg,25.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+cashew,170162,430,Vitamin K (phylloquinone),µg,34.1,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+cashew,170162,432,"Folate, food",µg,25.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+cashew,170162,435,"Folate, DFE",µg,25.0,NC,Calculated,0
+cashew,170162,501,Tryptophan,g,0.287,A,Analytical,0
+cashew,170162,502,Threonine,g,0.688,A,Analytical,0
+cashew,170162,503,Isoleucine,g,0.789,A,Analytical,0
+cashew,170162,504,Leucine,g,1.47,A,Analytical,0
+cashew,170162,505,Lysine,g,0.928,A,Analytical,0
+cashew,170162,506,Methionine,g,0.362,A,Analytical,0
+cashew,170162,507,Cystine,g,0.393,A,Analytical,0
+cashew,170162,508,Phenylalanine,g,0.951,A,Analytical,0
+cashew,170162,509,Tyrosine,g,0.508,A,Analytical,0
+cashew,170162,510,Valine,g,1.09,A,Analytical,0
+cashew,170162,511,Arginine,g,2.12,A,Analytical,0
+cashew,170162,512,Histidine,g,0.456,A,Analytical,0
+cashew,170162,513,Alanine,g,0.837,A,Analytical,0
+cashew,170162,514,Aspartic acid,g,1.8,A,Analytical,0
+cashew,170162,515,Glutamic acid,g,4.51,A,Analytical,0
+cashew,170162,516,Glycine,g,0.937,A,Analytical,0
+cashew,170162,517,Proline,g,0.812,A,Analytical,0
+cashew,170162,518,Serine,g,1.08,A,Analytical,0
+cashew,170162,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+cashew,170162,606,"Fatty acids, total saturated",g,7.78,NC,Calculated,0
+cashew,170162,607,SFA 4:0,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,608,SFA 6:0,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,609,SFA 8:0,g,0.015,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,610,SFA 10:0,g,0.015,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,611,SFA 12:0,g,0.015,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,612,SFA 14:0,g,0.015,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,613,SFA 16:0,g,3.92,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,614,SFA 18:0,g,3.22,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,615,SFA 20:0,g,0.266,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,617,MUFA 18:1,g,23.5,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,618,PUFA 18:2,g,7.78,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,619,PUFA 18:3,g,0.062,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,620,PUFA 20:4,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,621,PUFA 22:6 n-3 (DHA),g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,624,SFA 22:0,g,0.173,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,625,MUFA 14:1,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,626,MUFA 16:1,g,0.136,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,627,PUFA 18:4,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,628,MUFA 20:1,g,0.138,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,629,PUFA 20:5 n-3 (EPA),g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,630,MUFA 22:1,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,631,PUFA 22:5 n-3 (DPA),g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,638,Stigmasterol,mg,0.0,A,Analytical,1
+cashew,170162,639,Campesterol,mg,9.0,A,Analytical,1
+cashew,170162,641,Beta-sitosterol,mg,113.0,A,Analytical,1
+cashew,170162,645,"Fatty acids, total monounsaturated",g,23.8,NC,Calculated,0
+cashew,170162,646,"Fatty acids, total polyunsaturated",g,7.84,NC,Calculated,0
+cashew,170162,652,SFA 15:0,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,653,SFA 17:0,g,0.046,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,654,SFA 24:0,g,0.101,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,672,"PUFA 20:2 n-6 c,c",g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,687,MUFA 17:1,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,689,PUFA 20:3,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+cashew,170162,697,MUFA 15:1,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+peanut,172430,203,Protein,g,25.8,A,Analytical,78
+peanut,172430,204,Total lipid (fat),g,49.2,A,Analytical,98
+peanut,172430,205,"Carbohydrate, by difference",g,16.1,NC,Calculated,0
+peanut,172430,207,Ash,g,2.33,A,Analytical,26
+peanut,172430,208,Energy,kcal,567.0,NC,Calculated,0
+peanut,172430,221,"Alcohol, ethyl",g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,255,Water,g,6.5,A,Analytical,31
+peanut,172430,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,268,Energy,kJ,2370.0,NC,Calculated,0
+peanut,172430,269,Total Sugars,g,4.72,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,291,"Fiber, total dietary",g,8.5,,,3
+peanut,172430,301,"Calcium, Ca",mg,92.0,A,Analytical,45
+peanut,172430,303,"Iron, Fe",mg,4.58,A,Analytical,49
+peanut,172430,304,"Magnesium, Mg",mg,168.0,A,Analytical,45
+peanut,172430,305,"Phosphorus, P",mg,376.0,A,Analytical,45
+peanut,172430,306,"Potassium, K",mg,705.0,A,Analytical,47
+peanut,172430,307,"Sodium, Na",mg,18.0,A,Analytical,35
+peanut,172430,309,"Zinc, Zn",mg,3.27,A,Analytical,45
+peanut,172430,312,"Copper, Cu",mg,1.14,A,Analytical,45
+peanut,172430,315,"Manganese, Mn",mg,1.93,A,Analytical,44
+peanut,172430,317,"Selenium, Se",µg,7.2,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,318,"Vitamin A, IU",IU,0.0,NC,Calculated,0
+peanut,172430,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,320,"Vitamin A, RAE",µg,0.0,NC,Calculated,0
+peanut,172430,321,"Carotene, beta",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,322,"Carotene, alpha",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,323,Vitamin E (alpha-tocopherol),mg,8.33,NR,"Nutrient that is based on other nutrient/s; value used directly, ex. Nut.#204 from Nut.#298",0
+peanut,172430,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,334,"Cryptoxanthin, beta",µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,337,Lycopene,µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,338,Lutein + zeaxanthin,µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,401,"Vitamin C, total ascorbic acid",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,404,Thiamin,mg,0.64,A,Analytical,24
+peanut,172430,405,Riboflavin,mg,0.135,A,Analytical,20
+peanut,172430,406,Niacin,mg,12.1,A,Analytical,24
+peanut,172430,410,Pantothenic acid,mg,1.77,A,Analytical,8
+peanut,172430,415,Vitamin B-6,mg,0.348,A,Analytical,8
+peanut,172430,417,"Folate, total",µg,240.0,A,Analytical,8
+peanut,172430,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,421,"Choline, total",mg,52.5,,,0
+peanut,172430,430,Vitamin K (phylloquinone),µg,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,432,"Folate, food",µg,240.0,A,Analytical,8
+peanut,172430,435,"Folate, DFE",µg,240.0,NC,Calculated,0
+peanut,172430,454,Betaine,mg,0.6,A,Analytical,4
+peanut,172430,501,Tryptophan,g,0.25,,,128
+peanut,172430,502,Threonine,g,0.883,,,144
+peanut,172430,503,Isoleucine,g,0.907,,,140
+peanut,172430,504,Leucine,g,1.67,,,140
+peanut,172430,505,Lysine,g,0.926,,,147
+peanut,172430,506,Methionine,g,0.317,,,22
+peanut,172430,507,Cystine,g,0.331,,,29
+peanut,172430,508,Phenylalanine,g,1.38,,,141
+peanut,172430,509,Tyrosine,g,1.05,,,137
+peanut,172430,510,Valine,g,1.08,,,141
+peanut,172430,511,Arginine,g,3.08,,,140
+peanut,172430,512,Histidine,g,0.652,,,140
+peanut,172430,513,Alanine,g,1.02,,,135
+peanut,172430,514,Aspartic acid,g,3.15,,,135
+peanut,172430,515,Glutamic acid,g,5.39,,,133
+peanut,172430,516,Glycine,g,1.55,,,134
+peanut,172430,517,Proline,g,1.14,,,130
+peanut,172430,518,Serine,g,1.27,,,134
+peanut,172430,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,605,"Fatty acids, total trans",g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,606,"Fatty acids, total saturated",g,6.28,NC,Calculated,0
+peanut,172430,607,SFA 4:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,608,SFA 6:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,609,SFA 8:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,610,SFA 10:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,611,SFA 12:0,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,612,SFA 14:0,g,0.025,,,0
+peanut,172430,613,SFA 16:0,g,5.15,,,0
+peanut,172430,614,SFA 18:0,g,1.1,,,0
+peanut,172430,617,MUFA 18:1,g,23.8,,,0
+peanut,172430,618,PUFA 18:2,g,15.6,,,0
+peanut,172430,619,PUFA 18:3,g,0.003,,,0
+peanut,172430,620,PUFA 20:4,g,0.0,,,0
+peanut,172430,621,PUFA 22:6 n-3 (DHA),g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,626,MUFA 16:1,g,0.009,,,0
+peanut,172430,627,PUFA 18:4,g,0.0,BFSN,Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used,0
+peanut,172430,628,MUFA 20:1,g,0.661,,,0
+peanut,172430,629,PUFA 20:5 n-3 (EPA),g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,630,MUFA 22:1,g,0.0,,,0
+peanut,172430,631,PUFA 22:5 n-3 (DPA),g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+peanut,172430,645,"Fatty acids, total monounsaturated",g,24.4,NC,Calculated,0
+peanut,172430,646,"Fatty acids, total polyunsaturated",g,15.6,NC,Calculated,0
+brazil_nut,170569,203,Protein,g,14.3,A,Analytical,7
+brazil_nut,170569,204,Total lipid (fat),g,67.1,A,Analytical,11
+brazil_nut,170569,205,"Carbohydrate, by difference",g,11.7,NC,Calculated,0
+brazil_nut,170569,207,Ash,g,3.43,A,Analytical,8
+brazil_nut,170569,208,Energy,kcal,659.0,NC,Calculated,0
+brazil_nut,170569,209,Starch,g,0.25,A,Analytical,7
+brazil_nut,170569,210,Sucrose,g,2.33,A,Analytical,7
+brazil_nut,170569,211,Glucose,g,0.0,A,Analytical,7
+brazil_nut,170569,212,Fructose,g,0.0,A,Analytical,7
+brazil_nut,170569,213,Lactose,g,0.0,A,Analytical,7
+brazil_nut,170569,214,Maltose,g,0.0,A,Analytical,7
+brazil_nut,170569,221,"Alcohol, ethyl",g,0.0,,,0
+brazil_nut,170569,255,Water,g,3.42,A,Analytical,10
+brazil_nut,170569,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,268,Energy,kJ,2760.0,NC,Calculated,0
+brazil_nut,170569,269,Total Sugars,g,2.33,A,Analytical,7
+brazil_nut,170569,287,Galactose,g,0.0,A,Analytical,7
+brazil_nut,170569,291,"Fiber, total dietary",g,7.5,A,Analytical,3
+brazil_nut,170569,301,"Calcium, Ca",mg,160.0,A,Analytical,7
+brazil_nut,170569,303,"Iron, Fe",mg,2.43,A,Analytical,7
+brazil_nut,170569,304,"Magnesium, Mg",mg,376.0,A,Analytical,7
+brazil_nut,170569,305,"Phosphorus, P",mg,725.0,A,Analytical,7
+brazil_nut,170569,306,"Potassium, K",mg,659.0,A,Analytical,7
+brazil_nut,170569,307,"Sodium, Na",mg,3.0,A,Analytical,7
+brazil_nut,170569,309,"Zinc, Zn",mg,4.06,A,Analytical,7
+brazil_nut,170569,312,"Copper, Cu",mg,1.74,A,Analytical,7
+brazil_nut,170569,315,"Manganese, Mn",mg,1.22,A,Analytical,7
+brazil_nut,170569,317,"Selenium, Se",µg,1920.0,A,Analytical,15
+brazil_nut,170569,318,"Vitamin A, IU",IU,0.0,A,Analytical,1
+brazil_nut,170569,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,320,"Vitamin A, RAE",µg,0.0,A,Analytical,1
+brazil_nut,170569,321,"Carotene, beta",µg,0.0,A,Analytical,1
+brazil_nut,170569,322,"Carotene, alpha",µg,0.0,A,Analytical,1
+brazil_nut,170569,323,Vitamin E (alpha-tocopherol),mg,5.65,A,Analytical,9
+brazil_nut,170569,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,334,"Cryptoxanthin, beta",µg,0.0,A,Analytical,1
+brazil_nut,170569,337,Lycopene,µg,0.0,A,Analytical,1
+brazil_nut,170569,338,Lutein + zeaxanthin,µg,0.0,A,Analytical,1
+brazil_nut,170569,341,"Tocopherol, beta",mg,0.01,A,Analytical,9
+brazil_nut,170569,342,"Tocopherol, gamma",mg,9.56,A,Analytical,9
+brazil_nut,170569,343,"Tocopherol, delta",mg,0.63,A,Analytical,9
+brazil_nut,170569,344,"Tocotrienol, alpha",mg,0.0,A,Analytical,7
+brazil_nut,170569,345,"Tocotrienol, beta",mg,0.0,A,Analytical,4
+brazil_nut,170569,346,"Tocotrienol, gamma",mg,0.17,A,Analytical,7
+brazil_nut,170569,347,"Tocotrienol, delta",mg,0.0,A,Analytical,7
+brazil_nut,170569,401,"Vitamin C, total ascorbic acid",mg,0.7,A,Analytical,3
+brazil_nut,170569,404,Thiamin,mg,0.617,A,Analytical,7
+brazil_nut,170569,405,Riboflavin,mg,0.035,A,Analytical,7
+brazil_nut,170569,406,Niacin,mg,0.295,A,Analytical,7
+brazil_nut,170569,410,Pantothenic acid,mg,0.184,A,Analytical,7
+brazil_nut,170569,415,Vitamin B-6,mg,0.101,A,Analytical,7
+brazil_nut,170569,417,"Folate, total",µg,22.0,A,Analytical,4
+brazil_nut,170569,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,421,"Choline, total",mg,28.8,,,0
+brazil_nut,170569,429,Vitamin K (Dihydrophylloquinone),µg,0.0,A,Analytical,7
+brazil_nut,170569,430,Vitamin K (phylloquinone),µg,0.0,A,Analytical,7
+brazil_nut,170569,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,432,"Folate, food",µg,22.0,A,Analytical,4
+brazil_nut,170569,435,"Folate, DFE",µg,22.0,NC,Calculated,0
+brazil_nut,170569,454,Betaine,mg,0.4,A,Analytical,2
+brazil_nut,170569,501,Tryptophan,g,0.135,A,Analytical,0
+brazil_nut,170569,502,Threonine,g,0.365,A,Analytical,0
+brazil_nut,170569,503,Isoleucine,g,0.518,A,Analytical,0
+brazil_nut,170569,504,Leucine,g,1.19,A,Analytical,0
+brazil_nut,170569,505,Lysine,g,0.49,A,Analytical,0
+brazil_nut,170569,506,Methionine,g,1.12,A,Analytical,0
+brazil_nut,170569,507,Cystine,g,0.306,A,Analytical,0
+brazil_nut,170569,508,Phenylalanine,g,0.639,A,Analytical,0
+brazil_nut,170569,509,Tyrosine,g,0.416,A,Analytical,0
+brazil_nut,170569,510,Valine,g,0.76,A,Analytical,0
+brazil_nut,170569,511,Arginine,g,2.14,A,Analytical,0
+brazil_nut,170569,512,Histidine,g,0.409,A,Analytical,0
+brazil_nut,170569,513,Alanine,g,0.609,A,Analytical,0
+brazil_nut,170569,514,Aspartic acid,g,1.32,A,Analytical,0
+brazil_nut,170569,515,Glutamic acid,g,3.19,A,Analytical,0
+brazil_nut,170569,516,Glycine,g,0.733,A,Analytical,0
+brazil_nut,170569,517,Proline,g,0.706,A,Analytical,0
+brazil_nut,170569,518,Serine,g,0.676,A,Analytical,0
+brazil_nut,170569,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+brazil_nut,170569,606,"Fatty acids, total saturated",g,16.1,NC,Calculated,0
+brazil_nut,170569,607,SFA 4:0,g,0.0,,,0
+brazil_nut,170569,608,SFA 6:0,g,0.0,,,0
+brazil_nut,170569,609,SFA 8:0,g,0.0,A,Analytical,4
+brazil_nut,170569,610,SFA 10:0,g,0.0,A,Analytical,3
+brazil_nut,170569,611,SFA 12:0,g,0.0,A,Analytical,4
+brazil_nut,170569,612,SFA 14:0,g,0.046,A,Analytical,4
+brazil_nut,170569,613,SFA 16:0,g,9.63,A,Analytical,7
+brazil_nut,170569,614,SFA 18:0,g,6.24,A,Analytical,7
+brazil_nut,170569,615,SFA 20:0,g,0.167,A,Analytical,4
+brazil_nut,170569,617,MUFA 18:1,g,23.6,A,Analytical,7
+brazil_nut,170569,618,PUFA 18:2,g,24.4,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,7
+brazil_nut,170569,619,PUFA 18:3,g,0.036,,,0
+brazil_nut,170569,620,PUFA 20:4,g,0.0,A,Analytical,3
+brazil_nut,170569,621,PUFA 22:6 n-3 (DHA),g,0.0,,,0
+brazil_nut,170569,624,SFA 22:0,g,0.01,A,Analytical,7
+brazil_nut,170569,625,MUFA 14:1,g,0.0,A,Analytical,4
+brazil_nut,170569,626,MUFA 16:1,g,0.214,A,Analytical,7
+brazil_nut,170569,627,PUFA 18:4,g,0.0,,,0
+brazil_nut,170569,628,MUFA 20:1,g,0.027,A,Analytical,7
+brazil_nut,170569,629,PUFA 20:5 n-3 (EPA),g,0.0,,,0
+brazil_nut,170569,630,MUFA 22:1,g,0.0,A,Analytical,1
+brazil_nut,170569,631,PUFA 22:5 n-3 (DPA),g,0.0,,,0
+brazil_nut,170569,638,Stigmasterol,mg,6.0,A,Analytical,7
+brazil_nut,170569,639,Campesterol,mg,2.0,A,Analytical,7
+brazil_nut,170569,641,Beta-sitosterol,mg,64.0,A,Analytical,7
+brazil_nut,170569,645,"Fatty acids, total monounsaturated",g,23.9,NC,Calculated,0
+brazil_nut,170569,646,"Fatty acids, total polyunsaturated",g,24.4,NC,Calculated,0
+brazil_nut,170569,652,SFA 15:0,g,0.0,A,Analytical,4
+brazil_nut,170569,653,SFA 17:0,g,0.041,A,Analytical,4
+brazil_nut,170569,654,SFA 24:0,g,0.0,A,Analytical,1
+brazil_nut,170569,672,"PUFA 20:2 n-6 c,c",g,0.0,A,Analytical,6
+brazil_nut,170569,675,"PUFA 18:2 n-6 c,c",g,23.9,A,Analytical,3
+brazil_nut,170569,685,"PUFA 18:3 n-6 c,c,c",g,0.018,A,Analytical,3
+brazil_nut,170569,687,MUFA 17:1,g,0.045,A,Analytical,3
+brazil_nut,170569,689,PUFA 20:3,g,0.0,A,Analytical,3
+brazil_nut,170569,697,MUFA 15:1,g,0.0,A,Analytical,3
+brazil_nut,170569,851,"PUFA 18:3 n-3 c,c,c (ALA)",g,0.018,A,Analytical,6
+flaxseed,169414,203,Protein,g,18.3,A,Analytical,7
+flaxseed,169414,204,Total lipid (fat),g,42.2,A,Analytical,6
+flaxseed,169414,205,"Carbohydrate, by difference",g,28.9,NC,Calculated,0
+flaxseed,169414,207,Ash,g,3.72,A,Analytical,3
+flaxseed,169414,208,Energy,kcal,534.0,NC,Calculated,0
+flaxseed,169414,210,Sucrose,g,1.15,A,Analytical,3
+flaxseed,169414,211,Glucose,g,0.4,A,Analytical,3
+flaxseed,169414,212,Fructose,g,0.0,A,Analytical,3
+flaxseed,169414,213,Lactose,g,0.0,A,Analytical,3
+flaxseed,169414,214,Maltose,g,0.0,A,Analytical,3
+flaxseed,169414,221,"Alcohol, ethyl",g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,255,Water,g,6.96,A,Analytical,3
+flaxseed,169414,262,Caffeine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,263,Theobromine,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,268,Energy,kJ,2230.0,NC,Calculated,0
+flaxseed,169414,269,Total Sugars,g,1.55,,,0
+flaxseed,169414,287,Galactose,g,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,291,"Fiber, total dietary",g,27.3,A,Analytical,3
+flaxseed,169414,301,"Calcium, Ca",mg,255.0,A,Analytical,7
+flaxseed,169414,303,"Iron, Fe",mg,5.73,A,Analytical,7
+flaxseed,169414,304,"Magnesium, Mg",mg,392.0,A,Analytical,7
+flaxseed,169414,305,"Phosphorus, P",mg,642.0,A,Analytical,3
+flaxseed,169414,306,"Potassium, K",mg,813.0,A,Analytical,7
+flaxseed,169414,307,"Sodium, Na",mg,30.0,A,Analytical,7
+flaxseed,169414,309,"Zinc, Zn",mg,4.34,A,Analytical,7
+flaxseed,169414,312,"Copper, Cu",mg,1.22,A,Analytical,7
+flaxseed,169414,315,"Manganese, Mn",mg,2.48,A,Analytical,7
+flaxseed,169414,317,"Selenium, Se",µg,25.4,A,Analytical,2
+flaxseed,169414,318,"Vitamin A, IU",IU,0.0,A,Analytical,3
+flaxseed,169414,319,Retinol,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,320,"Vitamin A, RAE",µg,0.0,A,Analytical,3
+flaxseed,169414,321,"Carotene, beta",µg,0.0,A,Analytical,3
+flaxseed,169414,322,"Carotene, alpha",µg,0.0,A,Analytical,3
+flaxseed,169414,323,Vitamin E (alpha-tocopherol),mg,0.31,A,Analytical,6
+flaxseed,169414,324,"Vitamin D (D2 + D3), International Units",IU,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,328,Vitamin D (D2 + D3),µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,334,"Cryptoxanthin, beta",µg,0.0,A,Analytical,2
+flaxseed,169414,337,Lycopene,µg,0.0,A,Analytical,2
+flaxseed,169414,338,Lutein + zeaxanthin,µg,651.0,A,Analytical,9
+flaxseed,169414,341,"Tocopherol, beta",mg,0.0,A,Analytical,2
+flaxseed,169414,342,"Tocopherol, gamma",mg,20.0,A,Analytical,6
+flaxseed,169414,343,"Tocopherol, delta",mg,0.35,A,Analytical,6
+flaxseed,169414,344,"Tocotrienol, alpha",mg,0.0,A,Analytical,2
+flaxseed,169414,345,"Tocotrienol, beta",mg,0.0,A,Analytical,2
+flaxseed,169414,346,"Tocotrienol, gamma",mg,0.0,A,Analytical,2
+flaxseed,169414,347,"Tocotrienol, delta",mg,0.0,A,Analytical,2
+flaxseed,169414,401,"Vitamin C, total ascorbic acid",mg,0.6,A,Analytical,3
+flaxseed,169414,404,Thiamin,mg,1.64,A,Analytical,3
+flaxseed,169414,405,Riboflavin,mg,0.161,A,Analytical,3
+flaxseed,169414,406,Niacin,mg,3.08,A,Analytical,3
+flaxseed,169414,410,Pantothenic acid,mg,0.985,A,Analytical,3
+flaxseed,169414,415,Vitamin B-6,mg,0.473,A,Analytical,3
+flaxseed,169414,417,"Folate, total",µg,87.0,A,Analytical,3
+flaxseed,169414,418,Vitamin B-12,µg,0.0,A,Analytical,1
+flaxseed,169414,421,"Choline, total",mg,78.7,,,0
+flaxseed,169414,429,Vitamin K (Dihydrophylloquinone),µg,0.0,A,Analytical,2
+flaxseed,169414,430,Vitamin K (phylloquinone),µg,4.3,A,Analytical,2
+flaxseed,169414,431,Folic acid,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,432,"Folate, food",µg,87.0,A,Analytical,3
+flaxseed,169414,435,"Folate, DFE",µg,87.0,NC,Calculated,0
+flaxseed,169414,454,Betaine,mg,3.1,A,Analytical,1
+flaxseed,169414,501,Tryptophan,g,0.297,A,Analytical,0
+flaxseed,169414,502,Threonine,g,0.766,A,Analytical,0
+flaxseed,169414,503,Isoleucine,g,0.896,A,Analytical,0
+flaxseed,169414,504,Leucine,g,1.24,A,Analytical,0
+flaxseed,169414,505,Lysine,g,0.862,A,Analytical,0
+flaxseed,169414,506,Methionine,g,0.37,A,Analytical,0
+flaxseed,169414,507,Cystine,g,0.34,A,Analytical,0
+flaxseed,169414,508,Phenylalanine,g,0.957,A,Analytical,0
+flaxseed,169414,509,Tyrosine,g,0.493,A,Analytical,0
+flaxseed,169414,510,Valine,g,1.07,A,Analytical,0
+flaxseed,169414,511,Arginine,g,1.92,A,Analytical,0
+flaxseed,169414,512,Histidine,g,0.472,A,Analytical,0
+flaxseed,169414,513,Alanine,g,0.925,A,Analytical,0
+flaxseed,169414,514,Aspartic acid,g,2.05,A,Analytical,0
+flaxseed,169414,515,Glutamic acid,g,4.04,A,Analytical,0
+flaxseed,169414,516,Glycine,g,1.25,A,Analytical,0
+flaxseed,169414,517,Proline,g,0.806,A,Analytical,0
+flaxseed,169414,518,Serine,g,0.97,A,Analytical,0
+flaxseed,169414,521,Hydroxyproline,g,0.175,A,Analytical,2
+flaxseed,169414,573,"Vitamin E, added",mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,578,"Vitamin B-12, added",µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+flaxseed,169414,606,"Fatty acids, total saturated",g,3.66,NC,Calculated,0
+flaxseed,169414,607,SFA 4:0,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,608,SFA 6:0,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,609,SFA 8:0,g,0.0,A,Analytical,2
+flaxseed,169414,610,SFA 10:0,g,0.0,A,Analytical,2
+flaxseed,169414,611,SFA 12:0,g,0.0,A,Analytical,2
+flaxseed,169414,612,SFA 14:0,g,0.008,A,Analytical,3
+flaxseed,169414,613,SFA 16:0,g,2.16,A,Analytical,7
+flaxseed,169414,614,SFA 18:0,g,1.33,A,Analytical,7
+flaxseed,169414,615,SFA 20:0,g,0.052,A,Analytical,3
+flaxseed,169414,617,MUFA 18:1,g,7.36,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,7
+flaxseed,169414,618,PUFA 18:2,g,5.9,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,7
+flaxseed,169414,619,PUFA 18:3,g,22.8,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,7
+flaxseed,169414,620,PUFA 20:4,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,621,PUFA 22:6 n-3 (DHA),g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,624,SFA 22:0,g,0.052,A,Analytical,3
+flaxseed,169414,626,MUFA 16:1,g,0.024,A,Analytical,3
+flaxseed,169414,627,PUFA 18:4,g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,628,MUFA 20:1,g,0.067,A,Analytical,3
+flaxseed,169414,629,PUFA 20:5 n-3 (EPA),g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,630,MUFA 22:1,g,0.013,A,Analytical,3
+flaxseed,169414,631,PUFA 22:5 n-3 (DPA),g,0.0,BFFN,Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used,0
+flaxseed,169414,638,Stigmasterol,mg,11.0,A,Analytical,2
+flaxseed,169414,639,Campesterol,mg,45.0,A,Analytical,2
+flaxseed,169414,641,Beta-sitosterol,mg,90.0,A,Analytical,2
+flaxseed,169414,645,"Fatty acids, total monounsaturated",g,7.53,NC,Calculated,0
+flaxseed,169414,646,"Fatty acids, total polyunsaturated",g,28.7,NC,Calculated,0
+flaxseed,169414,652,SFA 15:0,g,0.005,A,Analytical,1
+flaxseed,169414,653,SFA 17:0,g,0.018,A,Analytical,1
+flaxseed,169414,654,SFA 24:0,g,0.031,A,Analytical,3
+flaxseed,169414,671,MUFA 24:1 c,g,0.064,A,Analytical,3
+flaxseed,169414,672,"PUFA 20:2 n-6 c,c",g,0.007,A,Analytical,3
+chia,170554,203,Protein,g,16.5,A,Analytical,21
+chia,170554,204,Total lipid (fat),g,30.7,A,Analytical,24
+chia,170554,205,"Carbohydrate, by difference",g,42.1,NC,Calculated,0
+chia,170554,207,Ash,g,4.8,A,Analytical,1
+chia,170554,208,Energy,kcal,486.0,NC,Calculated,0
+chia,170554,255,Water,g,5.8,A,Analytical,1
+chia,170554,268,Energy,kJ,2030.0,NC,Calculated,0
+chia,170554,291,"Fiber, total dietary",g,34.4,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,301,"Calcium, Ca",mg,631.0,A,Analytical,2
+chia,170554,303,"Iron, Fe",mg,7.72,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,304,"Magnesium, Mg",mg,335.0,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,305,"Phosphorus, P",mg,860.0,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,4
+chia,170554,306,"Potassium, K",mg,407.0,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,3
+chia,170554,307,"Sodium, Na",mg,16.0,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,3
+chia,170554,309,"Zinc, Zn",mg,4.58,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,3
+chia,170554,312,"Copper, Cu",mg,0.924,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,3
+chia,170554,315,"Manganese, Mn",mg,2.72,JA,Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13,3
+chia,170554,317,"Selenium, Se",µg,55.2,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,318,"Vitamin A, IU",IU,54.0,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,323,Vitamin E (alpha-tocopherol),mg,0.5,AI,Analytical data; from the literature or  government;  incomplete documentation,1
+chia,170554,401,"Vitamin C, total ascorbic acid",mg,1.6,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,404,Thiamin,mg,0.62,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,405,Riboflavin,mg,0.17,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,406,Niacin,mg,8.83,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,417,"Folate, total",µg,49.0,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,418,Vitamin B-12,µg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+chia,170554,432,"Folate, food",µg,49.0,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,501,Tryptophan,g,0.436,A,Analytical,0
+chia,170554,502,Threonine,g,0.709,A,Analytical,0
+chia,170554,503,Isoleucine,g,0.801,A,Analytical,0
+chia,170554,504,Leucine,g,1.37,A,Analytical,0
+chia,170554,505,Lysine,g,0.97,A,Analytical,0
+chia,170554,506,Methionine,g,0.588,A,Analytical,0
+chia,170554,507,Cystine,g,0.407,A,Analytical,0
+chia,170554,508,Phenylalanine,g,1.02,A,Analytical,0
+chia,170554,509,Tyrosine,g,0.563,A,Analytical,0
+chia,170554,510,Valine,g,0.95,A,Analytical,0
+chia,170554,511,Arginine,g,2.14,A,Analytical,0
+chia,170554,512,Histidine,g,0.531,A,Analytical,0
+chia,170554,513,Alanine,g,1.04,A,Analytical,0
+chia,170554,514,Aspartic acid,g,1.69,A,Analytical,0
+chia,170554,515,Glutamic acid,g,3.5,A,Analytical,0
+chia,170554,516,Glycine,g,0.943,A,Analytical,0
+chia,170554,517,Proline,g,0.776,A,Analytical,0
+chia,170554,518,Serine,g,1.05,A,Analytical,0
+chia,170554,601,Cholesterol,mg,0.0,Z,"Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",0
+chia,170554,605,"Fatty acids, total trans",g,0.14,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,606,"Fatty acids, total saturated",g,3.33,NC,Calculated,0
+chia,170554,612,SFA 14:0,g,0.03,A,Analytical,1
+chia,170554,613,SFA 16:0,g,2.17,A,Analytical,24
+chia,170554,614,SFA 18:0,g,0.912,A,Analytical,24
+chia,170554,615,SFA 20:0,g,0.093,A,Analytical,2
+chia,170554,617,MUFA 18:1,g,2.2,A,Analytical,23
+chia,170554,618,PUFA 18:2,g,5.84,A,Analytical,24
+chia,170554,619,PUFA 18:3,g,17.8,A,Analytical,24
+chia,170554,624,SFA 22:0,g,0.032,A,Analytical,1
+chia,170554,625,MUFA 14:1,g,0.03,A,Analytical,1
+chia,170554,626,MUFA 16:1,g,0.029,A,Analytical,9
+chia,170554,628,MUFA 20:1,g,0.046,A,Analytical,2
+chia,170554,645,"Fatty acids, total monounsaturated",g,2.31,NC,Calculated,0
+chia,170554,646,"Fatty acids, total polyunsaturated",g,23.7,NC,Calculated,0
+chia,170554,652,SFA 15:0,g,0.03,A,Analytical,1
+chia,170554,653,SFA 17:0,g,0.063,A,Analytical,1
+chia,170554,675,"PUFA 18:2 n-6 c,c",g,5.84,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia,170554,687,MUFA 17:1,g,0.0,A,Analytical,1
+chia,170554,851,"PUFA 18:3 n-3 c,c,c (ALA)",g,17.8,AI,Analytical data; from the literature or  government;  incomplete documentation,2
+chia_fndds,2707590,203,Protein,g,16.54,,,
+chia_fndds,2707590,204,Total lipid (fat),g,30.74,,,
+chia_fndds,2707590,205,"Carbohydrate, by difference",g,42.12,,,
+chia_fndds,2707590,208,Energy,kcal,486.0,,,
+chia_fndds,2707590,221,"Alcohol, ethyl",g,0.0,,,
+chia_fndds,2707590,255,Water,g,5.8,,,
+chia_fndds,2707590,262,Caffeine,mg,0.0,,,
+chia_fndds,2707590,263,Theobromine,mg,0.0,,,
+chia_fndds,2707590,269,Total Sugars,g,1.55,,,
+chia_fndds,2707590,291,"Fiber, total dietary",g,34.4,,,
+chia_fndds,2707590,301,"Calcium, Ca",mg,631.0,,,
+chia_fndds,2707590,303,"Iron, Fe",mg,7.72,,,
+chia_fndds,2707590,304,"Magnesium, Mg",mg,335.0,,,
+chia_fndds,2707590,305,"Phosphorus, P",mg,860.0,,,
+chia_fndds,2707590,306,"Potassium, K",mg,407.0,,,
+chia_fndds,2707590,307,"Sodium, Na",mg,16.0,,,
+chia_fndds,2707590,309,"Zinc, Zn",mg,4.58,,,
+chia_fndds,2707590,312,"Copper, Cu",mg,0.924,,,
+chia_fndds,2707590,317,"Selenium, Se",µg,55.2,,,
+chia_fndds,2707590,319,Retinol,µg,0.0,,,
+chia_fndds,2707590,320,"Vitamin A, RAE",µg,0.0,,,
+chia_fndds,2707590,321,"Carotene, beta",µg,0.0,,,
+chia_fndds,2707590,322,"Carotene, alpha",µg,0.0,,,
+chia_fndds,2707590,323,Vitamin E (alpha-tocopherol),mg,0.5,,,
+chia_fndds,2707590,328,Vitamin D (D2 + D3),µg,0.0,,,
+chia_fndds,2707590,334,"Cryptoxanthin, beta",µg,0.0,,,
+chia_fndds,2707590,337,Lycopene,µg,0.0,,,
+chia_fndds,2707590,338,Lutein + zeaxanthin,µg,0.0,,,
+chia_fndds,2707590,401,"Vitamin C, total ascorbic acid",mg,1.6,,,
+chia_fndds,2707590,404,Thiamin,mg,0.62,,,
+chia_fndds,2707590,405,Riboflavin,mg,0.17,,,
+chia_fndds,2707590,406,Niacin,mg,8.83,,,
+chia_fndds,2707590,415,Vitamin B-6,mg,0.393,,,
+chia_fndds,2707590,417,"Folate, total",µg,49.0,,,
+chia_fndds,2707590,418,Vitamin B-12,µg,0.0,,,
+chia_fndds,2707590,421,"Choline, total",mg,78.7,,,
+chia_fndds,2707590,430,Vitamin K (phylloquinone),µg,3.7,,,
+chia_fndds,2707590,431,Folic acid,µg,0.0,,,
+chia_fndds,2707590,432,"Folate, food",µg,49.0,,,
+chia_fndds,2707590,435,"Folate, DFE",µg,49.0,,,
+chia_fndds,2707590,573,"Vitamin E, added",mg,0.0,,,
+chia_fndds,2707590,578,"Vitamin B-12, added",µg,0.0,,,
+chia_fndds,2707590,601,Cholesterol,mg,0.0,,,
+chia_fndds,2707590,606,"Fatty acids, total saturated",g,3.33,,,
+chia_fndds,2707590,607,SFA 4:0,g,0.0,,,
+chia_fndds,2707590,608,SFA 6:0,g,0.0,,,
+chia_fndds,2707590,609,SFA 8:0,g,0.0,,,
+chia_fndds,2707590,610,SFA 10:0,g,0.0,,,
+chia_fndds,2707590,611,SFA 12:0,g,0.0,,,
+chia_fndds,2707590,612,SFA 14:0,g,0.03,,,
+chia_fndds,2707590,613,SFA 16:0,g,2.17,,,
+chia_fndds,2707590,614,SFA 18:0,g,0.912,,,
+chia_fndds,2707590,617,MUFA 18:1,g,2.203,,,
+chia_fndds,2707590,618,PUFA 18:2,g,5.835,,,
+chia_fndds,2707590,619,PUFA 18:3,g,17.83,,,
+chia_fndds,2707590,620,PUFA 20:4,g,0.0,,,
+chia_fndds,2707590,621,PUFA 22:6 n-3 (DHA),g,0.0,,,
+chia_fndds,2707590,626,MUFA 16:1,g,0.029,,,
+chia_fndds,2707590,627,PUFA 18:4,g,0.0,,,
+chia_fndds,2707590,628,MUFA 20:1,g,0.046,,,
+chia_fndds,2707590,629,PUFA 20:5 n-3 (EPA),g,0.0,,,
+chia_fndds,2707590,630,MUFA 22:1,g,0.013,,,
+chia_fndds,2707590,631,PUFA 22:5 n-3 (DPA),g,0.0,,,
+chia_fndds,2707590,645,"Fatty acids, total monounsaturated",g,2.309,,,
+chia_fndds,2707590,646,"Fatty acids, total polyunsaturated",g,23.665,,,

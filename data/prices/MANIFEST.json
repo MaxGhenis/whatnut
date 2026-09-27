@@ -1,0 +1,300 @@
+{
+  "generated_by": "scripts/fetch_prices.py",
+  "retrieval_date_note": "retrieval_date is the US Eastern calendar date of retrieved_at_utc.",
+  "sources": {
+    "nuts.com": "Specialty online seller. Shopify product JSON per product (price, net quantity, availability).",
+    "Walmart": "Big-box. walmart.com product pages, first-party seller Walmart.com only; location ZIP 20001, store 3035. Stored page (raw/walmart/ip_*.html.gz) where Walmart served one to a script, else the browser record.",
+    "Costco": "Warehouse club. costco.com product pages read in a browser; in-warehouse price at the Washington DC warehouse and the 2-Day Delivery online price.",
+    "Target": "Big-box. One search-results listing (store 2259 Columbia Heights, DC); product pages blocked by a human-verification challenge."
+  },
+  "spec": "Target product: shelled, unsalted, raw or dry-roasted. meets_spec is true when shell=shelled, salt in {unsalted, not_stated} and processing in {raw, dry_roasted, not_stated}.",
+  "primary_rule": "One primary row per (nut, retailer): among rows with meets_spec, in_stock, a single package (no case or multipack) of at most 1500 g, prefer non-organic when any qualifies, then the lowest price_per_kg_usd; ties go to a stated unsalted, then a stated processing, then the larger package.",
+  "columns": {
+    "row_id": "unique id: retailer:product[:variant or channel]",
+    "nut": "one of walnut, almond, pistachio, pecan, hazelnut, macadamia, cashew, peanut",
+    "retailer": "nuts.com | Walmart | Costco | Target",
+    "seller_type": "specialty_online | big_box | warehouse_club",
+    "brand": "brand shown by the retailer",
+    "product_name": "retailer's product name (nuts.com: product - variant)",
+    "product_id": "retailer's id (nuts.com handle and variant id; Walmart usItemId; Costco item id and item number; Target TCIN)",
+    "url": "product page (Target 32 oz almonds: the listing URL)",
+    "price_channel": "how the price applies (online, in-warehouse, listing)",
+    "location": "store, warehouse or ZIP the price applies to",
+    "retrieval_date": "US Eastern date the price was read",
+    "retrieved_at_utc": "when the price was read (Target: approximate)",
+    "package_declared": "net quantity as the retailer states it",
+    "package_g": "net grams: declared ounces x 28.349523125 or pounds x 453.59237 (shell included for in_shell)",
+    "units_in_pack": "bags in the listing (multipacks > 1; package_g is the total)",
+    "pack_kind": "bag | case (nuts.com bulk cases) | multipack",
+    "price_usd": "shelf price for the package, before tax, delivery fees, membership fees and promotions",
+    "price_per_kg_usd": "price_usd / package_g x 1000",
+    "shell": "shelled | in_shell",
+    "processing": "raw (page says raw, unroasted, natural or steam pasteurized) | dry_roasted | oil_roasted (oil in ingredients) | roasted (method not stated) | not_stated (neither raw nor roasted stated; ingredients, where shown, are only the nut)",
+    "salt": "unsalted (stated, or ingredients are only the nut) | salted (incl. lightly salted) | not_stated",
+    "organic": "true when sold as USDA organic",
+    "in_stock": "retailer showed the package available on the retrieval date (Costco warehouse rows: at the Washington DC warehouse)",
+    "meets_spec": "see spec",
+    "primary": "see primary_rule",
+    "retailer_unit_price": "the retailer's own unit price text; the script checks it against price_usd/package_g (2% tolerance)",
+    "how_read": "method",
+    "source_file": "raw file under data/prices/ that holds the price",
+    "notes": "labels, stock and caveats"
+  },
+  "files": {
+    "raw/costco/costco_browser_capture_2026-09-23.json": {
+      "url": "https://www.costco.com/p/-/<slug>/<item> (see page_url per product)",
+      "sha256": "b627e444cb99aa5fe420de9340e930b51ddbcb57596f56ec1738cfb8c7c69e16",
+      "bytes": 13462,
+      "fetched_at": "2026-09-24T02:53:51Z/2026-09-24T02:56:41Z",
+      "method": "documented manual record: fields read in a browser session and transcribed (see 'what' in the file)"
+    },
+    "raw/nuts_com/dry-roasted-almonds-unsalted.json": {
+      "url": "https://nuts.com/products/dry-roasted-almonds-unsalted.js",
+      "sha256": "b6cc542bd295afe4357c1eff872e53b8e2d26cb3c0071bf7b387170e6c8b61b0",
+      "bytes": 17942,
+      "fetched_at": "2026-09-24T03:08:44Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/dry-roasted-cashews-unsalted.json": {
+      "url": "https://nuts.com/products/dry-roasted-cashews-unsalted.js",
+      "sha256": "ba00725799ea59557b8a9456ad1ab5c467790f0050f776476aa0367daff437a5",
+      "bytes": 17355,
+      "fetched_at": "2026-09-24T03:08:48Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/dry-roasted-peanuts-unsalted.json": {
+      "url": "https://nuts.com/products/dry-roasted-peanuts-unsalted.js",
+      "sha256": "61dc9c287e21a5907628ed152b2a265c94347c9429216cd73460a1a04d926cee",
+      "bytes": 14801,
+      "fetched_at": "2026-09-24T03:08:49Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/dry-roasted-pistachios-unsalted-no-shell.json": {
+      "url": "https://nuts.com/products/dry-roasted-pistachios-unsalted-no-shell.js",
+      "sha256": "9d6e37dbb6933bba78934ff8ad1b8ce3cafbf216fb72d352db43e3ca5b6784e0",
+      "bytes": 21508,
+      "fetched_at": "2026-09-24T03:08:45Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/english-walnut-halves-raw-no-shell.json": {
+      "url": "https://nuts.com/products/english-walnut-halves-raw-no-shell.js",
+      "sha256": "048dbaf11aa6bf0e86e78c89eceda54eaa596d4ca7ea2b736d8ec8c989da932e",
+      "bytes": 16125,
+      "fetched_at": "2026-09-24T03:08:42Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/english-walnuts-raw-no-shell.json": {
+      "url": "https://nuts.com/products/english-walnuts-raw-no-shell.js",
+      "sha256": "5049a924b784e3942ef4f0af96104c6e70af2290450809be175ef9cd04605fad",
+      "bytes": 22307,
+      "fetched_at": "2026-09-24T03:08:42Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/georgia-pecans-raw-no-shell.json": {
+      "url": "https://nuts.com/products/georgia-pecans-raw-no-shell.js",
+      "sha256": "75da1219a9368683a83fd7d10662b28d89ea9d0510d940781c99eff76661469c",
+      "bytes": 22628,
+      "fetched_at": "2026-09-24T03:08:46Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/raw-almonds-no-shell.json": {
+      "url": "https://nuts.com/products/raw-almonds-no-shell.js",
+      "sha256": "82eb02970df823b63ed63e144e6cd61f9d52a820e99004e124a70e85364c9a33",
+      "bytes": 22045,
+      "fetched_at": "2026-09-24T03:08:43Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/raw-cashews.json": {
+      "url": "https://nuts.com/products/raw-cashews.js",
+      "sha256": "56f6a6816bd21d91cd7eb001e84561b08b12407e6b9ceff339cd4286cce199fa",
+      "bytes": 23698,
+      "fetched_at": "2026-09-24T03:08:48Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/raw-hazelnuts-filberts-no-shell.json": {
+      "url": "https://nuts.com/products/raw-hazelnuts-filberts-no-shell.js",
+      "sha256": "636104dc43a4400b1f82a7392a7f5b0783fd570f8e6dcd1f6a1568624e02b1bc",
+      "bytes": 20101,
+      "fetched_at": "2026-09-24T03:08:47Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/raw-macadamia-nuts.json": {
+      "url": "https://nuts.com/products/raw-macadamia-nuts.js",
+      "sha256": "29badfc17f27723dab99180bd4d44e8f49352a8000ef69c9e1d53ba9e5b52fe3",
+      "bytes": 25745,
+      "fetched_at": "2026-09-24T03:08:46Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/raw-pistachios-no-shell.json": {
+      "url": "https://nuts.com/products/raw-pistachios-no-shell.js",
+      "sha256": "4a96a41df9bec974833d4f6e4022d1c09487360a6f6933d0b9cbb1a768e38862",
+      "bytes": 18257,
+      "fetched_at": "2026-09-24T03:08:44Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/nuts_com/raw-spanish-peanuts.json": {
+      "url": "https://nuts.com/products/raw-spanish-peanuts.js",
+      "sha256": "e278b86a69d73c52a87fbc062b248a1b856b7e6753eccf969c9540093b17bb96",
+      "bytes": 18001,
+      "fetched_at": "2026-09-24T03:08:49Z",
+      "method": "HTTP GET (Shopify product JSON)"
+    },
+    "raw/target/target_search_listing_2026-09-23.json": {
+      "url": "https://www.target.com/s?searchTerm=good+and+gather+walnuts",
+      "sha256": "33da061edf605846cd5e521b03446561145d379b4382cc507c6f5040cb0d8e74",
+      "bytes": 2432,
+      "fetched_at": "2026-09-24T02:58Z (approximate)",
+      "method": "documented manual record: fields read in a browser session and transcribed (see 'what' in the file)"
+    },
+    "raw/walmart/ip_10448400.html.gz": {
+      "url": "https://www.walmart.com/ip/10448400",
+      "sha256": "4dc4e989cad8fb6bffd537c1bf3d30ef035ebdbee40ac0637a3a759cd7f1d81a",
+      "bytes": 114932,
+      "fetched_at": "2026-09-24T03:00:19Z",
+      "html_sha256": "81a471696890dc549f1eb651285d5a18eab1c40a4822020fc65e89796b06fe9f",
+      "html_bytes": 521590,
+      "method": "HTTP GET by curl (same user agent as the script) while testing access on 2026-09-23; page HTML stored gzipped; fields from __NEXT_DATA__. A scripted run minutes later was refused for all 15 pages."
+    },
+    "raw/walmart/ip_333053298.html.gz": {
+      "url": "https://www.walmart.com/ip/333053298",
+      "sha256": "3e6230a33133a24b7db46ea467ff4dcaf230c69940b4ac9c876771a650246a8e",
+      "bytes": 107347,
+      "fetched_at": "2026-09-24T03:00:34Z",
+      "html_sha256": "45970ec81a3de67d29378d828ba8be081593f531465f98d706b51f1b95d44c48",
+      "html_bytes": 506075,
+      "method": "HTTP GET by curl (same user agent as the script) while testing access on 2026-09-23; page HTML stored gzipped; fields from __NEXT_DATA__. A scripted run minutes later was refused for all 15 pages."
+    },
+    "raw/walmart/ip_604801898.html.gz": {
+      "url": "https://www.walmart.com/ip/604801898",
+      "sha256": "d3a1899eab8d9c5a0048d89f5f79045dc13d12bcbe410fd7ff910351ab79e22a",
+      "bytes": 110552,
+      "fetched_at": "2026-09-24T03:00:39Z",
+      "html_sha256": "f82712ec251a40c9fa1b103bcb3a6ca33fd4e65fccdc4aaeafcf7b268bcb19bc",
+      "html_bytes": 524317,
+      "method": "HTTP GET by curl (same user agent as the script) while testing access on 2026-09-23; page HTML stored gzipped; fields from __NEXT_DATA__. A scripted run minutes later was refused for all 15 pages."
+    },
+    "raw/walmart/walmart_browser_capture_2026-09-23.json": {
+      "url": "https://www.walmart.com/ip/<usItemId> (see page_url per product)",
+      "sha256": "c18fdb6ac65f335e878683a7727b301532565c5f7b50e5ebea79a53f2ac1d1ac",
+      "bytes": 14626,
+      "fetched_at": "2026-09-24T02:50:32Z/2026-09-24T02:52:42Z",
+      "method": "documented manual record: fields read in a browser session and transcribed (see 'what' in the file)"
+    }
+  },
+  "derived": {
+    "prices.csv": {
+      "sha256": "a3b7c625ba16a157ac5130d6b1915711b4e916a571f535ba4d5f329e7d77dc09",
+      "bytes": 51106,
+      "generated_by": "scripts/fetch_prices.py"
+    },
+    "prices_by_nut.csv": {
+      "sha256": "4810ee5926941f4c521dbb1f48f2a5972d259679abd07a515643591116213697",
+      "bytes": 1439,
+      "generated_by": "scripts/fetch_prices.py"
+    }
+  },
+  "unused_files": {
+    "raw/walmart/walmart_search_raw_almonds_curl.html.gz": {
+      "sha256": "fe70e0387befd454ca51a42dd5de0527f27a78c96c0f4558e037b4ccea82fc2e",
+      "bytes": 124549,
+      "note": "Left by an earlier cut-off run of this builder (Walmart search page for almonds, fetched by curl on 2026-09-23). Not used for any price."
+    }
+  },
+  "cross_checks": {
+    "walmart_fetch_vs_browser_capture": [
+      {
+        "usItemId": "604801898",
+        "fetch_price": 12.97,
+        "browser_price": 12.97,
+        "browser_captured_at_utc": "2026-09-24T02:51:36.794Z",
+        "fetched_at": "2026-09-24T03:00:39Z",
+        "match": true
+      },
+      {
+        "usItemId": "10448400",
+        "fetch_price": 2.58,
+        "browser_price": 2.58,
+        "browser_captured_at_utc": "2026-09-24T02:52:37.444Z",
+        "fetched_at": "2026-09-24T03:00:19Z",
+        "match": true
+      },
+      {
+        "usItemId": "333053298",
+        "fetch_price": 3.24,
+        "browser_price": 3.24,
+        "browser_captured_at_utc": "2026-09-24T02:52:42.874Z",
+        "fetched_at": "2026-09-24T03:00:34Z",
+        "match": true
+      }
+    ],
+    "old_repo_nuts_com_april_2026": {
+      "source": "origin/master:src/whatnut/data/raw/retail_prices/retail_prices.csv (fallback reference only; not used)",
+      "rows": [
+        {
+          "nut": "walnut",
+          "product_name": "English Walnut Halves (Raw, No Shell)",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "453.6",
+          "package_price_usd": "13.49",
+          "price_per_kg_usd": "29.74"
+        },
+        {
+          "nut": "almond",
+          "product_name": "Raw Almonds (No Shell)",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "453.6",
+          "package_price_usd": "10.49",
+          "price_per_kg_usd": "23.13"
+        },
+        {
+          "nut": "pistachio",
+          "product_name": "Raw Pistachios (No Shell)",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "226.8",
+          "package_price_usd": "9.99",
+          "price_per_kg_usd": "44.06"
+        },
+        {
+          "nut": "pecan",
+          "product_name": "Georgia Pecans (Raw, No Shell)",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "396.9",
+          "package_price_usd": "14.49",
+          "price_per_kg_usd": "36.51"
+        },
+        {
+          "nut": "macadamia",
+          "product_name": "Raw Macadamia Nuts",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "226.8",
+          "package_price_usd": "15.49",
+          "price_per_kg_usd": "68.30"
+        },
+        {
+          "nut": "peanut",
+          "product_name": "Raw Spanish Peanuts",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "453.6",
+          "package_price_usd": "5.49",
+          "price_per_kg_usd": "12.11"
+        },
+        {
+          "nut": "hazelnut",
+          "product_name": "Raw Hazelnuts / Filberts (No Shell)",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "453.6",
+          "package_price_usd": "14.49",
+          "price_per_kg_usd": "31.95"
+        },
+        {
+          "nut": "cashew",
+          "product_name": "Raw Cashews",
+          "retrieval_date": "2026-04-19",
+          "package_size_g": "453.6",
+          "package_price_usd": "15.99",
+          "price_per_kg_usd": "35.25"
+        }
+      ]
+    }
+  }
+}

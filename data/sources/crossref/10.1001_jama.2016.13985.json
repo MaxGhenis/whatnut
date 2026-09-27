@@ -1,0 +1,262 @@
+{
+ "DOI": "10.1001/jama.2016.13985",
+ "ISSN": [
+  "0098-7484"
+ ],
+ "URL": "https://doi.org/10.1001/jama.2016.13985",
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "TIMI Study Group, Division of Cardiovascular Medicine, Brigham and Women\u2019s Hospital, Harvard Medical School, Boston, Massachusetts"
+    }
+   ],
+   "family": "Silverman",
+   "given": "Michael G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Division of Cardiovascular Medicine, Wayne State University School of Medicine, Detroit, Michigan"
+    }
+   ],
+   "family": "Ference",
+   "given": "Brian A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "TIMI Study Group, Division of Cardiovascular Medicine, Brigham and Women\u2019s Hospital, Harvard Medical School, Boston, Massachusetts"
+    }
+   ],
+   "family": "Im",
+   "given": "Kyungah",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "TIMI Study Group, Division of Cardiovascular Medicine, Brigham and Women\u2019s Hospital, Harvard Medical School, Boston, Massachusetts"
+    }
+   ],
+   "family": "Wiviott",
+   "given": "Stephen D.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "TIMI Study Group, Division of Cardiovascular Medicine, Brigham and Women\u2019s Hospital, Harvard Medical School, Boston, Massachusetts"
+    }
+   ],
+   "family": "Giugliano",
+   "given": "Robert P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Center for Human Nutrition, Department of Internal Medicine, University of Texas Southwestern Medical Center, Dallas"
+    }
+   ],
+   "family": "Grundy",
+   "given": "Scott M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "TIMI Study Group, Division of Cardiovascular Medicine, Brigham and Women\u2019s Hospital, Harvard Medical School, Boston, Massachusetts"
+    }
+   ],
+   "family": "Braunwald",
+   "given": "Eugene",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "TIMI Study Group, Division of Cardiovascular Medicine, Brigham and Women\u2019s Hospital, Harvard Medical School, Boston, Massachusetts"
+    }
+   ],
+   "family": "Sabatine",
+   "given": "Marc S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "JAMA"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    9,
+    27
+   ]
+  ],
+  "date-time": "2016-09-27T12:32:26Z",
+  "timestamp": 1474979546000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2016,
+    12,
+    15
+   ]
+  ],
+  "date-time": "2016-12-15T12:22:56Z",
+  "timestamp": 1481804576000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    23
+   ]
+  ],
+  "date-time": "2026-09-23T19:06:47Z",
+  "timestamp": 1790190407554,
+  "version": "4.1.0"
+ },
+ "is-referenced-by-count": 1342,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0098-7484"
+  }
+ ],
+ "issue": "12",
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    9,
+    27
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "12",
+  "published-print": {
+   "date-parts": [
+    [
+     2016,
+     9,
+     27
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://jamanetwork.com/journals/jama/fullarticle/2556125",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "10",
+ "original-title": [],
+ "page": "1289",
+ "prefix": "10.1001",
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    9,
+    27
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    9,
+    27
+   ]
+  ]
+ },
+ "publisher": "American Medical Association (AMA)",
+ "reference-count": 0,
+ "references-count": 0,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "http://jama.jamanetwork.com/article.aspx?doi=10.1001/jama.2016.13985"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "JAMA"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [
+  "A Systematic Review and Meta-analysis"
+ ],
+ "title": [
+  "Association Between Lowering LDL-C and Cardiovascular Risk Reduction Among Different Therapeutic Interventions"
+ ],
+ "type": "journal-article",
+ "volume": "316"
+}

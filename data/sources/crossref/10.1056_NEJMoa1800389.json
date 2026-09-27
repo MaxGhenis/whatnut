@@ -1,0 +1,1266 @@
+{
+ "DOI": "10.1056/nejmoa1800389",
+ "ISSN": [
+  "0028-4793",
+  "1533-4406"
+ ],
+ "URL": "https://doi.org/10.1056/nejmoa1800389",
+ "alternative-id": [
+  "10.1056/NEJMoa1800389"
+ ],
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Estruch",
+   "given": "Ram\u00f3n",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Ros",
+   "given": "Emilio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Salas-Salvad\u00f3",
+   "given": "Jordi",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Covas",
+   "given": "Maria-Isabel",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Corella",
+   "given": "Dolores",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Ar\u00f3s",
+   "given": "Fernando",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "G\u00f3mez-Gracia",
+   "given": "Enrique",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Ruiz-Guti\u00e9rrez",
+   "given": "Valentina",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Fiol",
+   "given": "Miquel",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Lapetra",
+   "given": "Jos\u00e9",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Lamuela-Raventos",
+   "given": "Rosa M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Serra-Majem",
+   "given": "Llu\u00eds",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Pint\u00f3",
+   "given": "Xavier",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Basora",
+   "given": "Josep",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Mu\u00f1oz",
+   "given": "Miguel A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Sorl\u00ed",
+   "given": "Jos\u00e9 V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Mart\u00ednez",
+   "given": "J. Alfredo",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Fit\u00f3",
+   "given": "Montserrat",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Gea",
+   "given": "Alfredo",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Hern\u00e1n",
+   "given": "Miguel A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the PREDIMED (Prevenci\u00f3n con Dieta Mediterr\u00e1nea) Network (RD 06/0045) (R.E., J.S.-S., F.A., E.G.-G., V.R.-G., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M.A.M.-G.) and Centro de Investigaci\u00f3n Biom\u00e9dica en Red de Fisiopatolog\u00eda de la Obesidad y Nutrici\u00f3n (R.E., E.R., J.S.-S., M.-I.C., D.C., F.A., M. Fiol, J.L., R.M.L.-R., L.S.-M., X.P., J.B., J.V.S., J.A.M., M. Fit\u00f3, A.G., M.A.M.-G.), Instituto de Salud Carlos III, Madrid, the Department of Internal Medicine, Hospital Clinic (R.E.), the..."
+    }
+   ],
+   "family": "Mart\u00ednez-Gonz\u00e1lez",
+   "given": "Miguel A.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "New England Journal of Medicine"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    6,
+    13
+   ]
+  ],
+  "date-time": "2018-06-13T17:50:29Z",
+  "timestamp": 1528912229000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    4
+   ]
+  ],
+  "date-time": "2025-07-04T23:27:51Z",
+  "timestamp": 1751671671000
+ },
+ "funder": [
+  {
+   "DOI": "10.13039/501100002809",
+   "award": [
+    "Public Health Division of the Department of Health"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "Public Health Division of the Department of Health"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100002809",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Public Health Division of the Department of Health of the Autonomous Government of Catalonia"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "CIBERobn"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "CIBERobn"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "CP06/00100"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "CP06/00100"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "P11/02505"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "P11/02505"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI 05/2584"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI 05/2584"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI 07/0473"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI 07/0473"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI04/0954"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI04/0954"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI07/0240"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI07/0240"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI07/0954"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI07/0954"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI07/1138"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI07/1138"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI10/01407"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI10/01407"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI10/02658"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI10/02658"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "PI11/01647"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI11/01647"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "RTIC G03/140"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "RTIC G03/140"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100004587",
+   "award": [
+    "RTIC RD06/0045"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "RTIC RD06/0045"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004587",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Instituto de Salud Carlos III"
+  },
+  {
+   "DOI": "10.13039/501100003425",
+   "award": [
+    "P27/2011"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "P27/2011"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003425",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Departamento de Educaci\u00f3n, Gobierno de Navarra"
+  },
+  {
+   "DOI": "10.13039/501100003359",
+   "award": [
+    "ACOMP06109"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "ACOMP06109"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003359",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Generalitat Valenciana"
+  },
+  {
+   "DOI": "10.13039/501100003359",
+   "award": [
+    "CS2010-AP-111"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "CS2010-AP-111"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003359",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Generalitat Valenciana"
+  },
+  {
+   "DOI": "10.13039/501100003359",
+   "award": [
+    "CS2011-AP-042"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "CS2011-AP-042"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003359",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Generalitat Valenciana"
+  },
+  {
+   "DOI": "10.13039/501100003359",
+   "award": [
+    "GVACOMP2010-181"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "GVACOMP2010-181"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003359",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Generalitat Valenciana"
+  },
+  {
+   "DOI": "10.13039/501100003359",
+   "award": [
+    "GVACOMP2011-151"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "GVACOMP2011-151"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003359",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Generalitat Valenciana"
+  },
+  {
+   "DOI": "10.13039/100006093",
+   "award": [
+    "ME-1503-28119"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "ME-1503-28119"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100006093",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Patient-Centered Outcomes Research Institute"
+  },
+  {
+   "DOI": "10.13039/501100004837",
+   "award": [
+    "AGL-2009-13906-C02"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "AGL-2009-13906-C02"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004837",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Ministerio de Ciencia e Innovaci\u00f3n"
+  },
+  {
+   "DOI": "10.13039/501100004837",
+   "award": [
+    "AGL2010-22319-C03"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "AGL2010-22319-C03"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100004837",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Ministerio de Ciencia e Innovaci\u00f3n"
+  },
+  {
+   "DOI": "10.13039/501100005884",
+   "award": [
+    "CNIC 06/2007"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "CNIC 06/2007"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100005884",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Centro Nacional de Investigaciones Cardiovasculares"
+  },
+  {
+   "award": [
+    "PI0105/2007"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PI0105/2007"
+     ]
+    }
+   ],
+   "name": "Consejer\u00eda de Salud de la Junta de Andaluc\u00eda"
+  },
+  {
+   "DOI": "10.13039/501100003350",
+   "award": [
+    "Fundaci\u00f3n Mapfre 2010"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "Fundaci\u00f3n Mapfre 2010"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100003350",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Fundaci\u00f3n Mapfre"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    24
+   ]
+  ],
+  "date-time": "2026-09-24T01:17:58Z",
+  "timestamp": 1790212678280,
+  "version": "4.1.0"
+ },
+ "is-referenced-by-count": 3143,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0028-4793"
+  },
+  {
+   "type": "electronic",
+   "value": "1533-4406"
+  }
+ ],
+ "issue": "25",
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    6,
+    21
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "25",
+  "published-print": {
+   "date-parts": [
+    [
+     2018,
+     6,
+     21
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "http://www.nejmgroup.org/legal/terms-of-use.htm",
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      6,
+      21
+     ]
+    ],
+    "date-time": "2018-06-21T00:00:00Z",
+    "timestamp": 1529539200000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "http://www.nejm.org/doi/pdf/10.1056/NEJMoa1800389",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "150",
+ "original-title": [],
+ "prefix": "10.1056",
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    6,
+    21
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    6,
+    21
+   ]
+  ]
+ },
+ "publisher": "Massachusetts Medical Society",
+ "reference": [
+  {
+   "DOI": "10.1093/ajcn/61.6.1402S",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_2_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.2010.29673",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_3_2"
+  },
+  {
+   "DOI": "10.3390/nu9111226",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_4_2"
+  },
+  {
+   "DOI": "10.1161/01.CIR.99.6.779",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_5_2"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2009.38",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_6_2"
+  },
+  {
+   "DOI": "10.1001/jama.292.12.1440",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_7_2"
+  },
+  {
+   "DOI": "10.1093/ajcn/82.5.964",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_8_2"
+  },
+  {
+   "DOI": "10.7326/0003-4819-145-1-200607040-00004",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_9_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa0708681",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_10_2"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1200303",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_11_2"
+  },
+  {
+   "DOI": "10.1111/anae.13938",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_12_2"
+  },
+  {
+   "DOI": "10.1056/NEJMc1806491",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_13_2"
+  },
+  {
+   "DOI": "10.1093/ije/dyq250",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_14_2"
+  },
+  {
+   "key": "e_1_3_5_15_2",
+   "unstructured": "PREDIMED home page (http://www.predimed.es/)."
+  },
+  {
+   "DOI": "10.1016/j.jada.2008.04.011",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_16_2"
+  },
+  {
+   "DOI": "10.3945/jn.110.135566",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_17_2"
+  },
+  {
+   "DOI": "10.1017/S0007114509993837",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_18_2"
+  },
+  {
+   "DOI": "10.1001/archinte.168.22.2449",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_19_2"
+  },
+  {
+   "DOI": "10.1001/jama.288.23.2998",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_20_2"
+  },
+  {
+   "DOI": "10.2307/2530245",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_21_2"
+  },
+  {
+   "DOI": "10.7326/0003-4819-159-8-201310150-00709",
+   "article-title": "Randomized trials analyzed as observational studies.",
+   "author": "Hern\u00e1n MA",
+   "doi-asserted-by": "crossref",
+   "first-page": "560",
+   "journal-title": "Ann Intern Med",
+   "key": "e_1_3_5_22_2",
+   "unstructured": "Hern\u00e1n MA, Hern\u00e1ndez-D\u00edaz S, Robins JM. Randomized trials analyzed as observational studies. Ann Intern Med 2013;159:560-562.24018844",
+   "volume": "159",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1056/NEJMsm1605385",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_23_2"
+  },
+  {
+   "DOI": "10.1097/EDE.0b013e3181df1b69",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_24_2"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.107.699579",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_25_2"
+  },
+  {
+   "DOI": "10.1161/01.CIR.103.13.1823",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_26_2"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(94)92580-1",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_27_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.110.000521",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_28_2"
+  },
+  {
+   "DOI": "10.1212/WNL.0b013e318220abeb",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_29_2"
+  },
+  {
+   "DOI": "10.1017/S000711451200298X",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_30_2"
+  },
+  {
+   "DOI": "10.1093/jn/138.9.1746S",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_31_2"
+  },
+  {
+   "DOI": "10.1007/s11883-010-0132-5",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_32_2"
+  },
+  {
+   "DOI": "10.1136/bmj.b2337",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_33_2"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.024216",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_3_5_34_2"
+  }
+ ],
+ "reference-count": 33,
+ "references-count": 33,
+ "relation": {
+  "has-review": [
+   {
+    "asserted-by": "object",
+    "id": "10.3410/f.733441386.793550939",
+    "id-type": "doi"
+   },
+   {
+    "asserted-by": "object",
+    "id": "10.3410/f.733441386.793552478",
+    "id-type": "doi"
+   }
+  ]
+ },
+ "resource": {
+  "primary": {
+   "URL": "http://www.nejm.org/doi/10.1056/NEJMoa1800389"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "N Engl J Med"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts"
+ ],
+ "type": "journal-article",
+ "volume": "378"
+}

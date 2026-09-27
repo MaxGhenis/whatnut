@@ -28,6 +28,7 @@ ENV/
 # Testing
 .coverage
 .pytest_cache/
+.hypothesis/
 htmlcov/
 
 # IDE
@@ -44,7 +45,40 @@ htmlcov/
 Thumbs.db
 .vercel
 
-# Vercel + docs build artifacts
-public/
-docs/exports/
-docs/_build/
+# Vercel output: only the wrapper page is committed; the manuscript render
+# under public/whatnut/web/ is rebuilt by paper/render_paper.py and on Vercel.
+/public/*
+!/public/whatnut/
+/public/whatnut/*
+!/public/whatnut/index.html
+
+# Quarto build output (paper/index.qmd itself is generated AND committed)
+paper/_build/
+paper/.quarto/
+paper/index_files/
+paper/index.tex
+paper/index.typ
+paper/*.log
+
+# Third-party source documents are re-fetchable and pinned by sha256 in each
+# folder's MANIFEST.json; the repo keeps manifests, Crossref metadata and the
+# parsed tables the pipeline reads, not the documents themselves.
+data/**/raw/*.pdf
+data/**/raw/*.html
+data/**/raw/*.htm
+data/**/raw/*.xml
+data/**/raw/*.txt
+data/**/raw/*.zip
+data/**/raw/*.gz
+data/**/raw/*.png
+data/sources/crossref/texts/
+data/sources/crossref/primary/
+# Retail prices are the exception: a price is one day's reading, and a later
+# fetch reads that day's price, so the captures in data/prices/raw/ cannot be
+# fetched again. Every capture a price was read from is committed: the
+# nuts.com product JSON, the Walmart, Costco and Target browser records, and
+# the three Walmart pages Walmart served to a script before it blocked the
+# rest (raw/walmart/ip_*.html.gz). Only the unused Walmart search page stays
+# out.
+data/prices/raw/walmart/walmart_search_*.html.gz
+_build/

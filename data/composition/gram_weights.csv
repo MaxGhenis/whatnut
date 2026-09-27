@@ -1,0 +1,43 @@
+key,fdc_id,food_description,measure_id,rank,description,amount,modifier,measure_unit,grams,data_points
+walnut,170187,"Nuts, walnuts, english",86201,1,"1.0 cup, chopped",1.0,"cup, chopped",undetermined,117.0,12
+walnut,170187,"Nuts, walnuts, english",86202,2,"1.0 cup, ground",1.0,"cup, ground",undetermined,80.0,
+walnut,170187,"Nuts, walnuts, english",86203,3,"1.0 cup, in shell, edible yield (7 nuts)",1.0,"cup, in shell, edible yield (7 nuts)",undetermined,28.0,
+walnut,170187,"Nuts, walnuts, english",86204,4,1.0 cup shelled (50 halves),1.0,cup shelled (50 halves),undetermined,100.0,
+walnut,170187,"Nuts, walnuts, english",86205,5,1.0 cup pieces or chips,1.0,cup pieces or chips,undetermined,120.0,
+walnut,170187,"Nuts, walnuts, english",86206,6,1.0 oz (14 halves),1.0,oz (14 halves),undetermined,28.35,
+almond,170567,"Nuts, almonds",86863,1,"1.0 cup, whole",1.0,"cup, whole",undetermined,143.0,23
+almond,170567,"Nuts, almonds",86864,2,"1.0 cup, sliced",1.0,"cup, sliced",undetermined,92.0,4
+almond,170567,"Nuts, almonds",86865,3,"1.0 cup, slivered",1.0,"cup, slivered",undetermined,108.0,
+almond,170567,"Nuts, almonds",86866,4,"1.0 cup, ground",1.0,"cup, ground",undetermined,95.0,
+almond,170567,"Nuts, almonds",86867,5,1.0 oz (23 whole kernels),1.0,oz (23 whole kernels),undetermined,28.35,
+almond,170567,"Nuts, almonds",86868,6,1.0 almond,1.0,almond,undetermined,1.2,
+almond_blanched,170568,"Nuts, almonds, blanched",86869,1,1.0 cup whole kernels,1.0,cup whole kernels,undetermined,145.0,
+almond_blanched,170568,"Nuts, almonds, blanched",86870,2,1.0 tbsp,1.0,tbsp,undetermined,9.1,
+almond_blanched,170568,"Nuts, almonds, blanched",86871,3,1.0 oz,1.0,oz,undetermined,28.35,
+pistachio,170184,"Nuts, pistachio nuts, raw",86192,1,1.0 cup,1.0,cup,undetermined,123.0,
+pistachio,170184,"Nuts, pistachio nuts, raw",86193,2,1.0 oz (49 kernels),1.0,oz (49 kernels),undetermined,28.35,
+pistachio,170184,"Nuts, pistachio nuts, raw",86194,3,1.0 kernel,1.0,kernel,undetermined,0.7,
+pecan,170182,"Nuts, pecans",86188,1,"1.0 cup, chopped",1.0,"cup, chopped",undetermined,109.0,24
+pecan,170182,"Nuts, pecans",86189,2,"1.0 cup, halves",1.0,"cup, halves",undetermined,99.0,18
+pecan,170182,"Nuts, pecans",86190,3,1.0 oz (19 halves),1.0,oz (19 halves),undetermined,28.35,
+macadamia,170178,"Nuts, macadamia nuts, raw",86182,1,"1.0 cup, whole or halves",1.0,"cup, whole or halves",undetermined,134.0,
+macadamia,170178,"Nuts, macadamia nuts, raw",86183,2,1.0 oz (10-12 kernels),1.0,oz (10-12 kernels),undetermined,28.35,
+hazelnut,170581,"Nuts, hazelnuts or filberts",86896,1,"1.0 cup, chopped",1.0,"cup, chopped",undetermined,115.0,
+hazelnut,170581,"Nuts, hazelnuts or filberts",86897,2,"1.0 cup, ground",1.0,"cup, ground",undetermined,75.0,
+hazelnut,170581,"Nuts, hazelnuts or filberts",86898,3,"1.0 cup, whole",1.0,"cup, whole",undetermined,135.0,
+hazelnut,170581,"Nuts, hazelnuts or filberts",86899,4,1.0 oz (21 whole kernels),1.0,oz (21 whole kernels),undetermined,28.35,
+hazelnut,170581,"Nuts, hazelnuts or filberts",86900,5,10.0 nuts,10.0,nuts,undetermined,14.0,
+cashew,170162,"Nuts, cashew nuts, raw",86155,1,1.0 oz,1.0,oz,undetermined,28.35,
+peanut,172430,"Peanuts, all types, raw",90608,1,1.0 oz,1.0,oz,undetermined,28.35,3
+peanut,172430,"Peanuts, all types, raw",90609,2,1.0 cup,1.0,cup,undetermined,146.0,3
+brazil_nut,170569,"Nuts, brazilnuts, dried, unblanched",86872,1,"1.0 cup, whole",1.0,"cup, whole",undetermined,133.0,15
+brazil_nut,170569,"Nuts, brazilnuts, dried, unblanched",86873,2,1.0 kernel,1.0,kernel,undetermined,5.0,59
+brazil_nut,170569,"Nuts, brazilnuts, dried, unblanched",86874,3,1.0 oz (6 kernels),1.0,oz (6 kernels),undetermined,28.35,
+flaxseed,169414,"Seeds, flaxseed",84816,1,"1.0 tbsp, whole",1.0,"tbsp, whole",undetermined,10.3,6
+flaxseed,169414,"Seeds, flaxseed",84817,2,"1.0 cup, whole",1.0,"cup, whole",undetermined,168.0,9
+flaxseed,169414,"Seeds, flaxseed",84818,3,"1.0 tbsp, ground",1.0,"tbsp, ground",undetermined,7.0,6
+flaxseed,169414,"Seeds, flaxseed",84819,4,"1.0 tsp, whole",1.0,"tsp, whole",undetermined,3.4,
+flaxseed,169414,"Seeds, flaxseed",84820,5,"1.0 tsp, ground",1.0,"tsp, ground",undetermined,2.5,
+chia,170554,"Seeds, chia seeds, dried",86844,1,1.0 oz,1.0,oz,undetermined,28.35,
+chia_fndds,2707590,Chia seeds,298766,1,1 cup,,10205,undetermined,168,
+chia_fndds,2707590,Chia seeds,298767,2,Quantity not specified,,90000,undetermined,9,

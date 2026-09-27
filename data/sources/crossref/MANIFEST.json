@@ -1,0 +1,485 @@
+{
+ "files": {
+  "10.1001_jama.2008.864.json": {
+   "bytes": 8463,
+   "fetched_at": "2026-09-24T11:51:46Z",
+   "sha256": "c1859119401c4f754c337d3d9b92de01730ccd811569a10415e5589e643ac58e",
+   "url": "https://api.crossref.org/works/10.1001/jama.2008.864"
+  },
+  "10.1001_jama.2016.13985.json": {
+   "bytes": 4873,
+   "fetched_at": "2026-09-24T11:51:43Z",
+   "sha256": "ef42839840064ddff98384b20f6bd455913dfaa9649238c85e7acded2ebde82a",
+   "url": "https://api.crossref.org/works/10.1001/jama.2016.13985"
+  },
+  "10.1001_jamainternmed.2014.8347.json": {
+   "bytes": 6357,
+   "fetched_at": "2026-09-24T02:30:10Z",
+   "sha256": "40353d3449f631283fc3578ae65b4d89985f634b88f52cb22252746dc8843a70",
+   "url": "https://api.crossref.org/works/10.1001/jamainternmed.2014.8347"
+  },
+  "10.1002_14651858.CD003177.pub5.json": {
+   "bytes": 257209,
+   "fetched_at": "2026-09-24T02:55:33Z",
+   "sha256": "5d775ba44c9d819f8a1de2c79dce6af7b5b22aebb119c6c7a8741cda7c956c34",
+   "url": "https://api.crossref.org/works/10.1002/14651858.CD003177.pub5"
+  },
+  "10.1007_s11746-000-0038-0.json": {
+   "bytes": 7172,
+   "fetched_at": "2026-09-24T02:30:16Z",
+   "sha256": "20088e5d0dc68d5007d91fb80b7f9dd4da5ff7449dd3ee9718c9254c625177b2",
+   "url": "https://api.crossref.org/works/10.1007/s11746-000-0038-0"
+  },
+  "10.1016_S0140-6736(10)61350-5.json": {
+   "bytes": 23621,
+   "fetched_at": "2026-09-24T02:55:31Z",
+   "sha256": "0827a52291f76d9feae2e8a19dc2d7507393585bff70d198d0fbddfdd7dee4ad",
+   "url": "https://api.crossref.org/works/10.1016/S0140-6736(10)61350-5"
+  },
+  "10.1016_j.acvd.2025.08.010.json": {
+   "bytes": 40936,
+   "fetched_at": "2026-09-24T11:51:43Z",
+   "sha256": "99a244e7e3e4b15061b44cd123d23cc522c010adec4b261a29bf596c92dcdb9c",
+   "url": "https://api.crossref.org/works/10.1016/j.acvd.2025.08.010"
+  },
+  "10.1016_j.ctim.2020.102387.json": {
+   "bytes": 19670,
+   "fetched_at": "2026-09-24T02:30:14Z",
+   "sha256": "e7912930122a195e036fb4f706cd8199037f33fabcf755c97421ef2792d61c8a",
+   "url": "https://api.crossref.org/works/10.1016/j.ctim.2020.102387"
+  },
+  "10.1016_j.foodchem.2015.02.017.json": {
+   "bytes": 19894,
+   "fetched_at": "2026-09-24T02:30:16Z",
+   "sha256": "8415ea93f573bde7a709cac5934a08cb918fa4e82ccb4f3f9d320ac1eba8feb3",
+   "url": "https://api.crossref.org/works/10.1016/j.foodchem.2015.02.017"
+  },
+  "10.1016_j.jacc.2017.09.035.json": {
+   "bytes": 18805,
+   "fetched_at": "2026-09-24T02:30:09Z",
+   "sha256": "7e16b7b192b10038328358f1e5ed2d9bfd7d1236315cae21094b2c20abda06b6",
+   "url": "https://api.crossref.org/works/10.1016/j.jacc.2017.09.035"
+  },
+  "10.1017_jns.2023.39.json": {
+   "bytes": 14543,
+   "fetched_at": "2026-09-24T02:30:14Z",
+   "sha256": "d8eb46aca22cb81d3538b906d86f1696a56c00cb89ecceee7de7b2dcf12b2462",
+   "url": "https://api.crossref.org/works/10.1017/jns.2023.39"
+  },
+  "10.1038_s41591-022-01973-2.json": {
+   "bytes": 33512,
+   "fetched_at": "2026-09-24T03:42:56Z",
+   "sha256": "3bcbe50831638beec16291ff189e2107cb2cc3c2749535aabff3b7a0506c316d",
+   "url": "https://api.crossref.org/works/10.1038/s41591-022-01973-2"
+  },
+  "10.1038_s41598-024-85070-z.json": {
+   "bytes": 34964,
+   "fetched_at": "2026-09-24T02:30:11Z",
+   "sha256": "a6fda00babec8ef3e0e5605ea3e996ec7e06d60f396ca8b9bdb8503f10d027f2",
+   "url": "https://api.crossref.org/works/10.1038/s41598-024-85070-z"
+  },
+  "10.1056_NEJMoa1800389.json": {
+   "bytes": 32627,
+   "fetched_at": "2026-09-24T02:55:32Z",
+   "sha256": "1ed9784429d38b676bfd46146ccea7dd4f008a79349167c609e6c44eb376eefb",
+   "url": "https://api.crossref.org/works/10.1056/NEJMoa1800389"
+  },
+  "10.1080_10408398.2018.1558395.json": {
+   "bytes": 13739,
+   "fetched_at": "2026-09-24T02:30:15Z",
+   "sha256": "8007811eb800587cb5331706d9353d0d8d546e1e8c20c599c69c3a960ce87078",
+   "url": "https://api.crossref.org/works/10.1080/10408398.2018.1558395"
+  },
+  "10.1080_10408398.2021.2018569.json": {
+   "bytes": 14612,
+   "fetched_at": "2026-09-24T02:30:12Z",
+   "sha256": "669b787373d803f43f7f1752eaea66ab1d9a950c81146371eb923133d7c681fa",
+   "url": "https://api.crossref.org/works/10.1080/10408398.2021.2018569"
+  },
+  "10.1089_acm.2011.0443.json": {
+   "bytes": 9235,
+   "fetched_at": "2026-09-24T02:30:15Z",
+   "sha256": "e2f88d6239332dd158a416e3782733137691c49fb7b51fd4e3cdc805e32a524a",
+   "url": "https://api.crossref.org/works/10.1089/acm.2011.0443"
+  },
+  "10.1093_advances_nmac077.json": {
+   "bytes": 66183,
+   "fetched_at": "2026-09-24T11:51:42Z",
+   "sha256": "968766ee1e74c391e27c19a3eca914552e132da29f42c40e4ab086f464d992ad",
+   "url": "https://api.crossref.org/works/10.1093/advances/nmac077"
+  },
+  "10.1093_advances_nmz043.json": {
+   "bytes": 20348,
+   "fetched_at": "2026-09-24T02:30:12Z",
+   "sha256": "0cd8edc3e3cb171fd87177de6394da4c8d6b78ab7ef9d3603bc0a932e9a07d99",
+   "url": "https://api.crossref.org/works/10.1093/advances/nmz043"
+  },
+  "10.1093_ajcn_nqy091.json": {
+   "bytes": 25981,
+   "fetched_at": "2026-09-24T02:30:11Z",
+   "sha256": "6361c6b1f10fb75a1e71f4e677f7d4ab5e78acf076e1fd4869485d6aa49ac674",
+   "url": "https://api.crossref.org/works/10.1093/ajcn/nqy091"
+  },
+  "10.1093_eurheartj_ehx144.json": {
+   "bytes": 33095,
+   "fetched_at": "2026-09-24T11:51:44Z",
+   "sha256": "9e52acdd487cb0d7729345a00655478d657cccf4b9c0c2fea2d8387003d31686",
+   "url": "https://api.crossref.org/works/10.1093/eurheartj/ehx144"
+  },
+  "10.1093_ije_dyv039.json": {
+   "bytes": 8466,
+   "fetched_at": "2026-09-24T02:30:10Z",
+   "sha256": "b8df68bb4d1141156eb7fd8fc8259e243577186f48d8e743fd269c1902a34fa5",
+   "url": "https://api.crossref.org/works/10.1093/ije/dyv039"
+  },
+  "10.1093_ije_dyv365.json": {
+   "bytes": 13092,
+   "fetched_at": "2026-09-24T02:30:08Z",
+   "sha256": "a7d40730e8d1360b8a9a425364d8750206dceb2dcf8e73130cc1c6a9566e2707",
+   "url": "https://api.crossref.org/works/10.1093/ije/dyv365"
+  },
+  "10.1093_jn_138.4.761.json": {
+   "bytes": 18374,
+   "fetched_at": "2026-09-24T02:30:13Z",
+   "sha256": "154287fa0e55ce91a4d8e06fa9a7cb68a2e61c2cfec01bfeea0d8cb4043c08f2",
+   "url": "https://api.crossref.org/works/10.1093/jn/138.4.761"
+  },
+  "10.1136_bmj.n1864.json": {
+   "bytes": 25085,
+   "fetched_at": "2026-09-24T02:55:31Z",
+   "sha256": "a4e08b0d1cff66aa79075e362dd7603d7ef90b3a7faed4532d93b609aaf6455e",
+   "url": "https://api.crossref.org/works/10.1136/bmj.n1864"
+  },
+  "10.1136_bmj.n2213.json": {
+   "bytes": 19797,
+   "fetched_at": "2026-09-24T02:55:32Z",
+   "sha256": "1f75842c4ccf6d3efbc868e668cc184321bdce9d82887ffa2d2da3406079d08d",
+   "url": "https://api.crossref.org/works/10.1136/bmj.n2213"
+  },
+  "10.1161_CIRCULATIONAHA.121.054051.json": {
+   "bytes": 10517,
+   "fetched_at": "2026-09-24T11:51:44Z",
+   "sha256": "6587ae0ec29eb2374c7f955db9948be8fbdd8c4f387245820da610177097fca8",
+   "url": "https://api.crossref.org/works/10.1161/CIRCULATIONAHA.121.054051"
+  },
+  "10.1161_JAHA.115.002543.json": {
+   "bytes": 60322,
+   "fetched_at": "2026-09-24T02:55:34Z",
+   "sha256": "d60a9260c8a1cbd927219ccd0266ce813bde8aa4b005e20c72f3381a968eff3b",
+   "url": "https://api.crossref.org/works/10.1161/JAHA.115.002543"
+  },
+  "10.1161_JAHA.119.013877.json": {
+   "bytes": 16245,
+   "fetched_at": "2026-09-24T11:51:45Z",
+   "sha256": "a010acc36e6f073aeb307c82b609b7d1cc36937db298af884b7dc0897ea6827b",
+   "url": "https://api.crossref.org/works/10.1161/JAHA.119.013877"
+  },
+  "10.1186_1741-7015-11-164.json": {
+   "bytes": 27178,
+   "fetched_at": "2026-09-24T11:51:45Z",
+   "sha256": "57bf7e6885e58217ec12becf4ecc605ea850da5f0001f2f982dac8b756fc7a35",
+   "url": "https://api.crossref.org/works/10.1186/1741-7015-11-164"
+  },
+  "10.1186_s12916-016-0730-3.json": {
+   "bytes": 42937,
+   "fetched_at": "2026-09-24T02:55:30Z",
+   "sha256": "1ce67ee9c774b16ae205f9b9813717cbd18583490a102cee53232caaefb7bda5",
+   "url": "https://api.crossref.org/works/10.1186/s12916-016-0730-3"
+  },
+  "10.1186_s13098-026-02212-1.json": {
+   "bytes": 26298,
+   "fetched_at": "2026-09-24T02:30:12Z",
+   "sha256": "e394289072b3654d90ff66a23fc160060cb9ccbb443646c98a729e54a0a44fa2",
+   "url": "https://api.crossref.org/works/10.1186/s13098-026-02212-1"
+  },
+  "10.1371_journal.pmed.1003889.json": {
+   "bytes": 23082,
+   "fetched_at": "2026-09-24T03:42:56Z",
+   "sha256": "dd2eb0768b27597f77d2058afba94c4d4e5b1efedac1b5ddf2d77f3311b10f21",
+   "url": "https://api.crossref.org/works/10.1371/journal.pmed.1003889"
+  },
+  "10.15620_cdc_174591.json": {
+   "bytes": 2552,
+   "fetched_at": "2026-09-24T03:42:55Z",
+   "sha256": "ab32e48e74fa45dd3dba1c3ee8ed314cc7786c3710cc9f2d85e3b72869c14ee6",
+   "url": "https://api.crossref.org/works/10.15620/cdc/174591"
+  },
+  "10.17226_9810.json": {
+   "bytes": 2800,
+   "fetched_at": "2026-09-24T02:30:18Z",
+   "sha256": "a5fdffa7b07cd219d9011884e3671bc67fbe1a6162d17ab9bb8fcb4498d23c6b",
+   "url": "https://api.crossref.org/works/10.17226/9810"
+  },
+  "10.2903_j.efsa.2023.7704.json": {
+   "bytes": 149871,
+   "fetched_at": "2026-09-24T02:30:17Z",
+   "sha256": "c43d8a4beb5dae7908d954ef0acc0cd4797cc27a1c7c7503b5d651ec7c2feb57",
+   "url": "https://api.crossref.org/works/10.2903/j.efsa.2023.7704"
+  },
+  "10.3390_nu13082699.json": {
+   "bytes": 17125,
+   "fetched_at": "2026-09-24T02:30:09Z",
+   "sha256": "65682dbfd2472acf915c2a0a03878b95e9c78c825bfa1f9d2a8416502832fe07",
+   "url": "https://api.crossref.org/works/10.3390/nu13082699"
+  },
+  "10.3390_nu8120747.json": {
+   "bytes": 21232,
+   "fetched_at": "2026-09-24T02:30:13Z",
+   "sha256": "119227e97b387fd388b90d2b4e3b43c4c91c68d1d87ac02a2593ba7684332864",
+   "url": "https://api.crossref.org/works/10.3390/nu8120747"
+  },
+  "10.3945_ajcn.115.110965.json": {
+   "bytes": 39220,
+   "fetched_at": "2026-09-24T02:55:30Z",
+   "sha256": "6023d6afabf258c079b547df9bf01a6771083a109bdad16a7b19478f624f7a94",
+   "url": "https://api.crossref.org/works/10.3945/ajcn.115.110965"
+  },
+  "10.7326_0003-4819-147-4-200708210-00175.json": {
+   "bytes": 11748,
+   "fetched_at": "2026-09-24T02:30:17Z",
+   "sha256": "256f731c2a00f9eac48795b888478d135e9c8bb332626314698bc6ab2739f8a5",
+   "url": "https://api.crossref.org/works/10.7326/0003-4819-147-4-200708210-00175"
+  },
+  "primary/PMC10173088_jones2023.xml": {
+   "bytes": 124092,
+   "fetched_at": "2026-09-24T02:32:22Z",
+   "sha256": "34e7ff2bf1579fd6cd9fbe90fdc48ab0407d4a886912f79791cb7e5b1c375a31",
+   "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10173088/fullTextXML"
+  },
+  "primary/PMC11700201_wang2025.xml": {
+   "bytes": 148367,
+   "fetched_at": "2026-09-24T02:31:35Z",
+   "sha256": "1a6da27c25236e1bf305716952c866c77e58c684d2e29c274ca52f6c023ac7df",
+   "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11700201/fullTextXML"
+  },
+  "primary/PMC13501812_zhang2026.xml": {
+   "bytes": 136480,
+   "fetched_at": "2026-09-24T02:32:20Z",
+   "sha256": "9fb257890f1cf9c040118d2c8560fbf76012c2a8b9936da1a199a69007ddc179",
+   "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13501812/fullTextXML"
+  },
+  "primary/PMC4474488_luu2015.xml": {
+   "bytes": 205740,
+   "fetched_at": "2026-09-24T02:33:26Z",
+   "sha256": "65ad03e7d8b04638c680cd700b957218d3b00811d3d17522ec19fef5aad3edc6",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=4474488"
+  },
+  "primary/PMC5188407_perna2016.xml": {
+   "bytes": 167626,
+   "fetched_at": "2026-09-24T02:32:21Z",
+   "sha256": "cd60714fdfc5529fd9e6cc8c6aeaa19c3b30f157ce55da6ec83b525be14432ef",
+   "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5188407/fullTextXML"
+  },
+  "primary/PMC5762129_guaschferre2017.xml": {
+   "bytes": 176931,
+   "fetched_at": "2026-09-24T02:33:25Z",
+   "sha256": "71febe1bf416d9dd2a455ec5ea7d60515f136ccc5fdffcebccc45f07e05d660c",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=5762129"
+  },
+  "primary/PMC5837191_eslamparast2017.html": {
+   "bytes": 246220,
+   "fetched_at": "2026-09-24T02:34:20Z",
+   "sha256": "192563ec263b9840b8f044d9a7dcc9edd50e6504484e0ca112fc1a9be27247be",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5837191/"
+  },
+  "primary/PMC6855931_leebravatti2019.html": {
+   "bytes": 227911,
+   "fetched_at": "2026-09-24T02:34:21Z",
+   "sha256": "85758c18ad28d5c455c4acc76bb36f0f3ef4244e08242125c846ddaabffa828c",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6855931/"
+  },
+  "primary/PMC6862936_guaschferre2018.html": {
+   "bytes": 232802,
+   "fetched_at": "2026-09-24T02:34:21Z",
+   "sha256": "8cd000b58eece88cefdac652039a029bf62fd0ec1e9dae9eaf11535de16b092d",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6862936/"
+  },
+  "primary/PMC8401409_liu2021.xml": {
+   "bytes": 140305,
+   "fetched_at": "2026-09-24T02:31:12Z",
+   "sha256": "461ce731f73960c8474ceeb637f07afa949a6384ccc452b5ffe4c08a588aaab6",
+   "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8401409/fullTextXML"
+  },
+  "primary/fda_cpg_555_400_human_food.pdf": {
+   "bytes": 156830,
+   "fetched_at": "2026-09-24T02:57:11Z",
+   "sha256": "0e3d3c3b3677f7ad8157e4310c4f7e599edc2eb812fac40a9f9a4eacb7967d4a",
+   "url": "https://www.fda.gov/media/149666/download"
+  },
+  "primary/fda_cpg_570_200_brazil_nuts.pdf": {
+   "bytes": 161177,
+   "fetched_at": "2026-09-24T02:57:10Z",
+   "sha256": "34a6a6fbaac33d6defec9da6d8b6d3f9b44a7a3605d7cd66d2a05ae7edeb1492",
+   "url": "https://www.fda.gov/media/72053/download"
+  },
+  "primary/fda_cpg_570_375_peanuts.pdf": {
+   "bytes": 169499,
+   "fetched_at": "2026-09-24T02:57:09Z",
+   "sha256": "5f1081fbaa5ab302891cbe5aaa2c367d0fa6877827896a15c6653572013d8f94",
+   "url": "https://www.fda.gov/media/72073/download"
+  },
+  "primary/fda_cpg_570_500_pistachios.pdf": {
+   "bytes": 160013,
+   "fetched_at": "2026-09-24T02:57:11Z",
+   "sha256": "469b8ee5578f2f30f19efa83684f6a72a63c4e03ef91851047be81f98ce0adda",
+   "url": "https://www.fda.gov/media/72084/download"
+  },
+  "primary/fped_1718_methodology.pdf": {
+   "bytes": 1163335,
+   "fetched_at": "2026-09-24T02:57:08Z",
+   "sha256": "4649358680850f63a184b93f976696b9bc723626651a3b1c8e20eceddfe4c8de",
+   "url": "https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fped/FPED_1718.pdf"
+  },
+  "primary/fped_1720_documentation_addendum.pdf": {
+   "bytes": 182155,
+   "fetched_at": "2026-09-24T02:57:09Z",
+   "sha256": "b2afbe09a2dfd632189178b614222d16856341f0c42432095b24b9575e880924",
+   "url": "https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fped/FPED%20for%20Use%20with%20WWEIA%20NHANES%202017-March%202020%20Prepandemic%20Documentation.pdf"
+  },
+  "primary/fped_1720_table1_food_patterns.pdf": {
+   "bytes": 68286,
+   "fetched_at": "2026-09-24T02:57:08Z",
+   "sha256": "a2b52e9837fdce00818345addd6bc4b271d8d786dd2c59aad334d6c7f70e1413",
+   "url": "https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fped/Table_1_FPED_GEN_1720.pdf"
+  },
+  "primary/ftb_2012_50_4_toc.pdf": {
+   "bytes": 116623,
+   "fetched_at": "2026-09-24T02:32:25Z",
+   "sha256": "fb7e919a7e258d29e514dd75b8b59f089c54d0a5cc3da691ead633efced402bd",
+   "url": "https://www.ftb.com.hr/images/pdfarticles/2012/October-December/ftb%204-2012%20-%20toc%20vol%2050.pdf"
+  },
+  "primary/jalali2020_cashew_accepted_manuscript.pdf": {
+   "bytes": 680155,
+   "fetched_at": "2026-09-24T02:57:32Z",
+   "sha256": "65ba841701abc68498ea7b53c17e45ff48a92e9f4089d71c1379080964832bfc",
+   "url": "https://ndownloader.figshare.com/files/41092598"
+  },
+  "primary/nap_9810_chapter9_selenium.html": {
+   "bytes": 1039873,
+   "fetched_at": "2026-09-24T02:57:07Z",
+   "sha256": "89487aa04b09f05f411898cfe314278a1a25911c66a4e4709744ceaee59f868e",
+   "url": "https://nap.nationalacademies.org/read/9810/chapter/9"
+  },
+  "primary/pubmed_17620655_stranges2007.xml": {
+   "bytes": 9170,
+   "fetched_at": "2026-09-24T02:30:27Z",
+   "sha256": "2c538714089bc164a03bf12a070c9ef56e347cae0ab470727954bae7c7aaa91f",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=17620655&retmode=xml"
+  },
+  "primary/pubmed_18356332_griel2008.xml": {
+   "bytes": 6486,
+   "fetched_at": "2026-09-24T02:30:24Z",
+   "sha256": "81e6050972ecb518d1835349161efe192ee41441db170c558cf709c127132862",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=18356332&retmode=xml"
+  },
+  "primary/pubmed_22830971_nieman2012.xml": {
+   "bytes": 10079,
+   "fetched_at": "2026-09-24T02:30:26Z",
+   "sha256": "714ab512f1b1d571fdbc87bc91b45316261f2d371ea44891331ee34666722385",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22830971&retmode=xml"
+  },
+  "primary/pubmed_25730101_luu2015.xml": {
+   "bytes": 22681,
+   "fetched_at": "2026-09-24T02:30:20Z",
+   "sha256": "0523938995932c32d911a715c029eba9221d819f9f6d28eb46334d304de2a252",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=25730101&retmode=xml"
+  },
+  "primary/pubmed_25766804_schlormann2015.xml": {
+   "bytes": 8407,
+   "fetched_at": "2026-09-24T02:30:27Z",
+   "sha256": "57623e6e5bcacd56316f7c36c75a4af107fedc6b1968ff1b04841581ea7856f1",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=25766804&retmode=xml"
+  },
+  "primary/pubmed_26066329_vandenbrandt2015.xml": {
+   "bytes": 8425,
+   "fetched_at": "2026-09-24T02:30:20Z",
+   "sha256": "141f12beff1a99d8c9fcc204f676283737a468a4b9a2394218da5bda738a835c",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=26066329&retmode=xml"
+  },
+  "primary/pubmed_26946539_eslamparast2017.xml": {
+   "bytes": 27288,
+   "fetched_at": "2026-09-24T02:30:18Z",
+   "sha256": "12ae8637bff4ff5291d210b0f0212b6cea0c3cc59eea33550758d079d63eaedd",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=26946539&retmode=xml"
+  },
+  "primary/pubmed_27897978_perna2016.xml": {
+   "bytes": 25441,
+   "fetched_at": "2026-09-24T02:30:23Z",
+   "sha256": "2992c5a8358bd0c7f4e94599aeca9e0b832dd371ae72def4ff55a0d3ede917cf",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=27897978&retmode=xml"
+  },
+  "primary/pubmed_29145952_guaschferre2017.xml": {
+   "bytes": 23980,
+   "fetched_at": "2026-09-24T02:30:19Z",
+   "sha256": "1dfb6e19a77edecd7fbe4da6b20249291f86388d090a3786eb5ab58044296bb5",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29145952&retmode=xml"
+  },
+  "primary/pubmed_29931130_guaschferre2018.xml": {
+   "bytes": 28544,
+   "fetched_at": "2026-09-24T02:30:21Z",
+   "sha256": "ff64ed21a840aca884ce98996fe0eedf8ab94f4c30ed66b31f2848ca10c9e4f1",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29931130&retmode=xml"
+  },
+  "primary/pubmed_30638042_jafariazad2020.xml": {
+   "bytes": 7611,
+   "fetched_at": "2026-09-24T02:30:26Z",
+   "sha256": "70baea86c446d1af14c2dd65216dfe819652f6abf3b31759c5e3bfe90b757bc7",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=30638042&retmode=xml"
+  },
+  "primary/pubmed_31243439_leebravatti2019.xml": {
+   "bytes": 21492,
+   "fetched_at": "2026-09-24T02:30:22Z",
+   "sha256": "e2ce9043a1f9b21f576e1d5a0c2aa728f723e7871d9f9b97897aad5c02448ffa",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=31243439&retmode=xml"
+  },
+  "primary/pubmed_32444052_jalali2020.xml": {
+   "bytes": 8274,
+   "fetched_at": "2026-09-24T02:30:25Z",
+   "sha256": "f4b8463d83c050c9bc6c20c97d52e92f6aa9e37f59035083817953da6a0d8560",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=32444052&retmode=xml"
+  },
+  "primary/pubmed_34444859_liu2021.xml": {
+   "bytes": 23707,
+   "fetched_at": "2026-09-24T02:30:19Z",
+   "sha256": "5a6a58153ee4dce52f98ddbf0fdbc22109232b79342102f5c7f8ab2dc54eb32f",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=34444859&retmode=xml"
+  },
+  "primary/pubmed_34933637_hadi2023.xml": {
+   "bytes": 7298,
+   "fetched_at": "2026-09-24T02:30:22Z",
+   "sha256": "522dc3a225b818abd806d0d98c21b4ac3ac20df15c308cb96e6fc8246b5f1930",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=34933637&retmode=xml"
+  },
+  "primary/pubmed_37180485_jones2023.xml": {
+   "bytes": 31016,
+   "fetched_at": "2026-09-24T02:30:25Z",
+   "sha256": "9210c8abb8ddd5583d74b940b94555d614e8c4d6b025f18e0337526d7c61ad6a",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=37180485&retmode=xml"
+  },
+  "primary/pubmed_39755742_wang2025.xml": {
+   "bytes": 35180,
+   "fetched_at": "2026-09-24T02:30:21Z",
+   "sha256": "593d29cdbbad2fe56d6bfc4ab362bb88bd6497ff0631623a2839a63912517eb9",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=39755742&retmode=xml"
+  },
+  "primary/pubmed_42298717_zhang2026.xml": {
+   "bytes": 24710,
+   "fetched_at": "2026-09-24T02:30:23Z",
+   "sha256": "b726b34c8b089bb60654ff1a398e2cc2633bbe131bf1d4824959c2d468015fc8",
+   "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=42298717&retmode=xml"
+  },
+  "primary/vidrih2012_ftb_50_4_454.pdf": {
+   "bytes": 110675,
+   "fetched_at": "2026-09-24T02:32:24Z",
+   "sha256": "1c36868e7b1a853058e67bc47d035e7d154812cd467b2617ff87a1053510c70c",
+   "url": "https://www.ftb.com.hr/images/pdfarticles/2012/October-December/ftb%204-2012%20-%20454-460.pdf"
+  },
+  "primary/wweia_1720_table1_nutrients.pdf": {
+   "bytes": 69434,
+   "fetched_at": "2026-09-24T02:57:07Z",
+   "sha256": "1a4cfdaa71c367e094c4e846f9223fd5654efced886f747faf140ac5686f5d18",
+   "url": "https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/1720/Table_1_NIN_GEN_1720.pdf"
+  }
+ },
+ "note": "Crossref records (<doi>.json, the API 'message' object re-serialized with sorted keys) and primary sources (primary/) for the supporting rows in data/evidence.yaml. sha256 is of the stored bytes."
+}

@@ -1,0 +1,718 @@
+{
+ "DOI": "10.1016/j.foodchem.2015.02.017",
+ "ISSN": [
+  "0308-8146"
+ ],
+ "URL": "https://doi.org/10.1016/j.foodchem.2015.02.017",
+ "alternative-id": [
+  "S0308814615001867"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "Influence of roasting conditions on health-related compounds in different nuts"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "Food Chemistry"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1016/j.foodchem.2015.02.017"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "Copyright \u00a9 2015 Elsevier Ltd. All rights reserved."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Schl\u00f6rmann",
+   "given": "W.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Birringer",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "B\u00f6hm",
+   "given": "V.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "L\u00f6ber",
+   "given": "K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Jahreis",
+   "given": "G.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lorkowski",
+   "given": "S.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "M\u00fcller",
+   "given": "A.K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Sch\u00f6ne",
+   "given": "F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Glei",
+   "given": "M.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Food Chemistry"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    2,
+    11
+   ]
+  ],
+  "date-time": "2015-02-11T02:15:59Z",
+  "timestamp": 1423620959000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    8,
+    4
+   ]
+  ],
+  "date-time": "2023-08-04T23:39:46Z",
+  "timestamp": 1691192386000
+ },
+ "funder": [
+  {
+   "name": "German Ministry of Economics and Energy"
+  },
+  {
+   "DOI": "10.13039/501100002723",
+   "award": [
+    "AiF 16642 BR"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "AiF 16642 BR"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100002723",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "AiF"
+  },
+  {
+   "name": "FEI"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    30
+   ]
+  ],
+  "date-time": "2026-07-30T04:48:49Z",
+  "timestamp": 1785386929021,
+  "version": "3.55.0"
+ },
+ "is-referenced-by-count": 123,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0308-8146"
+  }
+ ],
+ "issued": {
+  "date-parts": [
+   [
+    2015,
+    8
+   ]
+  ]
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2015,
+      8,
+      1
+     ]
+    ],
+    "date-time": "2015-08-01T00:00:00Z",
+    "timestamp": 1438387200000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0308814615001867?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0308814615001867?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "77-85",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2015,
+    8
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2015,
+    8
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1007/s00217-009-1131-z",
+   "article-title": "Direct evaluation of the total antioxidant capacity of raw and roasted pulses, nuts and seeds",
+   "author": "Acar",
+   "doi-asserted-by": "crossref",
+   "first-page": "961",
+   "journal-title": "European Food Research and Technology",
+   "key": "10.1016/j.foodchem.2015.02.017_b0005",
+   "volume": "229",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/j.jfoodeng.2009.05.001",
+   "article-title": "Effects of roasting conditions on hazelnut characteristics in a two-step process",
+   "author": "Alamprese",
+   "doi-asserted-by": "crossref",
+   "first-page": "272",
+   "journal-title": "Journal of Food Engineering",
+   "key": "10.1016/j.foodchem.2015.02.017_b0010",
+   "volume": "95",
+   "year": "2009"
+  },
+  {
+   "author": "Alasalvar",
+   "key": "10.1016/j.foodchem.2015.02.017_b0015",
+   "series-title": "Tree nuts-composition",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1021/jf052287v",
+   "article-title": "Effects of roasting on hazelnut lipids",
+   "author": "Amaral",
+   "doi-asserted-by": "crossref",
+   "first-page": "1315",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0020",
+   "volume": "54",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1021/jf051132k",
+   "article-title": "Acrylamide in roasted almonds and hazelnuts",
+   "author": "Amrein",
+   "doi-asserted-by": "crossref",
+   "first-page": "7819",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0025",
+   "volume": "53",
+   "year": "2005"
+  },
+  {
+   "key": "10.1016/j.foodchem.2015.02.017_b0030",
+   "unstructured": "AOAC International (2005). Official Methods of Analysis of AOAC International (18th ed.), Gaithersburg, USA."
+  },
+  {
+   "DOI": "10.1016/j.jfca.2008.10.016",
+   "article-title": "Antioxidant activity and phenolic content of fresh and dry nuts with or without the seed coat",
+   "author": "Arcan",
+   "doi-asserted-by": "crossref",
+   "first-page": "184",
+   "journal-title": "Journal of Food Composition and Analysis",
+   "key": "10.1016/j.foodchem.2015.02.017_b0035",
+   "volume": "22",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27457",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: A meta-analysis and systematic review",
+   "author": "Banel",
+   "doi-asserted-by": "crossref",
+   "first-page": "56",
+   "journal-title": "American Journal of Clinical Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0040",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "key": "10.1016/j.foodchem.2015.02.017_b0045",
+   "unstructured": "BVL (2014). ASU Amtl. Sammlung von Untersuchungsmethoden, Official Collection of Analysis Methods according \u00a7 64 Food and Feed Regulation (Vol. 1: L06.00-3, L06.00-4, L06.00-6, L06.00-7 ed.) Bundesamt f\u00fcr Verbraucherschutz und Lebensmittelsicherheit."
+  },
+  {
+   "DOI": "10.15835/nbha4118307",
+   "article-title": "The mineral source for human nutrition of nuts in different hazelnut (Corylus avellana L.) cultivars",
+   "author": "Cosmulescu",
+   "doi-asserted-by": "crossref",
+   "first-page": "250",
+   "journal-title": "Notulae Botanicae Horti Agrobotanici Cluj-Napoca",
+   "key": "10.1016/j.foodchem.2015.02.017_b0050",
+   "volume": "41",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1021/jf047836w",
+   "article-title": "Study of the main constituents of some authentic hazelnut oils",
+   "author": "Crews",
+   "doi-asserted-by": "crossref",
+   "first-page": "4843",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0055",
+   "volume": "53",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1016/0891-5849(91)90192-6",
+   "article-title": "Chemistry and biochemistry of 4-hydroxynonenal, malonaldehyde and related aldehydes",
+   "author": "Esterbauer",
+   "doi-asserted-by": "crossref",
+   "first-page": "81",
+   "journal-title": "Free Radical Biology and Medicine",
+   "key": "10.1016/j.foodchem.2015.02.017_b0060",
+   "volume": "11",
+   "year": "1991"
+  },
+  {
+   "key": "10.1016/j.foodchem.2015.02.017_b0065",
+   "unstructured": "European Union (2013). Empfehlung 2013/647/EU der Kommission vom 08.11.13 zur Untersuchung des Acrylamidgehalts von Lebensmitteln (ABl. EU L 301/15 vom 12.11.13). <http://eur-lex.europa.eu/legal-content/DE/TXT/?uri=uriserv:OJ.L_.2013.301.01.0015.01.DEU> Electronic version."
+  },
+  {
+   "DOI": "10.1016/j.nut.2014.02.018",
+   "article-title": "Nut consumption and 5-y all-cause mortality in a Mediterranean cohort: The SUN project",
+   "author": "Fernandez-Montero",
+   "doi-asserted-by": "crossref",
+   "first-page": "1022",
+   "journal-title": "Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0070",
+   "volume": "30",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1111/j.1740-8709.2011.00319.x",
+   "article-title": "Genetic variation in polyunsaturated fatty acid metabolism and its potential relevance for human development and health",
+   "author": "Glaser",
+   "doi-asserted-by": "crossref",
+   "first-page": "27",
+   "journal-title": "Maternal and Child Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0075",
+   "volume": "7",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1016/j.chroma.2004.10.094",
+   "article-title": "Determination of acrylamide in potato chips and crisps by high-performance liquid chromatography",
+   "author": "Gokmen",
+   "doi-asserted-by": "crossref",
+   "first-page": "193",
+   "journal-title": "Journal of Chromatography A",
+   "key": "10.1016/j.foodchem.2015.02.017_b0080",
+   "volume": "1088",
+   "year": "2005"
+  },
+  {
+   "article-title": "Descriptive sensory analysis with integrated quality rating as a tool for quality testing of commercial food products",
+   "author": "Hildebrandt",
+   "first-page": "155",
+   "journal-title": "Archiv f\u00fcr Lebensmittelhygiene",
+   "key": "10.1016/j.foodchem.2015.02.017_b0085",
+   "volume": "63",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1158/1055-9965.1595.13.10",
+   "article-title": "Association of nut and seed intake with colorectal cancer risk in the European Prospective Investigation into Cancer and Nutrition",
+   "author": "Jenab",
+   "doi-asserted-by": "crossref",
+   "first-page": "1595",
+   "journal-title": "Cancer Epidemiology Biomarkers & Prevention",
+   "key": "10.1016/j.foodchem.2015.02.017_b0090",
+   "volume": "13",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2005.07.033",
+   "article-title": "Tocopherols and total phenolics in 10 different nut types",
+   "author": "Kornsteiner",
+   "doi-asserted-by": "crossref",
+   "first-page": "381",
+   "journal-title": "Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0095",
+   "volume": "98",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1079/BJN20051680",
+   "article-title": "Trans-11-18: 1 is effectively Delta9-desaturated compared with trans-12-18: 1 in humans",
+   "author": "Kuhnt",
+   "doi-asserted-by": "crossref",
+   "first-page": "752",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0100",
+   "volume": "95",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/S0308-8146(03)00158-4",
+   "article-title": "Chemical composition and oxidative stability of safflower oil prepared from safflower seed roasted with different temperatures",
+   "author": "Lee",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0105",
+   "volume": "84",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1146/annurev-food-022811-101114",
+   "article-title": "Acrylamide in foods: A review of the science and future considerations",
+   "author": "Lineback",
+   "doi-asserted-by": "crossref",
+   "first-page": "15",
+   "journal-title": "Annual Review of Food Science and Technology",
+   "key": "10.1016/j.foodchem.2015.02.017_b0110",
+   "volume": "3",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1017/S0007114511006647",
+   "article-title": "In vitro fermented nuts exhibit chemopreventive effects in HT29 colon cancer cells",
+   "author": "Lux",
+   "doi-asserted-by": "crossref",
+   "first-page": "1177",
+   "journal-title": "British Journal of Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0115",
+   "volume": "108",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2011.04.045",
+   "article-title": "Comparative antioxidant activities of carotenoids measured by ferric reducing antioxidant power (FRAP), ABTS bleaching assay (alpha TEAC), DPPH assay and peroxyl radical scavenging assay",
+   "author": "M\u00fcller",
+   "doi-asserted-by": "crossref",
+   "first-page": "139",
+   "journal-title": "Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0120",
+   "volume": "129",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1016/j.lwt.2010.02.004",
+   "article-title": "Antioxidant capacity and related parameters of different fruit formulations",
+   "author": "M\u00fcller",
+   "doi-asserted-by": "crossref",
+   "first-page": "992",
+   "journal-title": "LWT \u2013 Food Science and Technology",
+   "key": "10.1016/j.foodchem.2015.02.017_b0125",
+   "volume": "43",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1021/jf302451c",
+   "article-title": "Malondialdehyde measurement in oxidized foods: Evaluation of the spectrophotometric thiobarbituric acid reactive substances (TBARS) test in various foods",
+   "author": "Papastergiadis",
+   "doi-asserted-by": "crossref",
+   "first-page": "9589",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0130",
+   "volume": "60",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1021/jf203187v",
+   "article-title": "Update on the healthful lipid constituents of commercially important tree nuts",
+   "author": "Robbins",
+   "doi-asserted-by": "crossref",
+   "first-page": "12083",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0135",
+   "volume": "59",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3390/nu2070652",
+   "article-title": "Health benefits of nut consumption",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "652",
+   "journal-title": "Nutrients",
+   "key": "10.1016/j.foodchem.2015.02.017_b0140",
+   "volume": "2",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "article-title": "Nut consumption and blood lipid levels: A pooled analysis of 25 intervention trials",
+   "author": "Sabate",
+   "doi-asserted-by": "crossref",
+   "first-page": "821",
+   "journal-title": "Archives of Internal Medicine",
+   "key": "10.1016/j.foodchem.2015.02.017_b0145",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1046/j.1365-2621.2001.00457.x",
+   "article-title": "Determination of optimum hazelnut roasting conditions",
+   "author": "Saklar",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "journal-title": "International Journal of Food Science and Technology",
+   "key": "10.1016/j.foodchem.2015.02.017_b0150",
+   "volume": "36",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1023/A:1008175606698",
+   "article-title": "Chemical composition of walnuts (Juglans regia L.) grown in New Zealand",
+   "author": "Savage",
+   "doi-asserted-by": "crossref",
+   "first-page": "75",
+   "journal-title": "Plant Foods for Human Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0155",
+   "volume": "56",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1111/j.1750-3841.2010.01898.x",
+   "article-title": "Roasting affects phenolic composition and antioxidative activity of hazelnuts (Corylus avellana L.)",
+   "author": "Schmitzer",
+   "doi-asserted-by": "crossref",
+   "first-page": "S14",
+   "journal-title": "Journal of Food Science",
+   "key": "10.1016/j.foodchem.2015.02.017_b0160",
+   "volume": "76",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3181/0711-MR-311",
+   "article-title": "The importance of the omega-6/omega-3 fatty acid ratio in cardiovascular disease and other chronic diseases",
+   "author": "Simopoulos",
+   "doi-asserted-by": "crossref",
+   "first-page": "674",
+   "journal-title": "Experimental Biology and Medicine",
+   "key": "10.1016/j.foodchem.2015.02.017_b0165",
+   "volume": "233",
+   "year": "2008"
+  },
+  {
+   "key": "10.1016/j.foodchem.2015.02.017_b0170",
+   "unstructured": "USDA (2009). <http://www.health.gov./dietaryguidelines> Electronic version."
+  },
+  {
+   "DOI": "10.1016/j.nut.2012.01.004",
+   "article-title": "Health benefits of nut consumption with special reference to body weight control",
+   "author": "Vadivel",
+   "doi-asserted-by": "crossref",
+   "first-page": "1089",
+   "journal-title": "Nutrition",
+   "key": "10.1016/j.foodchem.2015.02.017_b0175",
+   "volume": "28",
+   "year": "2012"
+  },
+  {
+   "key": "10.1016/j.foodchem.2015.02.017_b0180",
+   "unstructured": "VDLUFA (2003). VDLUFA Methodenb\u00fccher Umweltanalytik (II&VII ed.) VDLUFA Verlag Bonn."
+  },
+  {
+   "DOI": "10.1021/jf0606959",
+   "article-title": "Chemical composition of selected edible nut seeds",
+   "author": "Venkatachalam",
+   "doi-asserted-by": "crossref",
+   "first-page": "4705",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0185",
+   "volume": "54",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1021/jf049696w",
+   "article-title": "Lipophilic and hydrophilic antioxidant capacities of common foods in the United States",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "4026",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0190",
+   "volume": "52",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1021/jf800808d",
+   "article-title": "Formation of lipid oxidation and isomerization products during processing of nuts and sesame seeds",
+   "author": "Yaacoub",
+   "doi-asserted-by": "crossref",
+   "first-page": "7082",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0195",
+   "volume": "56",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1021/jf201595q",
+   "article-title": "Acrylamide formation in almonds (Prunus dulcis): Influences of roasting time and temperature, precursors, varietal selection, and storage",
+   "author": "Zhang",
+   "doi-asserted-by": "crossref",
+   "first-page": "8225",
+   "journal-title": "Journal of Agricultural and Food Chemistry",
+   "key": "10.1016/j.foodchem.2015.02.017_b0200",
+   "volume": "59",
+   "year": "2011"
+  }
+ ],
+ "reference-count": 40,
+ "references-count": 40,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0308814615001867"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Food Chemistry"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "special_numbering": "C",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Influence of roasting conditions on health-related compounds in different nuts"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "180"
+}

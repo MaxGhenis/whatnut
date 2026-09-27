@@ -1,0 +1,591 @@
+{
+ "DOI": "10.3390/nu13082699",
+ "ISSN": [
+  "2072-6643"
+ ],
+ "URL": "https://doi.org/10.3390/nu13082699",
+ "abstract": "<jats:p>Walnut consumption is associated with health benefits. We aimed to (1) examine the association between walnut consumption and mortality and (2) estimate life expectancy in relation to walnut consumption in U.S. adults. We included 67,014 women of the Nurses\u2019 Health Study (1998\u20132018) and 26,326 men of the Health Professionals Follow-up Study (1998\u20132018) who were free of cancer, heart disease, and stroke at baseline. We used Cox regression models to estimate hazard ratios (HRs) and 95% confidence intervals (CIs). During up to 20 years of follow-up, we documented 30,263 deaths. The hazard ratios for total mortality across categories of walnut intake (servings/week), as compared to non-consumers, were 0.95 (95% confidence interval (CI), 0.91, 0.98) for &lt;1 serving/week, 0.94 (95% CI, 0.89, 0.99) for 1 serving/week, 0.87 (95% CI, 0.82, 0.93) for 2\u20134 servings/week, and 0.86 (95% CI, 0.79, 0.93) for &gt;=5 servings/week (p for trend &lt;0.0001). A greater life expectancy at age 60 (1.30 years in women and 1.26 years in men) was observed among those who consumed walnuts more than 5 servings/week compared to non-consumers. Higher walnut consumption was associated with a lower risk of total and CVD mortality and a greater gained life expectancy among U.S. elder adults.</jats:p>",
+ "alternative-id": [
+  "nu13082699"
+ ],
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-7356-645X",
+   "affiliation": [
+    {
+     "name": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Boston, MA 02115, USA"
+    },
+    {
+     "name": "Department of Internal Medicine, Rush University Medical Center, Chicago, IL 60612, USA"
+    }
+   ],
+   "authenticated-orcid": false,
+   "family": "Liu",
+   "given": "Xiaoran",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-8525-1404",
+   "affiliation": [
+    {
+     "name": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Boston, MA 02115, USA"
+    },
+    {
+     "name": "Channing Division of Network Medicine, Department of Medicine, Brigham and Women\u2019s Hospital and Harvard Medical School, Boston, MA 02115, USA"
+    }
+   ],
+   "authenticated-orcid": false,
+   "family": "Guasch-Ferr\u00e9",
+   "given": "Marta",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Boston, MA 02115, USA"
+    },
+    {
+     "name": "Division of Preventive Medicine, Department of Medicine, Brigham and Women\u2019s Hospital and Harvard Medical School, Boston, MA 02115, USA"
+    }
+   ],
+   "family": "Tobias",
+   "given": "Deirdre K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Boston, MA 02115, USA"
+    }
+   ],
+   "family": "Li",
+   "given": "Yanping",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Nutrients"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    8,
+    4
+   ]
+  ],
+  "date-time": "2021-08-04T08:47:52Z",
+  "timestamp": 1628066872000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    11
+   ]
+  ],
+  "date-time": "2025-10-11T06:40:24Z",
+  "timestamp": 1760164824000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    3,
+    24
+   ]
+  ],
+  "date-time": "2026-03-24T22:20:07Z",
+  "timestamp": 1774390807090,
+  "version": "3.50.1"
+ },
+ "is-referenced-by-count": 18,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "2072-6643"
+  }
+ ],
+ "issue": "8",
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    8,
+    4
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "8",
+  "published-online": {
+   "date-parts": [
+    [
+     2021,
+     8
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://creativecommons.org/licenses/by/4.0/",
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      8,
+      4
+     ]
+    ],
+    "date-time": "2021-08-04T00:00:00Z",
+    "timestamp": 1628035200000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://www.mdpi.com/2072-6643/13/8/2699/pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "1968",
+ "original-title": [],
+ "page": "2699",
+ "prefix": "10.3390",
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    8,
+    4
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    8,
+    4
+   ]
+  ]
+ },
+ "publisher": "MDPI AG",
+ "reference": [
+  {
+   "DOI": "10.1001/jama.2016.7491",
+   "article-title": "Dietary Intake among US Adults, 1999\u20132012",
+   "author": "Rehm",
+   "doi-asserted-by": "crossref",
+   "first-page": "2542",
+   "journal-title": "JAMA",
+   "key": "ref_1",
+   "volume": "315",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1017/S0007114514003924",
+   "article-title": "Nuts and CVD",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "S111",
+   "journal-title": "Br. J. Nutr.",
+   "key": "ref_2",
+   "volume": "113",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "article-title": "Nut Consumption and Risk of Cardiovascular Disease",
+   "author": "Liu",
+   "doi-asserted-by": "crossref",
+   "first-page": "2519",
+   "journal-title": "J. Am. Coll. Cardiol.",
+   "key": "ref_3",
+   "volume": "70",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076901",
+   "article-title": "Consumption of nuts and legumes and risk of incident ischemic heart disease, stroke, and diabetes: A systematic review and meta-analysis",
+   "author": "Afshin",
+   "doi-asserted-by": "crossref",
+   "first-page": "278",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_4",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1161/JAHA.119.013877",
+   "article-title": "Changes in Nut Consumption and Subsequent Cardiovascular Disease Risk Among US Men and Women: 3 Large Prospective Cohort Studies",
+   "author": "Liu",
+   "doi-asserted-by": "crossref",
+   "first-page": "e013877",
+   "journal-title": "J. Am. Heart Assoc.",
+   "key": "ref_5",
+   "volume": "9",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.3945/ajcn.2008.27276",
+   "article-title": "Prospective study of nut consumption, long-term weight change, and obesity risk in women",
+   "author": "Wedick",
+   "doi-asserted-by": "crossref",
+   "first-page": "1913",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_6",
+   "volume": "89",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1007/s00394-017-1513-0",
+   "article-title": "Nut intake and 5-year changes in body weight and obesity risk in adults: Results from the EPIC-PANACEA study",
+   "author": "Freisling",
+   "doi-asserted-by": "crossref",
+   "first-page": "2399",
+   "journal-title": "Eur. J. Nutr.",
+   "key": "ref_7",
+   "volume": "57",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/jn/nxy183",
+   "article-title": "Changes in Types of Dietary Fats Influence Long-term Weight Change in US Women and Men",
+   "author": "Liu",
+   "doi-asserted-by": "crossref",
+   "first-page": "1821",
+   "journal-title": "J. Nutr.",
+   "key": "ref_8",
+   "volume": "148",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1186/s12937-017-0238-5",
+   "article-title": "Replacing American snacks with tree nuts increases consumption of key nutrients among US children and adults: Results of an NHANES modeling study",
+   "author": "Rehm",
+   "doi-asserted-by": "crossref",
+   "first-page": "17",
+   "journal-title": "Nutr. J.",
+   "key": "ref_9",
+   "volume": "16",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/S0002-8223(21)04023-2",
+   "article-title": "Provisional tables on the content of omega-3 fatty acids and other fat components of selected foods",
+   "author": "Hepburn",
+   "doi-asserted-by": "crossref",
+   "first-page": "788",
+   "journal-title": "J. Am. Diet. Assoc.",
+   "key": "ref_10",
+   "volume": "86",
+   "year": "1986"
+  },
+  {
+   "DOI": "10.1093/ajcn/70.3.560s",
+   "article-title": "Essential fatty acids in health and chronic disease",
+   "author": "Simopoulos",
+   "doi-asserted-by": "crossref",
+   "first-page": "560s",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_11",
+   "volume": "70",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy091",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: An updated meta-analysis and systematic review of controlled trials",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "174",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_12",
+   "volume": "108",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/ajcn/74.1.72",
+   "article-title": "Effects of walnut consumption on plasma fatty acids and lipoproteins in combined hyperlipidemia",
+   "author": "Almario",
+   "doi-asserted-by": "crossref",
+   "first-page": "72",
+   "journal-title": "Am. J. Clin. Nutr.",
+   "key": "ref_13",
+   "volume": "74",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2017.04.011",
+   "article-title": "Effect of nut consumption on vascular endothelial function: A systematic review and meta-analysis of randomized controlled trials",
+   "author": "Xiao",
+   "doi-asserted-by": "crossref",
+   "first-page": "831",
+   "journal-title": "Clin. Nutr.",
+   "key": "ref_14",
+   "volume": "37",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.2337/dc09-1156",
+   "article-title": "Effects of walnut consumption on endothelial function in type 2 diabetic subjects: A randomized controlled crossover trial",
+   "author": "Ma",
+   "doi-asserted-by": "crossref",
+   "first-page": "227",
+   "journal-title": "Diabetes Care",
+   "key": "ref_15",
+   "volume": "33",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1186/1741-7015-11-164",
+   "article-title": "Frequency of nut consumption and mortality risk in the PREDIMED nutrition intervention trial",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "164",
+   "journal-title": "BMC Med.",
+   "key": "ref_16",
+   "volume": "11",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1307352",
+   "article-title": "Association of nut consumption with total and cause-specific mortality",
+   "author": "Bao",
+   "doi-asserted-by": "crossref",
+   "first-page": "2001",
+   "journal-title": "N. Engl. J. Med.",
+   "key": "ref_17",
+   "volume": "369",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1186/s12916-016-0730-3",
+   "doi-asserted-by": "crossref",
+   "key": "ref_18",
+   "unstructured": "Aune, D., Keum, N., Giovannucci, E., Fadnes, L.T., Boffetta, P., Greenwood, D.C., Tonstad, S., Vatten, L.J., Riboli, E., and Norat, T. (2016). Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: A systematic review and dose-response meta-analysis of prospective studies. BMC Med., 14."
+  },
+  {
+   "DOI": "10.1039/C7FO00915A",
+   "article-title": "Nut consumption in relation to all-cause and cause-specific mortality: A meta-analysis 18 prospective studies",
+   "author": "Chen",
+   "doi-asserted-by": "crossref",
+   "first-page": "3893",
+   "journal-title": "Food Funct.",
+   "key": "ref_19",
+   "volume": "8",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400240119026",
+   "article-title": "Nuts, Nuts Good for Your Heart\u2026?-Reply",
+   "author": "Fraser",
+   "doi-asserted-by": "crossref",
+   "first-page": "2507",
+   "journal-title": "Arch. Intern. Med.",
+   "key": "ref_20",
+   "volume": "152",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1800389",
+   "article-title": "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts",
+   "author": "Estruch",
+   "doi-asserted-by": "crossref",
+   "first-page": "e34",
+   "journal-title": "N. Engl. J. Med.",
+   "key": "ref_21",
+   "volume": "378",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1093/nutrit/nuv006",
+   "article-title": "Nut consumption and risk of cancer and type 2 diabetes: A systematic review and meta-analysis",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "409",
+   "journal-title": "Nutr. Rev.",
+   "key": "ref_22",
+   "volume": "73",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2019.03.004",
+   "article-title": "Dietary walnut altered gene expressions related to tumor growth, survival, and metastasis in breast cancer patients: A pilot clinical trial",
+   "author": "Hardman",
+   "doi-asserted-by": "crossref",
+   "first-page": "82",
+   "journal-title": "Nutr. Res.",
+   "key": "ref_23",
+   "volume": "66",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2015.4838",
+   "article-title": "Mediterranean Diet and Invasive Breast Cancer Risk Among Women at High Cardiovascular Risk in the PREDIMED Trial: A Randomized Clinical Trial",
+   "author": "Toledo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1752",
+   "journal-title": "JAMA Intern. Med.",
+   "key": "ref_24",
+   "volume": "175",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1038/oby.2007.507",
+   "article-title": "Nut consumption and weight gain in a Mediterranean cohort: The SUN study",
+   "author": "Alonso",
+   "doi-asserted-by": "crossref",
+   "first-page": "107",
+   "journal-title": "Obesity",
+   "key": "ref_25",
+   "volume": "15",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.3945/jn.112.170993",
+   "article-title": "Acute consumption of walnuts and walnut components differentially affect postprandial lipemia, endothelial function, oxidative stress, and cholesterol efflux in humans with mild hypercholesterolemia",
+   "author": "Berryman",
+   "doi-asserted-by": "crossref",
+   "first-page": "788",
+   "journal-title": "J. Nutr.",
+   "key": "ref_26",
+   "volume": "143",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1186/1475-2891-13-4",
+   "article-title": "Effect of a walnut meal on postprandial oxidative stress and antioxidants in healthy individuals",
+   "author": "Haddad",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "journal-title": "Nutr. J.",
+   "key": "ref_27",
+   "volume": "13",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1161/01.CIR.0000124477.91474.FF",
+   "article-title": "A Walnut Diet Improves Endothelial Function in Hypercholesterolemic Subjects",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "1609",
+   "journal-title": "Circulation",
+   "key": "ref_28",
+   "volume": "109",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1161/01.CIR.99.6.779",
+   "article-title": "Mediterranean Diet, Traditional Risk Factors, and the Rate of Cardiovascular Complications After Myocardial Infarction",
+   "author": "Lorgeril",
+   "doi-asserted-by": "crossref",
+   "first-page": "779",
+   "journal-title": "Circulation",
+   "key": "ref_29",
+   "volume": "99",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.1161/CIRCULATIONAHA.117.032047",
+   "article-title": "Impact of Healthy Lifestyle Factors on Life Expectancies in the US Population",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "345",
+   "journal-title": "Circulation",
+   "key": "ref_30",
+   "volume": "138",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1136/bmj.l6669",
+   "article-title": "Healthy lifestyle and life expectancy free of cancer, cardiovascular disease, and type 2 diabetes: Prospective cohort study",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "l6669",
+   "journal-title": "BMJ",
+   "key": "ref_31",
+   "volume": "368",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1007/s10654-016-0127-9",
+   "article-title": "Quantifying the benefits of Mediterranean diet in terms of survival",
+   "author": "Bellavia",
+   "doi-asserted-by": "crossref",
+   "first-page": "527",
+   "journal-title": "Eur. J. Epidemiol.",
+   "key": "ref_32",
+   "volume": "31",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/j.ijcard.2016.02.115",
+   "article-title": "Cardiovascular and other causes of death as a function of lifestyle habits in a quasi extinct middle-aged male population. A 50-year follow-up study",
+   "author": "Menotti",
+   "doi-asserted-by": "crossref",
+   "first-page": "173",
+   "journal-title": "Int. J. Cardiol.",
+   "key": "ref_33",
+   "volume": "210",
+   "year": "2016"
+  }
+ ],
+ "reference-count": 33,
+ "references-count": 33,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.mdpi.com/2072-6643/13/8/2699"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Nutrients"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Association of Walnut Consumption with Total and Cause-Specific Mortality and Life Expectancy in U.S. Adults"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.3390/mdpi_crossmark_policy",
+ "volume": "13"
+}

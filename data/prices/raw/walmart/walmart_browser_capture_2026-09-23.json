@@ -1,0 +1,467 @@
+{
+ "what": "Walmart.com product-page fields read on 2026-09-23 (US Eastern; 2026-09-24 UTC) in an in-app browser session by running WALMART_CAPTURE_JS (scripts/fetch_prices.py) on each product page and transcribing the returned JSON unchanged. This record is the cross-check for the programmatic fetch of the same pages (raw/walmart/ip_<usItemId>.html.gz); prices.csv uses the programmatic fetch when present.",
+ "supersedes": "An earlier cut-off run of this builder left a file of the same name with 9 of these products (same prices); it was replaced by this session's capture.",
+ "location_context": {
+  "zipCode": "20001",
+  "storeId": "3035",
+  "note": "Read from __NEXT_DATA__ ad configs on each page; walmart.com chose the location from the visitor IP; nothing was set by hand."
+ },
+ "capture_js": "WALMART_CAPTURE_JS in scripts/fetch_prices.py",
+ "products": [
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Natural-Whole-Almonds-25-oz/5284690796",
+   "captured_at_utc": "2026-09-24T02:50:32.636Z",
+   "usItemId": "5284690796",
+   "name": "Great Value Natural Whole Almonds, 25 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 10.48,
+    "priceString": "$10.48"
+   },
+   "wasPrice": null,
+   "unitPrice": "41.9 ¢/oz",
+   "ingredients": "ALMONDS.",
+   "specs": [
+    "Weight: 25 oz",
+    "Flavor: Natural Almonds",
+    "Food preparation method: Shelled",
+    "Nut type: Almonds",
+    "Net content statement: NET WT 25 OZ (1 lb 9 oz) 708.7g",
+    "Food form: Pieces"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Whole-Natural-Almonds-14-oz/5295229969",
+   "captured_at_utc": "2026-09-24T02:50:37.388Z",
+   "usItemId": "5295229969",
+   "name": "Great Value Whole Natural Almonds, 14 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 6.48,
+    "priceString": "$6.48"
+   },
+   "wasPrice": null,
+   "unitPrice": "46.3 ¢/oz",
+   "ingredients": "ALMONDS",
+   "specs": [
+    "Nut type: Almonds",
+    "Flavor: Natural Almonds",
+    "Food preparation method: Shelled",
+    "Weight: 14 oz",
+    "Net content statement: NET WT 14 OZ (396.9g)",
+    "Food form: Pieces"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Whole-Almonds-16-oz/834401337",
+   "captured_at_utc": "2026-09-24T02:50:41.659Z",
+   "usItemId": "834401337",
+   "name": "Great Value Whole Almonds, 16 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 9.48,
+    "priceString": "$9.48"
+   },
+   "wasPrice": null,
+   "unitPrice": "59.3 ¢/oz",
+   "ingredients": "ALMONDS",
+   "specs": [
+    "Nut type: Almonds",
+    "Product net content parent: 16 Ounces",
+    "Weight: 1 lb",
+    "Food form: Whole",
+    "Flavor: Unflavored"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Walnuts-Halves-Pieces-32-oz/939571964",
+   "captured_at_utc": "2026-09-24T02:50:46.369Z",
+   "usItemId": "939571964",
+   "name": "Great Value Walnuts Halves & Pieces, 32 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 18.78,
+    "priceString": "$18.78"
+   },
+   "wasPrice": null,
+   "unitPrice": "58.7 ¢/oz",
+   "ingredients": "WALNUTS",
+   "specs": [
+    "Nut type: Walnuts",
+    "Food form: Halves",
+    "Net content statement: NET WT 32 oz (2 LB) 907g",
+    "Food preparation method: Shelled",
+    "Weight: 2 lb",
+    "Flavor: Unflavored"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Walnuts-Halves-Pieces-16-oz/124188737",
+   "captured_at_utc": "2026-09-24T02:50:50.936Z",
+   "usItemId": "124188737",
+   "name": "Great Value Walnuts Halves & Pieces, 16 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 9.96,
+    "priceString": "$9.96"
+   },
+   "wasPrice": null,
+   "unitPrice": "62.3 ¢/oz",
+   "ingredients": "WALNUTS",
+   "specs": [
+    "Nut type: Walnuts",
+    "Food form: Halves",
+    "Food preparation method: Shelled",
+    "Size: 16 oz",
+    "Flavor: Walnuts",
+    "Net content statement: NET WT 16 oz (1 LB) 453g",
+    "Weight: 1.12 lb"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Pecan-Halves-32-oz/327976708",
+   "captured_at_utc": "2026-09-24T02:51:32.241Z",
+   "usItemId": "327976708",
+   "name": "Great Value Pecan Halves, 32 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 22.27,
+    "priceString": "$22.27"
+   },
+   "wasPrice": null,
+   "unitPrice": "69.6 ¢/oz",
+   "ingredients": "PECANS",
+   "specs": [
+    "Nut type: Pecans",
+    "Food form: Halves",
+    "Net content statement: NET WT 32 oz (2 LB) 907g",
+    "Food preparation method: Shelled",
+    "Weight: 2.22 lb",
+    "Flavor: Unflavored"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Pecan-Halves-16-oz/604801898",
+   "captured_at_utc": "2026-09-24T02:51:36.794Z",
+   "usItemId": "604801898",
+   "name": "Great Value Pecan Halves, 16 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 12.97,
+    "priceString": "$12.97"
+   },
+   "wasPrice": null,
+   "unitPrice": "81.1 ¢/oz",
+   "ingredients": "PECANS",
+   "specs": [
+    "Nut type: Pecans",
+    "Food form: Halves",
+    "Food preparation method: Shelled",
+    "Net content statement: NET WT 16 oz (1 LB) 453g",
+    "Weight: 1 lb",
+    "Flavor: Unflavored"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Wonderful-Pistachios-No-Shells-Unsalted-Nuts-12-Ounce-Bag/18267370359",
+   "captured_at_utc": "2026-09-24T02:51:39.479Z",
+   "usItemId": "18267370359",
+   "name": "Wonderful Pistachios No Shells Unsalted Nuts, 12 Ounce Bag",
+   "brand": "Wonderful Pistachios",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 11.94,
+    "priceString": "$11.94"
+   },
+   "wasPrice": null,
+   "unitPrice": "99.5 ¢/oz",
+   "ingredients": "Dry roasted pistachios",
+   "specs": [
+    "Nut type: Pistachios",
+    "Flavor: UNSALTED",
+    "Food preparation method: Dry Roasted",
+    "Size: 12 Ounce",
+    "Product net content parent: 12 Ounces",
+    "Food form: Whole",
+    "Weight: 12 oz"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Chopped-Macadamia-Nuts-4-oz/499527722",
+   "captured_at_utc": "2026-09-24T02:51:43.047Z",
+   "usItemId": "499527722",
+   "name": "Great Value Chopped Macadamia Nuts, 4 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 5.34,
+    "priceString": "$5.34"
+   },
+   "wasPrice": null,
+   "unitPrice": "$1.34/oz",
+   "ingredients": "MACADAMIA NUTS",
+   "specs": [
+    "Nut type: Macadamia Nuts",
+    "Food form: Chopped",
+    "Net content statement: NET WT 4 oz (113g)",
+    "Food preparation method: Shelled",
+    "Flavor: Unflavored"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Dry-Roasted-Salted-Macadamia-Nuts-6-oz/800469181",
+   "captured_at_utc": "2026-09-24T02:51:45.483Z",
+   "usItemId": "800469181",
+   "name": "Great Value Dry Roasted & Salted Macadamia Nuts, 6 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 7.96,
+    "priceString": "$7.96"
+   },
+   "wasPrice": null,
+   "unitPrice": "$1.33/oz",
+   "ingredients": "MACADAMIA NUTS, SEA SALT, MAY CONTAIN TRACES OF MILK, EGGS, ALMONDS, BRAZIL ...",
+   "specs": [
+    "Flavor: Dry Roasted & Salted",
+    "Nut type: Macadamia Nuts",
+    "Size: 6 oz",
+    "Food preparation method: Shelled",
+    "Net content statement: 6 - 6 oz",
+    "Food form: Pieces"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Organic-Raw-Whole-Cashews-14-oz/748653717",
+   "captured_at_utc": "2026-09-24T02:52:24.680Z",
+   "usItemId": "748653717",
+   "name": "Great Value Organic Raw Whole Cashews, 14 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 8.98,
+    "priceString": "$8.98"
+   },
+   "wasPrice": null,
+   "unitPrice": "64.1 ¢/oz",
+   "ingredients": "ORGANIC CASHEWS",
+   "specs": [
+    "Nut type: Cashews",
+    "Flavor: Cashews",
+    "Food preparation method: Shelled",
+    "Net content statement: NET WT 14 OZ (397g)",
+    "Weight: 14 oz",
+    "Food form: Pieces"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Deluxe-Whole-Cashews-Unsalted-16-oz/45595300",
+   "captured_at_utc": "2026-09-24T02:52:29.179Z",
+   "usItemId": "45595300",
+   "name": "Great Value Deluxe Whole Cashews, Unsalted, 16 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 7.44,
+    "priceString": "$7.44"
+   },
+   "wasPrice": null,
+   "unitPrice": "46.5 ¢/oz",
+   "ingredients": "CASHEWS (PEANUT OIL, COTTONSEED OIL, SUNFLOWER SEED OIL, CANOLA OIL)",
+   "specs": [
+    "Flavor: Unflavored",
+    "Nut type: Cashews",
+    "Food form: Whole",
+    "Food preparation method: Shelled",
+    "Size: 16 oz (454g)",
+    "Weight: 1 lb"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Deluxe-Cashews-30-oz/364798995",
+   "captured_at_utc": "2026-09-24T02:52:32.897Z",
+   "usItemId": "364798995",
+   "name": "Great Value Deluxe Cashews, 30 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 11.72,
+    "priceString": "$11.72"
+   },
+   "wasPrice": null,
+   "unitPrice": "39.1 ¢/oz",
+   "ingredients": "CASHEWS, VEGETABLE OIL (PEANUT OIL, COTTONSEED OIL, SOYBEAN OIL AND/OR SUNFLOWER OIL), ...",
+   "specs": [
+    "Flavor: Salted",
+    "Net content statement: 30 oz",
+    "Food form: Whole",
+    "Food preparation method: Shelled",
+    "Nut type: Cashews",
+    "Weight: 30 oz"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Dry-Roasted-and-Unsalted-Peanuts-16-oz-Jar/10448400",
+   "captured_at_utc": "2026-09-24T02:52:37.444Z",
+   "usItemId": "10448400",
+   "name": "Great Value Dry Roasted and Unsalted Peanuts, 16 oz, Jar",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 2.58,
+    "priceString": "$2.58"
+   },
+   "wasPrice": null,
+   "unitPrice": "16.1 ¢/oz",
+   "ingredients": "Ingredients:Peanuts.",
+   "specs": [
+    "Flavor: Unsalted",
+    "Food preparation method: Roasted",
+    "Nut type: Peanuts",
+    "Net content statement: 16 oz",
+    "Weight: 1.14 lb",
+    "Size: 16 OZ (1 LB) 454g",
+    "Food form: Pieces"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  },
+  {
+   "page_url": "https://www.walmart.com/ip/Great-Value-Raw-Peanuts-16-oz/333053298",
+   "captured_at_utc": "2026-09-24T02:52:42.874Z",
+   "usItemId": "333053298",
+   "name": "Great Value Raw Peanuts, 16 oz",
+   "brand": "Great Value",
+   "seller": "Walmart.com",
+   "availability": "IN_STOCK",
+   "currentPrice": {
+    "price": 3.24,
+    "priceString": "$3.24"
+   },
+   "wasPrice": null,
+   "unitPrice": "20.3 ¢/oz",
+   "ingredients": "PEANUTS",
+   "specs": [
+    "Nut type: Peanuts",
+    "Food form: Whole",
+    "Food preparation method: Shelled",
+    "Net content statement: NET WT 16 oz (1 LB) 454g",
+    "Flavor: Unflavored"
+   ],
+   "location": {
+    "zipCode": "20001",
+    "storeId": "3035"
+   }
+  }
+ ],
+ "searches": [
+  {
+   "url": "https://www.walmart.com/search?q=great+value+walnuts",
+   "finding": "first-party walnut products include Great Value Walnuts Halves & Pieces 16 oz and 32 oz (captured) and smaller chopped packs"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=great+value+almonds",
+   "finding": "first-party plain almonds: Great Value Natural Whole Almonds 25 oz, Whole Natural Almonds 14 oz, Whole Almonds 16 oz (all captured); others roasted, salted or flavored"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=great+value+pecans",
+   "finding": "Great Value Pecan Halves 16 oz and 32 oz captured; others chopped, salted or flavored"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=great+value+pistachios",
+   "finding": "all Great Value shelled pistachios are salted; the only first-party shelled unsalted item is Wonderful Pistachios No Shells Unsalted 12 oz (captured)"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=macadamia+nuts",
+   "finding": "first-party macadamias: Great Value Chopped 4 oz (unsalted, captured), Great Value Dry Roasted & Salted 6 oz (captured, salted), Mauna Loa and bettergoods items all salted or flavored"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=hazelnuts",
+   "finding": "no plain hazelnut sold by Walmart.com (first party); plain hazelnuts only from marketplace sellers (Cravers Best, Food To Live, Snackathon Foods, Exotic Nutrition, Happy Village Organic); excluded"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=great+value+cashews+unsalted",
+   "finding": "first-party: Great Value Organic Raw Whole Cashews 14 oz and Deluxe Whole Cashews Unsalted 16 oz (both captured); Deluxe Cashews 30 oz is salted (captured); Kirkland cashews listed only by marketplace sellers"
+  },
+  {
+   "url": "https://www.walmart.com/search?q=great+value+peanuts+unsalted",
+   "finding": "Great Value Dry Roasted and Unsalted Peanuts 16 oz and Great Value Raw Peanuts 16 oz captured"
+  }
+ ],
+ "text_trimming": "Descriptive text fields (description, product_details, specifications, ingredients) were shortened after capture so that no fragment exceeds 12 words ('...' marks a cut); prices, names, ids, stock and location fields are unchanged."
+}

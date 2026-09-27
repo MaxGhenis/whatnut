@@ -1,0 +1,47 @@
+/* Manuscript overrides on top of the cosmo theme. The page renders light only;
+   the wrapper at /whatnut/ forces a white iframe background to match. */
+
+/* Readable measure: running text at about 70 characters per line. Tables and
+   figures keep the full column. */
+#quarto-document-content > p,
+#quarto-document-content > section p,
+#quarto-document-content li,
+.abstract p {
+  max-width: 70ch;
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* Numbers in tables line up. */
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+figcaption,
+.figure-caption,
+caption {
+  font-size: 0.925rem;
+  color: #495057;
+}
+
+/* The bibliography reads better slightly smaller. */
+#refs {
+  font-size: 0.925rem;
+}
+
+/* The wrapper embeds this page in an iframe sandboxed without scripts. Quarto
+   ships the table of contents as a Bootstrap .collapse list that its JavaScript
+   reveals, so show it without JavaScript. */
+#TOC ul.collapse {
+  display: block;
+}
+
+/* Wide tables scroll inside their own box. Without this, on a phone the
+   evidence and bracket tables set the page's width (570 px at a 375 px
+   viewport) and the whole manuscript scrolls sideways. Quarto wraps each
+   table as figure.quarto-float-tbl > div > table. */
+figure.quarto-float-tbl > div {
+  overflow-x: auto;
+}

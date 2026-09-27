@@ -1,0 +1,282 @@
+{
+ "DOI": "10.1007/s11746-000-0038-0",
+ "ISSN": [
+  "0003-021X",
+  "1558-9331"
+ ],
+ "URL": "https://doi.org/10.1007/s11746-000-0038-0",
+ "abstract": "<jats:title>Abstract</jats:title><jats:p>Two samples of flaxseed, Linott and a mixture of several varieties, were milled and stored at 23\u00b12\u00b0C for 128 d in paper bags with plastic liners. Samples were evaluated at 0, 33, 66, 96, and 128 d for chemical, sensory, and volatile indicators of quality. Neither the mixed variety nor Linott samples showed a significant increase in peroxide values or conjugated double bonds throughout the 128\u2010d storage period. Only the Linott sample showed a significant increase in free fatty acids, which was likely due to the presence of immature seed in the sample. Total volatiles increased with storage in the mixed variety sample but showed minimal change in the Linott sample. Overall, the levels of total volatiles in the milled flaxseed samples were much lower than levels reported in stored vegetable oils containing significantly lower levels of linolenic acid. Dienals, formed during polyunsaturated fatty acid oxidation, and hexanal, a compound used as an indicator of oxidative deterioration, were found at very low levels in both samples and did not reach high levels throughout the 128\u2010d storage period. A trained sensory panel could not detect any differences in the odor properties of fresh or stored milled samples. No differences in flavor could be detected between bread made with 0\u2010 and 128\u2010d milled flaxseed. This study showed that milled flaxseed can be stored up to 4 mon at ambient temperatures without noticeable changes in quality. The presence of endogenous antioxidants in the milled flaxseed may account for the stability observed.</jats:p>",
+ "alternative-id": [
+  "10.1007/s11746-000-0038-0"
+ ],
+ "archive": [
+  "Portico"
+ ],
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "Department of Foods and Nutrition University of Manitoba R3T 2N2 Winnipeg Manitoba Canada"
+    },
+    {
+     "name": "Canadian International Grains Institute 1000\u2010303 Main Streel R3C 3G7 Winnipeg MB Canada"
+    }
+   ],
+   "family": "Malcolmson",
+   "given": "L. J.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Department of Foods and Nutrition University of Manitoba R3T 2N2 Winnipeg Manitoba Canada"
+    }
+   ],
+   "family": "Przybylski",
+   "given": "R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "Grain Research Laboratory Canadian Grain Commission R3C 3G8 Winnipeg Manitoba Canada"
+    }
+   ],
+   "family": "Daun",
+   "given": "J. K.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Journal of the American Oil Chemists' Society"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2006,
+    11,
+    22
+   ]
+  ],
+  "date-time": "2006-11-22T09:16:03Z",
+  "timestamp": 1164186963000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    8
+   ]
+  ],
+  "date-time": "2025-10-08T12:46:35Z",
+  "timestamp": 1759927595000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    2,
+    26
+   ]
+  ],
+  "date-time": "2026-02-26T11:25:16Z",
+  "timestamp": 1772105116586,
+  "version": "3.50.1"
+ },
+ "is-referenced-by-count": 61,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0003-021X"
+  },
+  {
+   "type": "electronic",
+   "value": "1558-9331"
+  }
+ ],
+ "issue": "3",
+ "issued": {
+  "date-parts": [
+   [
+    2000,
+    3
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "3",
+  "published-print": {
+   "date-parts": [
+    [
+     2000,
+     3
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor",
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2000,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2000-03-01T00:00:00Z",
+    "timestamp": 951868800000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1007%2Fs11746-000-0038-0",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://aocs.onlinelibrary.wiley.com/doi/pdf/10.1007/s11746-000-0038-0",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "311",
+ "original-title": [],
+ "page": "235-238",
+ "prefix": "10.1002",
+ "published": {
+  "date-parts": [
+   [
+    2000,
+    3
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2000,
+    3
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2000,
+    3
+   ]
+  ]
+ },
+ "publisher": "Wiley",
+ "reference": [
+  {
+   "DOI": "10.1007/BF02540591",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_2_1_2_1"
+  },
+  {
+   "key": "e_1_2_1_3_1",
+   "unstructured": "Hettiarachchy N.S. andJ.Barr Effect of Additives on the Shelf\u2010Life Stability of Lipids in Ground Flax inProgram and Exhibit Directory 52nd Annual Meeting of the Institute of Food Technologists Chicago(1991)."
+  },
+  {
+   "author": "Firestone D.",
+   "key": "e_1_2_1_4_1",
+   "volume-title": "Official Methods and Recommended Practices of the American Oil Chemists' Society",
+   "year": "1990"
+  },
+  {
+   "DOI": "10.1016/S0003-2670(01)83585-6",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_2_1_5_1"
+  },
+  {
+   "DOI": "10.1002/lipi.19800820407",
+   "doi-asserted-by": "publisher",
+   "key": "e_1_2_1_6_1"
+  },
+  {
+   "key": "e_1_2_1_7_1",
+   "unstructured": "International Organization for Standardization 3656 Animal and Vegetable Fats and Oils\u2010Determination of Ultraviolet Absorbance 1989."
+  },
+  {
+   "key": "e_1_2_1_8_1",
+   "unstructured": "Przybylski.R. 1991. Efficient Trapping System for Volatile Components Evaluation in Oils and Fats inEighth International Rapeseed Congress Proceedings edited byD.I.McGregor Saskatoon Canada July 9\u201011 1991 Vol.3 pp.861\u2013866."
+  },
+  {
+   "author": "Meilgaard M.",
+   "key": "e_1_2_1_9_1",
+   "volume-title": "Sensory Evaluation Techniques",
+   "year": "1991"
+  },
+  {
+   "key": "e_1_2_1_10_1",
+   "volume-title": "SAS",
+   "year": "1992"
+  },
+  {
+   "author": "Daun J.K.",
+   "first-page": "833",
+   "key": "e_1_2_1_11_1",
+   "volume-title": "Grains and Oilseeds Handling, Marketing and Processing",
+   "year": "1993"
+  },
+  {
+   "author": "Rui R.C.",
+   "key": "e_1_2_1_12_1",
+   "volume-title": "Ph.D. Thesis",
+   "year": "1997"
+  }
+ ],
+ "reference-count": 11,
+ "references-count": 11,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://aocs.onlinelibrary.wiley.com/doi/10.1007/s11746-000-0038-0"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "J Americ Oil Chem Soc"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Storage stability of milled flaxseed"
+ ],
+ "type": "journal-article",
+ "volume": "77"
+}

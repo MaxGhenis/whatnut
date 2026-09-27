@@ -1,0 +1,386 @@
+{
+ "DOI": "10.1093/ije/dyv039",
+ "ISSN": [
+  "0300-5771",
+  "1464-3685"
+ ],
+ "URL": "https://doi.org/10.1093/ije/dyv039",
+ "alternative-id": [
+  "10.1093/ije/dyv039"
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "van den Brandt",
+   "given": "Piet A",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Schouten",
+   "given": "Leo J",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "International Journal of Epidemiology"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    6,
+    12
+   ]
+  ],
+  "date-time": "2015-06-12T02:47:10Z",
+  "timestamp": 1434077230000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2019,
+    8,
+    26
+   ]
+  ],
+  "date-time": "2019-08-26T19:21:34Z",
+  "timestamp": 1566847294000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    2
+   ]
+  ],
+  "date-time": "2026-06-02T10:46:24Z",
+  "timestamp": 1780397184142,
+  "version": "3.54.1"
+ },
+ "is-referenced-by-count": 88,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0300-5771"
+  },
+  {
+   "type": "electronic",
+   "value": "1464-3685"
+  }
+ ],
+ "issue": "3",
+ "issued": {
+  "date-parts": [
+   [
+    2015,
+    6
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "3",
+  "published-online": {
+   "date-parts": [
+    [
+     2015,
+     7,
+     30
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2015,
+     6
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://academic.oup.com/ije/article-pdf/44/3/1038/14152961/dyv039.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "286",
+ "original-title": [],
+ "page": "1038-1049",
+ "prefix": "10.1093",
+ "published": {
+  "date-parts": [
+   [
+    2015,
+    6
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2015,
+    6,
+    11
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2015,
+    6
+   ]
+  ]
+ },
+ "publisher": "Oxford University Press (OUP)",
+ "reference": [
+  {
+   "DOI": "10.3390/nu2070652",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.1"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400190054010",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.2"
+  },
+  {
+   "author": "Food and Drug Administration",
+   "key": "2015102703072384000_44.3.1038.3",
+   "volume-title": "Qualified Health Claims: Letter of Enforcement Discretion - Nuts and Coronary Heart Disease",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1200303",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.4"
+  },
+  {
+   "DOI": "10.1186/1741-7015-11-208",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.5"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1307352",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.6"
+  },
+  {
+   "DOI": "10.1186/1741-7015-11-164",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.7"
+  },
+  {
+   "DOI": "10.3945/ajcn.110.008250",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.8"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076109",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.9"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076901",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.10"
+  },
+  {
+   "DOI": "10.1016/0895-4356(90)90009-E",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.11"
+  },
+  {
+   "DOI": "10.1093/biomet/73.1.1",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.12"
+  },
+  {
+   "article-title": "Validation of a dietary questionnaire used in a large-scale prospective cohort study on diet and cancer",
+   "author": "Goldbohm",
+   "first-page": "253",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "2015102703072384000_44.3.1038.13",
+   "volume": "48",
+   "year": "1994"
+  },
+  {
+   "author": "Nevo-Table",
+   "key": "2015102703072384000_44.3.1038.14",
+   "volume-title": "Dutch Food Composition Table\u00a01986\u20131987"
+  },
+  {
+   "DOI": "10.1093/biomet/69.1.239",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.15"
+  },
+  {
+   "DOI": "10.2307/2290085",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.16"
+  },
+  {
+   "DOI": "10.1093/ajcn/82.1.163",
+   "article-title": "Diet-quality scores and plasma concentrations of markers of inflammation and endothelial dysfunction",
+   "author": "Fung",
+   "doi-asserted-by": "crossref",
+   "first-page": "163",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2015102703072384000_44.3.1038.17",
+   "volume": "82",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1001/archinte.167.22.2461",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.18"
+  },
+  {
+   "DOI": "10.1056/NEJMoa025039",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.19"
+  },
+  {
+   "DOI": "10.1002/sim.1186",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.20"
+  },
+  {
+   "DOI": "10.2307/2533446",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.21"
+  },
+  {
+   "DOI": "10.1093/aje/kwr265",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.22"
+  },
+  {
+   "DOI": "10.1001/archinte.1997.00440400099012",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.23"
+  },
+  {
+   "article-title": "Frequent nut intake and risk of death from coronary heart disease and all causes in postmenopausal women: the Iowa Women's Health Study",
+   "author": "Ellsworth",
+   "first-page": "372",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "2015102703072384000_44.3.1038.24",
+   "volume": "11",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1017/BJN20061859",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.25"
+  },
+  {
+   "article-title": "The role of nuts in a healthy diet",
+   "author": "Lino",
+   "journal-title": "Insight",
+   "key": "2015102703072384000_44.3.1038.26",
+   "volume": "23",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1136/bmj.317.7169.1341",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.27"
+  },
+  {
+   "DOI": "10.3748/wjg.v12.i2.222",
+   "article-title": "Peanut consumption and reduced risk of colorectal cancer in women: a prospective study in Taiwan",
+   "author": "Yeh",
+   "doi-asserted-by": "crossref",
+   "first-page": "222",
+   "journal-title": "World J Gastroenterol",
+   "key": "2015102703072384000_44.3.1038.28",
+   "volume": "12",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1001/jama.288.20.2554",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.29"
+  },
+  {
+   "DOI": "10.1056/NEJMra054035",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.30"
+  },
+  {
+   "DOI": "10.1039/C2FO10152A",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.31"
+  },
+  {
+   "DOI": "10.1017/BJN20061864",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.32"
+  },
+  {
+   "DOI": "10.1080/10408398.2011.606928",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.33"
+  },
+  {
+   "DOI": "10.1207/S15327914NC3602_14",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.34"
+  },
+  {
+   "DOI": "10.1017/BJN20061868",
+   "doi-asserted-by": "publisher",
+   "key": "2015102703072384000_44.3.1038.35"
+  },
+  {
+   "article-title": "Quality of cause of death registration at older ages. [In Dutch.]",
+   "author": "Harteloh",
+   "key": "2015102703072384000_44.3.1038.36",
+   "volume-title": "Bevolkingstrends",
+   "year": "2011"
+  }
+ ],
+ "reference-count": 36,
+ "references-count": 36,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://academic.oup.com/ije/article-lookup/doi/10.1093/ije/dyv039"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Int. J. Epidemiol."
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Relationship of tree nut, peanut and peanut butter intake with total and cause-specific mortality: a cohort study and meta-analysis"
+ ],
+ "type": "journal-article",
+ "volume": "44"
+}

@@ -1,0 +1,154 @@
+{
+ "DOI": "10.15620/cdc/174591",
+ "URL": "https://doi.org/10.15620/cdc/174591",
+ "abstract": "<jats:p>This report presents complete period life tables for the United States by Hispanic origin and race and sex, based on age-specific death rates in 2023.</jats:p>",
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Arias",
+   "given": "Elizabeth",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Xu",
+   "given": "Jiaquan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Kochanek",
+   "given": "Kenneth",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    3
+   ]
+  ],
+  "date-time": "2025-06-03T16:14:10Z",
+  "timestamp": 1748967250000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    3
+   ]
+  ],
+  "date-time": "2025-06-03T16:14:10Z",
+  "timestamp": 1748967250000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    19
+   ]
+  ],
+  "date-time": "2026-09-19T15:08:45Z",
+  "timestamp": 1789830525467,
+  "version": "4.0.1"
+ },
+ "institution": [
+  {
+   "acronym": [
+    "CDC"
+   ],
+   "department": [
+    "National Center for Health Statistics"
+   ],
+   "name": "Centers for Disease Control and Prevention",
+   "place": [
+    "Atlanta, GA"
+   ]
+  }
+ ],
+ "is-referenced-by-count": 15,
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    15
+   ]
+  ]
+ },
+ "link": [
+  {
+   "URL": "https://www.cdc.gov/nchs/data/nvsr/nvsr74/nvsr74_6.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "6224",
+ "original-title": [],
+ "prefix": "10.15620",
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    15
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    15
+   ]
+  ]
+ },
+ "publisher": "National Center for Health Statistics (U.S.)",
+ "reference-count": 0,
+ "references-count": 0,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://stacks.cdc.gov/view/cdc/174591"
+  }
+ },
+ "score": 1,
+ "short-container-title": [],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "United States Life Tables, 2023"
+ ],
+ "type": "report"
+}

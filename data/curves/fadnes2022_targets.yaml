@@ -1,0 +1,359 @@
+source:
+  key: fadnes2022food
+  citation: 'Fadnes LT, Økland J-M, Haaland ØA, Johansson KA. Estimating impact of food choices on life
+    expectancy: A modeling study. PLoS Medicine 2022;19(2):e1003889.'
+  doi: 10.1371/journal.pmed.1003889
+  pmid: '35134067'
+  pmcid: PMC8824353
+  correction:
+    doi: 10.1371/journal.pmed.1003962
+    pmcid: PMC8956181
+    scope: Adds a missing funding statement only; no numbers changed.
+  files:
+  - raw/fadnes2022_PMC8824353.txt
+  - raw/fadnes2022_PMC8824353.xml
+  - raw/fadnes2022_correction_PMC8956181.xml
+  - raw/fadnes2022_s003.pdf
+  - raw/fadnes2022_s004.pdf
+  - raw/fadnes2022_s005.pdf
+  - raw/fadnes2022_s006.pdf
+  - raw/fadnes2022_s012.png
+  - raw/fadnes2022_s013.png
+  - raw/fadnes2022_s014.png
+  - raw/fadnes2022_s015.png
+  - raw/fadnes2022_s016.png
+  - raw/fadnes2022_s017.png
+  - raw/fadnes2022_s018.png
+  - raw/fadnes2022_s019.png
+  checked_on: '2026-09-23'
+main_target:
+  description: Life-expectancy gain from a sustained change in nuts alone from the typical Western intake
+    to the optimized intake, starting at age 20, United States, 10-year linear phase-in (S2 Table reports
+    each food-group change separately).
+  intake_change_g_per_day:
+    from: 0.0
+    to: 25.0
+  male:
+    years: 2.0
+    ui95_low: 1.7
+    ui95_high: 2.3
+  female:
+    years: 1.7
+    ui95_low: 1.5
+    ui95_high: 2.0
+  locator: Abstract (Methods and findings); S2 Table (pmed.1003889.s005), Nuts row, TW->OD at age 20;
+    S6 and S7 Figs
+  value_checked_in: full text and supplementary table
+all_nut_gains_table:
+- sex: female
+  start_age: 20
+  change: 0->12.5 (feasibility)
+  years: 0.8
+  ui95_low: 0.7
+  ui95_high: 0.9
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->FA, age 20
+  value_checked_in: supplementary table (PDF text)
+- sex: female
+  start_age: 20
+  change: 0->25 (optimized)
+  years: 1.7
+  ui95_low: 1.5
+  ui95_high: 2.0
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->OD, age 20
+  value_checked_in: supplementary table (PDF text)
+- sex: male
+  start_age: 20
+  change: 0->12.5 (feasibility)
+  years: 1.0
+  ui95_low: 0.8
+  ui95_high: 1.1
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->FA, age 20
+  value_checked_in: supplementary table (PDF text)
+- sex: male
+  start_age: 20
+  change: 0->25 (optimized)
+  years: 2.0
+  ui95_low: 1.7
+  ui95_high: 2.3
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->OD, age 20
+  value_checked_in: supplementary table (PDF text)
+- sex: female
+  start_age: 60
+  change: 0->12.5 (feasibility)
+  years: 0.6
+  ui95_low: 0.5
+  ui95_high: 0.7
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->FA, age 60
+  value_checked_in: supplementary table (PDF text)
+- sex: female
+  start_age: 60
+  change: 0->25 (optimized)
+  years: 1.2
+  ui95_low: 1.1
+  ui95_high: 1.4
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->OD, age 60
+  value_checked_in: supplementary table (PDF text)
+- sex: male
+  start_age: 60
+  change: 0->12.5 (feasibility)
+  years: 0.6
+  ui95_low: 0.5
+  ui95_high: 0.7
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->FA, age 60
+  value_checked_in: supplementary table (PDF text)
+- sex: male
+  start_age: 60
+  change: 0->25 (optimized)
+  years: 1.3
+  ui95_low: 1.1
+  ui95_high: 1.5
+  locator: S2 Table (pmed.1003889.s005), Nuts row, TW->OD, age 60
+  value_checked_in: supplementary table (PDF text)
+- sex: female
+  start_age: 40
+  change: 0->25 (optimized)
+  years: 1.6
+  ui95_low: 1.4
+  ui95_high: 1.8
+  locator: S8 Fig (pmed.1003889.s014.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: female
+  start_age: 40
+  change: 0->12.5 (feasibility)
+  years: 0.8
+  ui95_low: 0.7
+  ui95_high: 0.9
+  locator: S8 Fig (pmed.1003889.s014.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: male
+  start_age: 40
+  change: 0->25 (optimized)
+  years: 1.8
+  ui95_low: 1.5
+  ui95_high: 2.0
+  locator: S9 Fig (pmed.1003889.s015.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: male
+  start_age: 40
+  change: 0->12.5 (feasibility)
+  years: 0.8
+  ui95_low: 0.7
+  ui95_high: 0.9
+  locator: S9 Fig (pmed.1003889.s015.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: female
+  start_age: 80
+  change: 0->25 (optimized)
+  years: 0.5
+  ui95_low: 0.4
+  ui95_high: 0.6
+  locator: S12 Fig (pmed.1003889.s018.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: female
+  start_age: 80
+  change: 0->12.5 (feasibility)
+  years: 0.3
+  ui95_low: 0.2
+  ui95_high: 0.4
+  locator: S12 Fig (pmed.1003889.s018.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: male
+  start_age: 80
+  change: 0->25 (optimized)
+  years: 0.5
+  ui95_low: 0.4
+  ui95_high: 0.6
+  locator: S13 Fig (pmed.1003889.s019.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+- sex: male
+  start_age: 80
+  change: 0->12.5 (feasibility)
+  years: 0.2
+  ui95_low: 0.1
+  ui95_high: 0.3
+  locator: S13 Fig (pmed.1003889.s019.png), Nuts row
+  value_checked_in: figure image, read visually (text drawn in PNG)
+figure_vs_table_differences:
+- 'S7 Fig male 20 0->12.5: figure (1.0, 0.8, 1.2), S2 Table (1.0, 0.8, 1.1)'
+figure_vs_table_note: The S14/S15 Fig legends say admetan made some intervals symmetric, so the S2 Table
+  is used where both exist; figures supply ages 40 and 80 only.
+nut_intakes_g_per_day:
+  typical_western: 0.0
+  feasibility: 12.5
+  optimized: 25.0
+  optimized_description: 1 handful of nuts
+  locator: Methods, list of TW/FA/OD intakes; S1 Table columns 'Sliders start' and 'Optimized'; S2 Table
+  note: S3 Text estimates US intake at 11 g/day (S1 Table 'US, mean intake' 11), but the model's typical
+    Western diet uses 0 g/day for nuts.
+  us_estimated_intake_g_per_day: 11.0
+relative_risk:
+  measure: HR for all-cause mortality versus 0 g/day, read off a grid by intake
+  grid_g_per_day:
+  - 0
+  - 25
+  - 50
+  - 100
+  - 150
+  hr:
+  - 1.0
+  - 0.84
+  - 0.86
+  - 0.9
+  - 0.95
+  half_width_to_95ci:
+    '25': 0.02
+    '50': 0.04
+    '100': 0.08
+    '150': 0.12
+  hr_at_optimal_25g: 0.84
+  ci95_at_25g:
+  - 0.82
+  - 0.86
+  uncertain_above_g_per_day: 50
+  no_estimate_above_g_per_day: 200
+  source: Aune et al. 2016 BMC Medicine (Fadnes ref 4); S1 Table 'Publication' column
+  applied_to: 'All-cause mortality (Methods: mortality rates multiplied by the hazard ratio for the change)'
+  locator: S1 Table (pmed.1003889.s004), Nuts row and the 'Mid to upper/lower' row beneath it
+  value_checked_in: supplementary table (PDF text; column alignment confirmed on the rendered page)
+  match_to_aune: Aune 2016 Table S15 all-cause RR at 25 g/day is 0.84 (0.82-0.85); Fadnes uses 0.84 +/-
+    0.02. The 50, 100 and 150 g/day HRs lie beyond Aune's 28 g/day table and are Fadnes's own extension
+    (flagged orange, 'uncertain', in S1 Table).
+  feasibility_hr_not_stated: The HR used for 12.5 g/day is not printed. The feasibility gains are about
+    half the optimized gains (S2 Table). That fits interpolating the S1 Table grid between 0 and 25 g/day
+    (HR about 0.92), not Aune's curve, which is already 0.84 at 10 g/day. Inference only; the paper does
+    not say.
+phase_in:
+  years_to_full_effect: 10
+  shape: linear; 20% of the full effect after 2 years
+  sensitivities_years:
+  - 5
+  - 30
+  - 50
+  locator: Methods, time-to-full-effect paragraph; Results, S3 Table paragraph
+  whole_diet_sensitivity_S3_Table:
+    female_20:
+      optimized_diet_gain: 10.7
+      abs_change_vs_10y:
+        T=5: 0.1
+        T=30: -0.4
+        T=50: -1.3
+    male_20:
+      optimized_diet_gain: 13.0
+      abs_change_vs_10y:
+        T=5: 0.2
+        T=30: -0.9
+        T=50: -2.2
+    female_40:
+      optimized_diet_gain: 10.0
+      abs_change_vs_10y:
+        T=5: 0.2
+        T=30: -1.2
+        T=50: -3.4
+    male_40:
+      optimized_diet_gain: 11.7
+      abs_change_vs_10y:
+        T=5: 0.3
+        T=30: -1.8
+        T=50: -4.7
+    female_60:
+      optimized_diet_gain: 8.0
+      abs_change_vs_10y:
+        T=5: 0.5
+        T=30: -2.8
+        T=50: -5.3
+    male_60:
+      optimized_diet_gain: 8.8
+      abs_change_vs_10y:
+        T=5: 0.8
+        T=30: -3.6
+        T=50: -6.1
+    female_80:
+      optimized_diet_gain: 3.4
+      abs_change_vs_10y:
+        T=5: 1.2
+        T=30: -2.4
+        T=50: -2.8
+    male_80:
+      optimized_diet_gain: 3.4
+      abs_change_vs_10y:
+        T=5: 1.3
+        T=30: -2.4
+        T=50: -2.9
+  note: S3 Table reports the time-to-full-effect sensitivity for the whole optimized diet only, not for
+    nuts.
+mortality_data:
+  source: GBD 2019 (published 2020), IHME GBD results tool / cause of death database (Fadnes ref 12)
+  year: 2019
+  measure: all-cause mortality rates for the United States, 5-year age groups, converted to single years
+  baseline_assumption: GBD population mortality is treated as the typical-Western-diet mortality; Table
+    1 labels the GBD-based life expectancy as the typical Western diet LE.
+  locator: Methods, paragraphs on GBD mortality and background mortality; Table 1
+  typical_diet_LE_us:
+    age_20:
+      male: 57.8
+      female: 62.5
+    age_40:
+      male: 39.4
+      female: 43.3
+    age_60:
+      male: 22.4
+      female: 25.3
+    age_80:
+      male: 9.0
+      female: 10.3
+  typical_diet_LE_locator: Table 1, United States rows, Typical Western LE columns
+life_table_method:
+  summary: Standard life table; LE(D) - LE(D0) with age-specific mortality rates after the change age
+    multiplied by the food group's hazard ratio.
+  locator: Methods, LE(D) definition paragraphs
+  details_from_cited_method:
+    citation: Johansson KA, Økland J-M, Skaftun EK, et al. Estimating Health Adjusted Age at Death (HAAD).
+      PLoS One 2020;15(7):e0235955 (Fadnes ref 13; PMC7360045)
+    age_groups: GBD 5-year groups to 95+; each single year in a group gets the group's rate
+    q_from_rate: q = 1 - exp(-M_all_causes)
+    max_age: Y = 99; survival from 99 to 100 set to zero
+    locator: Johansson 2020, Methods (single-year conversion; lifetable paragraph) and Table 1
+    caveat: Fadnes defers to this paper for the background-LE method but does not restate these choices,
+      so their use in Fadnes 2022 is inferred.
+  not_stated_in_fadnes:
+  - whether the HR multiplies the rate before converting to q (Johansson's q = 1 - exp(-M) suggests so)
+  - within-year timing of deaths (mid-year or other) for the LE sum
+  - whether the phase-in scales the HR linearly or the log HR
+  - the HR at 12.5 g/day (feasibility diet)
+  - how the 95+ group is split into single years for rates
+uncertainty_method:
+  draws: 200
+  distribution: uniform between the lower and upper 95% CI of each food group's HR
+  interval: 2.5th and 97.5th percentiles; fixed seed
+  locator: Methods, uncertainty paragraph
+other_choices:
+  food_groups_independent: Each food group treated as an independent protective or risk factor; the per-food
+    gains are single-food changes, and the whole-diet total is smaller than their sum (S2 Table), consistent
+    with multiplied hazard ratios.
+  optimal_intake_rule: Optimized intake set where the dose-response showed no further mortality gain.
+  nutrigrade_nuts: 7
+  sensitivity_hr_adjustment: HRa = HR0 + (1 - HR0)(1 - m), m in 0.5-1.5, reported as sensitivity-adjusted
+    intervals (S15 Fig).
+  software: Web calculator built with R Shiny (food4healthylife.org); graphs and forest plots in Stata
+    SE 17.0 (admetan)
+  locator: Methods
+whole_diet_context:
+  optimized_gain_age20:
+    male:
+    - 13.0
+    - 9.4
+    - 14.3
+    female:
+    - 10.7
+    - 8.4
+    - 12.3
+  feasibility_gain_age20:
+    male:
+    - 7.3
+    - 4.7
+    - 9.5
+    female:
+    - 6.2
+    - 3.5
+    - 8.1
+  locator: S2 Table, Total row; Abstract; Table 1

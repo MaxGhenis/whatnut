@@ -1,0 +1,754 @@
+{
+ "DOI": "10.1093/advances/nmz043",
+ "ISSN": [
+  "2161-8313"
+ ],
+ "URL": "https://doi.org/10.1093/advances/nmz043",
+ "alternative-id": [
+  "S2161831322004434"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "Almond Consumption and Risk Factors for Cardiovascular Disease: A Systematic Review and Meta-analysis of Randomized Controlled Trials"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "Advances in Nutrition"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1093/advances/nmz043"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "\u00a9 2019 American Society for Nutrition"
+  }
+ ],
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-3991-7014",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Lee-Bravatti",
+   "given": "Michelle A",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Wang",
+   "given": "Jifan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Avendano",
+   "given": "Esther E",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "King",
+   "given": "Ligaya",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-8508-0032",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Johnson",
+   "given": "Elizabeth J",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4427-1083",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Raman",
+   "given": "Gowri",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Advances in Nutrition"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    3,
+    29
+   ]
+  ],
+  "date-time": "2019-03-29T16:11:59Z",
+  "timestamp": 1553875919000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    31
+   ]
+  ],
+  "date-time": "2025-10-31T01:01:34Z",
+  "timestamp": 1761872494000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    2
+   ]
+  ],
+  "date-time": "2026-07-02T23:22:18Z",
+  "timestamp": 1783034538766,
+  "version": "3.54.6"
+ },
+ "is-referenced-by-count": 71,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "2161-8313"
+  }
+ ],
+ "issue": "6",
+ "issued": {
+  "date-parts": [
+   [
+    2019,
+    11
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "6",
+  "published-print": {
+   "date-parts": [
+    [
+     2019,
+     11
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2019-11-01T00:00:00Z",
+    "timestamp": 1572566400000
+   }
+  },
+  {
+   "URL": "https://www.elsevier.com/legal/tdmrep-license",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2019-11-01T00:00:00Z",
+    "timestamp": 1572566400000
+   }
+  },
+  {
+   "URL": "http://www.elsevier.com/open-access/userlicense/1.0/",
+   "content-version": "vor",
+   "delay-in-days": 818,
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      1,
+      27
+     ]
+    ],
+    "date-time": "2022-01-27T00:00:00Z",
+    "timestamp": 1643241600000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2161831322004434?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2161831322004434?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://academic.oup.com/advances/article-pdf/10/6/1076/30735425/nmz043.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "syndication"
+  },
+  {
+   "URL": "http://academic.oup.com/advances/article-pdf/10/6/1076/30735425/nmz043.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "1076-1088",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2019,
+    11
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2019,
+    11
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1017/S0007114514003729",
+   "article-title": "Review of nut phytochemicals, fat-soluble bioactives, antioxidant components and health effects",
+   "author": "Alasalvar",
+   "doi-asserted-by": "crossref",
+   "first-page": "S68",
+   "issue": "Suppl 2",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmz043_bib1",
+   "volume": "113",
+   "year": "2015"
+  },
+  {
+   "key": "10.1093/advances/nmz043_bib2",
+   "unstructured": "US FDA. Qualified health claims, letter of enforcement discretion\u2014nuts and coronary heart disease (docket no 02P-0505). Rockville (MD); 2003. pp. 1\u20134."
+  },
+  {
+   "DOI": "10.1136/bmj.317.7169.1341",
+   "article-title": "Frequent nut consumption and risk of coronary heart disease in women: prospective cohort study",
+   "author": "Hu",
+   "doi-asserted-by": "crossref",
+   "first-page": "1341",
+   "issue": "7169",
+   "journal-title": "BMJ",
+   "key": "10.1093/advances/nmz043_bib3",
+   "volume": "317",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1001/archinte.162.12.1382",
+   "article-title": "Nut consumption and decreased risk of sudden cardiac death in the Physicians' Health Study",
+   "author": "Albert",
+   "doi-asserted-by": "crossref",
+   "first-page": "1382",
+   "issue": "12",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1093/advances/nmz043_bib4",
+   "volume": "162",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400190054010",
+   "article-title": "A possible protective effect of nut consumption on risk of coronary heart disease. The Adventist Health Study",
+   "author": "Fraser",
+   "doi-asserted-by": "crossref",
+   "first-page": "1416",
+   "issue": "7",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1093/advances/nmz043_bib5",
+   "volume": "152",
+   "year": "1992"
+  },
+  {
+   "article-title": "Frequent nut intake and risk of death from coronary heart disease and all causes in postmenopausal women: the Iowa Women's Health Study",
+   "author": "Ellsworth",
+   "first-page": "372",
+   "issue": "6",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.1093/advances/nmz043_bib6",
+   "volume": "11",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.26736Q",
+   "article-title": "Nuts and health outcomes: new epidemiologic evidence",
+   "author": "Ang",
+   "doi-asserted-by": "crossref",
+   "first-page": "S1643",
+   "issue": "5",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmz043_bib7",
+   "volume": "89",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1017/BJN20061865",
+   "article-title": "Nuts and coronary heart disease: an epidemiological perspective",
+   "author": "Kelly",
+   "doi-asserted-by": "crossref",
+   "first-page": "S61",
+   "issue": "Suppl 2",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmz043_bib8",
+   "volume": "96",
+   "year": "2006"
+  },
+  {
+   "author": "USDA",
+   "key": "10.1093/advances/nmz043_bib9",
+   "series-title": "Full report (all nutrients): 12061, nuts, almonds",
+   "year": "2018"
+  },
+  {
+   "key": "10.1093/advances/nmz043_bib10",
+   "unstructured": "Almond Board of California. Annual Report: Almond Almanac. Modesto (CA); 2018."
+  },
+  {
+   "DOI": "10.1021/jf2044795",
+   "article-title": "Health benefits of almonds beyond cholesterol reduction",
+   "author": "Kamil",
+   "doi-asserted-by": "crossref",
+   "first-page": "6694",
+   "issue": "27",
+   "journal-title": "J Agric Food Chem",
+   "key": "10.1093/advances/nmz043_bib11",
+   "volume": "60",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1017/jns.2016.19",
+   "article-title": "The effects of almond consumption on fasting blood lipid levels: a systematic review and meta-analysis of randomised controlled trials",
+   "author": "Musa-Veloso",
+   "doi-asserted-by": "crossref",
+   "first-page": "e34",
+   "journal-title": "J Nutr Sci",
+   "key": "10.1093/advances/nmz043_bib12",
+   "volume": "5",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1016/j.jclinepi.2009.06.005",
+   "article-title": "Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement",
+   "author": "Moher",
+   "doi-asserted-by": "crossref",
+   "first-page": "1006",
+   "issue": "10",
+   "journal-title": "J Clin Epidemiol",
+   "key": "10.1093/advances/nmz043_bib13",
+   "volume": "62",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1136/bmj.d5928",
+   "article-title": "The Cochrane Collaboration's tool for assessing risk of bias in randomised trials",
+   "author": "Higgins",
+   "doi-asserted-by": "crossref",
+   "journal-title": "BMJ",
+   "key": "10.1093/advances/nmz043_bib14",
+   "volume": "343",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3945/jn.108.097154",
+   "article-title": "Application of systematic review methodology to the field of nutrition",
+   "author": "Lichtenstein",
+   "doi-asserted-by": "crossref",
+   "first-page": "2297",
+   "issue": "12",
+   "journal-title": "J Nutr",
+   "key": "10.1093/advances/nmz043_bib15",
+   "volume": "138",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/0197-2456(86)90046-2",
+   "article-title": "Meta-analysis in clinical trials",
+   "author": "DerSimonian",
+   "doi-asserted-by": "crossref",
+   "first-page": "177",
+   "issue": "3",
+   "journal-title": "Control Clin Trials",
+   "key": "10.1093/advances/nmz043_bib16",
+   "volume": "7",
+   "year": "1986"
+  },
+  {
+   "DOI": "10.1002/sim.1186",
+   "article-title": "Quantifying heterogeneity in a meta-analysis",
+   "author": "Higgins",
+   "doi-asserted-by": "crossref",
+   "first-page": "1539",
+   "issue": "11",
+   "journal-title": "Stat Med",
+   "key": "10.1093/advances/nmz043_bib17",
+   "volume": "21",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1093/ajcn/65.5.1590S",
+   "article-title": "Design criteria for studies examining individual fatty acid effects on cardiovascular disease risk factors: human and animal studies",
+   "author": "Kris-Etherton",
+   "doi-asserted-by": "crossref",
+   "first-page": "S1590",
+   "issue": "5 Suppl",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmz043_bib18",
+   "volume": "65",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1016/j.jff.2014.06.024",
+   "article-title": "Almond supplementation in the absence of dietary advice significantly reduced C-reactive protein in subjects with type 2 diabetes",
+   "author": "Sweazea",
+   "doi-asserted-by": "crossref",
+   "first-page": "252",
+   "journal-title": "J Funct Foods",
+   "key": "10.1093/advances/nmz043_bib19",
+   "volume": "10",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1093/ajcn/76.5.1000",
+   "article-title": "Effect of diets enriched in almonds on insulin action and serum lipids in adults with normal glucose tolerance or type 2 diabetes",
+   "author": "Lovejoy",
+   "doi-asserted-by": "crossref",
+   "first-page": "1000",
+   "issue": "5",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmz043_bib20",
+   "volume": "76",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1093/ajcn/77.6.1379",
+   "article-title": "Serum lipid response to the graduated enrichment of a Step I diet with almonds: a randomized feeding trial",
+   "author": "Sabate",
+   "doi-asserted-by": "crossref",
+   "first-page": "1379",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmz043_bib21",
+   "volume": "77",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1038/ejcn.2013.184",
+   "article-title": "Appetitive, dietary and health effects of almonds consumed with meals or as snacks: a randomized, controlled trial",
+   "author": "Tan",
+   "doi-asserted-by": "crossref",
+   "first-page": "1205",
+   "issue": "11",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.1093/advances/nmz043_bib22",
+   "volume": "67",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1111/j.1365-277X.2009.00983.x",
+   "article-title": "The effect of including a conventional snack (cereal bar) and a nonconventional snack (almonds) on hunger, eating frequency, dietary intake and body weight",
+   "author": "Zaveri",
+   "doi-asserted-by": "crossref",
+   "first-page": "461",
+   "issue": "5",
+   "journal-title": "J Hum Nutr Diet",
+   "key": "10.1093/advances/nmz043_bib23",
+   "volume": "22",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2010.12.006",
+   "article-title": "Crossover study of diets enriched with virgin olive oil, walnuts or almonds. Effects on lipids and other cardiovascular risk markers",
+   "author": "Damasceno",
+   "doi-asserted-by": "crossref",
+   "first-page": "S14",
+   "issue": "Suppl 1",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.1093/advances/nmz043_bib24",
+   "volume": "21",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1161/01.CIR.0000028421.91733.20",
+   "article-title": "Dose response of almonds on coronary heart disease risk factors: blood lipids, oxidized low-density lipoproteins, lipoprotein(a), homocysteine, and pulmonary nitric oxide: a randomized, controlled, crossover trial",
+   "author": "Jenkins",
+   "doi-asserted-by": "crossref",
+   "first-page": "1327",
+   "issue": "11",
+   "journal-title": "Circulation",
+   "key": "10.1093/advances/nmz043_bib25",
+   "volume": "106",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2006.08.007",
+   "article-title": "Cardioprotective effects of chocolate and almond consumption in healthy women",
+   "author": "Kurlandsky",
+   "doi-asserted-by": "crossref",
+   "first-page": "509",
+   "journal-title": "Nutr Res",
+   "key": "10.1093/advances/nmz043_bib26",
+   "volume": "26",
+   "year": "2006"
+  },
+  {
+   "article-title": "The effect of almonds on anthropometric measurements and lipid profile in overweight and obese females in a weight reduction program: a randomized controlled clinical trial",
+   "author": "Abazarfard",
+   "first-page": "457",
+   "issue": "5",
+   "journal-title": "J Res Med Sci",
+   "key": "10.1093/advances/nmz043_bib27",
+   "volume": "19",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1161/JAHA.114.000993",
+   "article-title": "Effects of daily almond consumption on cardiometabolic risk and abdominal adiposity in healthy adults with elevated LDL-cholesterol: a randomized controlled trial",
+   "author": "Berryman",
+   "doi-asserted-by": "crossref",
+   "issue": "1",
+   "journal-title": "J Am Heart Assoc",
+   "key": "10.1093/advances/nmz043_bib28",
+   "volume": "4",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1017/S0007114507734608",
+   "article-title": "Effect of chronic consumption of almonds on body weight in healthy humans",
+   "author": "Hollis",
+   "doi-asserted-by": "crossref",
+   "first-page": "651",
+   "issue": "3",
+   "journal-title": "Br J Nutr",
+   "key": "10.1093/advances/nmz043_bib29",
+   "volume": "98",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2010.04.009",
+   "article-title": "Almond consumption improved glycemic control and lipid profiles in patients with type 2 diabetes mellitus",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "474",
+   "issue": "4",
+   "journal-title": "Metabolism",
+   "key": "10.1093/advances/nmz043_bib30",
+   "volume": "60",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1080/07315724.1998.10718761",
+   "article-title": "Nuts and plasma lipids: an almond-based diet lowers LDL-C while preserving HDL-C",
+   "author": "Spiller",
+   "doi-asserted-by": "crossref",
+   "first-page": "285",
+   "issue": "3",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.1093/advances/nmz043_bib31",
+   "volume": "17",
+   "year": "1998"
+  },
+  {
+   "article-title": "A low-dose almond-based diet decreases LDL-C while preserving HDL-C",
+   "author": "Tamizifar",
+   "first-page": "45",
+   "journal-title": "Arch Iran Med",
+   "key": "10.1093/advances/nmz043_bib32",
+   "volume": "8",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1080/07315724.2010.10719833",
+   "article-title": "Almond consumption and cardiovascular risk factors in adults with prediabetes",
+   "author": "Wien",
+   "doi-asserted-by": "crossref",
+   "first-page": "189",
+   "issue": "3",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.1093/advances/nmz043_bib33",
+   "volume": "29",
+   "year": "2010"
+  },
+  {
+   "article-title": "The role of lipids and lipoproteins in atherosclerosis",
+   "author": "Linton",
+   "key": "10.1093/advances/nmz043_bib34",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1161/01.CIR.96.9.3248",
+   "article-title": "Obesity and heart disease: a statement for healthcare professionals from the Nutrition Committee, American Heart Association",
+   "author": "Eckel",
+   "doi-asserted-by": "crossref",
+   "first-page": "3248",
+   "issue": "9",
+   "journal-title": "Circulation",
+   "key": "10.1093/advances/nmz043_bib35",
+   "volume": "96",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2011.01.017",
+   "article-title": "Almond ingestion at mealtime reduces postprandial glycemia and chronic ingestion reduces hemoglobin A(1c) in individuals with well-controlled type 2 diabetes mellitus",
+   "author": "Cohen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1312",
+   "issue": "9",
+   "journal-title": "Metabolism",
+   "key": "10.1093/advances/nmz043_bib36",
+   "volume": "60",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3945/ajcn.112.037895",
+   "article-title": "A randomized trial of the effects of an almond-enriched, hypocaloric diet in the treatment of obesity",
+   "author": "Foster",
+   "doi-asserted-by": "crossref",
+   "first-page": "249",
+   "issue": "2",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1093/advances/nmz043_bib37",
+   "volume": "96",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1207/s15327914nc5402_4",
+   "article-title": "A pilot study on the effects of almond consumption on DNA damage and oxidative stress in smokers",
+   "author": "Jia",
+   "doi-asserted-by": "crossref",
+   "first-page": "179",
+   "issue": "2",
+   "journal-title": "Nutr Cancer",
+   "key": "10.1093/advances/nmz043_bib38",
+   "volume": "54",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2014.10.001",
+   "article-title": "Statins and almonds to lower lipoproteins (the STALL Study)",
+   "author": "Ruisinger",
+   "doi-asserted-by": "crossref",
+   "first-page": "58",
+   "issue": "1",
+   "journal-title": "J Clin Lipidol",
+   "key": "10.1093/advances/nmz043_bib39",
+   "volume": "9",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1038/sj.ijo.0802411",
+   "article-title": "Almonds vs complex carbohydrates in a weight reduction program",
+   "author": "Wien",
+   "doi-asserted-by": "crossref",
+   "first-page": "1365",
+   "issue": "11",
+   "journal-title": "Int J Obes Relat Metab Disord",
+   "key": "10.1093/advances/nmz043_bib40",
+   "volume": "27",
+   "year": "2003"
+  }
+ ],
+ "reference-count": 40,
+ "references-count": 40,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S2161831322004434"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Advances in Nutrition"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Almond Consumption and Risk Factors for Cardiovascular Disease: A Systematic Review and Meta-analysis of Randomized Controlled Trials"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "10"
+}

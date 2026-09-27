@@ -1,0 +1,868 @@
+{
+ "DOI": "10.1136/bmj.n1864",
+ "ISSN": [
+  "1756-1833"
+ ],
+ "URL": "https://doi.org/10.1136/bmj.n1864",
+ "abstract": "<jats:title>Abstract</jats:title>\n          <jats:sec>\n            <jats:title>Objective</jats:title>\n            <jats:p>To evaluate the agreement between diet-disease effect estimates of bodies of evidence from randomised controlled trials and those from cohort studies in nutrition research, and to investigate potential factors for disagreement.</jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Design</jats:title>\n            <jats:p>Meta-epidemiological study.</jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Data sources</jats:title>\n            <jats:p>Cochrane Database of Systematic Reviews, and Medline.</jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Review methods</jats:title>\n            <jats:p>\n              Population, intervention or exposure, comparator, outcome (PI/ECO) elements from a body of evidence from cohort studies (BoE(CS)) were matched with corresponding elements of a body of evidence from randomised controlled trials (BoE(RCT)). Pooled ratio of risk ratios or difference of mean differences across all diet-disease outcome pairs were calculated. Subgroup analyses were conducted to explore factors for disagreement. Heterogeneity was assessed through I\n              <jats:sup>2</jats:sup>\n              and \u03c4\n              <jats:sup>2</jats:sup>\n              . Prediction intervals were calculated to assess the range of possible values for the difference in the results between evidence from randomised controlled trials and evidence from cohort studies in future comparisons.\n            </jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Results</jats:title>\n            <jats:p>\n              97 diet-disease outcome pairs (that is, matched BoE(RCT) and BoE(CS)) were identified overall. For binary outcomes, the pooled ratio of risk ratios comparing estimates from BoE(RCT) with BoE(CS) was 1.09 (95% confidence interval 1.04 to 1.14; I\n              <jats:sup>2</jats:sup>\n              =68%; \u03c4\n              <jats:sup>2</jats:sup>\n              =0.021; 95% prediction interval 0.81 to 1.46). The prediction interval indicated that the difference could be much more substantial, in either direction. We further explored heterogeneity and found that PI/ECO dissimilarities, especially for the comparisons of dietary supplements in randomised controlled trials and nutrient status in cohort studies, explained most of the differences. When the type of intake or exposure between both types of evidence was identical, the estimates were similar. For continuous outcomes, small differences were observed between randomised controlled trials and cohort studies.\n            </jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Conclusion</jats:title>\n            <jats:p>On average, the difference in pooled results between estimates from BoE(RCT) and BoE(CS) was small. But wide prediction intervals and some substantial statistical heterogeneity in cohort studies indicate that important differences or potential bias in individual comparisons or studies cannot be excluded. Observed differences were mainly driven by dissimilarities in population, intervention or exposure, comparator, and outcome. These findings could help researchers further understand the integration of such evidence into prospective nutrition evidence syntheses and improve evidence based dietary guidelines.</jats:p>\n          </jats:sec>",
+ "alternative-id": [
+  "10.1136/bmj.n1864"
+ ],
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0003-3407-7594",
+   "affiliation": [],
+   "authenticated-orcid": false,
+   "family": "Schwingshackl",
+   "given": "Lukas",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Balduzzi",
+   "given": "Sara",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Beyerbach",
+   "given": "Jessica",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Br\u00f6ckelmann",
+   "given": "Nils",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Werner",
+   "given": "Sarah S",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Z\u00e4hringer",
+   "given": "Jasmin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Nagavci",
+   "given": "Blin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Meerpohl",
+   "given": "Joerg J",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "BMJ"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "bmj.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    9,
+    15
+   ]
+  ],
+  "date-time": "2021-09-15T10:50:11Z",
+  "timestamp": 1631703011000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2021,
+    9,
+    22
+   ]
+  ],
+  "date-time": "2021-09-22T16:40:21Z",
+  "timestamp": 1632328821000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    16
+   ]
+  ],
+  "date-time": "2026-09-16T14:12:45Z",
+  "timestamp": 1789567965459,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 50,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "1756-1833"
+  }
+ ],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    9,
+    15
+   ]
+  ]
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "http://creativecommons.org/licenses/by-nc/4.0/",
+   "content-version": "unspecified",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      9,
+      15
+     ]
+    ],
+    "date-time": "2021-09-15T00:00:00Z",
+    "timestamp": 1631664000000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "http://data.bmj.org/tdm/10.1136/bmj.n1864",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://syndication.highwire.org/content/doi/10.1136/bmj.n1864",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "239",
+ "original-title": [],
+ "page": "n1864",
+ "prefix": "10.1136",
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    9,
+    15
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    9,
+    15
+   ]
+  ]
+ },
+ "publisher": "BMJ",
+ "reference": [
+  {
+   "DOI": "10.1016/S0140-6736(18)32203-7",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.1"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(19)30041-8",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.2"
+  },
+  {
+   "DOI": "10.1038/ejcn.2016.52",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.3"
+  },
+  {
+   "key": "2021092209400590000_374.sep15_3.n1864.4",
+   "unstructured": "US Department of Health and Human Services and US Department of Agriculture. 2015-2020 Dietary Guidelines for Americans. 8th ed. December 2015. https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/."
+  },
+  {
+   "DOI": "10.1001/jama.2018.11025",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.5"
+  },
+  {
+   "DOI": "10.1016/j.cmet.2018.02.017",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.6"
+  },
+  {
+   "DOI": "10.1007/s00394-020-02464-1",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.7"
+  },
+  {
+   "DOI": "10.4065/83.11.1203",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.8"
+  },
+  {
+   "DOI": "10.1002/ijc.22076",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.9"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(97)01234-8",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.10"
+  },
+  {
+   "DOI": "10.1056/NEJM199305203282003",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.11"
+  },
+  {
+   "DOI": "10.1056/NEJM200004203421601",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.12"
+  },
+  {
+   "DOI": "10.1056/NEJM200001203420302",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.13"
+  },
+  {
+   "DOI": "10.1093/advances/nmy030",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.14"
+  },
+  {
+   "key": "2021092209400590000_374.sep15_3.n1864.15",
+   "unstructured": "Moorthy D Chung M Lee J . AHRQ Technical Reviews. Concordance Between the Findings of Epidemiological Studies and Randomized Trials in Nutrition: An Empirical Evaluation and Citation Analysis: Nutritional Research Series. Vol 6. Agency for Healthcare Research and Quality (US), 2013."
+  },
+  {
+   "DOI": "10.1136/ebmed-2017-110713",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.16"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqz349",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.17"
+  },
+  {
+   "DOI": "10.1093/advances/nmy040",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.18"
+  },
+  {
+   "DOI": "10.1001/jama.2010.310",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.19"
+  },
+  {
+   "DOI": "10.1002/9781119536604",
+   "doi-asserted-by": "crossref",
+   "key": "2021092209400590000_374.sep15_3.n1864.20",
+   "unstructured": "Higgins JP, Thomas J, Chandler J, et al. Cochrane Handbook for Systematic Reviews of Interventions Version 6.1. 2020. https://training.cochrane.org/handbook."
+  },
+  {
+   "DOI": "10.1093/advances/nmy123",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.21"
+  },
+  {
+   "DOI": "10.1111/jgs.15012",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.22"
+  },
+  {
+   "DOI": "10.1159/000486810",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.23"
+  },
+  {
+   "DOI": "10.3390/nu10060698",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.24"
+  },
+  {
+   "DOI": "10.1038/s41430-018-0373-x",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.25"
+  },
+  {
+   "DOI": "10.1002/14651858.CD005195.pub4",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.26"
+  },
+  {
+   "DOI": "10.1080/14767058.2019.1640675",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.27"
+  },
+  {
+   "DOI": "10.1002/14651858.CD011114.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.28"
+  },
+  {
+   "DOI": "10.1002/14651858.CD009825.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.29"
+  },
+  {
+   "DOI": "10.1136/bmj.326.7382.219",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.30"
+  },
+  {
+   "DOI": "10.1136/bmj.d549",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.31"
+  },
+  {
+   "DOI": "10.1136/bmj.327.7414.557",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.32"
+  },
+  {
+   "DOI": "10.6028/jres.087.022",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.33"
+  },
+  {
+   "DOI": "10.1002/jrsm.1164",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.34"
+  },
+  {
+   "DOI": "10.1136/ebmental-2019-300117",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.35"
+  },
+  {
+   "DOI": "10.1002/14651858.CD009350.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.36"
+  },
+  {
+   "DOI": "10.1002/14651858.CD003177.pub4",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.37"
+  },
+  {
+   "DOI": "10.1002/14651858.CD012345.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.38"
+  },
+  {
+   "DOI": "10.1002/14651858.CD009217.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.39"
+  },
+  {
+   "DOI": "10.1002/14651858.CD000227.pub4",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.40"
+  },
+  {
+   "DOI": "10.1002/14651858.CD007176.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.41"
+  },
+  {
+   "DOI": "10.1002/14651858.CD007469.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.42"
+  },
+  {
+   "DOI": "10.1002/14651858.CD007470.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.43"
+  },
+  {
+   "DOI": "10.1002/14651858.CD010037.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.44"
+  },
+  {
+   "DOI": "10.1002/14651858.CD005525.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.45"
+  },
+  {
+   "DOI": "10.1002/14651858.CD009874.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.46"
+  },
+  {
+   "DOI": "10.1002/14651858.CD011472.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.47"
+  },
+  {
+   "DOI": "10.1002/14651858.CD003054.pub4",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.48"
+  },
+  {
+   "DOI": "10.1002/14651858.CD001059.pub5",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.49"
+  },
+  {
+   "DOI": "10.1002/14651858.CD002137.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.50"
+  },
+  {
+   "DOI": "10.1002/14651858.CD011737",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.51"
+  },
+  {
+   "DOI": "10.1002/14651858.CD011834",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.52"
+  },
+  {
+   "DOI": "10.1002/14651858.CD011094.pub4",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.53"
+  },
+  {
+   "DOI": "10.1002/14651858.CD005051.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.54"
+  },
+  {
+   "DOI": "10.1002/14651858.CD004567.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.55"
+  },
+  {
+   "DOI": "10.1002/14651858.CD013446",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.56"
+  },
+  {
+   "DOI": "10.1002/14651858.CD002128.pub5",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.57"
+  },
+  {
+   "DOI": "10.1002/14651858.CD009671.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.58"
+  },
+  {
+   "DOI": "10.1002/14651858.CD011906.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.59"
+  },
+  {
+   "DOI": "10.1002/14651858.CD005379.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.60"
+  },
+  {
+   "DOI": "10.1002/14651858.CD006674.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.61"
+  },
+  {
+   "DOI": "10.1002/14651858.CD008118.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.62"
+  },
+  {
+   "DOI": "10.1002/14651858.CD003430.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.63"
+  },
+  {
+   "DOI": "10.1002/14651858.CD004905.pub6",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.64"
+  },
+  {
+   "DOI": "10.1002/14651858.CD007950.pub3",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.65"
+  },
+  {
+   "DOI": "10.6133/apjcn.072017.01",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.66"
+  },
+  {
+   "DOI": "10.7326/M13-1788.",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.67"
+  },
+  {
+   "DOI": "10.1093/advances/nmy092",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.68"
+  },
+  {
+   "DOI": "10.1017/S0007114517003294",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.69"
+  },
+  {
+   "DOI": "10.1186/s12944-019-1035-2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.70"
+  },
+  {
+   "DOI": "10.1136/bmj.f1326",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.71"
+  },
+  {
+   "DOI": "10.1093/ije/dyy121",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.72"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy097",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.73"
+  },
+  {
+   "DOI": "10.1007/s00198-017-3955-x",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.74"
+  },
+  {
+   "DOI": "10.1136/bmj.g1903",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.75"
+  },
+  {
+   "DOI": "10.3390/nu11102295",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.76"
+  },
+  {
+   "DOI": "10.1016/j.clnesp.2018.12.085",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.77"
+  },
+  {
+   "DOI": "10.1159/000374072",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.78"
+  },
+  {
+   "DOI": "10.1038/s41430-018-0275-y",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.79"
+  },
+  {
+   "DOI": "10.3390/nu11051027",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.80"
+  },
+  {
+   "DOI": "10.3945/an.117.017178",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.81"
+  },
+  {
+   "DOI": "10.1016/j.jand.2017.08.024",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.82"
+  },
+  {
+   "DOI": "10.23970/AHRQEPCERTA217",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.83"
+  },
+  {
+   "DOI": "10.1016/S2468-2667(18)30135-X",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.84"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0055030",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.85"
+  },
+  {
+   "DOI": "10.1136/bmjopen-2017-018449",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.86"
+  },
+  {
+   "DOI": "10.1136/bmj.h3978",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.87"
+  },
+  {
+   "DOI": "10.3945/ajcn.112.044040",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.88"
+  },
+  {
+   "DOI": "10.3945/jn.111.155325",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.89"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqy270",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.90"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2010.09.073",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.91"
+  },
+  {
+   "DOI": "10.1007/s12011-019-01847-8",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.92"
+  },
+  {
+   "DOI": "10.1038/ejcn.2015.78",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.93"
+  },
+  {
+   "DOI": "10.1093/advances/nmz041",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.94"
+  },
+  {
+   "DOI": "10.1007/s00394-017-1582-0",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.95"
+  },
+  {
+   "DOI": "10.1093/epirev/mxs003",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.96"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.124081",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.97"
+  },
+  {
+   "DOI": "10.1161/HYPERTENSIONAHA.112.195206",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.98"
+  },
+  {
+   "DOI": "10.1053/j.gastro.2013.11.003",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.99"
+  },
+  {
+   "DOI": "10.1136/bmj.d6617",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.100"
+  },
+  {
+   "DOI": "10.1038/srep08506",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.101"
+  },
+  {
+   "DOI": "10.1093/ije/dyq028",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.102"
+  },
+  {
+   "DOI": "10.1016/j.ajog.2017.03.029",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.103"
+  },
+  {
+   "DOI": "10.3945/an.116.013052",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.104"
+  },
+  {
+   "DOI": "10.3945/an.116.013516",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.105"
+  },
+  {
+   "DOI": "10.1093/advances/nmy014",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.106"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.082826",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.107"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2009.38",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.108"
+  },
+  {
+   "DOI": "10.1002/14651858.MR000034.pub2",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.109"
+  },
+  {
+   "DOI": "10.7326/0003-4819-157-6-201209180-00537",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.110"
+  },
+  {
+   "DOI": "10.1136/bmj.l6802",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.111"
+  },
+  {
+   "DOI": "10.3945/an.113.004929",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.112"
+  },
+  {
+   "DOI": "10.1001/jama.295.1.39",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.113"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1800389",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.114"
+  },
+  {
+   "DOI": "10.1111/nbu.12241",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.115"
+  },
+  {
+   "DOI": "10.1080/01635581.2016.1105267",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.116"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(11)61452-9",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.117"
+  },
+  {
+   "DOI": "10.1093/jnci/87.7.497",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.118"
+  },
+  {
+   "DOI": "10.1016/j.jclinepi.2018.01.012",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.119"
+  },
+  {
+   "DOI": "10.1136/bmj.i4919",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.120"
+  },
+  {
+   "DOI": "10.3945/an.117.016469",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.121"
+  },
+  {
+   "DOI": "10.1016/j.jclinepi.2021.02.010",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.122"
+  },
+  {
+   "DOI": "10.1186/s12937-017-0244-7",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.123"
+  },
+  {
+   "DOI": "10.1038/sj.ejcn.1602189",
+   "doi-asserted-by": "publisher",
+   "key": "2021092209400590000_374.sep15_3.n1864.124"
+  }
+ ],
+ "reference-count": 124,
+ "references-count": 124,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.bmj.com/lookup/doi/10.1136/bmj.n1864"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "BMJ"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1136/crossmarkpolicy"
+}

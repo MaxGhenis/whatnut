@@ -1,0 +1,100 @@
+{
+  "source": {
+    "microdata": "National Center for Health Statistics. Mortality Multiple Cause-of-Death public use file, 2021 (US file). Hyattsville, MD: NCHS.",
+    "record_layout": "NCHS. 2021 Documentation, Mortality Multiple Cause-of-Death Public Use Record.",
+    "control_totals": "NCHS. Multiple Cause of Death Public Use File, Control Total Table 1: resident deaths by ICD-10 code, United States, 2021.",
+    "published_check": "Murphy SL, Kochanek KD, Xu JQ, Arias E. Deaths: Final data for 2021. National Vital Statistics Reports; vol 73 no 8. Hyattsville, MD: National Center for Health Statistics. 2024. Tables 2, 7 and 9."
+  },
+  "generated_by": "scripts/fetch_causes.py",
+  "year": 2021,
+  "role": "archived sensitivity; 2021 was a COVID-19 peak year, so the 2023 counts in data/causes/ are the baseline",
+  "definitions": {
+    "deaths": "Deaths of US residents occurring in the 50 states and DC in 2021, classified by underlying cause of death (ICD-10). Records with resident status 4 (foreign residents) are excluded, as in NCHS tabulations.",
+    "cvd_deaths": "ICD-10 I00-I99 (all diseases of the circulatory system)",
+    "chd_deaths": "ICD-10 I20-I25 (ischemic heart diseases)",
+    "stroke_deaths": "ICD-10 I60-I69 (cerebrovascular diseases)",
+    "cancer_deaths": "ICD-10 C00-C97 (malignant neoplasms)",
+    "covid_deaths": "ICD-10 U07.1 (COVID-19); extra column beyond DESIGN.md, kept for a sensitivity on shares of non-COVID deaths",
+    "external_deaths": "ICD-10 V01-Y89 (external causes of morbidity and mortality: injuries, poisonings, suicides, homicides); extra column for the sensitivity that applies the cohort multiplier to other deaths only",
+    "shares": "cause deaths / all-cause deaths in the same cell, 6 decimals",
+    "age_group_start/end": "inclusive ages in completed years from NCHS age recode 12; age_group_end is blank for the open-ended 85+ group",
+    "sex": "female, male, or total (both sexes)",
+    "age_not_stated": "cause_shares.csv omits deaths with age not stated; cause_shares_all_groups.csv lists them"
+  },
+  "microdata": {
+    "member": "VS21MORT.DUSMCPUB_r20230320.txt",
+    "records": 3472120,
+    "uncompressed_bytes": 2843666280,
+    "crc32_verified": "0x189f0b3d",
+    "record_lengths": {
+      "817": 3472120
+    },
+    "foreign_residents_excluded": 7889,
+    "resident_deaths": 3464231
+  },
+  "checks": {
+    "record_layout": "Multiple-Cause-Record-Layout-2021.pdf (pdftotext -layout) gives resident status at 20, sex at 69, age recode 12 at 79-80, data year at 102-105, underlying cause at 146-149",
+    "data_year": "all 3,472,120 records have data year 2021",
+    "control_total_table_1": "8,116 ICD-10 codes parsed (pdftotext -layout); every row satisfies total mentions = underlying + secondary; underlying-cause counts equal the microdata for every code; they sum to 3,464,231",
+    "nvsr73_08_table2": "all-cause deaths by age group x sex (13 cols x 3 rows) match",
+    "nvsr73_08_table7": "deaths by age group (both sexes) for all causes, C00-C97, I20-I25, I60-I69, I00-I78, U07.1 match (13 cols each)",
+    "nvsr73_08_table9": "deaths by sex (all ages) for all causes, C00-C97, I20-I25, I60-I69, I00-I78, U07.1 match"
+  },
+  "notes": "Year 2021 matches the NVSR 72-12 (2021) life tables archived in data/life_tables/2021/. CDC WONDER was not queried: its API requires accepting CDC's data-use agreement on the user's behalf. The counts here come from the NCHS public-use microdata and are checked against NCHS's own published totals (see checks). The smallest cause cell in cause_shares.csv has 250 deaths.",
+  "files": {
+    "cause_shares.csv": {
+      "sha256": "b10461d15aa78d517179f13065599a7e144d8d58def78bb6ec0b3cabb16c05b5",
+      "bytes": 2696,
+      "rows": 21,
+      "derived_from": [
+        "raw/mort2021us.zip"
+      ],
+      "checked_against": [
+        "raw/2021-mortality-control-total-table-1.pdf",
+        "raw/nvsr73-08.pdf"
+      ],
+      "generated_by": "scripts/fetch_causes.py"
+    },
+    "cause_shares_all_groups.csv": {
+      "sha256": "43fade1df0ea2b01712c10c09ba4619ca1c2c79d5eb5af1000a92806c4c6ec30",
+      "bytes": 4616,
+      "rows": 39,
+      "derived_from": [
+        "raw/mort2021us.zip"
+      ],
+      "checked_against": [
+        "raw/2021-mortality-control-total-table-1.pdf",
+        "raw/nvsr73-08.pdf"
+      ],
+      "generated_by": "scripts/fetch_causes.py"
+    },
+    "raw/2021-mortality-control-total-table-1.pdf": {
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation/DVS/mortality/2021-mortality-control-total-table-1.pdf",
+      "sha256": "291e240f65aaf7e0dd1e9359438018ff7de107c3081b3e672d39bff621086d4d",
+      "bytes": 908121,
+      "fetched_at": "2026-09-24T02:29:59+00:00",
+      "last_modified": "Fri, 15 Dec 2023 07:21:25 GMT"
+    },
+    "raw/Multiple-Cause-Record-Layout-2021.pdf": {
+      "url": "https://www.cdc.gov/nchs/data/dvs/Multiple-Cause-Record-Layout-2021.pdf",
+      "sha256": "abc7798b2e4c2e63f7fdb233365613a430406e33cded885be3a2b545a9dcfe3f",
+      "bytes": 406371,
+      "fetched_at": "2026-09-24T02:29:56+00:00",
+      "last_modified": "Tue, 07 May 2024 04:17:52 GMT"
+    },
+    "raw/mort2021us.zip": {
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/DVS/mortality/mort2021us.zip",
+      "sha256": "4666c46c615ef0926908f2f60593cec85faaea962bb1bc3030bbd211fded6550",
+      "bytes": 164630586,
+      "fetched_at": "2026-09-24T02:34:52+00:00",
+      "last_modified": "Fri, 15 Dec 2023 07:08:07 GMT"
+    },
+    "raw/nvsr73-08.pdf": {
+      "url": "https://www.cdc.gov/nchs/data/nvsr/nvsr73/nvsr73-08.pdf",
+      "sha256": "01765c8c8e2d4c17799a7eb728837097aaf8981bdb0d5f7f5e86f693e1bfc27c",
+      "bytes": 3984502,
+      "fetched_at": "2026-09-24T02:30:49+00:00",
+      "last_modified": "Thu, 24 Oct 2024 18:16:41 GMT"
+    }
+  }
+}

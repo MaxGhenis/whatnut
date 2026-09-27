@@ -1,0 +1,507 @@
+{
+ "DOI": "10.7326/0003-4819-147-4-200708210-00175",
+ "ISSN": [
+  "0003-4819",
+  "1539-3704"
+ ],
+ "URL": "https://doi.org/10.7326/0003-4819-147-4-200708210-00175",
+ "alternative-id": [
+  "10.7326/0003-4819-147-4-200708210-00175"
+ ],
+ "author": [
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Stranges",
+   "given": "Saverio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Marshall",
+   "given": "James R.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Natarajan",
+   "given": "Raj",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Donahue",
+   "given": "Richard P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Trevisan",
+   "given": "Maurizio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Combs",
+   "given": "Gerald F.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Cappuccio",
+   "given": "Francesco P.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Ceriello",
+   "given": "Antonio",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [
+    {
+     "name": "From the State University of New York at Buffalo and Cancer Prevention and Population Sciences, Roswell Park Cancer Institute, Buffalo, New York; Clinical Sciences Research Institute, Warwick Medical School, Coventry, United Kingdom; and U.S. Department of Agriculture Human Nutrition Research Center, Grand Forks, North Dakota."
+    }
+   ],
+   "family": "Reid",
+   "given": "Mary E.",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Annals of Internal Medicine"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": []
+ },
+ "created": {
+  "date-parts": [
+   [
+    2013,
+    4,
+    12
+   ]
+  ],
+  "date-time": "2013-04-12T18:45:50Z",
+  "timestamp": 1365792350000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    2,
+    10
+   ]
+  ],
+  "date-time": "2025-02-10T15:13:32Z",
+  "timestamp": 1739200412000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    15
+   ]
+  ],
+  "date-time": "2026-09-15T12:02:53Z",
+  "timestamp": 1789473773651,
+  "version": "build-2803163510"
+ },
+ "is-referenced-by-count": 620,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0003-4819"
+  },
+  {
+   "type": "electronic",
+   "value": "1539-3704"
+  }
+ ],
+ "issue": "4",
+ "issued": {
+  "date-parts": [
+   [
+    2007,
+    8,
+    21
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "4",
+  "published-print": {
+   "date-parts": [
+    [
+     2007,
+     8,
+     21
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.acpjournals.org/journal/aim/text-and-data-mining",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2007,
+      8,
+      21
+     ]
+    ],
+    "date-time": "2007-08-21T00:00:00Z",
+    "timestamp": 1187654400000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://www.acpjournals.org/doi/pdf/10.7326/0003-4819-147-4-200708210-00175",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://www.acpjournals.org/doi/full-xml/10.7326/0003-4819-147-4-200708210-00175",
+   "content-type": "application/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "member": "4285",
+ "original-title": [],
+ "page": "217-223",
+ "prefix": "10.7326",
+ "published": {
+  "date-parts": [
+   [
+    2007,
+    8,
+    21
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2007,
+    8,
+    21
+   ]
+  ]
+ },
+ "publisher": "American College of Physicians",
+ "reference": [
+  {
+   "DOI": "10.1161/01.ATV.0000122852.22604.78",
+   "doi-asserted-by": "publisher",
+   "key": "r1-175"
+  },
+  {
+   "DOI": "10.2337/diacare.25.12.2172",
+   "doi-asserted-by": "publisher",
+   "key": "r2-175"
+  },
+  {
+   "DOI": "10.2337/diacare.27.2.362",
+   "doi-asserted-by": "publisher",
+   "key": "r3-175"
+  },
+  {
+   "DOI": "10.1001/jama.282.11.1073",
+   "doi-asserted-by": "publisher",
+   "key": "r4-175"
+  },
+  {
+   "DOI": "10.2337/diacare.25.11.1919",
+   "doi-asserted-by": "publisher",
+   "key": "r5-175"
+  },
+  {
+   "DOI": "10.2337/diacare.26.12.3264",
+   "doi-asserted-by": "publisher",
+   "key": "r6-175"
+  },
+  {
+   "DOI": "10.1007/PL00000669",
+   "doi-asserted-by": "publisher",
+   "key": "r7-175"
+  },
+  {
+   "DOI": "10.1385/BTER:99:1-3:241",
+   "doi-asserted-by": "publisher",
+   "key": "r8-175"
+  },
+  {
+   "DOI": "10.1016/j.jnutbio.2005.10.006",
+   "doi-asserted-by": "publisher",
+   "key": "r9-175"
+  },
+  {
+   "DOI": "10.1007/s11010-006-2387-2",
+   "doi-asserted-by": "publisher",
+   "key": "r10-175"
+  },
+  {
+   "DOI": "10.1111/j.1365-2362.2004.01362.x",
+   "doi-asserted-by": "publisher",
+   "key": "r11-175"
+  },
+  {
+   "DOI": "10.1080/07315724.2005.10719472",
+   "doi-asserted-by": "publisher",
+   "key": "r12-175"
+  },
+  {
+   "author": "Czernichow S",
+   "first-page": "395",
+   "journal-title": "Am J Clin Nutr",
+   "key": "r13-175",
+   "volume": "84",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1001/jama.1996.03540240035027",
+   "doi-asserted-by": "publisher",
+   "key": "r14-175"
+  },
+  {
+   "DOI": "10.1093/aje/kwj097",
+   "doi-asserted-by": "publisher",
+   "key": "r15-175"
+  },
+  {
+   "author": "Duffield-Lillico AJ",
+   "first-page": "630",
+   "journal-title": "Cancer Epidemiol Biomarkers Prev",
+   "key": "r16-175",
+   "volume": "11",
+   "year": "2002"
+  },
+  {
+   "author": "Reid ME",
+   "first-page": "1285",
+   "journal-title": "Cancer Epidemiol Biomarkers Prev",
+   "key": "r17-175",
+   "volume": "11",
+   "year": "2002"
+  },
+  {
+   "author": "Olson OE",
+   "first-page": "117",
+   "journal-title": "J Assoc Off Anal Chem",
+   "key": "r18-175",
+   "volume": "58",
+   "year": "1975"
+  },
+  {
+   "DOI": "10.1093/ajcn/53.6.1354",
+   "doi-asserted-by": "publisher",
+   "key": "r19-175"
+  },
+  {
+   "DOI": "10.2307/2533064",
+   "doi-asserted-by": "publisher",
+   "key": "r20-175"
+  },
+  {
+   "DOI": "10.1093/biomet/81.3.515",
+   "doi-asserted-by": "publisher",
+   "key": "r21-175"
+  },
+  {
+   "DOI": "10.2337/diacare.25.8.1358",
+   "doi-asserted-by": "publisher",
+   "key": "r22-175"
+  },
+  {
+   "DOI": "10.2337/diabetes.53.7.1782",
+   "doi-asserted-by": "publisher",
+   "key": "r23-175"
+  },
+  {
+   "DOI": "10.1079/BJN2000280",
+   "doi-asserted-by": "publisher",
+   "key": "r24-175"
+  },
+  {
+   "DOI": "10.1093/ajcn/84.4.762",
+   "doi-asserted-by": "publisher",
+   "key": "r25-175"
+  },
+  {
+   "DOI": "10.1073/pnas.0308096101",
+   "doi-asserted-by": "publisher",
+   "key": "r26-175"
+  },
+  {
+   "DOI": "10.2337/db05-1357",
+   "doi-asserted-by": "publisher",
+   "key": "r27-175"
+  },
+  {
+   "DOI": "10.1210/jc.2003-030544",
+   "doi-asserted-by": "publisher",
+   "key": "r28-175"
+  },
+  {
+   "DOI": "10.2337/dc06-1726",
+   "doi-asserted-by": "publisher",
+   "key": "r29-175"
+  },
+  {
+   "author": "Whanger P",
+   "first-page": "99",
+   "journal-title": "Ann Clin Lab Sci",
+   "key": "r30-175",
+   "volume": "26",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1093/jn/133.11.3443",
+   "doi-asserted-by": "publisher",
+   "key": "r32-175"
+  },
+  {
+   "DOI": "10.1515/REVEH.2001.16.4.233",
+   "doi-asserted-by": "publisher",
+   "key": "r33-175"
+  },
+  {
+   "DOI": "10.1016/j.coph.2006.08.006",
+   "doi-asserted-by": "publisher",
+   "key": "r34-175"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(00)02490-9",
+   "doi-asserted-by": "publisher",
+   "key": "r35-175"
+  },
+  {
+   "DOI": "10.1093/jnci/dji009",
+   "doi-asserted-by": "publisher",
+   "key": "r36-175"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a112408",
+   "doi-asserted-by": "publisher",
+   "key": "r37-175"
+  }
+ ],
+ "reference-count": 36,
+ "references-count": 36,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://www.acpjournals.org/doi/10.7326/0003-4819-147-4-200708210-00175"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Ann Intern Med"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [
+  "A Randomized Trial"
+ ],
+ "title": [
+  "Effects of Long-Term Selenium Supplementation on the Incidence of Type 2 Diabetes"
+ ],
+ "type": "journal-article",
+ "volume": "147"
+}

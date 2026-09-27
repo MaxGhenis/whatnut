@@ -1,0 +1,271 @@
+{
+  "columns": {
+    "composition.csv": {
+      "ala_g": "851 PUFA 18:3 n-3 c,c,c (alpha-linolenic acid) if the record has it, else 619 PUFA 18:3 (all isomers); ala_basis names which",
+      "basis": "per 100 g edible portion, as reported by FoodData Central (SR Legacy)",
+      "energy_kcal": "nutrient 208 Energy (kcal)",
+      "fa_18_3_total_g/fa_18_3_n3_ccc_g/fa_18_2_total_g/fa_18_2_n6_cc_g": "raw 619/851/618/675 values; blank when absent",
+      "fat_g": "204 Total lipid (fat)",
+      "fdc_id": "FoodData Central id; ndb_number is the SR Legacy NDB number",
+      "fiber_g": "291 Fiber, total dietary",
+      "key": "food key used across the repo",
+      "la_g": "675 PUFA 18:2 n-6 c,c (linoleic acid) if present, else 618 PUFA 18:2 (all isomers); la_basis names which",
+      "magnesium_mg": "304 Magnesium",
+      "mufa_g": "645 total monounsaturated",
+      "protein_g": "203 Protein",
+      "pufa_g": "646 total polyunsaturated",
+      "selenium_ug": "317 Selenium (micrograms)",
+      "sfa_g": "606 total saturated fatty acids",
+      "source_url/raw_sha256": "the FDC JSON the row was parsed from",
+      "vitamin_e_mg": "323 Vitamin E (alpha-tocopherol)"
+    },
+    "composition_long.csv": "every nutrient row of every record: number, name, unit, value, derivation code and description, data points (audit trail)",
+    "gram_weights.csv": "every foodMeasure: description is FDC's text (or amount + modifier), grams is gramWeight. For chia_fndds (FNDDS survey food) the modifier column holds the FNDDS portion code, not a description."
+  },
+  "cross_checks": {
+    "origin_master_usda_fdc": {
+      "records": {
+        "169414": "not cached on origin/master",
+        "170162": {
+          "new_sha256": "ea293134616e1866d0eb0b75e68bb34b07af8f930d88b44b73ca487088c0b953",
+          "nutrients_compared": 110,
+          "old_sha256": "153b9a87fe5f53132b30e3eb6bb469a8f61ea4b01214871b00ef3de4b3dfcdb1",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "170178": {
+          "new_sha256": "b8e094996631be04da4b76e85e5d798e18c26d110cdfd83b0066b88f47e57e33",
+          "nutrients_compared": 103,
+          "old_sha256": "2acdf582999e0a1457898aca51c90a59846dfef5fc6d39830452eff2e9013a4d",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "170182": {
+          "new_sha256": "974bd63b94f2bcfeaea898b1ad31a747820fce5f9b95cd2ca44f3131e4d94f3c",
+          "nutrients_compared": 114,
+          "old_sha256": "577a4555ac541f25629b0aeb1980c53ab1f2610cb8687caae558601c2915758d",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "170184": {
+          "new_sha256": "78c1d2f7096527b6e1216dc02bce8c5dc2e563ea658eaa902af2b48c61c6e7b2",
+          "nutrients_compared": 111,
+          "old_sha256": "3f7f2c7a4ca1d05e658814bf2480e87b97d0af0cc26782881b2b3dd508a49207",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "170187": {
+          "new_sha256": "7dcc05bcb55398d23274fe563cd99efe37538ce8119f03c45c8c111d50c9a859",
+          "nutrients_compared": 113,
+          "old_sha256": "95ae7309fdd9df23c2823287b5e4ce6ea388949239b80c9ccdb738b4ac99f642",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "170554": "not cached on origin/master",
+        "170567": {
+          "new_sha256": "0e9113cd55d8d10c066508ceda05b632938da1ed6a1ed72a717bc0751eff47d6",
+          "nutrients_compared": 128,
+          "old_sha256": "89a1eef180c07a0815f8f2bb1b9a7d364ae7d432d02757e42f8662e770d47e49",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "170568": "not cached on origin/master",
+        "170569": "not cached on origin/master",
+        "170581": {
+          "new_sha256": "3b34d6a143612852460a4664af5caf33717f6ec34330ba67f97682e6d908ecbf",
+          "nutrients_compared": 113,
+          "old_sha256": "c026dd5ecd5ee92e61ea177baa7758b06d49b7b5183c166f31cceb0e6a99aff3",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "172430": {
+          "new_sha256": "0935899fc3a802a0726a52ec7ff4b4dbcf114cbda14877c54a9634727e81e42f",
+          "nutrients_compared": 91,
+          "old_sha256": "57d2d81847a117a02072992e8538f68bafedd189ac338f261b0fc843607cc911",
+          "only_in_new": [],
+          "only_in_old": [],
+          "value_differences": []
+        },
+        "2707590": "not cached on origin/master"
+      },
+      "source": "git show origin/master:src/whatnut/data/raw/usda_fdc/<fdc_id>.json (FDC API format)"
+    }
+  },
+  "derived": {
+    "composition.csv": {
+      "bytes": 4397,
+      "derived_from": [
+        "raw/fdc_169414.json",
+        "raw/fdc_170162.json",
+        "raw/fdc_170178.json",
+        "raw/fdc_170182.json",
+        "raw/fdc_170184.json",
+        "raw/fdc_170187.json",
+        "raw/fdc_170554.json",
+        "raw/fdc_170567.json",
+        "raw/fdc_170568.json",
+        "raw/fdc_170569.json",
+        "raw/fdc_170581.json",
+        "raw/fdc_172430.json",
+        "raw/fdc_2707590.json"
+      ],
+      "generated_by": "scripts/fetch_composition.py",
+      "sha256": "306f5218943ec80df40df0a45fe77a8ce9921d95368b91d9d547ae265f2684b0"
+    },
+    "composition_long.csv": {
+      "bytes": 97437,
+      "derived_from": [
+        "raw/fdc_169414.json",
+        "raw/fdc_170162.json",
+        "raw/fdc_170178.json",
+        "raw/fdc_170182.json",
+        "raw/fdc_170184.json",
+        "raw/fdc_170187.json",
+        "raw/fdc_170554.json",
+        "raw/fdc_170567.json",
+        "raw/fdc_170568.json",
+        "raw/fdc_170569.json",
+        "raw/fdc_170581.json",
+        "raw/fdc_172430.json",
+        "raw/fdc_2707590.json"
+      ],
+      "generated_by": "scripts/fetch_composition.py",
+      "sha256": "b98a609671b010e4ac7521fd04d1ac2ed31b4c3c8db15a7c4d633c8e5263abe4"
+    },
+    "gram_weights.csv": {
+      "bytes": 4368,
+      "derived_from": [
+        "raw/fdc_169414.json",
+        "raw/fdc_170162.json",
+        "raw/fdc_170178.json",
+        "raw/fdc_170182.json",
+        "raw/fdc_170184.json",
+        "raw/fdc_170187.json",
+        "raw/fdc_170554.json",
+        "raw/fdc_170567.json",
+        "raw/fdc_170568.json",
+        "raw/fdc_170569.json",
+        "raw/fdc_170581.json",
+        "raw/fdc_172430.json",
+        "raw/fdc_2707590.json"
+      ],
+      "generated_by": "scripts/fetch_composition.py",
+      "sha256": "ea26efe090b56ee66216859b439a2b3fc117198c0301cdf269b73c1e11cf3a98"
+    }
+  },
+  "files": {
+    "raw/fdc_169414.json": {
+      "bytes": 67723,
+      "fdc_id": 169414,
+      "fetched_at": "2026-09-24T02:45:25Z",
+      "food_key": "flaxseed",
+      "sha256": "5c4efac7f704253b1c12ad8d6afe0571e02ee66ee47b30bcdcfaa8573519a5b0",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/169414"
+    },
+    "raw/fdc_170162.json": {
+      "bytes": 67069,
+      "fdc_id": 170162,
+      "fetched_at": "2026-09-24T02:45:23Z",
+      "food_key": "cashew",
+      "sha256": "ea293134616e1866d0eb0b75e68bb34b07af8f930d88b44b73ca487088c0b953",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170162"
+    },
+    "raw/fdc_170178.json": {
+      "bytes": 60370,
+      "fdc_id": 170178,
+      "fetched_at": "2026-09-24T02:45:22Z",
+      "food_key": "macadamia",
+      "sha256": "b8e094996631be04da4b76e85e5d798e18c26d110cdfd83b0066b88f47e57e33",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170178"
+    },
+    "raw/fdc_170182.json": {
+      "bytes": 65452,
+      "fdc_id": 170182,
+      "fetched_at": "2026-09-24T02:45:21Z",
+      "food_key": "pecan",
+      "sha256": "974bd63b94f2bcfeaea898b1ad31a747820fce5f9b95cd2ca44f3131e4d94f3c",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170182"
+    },
+    "raw/fdc_170184.json": {
+      "bytes": 63161,
+      "fdc_id": 170184,
+      "fetched_at": "2026-09-24T02:45:21Z",
+      "food_key": "pistachio",
+      "sha256": "78c1d2f7096527b6e1216dc02bce8c5dc2e563ea658eaa902af2b48c61c6e7b2",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170184"
+    },
+    "raw/fdc_170187.json": {
+      "bytes": 66145,
+      "fdc_id": 170187,
+      "fetched_at": "2026-09-24T02:45:19Z",
+      "food_key": "walnut",
+      "sha256": "7dcc05bcb55398d23274fe563cd99efe37538ce8119f03c45c8c111d50c9a859",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170187"
+    },
+    "raw/fdc_170554.json": {
+      "bytes": 41393,
+      "fdc_id": 170554,
+      "fetched_at": "2026-09-24T02:45:25Z",
+      "food_key": "chia",
+      "sha256": "204d547984a0f8e31d78e677136a1a0825920a04087476b81659da38543fd4ab",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170554"
+    },
+    "raw/fdc_170567.json": {
+      "bytes": 74088,
+      "fdc_id": 170567,
+      "fetched_at": "2026-09-24T02:45:19Z",
+      "food_key": "almond",
+      "sha256": "0e9113cd55d8d10c066508ceda05b632938da1ed6a1ed72a717bc0751eff47d6",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170567"
+    },
+    "raw/fdc_170568.json": {
+      "bytes": 66877,
+      "fdc_id": 170568,
+      "fetched_at": "2026-09-24T02:45:20Z",
+      "food_key": "almond_blanched",
+      "sha256": "0e9a9e9da3c6485789a26dfaf0ac576b98a3185e3f73997e301ae84608d64e7b",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170568"
+    },
+    "raw/fdc_170569.json": {
+      "bytes": 68667,
+      "fdc_id": 170569,
+      "fetched_at": "2026-09-24T02:45:24Z",
+      "food_key": "brazil_nut",
+      "sha256": "03d059fe4e114f908b5af7d6933525b989008ebaea4f5b9263f53669bd878ffd",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170569"
+    },
+    "raw/fdc_170581.json": {
+      "bytes": 66305,
+      "fdc_id": 170581,
+      "fetched_at": "2026-09-24T02:45:22Z",
+      "food_key": "hazelnut",
+      "sha256": "3b34d6a143612852460a4664af5caf33717f6ec34330ba67f97682e6d908ecbf",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/170581"
+    },
+    "raw/fdc_172430.json": {
+      "bytes": 46133,
+      "fdc_id": 172430,
+      "fetched_at": "2026-09-24T02:45:23Z",
+      "food_key": "peanut",
+      "sha256": "0935899fc3a802a0726a52ec7ff4b4dbcf114cbda14877c54a9634727e81e42f",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/172430"
+    },
+    "raw/fdc_2707590.json": {
+      "bytes": 21268,
+      "fdc_id": 2707590,
+      "fetched_at": "2026-09-24T02:45:26Z",
+      "food_key": "chia_fndds",
+      "sha256": "64ad5dee397c945dfe42a44cb1261dff9997c2ba1b117eab95c6098092315641",
+      "url": "https://fdc.nal.usda.gov/portal-data/external/2707590"
+    }
+  },
+  "script": "scripts/fetch_composition.py",
+  "source": "USDA FoodData Central portal JSON (SR Legacy foods; FNDDS survey food 2707590 for chia gram weights)"
+}

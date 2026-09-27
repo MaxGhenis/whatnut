@@ -1,0 +1,1264 @@
+{
+ "DOI": "10.3945/ajcn.115.110965",
+ "ISSN": [
+  "0002-9165"
+ ],
+ "URL": "https://doi.org/10.3945/ajcn.115.110965",
+ "alternative-id": [
+  "S000291652327207X"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: systematic review, meta-analysis, and dose-response of 61 controlled intervention trials"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "The American Journal of Clinical Nutrition"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.3945/ajcn.115.110965"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "Copyright \u00a9 2015 American Society for Nutrition. Published by Elsevier Inc. All rights reserved."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Del Gobbo",
+   "given": "Liana C",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Falk",
+   "given": "Michael C",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Feldman",
+   "given": "Robin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Lewis",
+   "given": "Kara",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Mozaffarian",
+   "given": "Dariush",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "The American Journal of Clinical Nutrition"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2015-11-11T21:58:38Z",
+  "timestamp": 1447279118000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    5,
+    29
+   ]
+  ],
+  "date-time": "2023-05-29T07:56:01Z",
+  "timestamp": 1685346961000
+ },
+ "funder": [
+  {
+   "DOI": "10.13039/100000050",
+   "award": [
+    "R01-HL085710-07"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "R01-HL085710-07"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/100000050",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "National Heart, Lung, and Blood Institute"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    23
+   ]
+  ],
+  "date-time": "2026-09-23T14:46:31Z",
+  "timestamp": 1790174791970,
+  "version": "4.1.0"
+ },
+ "is-referenced-by-count": 297,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0002-9165"
+  }
+ ],
+ "issue": "6",
+ "issued": {
+  "date-parts": [
+   [
+    2015,
+    12
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "6",
+  "published-print": {
+   "date-parts": [
+    [
+     2015,
+     12
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2015,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2015-12-01T00:00:00Z",
+    "timestamp": 1448928000000
+   }
+  },
+  {
+   "URL": "http://www.elsevier.com/open-access/userlicense/1.0/",
+   "content-version": "vor",
+   "delay-in-days": 2640,
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      22
+     ]
+    ],
+    "date-time": "2023-02-22T00:00:00Z",
+    "timestamp": 1677024000000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S000291652327207X?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S000291652327207X?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://academic.oup.com/ajcn/article-pdf/102/6/1347/23757889/ajcn110965.pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "1347-1356",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2015,
+    12
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2015,
+    12
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1056/NEJMoa1307352",
+   "article-title": "Association of nut consumption with total and cause-specific mortality",
+   "author": "Bao",
+   "doi-asserted-by": "crossref",
+   "first-page": "2001",
+   "journal-title": "N Engl J Med",
+   "key": "10.3945/ajcn.115.110965_bib1",
+   "volume": "369",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1200303",
+   "article-title": "Primary prevention of cardiovascular disease with a Mediterranean diet",
+   "author": "Estruch",
+   "doi-asserted-by": "crossref",
+   "first-page": "1279",
+   "journal-title": "N Engl J Med",
+   "key": "10.3945/ajcn.115.110965_bib2",
+   "volume": "368",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1093/jn/138.9.1746S",
+   "article-title": "The role of tree nuts and peanuts in the prevention of coronary heart disease: multiple potential mechanisms",
+   "author": "Kris-Etherton",
+   "doi-asserted-by": "crossref",
+   "first-page": "1746S",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib3",
+   "volume": "138",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.3390/nu2070652",
+   "article-title": "Health benefits of nut consumption",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "652",
+   "journal-title": "Nutrients",
+   "key": "10.3945/ajcn.115.110965_bib4",
+   "volume": "2",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1007/s13668-013-0059-x",
+   "article-title": "Consumption of nuts in the prevention of cardiovascular disease",
+   "author": "Sabate",
+   "doi-asserted-by": "crossref",
+   "first-page": "258",
+   "journal-title": "Curr Nutr Rep",
+   "key": "10.3945/ajcn.115.110965_bib5",
+   "volume": "2",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.3945/jn.108.095125",
+   "article-title": "Continuous dose-response relationship of the LDL-cholesterol-lowering effect of phytosterol intake",
+   "author": "Demonty",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib6",
+   "volume": "139",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1016/j.jada.2009.02.014",
+   "article-title": "Almonds have a neutral effect on serum lipid profiles: a meta-analysis of randomized trials",
+   "author": "Phung",
+   "doi-asserted-by": "crossref",
+   "first-page": "865",
+   "journal-title": "J Am Diet Assoc",
+   "key": "10.3945/ajcn.115.110965_bib7",
+   "volume": "109",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.27457",
+   "article-title": "Effects of walnut consumption on blood lipids and other cardiovascular risk factors: a meta-analysis and systematic review",
+   "author": "Banel",
+   "doi-asserted-by": "crossref",
+   "first-page": "56",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib8",
+   "volume": "90",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "article-title": "Nut consumption and blood lipid levels: a pooled analysis of 25 intervention trials",
+   "author": "Sabat\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "821",
+   "journal-title": "Arch Intern Med",
+   "key": "10.3945/ajcn.115.110965_bib9",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1136/bmj.b2535",
+   "article-title": "Preferred Reporting Items for Systematic Reviews and Meta-Analyses: the PRISMA statement",
+   "author": "Moher",
+   "doi-asserted-by": "crossref",
+   "first-page": "b2535",
+   "journal-title": "BMJ",
+   "key": "10.3945/ajcn.115.110965_bib10",
+   "volume": "339",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "article-title": "Nut intake and adiposity: meta-analysis of clinical trials",
+   "author": "Flores-Mateo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1346",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib11",
+   "volume": "97",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1093/ajcn/65.5.1590S",
+   "article-title": "Design criteria for studies examining individual fatty acid effects on cardiovascular disease risk factors: human and animal studies",
+   "author": "Kris-Etherton",
+   "doi-asserted-by": "crossref",
+   "first-page": "1590S",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib12",
+   "volume": "65",
+   "year": "1997"
+  },
+  {
+   "key": "10.3945/ajcn.115.110965_bib13",
+   "series-title": "Research and strategic business development evidence analysis manual: steps in the academy evidence analysis process [Internet]",
+   "year": "2002"
+  },
+  {
+   "key": "10.3945/ajcn.115.110965_bib14",
+   "unstructured": "The mean difference (or difference in means), section 9.2.3.1 In: Cochrane handbook for systematic reviews and interventions: version 5.1.0 [Internet]. 2011 [cited 2015 Jan 15]. Available from: http://handbook.cochrane.org/chapter_9/9_2_3_1_the_mean_difference_or_difference_in_means.htm."
+  },
+  {
+   "DOI": "10.1136/bmj.327.7414.557",
+   "article-title": "Measuring inconsistency in meta-analyses",
+   "author": "Higgins",
+   "doi-asserted-by": "crossref",
+   "first-page": "557",
+   "journal-title": "BMJ",
+   "key": "10.3945/ajcn.115.110965_bib15",
+   "volume": "327",
+   "year": "2003"
+  },
+  {
+   "key": "10.3945/ajcn.115.110965_bib16",
+   "unstructured": "Meta-regression, section 9.6.4 In: Cochrane handbook for systematic reviews and interventions: version 5.1.0 [Internet]. 2011 [cited 2015 Jan 15]. Available from: http://handbook.cochrane.org/chapter_9/9_6_4_meta_regression.htm."
+  },
+  {
+   "DOI": "10.1136/bmj.315.7109.629",
+   "article-title": "Bias in meta-analysis detected by a simple, graphical test",
+   "author": "Egger",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "journal-title": "BMJ",
+   "key": "10.3945/ajcn.115.110965_bib17",
+   "volume": "315",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.2307/2533446",
+   "article-title": "Operating characteristics of a rank correlation test for publication bias",
+   "author": "Begg",
+   "doi-asserted-by": "crossref",
+   "first-page": "1088",
+   "journal-title": "Biometrics",
+   "key": "10.3945/ajcn.115.110965_bib18",
+   "volume": "50",
+   "year": "1994"
+  },
+  {
+   "DOI": "10.1093/ajcn/59.5.995",
+   "article-title": "Partial replacement of saturated fatty acids with almonds or walnuts lowers total plasma cholesterol and low-density-lipoprotein cholesterol",
+   "author": "Abbey",
+   "doi-asserted-by": "crossref",
+   "first-page": "995",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib19",
+   "volume": "59",
+   "year": "1994"
+  },
+  {
+   "DOI": "10.1038/ijir.2010.33",
+   "article-title": "Pistachio diet improves erectile function parameters and serum lipid profiles in patients with erectile dysfunction",
+   "author": "Aldemir",
+   "doi-asserted-by": "crossref",
+   "first-page": "32",
+   "journal-title": "Int J Impot Res",
+   "key": "10.3945/ajcn.115.110965_bib20",
+   "volume": "23",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/ajcn/74.1.72",
+   "article-title": "Effects of walnut consumption on plasma fatty acids and lipoproteins in combined hyperlipidemia",
+   "author": "Almario",
+   "doi-asserted-by": "crossref",
+   "first-page": "72",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib21",
+   "volume": "74",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2011.09.008",
+   "author": "Aronis",
+   "doi-asserted-by": "crossref",
+   "first-page": "577",
+   "journal-title": "Metabolism",
+   "key": "10.3945/ajcn.115.110965_bib22",
+   "volume": "61",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1080/07315724.2007.10719605",
+   "article-title": "Effect of walnut-enriched restructured meat in the antioxidant status of overweight/obese senior subjects with at least one extra CHD-risk factor",
+   "author": "Canales",
+   "doi-asserted-by": "crossref",
+   "first-page": "225",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib23",
+   "volume": "26",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1038/ejcn.2011.20",
+   "article-title": "Effect of walnut-enriched meat on the relationship between VCAM, ICAM, and LTB4 levels and PON-1 activity in ApoA4 360 and PON-1 allele carriers at increased cardiovascular risk",
+   "author": "Canales",
+   "doi-asserted-by": "crossref",
+   "first-page": "703",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib24",
+   "volume": "65",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2009.08.005",
+   "article-title": "Effects of one serving of mixed nuts on serum lipids, insulin resistance and inflammatory markers in patients with the metabolic syndrome",
+   "author": "Casas-Agustench",
+   "doi-asserted-by": "crossref",
+   "first-page": "126",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.3945/ajcn.115.110965_bib25",
+   "volume": "21",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1038/sj.ejcn.1600507",
+   "article-title": "A diet rich in walnuts favourably influences plasma fatty acid profile in moderately hyperlipidaemic subjects",
+   "author": "Chisholm",
+   "doi-asserted-by": "crossref",
+   "first-page": "12",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib26",
+   "volume": "52",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2005.01.006",
+   "article-title": "Cholesterol lowering effects of nuts compared with a Canola oil enriched cereal of similar fat composition",
+   "author": "Chisholm",
+   "doi-asserted-by": "crossref",
+   "first-page": "284",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.3945/ajcn.115.110965_bib27",
+   "volume": "15",
+   "year": "2005"
+  },
+  {
+   "article-title": "Effects of macadamia nut enriched diet on serum lipids and lipoproteins compared to a low fat diet",
+   "author": "Colquhoun",
+   "first-page": "216",
+   "journal-title": "Food Aust",
+   "key": "10.3945/ajcn.115.110965_bib28",
+   "volume": "48",
+   "year": "1996"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2012.05.005",
+   "article-title": "Brazilian nut consumption improves selenium status and glutathione peroxidase activity and reduces atherogenic risk in obese women",
+   "author": "Cominetti",
+   "doi-asserted-by": "crossref",
+   "first-page": "403",
+   "journal-title": "Nutr Res",
+   "key": "10.3945/ajcn.115.110965_bib29",
+   "volume": "32",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2010.12.006",
+   "article-title": "Crossover study of diets enriched with virgin olive oil, walnuts or almonds: effects on lipids and other cardiovascular risk markers",
+   "author": "Damasceno",
+   "doi-asserted-by": "crossref",
+   "first-page": "S14",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.3945/ajcn.115.110965_bib30",
+   "volume": "21",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1038/ejcn.2010.233",
+   "article-title": "Effect of moderate walnut consumption on lipid profile, arterial stiffness and platelet activation in humans",
+   "author": "Din",
+   "doi-asserted-by": "crossref",
+   "first-page": "234",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib31",
+   "volume": "65",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1080/07315724.1999.10718856",
+   "article-title": "Effect of pistachio nuts on serum lipid levels in patients with moderate hypercholesterolemia",
+   "author": "Edwards",
+   "doi-asserted-by": "crossref",
+   "first-page": "229",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib32",
+   "volume": "18",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.3945/ajcn.112.037895",
+   "article-title": "A randomized trial of the effects of an almond-enriched, hypocaloric diet in the treatment of obesity",
+   "author": "Foster",
+   "doi-asserted-by": "crossref",
+   "first-page": "249",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib33",
+   "volume": "96",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1093/jn/133.4.1060",
+   "article-title": "Macadamia nut consumption lowers plasma total and LDL cholesterol levels in hypercholesterolemic men",
+   "author": "Garg",
+   "doi-asserted-by": "crossref",
+   "first-page": "1060",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib34",
+   "volume": "133",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1093/ajcn/88.3.651",
+   "article-title": "Effects of pistachios on cardiovascular disease risk factors and potential mechanisms of action: a dose-response study",
+   "author": "Gebauer",
+   "doi-asserted-by": "crossref",
+   "first-page": "651",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib35",
+   "volume": "88",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1093/jn/138.4.761",
+   "article-title": "A macadamia nut-rich diet reduces total and LDL-cholesterol in mildly hypercholesterolemic men and women",
+   "author": "Griel",
+   "doi-asserted-by": "crossref",
+   "first-page": "761",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib36",
+   "volume": "138",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1111/j.1440-1681.2004.04121.x",
+   "article-title": "Serum lipid effects of a monounsaturated (palmitoleic) fatty acid\u2013rich diet based on macadamia nuts in healthy, young Japanese women",
+   "author": "Hiraoka-Yamamoto",
+   "doi-asserted-by": "crossref",
+   "first-page": "S37",
+   "journal-title": "Clin Exp Pharmacol Physiol",
+   "key": "10.3945/ajcn.115.110965_bib37",
+   "volume": "31",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1093/jn/132.4.703",
+   "article-title": "Almonds and almond oil have similar effects on plasma lipids and LDL oxidation in healthy men and women",
+   "author": "Hyson",
+   "doi-asserted-by": "crossref",
+   "first-page": "703",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib38",
+   "volume": "132",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1038/sj.ejcn.1601400",
+   "article-title": "Serum lipid profiles in Japanese women and men during consumption of walnuts",
+   "author": "Iwamoto",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib39",
+   "volume": "56",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2011.03.007",
+   "article-title": "Influence of body mass index and serum lipids on the cholesterol-lowering effects of almonds in free-living individuals",
+   "author": "Jaceldo-Siegl",
+   "doi-asserted-by": "crossref",
+   "first-page": "S7",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.3945/ajcn.115.110965_bib40",
+   "volume": "21",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1089/acm.2009.0693",
+   "article-title": "Effects of almond dietary supplementation on coronary heart disease lipid risk factors and serum lipid oxidation parameters in men with mild hyperlipidemia",
+   "author": "Jalali-Khanabadi",
+   "doi-asserted-by": "crossref",
+   "first-page": "1279",
+   "journal-title": "J Altern Complement Med",
+   "key": "10.3945/ajcn.115.110965_bib41",
+   "volume": "16",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1016/j.jada.2004.12.002",
+   "article-title": "Almonds in the diet simultaneously improve plasma a-tocopherol concentrations and reduce plasma lipids",
+   "author": "Jambazian",
+   "doi-asserted-by": "crossref",
+   "first-page": "449",
+   "journal-title": "J Am Diet Assoc",
+   "key": "10.3945/ajcn.115.110965_bib42",
+   "volume": "105",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1207/s15327914nc5402_4",
+   "article-title": "A pilot study on the effects of almond consumption on DNA damage and oxidative stress in smokers",
+   "author": "Jia",
+   "doi-asserted-by": "crossref",
+   "first-page": "179",
+   "journal-title": "Nutr Cancer",
+   "key": "10.3945/ajcn.115.110965_bib43",
+   "volume": "54",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2005.08.004",
+   "article-title": "Effects of pistachio nuts consumption on plasma lipid profile and oxidative status in healthy volunteers",
+   "author": "Kocyigit",
+   "doi-asserted-by": "crossref",
+   "first-page": "202",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.3945/ajcn.115.110965_bib44",
+   "volume": "16",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2006.08.007",
+   "article-title": "Cardioprotective effects of chocolate and almond consumption in healthy women",
+   "author": "Kurlandsky",
+   "doi-asserted-by": "crossref",
+   "first-page": "509",
+   "journal-title": "Nutr Res",
+   "key": "10.3945/ajcn.115.110965_bib45",
+   "volume": "26",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1016/j.metabol.2010.04.009",
+   "article-title": "Almond consumption improved glycemic control and lipid profiles in patients with type 2 diabetes mellitus",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "474",
+   "journal-title": "Metabolism",
+   "key": "10.3945/ajcn.115.110965_bib46",
+   "volume": "60",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1080/07315724.2010.10719834",
+   "article-title": "Pistachio nuts reduce triglycerides and body weight by comparison to refined carbohydrate snack in obese subjects on a 12-week weight loss program",
+   "author": "Li",
+   "doi-asserted-by": "crossref",
+   "first-page": "198",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib47",
+   "volume": "29",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1093/ajcn/76.5.1000",
+   "article-title": "Effect of diets enriched in almonds on insulin action and serum lipids in adults with normal glucose tolerance or type 2 diabetes",
+   "author": "Lovejoy",
+   "doi-asserted-by": "crossref",
+   "first-page": "1000",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib48",
+   "volume": "76",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1186/1475-2891-9-21",
+   "article-title": "Chronic and acute effects of walnuts on antioxidant capacity and nutritional status in humans: a randomized, cross-over pilot study",
+   "author": "McKay",
+   "doi-asserted-by": "crossref",
+   "first-page": "21",
+   "journal-title": "Nutr J",
+   "key": "10.3945/ajcn.115.110965_bib49",
+   "volume": "9",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1038/sj.ejcn.1602518",
+   "article-title": "Effects of hazelnut-enriched diet on plasma cholesterol and lipoprotein profiles in hypercholesterolemic adult men",
+   "author": "Mercanligil",
+   "doi-asserted-by": "crossref",
+   "first-page": "212",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib50",
+   "volume": "61",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/S0002-8223(00)00097-3",
+   "article-title": "Pecans lower low-density lipoprotein cholesterol in people with normal lipid levels",
+   "author": "Morgan",
+   "doi-asserted-by": "crossref",
+   "first-page": "312",
+   "journal-title": "J Am Diet Assoc",
+   "key": "10.3945/ajcn.115.110965_bib51",
+   "volume": "100",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1017/S0007114507682944",
+   "article-title": "Effects of a high walnut and high cashew nut diet on selected markers of the metabolic syndrome: a controlled feeding trial",
+   "author": "Mukuddem-Petersen",
+   "doi-asserted-by": "crossref",
+   "first-page": "1144",
+   "journal-title": "Br J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib52",
+   "volume": "97",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1016/S0022-2275(20)31536-4",
+   "article-title": "Walnut-enriched diet increases the association of LDL from hypercholesterolemic men with human HepG2 cells",
+   "author": "Mu\u00f1oz",
+   "doi-asserted-by": "crossref",
+   "first-page": "2069",
+   "journal-title": "J Lipid Res",
+   "key": "10.3945/ajcn.115.110965_bib53",
+   "volume": "42",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1080/07315724.2008.10719710",
+   "article-title": "Consumption of restructured meat products with added walnuts has a cholesterol-lowering effect in subjects at high cardiovascular risk: a randomised, crossover, placebo-controlled study",
+   "author": "Olmedilla-Alonso",
+   "doi-asserted-by": "crossref",
+   "first-page": "342",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib54",
+   "volume": "27",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2012.10.005",
+   "article-title": "Hazelnut-enriched diet improves cardiovascular risk biomarkers beyond a lipid-lowering effect in hypercholesterolemic subjects",
+   "author": "Orem",
+   "doi-asserted-by": "crossref",
+   "first-page": "123",
+   "journal-title": "J Clin Lipidol",
+   "key": "10.3945/ajcn.115.110965_bib55",
+   "volume": "7",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1093/jn/131.9.2275",
+   "article-title": "A monounsaturated fatty acid\u2013rich pecan-enriched diet favorably alters the serum lipid profile of healthy men and women",
+   "author": "Rajaram",
+   "doi-asserted-by": "crossref",
+   "first-page": "2275",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib56",
+   "volume": "131",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1017/S0007114509992480",
+   "article-title": "Effect of almond-enriched high-monounsaturated fat diet on selected markers of inflammation: a randomised, controlled, crossover study",
+   "author": "Rajaram",
+   "doi-asserted-by": "crossref",
+   "first-page": "907",
+   "journal-title": "Br J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib57",
+   "volume": "103",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3945/ajcn.2009.26736S",
+   "article-title": "Walnuts and fatty fish influence different serum lipid fractions in normal to mildly hyperlipidemic individuals: a randomized controlled study",
+   "author": "Rajaram",
+   "doi-asserted-by": "crossref",
+   "first-page": "1657S",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib58",
+   "volume": "89",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1161/01.CIR.0000124477.91474.FF",
+   "article-title": "A walnut diet improves endothelial function in hypercholesterolemic subjects: a randomized crossover trial",
+   "author": "Ros",
+   "doi-asserted-by": "crossref",
+   "first-page": "1609",
+   "journal-title": "Circulation",
+   "key": "10.3945/ajcn.115.110965_bib59",
+   "volume": "109",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1056/NEJM199303043280902",
+   "article-title": "Effects of walnuts on serum lipid levels and blood pressure in normal men",
+   "author": "Sabat\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "603",
+   "journal-title": "N Engl J Med",
+   "key": "10.3945/ajcn.115.110965_bib60",
+   "volume": "328",
+   "year": "1993"
+  },
+  {
+   "DOI": "10.1093/ajcn/77.6.1379",
+   "article-title": "Serum lipid response to the graduated enrichment of a Step I diet with almonds: a randomized feeding trial",
+   "author": "Sabat\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "1379",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib61",
+   "volume": "77",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1016/j.nut.2009.05.023",
+   "article-title": "Effect of pistachio diet on lipid parameters, endothelial function, inflammation, and oxidative status: a prospective study",
+   "author": "Sari",
+   "doi-asserted-by": "crossref",
+   "first-page": "399",
+   "journal-title": "Nutrition",
+   "key": "10.3945/ajcn.115.110965_bib62",
+   "volume": "26",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1016/j.amjhyper.2005.12.014",
+   "article-title": "Modulation of baroreflex sensitivity by walnuts versus cashew nuts in subjects with metabolic syndrome",
+   "author": "Schutte",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "journal-title": "Am J Hypertens",
+   "key": "10.3945/ajcn.115.110965_bib63",
+   "volume": "19",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1080/07315724.2007.10719595",
+   "article-title": "Pistachio nut consumption and serum lipid levels",
+   "author": "Sheridan",
+   "doi-asserted-by": "crossref",
+   "first-page": "141",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib64",
+   "volume": "26",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0031103",
+   "article-title": "Cocoa, hazelnuts, sterols and soluble fiber cream reduces lipids and inflammation biomarkers in hypertensive patients: a randomized controlled trial",
+   "author": "Sol\u00e0",
+   "doi-asserted-by": "crossref",
+   "first-page": "e31103",
+   "journal-title": "PLoS One",
+   "key": "10.3945/ajcn.115.110965_bib65",
+   "volume": "7",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1186/1475-2891-7-13",
+   "article-title": "The effect of walnut intake on factors related to prostate and vascular health in older men",
+   "author": "Spaccarotella",
+   "doi-asserted-by": "crossref",
+   "first-page": "13",
+   "journal-title": "Nutr J",
+   "key": "10.3945/ajcn.115.110965_bib66",
+   "volume": "7",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1080/07315724.1992.12098233",
+   "article-title": "Effect of a diet high in monounsaturated fat from almonds on plasma cholesterol and lipoproteins",
+   "author": "Spiller",
+   "doi-asserted-by": "crossref",
+   "first-page": "126",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib67",
+   "volume": "11",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1080/07315724.2003.10719293",
+   "article-title": "Effects of plant-based diets high in raw or roasted almonds, or roasted almond butter on serum lipoproteins in humans",
+   "author": "Spiller",
+   "doi-asserted-by": "crossref",
+   "first-page": "195",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib68",
+   "volume": "22",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.2337/diacare.27.12.2777",
+   "article-title": "Including walnuts in a low-fat/modified-fat diet improves HDL cholesterol-to-total cholesterol ratios in patients with type 2 diabetes",
+   "author": "Tapsell",
+   "doi-asserted-by": "crossref",
+   "first-page": "2777",
+   "journal-title": "Diabetes Care",
+   "key": "10.3945/ajcn.115.110965_bib69",
+   "volume": "27",
+   "year": "2004"
+  },
+  {
+   "DOI": "10.1038/ejcn.2010.200",
+   "article-title": "Effects of different forms of hazelnuts on blood lipids and \u03b1-tocopherol concentrations in mildly hypercholesterolemic individuals",
+   "author": "Tey",
+   "doi-asserted-by": "crossref",
+   "first-page": "117",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib70",
+   "volume": "65",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1155/2011/357350",
+   "article-title": "Nuts improve diet quality compared to other energy-dense snacks while maintaining body weight",
+   "author": "Tey",
+   "doi-asserted-by": "crossref",
+   "first-page": "357350",
+   "journal-title": "J Nutr Metab",
+   "key": "10.3945/ajcn.115.110965_bib71",
+   "volume": "2011",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1038/ejcn.2009.152",
+   "article-title": "Long-term walnut supplementation without dietary advice induces favorable serum lipid changes in free-living individuals",
+   "author": "Torabian",
+   "doi-asserted-by": "crossref",
+   "first-page": "274",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib72",
+   "volume": "64",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1186/1475-2891-11-20",
+   "article-title": "Effects of pistachios on body weight in Chinese subjects with metabolic syndrome",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "20",
+   "journal-title": "Nutr J",
+   "key": "10.3945/ajcn.115.110965_bib73",
+   "volume": "11",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1161/HYPERTENSIONAHA.111.182147",
+   "article-title": "Diets containing pistachios reduce systolic blood pressure and peripheral vascular responses to stress in adults with dyslipidemia",
+   "author": "West",
+   "doi-asserted-by": "crossref",
+   "first-page": "58",
+   "journal-title": "Hypertension",
+   "key": "10.3945/ajcn.115.110965_bib74",
+   "volume": "60",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1038/sj.ijo.0802411",
+   "article-title": "Almonds vs complex carbohydrates in a weight reduction program",
+   "author": "Wien",
+   "doi-asserted-by": "crossref",
+   "first-page": "1365",
+   "journal-title": "Int J Obes Relat Metab Disord",
+   "key": "10.3945/ajcn.115.110965_bib75",
+   "volume": "27",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1080/07315724.2010.10719833",
+   "article-title": "Almond consumption and cardiovascular risk factors in adults with prediabetes",
+   "author": "Wien",
+   "doi-asserted-by": "crossref",
+   "first-page": "189",
+   "journal-title": "J Am Coll Nutr",
+   "key": "10.3945/ajcn.115.110965_bib76",
+   "volume": "29",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3945/jn.110.126300",
+   "article-title": "Lifestyle counseling and supplementation with flaxseed or walnuts influence the management of metabolic syndrome",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "1937",
+   "journal-title": "J Nutr",
+   "key": "10.3945/ajcn.115.110965_bib77",
+   "volume": "140",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.5152/akd.2010.007",
+   "article-title": "Hazelnut consumption decreases the susceptibility of LDL to oxidation, plasma oxidized LDL level and increases the ratio of large/small LDL in normolipidemic healthy subjects",
+   "author": "Y\u00fccesan",
+   "doi-asserted-by": "crossref",
+   "first-page": "28",
+   "journal-title": "Anadolu Kardiyol Derg",
+   "key": "10.3945/ajcn.115.110965_bib78",
+   "volume": "10",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.7326/0003-4819-132-7-200004040-00005",
+   "article-title": "Substituting walnuts for monounsaturated fat improves the serum lipid profile of hypercholesterolemic men and women: a randomized crossover trial",
+   "author": "Zamb\u00f3n",
+   "doi-asserted-by": "crossref",
+   "first-page": "538",
+   "journal-title": "Ann Intern Med",
+   "key": "10.3945/ajcn.115.110965_bib79",
+   "volume": "132",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1177/000331970505600509",
+   "article-title": "Walnut consumption in hyperlipidemic patients",
+   "author": "Zibaeenezhad",
+   "doi-asserted-by": "crossref",
+   "first-page": "581",
+   "journal-title": "Angiology",
+   "key": "10.3945/ajcn.115.110965_bib80",
+   "volume": "56",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076901",
+   "article-title": "Consumption of nuts and legumes and risk of incident ischemic heart disease, stroke, and diabetes: a systematic review and meta-analysis",
+   "author": "Afshin",
+   "doi-asserted-by": "crossref",
+   "first-page": "278",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib81",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/S0140-6736(12)60367-5",
+   "article-title": "The effects of lowering LDL cholesterol with statin therapy in people at low risk of vascular disease: meta-analysis of individual data from 27 randomised trials",
+   "author": "Mihaylova",
+   "doi-asserted-by": "crossref",
+   "first-page": "581",
+   "journal-title": "Lancet",
+   "key": "10.3945/ajcn.115.110965_bib82",
+   "volume": "380",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.2337/db08-1794",
+   "article-title": "Apolipoprotein B but not LDL cholesterol is associated with coronary artery calcification in type 2 diabetic whites",
+   "author": "Martin",
+   "doi-asserted-by": "crossref",
+   "first-page": "1887",
+   "journal-title": "Diabetes",
+   "key": "10.3945/ajcn.115.110965_bib83",
+   "volume": "58",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1001/jama.2009.1619",
+   "article-title": "Major lipids, apolipoprotiens, and risk of vascular disease",
+   "author": "Di Angelantonio",
+   "doi-asserted-by": "crossref",
+   "first-page": "1993",
+   "journal-title": "JAMA",
+   "key": "10.3945/ajcn.115.110965_bib84",
+   "volume": "302",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.076109",
+   "article-title": "Nut consumption and risk of type 2 diabetes, cardiovascular disease, and all-cause mortality: a systematic review and meta-analysis",
+   "author": "Luo",
+   "doi-asserted-by": "crossref",
+   "first-page": "256",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib85",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.3945/ajcn.112.044040",
+   "article-title": "\u03b1-Linolenic acid and risk of cardiovascular disease: a systematic review and meta-analysis",
+   "author": "Pan",
+   "doi-asserted-by": "crossref",
+   "first-page": "1262",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib86",
+   "volume": "96",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1371/journal.pmed.1000252",
+   "article-title": "Effects on coronary heart disease of increasing polyunsaturated fat in place of saturated fat: a systematic review and meta-analysis of randomized controlled trials",
+   "author": "Mozaffarian",
+   "doi-asserted-by": "crossref",
+   "first-page": "e1000252",
+   "journal-title": "PLoS Med",
+   "key": "10.3945/ajcn.115.110965_bib87",
+   "volume": "7",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1093/ajcn/85.2.385",
+   "article-title": "Dietary alpha-linolenic acid inhibits proinflammatory cytokine production by peripheral blood mononuclear cells in hypercholesterolemic subjects",
+   "author": "Zhao",
+   "doi-asserted-by": "crossref",
+   "first-page": "385",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib88",
+   "volume": "85",
+   "year": "2007"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1014296",
+   "article-title": "Changes in diet and lifestyle and long-term weight gain in women and men",
+   "author": "Mozaffarian",
+   "doi-asserted-by": "crossref",
+   "first-page": "2392",
+   "journal-title": "N Engl J Med",
+   "key": "10.3945/ajcn.115.110965_bib89",
+   "volume": "364",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.3945/ajcn.114.100867",
+   "article-title": "Changes in intake of protein foods, carbohydrate amount and quality, and long-term weight gain: results from three prospective cohorts",
+   "author": "Smith",
+   "doi-asserted-by": "crossref",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.3945/ajcn.115.110965_bib90",
+   "year": "2015"
+  }
+ ],
+ "reference-count": 90,
+ "references-count": 90,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S000291652327207X"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "The American Journal of Clinical Nutrition"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: systematic review, meta-analysis, and dose-response of 61 controlled intervention trials"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "102"
+}

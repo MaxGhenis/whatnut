@@ -1,0 +1,22 @@
+{
+  "source": "Schwingshackl L, et al. Evaluating agreement between bodies of evidence from randomised controlled trials and cohort studies in nutrition research: meta-epidemiological study. BMJ 2021;374:n1864. doi:10.1136/bmj.n1864",
+  "generated_by": "hand reading (see schwingshackl2021_intake_pairs_notes.yaml); no fetcher",
+  "files": {
+    "schwingshackl2021_intake_pairs.csv": {
+      "sha256": "d4c63722926eba8d50870fc0572508a1ad90bb873c0d0adf6a9258f738b4a2bd",
+      "bytes": 5478,
+      "derived_from": [
+        "Schwingshackl et al. 2021 web appendix (PMC8441535 supplement), Supplementary Figure 9 and Supplementary Tables 2 and 5"
+      ],
+      "generated_by": "read by hand from the figure and tables; method in schwingshackl2021_intake_pairs_notes.yaml"
+    },
+    "schwingshackl2021_intake_pairs_notes.yaml": {
+      "sha256": "c2267824b22618f456ad49ce2f8173d702fe5680dc729c5a62a05d5979284ac8",
+      "bytes": 1443,
+      "derived_from": [
+        "Schwingshackl et al. 2021 web appendix (PMC8441535 supplement), Supplementary Figure 9 and Supplementary Tables 2 and 5"
+      ],
+      "generated_by": "read by hand from the figure and tables; method in schwingshackl2021_intake_pairs_notes.yaml"
+    }
+  }
+}

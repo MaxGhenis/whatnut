@@ -1,0 +1,1530 @@
+{
+ "DOI": "10.1016/j.acvd.2025.08.010",
+ "ISSN": [
+  "1875-2136"
+ ],
+ "URL": "https://doi.org/10.1016/j.acvd.2025.08.010",
+ "alternative-id": [
+  "S1875213625004656"
+ ],
+ "assertion": [
+  {
+   "label": "This article is maintained by",
+   "name": "publisher",
+   "value": "Elsevier"
+  },
+  {
+   "label": "Article Title",
+   "name": "articletitle",
+   "value": "Nut consumption and risk of cardiovascular disease events and all-cause mortality: A systematic review and dose\u2013response meta-analysis of prospective cohort studies"
+  },
+  {
+   "label": "Journal Title",
+   "name": "journaltitle",
+   "value": "Archives of Cardiovascular Diseases"
+  },
+  {
+   "label": "CrossRef DOI link to publisher maintained version",
+   "name": "articlelink",
+   "value": "https://doi.org/10.1016/j.acvd.2025.08.010"
+  },
+  {
+   "label": "Content Type",
+   "name": "content_type",
+   "value": "article"
+  },
+  {
+   "label": "Copyright",
+   "name": "copyright",
+   "value": "\u00a9 2025 Published by Elsevier Masson SAS."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Liu",
+   "given": "Mengna",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Wang",
+   "given": "Mengmeng",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Fu",
+   "given": "Xueru",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "He",
+   "given": "Xinxin",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Wang",
+   "given": "Mengdi",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Su",
+   "given": "Yijia",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Liu",
+   "given": "Ge",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Hu",
+   "given": "Fulan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Zhang",
+   "given": "Ming",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Zhao",
+   "given": "Yang",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  },
+  {
+   "affiliation": [],
+   "family": "Hu",
+   "given": "Dongsheng",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Archives of Cardiovascular Diseases"
+ ],
+ "content-domain": {
+  "crossmark-restriction": true,
+  "domain": [
+   "clinicalkey.com",
+   "clinicalkey.com.au",
+   "clinicalkey.es",
+   "clinicalkey.fr",
+   "clinicalkey.jp",
+   "elsevier.com",
+   "sciencedirect.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    9,
+    23
+   ]
+  ],
+  "date-time": "2025-09-23T04:37:40Z",
+  "timestamp": 1758602260000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    3,
+    10
+   ]
+  ],
+  "date-time": "2026-03-10T21:06:41Z",
+  "timestamp": 1773176801000
+ },
+ "funder": [
+  {
+   "DOI": "10.13039/501100021171",
+   "award": [
+    "2022A1515010503"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2022A1515010503"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100021171",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Basic and Applied Basic Research Foundation of Guangdong Province"
+  },
+  {
+   "DOI": "10.13039/501100021171",
+   "award": [
+    "2021A1515012503"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2021A1515012503"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100021171",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Basic and Applied Basic Research Foundation of Guangdong Province"
+  },
+  {
+   "DOI": "10.13039/501100001809",
+   "award": [
+    "81973152"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "81973152"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100001809",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "National Natural Science Foundation of China"
+  },
+  {
+   "DOI": "10.13039/501100001809",
+   "award": [
+    "82073646"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "82073646"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100001809",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "National Natural Science Foundation of China"
+  },
+  {
+   "DOI": "10.13039/501100001809",
+   "award": [
+    "82273707"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "82273707"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100001809",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "National Natural Science Foundation of China"
+  },
+  {
+   "DOI": "10.13039/501100001809",
+   "award": [
+    "82103940"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "82103940"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100001809",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "National Natural Science Foundation of China"
+  },
+  {
+   "DOI": "10.13039/501100001809",
+   "award": [
+    "82304228"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "82304228"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100001809",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "National Natural Science Foundation of China"
+  },
+  {
+   "DOI": "10.13039/501100010031",
+   "award": [
+    "2021M692903"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2021M692903"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100010031",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Postdoctoral Research Foundation of China"
+  },
+  {
+   "DOI": "10.13039/501100017610",
+   "award": [
+    "JCYJ20220818095818040"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "JCYJ20220818095818040"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100017610",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Shenzhen Science and Technology Innovation Program"
+  },
+  {
+   "DOI": "10.13039/501100017610",
+   "award": [
+    "JCYJ20210324093612032"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "JCYJ20210324093612032"
+     ]
+    }
+   ],
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "asserted-by": "publisher",
+     "id": "10.13039/501100017610",
+     "id-type": "DOI"
+    }
+   ],
+   "name": "Shenzhen Science and Technology Innovation Program"
+  }
+ ],
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    3,
+    31
+   ]
+  ],
+  "date-time": "2026-03-31T20:18:13Z",
+  "timestamp": 1774988293461,
+  "version": "3.50.1"
+ },
+ "is-referenced-by-count": 1,
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "1875-2136"
+  }
+ ],
+ "issue": "3",
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    3
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "3",
+  "published-print": {
+   "date-parts": [
+    [
+     2026,
+     3
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  },
+  {
+   "URL": "https://www.elsevier.com/legal/tdmrep-license",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-017",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-037",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-012",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-029",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  },
+  {
+   "URL": "https://doi.org/10.15223/policy-004",
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2026-03-01T00:00:00Z",
+    "timestamp": 1772323200000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S1875213625004656?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S1875213625004656?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "member": "78",
+ "original-title": [],
+ "page": "216-232",
+ "prefix": "10.1016",
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    3
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2026,
+    3
+   ]
+  ]
+ },
+ "publisher": "Elsevier BV",
+ "reference": [
+  {
+   "DOI": "10.1016/j.jacc.2022.11.001",
+   "article-title": "Global burden of cardiovascular diseases and risks collaboration, 1990-2021",
+   "author": "Lindstrom",
+   "doi-asserted-by": "crossref",
+   "first-page": "2372",
+   "issue": "25",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0380",
+   "volume": "80",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1016/j.acvd.2025.02.012",
+   "article-title": "Management of diabetes in patients hospitalized for acute cardiac events: Joint position paper from the French Society of Cardiology and the French-speaking Diabetes Society",
+   "author": "Henry",
+   "doi-asserted-by": "crossref",
+   "first-page": "330",
+   "issue": "5",
+   "journal-title": "Arch Cardiovasc Dis",
+   "key": "10.1016/j.acvd.2025.08.010_bib0385",
+   "volume": "118",
+   "year": "2025"
+  },
+  {
+   "DOI": "10.1016/j.acvd.2024.04.004",
+   "article-title": "Rationale and design of the FRENch CoHort of myocardial Infarction Evaluation (FRENCHIE) study",
+   "author": "Gautier",
+   "doi-asserted-by": "crossref",
+   "first-page": "417",
+   "issue": "6\u20137",
+   "journal-title": "Arch Cardiovasc Dis",
+   "key": "10.1016/j.acvd.2025.08.010_bib0390",
+   "volume": "117",
+   "year": "2024"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2022.11.005",
+   "article-title": "The global burden of cardiovascular\u00a0diseases and risk: a compass for future health",
+   "author": "Vaduganathan",
+   "doi-asserted-by": "crossref",
+   "first-page": "2361",
+   "issue": "25",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0395",
+   "volume": "80",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1016/j.foodchem.2020.126192",
+   "article-title": "Bioactives and health benefits of nuts and dried fruits",
+   "author": "Alasalvar",
+   "doi-asserted-by": "crossref",
+   "first-page": "126192",
+   "journal-title": "Food Chem",
+   "key": "10.1016/j.acvd.2025.08.010_bib0400",
+   "volume": "314",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqaa108",
+   "article-title": "Association of nut intake with risk factors, cardiovascular disease, and mortality in 16 countries from 5 continents: analysis from the Prospective Urban and Rural Epidemiology (PURE) study",
+   "author": "de Souza",
+   "doi-asserted-by": "crossref",
+   "first-page": "208",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0405",
+   "volume": "112",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "article-title": "Nut consumption and risk of cardiovascular disease",
+   "author": "Guasch-Ferr\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "2519",
+   "issue": "20",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0410",
+   "volume": "70",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1161/STROKEAHA.120.031212",
+   "article-title": "Peanut consumption and risk of stroke and ischemic heart disease in Japanese men and women: the JPHC Study",
+   "author": "Ikehara",
+   "doi-asserted-by": "crossref",
+   "first-page": "3543",
+   "issue": "11",
+   "journal-title": "Stroke",
+   "key": "10.1016/j.acvd.2025.08.010_bib0415",
+   "volume": "52",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.3390/nu13093031",
+   "article-title": "Association of nut consumption with risk of stroke and cardiovascular disease: the million veteran program",
+   "author": "Ivey",
+   "doi-asserted-by": "crossref",
+   "first-page": "3031",
+   "issue": "9",
+   "journal-title": "Nutrients",
+   "key": "10.1016/j.acvd.2025.08.010_bib0420",
+   "volume": "13",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1161/CIRCRESAHA.118.314316",
+   "article-title": "Nut consumption in relation to cardiovascular disease incidence and mortality among patients with diabetes mellitus",
+   "author": "Liu",
+   "doi-asserted-by": "crossref",
+   "first-page": "920",
+   "issue": "6",
+   "journal-title": "Circ Res",
+   "key": "10.1016/j.acvd.2025.08.010_bib0425",
+   "volume": "124",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1016/j.tjnut.2023.08.004",
+   "article-title": "Associations of Nut Consumption with All-Cause Mortality among Individuals with Type 2 Diabetes",
+   "author": "Zhang",
+   "doi-asserted-by": "crossref",
+   "first-page": "3003",
+   "issue": "10",
+   "journal-title": "J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0430",
+   "volume": "153",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1016/j.advnut.2023.05.004",
+   "article-title": "Tree Nut and Peanut Consumption and Risk of Cardiovascular Disease: A Systematic Review and Meta-Analysis of Randomized Controlled Trials",
+   "author": "Houston",
+   "doi-asserted-by": "crossref",
+   "first-page": "1029",
+   "issue": "5",
+   "journal-title": "Adv Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0435",
+   "volume": "14",
+   "year": "2023"
+  },
+  {
+   "article-title": "Association of Total Nut, Tree Nut",
+   "author": "Naghshi",
+   "first-page": "793",
+   "issue": "3",
+   "journal-title": "Peanut, and Peanut Butter Consumption with Cancer Incidence and Mortality: A Comprehensive Systematic Review and Dose-Response Meta-Analysis of Observational Studies. Adv Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0440",
+   "volume": "12",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1093/nutrit/nuz042",
+   "article-title": "Nut consumption and incidence of cardiovascular diseases and cardiovascular disease mortality: a meta-analysis of prospective cohort studies",
+   "author": "Becerra-Tom\u00e1s",
+   "doi-asserted-by": "crossref",
+   "first-page": "691",
+   "issue": "10",
+   "journal-title": "Nutr Rev",
+   "key": "10.1016/j.acvd.2025.08.010_bib0445",
+   "volume": "77",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1039/C7FO00915A",
+   "article-title": "Nut consumption in relation to all-cause and cause-specific mortality: a meta-analysis 18 prospective studies",
+   "author": "Chen",
+   "doi-asserted-by": "crossref",
+   "first-page": "3893",
+   "issue": "11",
+   "journal-title": "Food Funct",
+   "key": "10.1016/j.acvd.2025.08.010_bib0450",
+   "volume": "8",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1097/MCA.0000000000000331",
+   "article-title": "Association between nut consumption and coronary heart disease: a meta-analysis",
+   "author": "Weng",
+   "doi-asserted-by": "crossref",
+   "first-page": "227",
+   "issue": "3",
+   "journal-title": "Coron Artery Dis",
+   "key": "10.1016/j.acvd.2025.08.010_bib0455",
+   "volume": "27",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1038/srep30394",
+   "article-title": "Nut intake and stroke risk: a dose-response meta-analysis of prospective cohort studies",
+   "author": "Shao",
+   "doi-asserted-by": "crossref",
+   "first-page": "30394",
+   "journal-title": "Sci Rep",
+   "key": "10.1016/j.acvd.2025.08.010_bib0460",
+   "volume": "6",
+   "year": "2016"
+  },
+  {
+   "article-title": "Nuts and seeds consumption and risk of cardiovascular disease, type 2 diabetes and their risk factors: a systematic review and meta-analysis",
+   "author": "Arnesen",
+   "first-page": "67",
+   "journal-title": "Food Nutr Res",
+   "key": "10.1016/j.acvd.2025.08.010_bib0465",
+   "volume": "14",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.3390/nu14193915",
+   "article-title": "Joint associations of food groups with all-cause and cause-specific mortality in the Mr. OS and Ms OS Study: a Prospective Cohort",
+   "author": "Yang",
+   "doi-asserted-by": "crossref",
+   "first-page": "3915",
+   "issue": "19",
+   "journal-title": "Nutrients",
+   "key": "10.1016/j.acvd.2025.08.010_bib0470",
+   "volume": "14",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1017/S0007114521002257",
+   "article-title": "Associations of total nut and peanut intakes with all-cause and cause-specific mortality in a Japanese community: the Takayama study",
+   "author": "Yamakawa",
+   "doi-asserted-by": "crossref",
+   "first-page": "1378",
+   "issue": "9",
+   "journal-title": "Br J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0475",
+   "volume": "127",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1159/000524382",
+   "article-title": "Nut consumption and effects on chronic kidney disease and mortality in the United States",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "503",
+   "issue": "6",
+   "journal-title": "Am J Nephrol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0480",
+   "volume": "53",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1002/ijc.33824",
+   "article-title": "Nut consumption in association with overall mortality and recurrence/disease-specific mortality among long-term breast cancer survivors",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "572",
+   "issue": "4",
+   "journal-title": "Int J Cancer",
+   "key": "10.1016/j.acvd.2025.08.010_bib0485",
+   "volume": "150",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.3389/fnut.2022.1080714",
+   "article-title": "Association between nut consumption and mortality among Chinese older people: a national cohort study based on CLHLS from 2008 to 2018",
+   "author": "He",
+   "doi-asserted-by": "crossref",
+   "first-page": "1080714",
+   "journal-title": "Front Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0490",
+   "volume": "9",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.3389/fnut.2020.610467",
+   "article-title": "Longitudinal association of nut consumption and the risk of cardiovascular events: a Prospective Cohort Study in the Eastern Mediterranean Region",
+   "author": "Mohammadifard",
+   "doi-asserted-by": "crossref",
+   "first-page": "610467",
+   "journal-title": "Front Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0495",
+   "volume": "7",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.3390/nu13082699",
+   "article-title": "Association of walnut consumption with total and cause-specific mortality and life expectancy in U.S, Adults",
+   "author": "Liu",
+   "doi-asserted-by": "crossref",
+   "first-page": "2699",
+   "issue": "8",
+   "journal-title": "Nutrients",
+   "key": "10.1016/j.acvd.2025.08.010_bib0500",
+   "volume": "13",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1016/j.jacl.2021.01.001",
+   "article-title": "Nut consumption, risk of cardiovascular mortality, and potential mediating mechanisms: The Women's Health Study",
+   "author": "Imran",
+   "doi-asserted-by": "crossref",
+   "first-page": "266",
+   "issue": "2",
+   "journal-title": "J Clin Lipidol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0505",
+   "volume": "15",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0109552",
+   "article-title": "Dietary protein intake and coronary heart disease in a large community based cohort: results from the Atherosclerosis Risk in Communities (ARIC) study [corrected]",
+   "author": "Haring",
+   "doi-asserted-by": "crossref",
+   "first-page": "e109552",
+   "issue": "10",
+   "journal-title": "PLoS One",
+   "key": "10.1016/j.acvd.2025.08.010_bib0510",
+   "volume": "9",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2010.03.005",
+   "article-title": "Nut consumption and risk of stroke in US male physicians",
+   "author": "Djouss\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "605",
+   "issue": "5",
+   "journal-title": "Clin Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0515",
+   "volume": "29",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1007/s10654-010-9491-z",
+   "article-title": "Critical evaluation of the Newcastle-Ottawa scale for the assessment of the quality of nonrandomized studies in meta-analyses",
+   "author": "Stang",
+   "doi-asserted-by": "crossref",
+   "first-page": "603",
+   "issue": "9",
+   "journal-title": "Eur J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0520",
+   "volume": "25",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.3945/an.116.013052",
+   "article-title": "Perspective: NutriGrade: a scoring system to assess and judge the meta-evidence of randomized controlled trials and cohort studies in nutrition research",
+   "author": "Schwingshackl",
+   "doi-asserted-by": "crossref",
+   "first-page": "994",
+   "issue": "6",
+   "journal-title": "Adv Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0525",
+   "volume": "7",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1136/bmj.i4919",
+   "article-title": "ROBINS-I: a tool for assessing risk of bias in non-randomised studies of interventions",
+   "author": "Sterne",
+   "doi-asserted-by": "crossref",
+   "first-page": "i4919",
+   "journal-title": "Bmj",
+   "key": "10.1016/j.acvd.2025.08.010_bib0530",
+   "volume": "355",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1093/advances/nmac032",
+   "article-title": "Unhealthy Food and Beverage Consumption in Children and Risk of Overweight and Obesity: A Systematic Review and Meta-Analysis",
+   "author": "Rousham",
+   "doi-asserted-by": "crossref",
+   "first-page": "1669",
+   "issue": "5",
+   "journal-title": "Adv Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0535",
+   "volume": "13",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1016/j.clnu.2008.08.005",
+   "article-title": "Nut consumption and risk of hypertension in US male physicians",
+   "author": "Djouss\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "10",
+   "issue": "1",
+   "journal-title": "Clin Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0540",
+   "volume": "28",
+   "year": "2009"
+  },
+  {
+   "DOI": "10.1038/ejcn.2014.212",
+   "article-title": "The association between nut consumption and the risk of total and ischemic stroke in a German cohort study",
+   "author": "di Giuseppe",
+   "doi-asserted-by": "crossref",
+   "first-page": "431",
+   "issue": "4",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0545",
+   "volume": "69",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1093/aje/kwr265",
+   "article-title": "Meta-analysis for linear and nonlinear dose-response relations: examples, an evaluation of approximations, and software",
+   "author": "Orsini",
+   "doi-asserted-by": "crossref",
+   "first-page": "66",
+   "issue": "1",
+   "journal-title": "Am J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0550",
+   "volume": "175",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1093/aje/kwn005",
+   "article-title": "How much of the data published in observational studies of the association between diet and prostate or bladder cancer is usable for meta-analysis?",
+   "author": "Bekkering",
+   "doi-asserted-by": "crossref",
+   "first-page": "1017",
+   "issue": "9",
+   "journal-title": "Am J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0555",
+   "volume": "167",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1038/bjc.2013.438",
+   "article-title": "Association of vitamin B6, vitamin B12 and methionine with risk of breast cancer: a dose-response meta-analysis",
+   "author": "Wu",
+   "doi-asserted-by": "crossref",
+   "first-page": "1926",
+   "issue": "7",
+   "journal-title": "Br J Cancer",
+   "key": "10.1016/j.acvd.2025.08.010_bib0560",
+   "volume": "109",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1016/0197-2456(86)90046-2",
+   "article-title": "Meta-analysis in clinical trials",
+   "author": "DerSimonian",
+   "doi-asserted-by": "crossref",
+   "first-page": "177",
+   "issue": "3",
+   "journal-title": "Control Clin Trials",
+   "key": "10.1016/j.acvd.2025.08.010_bib0565",
+   "volume": "7",
+   "year": "1986"
+  },
+  {
+   "DOI": "10.1093/oxfordjournals.aje.a116237",
+   "article-title": "Methods for trend estimation from summarized dose-response data, with applications to meta-analysis",
+   "author": "Greenland",
+   "doi-asserted-by": "crossref",
+   "first-page": "1301",
+   "issue": "11",
+   "journal-title": "Am J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0570",
+   "volume": "135",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1097/00001648-199507000-00005",
+   "article-title": "Dose-response and trend analysis in epidemiology: alternatives to categorical analysis",
+   "author": "Greenland",
+   "doi-asserted-by": "crossref",
+   "first-page": "356",
+   "issue": "4",
+   "journal-title": "Epidemiology",
+   "key": "10.1016/j.acvd.2025.08.010_bib0575",
+   "volume": "6",
+   "year": "1995"
+  },
+  {
+   "DOI": "10.1001/jama.2018.13770",
+   "article-title": "Association of thyroid hormone therapy with quality of life and thyroid-related symptoms in patients with subclinical hypothyroidism: a systematic review and meta-analysis",
+   "author": "Feller",
+   "doi-asserted-by": "crossref",
+   "first-page": "1349",
+   "issue": "13",
+   "journal-title": "JAMA",
+   "key": "10.1016/j.acvd.2025.08.010_bib0580",
+   "volume": "320",
+   "year": "2018"
+  },
+  {
+   "article-title": "Bias in meta-analysis detected by a simple, graphical test. Increase in studies of publication bias coincided with increasing use of meta-analysis",
+   "author": "Song",
+   "first-page": "471",
+   "issue": "7129",
+   "journal-title": "BMJ",
+   "key": "10.1016/j.acvd.2025.08.010_bib0585",
+   "volume": "316",
+   "year": "1998"
+  },
+  {
+   "DOI": "10.1111/j.0006-341X.2000.00455.x",
+   "article-title": "Trim and fill: a simple funnel-plot-based method of testing and adjusting for publication bias in meta-analysis",
+   "author": "Duval",
+   "doi-asserted-by": "crossref",
+   "first-page": "455",
+   "issue": "2",
+   "journal-title": "Biometrics",
+   "key": "10.1016/j.acvd.2025.08.010_bib0590",
+   "volume": "56",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.3390/nu11071508",
+   "article-title": "Nut and peanut butter consumption and mortality in the National Institutes of Health-AARP Diet and Health Study",
+   "author": "Amba",
+   "doi-asserted-by": "crossref",
+   "first-page": "1508",
+   "issue": "7",
+   "journal-title": "Nutrients",
+   "key": "10.1016/j.acvd.2025.08.010_bib0595",
+   "volume": "11",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1093/ije/dyy030",
+   "article-title": "Patterns of plant and animal protein intake are strongly associated with cardiovascular mortality: the Adventist Health Study-2 cohort",
+   "author": "Tharrey",
+   "doi-asserted-by": "crossref",
+   "first-page": "1603",
+   "issue": "5",
+   "journal-title": "Int J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0600",
+   "volume": "47",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1136/heartjnl-2017-312819",
+   "article-title": "Nut consumption and incidence of seven cardiovascular diseases",
+   "author": "Larsson",
+   "doi-asserted-by": "crossref",
+   "first-page": "1615",
+   "issue": "19",
+   "journal-title": "Heart",
+   "key": "10.1016/j.acvd.2025.08.010_bib0605",
+   "volume": "104",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1200/JCO.2017.75.5413",
+   "article-title": "Nut consumption and survival in patients with stage III colon cancer: results from CALGB 89803 (Alliance)",
+   "author": "Fadelu",
+   "doi-asserted-by": "crossref",
+   "first-page": "1112",
+   "issue": "11",
+   "journal-title": "J Clin Oncol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0610",
+   "volume": "36",
+   "year": "2018"
+  },
+  {
+   "article-title": "Nut consumption and total and cause-specific mortality: results from the Golestan Cohort Study",
+   "author": "Eslamparast",
+   "first-page": "75",
+   "issue": "1",
+   "journal-title": "Int J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0615",
+   "volume": "46",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1038/bjc.2016.181",
+   "article-title": "Nut consumption and prostate cancer risk and mortality",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "371",
+   "issue": "3",
+   "journal-title": "Br J Cancer",
+   "key": "10.1016/j.acvd.2025.08.010_bib0620",
+   "volume": "115",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1038/srep22619",
+   "article-title": "Dietary components and risk of total, cancer and cardiovascular disease mortality in the Linxian Nutrition Intervention Trials cohort in China",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "22619",
+   "journal-title": "Sci Rep",
+   "key": "10.1016/j.acvd.2025.08.010_bib0625",
+   "volume": "6",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1093/ije/dyv039",
+   "article-title": "Relationship of tree nut, peanut and peanut butter intake with total and cause-specific mortality: a cohort study and meta-analysis",
+   "author": "van den Brandt",
+   "doi-asserted-by": "crossref",
+   "first-page": "1038",
+   "issue": "3",
+   "journal-title": "Int J Epidemiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0630",
+   "volume": "44",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2014.8347",
+   "article-title": "Prospective evaluation of the association of nut/peanut consumption with total and cause-specific mortality",
+   "author": "Luu",
+   "doi-asserted-by": "crossref",
+   "first-page": "755",
+   "issue": "5",
+   "journal-title": "JAMA Intern Med",
+   "key": "10.1016/j.acvd.2025.08.010_bib0635",
+   "volume": "175",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.3945/ajcn.114.099846",
+   "article-title": "Nut consumption and risk of mortality in the Physicians\u2019 Health Study",
+   "author": "Hshieh",
+   "doi-asserted-by": "crossref",
+   "first-page": "407",
+   "issue": "2",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0640",
+   "volume": "101",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2015.09.006",
+   "article-title": "Consumption of nuts and risk of total and cause-specific mortality over 15 years",
+   "author": "Gopinath",
+   "doi-asserted-by": "crossref",
+   "first-page": "1125",
+   "issue": "12",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.1016/j.acvd.2025.08.010_bib0645",
+   "volume": "25",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1017/S0007114515002378",
+   "article-title": "Nut consumption is inversely associated with both cancer and total mortality in a Mediterranean population: prospective results from the Moli-sani study",
+   "author": "Bonaccio",
+   "doi-asserted-by": "crossref",
+   "first-page": "804",
+   "issue": "5",
+   "journal-title": "Br J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0650",
+   "volume": "114",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.1016/j.nut.2014.02.018",
+   "article-title": "Nut consumption and 5-y all-cause mortality in a Mediterranean cohort: the SUN project",
+   "author": "Fern\u00e1ndez-Montero",
+   "doi-asserted-by": "crossref",
+   "first-page": "1022",
+   "issue": "9",
+   "journal-title": "Nutrition",
+   "key": "10.1016/j.acvd.2025.08.010_bib0655",
+   "volume": "30",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1186/1475-2891-11-17",
+   "article-title": "Nut consumption and risk of atrial fibrillation in the Physicians\u2019 Health Study",
+   "author": "Khawaja",
+   "doi-asserted-by": "crossref",
+   "first-page": "17",
+   "journal-title": "Nutr J",
+   "key": "10.1016/j.acvd.2025.08.010_bib0660",
+   "volume": "11",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1001/archinte.162.12.1382",
+   "article-title": "Nut consumption and decreased risk of sudden cardiac death in the Physicians\u2019 Health Study",
+   "author": "Albert",
+   "doi-asserted-by": "crossref",
+   "first-page": "1382",
+   "issue": "12",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1016/j.acvd.2025.08.010_bib0665",
+   "volume": "162",
+   "year": "2002"
+  },
+  {
+   "DOI": "10.1001/archinte.1992.00400190054010",
+   "article-title": "A possible protective effect of nut consumption on risk of coronary heart disease. The Adventist Health Study",
+   "author": "Fraser",
+   "doi-asserted-by": "crossref",
+   "first-page": "1416",
+   "issue": "7",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1016/j.acvd.2025.08.010_bib0670",
+   "volume": "152",
+   "year": "1992"
+  },
+  {
+   "DOI": "10.1056/NEJMoa1307352",
+   "article-title": "Association of nut consumption with total and cause-specific mortality",
+   "author": "Bao",
+   "doi-asserted-by": "crossref",
+   "first-page": "2001",
+   "issue": "21",
+   "journal-title": "N Engl J Med",
+   "key": "10.1016/j.acvd.2025.08.010_bib0680",
+   "volume": "369",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2017.05.004",
+   "article-title": "The PREDIMED trial. Mediterranean diet and health outcomes: How strong is the evidence?",
+   "author": "Guasch-Ferr\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "624",
+   "issue": "7",
+   "journal-title": "Nutr Metab Cardiovasc Dis",
+   "key": "10.1016/j.acvd.2025.08.010_bib0685",
+   "volume": "27",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1093/eurjpc/zwad283",
+   "article-title": "Sex-specific lifetime risk of cardiovascular events: the European Prospective Investigation into Cancer-Norfolk prospective population cohort study",
+   "author": "Pana",
+   "doi-asserted-by": "crossref",
+   "first-page": "230",
+   "issue": "2",
+   "journal-title": "Eur J Prev Cardiol",
+   "key": "10.1016/j.acvd.2025.08.010_bib0690",
+   "volume": "31",
+   "year": "2024"
+  },
+  {
+   "DOI": "10.1007/s11427-020-1896-x",
+   "article-title": "Fruit and vegetable consumption, cardiovascular disease, and all-cause mortality in China",
+   "author": "Wang",
+   "doi-asserted-by": "crossref",
+   "first-page": "119",
+   "issue": "1",
+   "journal-title": "Sci China Life Sci",
+   "key": "10.1016/j.acvd.2025.08.010_bib0675",
+   "volume": "65",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1161/JAHA.120.017728",
+   "article-title": "Relation of different fruit and vegetable sources with incident cardiovascular outcomes: a systematic review and meta-analysis of prospective cohort studies",
+   "author": "Zurbau",
+   "doi-asserted-by": "crossref",
+   "first-page": "e017728",
+   "issue": "19",
+   "journal-title": "J Am Heart Assoc",
+   "key": "10.1016/j.acvd.2025.08.010_bib0695",
+   "volume": "9",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1093/eurheartj/ehab454",
+   "article-title": "Association between adiposity and cardiovascular outcomes: an umbrella review and meta-analysis of observational and Mendelian randomization studies",
+   "author": "Kim",
+   "doi-asserted-by": "crossref",
+   "first-page": "3388",
+   "issue": "34",
+   "journal-title": "Eur Heart J",
+   "key": "10.1016/j.acvd.2025.08.010_bib0700",
+   "volume": "42",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1136/bmj.m688",
+   "article-title": "Associations of fat and carbohydrate intake with cardiovascular disease and mortality: prospective cohort study of UK Biobank participants",
+   "author": "Ho",
+   "doi-asserted-by": "crossref",
+   "first-page": "m688",
+   "journal-title": "BMJ",
+   "key": "10.1016/j.acvd.2025.08.010_bib0705",
+   "volume": "368",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1001/jamainternmed.2019.2806",
+   "article-title": "Association of animal and plant protein intake with all-cause and cause-specific mortality in a Japanese cohort",
+   "author": "Budhathoki",
+   "doi-asserted-by": "crossref",
+   "first-page": "1509",
+   "issue": "11",
+   "journal-title": "JAMA Intern Med",
+   "key": "10.1016/j.acvd.2025.08.010_bib0710",
+   "volume": "179",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1017/BJN20061867",
+   "article-title": "Nuts, body weight and insulin resistance",
+   "author": "Rajaram",
+   "doi-asserted-by": "crossref",
+   "first-page": "S79",
+   "journal-title": "Br J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0715",
+   "volume": "96Suppl2",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.1001/archinternmed.2010.79",
+   "article-title": "Nut consumption and blood lipid levels: a pooled analysis of 25 intervention trials",
+   "author": "Sabat\u00e9",
+   "doi-asserted-by": "crossref",
+   "first-page": "821",
+   "issue": "9",
+   "journal-title": "Arch Intern Med",
+   "key": "10.1016/j.acvd.2025.08.010_bib0720",
+   "volume": "170",
+   "year": "2010"
+  },
+  {
+   "DOI": "10.1093/jn/138.5.908",
+   "article-title": "Almonds reduce biomarkers of lipid peroxidation in older hyperlipidemic subjects",
+   "author": "Jenkins",
+   "doi-asserted-by": "crossref",
+   "first-page": "908",
+   "issue": "5",
+   "journal-title": "J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0725",
+   "volume": "138",
+   "year": "2008"
+  },
+  {
+   "DOI": "10.1093/jn/136.12.2987",
+   "article-title": "Almonds decrease postprandial glycemia, insulinemia, and oxidative damage in healthy individuals",
+   "author": "Jenkins",
+   "doi-asserted-by": "crossref",
+   "first-page": "2987",
+   "issue": "12",
+   "journal-title": "J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0730",
+   "volume": "136",
+   "year": "2006"
+  },
+  {
+   "DOI": "10.3945/ajcn.115.110965",
+   "article-title": "Effects of tree nuts on blood lipids, apolipoproteins, and blood pressure: systematic review, meta-analysis, and dose-response of 61 controlled intervention trials",
+   "author": "Del Gobbo",
+   "doi-asserted-by": "crossref",
+   "first-page": "1347",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0735",
+   "volume": "102",
+   "year": "2015"
+  },
+  {
+   "DOI": "10.3390/nu12030682",
+   "article-title": "Oxidative stress biomarkers, nut-related antioxidants, and cardiovascular disease",
+   "author": "Lorenzon Dos Santos",
+   "doi-asserted-by": "crossref",
+   "first-page": "682",
+   "issue": "3",
+   "journal-title": "Nutrients",
+   "key": "10.1016/j.acvd.2025.08.010_bib0740",
+   "volume": "12",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1017/S0007114511006647",
+   "article-title": "In vitro fermented nuts exhibit chemopreventive effects in HT29 colon cancer cells",
+   "author": "Lux",
+   "doi-asserted-by": "crossref",
+   "first-page": "1177",
+   "issue": "7",
+   "journal-title": "Br J Nutr",
+   "key": "10.1016/j.acvd.2025.08.010_bib0745",
+   "volume": "108",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/j.pcad.2018.05.003",
+   "article-title": "Nuts and cardiovascular disease",
+   "author": "Bitok",
+   "doi-asserted-by": "crossref",
+   "first-page": "33",
+   "issue": "1",
+   "journal-title": "Prog Cardiovasc Dis",
+   "key": "10.1016/j.acvd.2025.08.010_bib0750",
+   "volume": "61",
+   "year": "2018"
+  }
+ ],
+ "reference-count": 75,
+ "references-count": 75,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1875213625004656"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Archives of Cardiovascular Diseases"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "Nut consumption and risk of cardiovascular disease events and all-cause mortality: A systematic review and dose\u2013response meta-analysis of prospective cohort studies"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "volume": "119"
+}

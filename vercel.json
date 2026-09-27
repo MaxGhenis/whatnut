@@ -1,7 +1,16 @@
 {
   "installCommand": "bash scripts/install_quarto.sh",
-  "buildCommand": "PATH=/tmp/quarto/bin:$PATH quarto render docs/ --to html && mkdir -p public/whatnut && cp -R docs/_build/. public/whatnut/",
+  "buildCommand": "export PATH=/tmp/quarto/bin:$PATH && quarto render paper --to html --no-execute && quarto render paper --to typst --no-execute && rm -rf public/whatnut/web && mkdir -p public/whatnut/web && cp -R paper/_build/. public/whatnut/web/",
   "outputDirectory": "public",
   "framework": null,
-  "cleanUrls": true
+  "cleanUrls": false,
+  "redirects": [
+    { "source": "/", "destination": "/whatnut/", "permanent": false },
+    { "source": "/whatnut", "destination": "/whatnut/", "permanent": true },
+    { "source": "/whatnut/appendix", "destination": "/whatnut/", "permanent": true },
+    { "source": "/whatnut/appendix/", "destination": "/whatnut/", "permanent": true },
+    { "source": "/whatnut/appendix.html", "destination": "/whatnut/", "permanent": true },
+    { "source": "/whatnut/whatnut.pdf", "destination": "/whatnut/web/index.pdf", "permanent": false },
+    { "source": "/whatnut/index.pdf", "destination": "/whatnut/web/index.pdf", "permanent": false }
+  ]
 }

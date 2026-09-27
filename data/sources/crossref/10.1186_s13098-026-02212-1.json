@@ -1,0 +1,807 @@
+{
+ "DOI": "10.1186/s13098-026-02212-1",
+ "ISSN": [
+  "1758-5996"
+ ],
+ "URL": "https://doi.org/10.1186/s13098-026-02212-1",
+ "alternative-id": [
+  "2212"
+ ],
+ "article-number": "180",
+ "assertion": [
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Received",
+   "name": "received",
+   "order": 1,
+   "value": "14 December 2025"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "Accepted",
+   "name": "accepted",
+   "order": 2,
+   "value": "7 June 2026"
+  },
+  {
+   "group": {
+    "label": "Article History",
+    "name": "ArticleHistory"
+   },
+   "label": "First Online",
+   "name": "first_online",
+   "order": 3,
+   "value": "15 June 2026"
+  },
+  {
+   "group": {
+    "label": "Declarations",
+    "name": "EthicsHeading"
+   },
+   "label": "Ethics approval and consent to participate",
+   "name": "Ethics",
+   "order": 1,
+   "value": "No applicable."
+  },
+  {
+   "group": {
+    "label": "Declarations",
+    "name": "EthicsHeading"
+   },
+   "label": "Consent for publication",
+   "name": "Ethics",
+   "order": 2,
+   "value": "No applicable."
+  },
+  {
+   "group": {
+    "label": "Declarations",
+    "name": "EthicsHeading"
+   },
+   "label": "Competing interests",
+   "name": "Ethics",
+   "order": 3,
+   "value": "The authors declare no competing interests."
+  }
+ ],
+ "author": [
+  {
+   "affiliation": [],
+   "family": "Zhang",
+   "given": "Ziwei",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "first"
+  },
+  {
+   "affiliation": [],
+   "family": "Sohouli",
+   "given": "Mohammad Hassan",
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ],
+   "sequence": "additional"
+  }
+ ],
+ "container-title": [
+  "Diabetology &amp; Metabolic Syndrome"
+ ],
+ "content-domain": {
+  "crossmark-restriction": false,
+  "domain": [
+   "link.springer.com"
+  ]
+ },
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    15
+   ]
+  ],
+  "date-time": "2026-06-15T15:59:16Z",
+  "timestamp": 1781539156000
+ },
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    8,
+    24
+   ]
+  ],
+  "date-time": "2026-08-24T01:01:50Z",
+  "timestamp": 1787533310000
+ },
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    8,
+    24
+   ]
+  ],
+  "date-time": "2026-08-24T01:19:18Z",
+  "timestamp": 1787534358997,
+  "version": "build-2736575974"
+ },
+ "is-referenced-by-count": 0,
+ "issn-type": [
+  {
+   "type": "electronic",
+   "value": "1758-5996"
+  }
+ ],
+ "issue": "1",
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    15
+   ]
+  ]
+ },
+ "journal-issue": {
+  "issue": "1",
+  "published-online": {
+   "date-parts": [
+    [
+     2026,
+     12
+    ]
+   ]
+  }
+ },
+ "language": "en",
+ "license": [
+  {
+   "URL": "https://creativecommons.org/licenses/by-nc-nd/4.0",
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      6,
+      15
+     ]
+    ],
+    "date-time": "2026-06-15T00:00:00Z",
+    "timestamp": 1781481600000
+   }
+  },
+  {
+   "URL": "https://creativecommons.org/licenses/by-nc-nd/4.0",
+   "content-version": "vor",
+   "delay-in-days": 70,
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      8,
+      24
+     ]
+    ],
+    "date-time": "2026-08-24T00:00:00Z",
+    "timestamp": 1787529600000
+   }
+  }
+ ],
+ "link": [
+  {
+   "URL": "https://link.springer.com/article/10.1186/s13098-026-02212-1",
+   "content-type": "text/html",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://link.springer.com/content/pdf/10.1186/s13098-026-02212-1.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://link.springer.com/content/pdf/10.1186/s13098-026-02212-1.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "member": "297",
+ "original-title": [],
+ "prefix": "10.1186",
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    15
+   ]
+  ]
+ },
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    15
+   ]
+  ]
+ },
+ "publisher": "Springer Science and Business Media LLC",
+ "reference": [
+  {
+   "DOI": "10.1016/B978-0-323-95469-3.00002-4",
+   "author": "N Bassi",
+   "doi-asserted-by": "publisher",
+   "first-page": "499",
+   "key": "2212_CR1",
+   "unstructured": "Bassi N, Mohan P, Itchhaporia D. Management of cardiometabolic diseases: A clinician\u2019s perspective. Cardiometabolic Diseases: Elsevier; 2025. pp. 499\u2013517.",
+   "volume-title": "Management of cardiometabolic diseases: A clinician\u2019s perspective",
+   "year": "2025"
+  },
+  {
+   "DOI": "10.1093/eurjpc/zwae281",
+   "author": "B Chong",
+   "doi-asserted-by": "publisher",
+   "first-page": "1001",
+   "issue": "11",
+   "journal-title": "Eur J Prev Cardiol",
+   "key": "2212_CR2",
+   "unstructured": "Chong B, Jayabaskaran J, Jauhari SM, Chan SP, Goh R, Kueh MTW, et al. Global burden of cardiovascular diseases: projections from 2025 to 2050. Eur J Prev Cardiol. 2025;32(11):1001\u201315.",
+   "volume": "32",
+   "year": "2025"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2024.10.009",
+   "author": "SK Nishi",
+   "doi-asserted-by": "publisher",
+   "first-page": "103771",
+   "issue": "5",
+   "journal-title": "Nutr Metabolism Cardiovasc Dis",
+   "key": "2212_CR3",
+   "unstructured": "Nishi SK, Paz-Graniel I, Ni J, Valle-Hita C, Khoury N, Garcia-Gavil\u00e1n JF, et al. Effect of nut consumption on blood lipids: An updated systematic review and meta-analysis of randomized controlled trials. Nutr Metabolism Cardiovasc Dis. 2025;35(5):103771.",
+   "volume": "35",
+   "year": "2025"
+  },
+  {
+   "DOI": "10.3390/nu15040911",
+   "author": "AJ Glenn",
+   "doi-asserted-by": "publisher",
+   "first-page": "911",
+   "issue": "4",
+   "journal-title": "Nutrients",
+   "key": "2212_CR4",
+   "unstructured": "Glenn AJ, Aune D, Freisling H, Mohammadifard N, Kendall CW, Salas-Salvad\u00f3 J, et al. Nuts and cardiovascular disease outcomes: a review of the evidence and future directions. Nutrients. 2023;15(4):911.",
+   "volume": "15",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.3390/nu10121935",
+   "author": "Y Kim",
+   "doi-asserted-by": "publisher",
+   "first-page": "1935",
+   "issue": "12",
+   "journal-title": "Nutrients",
+   "key": "2212_CR5",
+   "unstructured": "Kim Y, Keogh J, Clifton PM. Nuts and cardio-metabolic disease: a review of meta-analyses. Nutrients. 2018;10(12):1935.",
+   "volume": "10",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.2174/1381612822666161010121356",
+   "author": "L Schwingshackl",
+   "doi-asserted-by": "publisher",
+   "first-page": "1016",
+   "issue": "7",
+   "journal-title": "Curr Pharm Design",
+   "key": "2212_CR6",
+   "unstructured": "Schwingshackl L, Hoffmann G, Missbach B, Stelmach-Mardas M, Boeing H. An umbrella review of nuts intake and risk of cardiovascular disease. Curr Pharm Design. 2017;23(7):1016\u201327.",
+   "volume": "23",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1016/j.nutres.2023.01.001",
+   "author": "B Cogan",
+   "doi-asserted-by": "publisher",
+   "first-page": "44",
+   "journal-title": "Nutr Res",
+   "key": "2212_CR7",
+   "unstructured": "Cogan B, Pearson RC, Paton CM, Jenkins NT, Cooper JA. Pecan-enriched diet improves cholesterol profiles and enhances postprandial microvascular reactivity in older adults. Nutr Res. 2023;111:44\u201358.",
+   "volume": "111",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1093/jn/nxab248",
+   "author": "LL Guarneiri",
+   "doi-asserted-by": "publisher",
+   "first-page": "3091",
+   "issue": "10",
+   "journal-title": "J Nutr",
+   "key": "2212_CR8",
+   "unstructured": "Guarneiri LL, Paton CM, Cooper JA. Pecan-enriched diets alter cholesterol profiles and triglycerides in adults at risk for cardiovascular disease in a randomized, controlled trial. J Nutr. 2021;151(10):3091\u2013101.",
+   "volume": "151",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.3390/nu10030339",
+   "author": "DL McKay",
+   "doi-asserted-by": "publisher",
+   "first-page": "339",
+   "issue": "3",
+   "journal-title": "Nutrients",
+   "key": "2212_CR9",
+   "unstructured": "McKay DL, Eliasziw M, Chen CO, Blumberg JB. A pecan-rich diet improves cardiometabolic risk factors in overweight and obese adults: a randomized controlled trial. Nutrients. 2018;10(3):339.",
+   "volume": "10",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1016/j.ajcnut.2025.01.024",
+   "author": "TL Hart",
+   "doi-asserted-by": "publisher",
+   "first-page": "769",
+   "issue": "4",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2212_CR10",
+   "unstructured": "Hart TL, Kris-Etherton PM, Petersen KS. Consuming pecans as a snack improves lipids/lipoproteins and diet quality compared with usual diet in adults at increased risk of cardiometabolic diseases: a randomized controlled trial. Am J Clin Nutr. 2025;121(4):769\u201378.",
+   "volume": "121",
+   "year": "2025"
+  },
+  {
+   "DOI": "10.1111/jhn.12727",
+   "author": "V Campos",
+   "doi-asserted-by": "publisher",
+   "first-page": "439",
+   "issue": "3",
+   "journal-title": "J Hum Nutr Dietetics",
+   "key": "2212_CR11",
+   "unstructured": "Campos V, Portal V, Markoski M, Quadros A, Bersch-Ferreira \u00c2, Garavaglia J, et al. Effects of a healthy diet enriched or not with pecan nuts or extra\u2010virgin olive oil on the lipid profile of patients with stable coronary artery disease: a randomised clinical trial. J Hum Nutr Dietetics. 2020;33(3):439\u201350.",
+   "volume": "33",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.jacc.2017.09.035",
+   "author": "M Guasch-Ferr\u00e9",
+   "doi-asserted-by": "publisher",
+   "first-page": "2519",
+   "issue": "20",
+   "journal-title": "J Am Coll Cardiol",
+   "key": "2212_CR12",
+   "unstructured": "Guasch-Ferr\u00e9 M, Liu X, Malik VS, Sun Q, Willett WC, Manson JE, et al. Nut consumption and risk of cardiovascular disease. J Am Coll Cardiol. 2017;70(20):2519\u201332.",
+   "volume": "70",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1089/jmf.2023.0036",
+   "author": "B Cogan",
+   "doi-asserted-by": "publisher",
+   "first-page": "654",
+   "issue": "9",
+   "journal-title": "J Med Food",
+   "key": "2212_CR13",
+   "unstructured": "Cogan B, Pearson RC, Jenkins NT, Paton CM, Cooper JA. A 4-Week Pecan-Enriched Diet Improves Postprandial Lipid Peroxidation in Aging Adults. J Med Food. 2023;26(9):654\u201362.",
+   "volume": "26",
+   "year": "2023"
+  },
+  {
+   "DOI": "10.1017/S0007114521001513",
+   "author": "C Weschenfelder",
+   "doi-asserted-by": "publisher",
+   "first-page": "862",
+   "issue": "6",
+   "journal-title": "Br J Nutr",
+   "key": "2212_CR14",
+   "unstructured": "Weschenfelder C, Gottschall CB, Markoski MM, Portal VL, de Quadros AS, Bersch-Ferreira \u00c2C, et al. Effects of supplementing a healthy diet with pecan nuts or extra-virgin olive oil on inflammatory profile of patients with stable coronary artery disease: a randomised clinical trial. Br J Nutr. 2022;127(6):862\u201371.",
+   "volume": "127",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.12688/f1000research.25181.1",
+   "doi-asserted-by": "crossref",
+   "key": "2212_CR15",
+   "unstructured": "Booth A, Mitchell AS, Mott A, James S, Cockayne S, Gascoyne S et al. An assessment of the extent to which the contents of PROSPERO records meet the systematic review protocol reporting items in PRISMA-P. F1000Research. 2020;9."
+  },
+  {
+   "author": "JP Higgins",
+   "first-page": "28",
+   "journal-title": "Cochrane Handb Syst reviews interventions",
+   "key": "2212_CR16",
+   "unstructured": "Higgins JP, Savovi\u0107 J, Page MJ, Elbers RG, Sterne JA. Assessing risk of bias in a randomized trial. Cochrane Handb Syst reviews interventions. 2019;205:28.",
+   "volume": "205",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1186/1471-2288-5-13",
+   "author": "SP Hozo",
+   "doi-asserted-by": "publisher",
+   "first-page": "1",
+   "journal-title": "BMC Med Res Methodol",
+   "key": "2212_CR17",
+   "unstructured": "Hozo SP, Djulbegovic B, Hozo I. Estimating the mean and variance from the median, range, and the size of a sample. BMC Med Res Methodol. 2005;5:1\u201310.",
+   "volume": "5",
+   "year": "2005"
+  },
+  {
+   "author": "J Chandler",
+   "key": "2212_CR18",
+   "unstructured": "Chandler J, Cumpston M, Li T, Page MJ, Welch V. Cochrane handbook for systematic reviews of interventions. Volume 4. Hoboken: Wiley; 2019.",
+   "volume-title": "Cochrane handbook for systematic reviews of interventions",
+   "year": "2019"
+  },
+  {
+   "DOI": "10.1136/bmj.327.7414.557",
+   "author": "JP Higgins",
+   "doi-asserted-by": "publisher",
+   "first-page": "557",
+   "issue": "7414",
+   "journal-title": "BMJ",
+   "key": "2212_CR19",
+   "unstructured": "Higgins JP, Thompson SG, Deeks JJ, Altman DG. Measuring inconsistency in meta-analyses. BMJ. 2003;327(7414):557\u201360.",
+   "volume": "327",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1136/bmj.315.7109.629",
+   "author": "M Egger",
+   "doi-asserted-by": "publisher",
+   "first-page": "629",
+   "issue": "7109",
+   "journal-title": "BMJ",
+   "key": "2212_CR20",
+   "unstructured": "Egger M, Smith GD, Schneider M, Minder C. Bias in meta-analysis detected by a simple, graphical test. BMJ. 1997;315(7109):629\u201334.",
+   "volume": "315",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.3945/an.116.013052",
+   "author": "L Schwingshackl",
+   "doi-asserted-by": "publisher",
+   "first-page": "994",
+   "issue": "6",
+   "journal-title": "Adv Nutr",
+   "key": "2212_CR21",
+   "unstructured": "Schwingshackl L, Kn\u00fcppel S, Schwedhelm C, Hoffmann G, Missbach B, Stelmach-Mardas M, et al. Perspective: NutriGrade: A Scoring System to Assess and Judge the Meta-Evidence of Randomized Controlled Trials and Cohort Studies in Nutrition Research. Adv Nutr. 2016;7(6):994\u20131004. PubMed PMID: 28140319. eng.",
+   "volume": "7",
+   "year": "2016"
+  },
+  {
+   "DOI": "10.1017/jns.2022.14",
+   "author": "LL Guarneiri",
+   "doi-asserted-by": "publisher",
+   "first-page": "e16",
+   "journal-title": "J Nutritional Sci",
+   "key": "2212_CR22",
+   "unstructured": "Guarneiri LL, Paton CM, Cooper JA. Changes in body weight in response to pecan-enriched diets with and without substitution instructions: a randomised, controlled trial. J Nutritional Sci. 2022;11:e16.",
+   "volume": "11",
+   "year": "2022"
+  },
+  {
+   "DOI": "10.1038/s41430-021-01045-7",
+   "doi-asserted-by": "crossref",
+   "key": "2212_CR23",
+   "unstructured": "Dos Santos JL, Portal VL, Markoski MM, de Quadros AS, Bersch-Ferreira A, Marcadenti A. Effect of pecan nuts and extra-virgin olive oil on glycemic profile and nontraditional anthropometric indexes in patients with coronary artery disease: a randomized clinical trial. Eur J Clin Nutr. 2022;76(6):827-34."
+  },
+  {
+   "DOI": "10.1177/1077727X04272363",
+   "author": "WA Eastman",
+   "doi-asserted-by": "publisher",
+   "first-page": "197",
+   "issue": "3",
+   "journal-title": "Family Consumer Sci Res J",
+   "key": "2212_CR24",
+   "unstructured": "Eastman WA, Clayshulte BJ. Pecan Effects on Serum Lipoproteins and Dietary Intakes of Hyperlipidemic Individuals Consuming Self-Selected Diets. Family Consumer Sci Res J. 2005;33(3):197\u2013207.",
+   "volume": "33",
+   "year": "2005"
+  },
+  {
+   "DOI": "10.1093/jn/131.9.2275",
+   "author": "S Rajaram",
+   "doi-asserted-by": "publisher",
+   "first-page": "2275",
+   "issue": "9",
+   "journal-title": "J Nutr",
+   "key": "2212_CR25",
+   "unstructured": "Rajaram S, Myint T, Sabat\u00e9 J, Burke K, Connell B. A monounsaturated fatty acid\u2013rich pecan-enriched diet favorably alters the serum lipid profile of healthy men and women. J Nutr. 2001;131(9):2275\u20139.",
+   "volume": "131",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1016/S0002-8223(00)00097-3",
+   "author": "WA Morgan",
+   "doi-asserted-by": "publisher",
+   "first-page": "312",
+   "issue": "3",
+   "journal-title": "J Am Diet Assoc",
+   "key": "2212_CR26",
+   "unstructured": "Morgan WA, Clayshulte BJ. Pecans lower low density lipoprotein cholesterol in people with normal lipid levels. J Am Diet Assoc. 2000;100(3):312\u20138.",
+   "volume": "100",
+   "year": "2000"
+  },
+  {
+   "DOI": "10.1038/ejcn.2011.162",
+   "author": "AL Anderson",
+   "doi-asserted-by": "publisher",
+   "first-page": "18",
+   "issue": "1",
+   "journal-title": "Eur J Clin Nutr",
+   "key": "2212_CR27",
+   "unstructured": "Anderson AL, Harris TB, Tylavsky FA, Perry SE, Houston DK, Lee JS, et al. Dietary patterns, insulin sensitivity and inflammation in older adults. Eur J Clin Nutr. 2012;66(1):18\u201324.",
+   "volume": "66",
+   "year": "2012"
+  },
+  {
+   "DOI": "10.1016/j.numecd.2011.03.013",
+   "author": "C Kendall",
+   "doi-asserted-by": "publisher",
+   "first-page": "S34",
+   "journal-title": "Nutr Metabolism Cardiovasc Dis",
+   "key": "2212_CR28",
+   "unstructured": "Kendall C, Esfahani A, Josse A, Augustin L, Vidgen E, Jenkins D. The glycemic effect of nut-enriched meals in healthy and diabetic subjects. Nutr Metabolism Cardiovasc Dis. 2011;21:S34\u20139.",
+   "volume": "21",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1159/000331214",
+   "author": "L Schwingshackl",
+   "doi-asserted-by": "publisher",
+   "first-page": "290",
+   "issue": "4",
+   "journal-title": "Annals Nutr Metabolism",
+   "key": "2212_CR29",
+   "unstructured": "Schwingshackl L, Strasser B, Hoffmann G. Effects of monounsaturated fatty acids on glycaemic control in patients with abnormal glucose metabolism: a systematic review and meta-analysis. Annals Nutr Metabolism. 2011;58(4):290\u20136.",
+   "volume": "58",
+   "year": "2011"
+  },
+  {
+   "DOI": "10.1093/ajcn/77.5.1146",
+   "author": "RP Mensink",
+   "doi-asserted-by": "publisher",
+   "first-page": "1146",
+   "issue": "5",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2212_CR30",
+   "unstructured": "Mensink RP, Zock PL, Kester AD, Katan MB. Effects of dietary fatty acids and carbohydrates on the ratio of serum total to HDL cholesterol and on serum lipids and apolipoproteins: a meta-analysis of 60 controlled trials. Am J Clin Nutr. 2003;77(5):1146\u201355.",
+   "volume": "77",
+   "year": "2003"
+  },
+  {
+   "DOI": "10.1007/s12020-016-1018-2",
+   "author": "K Esposito",
+   "doi-asserted-by": "publisher",
+   "first-page": "27",
+   "issue": "1",
+   "journal-title": "Endocrine",
+   "key": "2212_CR31",
+   "unstructured": "Esposito K, Maiorino MI, Bellastella G, Panagiotakos DB, Giugliano D. Mediterranean diet for type 2 diabetes: cardiometabolic benefits. Endocrine. 2017;56(1):27\u201332.",
+   "volume": "56",
+   "year": "2017"
+  },
+  {
+   "DOI": "10.1007/s00125-018-4628-9",
+   "author": "DJ Jenkins",
+   "doi-asserted-by": "publisher",
+   "first-page": "1734",
+   "issue": "8",
+   "journal-title": "Diabetologia",
+   "key": "2212_CR32",
+   "unstructured": "Jenkins DJ, Kendall CW, Lamarche B, Banach MS, Srichaikul K, Vidgen E, et al. Nuts as a replacement for carbohydrates in the diabetic diet: a reanalysis of a randomised controlled trial. Diabetologia. 2018;61(8):1734\u201347.",
+   "volume": "61",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.3945/ajcn.113.071332",
+   "author": "CL Jackson",
+   "doi-asserted-by": "publisher",
+   "first-page": "S408",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2212_CR33",
+   "unstructured": "Jackson CL, Hu FB. Long-term associations of nut consumption with body weight and obesity. Am J Clin Nutr. 2014;100:S408\u201311.",
+   "volume": "100",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.3945/ajcn.111.031484",
+   "author": "G Flores-Mateo",
+   "doi-asserted-by": "publisher",
+   "first-page": "1346",
+   "issue": "6",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2212_CR34",
+   "unstructured": "Flores-Mateo G, Rojas-Rueda D, Basora J, Ros E, Salas-Salvado J. Nut intake and adiposity: meta-analysis of clinical trials. Am J Clin Nutr. 2013;97(6):1346\u201355.",
+   "volume": "97",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.3390/nu13082615",
+   "author": "BM Rust",
+   "doi-asserted-by": "publisher",
+   "first-page": "2615",
+   "issue": "8",
+   "journal-title": "Nutrients",
+   "key": "2212_CR35",
+   "unstructured": "Rust BM, Raatz SK, Casperson SL, Duke SE, Picklo MJ. Dietary fat chain length, saturation, and PUFA source acutely affect diet-induced thermogenesis but not satiety in adults in a randomized, crossover trial. Nutrients. 2021;13(8):2615.",
+   "volume": "13",
+   "year": "2021"
+  },
+  {
+   "DOI": "10.1080/10408398.2018.1514486",
+   "author": "M Akhlaghi",
+   "doi-asserted-by": "publisher",
+   "first-page": "84",
+   "issue": "1",
+   "journal-title": "Crit Rev Food Sci Nutr",
+   "key": "2212_CR36",
+   "unstructured": "Akhlaghi M, Ghobadi S, Zare M, Foshati S. Effect of nuts on energy intake, hunger, and fullness, a systematic review and meta-analysis of randomized clinical trials. Crit Rev Food Sci Nutr. 2020;60(1):84\u201393.",
+   "volume": "60",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.physbeh.2018.02.036",
+   "author": "HA Raynor",
+   "doi-asserted-by": "publisher",
+   "first-page": "167",
+   "journal-title": "Physiol Behav",
+   "key": "2212_CR37",
+   "unstructured": "Raynor HA, Li F, Cardoso C. Daily pattern of energy distribution and weight loss. Physiol Behav. 2018;192:167\u201372.",
+   "volume": "192",
+   "year": "2018"
+  },
+  {
+   "DOI": "10.1021/acs.jafc.9b07160",
+   "author": "R Bodoira",
+   "doi-asserted-by": "publisher",
+   "first-page": "927",
+   "issue": "4",
+   "journal-title": "J Agric Food Chem",
+   "key": "2212_CR38",
+   "unstructured": "Bodoira R, Maestri D. Phenolic compounds from nuts: extraction, chemical profiles, and bioactivity. J Agric Food Chem. 2020;68(4):927\u201342.",
+   "volume": "68",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1016/j.atherosclerosis.2013.11.043",
+   "author": "H Gylling",
+   "doi-asserted-by": "publisher",
+   "first-page": "346",
+   "issue": "2",
+   "journal-title": "Atherosclerosis",
+   "key": "2212_CR39",
+   "unstructured": "Gylling H, Plat J, Turley S, Ginsberg HN, Elleg\u00e5rd L, Jessup W, et al. Plant sterols and plant stanols in the management of dyslipidaemia and prevention of cardiovascular disease. Atherosclerosis. 2014;232(2):346\u201360.",
+   "volume": "232",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1093/ajcn/69.1.30",
+   "author": "L Brown",
+   "doi-asserted-by": "publisher",
+   "first-page": "30",
+   "issue": "1",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2212_CR40",
+   "unstructured": "Brown L, Rosner B, Willett WW, Sacks FM. Cholesterol-lowering effects of dietary fiber: a meta-analysis. Am J Clin Nutr. 1999;69(1):30\u201342.",
+   "volume": "69",
+   "year": "1999"
+  },
+  {
+   "DOI": "10.12997/jla.2025.14.3.247",
+   "author": "S-H Jo",
+   "doi-asserted-by": "publisher",
+   "first-page": "247",
+   "issue": "3",
+   "journal-title": "J Lipid Atherosclerosis",
+   "key": "2212_CR41",
+   "unstructured": "Jo S-H. Triglycerides, triglyceride-rich lipoproteins, and remnant cholesterol in atherosclerotic cardiovascular disease. J Lipid Atherosclerosis. 2025;14(3):247.",
+   "volume": "14",
+   "year": "2025"
+  },
+  {
+   "DOI": "10.1093/jn/131.10.2772S",
+   "author": "EJ Parks",
+   "doi-asserted-by": "publisher",
+   "first-page": "S2772",
+   "issue": "10",
+   "journal-title": "J Nutr",
+   "key": "2212_CR42",
+   "unstructured": "Parks EJ. Effect of dietary carbohydrate on triglyceride metabolism in humans. J Nutr. 2001;131(10):S2772\u20134.",
+   "volume": "131",
+   "year": "2001"
+  },
+  {
+   "DOI": "10.1371/journal.pone.0094585",
+   "author": "N Kaur",
+   "doi-asserted-by": "publisher",
+   "first-page": "e94585",
+   "issue": "4",
+   "journal-title": "PLoS ONE",
+   "key": "2212_CR43",
+   "unstructured": "Kaur N, Pandey A, Negi H, Shafiq N, Reddy S, Kaur H, et al. Effect of HDL-raising drugs on cardiovascular outcomes: a systematic review and meta-regression. PLoS ONE. 2014;9(4):e94585.",
+   "volume": "9",
+   "year": "2014"
+  },
+  {
+   "DOI": "10.1097/HJH.0000000000002524",
+   "author": "D Li",
+   "doi-asserted-by": "publisher",
+   "first-page": "2122",
+   "issue": "11",
+   "journal-title": "J Hypertens",
+   "key": "2212_CR44",
+   "unstructured": "Li D, Nishi SK, Jovanovski E, Zurbau A, Komishon A, Mejia SB, et al. Repeated administration of inorganic nitrate on blood pressure and arterial stiffness: a systematic review and meta-analysis of randomized controlled trials. J Hypertens. 2020;38(11):2122\u201340.",
+   "volume": "38",
+   "year": "2020"
+  },
+  {
+   "DOI": "10.1001/jama.1997.03540440058033",
+   "author": "PK Whelton",
+   "doi-asserted-by": "publisher",
+   "first-page": "1624",
+   "issue": "20",
+   "journal-title": "JAMA",
+   "key": "2212_CR45",
+   "unstructured": "Whelton PK, He J, Cutler JA, Brancati FL, Appel LJ, Follmann D, et al. Effects of oral potassium on blood pressure: meta-analysis of randomized controlled clinical trials. JAMA. 1997;277(20):1624\u201332.",
+   "volume": "277",
+   "year": "1997"
+  },
+  {
+   "DOI": "10.1161/JAHA.112.004473",
+   "author": "VA Cornelissen",
+   "doi-asserted-by": "publisher",
+   "first-page": "e004473",
+   "issue": "1",
+   "journal-title": "J Am heart association",
+   "key": "2212_CR46",
+   "unstructured": "Cornelissen VA, Smart NA. Exercise training for blood pressure: a systematic review and meta-analysis. J Am heart association. 2013;2(1):e004473.",
+   "volume": "2",
+   "year": "2013"
+  },
+  {
+   "DOI": "10.1093/ajcn/nqaa358",
+   "author": "N Becerra-Tom\u00e1s",
+   "doi-asserted-by": "publisher",
+   "first-page": "960",
+   "issue": "4",
+   "journal-title": "Am J Clin Nutr",
+   "key": "2212_CR47",
+   "unstructured": "Becerra-Tom\u00e1s N, Paz-Graniel I, Hern\u00e1ndez-Alonso P, Jenkins DJ, Kendall CW, Sievenpiper JL, et al. Nut consumption and type 2 diabetes risk: a systematic review and meta-analysis of observational studies. Am J Clin Nutr. 2021;113(4):960\u201371.",
+   "volume": "113",
+   "year": "2021"
+  }
+ ],
+ "reference-count": 47,
+ "references-count": 47,
+ "relation": {},
+ "resource": {
+  "primary": {
+   "URL": "https://link.springer.com/10.1186/s13098-026-02212-1"
+  }
+ },
+ "score": 1,
+ "short-container-title": [
+  "Diabetol Metab Syndr"
+ ],
+ "short-title": [],
+ "source": "Crossref",
+ "subject": [],
+ "subtitle": [],
+ "title": [
+  "The effect of pecan consumption on cardiometabolic risk factors: a systematic review and meta-analysis of randomized controlled trials"
+ ],
+ "type": "journal-article",
+ "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+ "volume": "18"
+}
