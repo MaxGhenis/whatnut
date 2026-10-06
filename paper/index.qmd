@@ -6,7 +6,7 @@ author:
   - name: Max Ghenis
     email: max@maxghenis.com
     url: https://www.maxghenis.com
-date: 2026-09-23
+date: 2026-09-24
 abstract: |
   Cohort studies find that people who eat nuts die at lower rates, and that the association stops growing by about 15 grams a day. Randomized trials find that tree nuts lower LDL cholesterol, with no significant difference among the kinds tested. I turn both into remaining life expectancy with the 2023 US life tables. No trial has measured how much of the cohort association nuts cause, so I report scenarios that run from randomized evidence alone to the cohort association at face value. For a 40-year-old man who eats no nuts, 15 grams a day adds 6 to 22 days through the LDL pathway alone, 470 days after discounting the association by the typical gap between nutrition trials and cohorts, and 724 days, about 2.0 years, at face value. A 40-year-old woman gains 4 to 21 days through the LDL pathway, 439 after the discount and 675 at face value. The first 5 grams account for 59% of the face-value gain, and that step, from no nuts to some, is where differences between people who eat nuts and people who do not would show most. The evidence cannot rank walnuts, almonds, pistachios, pecans and hazelnuts; peanuts, cashews and macadamias lack trial evidence that they lower LDL; and macadamias cost 6 times as much per gram as peanuts.
 ---
@@ -200,7 +200,7 @@ Face value assumes the cohort association is causal, and its steepest part is th
 
 # Reproducing this paper {#sec-reproduce}
 
-A pipeline computes every model result in this paper from the evidence rows in @tbl-evidence and hash-checked data files and writes it into the text; study sizes and trial counts quoted from sources are copied from the same rows. The rows, data fetchers, model, tests and a citation check that resolves every DOI and matches its title and first author are at [github.com/MaxGhenis/whatnut](https://github.com/MaxGhenis/whatnut/tree/r1-20260923).
+A pipeline computes every model result in this paper from the evidence rows in @tbl-evidence and hash-checked data files and writes it into the text; study sizes and trial counts quoted from sources are copied from the same rows. The rows, data fetchers, model, tests and a citation check that resolves every DOI and matches its title and first author are at [github.com/MaxGhenis/whatnut](https://github.com/MaxGhenis/whatnut/tree/r2-20260924).
 
 # Appendix: evidence the model reads {#sec-appendix .appendix}
 

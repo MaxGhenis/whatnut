@@ -5,7 +5,7 @@ author:
   - name: Max Ghenis
     email: max@maxghenis.com
     url: https://www.maxghenis.com
-date: 2026-09-23
+date: 2026-09-24
 abstract: |
   Cohort studies find that people who eat nuts die at lower rates, and that the association stops growing by about 15 grams a day. Randomized trials find that tree nuts lower LDL cholesterol, with no significant difference among the kinds tested. I turn both into remaining life expectancy with the 2023 US life tables. No trial has measured how much of the cohort association nuts cause, so I report scenarios that run from randomized evidence alone to the cohort association at face value. For a 40-year-old man who eats no nuts, 15 grams a day adds {{m40_ldl_range}} days through the LDL pathway alone, {{m40_cal}} days after discounting the association by the typical gap between nutrition trials and cohorts, and {{m40_face}} days, about {{m40_face_years}} years, at face value. A 40-year-old woman gains {{f40_ldl_range}} days through the LDL pathway, {{f40_cal}} after the discount and {{f40_face}} at face value. The first 5 grams account for {{any_share}} of the face-value gain, and that step, from no nuts to some, is where differences between people who eat nuts and people who do not would show most. The evidence cannot rank walnuts, almonds, pistachios, pecans and hazelnuts; peanuts, cashews and macadamias lack trial evidence that they lower LDL; and macadamias cost {{price_ratio}} times as much per gram as peanuts.
 ---
