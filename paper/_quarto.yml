@@ -87,3 +87,4 @@ format:
         #show table.cell: set par(justify: false)
         #show table: set text(size: 0.9em)
         #show table.cell: it => { show "_": "_" + sym.zws; it }
+        #show figure.where(kind: "quarto-float-tbl"): set block(breakable: true)
