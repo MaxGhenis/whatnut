@@ -1,95 +1,184 @@
 # What Nut architecture
 
-## If we were starting today
+## Design premise
 
-What Nut would be a small, decision-first analysis pipeline built around one
-paired draw axis. It would not copy Optiqal's current-routine or stack semantics
-until it had the inputs needed to support them: current nut intake, displaced
-food, substitution, adherence, persistence, and direct harms.
+What Nut starts with the estimand, not the evidence model. Its canonical
+question is a conditional benchmark:
 
-The honest decision problem remains:
+> For a 40-year-old US resident, compare adding one 28 g serving of exactly one
+> nut every day for life with no modeled daily-nut intervention.
 
-> Add one 28 g daily serving of one nut, or do not add a modeled daily nut.
+The action is a **gross addition**. The model has no current-diet observation,
+displaced food, energy-balance or adiposity response, adherence decay, direct
+morbidity effects, direct harms, or mixed-nut interaction. Those are absent
+inputs and outcomes, not zero-valued real-world effects. Accordingly, the
+output is a partial mortality-potential benchmark rather than a net causal
+effect of changing diet.
 
-The target flow is:
+## Implemented flow
 
 ```text
-validated inputs + scenario
-          ↓
-paired effect draws [draw, option, pathway]
-          ↓
-one batched lifecycle kernel
-          ↓
-outcome draws [draw, option]: life years, QALYs, cost
-          ↓
-all-option decision evaluator, including the comparator
-          ↓
-versioned result artifact
-          ↓
-artifact-only tables, figures, and Quarto
+immutable AnalysisSpec
+        +
+validated nutrients, priors, mortality, cause fractions, quality, prices
+        ↓
+paired nutrient-coefficient and causal-fraction draws
+        ↓
+cause-specific hazard ratios [draw, nut, pathway]
+        ↓
+single batched competing-risk lifecycle kernel
+        ↓
+life-year, QALY, and gross-cost draws [draw, nut]
+        ↓
+all-option NMB evaluator + no-nut comparator
+        ↓
+strict schema-2 artifact with code/input hashes
+        ↓
+artifact-only result objects, tables, figures, and Quarto manuscript
 ```
 
-The ideal module boundaries would be:
+The paired draw axis is preserved across nuts, pathways, discounting
+sensitivities, and decision options. This makes draw-wise comparisons meaningful
+and prevents sensitivities from introducing unrelated Monte Carlo noise.
 
-- `spec.py`: immutable population, economic scenario, decision problem, and
-  option specifications.
-- `inputs.py`: validated nuts, priors, life tables, quality weights, prices,
-  and source references.
-- `effects.py`: paired cause-specific mortality-effect draws.
-- `lifecycle.py`: one batched projection kernel; scalar evaluation would be a
-  thin wrapper.
-- `decision.py`: NMB, probability of beating the comparator, probability of
-  optimality, recommendation, nut-only ordering, and ratio-of-means ICER.
-- `artifact.py`: one canonical, versioned result schema with strict atomic I/O.
-- `reporting/`: pure tables and figures that only consume an artifact.
-- `cli.py`: `validate`, `generate`, and `check` commands.
+## Module boundaries
 
-## What version 0.3 adopts now
+- `spec.py` defines frozen population, economic, causal-fraction, action, and
+  decision specifications. Unsupported actions fail validation instead of being
+  silently approximated.
+- `config.py` is the typed boundary around versioned YAML inputs and records
+  evidence outcome, contrast, source URL, and applicable action for every
+  nutrient coefficient.
+- `model.py` samples only coefficients declared for the scenario. That
+  declaration is a modeling judgment, not proof that a higher-intake cohort
+  contrast identifies gross addition. The model has no uncalibrated per-nut
+  random effect, residual variance, or hand-authored whole-nut multiplier.
+- `lifecycle.py` owns baseline and intervention survival, QALYs, costs, and the
+  pathway decomposition. Scalar evaluation is a wrapper around the same core
+  used for batched draws.
+- `decision.py` owns expected NMB, sign probabilities, ratio-of-means ICERs,
+  tie handling, nut-only ordering, and probability of optimality across all
+  mutually exclusive options.
+- `pipeline.py` executes an `AnalysisSpec` and constructs the canonical artifact
+  payload. It also materializes sensitivities from shared structural draws.
+- `artifact.py` validates schema 2, numerical identities, decision consistency,
+  provenance, and finite JSON values before atomic replacement.
+- `results.py` is the artifact-only reporting adapter. It never reruns the
+  scientific model.
+- `figures.py` separates artifact-backed result figures from input-description
+  figures that read the versioned cause-fraction and nutrient YAML through
+  `config.py`. The manuscript never resamples the scientific model.
+- `cli.py` exposes `summary`, `generate`, `validate`, and `check` as explicit
+  operational commands.
 
-This refresh implements the safe parts of that design without changing the
-underlying lifecycle estimand:
+## Scientific kernel
 
-- 3% health and 3% cost discounting is the primary consumer scenario, with a
-  named 0% health sensitivity.
-- The no-addition comparator participates in the same paired all-option NMB
-  analysis as every nut.
-- Willingness to pay is an explicit run and CLI input.
-- `decision.py` owns the all-option recommendation and tie-safe probability of
-  optimality.
-- `artifact.py` defines schema `1.0.0`, rejects NaN and Infinity, and writes
-  atomically.
-- Sensitivity results are materialized during generation; document rendering
-  does not rerun the scientific model.
-- Only ratio-of-means expected ICERs are emitted. Conditional draw-wise ratio
-  diagnostics and ambiguous reference-case aliases were removed.
-- Generated metadata distinguishes the consumer scenario from a formal health
-  care sector reference case and pins the committed Optiqal methods it adopts.
+### Evidence layer
 
-The repository remains in a transitional shape: `pipeline.py` and `results.py`
-still have separate internal and presentation result classes. They agree through
-the versioned artifact, but a greenfield implementation would use one canonical
-schema end to end. Two input-description figures still read the versioned
-cause-fraction and nutrient YAML directly; moving those plotting inputs into the
-artifact belongs with that schema consolidation.
+The gross-addition model retains four outcome-matched coefficients:
+
+- CVD mortality: dietary ALA, fiber, and magnesium.
+- Cancer mortality: dietary fiber.
+- Other mortality: no retained coefficient.
+
+Every other nutrient-pathway combination is a structural zero. In particular,
+fat-composition evidence that identifies replacement of one energy source by
+another does not enter a gross-addition action. The code keeps those exclusions
+explicit in input metadata so a future substitution model can require a real
+displaced-food contrast.
+
+Outcome matching does not identify the treatment contrast. The retained source
+estimates compare higher with lower dietary intake, often under energy- or
+diet-adjusted cohort models. Mapping them to one nut's composition under the
+gross-addition specification is an explicit mechanical transport assumption.
+
+There is no likelihood. Forward Monte Carlo draws propagate coefficient and
+causal-fraction uncertainty without calling the result a posterior. HR
+centering makes the mean relative risk before causal-fraction attenuation
+correspond to the meta-analytic point estimate after exponentiation. Named PCG64 streams isolate uncertainty families;
+confounding sensitivities transform shared uniform ranks and leave structural
+coefficient draws unchanged.
+
+### Lifecycle layer
+
+The CDC table supplies exact annual death probabilities (`qx`) for every age
+0–99 and an explicit open terminal interval at 100. For each age, the kernel:
+
+1. converts all-cause `qx` to an integrated hazard;
+2. partitions that hazard using age-specific CVD, cancer, and other-cause
+   fractions;
+3. multiplies each cause-specific hazard by its modeled hazard ratio;
+4. sums the adjusted hazards and converts back to a bounded annual probability;
+5. advances survival through the terminal interval.
+
+`AnalysisSpec.effect_model` makes the evidence-to-lifecycle bridge inspectable:
+the source measure is a cause-specific mortality relative risk, used as a
+proportional cause-specific integrated-hazard multiplier that is constant
+across age and begins with zero modeled latency.
+
+Annual person-time is the average of survival at the start and end of each
+cycle. Quality, life-year, and cost accruals use this half-cycle occupancy and
+are discounted at cycle midpoints. Baseline and intervention outcomes therefore
+share the same horizon and numerical convention.
+
+### Decision layer
+
+The economic perspective is consumer out-of-pocket spending. The primary
+scenario discounts health and cost at 3% and values a QALY at an illustrative
+$50,000. For each paired draw,
+
+```text
+NMB = willingness_to_pay × mortality-derived QALYs − gross retail cost
+```
+
+The comparator has zero incremental QALYs, cost, and NMB. Probability of
+optimality is calculated across the comparator and all eight nuts, with exact
+ties split equally at the declared economic resolution. The nut-only rank is
+reported separately and cannot be mistaken for the overall recommendation.
+
+## Artifact and reproducibility contract
+
+Schema `2.0.0` stores the full serialized `AnalysisSpec`, scenario-scoped
+`evidence_registry`, decision context, reference case, model-interval semantics,
+sensitivities, and every reported nut result. Validation checks decomposition
+identities, QALY/cost/NMB algebra, probability complements, ranks, pathway
+shares, and domain restrictions at the stored precision.
+
+Provenance includes:
+
+- What Nut version and repository;
+- the exact Optiqal methodology-reference commit and scope;
+- the named RNG algorithm;
+- SHA-256 hashes for scientific source files and versioned model inputs; and
+- a scientific-content fingerprint over those hashes and declared method
+  identifiers. Scenario values remain explicit in the serialized `AnalysisSpec`.
+
+`whatnut generate` writes the canonical artifact only for the canonical
+specification. Noncanonical scenarios require another path. `whatnut check`
+recomputes the canonical analysis in memory and requires exact artifact
+equality.
 
 ## Deliberate non-parity with Optiqal
 
-What Nut keeps genuine cause-specific mortality effects and weights them once by
-age-specific cause fractions. It does not port a flat all-cause hazard-ratio
-shortcut. It also does not claim current-routine personalization, substitution,
-mixed-nut stacks, morbidity, or direct harms. Optiqal is a methodology reference,
-not a runtime dependency or an oracle for food-specific assumptions.
+Optiqal is a methodological reference, not a runtime dependency or an oracle.
+What Nut adopts HR-centered uncertainty propagation, an explicit decision
+specification, and the 3%/3% primary convention. It retains a food-specific,
+cause-specific competing-risk kernel and excludes Optiqal features that lack
+What Nut inputs, including current-routine personalization and stacked
+interventions.
 
-## Follow-up sequence
+## Extensions that require new evidence or inputs
 
-1. Consolidate the duplicate pipeline and presentation result classes around one
-   canonical schema and frozen `AnalysisSpec`.
-2. Add input hashes and a structured evidence registry covering YAML priors,
-   bibliography entries, and raw-data builders.
-3. Move price channel, displaced-food cost, adherence, and willingness-to-pay
-   frontiers into explicit scenarios.
-4. Only then add current-intake, substitution, persistence, and mixed-nut option
-   construction.
-5. Evaluate a cause-specific competing-risk hazard kernel as a separately
-   validated, results-changing release. Do not fold that numerical change into a
-   schema or reporting refactor.
+The next scientifically meaningful additions are separate estimands, not flags
+on the current one:
+
+1. A substitution action with an observed baseline diet and an explicit
+   displaced food, including nutrient and price differences.
+2. An energy-balance and adiposity pathway for a true gross-addition action.
+3. Time-varying adherence and finite persistence with evidence-based parameters.
+4. Direct morbidity benefits and direct harms measured on compatible outcomes.
+5. Population heterogeneity and price channels defined as named scenarios.
+6. Calibration or validation against an external outcome dataset before adding
+   food-specific residual effects.
+
+Until those inputs exist, the narrow conditional benchmark is the honest model.

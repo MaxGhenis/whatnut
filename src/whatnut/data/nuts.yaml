@@ -1,5 +1,4 @@
-# Nut profiles: nutrients (auto-generated), pathway adjustments,
-# costs, and evidence.
+# Nut profiles: nutrients (auto-generated) and costs.
 # - Nutrients: USDA SR Legacy, per 28 g serving, scaled from
 #   per-100 g values by the extraction script in
 #   src/whatnut/data_build/usda_fdc.py. Raw per-food JSON
@@ -7,9 +6,9 @@
 # - Phytosterols: Phillips et al. 2005, J Agric Food Chem
 #   53(24):9436-9445 (SR Legacy omits phytosterols).
 # - Prices: see cost_per_kg_usd comments and @whatnut2026prices.
-# - pathway_adjustments: hand-curated from the nut-specific RCTs
-#   cited per-adjustment; tiered publication-bias shrinkage is
-#   applied at sampling time (see priors.yaml:study_quality_shrinkage).
+# The canonical model has no hand-curated per-nut mortality multiplier. RCT
+# biomarker evidence belongs in an explicit biomarker-bridge sensitivity, not
+# as an uncalibrated exponent on the nutrient mortality model.
 #
 # This file is the SINGLE SOURCE OF TRUTH for per-nut data.
 # Regenerate nutrient sections with:
@@ -32,21 +31,7 @@ walnut:
     vitamin_e_mg: 0.196
     arginine_g: 0.638
     phytosterols_mg: 20
-  pathway_adjustments:
-    cvd:
-      mean: 1.1
-      sd: 0.12
-      rationale: Highest ALA omega-3; modest residual benefit beyond nutrient model
-    cancer:
-      mean: 1.0
-      sd: 0.08
-      rationale: No clear walnut-specific cancer mortality evidence
-    other:
-      mean: 1.0
-      sd: 0.08
-      rationale: No clear walnut-specific other-cause mortality evidence
   cost_per_kg_usd: 29.74
-  evidence: strong
 almond:
   fdc_id: 170567
   _sr_legacy_description: Nuts, almonds
@@ -64,21 +49,7 @@ almond:
     vitamin_e_mg: 7.168
     arginine_g: 0.689
     phytosterols_mg: 35
-  pathway_adjustments:
-    cvd:
-      mean: 1.0
-      sd: 0.05
-      rationale: Reference category; robust RCT base
-    cancer:
-      mean: 1.0
-      sd: 0.06
-      rationale: No clear almond-specific cancer mortality evidence
-    other:
-      mean: 1.0
-      sd: 0.05
-      rationale: Reference
   cost_per_kg_usd: 23.13
-  evidence: strong
 pistachio:
   fdc_id: 170184
   _sr_legacy_description: Nuts, pistachio nuts, raw
@@ -96,21 +67,7 @@ pistachio:
     vitamin_e_mg: 0.801
     arginine_g: 0.596
     phytosterols_mg: 60
-  pathway_adjustments:
-    cvd:
-      mean: 1.04
-      sd: 0.07
-      rationale: Lipid improvements suggest a modest residual CVD edge
-    cancer:
-      mean: 1.0
-      sd: 0.08
-      rationale: No clear pistachio-specific cancer mortality evidence
-    other:
-      mean: 1.0
-      sd: 0.08
-      rationale: No clear pistachio-specific other-cause mortality evidence
   cost_per_kg_usd: 44.06
-  evidence: moderate
 pecan:
   fdc_id: 170182
   _sr_legacy_description: Nuts, pecans
@@ -128,21 +85,7 @@ pecan:
     vitamin_e_mg: 0.392
     arginine_g: 0.33
     phytosterols_mg: 29
-  pathway_adjustments:
-    cvd:
-      mean: 1.03
-      sd: 0.08
-      rationale: Recent pecan RCTs support at most a modest residual CVD effect
-    cancer:
-      mean: 1.0
-      sd: 0.1
-      rationale: Insufficient evidence for deviation from nutrients
-    other:
-      mean: 1.0
-      sd: 0.1
-      rationale: Limited evidence
   cost_per_kg_usd: 36.51
-  evidence: moderate
 macadamia:
   fdc_id: 170178
   _sr_legacy_description: Nuts, macadamia nuts, raw
@@ -160,21 +103,7 @@ macadamia:
     vitamin_e_mg: 0.151
     arginine_g: 0.392
     phytosterols_mg: 33
-  pathway_adjustments:
-    cvd:
-      mean: 1.02
-      sd: 0.08
-      rationale: MUFA-heavy profile may modestly outperform nutrients alone
-    cancer:
-      mean: 1.0
-      sd: 0.1
-      rationale: Insufficient evidence for deviation from nutrients
-    other:
-      mean: 1.0
-      sd: 0.1
-      rationale: No clear macadamia-specific other-cause mortality evidence
   cost_per_kg_usd: 68.3
-  evidence: moderate
 peanut:
   fdc_id: 172430
   _sr_legacy_description: Peanuts, all types, raw
@@ -192,21 +121,7 @@ peanut:
     vitamin_e_mg: 2.332
     arginine_g: 0.862
     phytosterols_mg: 62
-  pathway_adjustments:
-    cvd:
-      mean: 0.98
-      sd: 0.06
-      rationale: Large cohort data (n=118,962); slight discount vs tree nuts
-    cancer:
-      mean: 1.0
-      sd: 0.06
-      rationale: Neutral; US aflatoxin regulated <20ppb
-    other:
-      mean: 1.0
-      sd: 0.06
-      rationale: No clear peanut-specific other-cause mortality deviation
   cost_per_kg_usd: 12.11
-  evidence: strong
 hazelnut:
   fdc_id: 170581
   _sr_legacy_description: Nuts, hazelnuts or filberts
@@ -224,21 +139,7 @@ hazelnut:
     vitamin_e_mg: 4.2
     arginine_g: 0.619
     phytosterols_mg: 27
-  pathway_adjustments:
-    cvd:
-      mean: 1.03
-      sd: 0.07
-      rationale: Part of PREDIMED nut arm; lipid improvements in Orem 2013
-    cancer:
-      mean: 1.0
-      sd: 0.08
-      rationale: No clear hazelnut-specific cancer mortality evidence
-    other:
-      mean: 1.0
-      sd: 0.08
-      rationale: No clear hazelnut-specific other-cause mortality evidence
   cost_per_kg_usd: 31.95
-  evidence: moderate
 cashew:
   fdc_id: 170162
   _sr_legacy_description: Nuts, cashew nuts, raw
@@ -256,20 +157,4 @@ cashew:
     vitamin_e_mg: 0.252
     arginine_g: 0.594
     phytosterols_mg: 45
-  pathway_adjustments:
-    cvd:
-      mean: 0.97
-      sd: 0.1
-      rationale: Mixed RCT results (Mah 2017), CIs cross zero. Mean <1.00 means nutrient
-        prediction is discounted (applied as exponent on RR), not that cashew adds
-        CVD benefit beyond nutrients.
-    cancer:
-      mean: 1.0
-      sd: 0.1
-      rationale: Limited evidence; neutral by default
-    other:
-      mean: 1.0
-      sd: 0.1
-      rationale: Limited evidence; neutral by default
   cost_per_kg_usd: 35.25
-  evidence: limited

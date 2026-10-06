@@ -53,6 +53,10 @@ class NutrientPrior:
     sd: float
     unit: str
     source: str
+    outcome: str
+    contrast: str
+    source_url: str | None
+    applicable_actions: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -68,52 +72,13 @@ class ConfoundingPrior:
 
 
 @dataclass(frozen=True)
-class TauPrior:
-    """HalfNormal prior for hierarchical shrinkage."""
-
-    sigma: float
-    rationale: str
-
-
-@dataclass(frozen=True)
-class StudyQualityShrinkage:
-    """Publication-bias shrinkage fractions by evidence tier.
-
-    Applied as ``a_shrunk = 1.0 + (a - 1.0) * (1 - shrinkage)`` to each
-    nut-specific pathway adjustment, shrinking the residual toward the null
-    (a=1.0) in proportion to the evidence tier's known pub-bias risk.
-    """
-
-    strong: float
-    moderate: float
-    limited: float
-    rationale: str
-
-    def retention(self, evidence: str) -> float:
-        """Fraction of the nut-specific residual retained after shrinkage."""
-        shrinkage = getattr(self, evidence, self.limited)
-        return 1.0 - shrinkage
-
-
-@dataclass(frozen=True)
-class PathwayAdjustment:
-    """Nut-specific pathway adjustment (exponent on RR)."""
-
-    mean: float
-    sd: float
-    rationale: str
-
-
-@dataclass(frozen=True)
 class NutProfile:
-    """Complete nut profile: nutrients, adjustments, cost, evidence."""
+    """Complete nut profile: nutrient composition and retail cost."""
 
     id: str
     fdc_id: int
     nutrients: dict[str, float]  # model nutrient key -> value per 28g
-    pathway_adjustments: dict[str, PathwayAdjustment]  # pathway -> adjustment
     cost_per_kg_usd: float
-    evidence: str
 
     @property
     def annual_cost(self) -> float:
@@ -180,12 +145,48 @@ def get_nutrient_prior(pathway: str, nutrient: str) -> NutrientPrior:
         sd=entry["sd"],
         unit=entry["unit"],
         source=entry["source"],
+        outcome=entry.get("outcome", f"{pathway} mortality"),
+        contrast=entry.get("contrast", "additional intake per stated unit"),
+        source_url=entry.get("source_url"),
+        applicable_actions=tuple(entry.get("applicable_actions", ["gross_addition"])),
     )
 
 
 def get_pathway_priors(pathway: str) -> dict[str, NutrientPrior]:
     """Get all nutrient priors for a pathway."""
     return {n: get_nutrient_prior(pathway, n) for n in NUTRIENTS}
+
+
+def get_evidence_registry(action_kind: str = "gross_addition") -> dict[str, object]:
+    """Return the machine-readable evidence status of every model coefficient."""
+    active: list[dict[str, object]] = []
+    excluded: list[dict[str, object]] = []
+    for pathway in PATHWAYS:
+        for nutrient in NUTRIENTS:
+            prior = get_nutrient_prior(pathway, nutrient)
+            record = {
+                "pathway": pathway,
+                "nutrient": nutrient,
+                "mean": prior.mean,
+                "sd": prior.sd,
+                "unit": prior.unit,
+                "outcome": prior.outcome,
+                "contrast": prior.contrast,
+                "source": prior.source,
+                "source_url": prior.source_url,
+            }
+            if action_kind in prior.applicable_actions:
+                active.append(record)
+            else:
+                excluded.append(record)
+
+    substitution = load_priors().get("substitution_contrasts", {})
+    return {
+        "action_kind": action_kind,
+        "active_coefficients": active,
+        "structurally_excluded_coefficients": excluded,
+        "deferred_substitution_contrasts": substitution,
+    }
 
 
 def get_confounding_prior() -> ConfoundingPrior:
@@ -199,25 +200,6 @@ def get_confounding_prior() -> ConfoundingPrior:
         ci_lower=c["ci_lower"],
         ci_upper=c["ci_upper"],
         rationale=c["rationale"],
-    )
-
-
-def get_tau_prior() -> TauPrior:
-    """Get the hierarchical shrinkage prior."""
-    data = load_priors()
-    t = data["tau"]
-    return TauPrior(sigma=t["sigma"], rationale=t["rationale"])
-
-
-def get_study_quality_shrinkage() -> StudyQualityShrinkage:
-    """Get the tiered publication-bias shrinkage configuration."""
-    data = load_priors()
-    s = data["study_quality_shrinkage"]
-    return StudyQualityShrinkage(
-        strong=s["strong"],
-        moderate=s["moderate"],
-        limited=s["limited"],
-        rationale=s["rationale"],
     )
 
 
@@ -258,21 +240,11 @@ def get_nut(nut_id: str) -> NutProfile:
         raise ValueError(f"Unknown nut: {nut_id}. Available: {list(data.keys())}")
     raw = data[nut_id]
     model_nutrients = _extract_model_nutrients(raw["nutrients"])
-    adj = raw["pathway_adjustments"]
-    pathway_adjustments = {
-        p: PathwayAdjustment(
-            mean=adj[p]["mean"], sd=adj[p]["sd"], rationale=adj[p]["rationale"]
-        )
-        for p in PATHWAYS
-        if p in adj
-    }
     return NutProfile(
         id=nut_id,
         fdc_id=raw["fdc_id"],
         nutrients=model_nutrients,
-        pathway_adjustments=pathway_adjustments,
         cost_per_kg_usd=raw["cost_per_kg_usd"],
-        evidence=raw.get("evidence", "limited"),
     )
 
 
@@ -323,23 +295,50 @@ def _interpolate_table(
 
 
 def get_mortality_rate(age: int) -> float:
-    """Get interpolated mortality rate for a given age."""
+    """Get an exact published single-age mortality probability."""
+    if isinstance(age, bool) or not isinstance(age, (int, np.integer)):
+        raise ValueError("age must be an integer between 0 and 100.")
+    age = int(age)
     table = load_mortality()["rates"]
-    return _interpolate_table(table, age, log_space=True)
+    if age not in table:
+        raise ValueError("age must be an integer between 0 and 100.")
+    return float(table[age])
 
 
-def get_mortality_curve(start_age: int, max_age: int = 110) -> np.ndarray:
+def get_terminal_expected_years() -> float:
+    """Return CDC remaining life expectancy in the age-100+ open interval."""
+    value = load_mortality().get("terminal_expected_years")
+    if (
+        isinstance(value, bool)
+        or not isinstance(value, (int, float))
+        or not np.isfinite(value)
+        or value <= 0
+    ):
+        raise ValueError("terminal_expected_years must be a positive finite value.")
+    return float(value)
+
+
+def get_mortality_curve(start_age: int, max_age: int = 100) -> np.ndarray:
     """Get mortality rates from start_age to max_age."""
+    if max_age < start_age:
+        raise ValueError("max_age must be greater than or equal to start_age.")
     return np.array([get_mortality_rate(a) for a in range(start_age, max_age + 1)])
 
 
 def get_quality_weight(age: int) -> float:
-    """Get HRQoL weight for a given age."""
+    """Get the published US EQ-5D-5L mean for an age band."""
+    if isinstance(age, bool) or not isinstance(age, (int, np.integer)):
+        raise ValueError("age must be an integer.")
+    age = int(age)
     table = load_quality_weights()["weights"]
-    return _interpolate_table(table, age, floor=0.3)
+    boundaries = sorted(table)
+    boundary = max((value for value in boundaries if value <= age), default=None)
+    if boundary is None:
+        return float(table[boundaries[0]])
+    return float(table[boundary])
 
 
-def get_quality_curve(start_age: int, max_age: int = 110) -> np.ndarray:
+def get_quality_curve(start_age: int, max_age: int = 100) -> np.ndarray:
     """Get quality weights from start_age to max_age."""
     return np.array([get_quality_weight(a) for a in range(start_age, max_age + 1)])
 
@@ -411,6 +410,10 @@ def validate() -> list[str]:
     for age, rate in rates.items():
         if not (0 < rate <= 1):
             errors.append(f"Mortality rate at age {age} = {rate} (out of range)")
+    try:
+        get_terminal_expected_years()
+    except ValueError as error:
+        errors.append(str(error))
 
     # Check quality weights are in (0, 1]
     weights = load_quality_weights()["weights"]
@@ -424,5 +427,37 @@ def validate() -> list[str]:
         for nutrient in NUTRIENTS:
             if nutrient not in priors.get(pathway, {}):
                 errors.append(f"Missing prior: {pathway}/{nutrient}")
+                continue
+            entry = priors[pathway][nutrient]
+            mean = entry.get("mean")
+            sd = entry.get("sd")
+            if (
+                isinstance(mean, bool)
+                or not isinstance(mean, (int, float))
+                or not np.isfinite(mean)
+            ):
+                errors.append(f"Invalid prior mean: {pathway}/{nutrient}")
+            if (
+                isinstance(sd, bool)
+                or not isinstance(sd, (int, float))
+                or not np.isfinite(sd)
+                or sd < 0
+            ):
+                errors.append(f"Invalid prior SD: {pathway}/{nutrient}")
+            applicable_actions = entry.get("applicable_actions", ["gross_addition"])
+            if not isinstance(applicable_actions, list) or any(
+                action != "gross_addition" for action in applicable_actions
+            ):
+                errors.append(f"Invalid applicable actions: {pathway}/{nutrient}")
+            if not applicable_actions and (mean != 0 or sd != 0):
+                errors.append(
+                    f"Inactive prior must be structurally zero: {pathway}/{nutrient}"
+                )
+            if applicable_actions:
+                for field in ("outcome", "contrast", "source_url"):
+                    if not isinstance(entry.get(field), str) or not entry[field]:
+                        errors.append(
+                            f"Active prior missing {field}: {pathway}/{nutrient}"
+                        )
 
     return errors

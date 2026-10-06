@@ -83,7 +83,7 @@
 }
 
 @article{vanderweele2017sensitivity,
-  title={Sensitivity Analysis in Observational Research: Introducing the E-Value},
+  title={Sensitivity Analysis in Observational Research: Introducing the {E-Value}},
   author={VanderWeele, Tyler J and Ding, Peng},
   journal={Annals of Internal Medicine},
   volume={167},
@@ -141,7 +141,7 @@
   year={2017},
   doi={10.1093/ije/dyw284},
   url={https://doi.org/10.1093/ije/dyw284},
-  note={Golestan Cohort Study, Iran. HR 0.71 (95\% CI: 0.58-0.86) for ≥3 servings/week vs non-consumers for all-cause mortality. Critical evidence that nut-mortality associations persist in population where nut consumption does not correlate with Western healthy lifestyle factors.}
+  note={Golestan Cohort Study, Iran. Adjusted HR 0.71 (95\% CI: 0.58-0.86) for ≥3 servings/week versus non-consumers for all-cause mortality. Lifestyle correlates differed from Western cohorts, but the observational result does not identify a causal fraction.}
 }
 
 @article{sullivan2006catalogue,
@@ -154,7 +154,19 @@
   year={2006},
   doi={10.1177/0272989X05284691},
   url={https://doi.org/10.1177/0272989X05284691},
-  note={US population norms for health-related quality of life using EQ-5D. The smoothed age trajectory in data/quality_weights.yaml reads ~0.89 at age 40 and declines with age, anchored to the Sullivan/Ghushchyan index.}
+  note={Earlier contextual source for US EQ-5D values; the canonical model now uses the exact Jiang et al. 2021 age-band norms.}
+}
+
+@article{jiang2021eq5d,
+  title={{US} Population Norms for the {EQ-5D-5L} and Comparison of Norms from Face-to-Face and Online Samples},
+  author={Jiang, Ruixuan and Janssen, Mathieu F B and Pickard, A Simon},
+  journal={Quality of Life Research},
+  volume={30},
+  pages={803--816},
+  year={2021},
+  doi={10.1007/s11136-020-02650-y},
+  url={https://doi.org/10.1007/s11136-020-02650-y},
+  note={Table 3 face-to-face sample means are the exact age-band utility inputs in `src/whatnut/data/quality_weights.yaml`.}
 }
 
 @misc{usda2024fooddata,
@@ -216,7 +228,7 @@
 
 @article{naghshi2021ala,
   title={Dietary intake and biomarkers of alpha linolenic acid and risk of all cause, cardiovascular, and cancer mortality: systematic review and dose-response meta-analysis of cohort studies},
-  author={Naghshi, Sina and Aune, Dagfinn and Beyene, Joseph and Mobber, Sepideh and Asadi, Matin and Sadeghi, Omid},
+  author={Naghshi, Sina and Aune, Dagfinn and Beyene, Joseph and Mobarak, Sara and Asadi, Masoomeh and Sadeghi, Omid},
   journal={BMJ},
   volume={375},
   pages={n2213},
@@ -236,6 +248,17 @@
   url={https://doi.org/10.1136/bmj.f6879},
 }
 
+@article{yao2023fiber,
+  title={Dietary intake of total vegetable, fruit, cereal, soluble and insoluble fiber and risk of all-cause, cardiovascular, and cancer mortality: systematic review and dose--response meta-analysis of prospective cohort studies},
+  author={Yao, Feifei and Ma, Jianping and Cui, Yong and Huang, Cuihong and Lu, Ruiqi and Hu, Fulan and Zhu, Xiaoming and Qin, Pei},
+  journal={Frontiers in Nutrition},
+  volume={10},
+  pages={1153165},
+  year={2023},
+  doi={10.3389/fnut.2023.1153165},
+  url={https://doi.org/10.3389/fnut.2023.1153165},
+}
+
 @article{farvid2014omega6,
   title={Dietary linoleic acid and risk of coronary heart disease: a systematic review and meta-analysis of prospective cohort studies},
   author={Farvid, Maryam S and Ding, Ming and Pan, An and Sun, Qi and Chiuve, Stephanie E and Steffen, Lyn M and Willett, Walter C and Hu, Frank B},
@@ -246,6 +269,18 @@
   year={2014},
   doi={10.1161/CIRCULATIONAHA.114.010236},
   url={https://doi.org/10.1161/CIRCULATIONAHA.114.010236},
+}
+
+@article{wang2016fats,
+  title={Association of Specific Dietary Fats With Total and Cause-Specific Mortality},
+  author={Wang, Dong D and Li, Yanping and Chiuve, Stephanie E and Stampfer, Meir J and Manson, JoAnn E and Rimm, Eric B and Willett, Walter C and Hu, Frank B},
+  journal={JAMA Internal Medicine},
+  volume={176},
+  number={8},
+  pages={1134--1145},
+  year={2016},
+  doi={10.1001/jamainternmed.2016.2417},
+  url={https://doi.org/10.1001/jamainternmed.2016.2417},
 }
 
 @article{williams2004aflatoxin,
@@ -283,6 +318,19 @@
   url={https://doi.org/10.1186/s12916-016-0742-z},
 }
 
+@article{bagheri2021magnesium,
+  title={Total, Dietary, and Supplemental Magnesium Intakes and Risk of All-Cause, Cardiovascular, and Cancer Mortality: A Systematic Review and Dose--Response Meta-Analysis of Prospective Cohort Studies},
+  author={Bagheri, Amir and Naghshi, Sina and Sadeghi, Omid and Larijani, Bagher and Esmaillzadeh, Ahmad},
+  journal={Advances in Nutrition},
+  volume={12},
+  number={4},
+  pages={1196--1210},
+  year={2021},
+  doi={10.1093/advances/nmab001},
+  url={https://doi.org/10.1093/advances/nmab001},
+  note={Linear dose-response analysis: CVD-mortality effect size 0.97 (95\% CI 0.94--1.01) per additional 100 mg/day dietary magnesium.}
+}
+
 @misc{icer2024reference,
   title={ICER Reference Case},
   author={{Institute for Clinical and Economic Review}},
@@ -303,14 +351,12 @@
     nuts.com product listings, choosing the cheapest raw shelled option
     per nut. Raw per-row data (retailer, product_url, package_size_g,
     package_price_usd) is stored in
-    data/raw/retail_prices/retail_prices.csv; the retail_prices module in
-    whatnut.data_build reads that CSV and applies the per-nut median to
-    nuts.yaml. nuts.com is a single specialty retailer, so these prices
-    sit toward the upper end of US retail; big-box bulk pricing (Costco,
-    Sam's Club) runs 2--3x lower, shifting ICERs proportionally. Neither
-    USDA ERS nor USDA NASS publishes per-species retail prices for all
-    tree nuts and peanuts, so a single-retailer snapshot with a full
-    audit trail is the most defensible reproducible source available.}
+    `src/whatnut/data/raw/retail_prices/retail_prices.csv`; the
+    `whatnut.data_build.retail_prices` module reads that CSV and applies the per-nut median to
+    nuts.yaml. This is a reproducible single-retailer specialty-market
+    snapshot, not a representative national price index. Neither USDA ERS
+    nor USDA NASS publishes per-species retail prices for all tree nuts and
+    peanuts.}
 }
 
 @article{gupta2019adultallergy,
@@ -362,7 +408,7 @@
 
 @article{li2015substitution,
   title={Saturated fats compared with unsaturated fats and sources of carbohydrates in relation to risk of coronary heart disease: a prospective cohort study},
-  author={Li, Yanping and Hruby, Adela and Bernstein, Adam M and Ber, Sylvia H and Manson, JoAnn E and Rimm, Eric B and Willett, Walter C and Hu, Frank B},
+  author={Li, Yanping and Hruby, Adela and Bernstein, Adam M and Ley, Sylvia H and Manson, JoAnn E and Rimm, Eric B and Willett, Walter C and Hu, Frank B},
   journal={Journal of the American College of Cardiology},
   volume={66},
   number={14},
@@ -451,7 +497,7 @@
 
 @article{liu2021walnut,
   author = {Liu, Xiaoran and Guasch-Ferr{\'e}, Marta and Tobias, Deirdre K and Li, Yanping},
-  title = {Association of Walnut Consumption with Total and Cause-Specific Mortality and Life Expectancy in U.S. Adults},
+  title = {Association of Walnut Consumption with Total and Cause-Specific Mortality and Life Expectancy in {{U.S.}} Adults},
   journal = {Nutrients},
   year = {2021},
   volume = {13},
@@ -459,6 +505,7 @@
   pages = {2699},
   doi = {10.3390/nu13082699},
   url={https://doi.org/10.3390/nu13082699},
+  note={Prospective NHS/HPFS analysis; at age 60, more than five walnut servings per week was associated with about 1.3 additional years of life expectancy versus nonconsumption.},
 }
 
 @article{nishi2025lipid,
@@ -567,17 +614,29 @@
   note = {Tolerable Upper Intake Level for selenium = 400 μg/day for adults.}
 }
 
-@article{xu2024deaths,
+@techreport{arias2023lifetables,
+  author = {Arias, Elizabeth and Xu, Jiaquan and Kochanek, Kenneth D},
+  title = {United States Life Tables, 2021},
+  institution = {National Center for Health Statistics},
+  type = {National Vital Statistics Reports},
+  year = {2023},
+  number = {72(12)},
+  location = {Hyattsville, MD},
+  doi = {10.15620/cdc:132418},
+  url = {https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-12.pdf},
+  note = {Primary source for the exact single-age 2021 US total-population death probabilities used in `src/whatnut/data/mortality.yaml`.}
+}
+
+@techreport{xu2024deaths,
   author = {Xu, Jiaquan and Murphy, Sherry L and Kochanek, Kenneth D and Arias, Elizabeth},
   title = {Deaths: Final Data for 2021},
-  journal = {National Vital Statistics Reports},
+  type = {National Vital Statistics Reports},
   year = {2024},
-  volume = {73},
-  number = {8},
+  number = {73(8)},
   institution = {National Center for Health Statistics},
-  address = {Hyattsville, MD},
+  location = {Hyattsville, MD},
   url = {https://www.cdc.gov/nchs/data/nvsr/nvsr73/nvsr73-08.pdf},
-  note = {Primary source for the cause-of-death mix used in `cause_fractions.yaml`. Table 6 reports the 2021 US death rate by age and leading cause; whatnut uses Diseases of heart + Cerebrovascular diseases as the CVD numerator and Malignant neoplasms as the cancer numerator, narrower than ICD-10 I00-I99 by ~3-5 pp of total deaths.}
+  note = {Primary source for the cause-of-death mix used in `src/whatnut/data/cause_fractions.yaml`. Table 6 reports the 2021 US death rate by age and leading cause; What Nut uses Diseases of heart + Cerebrovascular diseases as the CVD numerator and Malignant neoplasms as the cancer numerator, narrower than ICD-10 I00-I99 by ~3-5 pp of total deaths.}
 }
 
 @article{orem2013hazelnut,

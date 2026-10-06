@@ -35,6 +35,8 @@ def test_single_nut_decision_context_is_explicit():
         "routine",
         "displaced",
         "substitution",
+        "calorie",
+        "adiposity",
         "morbidity",
         "harms",
         "persistence",
@@ -72,7 +74,7 @@ def test_summarize_cost_effectiveness_returns_all_decision_metrics():
         "expected_cost",
         "expected_cost_per_qaly",
         "p_benefit",
-        "p_harm",
+        "p_negative_mortality_effect",
         "expected_upside",
         "expected_downside",
         "expected_net_monetary_benefit",
@@ -82,7 +84,7 @@ def test_summarize_cost_effectiveness_returns_all_decision_metrics():
     assert result["expected_cost"] == pytest.approx(25.0)
     assert result["expected_cost_per_qaly"] == pytest.approx(500.0)
     assert result["p_benefit"] == pytest.approx(0.5)
-    assert result["p_harm"] == pytest.approx(0.25)
+    assert result["p_negative_mortality_effect"] == pytest.approx(0.25)
     assert result["expected_upside"] == pytest.approx(0.1)
     assert result["expected_downside"] == pytest.approx(-0.05)
     assert result["expected_net_monetary_benefit"] == pytest.approx(25.0)
@@ -221,6 +223,18 @@ def test_mutually_exclusive_summary_reports_expected_value_ties():
 
     assert summary.recommended_option_ids == ("a", "b")
     assert summary.probability_optimal == {"b": 0.5, "a": 0.5}
+
+
+def test_drawwise_ties_use_the_declared_microdollar_resolution():
+    summary = summarize_mutually_exclusive_nmb(
+        {
+            "a": [1.0, 0.0],
+            "b": [1.0 + 4e-7, 1e-7],
+        }
+    )
+
+    assert summary.probability_optimal == {"a": 0.5, "b": 0.5}
+    assert summary.recommended_option_ids == ("a", "b")
 
 
 def test_mutually_exclusive_summary_rejects_misaligned_draws():

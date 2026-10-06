@@ -8,143 +8,277 @@ title: "Technical Appendix"
 from whatnut.results import r
 ```
 
-## Target population
+## A. Canonical analysis contract
 
-This analysis applies to adults aged 30-70 years (the primary analysis uses a 40-year-old baseline) drawn from the general population rather than specifically high-risk groups, with estimates derived primarily from US and European cohorts. Individuals with tree-nut or peanut allergies are excluded (2-4% combined prevalence in US adults). The model does not cover secondary prevention (existing CVD), the very elderly (80+), or non-Western populations.
+The scientific run begins with one immutable `AnalysisSpec`. The committed artifact serializes the following canonical contract:
 
-## Monte Carlo uncertainty propagation algorithm
+| Component | Canonical value |
+|---|---|
+| Population | US total population, start age `{python} r.start_age` |
+| Lifecycle | CDC 2021 exact single-age probabilities; terminal age 100 |
+| Effect translation | Cause-specific mortality RR used as a constant proportional HR; zero latency |
+| Action | Add one 28 g serving of exactly one nut per day |
+| Adherence and persistence | 100%; lifetime while alive |
+| Comparator | No modeled daily-nut intervention |
+| Options | Eight mutually exclusive nuts |
+| Health discount rate | `{python} f"{r.qaly_discount_rate:.0%}"` |
+| Cost discount rate | `{python} f"{r.cost_discount_rate:.0%}"` |
+| Perspective | Consumer out-of-pocket |
+| QALY valuation | $`{python} f"{r.willingness_to_pay:,.0f}"` |
+| Monte Carlo | `{python} f"{r.n_samples:,}"` draws, seed `{python} r.seed` |
 
-The analysis uses a hierarchical forward sampling model with standardized prior draws (numerically equivalent to "non-centered parameterization" in Bayesian MCMC but without the inference interpretation — there is no likelihood). Since there is no outcome likelihood, inference is direct Monte Carlo sampling from priors rather than MCMC.
+The serialized effect-model bridge is also explicit:
 
-**Priors:** Nutrient effects follow $\beta_{nutrient,pathway} \sim \text{Normal}(\mu_{meta}, \sigma_{meta})$ from Table 2; the hierarchical shrinkage scale follows $\tau_{pathway} \sim \text{HalfNormal}(0.015)$; standardized deviations follow $z_{nut,pathway} \sim \text{Normal}(0, 1)$; and the confounding fraction follows $c \sim \text{Beta}(1.5, 6.0)$.
+| `AnalysisSpec.effect_model` field | Stored value |
+|---|---|
+| `source_effect_measure` | `{python} r.analysis_spec["effect_model"]["source_effect_measure"]` |
+| `lifecycle_scale` | `{python} r.analysis_spec["effect_model"]["lifecycle_scale"]` |
+| `translation` | `{python} r.analysis_spec["effect_model"]["translation"]` |
+| `age_pattern` | `{python} r.analysis_spec["effect_model"]["age_pattern"]` |
+| `latency_years` | `{python} r.analysis_spec["effect_model"]["latency_years"]` |
 
-**Justification for $\tau \sim \text{HalfNormal}(0.015)$:** Earlier versions let nut-specific residual adjustments do too much work. The smaller scale parameter 0.015 constrains those deviations to remain modest after nutrient composition is already accounted for. This still allows walnuts to retain a small CVD-specific edge without letting food-specific bonuses dominate the model.
+The action validator rejects another serving size, partial adherence, another terminal age, a displaced food, or a claimed substitution action. Supporting any of those choices requires new inputs and equations rather than a permissive flag.
 
-**Model:**
-1. Compute nutrient-predicted effect: $\theta_{nutrients} = \sum_{n} \beta_n \cdot \text{composition}_{nut,n}$
-2. Add hierarchical deviation via standardized draws: $\theta_{true} = \theta_{nutrients} + \tau \cdot z$
-3. Apply HR-centered Jensen correction: $\theta_{hr} = \theta_{true} - \tfrac{1}{2}\left(\sum_n \sigma_n^2 x_{nut,n}^2 + \tau^2\right)$, so $E[\exp(\theta_{hr})] = \exp(\sum_n \mu_n x_{nut,n})$.
-4. Shrink nut-specific adjustment toward the null by the evidence tier: $a_{\text{shrunk}} = 1 + (a - 1)(1 - s_{\text{tier}})$, with $s_{\text{strong}} = 0.15$, $s_{\text{moderate}} = 0.30$, $s_{\text{limited}} = 0.50$.
-5. Apply nut-specific adjustment: $RR_{adjusted} = RR_{hr}^{a_{\text{shrunk}}}$
-   - On log scale: $\theta_{adjusted} = a_{\text{shrunk}} \times \theta_{hr}$
-   - For protective effects ($RR < 1$, equivalently $\theta < 0$), adjustments $a > 1$ *amplify* the effect (make RR smaller).
-   - **Worked example (walnut CVD, strong evidence).** Nutrient-predicted $\theta_{hr} \approx -0.05$. Nominal adjustment $a = 1.10$. After 15% strong-tier shrinkage, $a_{\text{shrunk}} \approx 1.085$. Adjusted $\theta = 1.085 \times -0.05 = -0.054$, so $RR_{\text{adjusted}} = \exp(-0.054) \approx 0.947$ (slightly stronger CVD protection than the nutrient model predicts alone). After the 20% confounding shrinkage the sample-mean RR lands near 0.96, consistent with Table 4.
-6. Apply confounding: $\theta_{causal} = c \cdot \theta_{adjusted}$
-7. Convert to RR: $RR_{pathway} = \exp(\theta_{causal})$
+The modeled output is conditional on no current-diet observation, no displacement, no energy-balance or adiposity response, no direct morbidity effect, no direct harm, and no mixed-nut interaction. It is a partial mortality-potential benchmark, not a complete net effect of gross addition.
 
-**Tiered publication-bias shrinkage:** Steps 3–4 adapt two layers from Optiqal, pinned in generated provenance to commit `{python} r.methodology_provenance['optiqal_reference_commit'][:8]`. HR-centering ensures the aggregate *pre-adjustment* RR has the expected mean $\exp(\sum_n \mu_n x_{nut,n})$ rather than one inflated by the half-variance of the log-RR; after the nut-specific adjustment multiplication in step 5, a residual Jensen gap of order $\tfrac{1}{2}\mathrm{Var}(a_{\text{shrunk}})(\sum_n \mu_n x_{nut,n})^2$ remains that the base case leaves uncorrected. The numerical effect is small (under 0.15 pp on RR, worst case walnut CVD). Strong-evidence nuts retain 85% of the nominal nut-specific residual, moderate 70%, and limited 50%; only the central estimate is shrunk. This food-specific three-tier layer is deliberately simpler than the pinned Optiqal implementation and is not a runtime dependency.
+## B. Evidence registry
 
-**Monte Carlo sampling:** The model draws `{python} f"{r.n_samples:,}"` forward samples from priors (no MCMC is needed since there is no likelihood). A fixed seed of `{python} r.seed` ensures reproducibility; runtime is well under one second using vectorized NumPy with no external inference library required.
+### Retained coefficients
 
-**Lifecycle integration:** For each of the `{python} f"{r.n_samples:,}"` samples, the model extracts genuine pathway-specific RRs (already confounding-adjusted), weights them once by age-specific cause fractions, computes survival using CDC life tables, and applies the smoothed EQ-5D quality-weight trajectory. The primary consumer case discounts health and costs at 3%; a parallel 0% health / 3% cost sensitivity uses the same RR draws. Scalar/vectorized parity and single pathway weighting are regression-tested.
+For a nutrient amount $x_{ij}$ in nut $i$, the coefficient $\beta_{jk}$ is a log-relative-risk change per unit of nutrient $j$ for mortality pathway $k$. The following values are rendered directly from `evidence_registry.active_coefficients` in the validated artifact:
 
-## Nut-specific adjustment priors
+```{python}
+#| echo: false
+from IPython.display import Markdown
 
-These adjustment factors are **priors** used in the hierarchical model. The adjustment is applied as an **exponent** on the RR scale: $RR_{adjusted} = RR_{nutrients}^{a}$. On the log-RR scale, this is multiplicative: $\log(RR_{adjusted}) = a \times \log(RR_{nutrients})$. In the current version, these adjustments are deliberately small. They encode modest residual evidence beyond nutrient composition rather than large food-specific bonuses.
+rows = [
+    "| Pathway | Nutrient | Distribution | Outcome | Evidence contrast | Source |",
+    "|---|---|---|---|---|---|",
+]
+for item in r.evidence_registry["active_coefficients"]:
+    source_label = item["source"].split(":", 1)[0]
+    distribution = f"Normal({item['mean']:.8g}, {item['sd']:.8g}) per {item['unit']}"
+    rows.append(
+        f"| {item['pathway'].upper()} "
+        f"| {item['nutrient'].replace('_', ' ').title()} | {distribution} "
+        f"| {item['outcome']} | {item['contrast']} "
+        f"| [{source_label}]({item['source_url']}) |"
+    )
+Markdown("\n".join(rows))
+```
 
-### Derivation of adjustment values
+The derivations use @naghshi2021ala for ALA, @yao2023fiber for both fiber outcomes, and @bagheri2021magnesium for magnesium. Every SD is derived from the reported 95% interval as recorded in the registry.
 
-Adjustments capture **residual effects** from nut-specific RCTs after accounting for nutrient composition. The derivation for walnut's CVD adjustment illustrates the method:
+The source outcome is recorded alongside each coefficient in `priors.yaml`. This prevents an all-cause estimate from being silently assigned to a CVD pathway.
 
-In the PREDIMED trial — 2008 pilot biomarker study [@ros2008mediterranean]; primary CVD-endpoint results [@estruch2018primary] — the nut intervention arm (which included 15g walnuts, 7.5g almonds, and 7.5g hazelnuts daily, not walnuts alone) showed approximately 30% reduction in major cardiovascular events. Attributing much of that residual to walnuts specifically is too aggressive: the mixed nut arm does not separately identify walnut-specific causal effects. The revised model therefore treats walnut's residual edge as modest, using a CVD adjustment of 1.10 with a wide SD (0.12) rather than the much larger multiplier used previously.
+### Structural exclusions
 
-Almonds serve as the reference nut (adjustment = 1.00) because their RCT effects are well-explained by nutrient composition (vitamin E, fiber, MUFA). This ensures adjustments represent genuine "beyond-nutrient" effects rather than artifacts.
+Every other nutrient-pathway combination is zero in the canonical coefficient matrix. This is a modeling decision about endpoint matching and scenario transport. It does not imply biological absence, and retaining a coefficient does not prove that its source contrast identifies gross addition.
 
-**Independence from nutrient priors**: The nutrient priors (Table 2) use effect estimates from studies that pool across food sources (e.g., Naghshi 2021 for ALA includes fish and plant sources). The nut-specific adjustments use residual effects from nut-only RCTs, avoiding double-counting.
+The magnesium coefficient uses the outcome-matched linear CVD-mortality dose response in @bagheri2021magnesium: effect size 0.97 (95% CI 0.94–1.01) per additional 100 mg/day. It replaces the 0.93 per-100 mg result in @fang2016mg, which is a **stroke-incidence** estimate and cannot be assigned to CVD mortality.
 
-| Nut | CVD Adj | Cancer Adj | Other Adj | Evidence |
-|-----|---------|------------|-----------|----------|
-| Walnut | 1.10 (0.12) | 1.00 (0.08) | 1.00 (0.08) | Strong |
-| Pistachio | 1.04 (0.07) | 1.00 (0.08) | 1.00 (0.08) | Moderate |
-| Almond | 1.00 (0.05) | 1.00 (0.06) | 1.00 (0.05) | Strong |
-| Pecan | 1.03 (0.08) | 1.00 (0.10) | 1.00 (0.10) | Moderate |
-| Macadamia | 1.02 (0.08) | 1.00 (0.10) | 1.00 (0.10) | Moderate |
-| Peanut | 0.98 (0.06) | 1.00 (0.06) | 1.00 (0.06) | Strong |
-| Hazelnut | 1.03 (0.07) | 1.00 (0.08) | 1.00 (0.08) | Moderate |
-| Cashew | 0.97 (0.10) | 1.00 (0.10) | 1.00 (0.10) | Limited |
+Several excluded associations require a replacement contrast. For example, linoleic-acid and fat-composition studies compare one energy source with saturated fat or carbohydrate [@farvid2014omega6; @wang2016fats]. A gross-addition action has no displaced nutrient, so those coefficients are not independently additive. Other candidate nutrients have mechanistic or intermediate-outcome evidence but no retained dietary mortality coefficient.
 
-Walnut receives a modest residual CVD edge beyond nutrients; almond is the reference nut. Pistachio and hazelnut retain small lipid-related edges, including evidence from the mixed PREDIMED nut arm [@estruch2018primary] and the hazelnut trial in @orem2013hazelnut. Pecan and macadamia have weak residual CVD evidence, while peanut and cashew sit slightly below the reference on that pathway.
+The registry keeps the identified fat-replacement estimate under `deferred_substitution_contrasts` so its source and units remain auditable without allowing it into the gross-addition coefficient matrix. A future swap action must pair that contrast with an explicit displaced food.
 
-**Note on cancer adjustments**: Previous versions applied a 10% cancer penalty to peanuts based on aflatoxin concerns. However, US FDA regulations limit aflatoxin to <20 ppb, and epidemiological studies show no excess cancer risk in US peanut consumers [@wu2010aflatoxin]. The cancer adjustment is now set to 1.00 (neutral). Similarly, macadamia and pecan cancer adjustments are set to 1.00 given insufficient evidence for deviation from nutrient predictions.
+The four retained pathway estimates are higher-versus-lower dietary-intake associations, not randomized additions of one nut serving. Their use in the gross-addition coefficient matrix is an explicit mechanical transport assumption. Outcome matching improves pathway coherence but does not identify the action or resolve displacement.
 
-Nuts with limited evidence (macadamia, pecan, cashew) receive higher SD values to reflect greater uncertainty.
+The model also excludes food-specific residual effects. There is no estimated outcome dataset that could identify an additional walnut, almond, or other nut effect after conditioning on the retained nutrients. Whole-nut RCT evidence remains useful context, but it is not converted into hand-authored mortality multipliers.
 
-## Confounding prior derivation
+## C. Forward Monte Carlo model
 
-I adopt a **skeptical** Beta(`{python} r.confounding_alpha`, `{python} r.confounding_beta`) prior with mean `{python} r.confounding_mean` and 95% interval `{python} f"{r.confounding_ci_lower:.2f}-{r.confounding_ci_upper:.2f}"` (roughly `{python} f"{int(round(r.confounding_ci_lower * 100))}-{int(round(r.confounding_ci_upper * 100))}"`%). This prior reflects healthy-user bias in nutrition cohorts, weak Mendelian-randomization support, and the gap between biomarker changes and hard outcomes.
+### Coefficient draws and HR centering
 
-Three evidence sources inform this choice:
+For draw $s$, the active coefficient vector for each pathway is sampled directly from its Normal priors:
 
-| Source | Implied Causal % | Interpretation |
-|--------|-----------------|----------------|
-| LDL pathway calibration | Low double digits | Mechanistic floor |
-| Mendelian randomization | Near zero to small | Mostly null, but weak instruments |
-| Substitution / Golestan evidence | Small to moderate | Prevents the prior from collapsing to zero |
+$$
+\boldsymbol\beta_{sk}\sim \mathcal N(\boldsymbol\mu_k,
+\operatorname{diag}(\boldsymbol\sigma_k^2)).
+$$
 
-The LDL pathway still provides a floor rather than a ceiling, but the model no longer treats broader pathway stories as strong enough to justify a 50% causal prior. Sensitivity analysis across 10-33% causal priors is presented in the main text.
+There is no likelihood, fitting step, or MCMC. The raw composition term for nut $i$ is $\sum_jx_{ij}\beta_{sjk}$. Because exponentiating a Normal variable otherwise shifts its arithmetic mean relative risk, the model applies the exact independent-coefficient half-variance correction:
 
-## Cost-effectiveness model
+$$
+\theta_{sik}
+=\sum_jx_{ij}\beta_{sjk}
+-\frac{1}{2}\sum_jx_{ij}^2\sigma_{jk}^2.
+$$
 
-### Data sources
+Thus, before the causal fraction,
 
-The consumer-value model draws on CDC National Vital Statistics (2021) life tables for age-specific mortality (NVSR Vol 72 No 12), cause-of-death fractions from Table 6 of @xu2024deaths, age-varying health-related quality-of-life weights derived from Sullivan & Ghushchyan (2006) US EQ-5D index, 3% primary health and cost discounting, a 0% health / 3% cost sensitivity, and per-nut retail prices retrieved from nuts.com on 2026-04-19 ([@whatnut2026prices]). The archived retail-price CSV includes the retailer, product URL, package size, and price; the retail-price builder validates row-level math and writes per-nut medians to `nuts.yaml`.
+$$
+E[\exp(\theta_{sik})]=\exp\!\left(\sum_jx_{ij}\mu_{jk}\right).
+$$
 
-### Lifecycle model
+The current model has no between-nut random effect, residual scale, or whole-food effect layer. Its cross-nutrient covariance matrix is diagonal; uncertainty omitted by that independence assumption is discussed in the main text.
 
-For a 40-year-old beginning daily nut consumption, the current model estimates `{python} r.life_years_range` additional life years (`{python} r.months_range` months), corresponding to `{python} r.qaly_range` primary 3%-discounted QALYs and `{python} r.qaly_undiscounted_range` QALYs under the 0% health sensitivity. Expected primary ICERs range from `{python} r.icer_range` per QALY; the undiscounted-health sensitivity ranges from `{python} r.icer_undiscounted_range` per QALY. At the illustrative \$`{python} f"{r.willingness_to_pay:,.0f}"`/QALY valuation, `{python} r.decision_result_sentence`. These are consumer-cost estimates for adding one 28 g/day nut against no modeled daily-nut intervention; displaced food and direct morbidity/harms are absent.
+### Causal fraction
 
-## E-value analysis
+One causal fraction is shared across every nut and pathway within draw $s$:
 
-Per @vanderweele2017sensitivity, the E-value quantifies the minimum strength of association an unmeasured confounder would need with both exposure and outcome to fully explain an observed association.
+$$
+c_s\sim\operatorname{Beta}(1.5,6.0),
+\qquad
+HR_{sik}=\exp(c_s\theta_{sik}).
+$$
 
-For a protective exposure with hazard ratio $HR$, I first convert to relative risk $RR = 1/HR$, then calculate:
+The prior mean is `{python} f"{r.confounding_mean:.0%}"`, and its 95% prior interval is `{python} f"{r.confounding_prior_interval_lower:.0%}–{r.confounding_prior_interval_upper:.0%}"`. Sharing $c_s$ preserves paired comparisons: a draw with larger causal carry-through affects every option using the same rank.
 
-$$E\text{-value} = RR + \sqrt{RR \times (RR - 1)}$$
+The effect-model portion of `AnalysisSpec` records this translation explicitly: the source measure is a cause-specific mortality relative risk, the lifecycle scale is a cause-specific integrated hazard, and each published RR is used as a proportional hazard ratio. The effect is held constant across age and begins with zero modeled latency. Transport from a reported dose-response RR to that constant, immediate hazard multiplier is an assumption rather than an identified property of the source studies.
 
-For HR = 0.78:
+### Named random-number streams
 
-- $RR = 1/0.78 = 1.28$
-- $E\text{-value} = 1.28 + \sqrt{1.28 \times 0.28} = 1.28 + 0.60 = 1.88$
+The implementation derives a deterministic PCG64 stream from the global seed and a stable stream name. Coefficient streams are named by pathway; causal-fraction uniforms use their own stream. Therefore, adding or modifying one draw family does not advance the state used by another family.
 
-An unmeasured confounder would need RR at least 1.88 with both nut consumption and mortality to fully explain the observed effect.
+Confounding sensitivities transform the same causal uniform quantiles through a different Beta inverse CDF. Coefficient draws and their rank pairing remain identical. Nut order is also invariant because one shared coefficient draw matrix is multiplied by the requested nutrient matrix.
 
-## Pathway-specific mortality effects
+## D. Competing-risk lifecycle
 
-From @aune2016nut:
+### Mortality inputs and terminal interval
 
-| Cause of Death | Relative Risk | 95% CI | Deaths in Meta-Analysis |
-|----------------|--------------|--------|------------------------|
-| CHD | 0.71 | 0.63-0.80 | 20,381 |
-| CVD | 0.79 | 0.70-0.88 | — |
-| Cancer | 0.87 | 0.80-0.93 | 21,353 |
-| Other | 0.90 | 0.85-0.95 | Assumed |
+The versioned CDC life table contains exact total-population $q_x$ values at every integer age 0–99 [@arias2023lifetables]. The lifecycle never reconstructs a high-age probability from sparse knots. Age 100 is explicitly represented as the terminal open interval with $q_{100}=1$.
 
-Note: CHD = coronary heart disease; CVD = cardiovascular disease (broader category). The model's "CVD pathway" incorporates both CHD and broader cardiovascular effects.
+The modeled population specification permits start ages 30–70 and always runs through the terminal interval. The 2021 period life table is held fixed as a synthetic-cohort schedule; no future mortality improvement is projected. Cause fractions come from 10-year age-group rows in CDC/NVSS 2021 deaths and are linearly interpolated to single ages [@xu2024deaths]. CVD is defined as diseases of heart plus cerebrovascular disease, narrower than the full ICD-10 I00–I99 block; cancer is malignant neoplasms. The remaining share is “other,” and the three interpolated shares are validated to be nonnegative and sum to one at every age.
 
-### Age-varying cause fractions
+### Hazard transformation
 
-Cause-of-death proportions vary by age, extracted from Table 6 of @xu2024deaths. The package's CDC cause-fraction builder parses the 2021 rows for All causes, Diseases of heart, Cerebrovascular diseases, and Malignant neoplasms. CVD below is defined as heart + cerebrovascular (ICD-10 I00–I09 + I11 + I13 + I20–I51 + I60–I69), narrower than the full ICD-10 I00–I99 block by ~3–5 pp. Rows report fractions at the lower bound of each NVSR 10-year age group (e.g., "40" is the 35–44 band):
+For each nonterminal age $x$, baseline all-cause probability is converted to an integrated hazard:
 
-| Age (group start) | CVD | Cancer | Other |
-|-------------------|-----|--------|-------|
-| 25 | 5.8% | 4.4% | 89.8% |
-| 35 | 11.9% | 9.0% | 79.1% |
-| 45 | 18.6% | 15.5% | 65.8% |
-| 55 | 21.7% | 22.6% | 55.7% |
-| 65 | 23.3% | 24.7% | 52.0% |
-| 75 | 25.8% | 19.9% | 54.4% |
-| 85+ | 33.0% | 10.9% | 56.2% |
+$$H_x=-\log(1-q_x).$$
 
-In Aune 2016's meta-analytic estimates above, CVD carries the lowest (most protective) prior RR (~0.75); the post-shrinkage model RRs in Table 4 are much closer to null.
+Let $f_{xk}$ be the fraction for pathway $k$. The intervention all-cause hazard and probability for draw $s$, nut $i$, and age $x$ are
 
-## Comparison with direct meta-analysis sampling
+$$
+H'_{six}=H_x\sum_kf_{xk}HR_{sik},
+\qquad
+q'_{six}=1-\exp(-H'_{six}).
+$$
 
-An alternative approach samples cause-specific relative risks directly from meta-analysis estimates (e.g., log-normal distributions based on @aune2016nut) rather than deriving them from nutrient composition. This simpler approach yields broadly comparable results because the nutrient-derived priors are calibrated to match meta-analysis estimates.
+This partitions the hazard once and applies each pathway multiplier once. It also guarantees a finite adjusted $q'$ in $[0,1]$ whenever the inputs are finite and nonnegative. The age-100 entry is an open interval, not a one-year risk to be multiplied by an HR; both arms are set to terminate there.
 
-The nutrient-derived approach used in this analysis provides several advantages over direct meta-analysis sampling. First, it offers mechanistic interpretability by attributing effects to specific nutrients (ALA, fiber, magnesium). Second, poorly-evidenced nuts shrink toward nutrient-predicted effects through principled hierarchical shrinkage. Third, each prior is traceable to independent meta-analyses, ensuring transparency. Fourth, compositional differences drive differential estimates across nut types—for example, the model can distinguish walnuts from almonds based on ALA content rather than relying on a single pooled nut estimate.
+### Survival and half-cycle occupancy
 
-Both approaches use forward Monte Carlo sampling (no MCMC is needed since there is no likelihood function). The nutrient-derived approach is preferred for its mechanistic transparency and ability to differentiate nuts based on composition.
+Survival at the start of the first modeled interval is one. Recursively,
 
-## Limitations
+$$S_{x+1}=S_x(1-q_x).$$
 
-The causal fraction estimate remains uncertain even after shrinkage, and the true value could be lower or modestly higher than the base case. Most source studies come from Western populations (US, Europe, Australia), limiting generalizability. The model still assumes sustained 28g/day intake and does not explicitly model calorie substitution, adherence decay, or personalized baseline risk.
+Person-time accrued during the annual interval is
+
+$$O_x=\tfrac12\{S_x+S_x(1-q_x)\}.$$
+
+The same calculation is used for baseline and intervention arms. This half-cycle convention avoids crediting a full year of life, utility, or recurring cost to people who die within an interval. It also means the terminal interval contributes half of those alive at age 100 before survival closes.
+
+### Outcomes and discounting
+
+The quality weights are the exact face-to-face-sample US EQ-5D-5L age-band means in Table 3 of @jiang2021eq5d. Each published band mean is applied as a step function from its lower boundary through the year before the next boundary; the 75+ mean is held constant through the terminal horizon. Sampling uncertainty in those means is not propagated.
+
+With quality weight $u_x$ and midpoint discount weight
+
+$$d_x(r)=(1+r)^{-(x-start\_age+0.5)},$$
+
+the incremental outcomes are
+
+$$
+\Delta LY=\sum_x(O'_x-O_x),
+$$
+
+$$
+\Delta QALY(r)=\sum_x(O'_x-O_x)u_xd_x(r).
+$$
+
+The primary QALY rate is 3%; the undiscounted-health sensitivity sets $r=0$. Baseline life years, undiscounted baseline QALYs, and discounted baseline QALYs are calculated by the same public lifecycle kernel and stored separately in schema 2.
+
+Recurring intervention cost is
+
+$$
+Cost_i(r_c)=annual\_cost_i\sum_xO'_{six}d_x(r_c),
+$$
+
+with $r_c=3\%$ in both primary and undiscounted-health scenarios. Costs accrue only while alive and use intervention, not baseline, occupancy.
+
+### Pathway decomposition
+
+For reporting, the lifecycle evaluates all coalitions of the three pathways and computes exact draw-wise Shapley values for undiscounted life-year and discounted-QALY changes. The artifact stores expected discounted-QALY components and their shares. Shares are signed and sum to one when the expected net effect is nonzero. A harmful pathway can therefore have a negative share, and an offsetting protective share can exceed one. Schema validation preserves that algebra instead of forcing shares into $[0,1]$.
+
+## E. Decision analysis
+
+For each paired draw,
+
+$$NMB_{si}=\lambda\Delta QALY_{si}-Cost_{si}.$$
+
+The comparator's incremental arrays are zero. Expected NMB determines the primary rank. Draw-wise probability of optimality compares all nine mutually exclusive options; ties at the canonical microdollar resolution are divided equally and do not depend on input order.
+
+The report distinguishes:
+
+- `P(positive)`: share of mortality-derived QALY draws above zero;
+- `P(negative)`: share below zero;
+- `P(NMB > no nut)`: pairwise share of NMB draws above zero; and
+- `P(optimal)`: all-option probability of maximum NMB.
+
+`P(negative)` is not a probability of overall harm. The model does not include allergy, calorie-surplus effects, contamination, or other direct adverse outcomes.
+
+The expected ICER is the ratio of mean discounted cost to mean discounted QALYs. It is undefined when the expected QALY gain is nonpositive. Draw-wise cost/QALY ratios are not used because ratios become unstable near zero and do not determine the NMB decision.
+
+## F. Sensitivity analysis
+
+The artifact materializes four causal-fraction scenarios from 10% to one-third mean carry-through:
+
+```{python}
+#| echo: false
+from IPython.display import HTML
+HTML(r.table_7_sensitivity())
+```
+
+All scenarios preserve the same nutrient-coefficient draws and causal quantile ranks. This makes the difference attributable to the specified prior rather than to unrelated RNG state.
+
+The artifact also materializes the 0% health / 3% cost sensitivity from the same hazard-ratio draws. A full crossed discount-rate grid, price-channel scenarios, time-varying adherence, and food swaps require separate named specifications.
+
+## G. E-value calculation
+
+For a protective association reported as $HR<1$, define $RR^*=1/HR$. The point-estimate E-value is [@vanderweele2017sensitivity]
+
+$$E=RR^*+\sqrt{RR^*(RR^*-1)}.$$
+
+For $HR=0.78$, $RR^*=1.282$ and $E\approx1.88$. Under the method's assumptions, a single unmeasured confounder associated with both nut consumption and mortality by risk ratios of at least 1.88 each, above measured covariates, could move the point estimate to the null. This calculation does not assign a probability to such confounding, account for multiple weaker confounders, or validate the causal-fraction prior.
+
+## H. Artifact validation and provenance
+
+The committed result uses schema `{python} r.schema_version`. Before an artifact is written, validation checks:
+
+- finite-only JSON and exact required fields;
+- complete, internally consistent `AnalysisSpec` metadata;
+- probability complements and option uniqueness;
+- QALY decomposition into expected upside and downside;
+- expected NMB and ratio-of-means ICER identities at stored precision;
+- decision ranks, recommendations, and probability-of-optimality totals;
+- signed pathway-share decomposition; and
+- valid causal, age, discount, and willingness-to-pay domains.
+
+Writes use a unique temporary file, flush and `fsync`, and atomically replace the destination. A noncanonical specification cannot target the canonical artifact, including through an explicit resolved path.
+
+Provenance records the What Nut repository and model version, the exact Optiqal methodology-reference commit and its limited scope, the RNG algorithm, SHA-256 content hashes for scientific code and versioned inputs, and a fingerprint over those hashes and declared method identifiers. The scenario itself is stored separately as the complete `AnalysisSpec`. `whatnut check` regenerates the canonical payload in memory and requires exact equality with the committed artifact.
+
+## I. Reproduction commands
+
+```bash
+uv sync --frozen --all-extras
+uv run --frozen pytest -q
+uv run --frozen ruff check .
+uv run --frozen whatnut generate
+uv run --frozen whatnut validate
+uv run --frozen whatnut check
+```
+
+Paper rendering reads the validated artifact and does not resample the model:
+
+```bash
+export QUARTO_PYTHON="$PWD/.venv/bin/python"
+export JUPYTER_PREFER_ENV_PATH=1
+quarto render docs/
+```
+
+## J. Scope of inference
+
+The model intervals are quantiles of forward draws from declared priors. They do not represent repeated-sampling confidence intervals or posteriors. They also omit uncertainty about alternative causal structures, cross-coefficient covariance, nonlinear dose response, current diet, food displacement, energy balance, adherence, direct morbidity, direct harms, population transport, and price channel.
+
+The analysis is best used as an auditable conditional benchmark and a platform for specifying the next required inputs. A real dietary decision model should add an observed baseline diet and explicit displaced food before presenting a net recommendation about changing intake.

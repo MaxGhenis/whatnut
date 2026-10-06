@@ -5,8 +5,7 @@
 # Key scientific decisions:
 # - ALA CVD prior: -0.05/g (Naghshi 2021: RR 0.95 per 1g/day CVD mortality, ln(0.95)=-0.051)
 # - Skeptical confounding prior: Beta(1.5, 6.0) mean 0.20 (defined below)
-# - Tau (hierarchical shrinkage): HalfNormal(0.015) (defined below)
-# - Tiered pub-bias shrinkage on nut-specific residuals (defined below)
+# - No hand-curated nut multipliers or uncalibrated residual variance
 
 nutrients:
   - ala_omega3
@@ -27,159 +26,203 @@ pathways:
 
 cvd:
   ala_omega3:
-    mean: -0.05
-    sd: 0.03
+    mean: -0.0512933
+    sd: 0.0189051
     unit: g
-    source: "Naghshi 2021: RR 0.95 per 1g/day CVD mortality, ln(0.95)=-0.051"
+    outcome: "CVD mortality"
+    contrast: "1 g/day higher dietary ALA intake"
+    source_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8513503/"
+    source: "Naghshi 2021: CVD mortality RR 0.95 (95% CI 0.91-0.98) per 1 g/day. Mean ln(0.95); CI-derived SE [ln(0.98)-ln(0.91)]/3.92."
   omega6:
-    mean: -0.003
-    sd: 0.003
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Farvid 2014: CHD benefit from linoleic acid"
+    outcome: "CVD mortality"
+    contrast: "No identified gross-addition contrast"
+    source_url: "https://dash.harvard.edu/bitstreams/7312037d-eeb5-6bd4-e053-0100007fdf3b/download"
+    applicable_actions: []
+    source: "Excluded from the gross-addition action. Farvid 2014 estimates linoleic acid replacing saturated fat, not an independent effect of adding omega-6. The identified joint contrast is retained under substitution_contrasts."
   omega7:
-    mean: -0.01
-    sd: 0.03
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Palmitoleic acid human CVD evidence limited; skeptical mechanistic prior"
+    applicable_actions: []
+    source: "Structurally excluded: no defensible dietary palmitoleic-acid dose-response for CVD mortality."
   fiber:
-    mean: -0.015
-    sd: 0.005
+    mean: -0.0139262
+    sd: 0.00204191
     unit: g
-    source: "Threapleton 2013: RR 0.91 per 7g for CVD"
+    outcome: "CVD mortality"
+    contrast: "10 g/day higher dietary fiber intake"
+    source_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10579821/"
+    source: "Yao 2023: CVD mortality RR 0.87 (95% CI 0.84-0.91) per 10 g/day. Mean ln(0.87)/10; CI-derived SE [ln(0.91)-ln(0.84)]/(3.92*10)."
   saturated_fat:
-    mean: 0.025
-    sd: 0.01
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Sacks 2017 AHA advisory: LDL/CHD pathway"
+    outcome: "CVD mortality"
+    contrast: "No identified gross-addition contrast"
+    source_url: "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2530902"
+    applicable_actions: []
+    source: "Excluded from the gross-addition action. Hard-outcome evidence identifies replacement of saturated fat with unsaturated fat or carbohydrate, not a context-free independent effect per added gram."
   magnesium:
-    mean: -0.001
-    sd: 0.0004
+    mean: -0.000304592
+    sd: 0.000183229
     unit: mg
-    source: "Fang 2016 all-cause mortality dose-response (RR 0.90 per 100 mg/day; ln(0.90)/100 = -0.00105/mg, rounded to -0.001). Applied to the CVD pathway as a conservative approximation because the CVD-specific dose-response is weaker; see Limitations."
+    outcome: "CVD mortality"
+    contrast: "100 mg/day higher dietary magnesium intake"
+    source_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8321838/"
+    source: "Bagheri 2021: CVD mortality effect size 0.97 (95% CI 0.94-1.01) per 100 mg/day. Mean ln(0.97)/100 and CI-derived SE [ln(1.01)-ln(0.94)]/(3.92*100). This replaces Fang 2016's 0.93 per 100 mg/day estimate, which is for stroke incidence rather than CVD mortality."
   arginine:
-    mean: -0.01
-    sd: 0.015
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Vasodilation mechanism with limited outcome evidence; skeptical prior"
+    applicable_actions: []
+    source: "Structurally excluded: mechanistic and secondary-prevention evidence does not identify a dietary CVD-mortality coefficient."
   vitamin_e:
     mean: 0.0
-    sd: 0.005
+    sd: 0.0
     unit: mg
-    source: "Food-based vitamin E; insufficient evidence for independent mortality effect"
+    applicable_actions: []
+    source: "Structurally excluded from the base case; dietary CVD-mortality evidence is compatible with the null."
   phytosterols:
-    mean: -0.00005
-    sd: 0.0001
+    mean: 0.0
+    sd: 0.0
     unit: mg
-    source: "LDL lowering mechanism; heavily shrunken per-mg prior"
+    applicable_actions: []
+    source: "Structurally excluded: LDL lowering has not been translated through an explicit validated LDL-to-mortality model."
   protein:
     mean: 0.0
-    sd: 0.005
+    sd: 0.0
     unit: g
-    source: "Neutral for CVD"
+    applicable_actions: []
+    source: "Structurally excluded: available plant-protein mortality estimates are energy-substitution contrasts, not gross additions."
 
 cancer:
   ala_omega3:
     mean: 0.0
-    sd: 0.015
+    sd: 0.0
     unit: g
-    source: "No convincing cancer mortality signal; prior centered tightly at zero"
+    applicable_actions: []
+    source: "Structurally excluded: dietary ALA cancer-mortality estimate is compatible with the null."
   omega6:
     mean: 0.0
-    sd: 0.003
+    sd: 0.0
     unit: g
-    source: "Mixed evidence without clear cancer mortality effect"
+    applicable_actions: []
+    source: "Structurally excluded: no identified independent gross-addition effect on cancer mortality."
   omega7:
     mean: 0.0
-    sd: 0.01
+    sd: 0.0
     unit: g
-    source: "No known cancer mechanism"
+    applicable_actions: []
+    source: "Structurally excluded: no identified cancer-mortality coefficient."
   fiber:
-    mean: -0.004
-    sd: 0.003
+    mean: -0.00943107
+    sd: 0.00140976
     unit: g
-    source: "Possible site-specific benefit, but weak all-cancer mortality translation"
+    outcome: "Cancer mortality"
+    contrast: "10 g/day higher dietary fiber intake"
+    source_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10579821/"
+    source: "Yao 2023: cancer mortality RR 0.91 (95% CI 0.88-0.93) per 10 g/day. Mean ln(0.91)/10; CI-derived SE [ln(0.93)-ln(0.88)]/(3.92*10)."
   saturated_fat:
-    mean: 0.002
-    sd: 0.005
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Weak cancer association"
+    applicable_actions: []
+    source: "Structurally excluded: no identified independent gross-addition effect on cancer mortality."
   magnesium:
     mean: 0.0
-    sd: 0.0001
+    sd: 0.0
     unit: mg
-    source: "No robust cancer mortality evidence"
+    applicable_actions: []
+    source: "Structurally excluded: no robust cancer-mortality coefficient."
   arginine:
     mean: 0.0
-    sd: 0.005
+    sd: 0.0
     unit: g
-    source: "Neutral"
+    applicable_actions: []
+    source: "Structurally excluded: no identified cancer-mortality coefficient."
   vitamin_e:
     mean: 0.0
-    sd: 0.005
+    sd: 0.0
     unit: mg
-    source: "Mixed evidence at food-level doses; prior centered at zero"
+    applicable_actions: []
+    source: "Structurally excluded: no identified independent cancer-mortality coefficient."
   phytosterols:
     mean: 0.0
-    sd: 0.00002
+    sd: 0.0
     unit: mg
-    source: "No cancer mechanism; effect per mg"
+    applicable_actions: []
+    source: "Structurally excluded: no cancer-mortality coefficient."
   protein:
     mean: 0.0
-    sd: 0.002
+    sd: 0.0
     unit: g
-    source: "Neutral"
+    applicable_actions: []
+    source: "Structurally excluded: available protein evidence is compositional."
 
 other:
   ala_omega3:
-    mean: -0.008
-    sd: 0.02
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Possible anti-inflammatory effects, but weak mortality evidence outside CVD"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   omega6:
     mean: 0.0
-    sd: 0.002
+    sd: 0.0
     unit: g
-    source: "No robust other-cause mortality evidence"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   omega7:
-    mean: -0.003
-    sd: 0.01
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Insulin sensitivity evidence does not cleanly translate to all-cause other mortality"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   fiber:
-    mean: -0.004
-    sd: 0.003
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Glycemic control signal, heavily shrunken for mortality translation"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   saturated_fat:
-    mean: 0.004
-    sd: 0.005
+    mean: 0.0
+    sd: 0.0
     unit: g
-    source: "Metabolic effects"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   magnesium:
-    mean: -0.00005
-    sd: 0.00005
+    mean: 0.0
+    sd: 0.0
     unit: mg
-    source: "Possible diabetes pathway, strongly attenuated for mortality translation"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   arginine:
     mean: 0.0
-    sd: 0.01
+    sd: 0.0
     unit: g
-    source: "No robust other-cause mortality evidence"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   vitamin_e:
     mean: 0.0
-    sd: 0.003
+    sd: 0.0
     unit: mg
-    source: "Insufficient evidence for independent other-cause mortality effect"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   phytosterols:
     mean: 0.0
-    sd: 0.00002
+    sd: 0.0
     unit: mg
-    source: "No mechanism; effect per mg"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
   protein:
     mean: 0.0
-    sd: 0.003
+    sd: 0.0
     unit: g
-    source: "No direct evidence for independent other-cause mortality effect"
+    applicable_actions: []
+    source: "Structurally excluded: no coefficient identifies composite non-CVD/non-cancer mortality."
 
 # Confounding prior
 # Single canonical prior: Beta(1.5, 6.0) with mean 0.20
@@ -200,36 +243,14 @@ confounding:
     Beta(1.5, 6.0) centers the base case at 20% while leaving non-trivial mass
     on both near-null and moderately causal scenarios.
 
-# Hierarchical shrinkage prior
-# tau ~ HalfNormal(sigma) per pathway
-# Controls nut-specific deviations from nutrient-predicted effects
-tau:
-  sigma: 0.015
-  rationale: >
-    Constrains nut-specific deviations to modest residual differences after
-    nutrient composition is already accounted for. This keeps walnuts and
-    almonds meaningfully different without allowing food-specific bonuses to
-    dominate the model.
-
-# Study-quality publication-bias shrinkage (mirrors optiqal STUDY_QUALITY_SHRINKAGE)
-# Shrinks the CENTRAL ESTIMATE of nut-specific adjustments toward the null
-# (a=1.0) based on the strength of the nut-specific evidence. Addresses the
-# well-documented gap between reported effect sizes and replicated effects,
-# which widens as evidence quality falls.
-#
-# Applied as: a_shrunk_mean = 1.0 + (a_mean - 1.0) * (1 - shrinkage)
-# Adjustment SD is NOT shrunk — following optiqal's convention, only the
-# central estimate is attenuated. Uncertainty is carried separately by adj.sd.
-#
-# Nutrient priors (Table 2) are already drawn from meta-analyses, so they are
-# assumed to be pre-shrunk; this table only affects the nut-specific residual.
-study_quality_shrinkage:
-  strong: 0.15       # Multiple RCTs or large cohorts (n > 100,000)
-  moderate: 0.30     # Single RCT or smaller cohorts
-  limited: 0.50      # Mixed evidence, small or non-replicated studies
-  rationale: >
-    Preregistered RCT (10%) through animal-only (70%) in optiqal; whatnut's
-    coarser strong/moderate/limited tags map to 15/30/50% mean shrinkage of
-    the nut-specific residual toward the null. This is an additional brake
-    on top of the hierarchical tau and the confounding prior. Uncertainty
-    (adj.sd) is untouched to match optiqal's convention.
+# Identified compositional effects retained for a future action that models a
+# specific displaced food. They are deliberately not applied to gross addition.
+substitution_contrasts:
+  omega6_for_saturated_fat:
+    mean: -0.0582669
+    sd: 0.0128372
+    unit: "log HR per 1 percentage point of energy exchanged"
+    outcome: "CVD mortality"
+    contrast: "Replace saturated fat with an equal-energy amount of omega-6 PUFA"
+    source_url: "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2530902"
+    source: "Wang 2016: HR 0.89 (95% CI 0.85-0.94) per 2% energy replacement. Mean ln(0.89)/2 and CI-derived SE [ln(0.94)-ln(0.85)]/(3.92*2). At 2,000 kcal/day only, this corresponds to -0.0262201 (SD 0.0057767) per gram exchanged."

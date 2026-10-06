@@ -93,12 +93,14 @@ class TestRRDistributions:
                     f"{pathway}/{nut_id}: mean RR = {mean_rr:.4f} outside [0.5, 1.2]"
                 )
 
-    def test_rr_has_variance(self, samples_default):
-        """Each RR distribution should show non-zero variance."""
-        for pathway in PATHWAYS:
+    def test_identified_pathways_have_variance(self, samples_default):
+        for pathway in ("cvd", "cancer"):
             for j in range(len(samples_default.nut_ids)):
                 std = np.std(samples_default.rr[pathway][:, j])
                 assert std > 0, f"Zero variance for pathway {pathway}, nut index {j}"
+
+    def test_unidentified_other_pathway_is_structurally_neutral(self, samples_default):
+        np.testing.assert_array_equal(samples_default.rr["other"], 1.0)
 
     def test_causal_fraction_in_zero_one(self, samples_default):
         """Causal fraction samples should be in (0, 1)."""
@@ -149,6 +151,50 @@ class TestReproducibility:
                 break
         assert any_diff, "Different seeds produced identical output"
 
+    def test_confounding_sensitivity_reuses_structural_draws(self):
+        skeptical = sample_model(
+            n_samples=N_FAST,
+            seed=42,
+            confounding_alpha=1.0,
+            confounding_beta=9.0,
+        )
+        optimistic = sample_model(
+            n_samples=N_FAST,
+            seed=42,
+            confounding_alpha=2.5,
+            confounding_beta=5.0,
+        )
+
+        np.testing.assert_array_equal(
+            skeptical.causal_quantiles,
+            optimistic.causal_quantiles,
+        )
+        for pathway in PATHWAYS:
+            np.testing.assert_array_equal(
+                skeptical.pre_confounding_log_rr[pathway],
+                optimistic.pre_confounding_log_rr[pathway],
+            )
+
+    def test_named_nut_streams_make_results_order_invariant(self):
+        forward = sample_model(
+            n_samples=N_FAST,
+            seed=42,
+            nut_ids=["walnut", "almond"],
+        )
+        reverse = sample_model(
+            n_samples=N_FAST,
+            seed=42,
+            nut_ids=["almond", "walnut"],
+        )
+
+        for pathway in PATHWAYS:
+            np.testing.assert_array_equal(
+                forward.rr[pathway][:, 0], reverse.rr[pathway][:, 1]
+            )
+            np.testing.assert_array_equal(
+                forward.rr[pathway][:, 1], reverse.rr[pathway][:, 0]
+            )
+
 
 # ---------------------------------------------------------------------------
 # Confounding overrides
@@ -196,9 +242,9 @@ class TestConfoundingOverrides:
             confounding_alpha=1.0,
             confounding_beta=9.0,
         )
-        # For any pathway, the deviation of mean RR from 1.0 should be smaller
-        # with lower causal fraction
-        for pathway in PATHWAYS:
+        # For each identified pathway, the deviation of mean RR from 1.0
+        # should be smaller with a lower causal fraction.
+        for pathway in ("cvd", "cancer"):
             deviation_high = np.abs(np.mean(s_high.rr[pathway]) - 1.0)
             deviation_low = np.abs(np.mean(s_low.rr[pathway]) - 1.0)
             assert deviation_low < deviation_high, (
@@ -235,11 +281,11 @@ class TestSummarizeRR:
                 actual_keys = set(summary[pathway][nut_id].keys())
                 assert actual_keys == expected_keys
 
-    def test_ci_lower_less_than_upper(self, summary):
+    def test_model_interval_is_ordered(self, summary):
         for pathway in PATHWAYS:
             for nut_id in NUT_IDS:
                 s = summary[pathway][nut_id]
-                assert s["ci_lower"] < s["ci_upper"]
+                assert s["ci_lower"] <= s["ci_upper"]
 
     def test_mean_between_ci(self, summary):
         for pathway in PATHWAYS:
@@ -254,80 +300,6 @@ class TestSummarizeRR:
                     assert isinstance(val, float), (
                         f"{pathway}/{nut_id}/{key} is {type(val)}"
                     )
-
-
-# ---------------------------------------------------------------------------
-# Pathway adjustments (Issue 2)
-# ---------------------------------------------------------------------------
-
-
-class TestPathwayAdjustments:
-    """Pathway adjustments from nuts.yaml should modify model output."""
-
-    def test_walnut_cvd_adjusted_more_than_almond(self):
-        """Walnut CVD adjustment (1.25) > almond (1.00), so walnut CVD RR
-        should be lower (more protective) relative to nutrient predictions."""
-        samples = sample_model(n_samples=1000, seed=42)
-        walnut_idx = samples.nut_ids.index("walnut")
-        almond_idx = samples.nut_ids.index("almond")
-        # Walnut has stronger CVD adjustment (1.25 > 1.00)
-        # So walnut CVD effect should be amplified
-        walnut_cvd = np.mean(samples.rr["cvd"][:, walnut_idx])
-        almond_cvd = np.mean(samples.rr["cvd"][:, almond_idx])
-        # Walnut has 2.5g ALA + 1.25 adj, almond has 0g ALA + 1.00 adj
-        # Walnut should have lower CVD RR
-        assert walnut_cvd < almond_cvd, (
-            f"Walnut CVD RR ({walnut_cvd:.4f}) should be < almond ({almond_cvd:.4f}) "
-            "due to pathway adjustment"
-        )
-
-    def test_cashew_adjustment_dampens_effect(self):
-        """Cashew CVD adjustment (0.95) should dampen CVD effect."""
-        from whatnut.config import get_nut
-
-        cashew = get_nut("cashew")
-        adj = cashew.pathway_adjustments["cvd"]
-        assert adj.mean < 1.0, "Cashew CVD adjustment should be < 1.0"
-
-
-# ---------------------------------------------------------------------------
-# Optiqal-style layers: tiered pub-bias shrinkage and HR-centering
-# ---------------------------------------------------------------------------
-
-
-class TestStudyQualityShrinkage:
-    """Evidence-tier shrinkage should pull nut residuals toward a=1.0."""
-
-    def test_shrinkage_config_loads(self):
-        from whatnut.config import get_study_quality_shrinkage
-
-        s = get_study_quality_shrinkage()
-        assert 0 < s.strong < s.moderate < s.limited < 1
-        assert s.retention("strong") > s.retention("moderate") > s.retention("limited")
-
-    def test_limited_evidence_shrinks_more_than_strong(self):
-        """Under shrinkage, a 'strong' nut with a=1.10 retains more of its
-        edge than a 'limited' nut with the same nominal a."""
-        from whatnut.config import get_study_quality_shrinkage
-
-        s = get_study_quality_shrinkage()
-        strong_shrunk = 1.0 + (1.10 - 1.0) * s.retention("strong")
-        limited_shrunk = 1.0 + (1.10 - 1.0) * s.retention("limited")
-        assert strong_shrunk > limited_shrunk > 1.0
-
-    def test_model_applies_shrinkage(self):
-        """A synthetic walnut with identical priors but a limited-tier
-        evidence flag should produce weaker CVD protection than the real
-        'strong'-tier walnut. Exercised via sample_model path."""
-        # Sample with tiered shrinkage on; the real walnut is 'strong',
-        # so its shrunk adjustment is smaller than its nominal 1.10 but
-        # still > 1.0.
-        samples = sample_model(n_samples=2000, seed=42)
-        walnut_idx = samples.nut_ids.index("walnut")
-        walnut_rr_cvd = np.mean(samples.rr["cvd"][:, walnut_idx])
-        # The final CVD RR for walnut should still be < 1 (protective)
-        # but materially weaker than the untilted prior would imply.
-        assert walnut_rr_cvd < 1.0
 
 
 class TestHRCentering:
@@ -354,3 +326,8 @@ class TestHRCentering:
                 rr = samples.rr[pathway][:, j]
                 assert np.all(rr > 0.3)
                 assert np.all(rr < 1.8)
+
+
+def test_model_refuses_unimplemented_substitution_action():
+    with pytest.raises(ValueError, match="Only gross_addition"):
+        sample_model(n_samples=10, action_kind="isocaloric_substitution")

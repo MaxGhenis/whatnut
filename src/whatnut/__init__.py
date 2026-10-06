@@ -1,4 +1,4 @@
-"""Whatnut: Monte Carlo analysis of life expectancy from nut consumption."""
+"""What Nut: a transparent mortality-potential decision model for daily nuts."""
 
 from whatnut.config import (
     NUT_IDS,
@@ -6,6 +6,7 @@ from whatnut.config import (
     PATHWAYS,
     get_all_nuts,
     get_cause_fractions,
+    get_evidence_registry,
     get_mortality_curve,
     get_nut,
     get_nutrient_matrix,
@@ -20,8 +21,12 @@ from whatnut.decision import (
     summarize_cost_effectiveness,
     summarize_mutually_exclusive_nmb,
 )
-from whatnut.evidence import SOURCES, EffectSize, Source, get_source, validate_sources
-from whatnut.lifecycle import LifecycleResult, run_lifecycle
+from whatnut.lifecycle import (
+    BaselineOutcomes,
+    LifecycleResult,
+    calculate_baseline_outcomes,
+    run_lifecycle,
+)
 from whatnut.model import ModelSamples, sample_model, summarize_rr
 from whatnut.provenance import WHATNUT_MODEL_VERSION
 from whatnut.reference_case import (
@@ -32,6 +37,16 @@ from whatnut.reference_case import (
     UNDISCOUNTED_QALY_DISCOUNT_RATE,
     WHATNUT_CONSUMER_REFERENCE_CASE,
     ReferenceCase,
+)
+from whatnut.spec import (
+    ActionSpec,
+    AnalysisSpec,
+    CausalFractionSpec,
+    DecisionProblemSpec,
+    EconomicScenario,
+    EffectModelSpec,
+    PopulationSpec,
+    canonical_analysis_spec,
 )
 
 __version__ = WHATNUT_MODEL_VERSION
@@ -63,17 +78,15 @@ __all__ = [
     "get_cause_fractions",
     "validate",
     # Evidence
-    "SOURCES",
-    "Source",
-    "EffectSize",
-    "get_source",
-    "validate_sources",
+    "get_evidence_registry",
     # Model
     "ModelSamples",
     "sample_model",
     "summarize_rr",
     # Lifecycle
     "LifecycleResult",
+    "BaselineOutcomes",
+    "calculate_baseline_outcomes",
     "run_lifecycle",
     # Decision analysis
     "DecisionContext",
@@ -90,6 +103,15 @@ __all__ = [
     "DEFAULT_COST_DISCOUNT_RATE",
     "UNDISCOUNTED_QALY_DISCOUNT_RATE",
     "UNDISCOUNTED_COST_DISCOUNT_RATE",
+    # Specification
+    "ActionSpec",
+    "AnalysisSpec",
+    "CausalFractionSpec",
+    "DecisionProblemSpec",
+    "EconomicScenario",
+    "EffectModelSpec",
+    "PopulationSpec",
+    "canonical_analysis_spec",
     # Pipeline
     "AnalysisResults",
     "NutAnalysis",

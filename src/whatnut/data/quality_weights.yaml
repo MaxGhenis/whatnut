@@ -1,35 +1,21 @@
-# Age-specific health-related quality of life (HRQoL)
-# Source: Sullivan PW, Ghushchyan V. "Preference-Based EQ-5D Index Scores
-# for Chronic Conditions in the United States." Medical Decision Making
-# 2006;26(1):38-44. doi:10.1177/0272989X05284691
-# (Matches the canonical bib entry @sullivan2006catalogue.)
+# US age-band health-related quality of life (HRQoL) norms.
+# Source: Jiang R, Janssen MFB, Pickard AS. "US population norms for the
+# EQ-5D-5L and comparison of norms from face-to-face and online samples."
+# Quality of Life Research. 2021;30:803-816.
+# doi:10.1007/s11136-020-02650-y; PMCID: PMC7952367.
+# https://pmc.ncbi.nlm.nih.gov/articles/PMC7952367/
 #
-# Values below are interpreted/smoothed US population norms derived from
-# the Sullivan & Ghushchyan 2006 EQ-5D index. They should be regarded as
-# approximate: the source paper reports mean EQ-5D ~0.87 at age 45-54 and
-# ~0.78 at 75+, so the table below is a declining fit through those anchor
-# points rather than a verbatim age-specific lookup. A formal replication
-# would derive these from the MEPS EQ-5D self-assessed data underlying the
-# Sullivan/Ghushchyan index.
-#
-# Format: age -> HRQoL weight (0-1 scale, 1 = perfect health)
-# Intermediate ages interpolated linearly
+# These are the exact face-to-face sample mean US EQ-5D-5L utilities reported
+# in Table 3. Each value applies as a step function from its lower-bound age
+# through the year before the next boundary; the published 75+ norm is held
+# constant through the CDC life table's age-100+ open interval. No unsupported
+# old-age decline is extrapolated.
 
 weights:
-  20: 0.94
-  25: 0.93
-  30: 0.92
-  35: 0.91
-  40: 0.89
-  45: 0.87
-  50: 0.85
-  55: 0.83
-  60: 0.80
-  65: 0.78
-  70: 0.75
-  75: 0.72
-  80: 0.68
-  85: 0.62
-  90: 0.55
-  95: 0.48
-  100: 0.40
+  20: 0.919
+  25: 0.911
+  35: 0.841
+  45: 0.816
+  55: 0.815
+  65: 0.824
+  75: 0.811

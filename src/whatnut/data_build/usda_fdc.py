@@ -181,7 +181,7 @@ PHYTOSTEROLS_MG_PER_28G = {
 
 def apply_to_nuts_yaml(nut_blocks: dict[str, dict]) -> None:
     """Rewrite `nuts.yaml` nutrient sections with fresh USDA values while
-    preserving pathway_adjustments, cost_per_kg_usd, and evidence fields
+    while preserving cost_per_kg_usd
     from the existing hand-curated file.
 
     The nutrient mapping handles the case where nuts.yaml uses different
@@ -204,14 +204,11 @@ def apply_to_nuts_yaml(nut_blocks: dict[str, dict]) -> None:
             "fdc_id": block["fdc_id"],
             "_sr_legacy_description": block["description"],
             "nutrients": fresh_nutrients,
-            "pathway_adjustments": old.get("pathway_adjustments", {}),
             "cost_per_kg_usd": old.get("cost_per_kg_usd"),
-            "evidence": old.get("evidence", "limited"),
         }
 
     header = (
-        "# Nut profiles: nutrients (auto-generated), pathway adjustments,\n"
-        "# costs, and evidence.\n"
+        "# Nut profiles: nutrients (auto-generated) and costs.\n"
         "# - Nutrients: USDA SR Legacy, per 28 g serving, scaled from\n"
         "#   per-100 g values by the extraction script in\n"
         "#   src/whatnut/data_build/usda_fdc.py. Raw per-food JSON\n"
@@ -219,9 +216,7 @@ def apply_to_nuts_yaml(nut_blocks: dict[str, dict]) -> None:
         "# - Phytosterols: Phillips et al. 2005, J Agric Food Chem\n"
         "#   53(24):9436-9445 (SR Legacy omits phytosterols).\n"
         "# - Prices: see cost_per_kg_usd comments and @whatnut2026prices.\n"
-        "# - pathway_adjustments: hand-curated from the nut-specific RCTs\n"
-        "#   cited per-adjustment; tiered publication-bias shrinkage is\n"
-        "#   applied at sampling time (see priors.yaml:study_quality_shrinkage).\n"
+        "# The canonical model has no hand-curated per-nut mortality multiplier.\n"
         "#\n"
         "# This file is the SINGLE SOURCE OF TRUTH for per-nut data.\n"
         "# Regenerate nutrient sections with:\n"

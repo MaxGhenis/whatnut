@@ -2,11 +2,12 @@
 
 Downloads the CDC-published Excel spreadsheet companion to NVSR Vol 72
 No 12 (Arias & Xu, November 2023 — *United States Life Tables, 2021*)
-once, caches it under `data/raw/cdc_nvsr/`, and writes qx values at
-each age to `data/mortality.yaml`. The life-table anchor ages used by
-the interpolator in `config.py` are a subset of the 0-100 table; this
-script writes the exact CDC values at those anchors instead of the
-previous hand-rounded approximations.
+once, caches it under `data/raw/cdc_nvsr/`, and writes every published
+single-age qx value (ages 0-99) to `data/mortality.yaml`. Age 100 is the
+CDC table's explicit terminal/open interval and is retained separately
+with qx=1 rather than treated as an anchor for extrapolation.
+The published remaining life expectancy for the age-100+ open interval is
+also retained so survivors are not truncated to half a year.
 
 Previously, the values in `mortality.yaml` diverged from CDC 2021 Table 1
 by 20-35% in the working-age range. A reproducibility referee flagged
@@ -33,32 +34,9 @@ NVSR_URL = (
 NVSR_CACHE_DIR = RAW_DIR / "cdc_nvsr"
 NVSR_CACHE = NVSR_CACHE_DIR / "Table01.xlsx"
 
-# Anchor ages used by mortality.yaml. The config interpolator fills in
-# single-year values between anchors in log space.
-ANCHOR_AGES = [
-    0,
-    1,
-    5,
-    10,
-    15,
-    20,
-    25,
-    30,
-    35,
-    40,
-    45,
-    50,
-    55,
-    60,
-    65,
-    70,
-    75,
-    80,
-    85,
-    90,
-    95,
-    100,
-]
+SINGLE_YEAR_AGES = tuple(range(100))
+TERMINAL_AGE = 100
+EXPECTED_AGES = (*SINGLE_YEAR_AGES, TERMINAL_AGE)
 
 
 def download_table01() -> Path:
@@ -73,28 +51,78 @@ def download_table01() -> Path:
 
 def parse_qx_by_age(path: Path) -> dict[int, float]:
     """Parse column B (qx) of the Table 1 sheet, keyed by start age."""
-    wb = openpyxl.load_workbook(path, data_only=True)
-    ws = wb["Table 1"]
-    qx_by_age: dict[int, float] = {}
-    for row in ws.iter_rows(min_row=1, max_row=ws.max_row, values_only=True):
-        age_cell, qx = row[0], row[1]
-        if not isinstance(age_cell, str) or not isinstance(qx, (int, float)):
-            continue
-        label = age_cell.strip()
-        # Formats: "0–1", "40–41", "100 and older"
-        if label.startswith("100"):
-            qx_by_age[100] = float(qx)
-            continue
-        dash = "–" if "–" in label else "-"
-        head = label.split(dash, 1)[0].strip()
-        if head.isdigit():
-            qx_by_age[int(head)] = float(qx)
-    return qx_by_age
+    workbook = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    try:
+        sheet = workbook["Table 1"]
+        qx_by_age: dict[int, float] = {}
+        for row in sheet.iter_rows(values_only=True):
+            age_cell, qx = row[0], row[1]
+            if not isinstance(age_cell, str) or not isinstance(qx, (int, float)):
+                continue
+            label = age_cell.strip()
+            # Formats: "0–1", "40–41", "100 and older"
+            if label.startswith("100"):
+                qx_by_age[100] = float(qx)
+                continue
+            dash = "–" if "–" in label else "-"
+            head = label.split(dash, 1)[0].strip()
+            if head.isdigit():
+                qx_by_age[int(head)] = float(qx)
+        return qx_by_age
+    finally:
+        workbook.close()
 
 
-def build_mortality_yaml(qx_all_ages: dict[int, float]) -> str:
-    """Return the text of the new mortality.yaml (anchors only)."""
-    rates = {a: round(qx_all_ages[a], 6) for a in ANCHOR_AGES if a in qx_all_ages}
+def parse_terminal_expected_years(path: Path) -> float:
+    """Parse the published e100 value for the age-100+ open interval."""
+    workbook = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    try:
+        sheet = workbook["Table 1"]
+        for row in sheet.iter_rows(values_only=True):
+            age_cell = row[0]
+            if (
+                isinstance(age_cell, str)
+                and age_cell.strip().startswith("100")
+                and isinstance(row[6], (int, float))
+            ):
+                value = float(row[6])
+                if value <= 0:
+                    raise ValueError("CDC terminal life expectancy must be positive.")
+                return value
+    finally:
+        workbook.close()
+    raise ValueError("CDC life table is missing age-100 life expectancy.")
+
+
+def build_mortality_yaml(
+    qx_all_ages: dict[int, float],
+    *,
+    terminal_expected_years: float,
+) -> str:
+    """Return mortality YAML containing the complete CDC single-age table."""
+    missing = sorted(set(EXPECTED_AGES) - set(qx_all_ages))
+    if missing:
+        raise ValueError(f"CDC life table is missing ages: {missing}")
+
+    for age in SINGLE_YEAR_AGES:
+        qx = qx_all_ages[age]
+        if not 0 < qx < 1:
+            raise ValueError(f"CDC qx at age {age} must be in (0, 1), got {qx}.")
+    if qx_all_ages[TERMINAL_AGE] != 1:
+        raise ValueError(
+            "CDC age-100 open interval must be terminal with qx=1, "
+            f"got {qx_all_ages[TERMINAL_AGE]}."
+        )
+    if not isinstance(terminal_expected_years, (int, float)) or not (
+        0 < terminal_expected_years < 20
+    ):
+        raise ValueError(
+            "CDC age-100 open-interval life expectancy must be in (0, 20)."
+        )
+
+    # The CDC workbook displays qx to six decimal places. Preserve those
+    # published values instead of the workbook's hidden floating-point cells.
+    rates = {age: round(qx_all_ages[age], 6) for age in EXPECTED_AGES}
     header = (
         "# US Life Table 2021 - mortality rates by age\n"
         "# Source: Arias E, Xu JQ. United States Life Tables, 2021.\n"
@@ -106,13 +134,14 @@ def build_mortality_yaml(qx_all_ages: dict[int, float]) -> str:
         "Publications/NVSR/72-12/Table01.xlsx\n"
         "# Raw download cached at data/raw/cdc_nvsr/Table01.xlsx.\n"
         "#\n"
-        "# Values below are the exact qx entries from Table 1 at each\n"
-        "# anchor age, regenerated by\n"
+        "# Values below retain every published single-age qx entry from\n"
+        "# Table 1 (ages 0-99), regenerated by\n"
         "#   python -m whatnut.data_build.cdc_life_tables --apply\n"
-        "# Intermediate ages are interpolated in log-space (Gompertz-like)\n"
-        "# by src/whatnut/config.py.\n"
+        "# Age 100 is the table's terminal/open interval (qx=1). Its published\n"
+        "# remaining life expectancy is retained for explicit 100+ person-time.\n"
         "#\n"
-        "# Format: age -> probability of dying in that year (qx)\n"
+        "# Format: age -> annual qx (0-99); terminal open interval (100)\n"
+        f"\nterminal_expected_years: {terminal_expected_years:.6f}\n"
         "\nrates:\n"
     )
     # Fixed-point decimal so YAML parses numbers as floats (not strings).
@@ -126,11 +155,15 @@ def main(argv: list[str] | None = None) -> int:
     argv = argv or sys.argv[1:]
     path = download_table01()
     qx = parse_qx_by_age(path)
+    terminal_expected_years = parse_terminal_expected_years(path)
     print(f"Parsed {len(qx)} ages from CDC NVSR 72-12 Table 1")
     for a in [40, 50, 60, 70, 80]:
         print(f"  qx({a}) = {qx.get(a, 'missing'):.6f}")
 
-    yaml_text = build_mortality_yaml(qx)
+    yaml_text = build_mortality_yaml(
+        qx,
+        terminal_expected_years=terminal_expected_years,
+    )
     out = DATA_DIR / "mortality.yaml"
     if "--apply" in argv:
         out.write_text(yaml_text)

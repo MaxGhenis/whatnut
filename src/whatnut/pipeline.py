@@ -7,7 +7,7 @@ Usage:
 
 import argparse
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import numpy as np
@@ -15,10 +15,10 @@ from scipy.stats import beta as beta_dist
 
 from whatnut.artifact import RESULTS_SCHEMA_VERSION, write_results_artifact
 from whatnut.config import (
+    NUT_IDS,
     get_confounding_prior,
-    get_mortality_curve,
+    get_evidence_registry,
     get_nut,
-    get_quality_curve,
     load_constants,
 )
 from whatnut.decision import (
@@ -28,7 +28,10 @@ from whatnut.decision import (
     summarize_mutually_exclusive_nmb,
     validate_willingness_to_pay,
 )
-from whatnut.lifecycle import run_lifecycle, run_lifecycle_vectorized
+from whatnut.lifecycle import (
+    calculate_baseline_outcomes,
+    run_lifecycle_vectorized,
+)
 from whatnut.model import sample_model
 from whatnut.provenance import methodology_provenance
 from whatnut.reference_case import (
@@ -38,6 +41,13 @@ from whatnut.reference_case import (
     consumer_reference_case,
     validate_discount_rate,
 )
+from whatnut.spec import (
+    AnalysisSpec,
+    CausalFractionSpec,
+    canonical_analysis_spec,
+)
+
+CANONICAL_RESULTS_PATH = Path(__file__).parent / "data" / "results.json"
 
 
 @dataclass
@@ -46,22 +56,27 @@ class NutAnalysis:
 
     nut_id: str
     name: str
-    evidence: str
 
     # Life years (undiscounted)
     life_years_mean: float
-    life_years_ci_lower: float
-    life_years_ci_upper: float
+    life_years_model_interval_lower: float
+    life_years_model_interval_upper: float
 
     # Mortality-derived QALYs under the primary reference case.
     qaly_mean: float
-    qaly_ci_lower: float
-    qaly_ci_upper: float
+    qaly_model_interval_lower: float
+    qaly_model_interval_upper: float
+
+    # Exact signed expected discounted-QALY Shapley components. These sum to
+    # qaly_mean at stored precision and define the pathway shares below.
+    expected_qaly_cvd: float
+    expected_qaly_cancer: float
+    expected_qaly_other: float
 
     # Mortality-derived QALYs under the 0% health-discount sensitivity.
     qaly_undiscounted_mean: float
-    qaly_undiscounted_ci_lower: float
-    qaly_undiscounted_ci_upper: float
+    qaly_undiscounted_model_interval_lower: float
+    qaly_undiscounted_model_interval_upper: float
 
     # Signed expected contributions from Monte Carlo draws. These sum to the
     # unrounded expected primary-case QALY gain.
@@ -100,7 +115,8 @@ class NutAnalysis:
 class AnalysisResults:
     """Complete analysis output — every number the paper needs."""
 
-    # Parameters
+    # Immutable contract and convenience projections used by the report.
+    analysis_spec: AnalysisSpec
     seed: int
     n_samples: int
     start_age: int
@@ -112,12 +128,13 @@ class AnalysisResults:
     confounding_alpha: float
     confounding_beta: float
     confounding_mean: float
-    confounding_ci_lower: float
-    confounding_ci_upper: float
+    confounding_prior_interval_lower: float
+    confounding_prior_interval_upper: float
 
     # Baseline metrics
     baseline_life_years: float
-    baseline_qalys: float
+    baseline_qalys_undiscounted: float
+    baseline_qalys_discounted: float
     average_quality_weight: float
 
     # E-value for HR=0.78 (Aune 2016 all-cause)
@@ -130,6 +147,7 @@ class AnalysisResults:
     decision_context: dict
     decision_summary: dict
     model_interval: dict
+    evidence_registry: dict
     methodology_provenance: dict
     sensitivity_results: dict
 
@@ -142,21 +160,10 @@ class AnalysisResults:
     other_contribution_mean: float
 
     def to_dict(self) -> dict:
-        """Serialize a complete schema-1.0.0 artifact dictionary."""
-        if not self.sensitivity_results:
-            self.sensitivity_results = _materialize_sensitivities(
-                base_nuts=self.nuts,
-                n_samples=self.n_samples,
-                seed=self.seed,
-                start_age=self.start_age,
-                qaly_discount_rate=self.qaly_discount_rate,
-                cost_discount_rate=self.cost_discount_rate,
-                willingness_to_pay=self.willingness_to_pay,
-                confounding_alpha=self.confounding_alpha,
-                confounding_beta=self.confounding_beta,
-            )
+        """Serialize a complete schema-2.0.0 artifact dictionary without rerunning."""
         d = {
             "schema_version": RESULTS_SCHEMA_VERSION,
+            "analysis_spec": self.analysis_spec.to_dict(),
             "seed": self.seed,
             "n_samples": self.n_samples,
             "start_age": self.start_age,
@@ -168,10 +175,11 @@ class AnalysisResults:
             "confounding_alpha": self.confounding_alpha,
             "confounding_beta": self.confounding_beta,
             "confounding_mean": self.confounding_mean,
-            "confounding_ci_lower": self.confounding_ci_lower,
-            "confounding_ci_upper": self.confounding_ci_upper,
+            "confounding_prior_interval_lower": self.confounding_prior_interval_lower,
+            "confounding_prior_interval_upper": self.confounding_prior_interval_upper,
             "baseline_life_years": self.baseline_life_years,
-            "baseline_qalys": self.baseline_qalys,
+            "baseline_qalys_undiscounted": self.baseline_qalys_undiscounted,
+            "baseline_qalys_discounted": self.baseline_qalys_discounted,
             "average_quality_weight": self.average_quality_weight,
             "e_value": self.e_value,
             "cvd_contribution_mean": self.cvd_contribution_mean,
@@ -182,6 +190,7 @@ class AnalysisResults:
             "decision_context": self.decision_context,
             "decision_summary": self.decision_summary,
             "model_interval": self.model_interval,
+            "evidence_registry": self.evidence_registry,
             "methodology_provenance": self.methodology_provenance,
             "sensitivity_results": self.sensitivity_results,
             "nuts": {},
@@ -189,16 +198,22 @@ class AnalysisResults:
         for nid, na in self.nuts.items():
             d["nuts"][nid] = {
                 "name": na.name,
-                "evidence": na.evidence,
                 "life_years_mean": na.life_years_mean,
-                "life_years_ci_lower": na.life_years_ci_lower,
-                "life_years_ci_upper": na.life_years_ci_upper,
+                "life_years_model_interval_lower": (na.life_years_model_interval_lower),
+                "life_years_model_interval_upper": (na.life_years_model_interval_upper),
                 "qaly_mean": na.qaly_mean,
-                "qaly_ci_lower": na.qaly_ci_lower,
-                "qaly_ci_upper": na.qaly_ci_upper,
+                "qaly_model_interval_lower": na.qaly_model_interval_lower,
+                "qaly_model_interval_upper": na.qaly_model_interval_upper,
+                "expected_qaly_cvd": na.expected_qaly_cvd,
+                "expected_qaly_cancer": na.expected_qaly_cancer,
+                "expected_qaly_other": na.expected_qaly_other,
                 "qaly_undiscounted_mean": na.qaly_undiscounted_mean,
-                "qaly_undiscounted_ci_lower": na.qaly_undiscounted_ci_lower,
-                "qaly_undiscounted_ci_upper": na.qaly_undiscounted_ci_upper,
+                "qaly_undiscounted_model_interval_lower": (
+                    na.qaly_undiscounted_model_interval_lower
+                ),
+                "qaly_undiscounted_model_interval_upper": (
+                    na.qaly_undiscounted_model_interval_upper
+                ),
                 "expected_upside": na.expected_upside,
                 "expected_downside": na.expected_downside,
                 "p_positive": na.p_positive,
@@ -225,55 +240,100 @@ class AnalysisResults:
         return d
 
 
-def _validated_integer(
-    value: int,
-    *,
-    label: str,
-    minimum: int,
-    maximum: int | None = None,
-) -> int:
-    """Validate integer-valued analysis inputs without silent coercion."""
-    if isinstance(value, bool) or not isinstance(value, (int, np.integer)):
-        raise ValueError(f"{label} must be an integer.")
-    value = int(value)
-    if value < minimum or (maximum is not None and value > maximum):
-        range_text = f"at least {minimum}"
-        if maximum is not None:
-            range_text = f"between {minimum} and {maximum}"
-        raise ValueError(f"{label} must be {range_text}.")
-    return value
-
-
-def _validated_positive_float(value: float, *, label: str) -> float:
-    """Validate a finite, strictly positive scalar parameter."""
-    try:
-        value = float(value)
-    except (TypeError, ValueError) as error:
-        raise ValueError(f"{label} must be a positive finite value.") from error
-    if not np.isfinite(value) or value <= 0:
-        raise ValueError(f"{label} must be a positive finite value.")
-    return value
-
-
 def _finite_rounded(value: float, digits: int = 0) -> float | None:
     """Represent undefined or non-finite ratios as JSON null."""
     return round(value, digits) if np.isfinite(value) else None
 
 
+def _resolve_analysis_spec(
+    analysis_spec: AnalysisSpec | None,
+    *,
+    n_samples: int | None,
+    seed: int | None,
+    start_age: int | None,
+    qaly_discount_rate: float | None,
+    cost_discount_rate: float | None,
+    willingness_to_pay: float | None,
+    confounding_alpha: float | None,
+    confounding_beta: float | None,
+) -> AnalysisSpec:
+    """Resolve the public compatibility arguments into one immutable contract."""
+    overrides = {
+        "n_samples": n_samples,
+        "seed": seed,
+        "start_age": start_age,
+        "qaly_discount_rate": qaly_discount_rate,
+        "cost_discount_rate": cost_discount_rate,
+        "willingness_to_pay": willingness_to_pay,
+        "confounding_alpha": confounding_alpha,
+        "confounding_beta": confounding_beta,
+    }
+    if analysis_spec is not None:
+        if not isinstance(analysis_spec, AnalysisSpec):
+            raise ValueError("analysis_spec must be an AnalysisSpec.")
+        supplied = [name for name, value in overrides.items() if value is not None]
+        if supplied:
+            raise ValueError(
+                "analysis_spec cannot be combined with legacy overrides: "
+                + ", ".join(supplied)
+            )
+        return analysis_spec
+
+    base = canonical_analysis_spec(tuple(NUT_IDS))
+    confounding = get_confounding_prior()
+    return replace(
+        base,
+        n_samples=10_000 if n_samples is None else n_samples,
+        seed=42 if seed is None else seed,
+        population=replace(
+            base.population,
+            start_age=40 if start_age is None else start_age,
+        ),
+        economics=replace(
+            base.economics,
+            health_discount_rate=(
+                DEFAULT_QALY_DISCOUNT_RATE
+                if qaly_discount_rate is None
+                else qaly_discount_rate
+            ),
+            cost_discount_rate=(
+                DEFAULT_COST_DISCOUNT_RATE
+                if cost_discount_rate is None
+                else cost_discount_rate
+            ),
+            willingness_to_pay_usd_per_qaly=(
+                DEFAULT_WILLINGNESS_TO_PAY
+                if willingness_to_pay is None
+                else willingness_to_pay
+            ),
+        ),
+        causal_fraction=CausalFractionSpec(
+            alpha=(
+                confounding.alpha if confounding_alpha is None else confounding_alpha
+            ),
+            beta=(confounding.beta if confounding_beta is None else confounding_beta),
+        ),
+    )
+
+
 def run_analysis(
-    n_samples: int = 10_000,
-    seed: int = 42,
-    start_age: int = 40,
-    qaly_discount_rate: float = DEFAULT_QALY_DISCOUNT_RATE,
-    cost_discount_rate: float = DEFAULT_COST_DISCOUNT_RATE,
-    willingness_to_pay: float = DEFAULT_WILLINGNESS_TO_PAY,
+    analysis_spec: AnalysisSpec | None = None,
+    *,
+    n_samples: int | None = None,
+    seed: int | None = None,
+    start_age: int | None = None,
+    qaly_discount_rate: float | None = None,
+    cost_discount_rate: float | None = None,
+    willingness_to_pay: float | None = None,
     confounding_alpha: float | None = None,
     confounding_beta: float | None = None,
     include_sensitivities: bool = False,
 ) -> AnalysisResults:
-    """Run full analysis: model sampling -> lifecycle -> summary.
+    """Run the specified model, lifecycle, and paired decision analysis.
 
     Args:
+        analysis_spec: Complete immutable analysis contract. Legacy keyword
+            overrides remain available but cannot be mixed with this object.
         n_samples: Number of Monte Carlo draws.
         seed: Random seed for reproducibility.
         start_age: Age at start of nut consumption.
@@ -288,19 +348,25 @@ def run_analysis(
     Returns:
         AnalysisResults with every number needed for the paper.
     """
-    n_samples = _validated_integer(n_samples, label="n_samples", minimum=1)
-    seed = _validated_integer(
-        seed,
-        label="seed",
-        minimum=0,
-        maximum=np.iinfo(np.uint64).max,
+    analysis_spec = _resolve_analysis_spec(
+        analysis_spec,
+        n_samples=n_samples,
+        seed=seed,
+        start_age=start_age,
+        qaly_discount_rate=qaly_discount_rate,
+        cost_discount_rate=cost_discount_rate,
+        willingness_to_pay=willingness_to_pay,
+        confounding_alpha=confounding_alpha,
+        confounding_beta=confounding_beta,
     )
-    start_age = _validated_integer(
-        start_age,
-        label="start_age",
-        minimum=0,
-        maximum=109,
-    )
+    n_samples = analysis_spec.n_samples
+    seed = analysis_spec.seed
+    start_age = analysis_spec.population.start_age
+    qaly_discount_rate = analysis_spec.economics.health_discount_rate
+    cost_discount_rate = analysis_spec.economics.cost_discount_rate
+    willingness_to_pay = analysis_spec.economics.willingness_to_pay_usd_per_qaly
+    confounding_alpha = analysis_spec.causal_fraction.alpha
+    confounding_beta = analysis_spec.causal_fraction.beta
     if not isinstance(include_sensitivities, bool):
         raise ValueError("include_sensitivities must be a boolean.")
     qaly_discount_rate = validate_discount_rate(qaly_discount_rate, label="QALY")
@@ -312,46 +378,24 @@ def run_analysis(
     undiscounted_cost_discount_rate = cost_discount_rate
     constants = dict(load_constants())
 
-    # Use confounding prior from config when not overridden
-    conf_prior = get_confounding_prior()
-    if confounding_alpha is None:
-        confounding_alpha = conf_prior.alpha
-    if confounding_beta is None:
-        confounding_beta = conf_prior.beta
-    confounding_alpha = _validated_positive_float(
-        confounding_alpha,
-        label="confounding_alpha",
-    )
-    confounding_beta = _validated_positive_float(
-        confounding_beta,
-        label="confounding_beta",
-    )
-
     # Derive 95% CI from the actual Beta(alpha, beta) parameters rather
     # than relying on the YAML hints; keeps the paper in sync with priors.
-    confounding_ci_lower = float(
+    confounding_prior_interval_lower = float(
         beta_dist.ppf(0.025, confounding_alpha, confounding_beta)
     )
-    confounding_ci_upper = float(
+    confounding_prior_interval_upper = float(
         beta_dist.ppf(0.975, confounding_alpha, confounding_beta)
     )
 
-    # Compute baseline life years and QALYs from mortality and quality tables.
-    # Survival is evaluated at the START of each age year: survival[0] = 1.0
-    # (alive at start_age), survival[i] = P(alive at start of start_age+i).
-    # Summing this approximates life expectancy. The sum (~39.3 at age 40)
-    # runs ~0.5 years above the published CDC NVSR 72-12 ex(40)=38.83 because
-    # intermediate ages use log-space anchor interpolation rather than the
-    # Lx-based method CDC uses internally; documented in appendix.
-    mortality = get_mortality_curve(start_age)
-    quality = get_quality_curve(start_age)
-    survival_raw = np.cumprod(1 - mortality)
-    survival = np.insert(survival_raw[:-1], 0, 1.0)
-    baseline_life_years = float(np.sum(survival))
-    baseline_qalys = float(np.sum(survival * quality))
-    average_quality_weight = (
-        baseline_qalys / baseline_life_years if baseline_life_years > 0 else 0.0
+    baseline = calculate_baseline_outcomes(
+        start_age=start_age,
+        max_age=analysis_spec.population.terminal_age,
+        qaly_discount_rate=qaly_discount_rate,
     )
+    baseline_life_years = baseline.life_years
+    baseline_qalys_undiscounted = baseline.qalys
+    baseline_qalys_discounted = baseline.qalys_discounted
+    average_quality_weight = baseline.average_quality_weight
     # Scenario-dependent narrative values travel with the artifact. The YAML
     # supplies the canonical paper defaults, not immutable values for custom
     # start ages.
@@ -365,8 +409,10 @@ def run_analysis(
     samples = sample_model(
         n_samples=n_samples,
         seed=seed,
+        nut_ids=list(analysis_spec.decision.option_ids),
         confounding_alpha=confounding_alpha,
         confounding_beta=confounding_beta,
+        action_kind=analysis_spec.action.kind,
     )
 
     confounding_mean = confounding_alpha / (confounding_alpha + confounding_beta)
@@ -383,6 +429,7 @@ def run_analysis(
             rr_other=samples.rr["other"][:, j],
             annual_cost=nut_profile.annual_cost,
             start_age=start_age,
+            max_age=analysis_spec.population.terminal_age,
             qaly_discount_rate=qaly_discount_rate,
             cost_discount_rate=cost_discount_rate,
         )
@@ -392,6 +439,7 @@ def run_analysis(
             rr_other=samples.rr["other"][:, j],
             annual_cost=nut_profile.annual_cost,
             start_age=start_age,
+            max_age=analysis_spec.population.terminal_age,
             qaly_discount_rate=undiscounted_qaly_discount_rate,
             cost_discount_rate=undiscounted_cost_discount_rate,
         )
@@ -412,49 +460,64 @@ def run_analysis(
             willingness_to_pay * qalys_primary - vec.total_cost_discounted
         )
 
-        # Pathway contributions from the Monte Carlo mean RRs. Using the
-        # expected RR (not a per-sample ratio) avoids ratio blow-up near the
-        # null and matches what the paper reports as Monte Carlo expected RRs
-        # (not "posterior" — this model has no likelihood).
+        # Expected RRs are descriptive summaries of the Monte Carlo draws (not
+        # "posterior" summaries — this model has no likelihood).
         rr_cvd_mean = float(np.mean(samples.rr["cvd"][:, j]))
         rr_cancer_mean = float(np.mean(samples.rr["cancer"][:, j]))
         rr_other_mean = float(np.mean(samples.rr["other"][:, j]))
 
-        mean_result = run_lifecycle(
-            rr_cvd=rr_cvd_mean,
-            rr_cancer=rr_cancer_mean,
-            rr_other=rr_other_mean,
-            annual_cost=nut_profile.annual_cost,
-            start_age=start_age,
-            qaly_discount_rate=qaly_discount_rate,
-            cost_discount_rate=cost_discount_rate,
+        # Attribute the expected primary outcome on the same scale used by the
+        # decision analysis. Each draw is decomposed exactly by Shapley value;
+        # ratios are formed only after averaging the signed QALY components.
+        expected_qaly_components = np.array(
+            [
+                np.mean(vec.qalys_gained_discounted_cvd),
+                np.mean(vec.qalys_gained_discounted_cancer),
+                np.mean(vec.qalys_gained_discounted_other),
+            ],
+            dtype=float,
         )
+        expected_qaly_total = float(np.mean(qalys_primary))
+        if expected_qaly_total == 0:
+            pathway_shares = np.zeros(3)
+        else:
+            pathway_shares = expected_qaly_components / expected_qaly_total
 
         na = NutAnalysis(
             nut_id=nut_id,
             name=nut_id.capitalize(),
-            evidence=nut_profile.evidence,
             # Means are shown at 2 decimals in the paper; CIs are stored at
             # 3 decimals so directional quantiles near zero (e.g., small
             # negative 2.5% tail) are not silently rounded to 0.00 and made
             # to look inconsistent with p_positive / p_negative.
             life_years_mean=round(float(np.mean(life_years)), 9),
-            life_years_ci_lower=round(float(np.percentile(life_years, 2.5)), 9),
-            life_years_ci_upper=round(float(np.percentile(life_years, 97.5)), 9),
+            life_years_model_interval_lower=round(
+                float(np.percentile(life_years, 2.5)), 9
+            ),
+            life_years_model_interval_upper=round(
+                float(np.percentile(life_years, 97.5)), 9
+            ),
             qaly_mean=round(primary_decision["expected_qaly"], 9),
-            qaly_ci_lower=round(float(np.percentile(qalys_primary, 2.5)), 9),
-            qaly_ci_upper=round(float(np.percentile(qalys_primary, 97.5)), 9),
+            qaly_model_interval_lower=round(
+                float(np.percentile(qalys_primary, 2.5)), 9
+            ),
+            qaly_model_interval_upper=round(
+                float(np.percentile(qalys_primary, 97.5)), 9
+            ),
+            expected_qaly_cvd=round(float(expected_qaly_components[0]), 9),
+            expected_qaly_cancer=round(float(expected_qaly_components[1]), 9),
+            expected_qaly_other=round(float(expected_qaly_components[2]), 9),
             qaly_undiscounted_mean=round(undiscounted_decision["expected_qaly"], 9),
-            qaly_undiscounted_ci_lower=round(
+            qaly_undiscounted_model_interval_lower=round(
                 float(np.percentile(qalys_undiscounted, 2.5)), 9
             ),
-            qaly_undiscounted_ci_upper=round(
+            qaly_undiscounted_model_interval_upper=round(
                 float(np.percentile(qalys_undiscounted, 97.5)), 9
             ),
             expected_upside=round(primary_decision["expected_upside"], 9),
             expected_downside=round(primary_decision["expected_downside"], 9),
             p_positive=round(primary_decision["p_benefit"], 4),
-            p_negative=round(primary_decision["p_harm"], 4),
+            p_negative=round(primary_decision["p_negative_mortality_effect"], 4),
             annual_cost=round(nut_profile.annual_cost, 2),
             lifetime_cost_mean=round(primary_decision["expected_cost"], 6),
             icer_expected=_finite_rounded(primary_decision["expected_cost_per_qaly"]),
@@ -476,15 +539,15 @@ def run_analysis(
             rr_cvd=round(rr_cvd_mean, 6),
             rr_cancer=round(rr_cancer_mean, 6),
             rr_other=round(rr_other_mean, 6),
-            cvd_contribution=round(mean_result.cvd_contribution, 6),
-            cancer_contribution=round(mean_result.cancer_contribution, 6),
-            other_contribution=round(mean_result.other_contribution, 6),
+            cvd_contribution=round(float(pathway_shares[0]), 6),
+            cancer_contribution=round(float(pathway_shares[1]), 6),
+            other_contribution=round(float(pathway_shares[2]), 6),
         )
         nut_analyses[nut_id] = na
 
     # The decision layer owns the paired all-option comparison, including a
     # zero-cost/zero-effect comparator.
-    comparator_id = "no_modeled_nut_intervention"
+    comparator_id = analysis_spec.decision.comparator_option_id
     nut_option_ids = list(samples.nut_ids)
     all_option_decision = summarize_mutually_exclusive_nmb(
         {
@@ -559,14 +622,7 @@ def run_analysis(
     if include_sensitivities:
         sensitivity_results = _materialize_sensitivities(
             base_nuts=nut_analyses,
-            n_samples=n_samples,
-            seed=seed,
-            start_age=start_age,
-            qaly_discount_rate=qaly_discount_rate,
-            cost_discount_rate=cost_discount_rate,
-            willingness_to_pay=willingness_to_pay,
-            confounding_alpha=confounding_alpha,
-            confounding_beta=confounding_beta,
+            analysis_spec=analysis_spec,
         )
 
     # Aggregate pathway contributions (mean across nuts)
@@ -575,6 +631,7 @@ def run_analysis(
     all_other = [na.other_contribution for na in nut_analyses.values()]
 
     return AnalysisResults(
+        analysis_spec=analysis_spec,
         seed=seed,
         n_samples=n_samples,
         start_age=start_age,
@@ -586,10 +643,11 @@ def run_analysis(
         confounding_alpha=confounding_alpha,
         confounding_beta=confounding_beta,
         confounding_mean=confounding_mean,
-        confounding_ci_lower=round(confounding_ci_lower, 4),
-        confounding_ci_upper=round(confounding_ci_upper, 4),
+        confounding_prior_interval_lower=round(confounding_prior_interval_lower, 4),
+        confounding_prior_interval_upper=round(confounding_prior_interval_upper, 4),
         baseline_life_years=round(baseline_life_years, 2),
-        baseline_qalys=round(baseline_qalys, 2),
+        baseline_qalys_undiscounted=round(baseline_qalys_undiscounted, 2),
+        baseline_qalys_discounted=round(baseline_qalys_discounted, 2),
         average_quality_weight=round(average_quality_weight, 3),
         e_value=round(e_value, 2),
         constants=constants,
@@ -605,7 +663,8 @@ def run_analysis(
             "quantiles": [0.025, 0.975],
             "posterior": False,
         },
-        methodology_provenance=methodology_provenance(),
+        evidence_registry=get_evidence_registry(analysis_spec.action.kind),
+        methodology_provenance=methodology_provenance(analysis_spec.to_dict()),
         sensitivity_results=sensitivity_results,
         nuts=nut_analyses,
         cvd_contribution_mean=round(float(np.mean(all_cvd)), 2),
@@ -617,19 +676,16 @@ def run_analysis(
 def _materialize_sensitivities(
     *,
     base_nuts: dict[str, NutAnalysis],
-    n_samples: int,
-    seed: int,
-    start_age: int,
-    qaly_discount_rate: float,
-    cost_discount_rate: float,
-    willingness_to_pay: float,
-    confounding_alpha: float,
-    confounding_beta: float,
+    analysis_spec: AnalysisSpec,
 ) -> dict[str, list[dict[str, object]]]:
     """Materialize the paper's confounding-prior sensitivity table."""
     scenarios = [
         (1.0, 9.0, "Very skeptical"),
-        (confounding_alpha, confounding_beta, "Base case"),
+        (
+            analysis_spec.causal_fraction.alpha,
+            analysis_spec.causal_fraction.beta,
+            "Base case",
+        ),
         (1.5, 4.5, "Moderate"),
         (2.5, 5.0, "Optimistic"),
     ]
@@ -640,14 +696,14 @@ def _materialize_sensitivities(
             scenario_nuts = base_nuts
         else:
             scenario_nuts = run_analysis(
-                n_samples=n_samples,
-                seed=seed,
-                start_age=start_age,
-                qaly_discount_rate=qaly_discount_rate,
-                cost_discount_rate=cost_discount_rate,
-                willingness_to_pay=willingness_to_pay,
-                confounding_alpha=alpha,
-                confounding_beta=beta,
+                replace(
+                    analysis_spec,
+                    causal_fraction=replace(
+                        analysis_spec.causal_fraction,
+                        alpha=alpha,
+                        beta=beta,
+                    ),
+                ),
                 include_sensitivities=False,
             ).nuts
         rows.append(
@@ -678,8 +734,21 @@ def _e_value(hr: float) -> float:
 
 def generate_results_json(results: AnalysisResults, path: Path | None = None) -> Path:
     """Atomically write a complete, strict, versioned results artifact."""
+    if not results.sensitivity_results:
+        raise ValueError(
+            "Artifact generation requires materialized sensitivity results; "
+            "run the analysis with include_sensitivities=True."
+        )
     if path is None:
-        path = Path(__file__).parent / "data" / "results.json"
+        path = CANONICAL_RESULTS_PATH
+    canonical_target = CANONICAL_RESULTS_PATH.resolve()
+    if path.resolve() == canonical_target:
+        expected_spec = canonical_analysis_spec(tuple(NUT_IDS))
+        if results.analysis_spec != expected_spec:
+            raise ValueError(
+                "Refusing to overwrite the canonical paper artifact with a "
+                "noncanonical analysis specification."
+            )
     return write_results_artifact(path, results.to_dict())
 
 

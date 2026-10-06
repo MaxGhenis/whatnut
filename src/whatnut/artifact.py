@@ -3,16 +3,20 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import math
+import os
+import tempfile
 from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
-RESULTS_SCHEMA_VERSION = "1.0.0"
+RESULTS_SCHEMA_VERSION = "2.0.0"
 
 _TOP_LEVEL_FIELDS = frozenset(
     {
         "schema_version",
+        "analysis_spec",
         "seed",
         "n_samples",
         "start_age",
@@ -24,10 +28,11 @@ _TOP_LEVEL_FIELDS = frozenset(
         "confounding_alpha",
         "confounding_beta",
         "confounding_mean",
-        "confounding_ci_lower",
-        "confounding_ci_upper",
+        "confounding_prior_interval_lower",
+        "confounding_prior_interval_upper",
         "baseline_life_years",
-        "baseline_qalys",
+        "baseline_qalys_undiscounted",
+        "baseline_qalys_discounted",
         "average_quality_weight",
         "e_value",
         "cvd_contribution_mean",
@@ -38,6 +43,7 @@ _TOP_LEVEL_FIELDS = frozenset(
         "decision_context",
         "decision_summary",
         "model_interval",
+        "evidence_registry",
         "methodology_provenance",
         "sensitivity_results",
         "nuts",
@@ -104,12 +110,94 @@ _DECISION_SUMMARY_FIELDS = frozenset(
 )
 
 _MODEL_INTERVAL_FIELDS = frozenset({"kind", "level", "quantiles", "posterior"})
+_EVIDENCE_REGISTRY_FIELDS = frozenset(
+    {
+        "action_kind",
+        "active_coefficients",
+        "structurally_excluded_coefficients",
+        "deferred_substitution_contrasts",
+    }
+)
+_EVIDENCE_COEFFICIENT_FIELDS = frozenset(
+    {
+        "pathway",
+        "nutrient",
+        "mean",
+        "sd",
+        "unit",
+        "outcome",
+        "contrast",
+        "source",
+        "source_url",
+    }
+)
+
+_ANALYSIS_SPEC_FIELDS = frozenset(
+    {
+        "n_samples",
+        "seed",
+        "population",
+        "economics",
+        "causal_fraction",
+        "effect_model",
+        "action",
+        "decision",
+    }
+)
+_POPULATION_SPEC_FIELDS = frozenset(
+    {"start_age", "terminal_age", "geography", "life_table", "quality_weights"}
+)
+_ECONOMIC_SPEC_FIELDS = frozenset(
+    {
+        "health_discount_rate",
+        "cost_discount_rate",
+        "willingness_to_pay_usd_per_qaly",
+        "perspective",
+        "price_year",
+    }
+)
+_CAUSAL_FRACTION_SPEC_FIELDS = frozenset(
+    {"distribution", "alpha", "beta", "interpretation"}
+)
+_EFFECT_MODEL_SPEC_FIELDS = frozenset(
+    {
+        "source_effect_measure",
+        "lifecycle_scale",
+        "translation",
+        "age_pattern",
+        "latency_years",
+    }
+)
+_ACTION_SPEC_FIELDS = frozenset(
+    {
+        "kind",
+        "serving_grams_per_day",
+        "adherence",
+        "persistence",
+        "displaced_food",
+        "baseline_diet_observed",
+        "energy_compensation_modeled",
+        "adiposity_effects_modeled",
+        "direct_morbidity_and_harms_modeled",
+    }
+)
+_DECISION_SPEC_FIELDS = frozenset({"comparator_option_id", "option_ids", "criterion"})
 
 _METHODOLOGY_PROVENANCE_FIELDS = frozenset(
     {
+        "provenance_schema_version",
         "whatnut_model_version",
+        "whatnut_repository_url",
+        "optiqal_repository_url",
         "optiqal_reference_commit",
+        "optiqal_reference_url",
         "optiqal_reference_scope",
+        "rng_algorithm",
+        "content_hash_algorithm",
+        "scientific_code_sha256",
+        "input_data_sha256",
+        "analysis_spec_sha256",
+        "analysis_fingerprint_sha256",
         "runtime_dependency",
         "adopted",
         "whatnut_extensions",
@@ -120,16 +208,18 @@ _METHODOLOGY_PROVENANCE_FIELDS = frozenset(
 _NUT_FIELDS = frozenset(
     {
         "name",
-        "evidence",
         "life_years_mean",
-        "life_years_ci_lower",
-        "life_years_ci_upper",
+        "life_years_model_interval_lower",
+        "life_years_model_interval_upper",
         "qaly_mean",
-        "qaly_ci_lower",
-        "qaly_ci_upper",
+        "qaly_model_interval_lower",
+        "qaly_model_interval_upper",
+        "expected_qaly_cvd",
+        "expected_qaly_cancer",
+        "expected_qaly_other",
         "qaly_undiscounted_mean",
-        "qaly_undiscounted_ci_lower",
-        "qaly_undiscounted_ci_upper",
+        "qaly_undiscounted_model_interval_lower",
+        "qaly_undiscounted_model_interval_upper",
         "expected_upside",
         "expected_downside",
         "p_positive",
@@ -159,17 +249,19 @@ _TOP_LEVEL_NUMBER_FIELDS = (
     - _TOP_LEVEL_INTEGER_FIELDS
     - {
         "schema_version",
+        "analysis_spec",
         "constants",
         "reference_case",
         "decision_context",
         "decision_summary",
         "model_interval",
+        "evidence_registry",
         "methodology_provenance",
         "sensitivity_results",
         "nuts",
     }
 )
-_NUT_STRING_FIELDS = frozenset({"name", "evidence"})
+_NUT_STRING_FIELDS = frozenset({"name"})
 _NUT_OPTIONAL_NUMBER_FIELDS = frozenset({"icer_expected", "icer_undiscounted_expected"})
 _EXPECTED_NUT_IDS = frozenset(
     {
@@ -188,6 +280,24 @@ _EXPECTED_OPTION_IDS = _EXPECTED_NUT_IDS | {_COMPARATOR_OPTION_ID}
 _ALL_OPTION_EVALUATION_FIELDS = frozenset(
     {"expected_nmb", "probability_optimal", "ranking", "recommended_option_ids"}
 )
+
+# Schema 2.0.0 stores derived quantities at these canonical precisions.  The
+# validator allows exactly the uncertainty introduced by rounding the inputs
+# and output, rather than using broad relative tolerances that could hide a
+# materially contradictory artifact.
+_QALY_DECIMALS = 9
+_COST_DECIMALS = 6
+_ICER_DECIMALS = 0
+_NUT_NMB_DECIMALS = 2
+_DECISION_NMB_DECIMALS = 6
+_NUT_PROBABILITY_DECIMALS = 4
+_OPTION_PROBABILITY_DECIMALS = 9
+_PATHWAY_CONTRIBUTION_DECIMALS = 6
+_TOP_PATHWAY_CONTRIBUTION_DECIMALS = 2
+_BASELINE_OUTCOME_DECIMALS = 2
+_AVERAGE_QUALITY_DECIMALS = 3
+_MIN_SUPPORTED_START_AGE = 30
+_MAX_SUPPORTED_START_AGE = 70
 
 
 def _format_field_names(fields: set[object]) -> str:
@@ -258,6 +368,58 @@ def _require_string_sequence(value: Any, *, path: str) -> tuple[str, ...]:
     return tuple(value)
 
 
+def _rounding_error(decimal_places: int) -> float:
+    """Return the maximum absolute error from decimal rounding."""
+    return 0.5 * 10.0**-decimal_places
+
+
+def _require_stored_precision_close(
+    actual: float,
+    expected: float,
+    *,
+    path: str,
+    relationship: str,
+    absolute_tolerance: float,
+) -> None:
+    """Require an algebraic invariant within its declared storage precision."""
+    # A few ulps cover binary evaluation of decimal JSON values without
+    # broadening the domain-level rounding allowance.
+    floating_point_slack = 4 * max(math.ulp(actual), math.ulp(expected))
+    if not math.isclose(
+        actual,
+        expected,
+        rel_tol=0.0,
+        abs_tol=absolute_tolerance + floating_point_slack,
+    ):
+        raise ValueError(
+            f"Results artifact {path} must agree with {relationship} "
+            "within stored precision."
+        )
+
+
+def _nmb_tolerance(willingness_to_pay: float, *, output_decimals: int) -> float:
+    """Bound NMB error induced by the stored QALY, cost, and NMB values."""
+    return (
+        abs(willingness_to_pay) * _rounding_error(_QALY_DECIMALS)
+        + _rounding_error(_COST_DECIMALS)
+        + _rounding_error(output_decimals)
+    )
+
+
+def _icer_tolerance(cost: float, qaly: float) -> float:
+    """Bound ratio error induced by stored cost, QALY, and ICER precision."""
+    qaly_error = _rounding_error(_QALY_DECIMALS)
+    cost_error = _rounding_error(_COST_DECIMALS)
+    if qaly <= qaly_error:
+        return math.inf
+    expected = cost / qaly
+    lowest = max(0.0, cost - cost_error) / (qaly + qaly_error)
+    highest = (cost + cost_error) / (qaly - qaly_error)
+    return max(abs(expected - lowest), abs(highest - expected)) + _rounding_error(
+        _ICER_DECIMALS
+    )
+
+
 def _validate_finite_numbers(value: Any, *, path: str = "$") -> None:
     if isinstance(value, float) and not math.isfinite(value):
         raise ValueError(
@@ -283,8 +445,12 @@ def _validate_scalar_types(data: Mapping[str, Any]) -> None:
         raise ValueError("Results artifact $.seed must be non-negative.")
     if data["n_samples"] < 1:
         raise ValueError("Results artifact $.n_samples must be positive.")
-    if data["start_age"] < 0:
-        raise ValueError("Results artifact $.start_age must be non-negative.")
+    if not _MIN_SUPPORTED_START_AGE <= data["start_age"] <= _MAX_SUPPORTED_START_AGE:
+        raise ValueError(
+            "Results artifact $.start_age must be within the supported adult "
+            f"model domain [{_MIN_SUPPORTED_START_AGE}, "
+            f"{_MAX_SUPPORTED_START_AGE}]."
+        )
     for field in (
         "qaly_discount_rate",
         "cost_discount_rate",
@@ -301,22 +467,53 @@ def _validate_scalar_types(data: Mapping[str, Any]) -> None:
             raise ValueError(f"Results artifact $.{field} must be positive.")
     for field in (
         "confounding_mean",
-        "confounding_ci_lower",
-        "confounding_ci_upper",
+        "confounding_prior_interval_lower",
+        "confounding_prior_interval_upper",
         "average_quality_weight",
-        "cvd_contribution_mean",
-        "cancer_contribution_mean",
-        "other_contribution_mean",
     ):
         _require_probability(data[field], path=f"$.{field}")
     if not (
-        data["confounding_ci_lower"]
+        data["confounding_prior_interval_lower"]
         <= data["confounding_mean"]
-        <= data["confounding_ci_upper"]
+        <= data["confounding_prior_interval_upper"]
     ):
         raise ValueError("Results artifact confounding interval must contain its mean.")
-    if data["baseline_life_years"] <= 0 or data["baseline_qalys"] <= 0:
+    if (
+        data["baseline_life_years"] <= 0
+        or data["baseline_qalys_undiscounted"] <= 0
+        or data["baseline_qalys_discounted"] <= 0
+    ):
         raise ValueError("Results artifact baseline outcomes must be positive.")
+    if data["baseline_qalys_undiscounted"] > data["baseline_life_years"]:
+        raise ValueError(
+            "Results artifact baseline QALYs cannot exceed baseline life-years."
+        )
+    if data["baseline_qalys_discounted"] > data["baseline_qalys_undiscounted"]:
+        raise ValueError(
+            "Results artifact discounted baseline QALYs cannot exceed "
+            "undiscounted baseline QALYs."
+        )
+    expected_average_quality = float(data["baseline_qalys_undiscounted"]) / float(
+        data["baseline_life_years"]
+    )
+    baseline_ratio_tolerance = 2 * _rounding_error(_BASELINE_OUTCOME_DECIMALS) / float(
+        data["baseline_life_years"]
+    ) + _rounding_error(_AVERAGE_QUALITY_DECIMALS)
+    _require_stored_precision_close(
+        float(data["average_quality_weight"]),
+        expected_average_quality,
+        path="$.average_quality_weight",
+        relationship="baseline_qalys_undiscounted / baseline_life_years",
+        absolute_tolerance=baseline_ratio_tolerance,
+    )
+    if data["qaly_discount_rate"] == 0:
+        _require_stored_precision_close(
+            float(data["baseline_qalys_discounted"]),
+            float(data["baseline_qalys_undiscounted"]),
+            path="$.baseline_qalys_discounted",
+            relationship="undiscounted baseline QALYs at a zero health discount rate",
+            absolute_tolerance=2 * _rounding_error(_BASELINE_OUTCOME_DECIMALS),
+        )
     contribution_total = sum(
         float(data[field])
         for field in (
@@ -325,11 +522,168 @@ def _validate_scalar_types(data: Mapping[str, Any]) -> None:
             "other_contribution_mean",
         )
     )
-    if not math.isclose(contribution_total, 1.0, abs_tol=0.02):
-        raise ValueError("Results artifact pathway contributions must sum to one.")
+    # Pathway fields are signed additive attributions, not probabilities. A
+    # protective pathway can therefore exceed one when another pathway is
+    # harmful; their invariant is the unit total.
+    _require_stored_precision_close(
+        contribution_total,
+        1.0,
+        path="top-level pathway contributions",
+        relationship="a unit total",
+        absolute_tolerance=3 * _rounding_error(_TOP_PATHWAY_CONTRIBUTION_DECIMALS),
+    )
 
 
-def _validate_nuts(value: Any) -> Mapping[str, Any]:
+def _validate_analysis_spec(value: Any, data: Mapping[str, Any]) -> None:
+    """Validate the immutable run contract and its top-level projections."""
+    spec = _validate_exact_fields(value, _ANALYSIS_SPEC_FIELDS, path="$.analysis_spec")
+
+    for field in ("n_samples", "seed"):
+        if not isinstance(spec[field], int) or isinstance(spec[field], bool):
+            raise ValueError(
+                f"Results artifact $.analysis_spec.{field} must be an integer."
+            )
+        if spec[field] != data[field]:
+            raise ValueError(
+                f"Results artifact analysis_spec.{field} must match top-level {field}."
+            )
+
+    population = _validate_exact_fields(
+        spec["population"],
+        _POPULATION_SPEC_FIELDS,
+        path="$.analysis_spec.population",
+    )
+    for field in ("start_age", "terminal_age"):
+        if not isinstance(population[field], int) or isinstance(
+            population[field], bool
+        ):
+            raise ValueError(
+                f"Results artifact $.analysis_spec.population.{field} must be an integer."
+            )
+    if (
+        population["start_age"] != data["start_age"]
+        or population["terminal_age"] != 100
+    ):
+        raise ValueError(
+            "Results artifact analysis_spec population must match start_age and "
+            "use terminal_age 100."
+        )
+    for field in ("geography", "life_table", "quality_weights"):
+        _require_string(population[field], path=f"$.analysis_spec.population.{field}")
+
+    economics = _validate_exact_fields(
+        spec["economics"],
+        _ECONOMIC_SPEC_FIELDS,
+        path="$.analysis_spec.economics",
+    )
+    projected_economics = {
+        "health_discount_rate": "qaly_discount_rate",
+        "cost_discount_rate": "cost_discount_rate",
+        "willingness_to_pay_usd_per_qaly": "willingness_to_pay",
+    }
+    for field, top_level_field in projected_economics.items():
+        number = _require_number(
+            economics[field], path=f"$.analysis_spec.economics.{field}"
+        )
+        if number != data[top_level_field]:
+            raise ValueError(
+                f"Results artifact analysis_spec.economics.{field} must match "
+                f"top-level {top_level_field}."
+            )
+    _require_string(
+        economics["perspective"], path="$.analysis_spec.economics.perspective"
+    )
+    if not isinstance(economics["price_year"], int) or isinstance(
+        economics["price_year"], bool
+    ):
+        raise ValueError(
+            "Results artifact analysis_spec.economics.price_year must be an integer."
+        )
+
+    causal = _validate_exact_fields(
+        spec["causal_fraction"],
+        _CAUSAL_FRACTION_SPEC_FIELDS,
+        path="$.analysis_spec.causal_fraction",
+    )
+    if causal["distribution"] != "beta":
+        raise ValueError("Results artifact causal-fraction distribution must be beta.")
+    for field in ("alpha", "beta"):
+        shape = _require_number(
+            causal[field], path=f"$.analysis_spec.causal_fraction.{field}"
+        )
+        if shape != data[f"confounding_{field}"]:
+            raise ValueError(
+                f"Results artifact analysis_spec causal {field} must match top-level confounding_{field}."
+            )
+    _require_string(
+        causal["interpretation"], path="$.analysis_spec.causal_fraction.interpretation"
+    )
+
+    effect_model = _validate_exact_fields(
+        spec["effect_model"],
+        _EFFECT_MODEL_SPEC_FIELDS,
+        path="$.analysis_spec.effect_model",
+    )
+    expected_effect_model = {
+        "source_effect_measure": "cause_specific_mortality_relative_risk",
+        "lifecycle_scale": "cause_specific_integrated_hazard",
+        "translation": "relative_risk_used_as_proportional_hazard_ratio",
+        "age_pattern": "constant_proportional_effect",
+        "latency_years": 0,
+    }
+    if effect_model != expected_effect_model:
+        raise ValueError("Results artifact effect-model specification is unsupported.")
+
+    action = _validate_exact_fields(
+        spec["action"],
+        _ACTION_SPEC_FIELDS,
+        path="$.analysis_spec.action",
+    )
+    if (
+        action["kind"] != "gross_addition"
+        or _require_number(
+            action["serving_grams_per_day"],
+            path="$.analysis_spec.action.serving_grams_per_day",
+        )
+        != 28.0
+        or _require_number(action["adherence"], path="$.analysis_spec.action.adherence")
+        != 1.0
+        or action["persistence"] != "lifetime_while_alive"
+        or action["displaced_food"] is not None
+    ):
+        raise ValueError("Results artifact action specification is not implemented.")
+    for field in (
+        "baseline_diet_observed",
+        "energy_compensation_modeled",
+        "adiposity_effects_modeled",
+        "direct_morbidity_and_harms_modeled",
+    ):
+        if action[field] is not False:
+            raise ValueError(
+                f"Results artifact analysis_spec.action.{field} must be false."
+            )
+
+    decision = _validate_exact_fields(
+        spec["decision"],
+        _DECISION_SPEC_FIELDS,
+        path="$.analysis_spec.decision",
+    )
+    if decision["comparator_option_id"] != _COMPARATOR_OPTION_ID:
+        raise ValueError("Results artifact decision comparator ID is unsupported.")
+    option_ids = _require_string_sequence(
+        decision["option_ids"], path="$.analysis_spec.decision.option_ids"
+    )
+    if set(option_ids) != set(_EXPECTED_NUT_IDS) or len(option_ids) != len(
+        _EXPECTED_NUT_IDS
+    ):
+        raise ValueError(
+            "Results artifact analysis_spec must contain every configured nut option exactly once."
+        )
+    if decision["criterion"] != "maximum_expected_net_monetary_benefit":
+        raise ValueError("Results artifact decision criterion is unsupported.")
+
+
+def _validate_nuts(value: Any, data: Mapping[str, Any]) -> Mapping[str, Any]:
     nuts = _validate_exact_fields(value, _EXPECTED_NUT_IDS, path="$.nuts")
     ranks: list[int] = []
     for nut_id, raw_nut in nuts.items():
@@ -361,9 +715,6 @@ def _validate_nuts(value: Any) -> Mapping[str, Any]:
             "p_nmb_positive",
             "p_nmb_positive_undiscounted",
             "p_optimal",
-            "cvd_contribution",
-            "cancer_contribution",
-            "other_contribution",
         ):
             _require_probability(nut[field], path=f"{path}.{field}")
         for field in ("annual_cost", "lifetime_cost_mean"):
@@ -372,25 +723,166 @@ def _validate_nuts(value: Any) -> Mapping[str, Any]:
                     f"Results artifact {path}.{field} must be non-negative."
                 )
         for field in _NUT_OPTIONAL_NUMBER_FIELDS:
-            if nut[field] is not None and nut[field] <= 0:
+            if nut[field] is not None and nut[field] < 0:
                 raise ValueError(
-                    f"Results artifact {path}.{field} must be positive when defined."
+                    f"Results artifact {path}.{field} must be non-negative when "
+                    "defined."
                 )
         for prefix in ("life_years", "qaly", "qaly_undiscounted"):
             if not (
-                nut[f"{prefix}_ci_lower"]
+                nut[f"{prefix}_model_interval_lower"]
                 <= nut[f"{prefix}_mean"]
-                <= nut[f"{prefix}_ci_upper"]
+                <= nut[f"{prefix}_model_interval_upper"]
             ):
                 raise ValueError(
                     f"Results artifact {path} {prefix} interval must contain its mean."
                 )
+
+        expected_upside = float(nut["expected_upside"])
+        expected_downside = float(nut["expected_downside"])
+        if expected_upside < 0:
+            raise ValueError(
+                f"Results artifact {path}.expected_upside must be non-negative."
+            )
+        if expected_downside > 0:
+            raise ValueError(
+                f"Results artifact {path}.expected_downside must be non-positive."
+            )
+        _require_stored_precision_close(
+            float(nut["qaly_mean"]),
+            expected_upside + expected_downside,
+            path=f"{path}.qaly_mean",
+            relationship="expected_upside + expected_downside",
+            absolute_tolerance=3 * _rounding_error(_QALY_DECIMALS),
+        )
+
+        qaly = float(nut["qaly_mean"])
+        component_fields = (
+            "expected_qaly_cvd",
+            "expected_qaly_cancer",
+            "expected_qaly_other",
+        )
+        share_fields = (
+            "cvd_contribution",
+            "cancer_contribution",
+            "other_contribution",
+        )
+        pathway_qaly_total = sum(float(nut[field]) for field in component_fields)
+        _require_stored_precision_close(
+            qaly,
+            pathway_qaly_total,
+            path=f"{path}.qaly_mean",
+            relationship="the sum of signed pathway QALY components",
+            absolute_tolerance=4 * _rounding_error(_QALY_DECIMALS),
+        )
+        for component_field, share_field in zip(
+            component_fields,
+            share_fields,
+            strict=True,
+        ):
+            component = float(nut[component_field])
+            share = float(nut[share_field])
+            share_product_tolerance = (
+                abs(qaly) * _rounding_error(_PATHWAY_CONTRIBUTION_DECIMALS)
+                + abs(share) * _rounding_error(_QALY_DECIMALS)
+                + _rounding_error(_QALY_DECIMALS)
+            )
+            _require_stored_precision_close(
+                component,
+                share * qaly,
+                path=f"{path}.{share_field}",
+                relationship=f"{component_field} / qaly_mean",
+                absolute_tolerance=share_product_tolerance,
+            )
+
+        positive_probability = float(nut["p_positive"])
+        negative_probability = float(nut["p_negative"])
+        if expected_upside == 0.0 and expected_downside == 0.0:
+            _require_stored_precision_close(
+                positive_probability + negative_probability,
+                0.0,
+                path=f"{path}.p_positive and p_negative",
+                relationship="zero probability for an identically zero effect",
+                absolute_tolerance=2 * _rounding_error(_NUT_PROBABILITY_DECIMALS),
+            )
+        else:
+            _require_stored_precision_close(
+                positive_probability + negative_probability,
+                1.0,
+                path=f"{path}.p_positive and p_negative",
+                relationship="complementary positive and negative effect probabilities",
+                absolute_tolerance=2 * _rounding_error(_NUT_PROBABILITY_DECIMALS),
+            )
+
+        pathway_total = sum(float(nut[field]) for field in share_fields)
+        # As above, do not range-check signed attribution shares individually.
+        _require_stored_precision_close(
+            pathway_total,
+            0.0 if qaly == 0 else 1.0,
+            path=f"{path} pathway contributions",
+            relationship=(
+                "a zero total for a null effect"
+                if qaly == 0
+                else "a unit total"
+            ),
+            absolute_tolerance=3 * _rounding_error(_PATHWAY_CONTRIBUTION_DECIMALS),
+        )
+
+        cost = float(nut["lifetime_cost_mean"])
+        expected_nmb = float(data["willingness_to_pay"]) * qaly - cost
+        _require_stored_precision_close(
+            float(nut["expected_net_monetary_benefit"]),
+            expected_nmb,
+            path=f"{path}.expected_net_monetary_benefit",
+            relationship="willingness_to_pay * qaly_mean - lifetime_cost_mean",
+            absolute_tolerance=_nmb_tolerance(
+                float(data["willingness_to_pay"]),
+                output_decimals=_NUT_NMB_DECIMALS,
+            ),
+        )
+
+        for icer_field, qaly_field in (
+            ("icer_expected", "qaly_mean"),
+            ("icer_undiscounted_expected", "qaly_undiscounted_mean"),
+        ):
+            if nut[qaly_field] > 0 and nut[icer_field] is None:
+                raise ValueError(
+                    f"Results artifact {path}.{icer_field} must be defined when "
+                    f"{qaly_field} is positive."
+                )
+            if nut[qaly_field] <= 0 and nut[icer_field] is not None:
+                raise ValueError(
+                    f"Results artifact {path}.{icer_field} must be null when "
+                    f"{qaly_field} is non-positive."
+                )
+        if nut["icer_expected"] is not None:
+            _require_stored_precision_close(
+                float(nut["icer_expected"]),
+                cost / qaly,
+                path=f"{path}.icer_expected",
+                relationship="lifetime_cost_mean / qaly_mean",
+                absolute_tolerance=_icer_tolerance(cost, qaly),
+            )
 
     expected_ranks = list(range(1, len(_EXPECTED_NUT_IDS) + 1))
     if sorted(ranks) != expected_ranks:
         raise ValueError(
             "Results artifact nut_alternative_rank values must be unique and "
             f"cover {expected_ranks}."
+        )
+    for pathway in ("cvd", "cancer", "other"):
+        expected_mean = sum(
+            float(nut[f"{pathway}_contribution"]) for nut in nuts.values()
+        ) / len(nuts)
+        _require_stored_precision_close(
+            float(data[f"{pathway}_contribution_mean"]),
+            expected_mean,
+            path=f"$.{pathway}_contribution_mean",
+            relationship=f"the mean per-nut {pathway} contribution share",
+            absolute_tolerance=(
+                _rounding_error(_TOP_PATHWAY_CONTRIBUTION_DECIMALS)
+                + _rounding_error(_PATHWAY_CONTRIBUTION_DECIMALS)
+            ),
         )
     return nuts
 
@@ -503,21 +995,134 @@ def _validate_model_interval(value: Any) -> None:
         or interval["posterior"] is not False
     ):
         raise ValueError(
-            "Results artifact schema 1.0.0 requires a non-posterior 95% "
+            "Results artifact schema 2.0.0 requires a non-posterior 95% "
             "Monte Carlo model interval."
         )
 
 
-def _validate_methodology_provenance(value: Any) -> None:
+def _validate_evidence_registry(value: Any, data: Mapping[str, Any]) -> None:
+    registry = _validate_exact_fields(
+        value,
+        _EVIDENCE_REGISTRY_FIELDS,
+        path="$.evidence_registry",
+    )
+    action_kind = _require_string(
+        registry["action_kind"], path="$.evidence_registry.action_kind"
+    )
+    if action_kind != data["analysis_spec"]["action"]["kind"]:
+        raise ValueError(
+            "Results artifact evidence-registry action must match analysis_spec."
+        )
+
+    seen: set[tuple[str, str]] = set()
+    active_seen: set[tuple[str, str]] = set()
+    for field, active in (
+        ("active_coefficients", True),
+        ("structurally_excluded_coefficients", False),
+    ):
+        records = registry[field]
+        if not isinstance(records, list) or not records:
+            raise ValueError(
+                f"Results artifact $.evidence_registry.{field} must be a nonempty array."
+            )
+        for index, raw_record in enumerate(records):
+            path = f"$.evidence_registry.{field}[{index}]"
+            record = _validate_exact_fields(
+                raw_record,
+                _EVIDENCE_COEFFICIENT_FIELDS,
+                path=path,
+            )
+            pathway = _require_string(record["pathway"], path=f"{path}.pathway")
+            nutrient = _require_string(record["nutrient"], path=f"{path}.nutrient")
+            key = (pathway, nutrient)
+            if key in seen:
+                raise ValueError(
+                    "Results artifact evidence registry contains a duplicate coefficient."
+                )
+            seen.add(key)
+            mean = _require_number(record["mean"], path=f"{path}.mean")
+            sd = _require_number(record["sd"], path=f"{path}.sd")
+            if sd < 0:
+                raise ValueError(f"Results artifact {path}.sd must be nonnegative.")
+            for string_field in ("unit", "outcome", "contrast", "source"):
+                _require_string(record[string_field], path=f"{path}.{string_field}")
+            if active:
+                active_seen.add(key)
+                _require_string(record["source_url"], path=f"{path}.source_url")
+            elif (
+                mean != 0
+                or sd != 0
+                or record["source_url"] is not None
+                and not isinstance(record["source_url"], str)
+            ):
+                raise ValueError(
+                    "Results artifact structurally excluded coefficients must be "
+                    "fixed at zero with a null or string source URL."
+                )
+
+    expected_pathways = {"cvd", "cancer", "other"}
+    expected_nutrients = {
+        "ala_omega3",
+        "omega6",
+        "omega7",
+        "fiber",
+        "saturated_fat",
+        "magnesium",
+        "arginine",
+        "vitamin_e",
+        "phytosterols",
+        "protein",
+    }
+    expected = {
+        (pathway, nutrient)
+        for pathway in expected_pathways
+        for nutrient in expected_nutrients
+    }
+    if seen != expected:
+        raise ValueError(
+            "Results artifact evidence registry must classify every pathway-nutrient coefficient."
+        )
+    expected_active = {
+        ("cvd", "ala_omega3"),
+        ("cvd", "fiber"),
+        ("cvd", "magnesium"),
+        ("cancer", "fiber"),
+    }
+    if active_seen != expected_active:
+        raise ValueError(
+            "Results artifact evidence registry has an unexpected active coefficient set."
+        )
+    deferred = _require_mapping(
+        registry["deferred_substitution_contrasts"],
+        path="$.evidence_registry.deferred_substitution_contrasts",
+    )
+    if not deferred:
+        raise ValueError(
+            "Results artifact must retain deferred substitution evidence explicitly."
+        )
+
+
+def _validate_methodology_provenance(
+    value: Any,
+    analysis_spec: Mapping[str, Any],
+) -> None:
     provenance = _validate_exact_fields(
         value,
         _METHODOLOGY_PROVENANCE_FIELDS,
         path="$.methodology_provenance",
     )
     for field in (
+        "provenance_schema_version",
         "whatnut_model_version",
+        "whatnut_repository_url",
+        "optiqal_repository_url",
         "optiqal_reference_commit",
+        "optiqal_reference_url",
         "optiqal_reference_scope",
+        "rng_algorithm",
+        "content_hash_algorithm",
+        "analysis_spec_sha256",
+        "analysis_fingerprint_sha256",
     ):
         _require_string(provenance[field], path=f"$.methodology_provenance.{field}")
     commit = provenance["optiqal_reference_commit"]
@@ -532,6 +1137,73 @@ def _validate_methodology_provenance(value: Any) -> None:
         raise ValueError(
             "Results artifact $.methodology_provenance.runtime_dependency must "
             "be a boolean."
+        )
+    if provenance["content_hash_algorithm"] != "sha256":
+        raise ValueError(
+            "Results artifact methodology provenance must use SHA-256 hashes."
+        )
+    for field in ("analysis_spec_sha256", "analysis_fingerprint_sha256"):
+        digest = provenance[field]
+        if len(digest) != 64 or any(
+            character not in "0123456789abcdef" for character in digest
+        ):
+            raise ValueError(
+                f"Results artifact methodology provenance {field} must be a "
+                "64-character lowercase SHA-256 digest."
+            )
+    for field in ("scientific_code_sha256", "input_data_sha256"):
+        hashes = _require_mapping(
+            provenance[field], path=f"$.methodology_provenance.{field}"
+        )
+        if not hashes:
+            raise ValueError(
+                f"Results artifact methodology provenance {field} must be nonempty."
+            )
+        for file_path, digest in hashes.items():
+            _require_string(file_path, path=f"$.methodology_provenance.{field} key")
+            digest = _require_string(
+                digest,
+                path=f"$.methodology_provenance.{field}.{file_path}",
+            )
+            if len(digest) != 64 or any(
+                character not in "0123456789abcdef" for character in digest
+            ):
+                raise ValueError(
+                    f"Results artifact methodology provenance hash for {file_path} "
+                    "must be a 64-character lowercase SHA-256 digest."
+                )
+    serialized_spec = json.dumps(
+        analysis_spec,
+        ensure_ascii=True,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    expected_spec_digest = hashlib.sha256(serialized_spec).hexdigest()
+    if provenance["analysis_spec_sha256"] != expected_spec_digest:
+        raise ValueError(
+            "Results artifact analysis-spec provenance hash must match analysis_spec."
+        )
+
+    fingerprint_boundary = {
+        "analysis_spec_sha256": provenance["analysis_spec_sha256"],
+        "content_hash_algorithm": provenance["content_hash_algorithm"],
+        "input_data_sha256": provenance["input_data_sha256"],
+        "optiqal_reference_commit": provenance["optiqal_reference_commit"],
+        "provenance_schema_version": provenance["provenance_schema_version"],
+        "rng_algorithm": provenance["rng_algorithm"],
+        "scientific_code_sha256": provenance["scientific_code_sha256"],
+        "whatnut_model_version": provenance["whatnut_model_version"],
+    }
+    serialized_boundary = json.dumps(
+        fingerprint_boundary,
+        ensure_ascii=True,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    expected_fingerprint = hashlib.sha256(serialized_boundary).hexdigest()
+    if provenance["analysis_fingerprint_sha256"] != expected_fingerprint:
+        raise ValueError(
+            "Results artifact analysis fingerprint must match its hashed boundary."
         )
     for field in ("adopted", "whatnut_extensions", "deliberate_differences"):
         _require_string_sequence(
@@ -632,9 +1304,37 @@ def _validate_decision_summary(
                 f"{option_id}"
             ),
         )
-    if not math.isclose(sum(probabilities.values()), 1.0, abs_tol=1e-8):
-        raise ValueError(
-            "Results artifact all-option probabilities of optimality must sum to one."
+    _require_stored_precision_close(
+        float(sum(probabilities.values())),
+        1.0,
+        path="$.decision_summary.all_option_evaluation.probability_optimal",
+        relationship="a unit total across mutually exclusive options",
+        absolute_tolerance=len(_EXPECTED_OPTION_IDS)
+        * _rounding_error(_OPTION_PROBABILITY_DECIMALS),
+    )
+    _require_stored_precision_close(
+        float(expected_nmb[_COMPARATOR_OPTION_ID]),
+        0.0,
+        path=(
+            "$.decision_summary.all_option_evaluation.expected_nmb."
+            f"{_COMPARATOR_OPTION_ID}"
+        ),
+        relationship="the zero-cost, zero-effect comparator",
+        absolute_tolerance=_rounding_error(_DECISION_NMB_DECIMALS),
+    )
+    for nut_id, nut in nuts.items():
+        qaly = float(nut["qaly_mean"])
+        cost = float(nut["lifetime_cost_mean"])
+        expected_from_outcomes = float(data["willingness_to_pay"]) * qaly - cost
+        _require_stored_precision_close(
+            float(expected_nmb[nut_id]),
+            expected_from_outcomes,
+            path=(f"$.decision_summary.all_option_evaluation.expected_nmb.{nut_id}"),
+            relationship="willingness_to_pay * qaly_mean - lifetime_cost_mean",
+            absolute_tolerance=_nmb_tolerance(
+                float(data["willingness_to_pay"]),
+                output_decimals=_DECISION_NMB_DECIMALS,
+            ),
         )
 
     ranking = _validate_option_ids(
@@ -834,12 +1534,17 @@ def validate_results_artifact(data: Mapping[str, Any]) -> None:
     data = _validate_exact_fields(data, _TOP_LEVEL_FIELDS, path="$")
     _validate_finite_numbers(data)
     _validate_scalar_types(data)
+    _validate_analysis_spec(data["analysis_spec"], data)
     _validate_constants(data["constants"], data)
     _validate_reference_case(data["reference_case"], data)
     _validate_decision_context(data["decision_context"])
     _validate_model_interval(data["model_interval"])
-    _validate_methodology_provenance(data["methodology_provenance"])
-    nuts = _validate_nuts(data["nuts"])
+    _validate_evidence_registry(data["evidence_registry"], data)
+    _validate_methodology_provenance(
+        data["methodology_provenance"],
+        data["analysis_spec"],
+    )
+    nuts = _validate_nuts(data["nuts"], data)
     _validate_sensitivities(data["sensitivity_results"], data, nuts)
     _validate_decision_summary(data["decision_summary"], data, nuts)
 
@@ -863,14 +1568,25 @@ def write_results_artifact(path: Path, data: Mapping[str, Any]) -> Path:
     """Atomically write strict JSON, rejecting NaN and Infinity."""
     validate_results_artifact(data)
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary_path = path.with_name(f".{path.name}.tmp")
+    temporary_path: Path | None = None
     try:
-        with temporary_path.open("w") as file:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as file:
+            temporary_path = Path(file.name)
             json.dump(data, file, indent=2, allow_nan=False)
             file.write("\n")
+            file.flush()
+            os.fsync(file.fileno())
         temporary_path.replace(path)
     finally:
-        temporary_path.unlink(missing_ok=True)
+        if temporary_path is not None:
+            temporary_path.unlink(missing_ok=True)
     return path
 
 
