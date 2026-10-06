@@ -14,7 +14,7 @@ This package estimates the plausible lifetime health benefit of different nuts u
 - **Hierarchical nutrient model**: Effects derived from nutrient composition, not just nut-level associations
 - **Tiered publication-bias shrinkage**: Nut-specific residuals are pulled toward the null by evidence tier (strong/moderate/limited)
 - **HR-centered aggregation**: Jensen-corrected so E[RR] matches the exponent of the mean log-RR
-- **Separate discounting**: 0% health discounting, 3% cost discounting
+- **Dual discount reporting**: main health gains are undiscounted; 3%/3% reference-case values are also reported
 
 ## Installation
 
@@ -39,7 +39,9 @@ from whatnut.results import r
 # Get exact values from the paper
 print(f"Walnuts: {r.walnut.life_years_fmt} life years")   # Output: 0.15
 print(f"Walnuts: {r.walnut.qaly} QALYs")                  # Output: 0.10
+print(f"Walnuts: {r.walnut.qaly_reference} ref QALYs")    # Output: 0.03
 print(f"Peanuts: {r.peanut.icer_fmt}/QALY")               # Output: $103,938/QALY
+print(f"Peanuts: {r.peanut.icer_reference_fmt}/ref QALY") # Output: $299,077/QALY
 print(f"Life years range: {r.life_years_range}")          # Output: 0.03-0.15
 ```
 
@@ -54,8 +56,8 @@ for nid, na in results.nuts.items():
 
 **Note on metrics**:
 - **Life years** (0.03-0.15) are the primary metric — the model's expected increase in lifespan under skeptical assumptions
-- **QALYs** (0.02-0.10) weight those life years by age-specific quality of life with 0% health discounting
-- **ICERs** discount costs at 3% annually using the same survival curve as benefits
+- **QALYs** (0.02-0.10 main; 0.01-0.03 reference-case) weight those life years by age-specific quality of life
+- **ICERs** use 0% health / 3% cost discounting in the main case and 3%/3% in the reference case
 
 ## Key finding
 
