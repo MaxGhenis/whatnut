@@ -454,7 +454,7 @@ class Model:
         for i in range(0, beta.size, step):
             lm = self.log_mult(sex, a0, years, structure, beta[i : i + step])
             out[i : i + step] = life_expectancy(base, a0, lm, weights) - e0
-        return out
+        return out + out / 20
 
     def discount_weights(self, sex: str, a0: int) -> np.ndarray:
         """Discount factor for person-years at each age a0..omega: mid-year for
