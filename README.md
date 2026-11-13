@@ -39,6 +39,6 @@ uv run python scripts/build_bib.py --check           # bibliography matches the 
 uv run python scripts/check_citations.py --offline   # DOIs, titles, first authors vs Crossref (drop --offline to query live)
 ```
 
-CI runs all four, with the tests on Python 3.11, 3.12, 3.14 and 3.15, then renders the paper and checks the render. Vercel renders the committed `paper/index.qmd` to HTML and PDF with Quarto alone (no Python) and serves the wrapper at `/whatnut/`, the manuscript at `/whatnut/web/` and the PDF at `/whatnut/web/index.pdf`.
+CI runs all four, with the tests on Python 3.11, 3.12 and 3.14, then renders the paper and checks the render. Vercel renders the committed `paper/index.qmd` to HTML and PDF with Quarto alone (no Python) and serves the wrapper at `/whatnut/`, the manuscript at `/whatnut/web/` and the PDF at `/whatnut/web/index.pdf`.
 
 MIT license.
