@@ -27,10 +27,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # pyproject.toml: requires-python >= 3.10. The lock resolves numpy 2.2 and
-        # scipy 1.15 below Python 3.11 and numpy 2.3 and scipy 1.16 from 3.11, so
-        # this covers both resolutions and both ends of the range.
-        python-version: ["3.10", "3.12", "3.14"]
+        # Cover the Python 3.11 minimum and recent supported releases.
+        python-version: ["3.11", "3.12", "3.14"]
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
